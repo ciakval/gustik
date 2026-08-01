@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:58:30.674Z",
-    "fileCount": 351,
+    "lastScanned": "2026-08-01T19:00:14.994Z",
+    "fileCount": 354,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "a6667e929938c4347fee65f9eb7dd400902c9844fbb375aaf2a29bd283772242",
-    "storeUpdatedAt": "2026-08-01T18:58:30.682Z"
+    "renderedHash": "fc9c7e9f6026afba098d8858c4f72eca0ce454c846ec8be3cf7acf71da4abd5b",
+    "storeUpdatedAt": "2026-08-01T19:00:15.001Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4436,6 +4436,33 @@
       "size": 4941,
       "mtimeMs": 1785610710631.7856,
       "updatedAt": "2026-08-01T18:58:30.674Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.5-rssi/firmware/test/test_rssi_latch/test_rssi_latch.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 408,
+      "hash": "d72441a402ffbbfb",
+      "size": 1529,
+      "mtimeMs": 1785610778415.9211,
+      "updatedAt": "2026-08-01T18:59:38.459Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.5-rssi/firmware/src/transmit/rssi_latch.h": {
+      "description": "pragma once",
+      "tokens": 155,
+      "hash": "a00eea28cce0cb71",
+      "size": 580,
+      "mtimeMs": 1785610787847.3535,
+      "updatedAt": "2026-08-01T18:59:47.902Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.5-rssi/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 1432,
+      "hash": "bddeebe47e9d0d14",
+      "size": 5370,
+      "mtimeMs": 1785610814950.5696,
+      "updatedAt": "2026-08-01T19:00:14.994Z",
       "source": "hook"
     }
   }

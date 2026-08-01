@@ -219,3 +219,8 @@
 | 18:58 | Edited .worktrees/story-2.4-led-signal/firmware/src/main.cpp | 2→3 lines | ~30 |
 | 18:58 | Edited .worktrees/story-2.4-led-signal/firmware/src/main.cpp | modified setup() | ~39 |
 | 18:58 | Edited .worktrees/story-2.4-led-signal/firmware/src/main.cpp | modified 4() | ~99 |
+| 18:59 | Created .worktrees/story-2.5-rssi/firmware/test/test_rssi_latch/test_rssi_latch.cpp | — | ~408 |
+| 18:59 | Created .worktrees/story-2.5-rssi/firmware/src/transmit/rssi_latch.h | — | ~155 |
+| 19:00 | Edited .worktrees/story-2.5-rssi/firmware/src/main.cpp | 1→2 lines | ~18 |
+| 19:00 | Edited .worktrees/story-2.5-rssi/firmware/src/main.cpp | 2→3 lines | ~26 |
+| 19:00 | Edited .worktrees/story-2.5-rssi/firmware/src/main.cpp | modified 5() | ~119 |

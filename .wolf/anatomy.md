@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:58:30.674Z
-> Files: 351 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:00:14.994Z
+> Files: 354 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -872,6 +872,18 @@
 ## .worktrees/story-2.4-led-signal/firmware/test/test_led_policy/
 
 - `test_led_policy.cpp` — include <unity.h> (~246 tok)
+
+## .worktrees/story-2.5-rssi/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~1432 tok)
+
+## .worktrees/story-2.5-rssi/firmware/src/transmit/
+
+- `rssi_latch.h` — pragma once (~155 tok)
+
+## .worktrees/story-2.5-rssi/firmware/test/test_rssi_latch/
+
+- `test_rssi_latch.cpp` — include <unity.h> (~408 tok)
 
 ## _bmad-output/planning-artifacts/
 
