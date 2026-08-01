@@ -7,8 +7,10 @@
 #include "correct/wind_direction.h"
 #include "transmit/reading.h"
 #include "transmit/connection_monitor.h"
+#include "transmit/buffer_capacity.h"
 #include "transmit/hw/wifi_client.h"
 #include "transmit/hw/clock.h"
+#include "transmit/hw/flash_buffer.h"
 
 namespace {
 // Sampling interval per FR-1 (~2-5s) - exact value pending flash/buffer
@@ -39,6 +41,7 @@ Magnetometer magnetometer;
 WifiTransmitClient transmitClient;
 StationClock clock_;
 ConnectionMonitor connectionMonitor;
+FlashBuffer flashBuffer;
 unsigned long lastSampleAt = 0;
 unsigned long nextClientSeq = 0;
 
@@ -53,6 +56,8 @@ void setup() {
     magnetometer.begin();
     transmitClient.begin(kWifiSsid, kWifiPassword, kBackendBaseUrl, kIngestToken);
     clock_.begin();
+    // NFR-4: buffer must cover >=4h at the sampling interval in use.
+    flashBuffer.begin(computeBufferCapacityForHours(4.0, kSampleIntervalMs / 1000.0));
     lastSampleAt = millis();
 }
 
@@ -84,12 +89,14 @@ void loop() {
 
     // AC2: a failed send never blocks/crashes/restarts - it just leaves
     // this cycle's reading unsent and the loop continues on schedule.
-    // Local buffering (so the reading isn't silently dropped) is Story 2.1.
     bool sent = transmitClient.send(&reading, 1);
     if (sent) {
         connectionMonitor.recordSendSuccess();
     } else {
+        // Story 2.1: buffer locally instead of dropping - best-effort
+        // (FR-4), sampling keeps going regardless of buffer/flash state.
         connectionMonitor.recordSendFailure();
+        flashBuffer.push(reading);
     }
     clock_.resyncIfNeeded();
 }
