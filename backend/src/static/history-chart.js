@@ -93,19 +93,23 @@ async function fetchHistory() {
   setHistoryChartReadings(readings);
 }
 
+// Initial load on page open.
 export function initHistoryChart() {
   fetchHistory();
-  // AD-9: history-changed carries no payload - just refetch and fully
-  // redraw, never attempt an incremental patch.
-  const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const ws = new WebSocket(`${protocol}//${location.host}/readings/live`);
-  ws.addEventListener('message', (event) => {
-    const msg = JSON.parse(event.data);
-    if (msg.event === 'history-changed') {
-      fetchHistory();
-    }
-  });
-  // AD-6: also resync on every (re)connect, not just on a caught event -
-  // covers the case where history-changed fired while this socket was down.
-  ws.addEventListener('open', fetchHistory);
+}
+
+// Story 3.3 AC1: history-changed carries no payload (AD-9) - just refetch
+// and fully redraw, never attempt an incremental patch. Called from
+// dashboard.js's shared live-socket onMessage handler.
+export function handleLiveMessage(msg) {
+  if (msg.event === 'history-changed') {
+    fetchHistory();
+  }
+}
+
+// Story 3.3 AC2: resync on every (re)connect, not just on a caught event -
+// covers the case where history-changed fired while the socket was down
+// (AD-6). Called from dashboard.js's shared live-socket onOpen handler.
+export function resyncHistoryChart() {
+  fetchHistory();
 }
