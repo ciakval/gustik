@@ -8,3 +8,6 @@ _bmad-output/**/.memlog.md
 .wolf/token-ledger.json
 .wolf/_scan-state.json
 .wolf/hooks/_session.json
+
+# git worktrees for isolated per-story implementation (superpowers:using-git-worktrees)
+.worktrees/
