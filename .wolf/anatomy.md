@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:54:12.416Z
-> Files: 344 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:56:19.714Z
+> Files: 348 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -836,6 +836,30 @@
 ## .worktrees/story-2.2-backfill/firmware/test/test_connection_monitor/
 
 - `test_connection_monitor.cpp` — include <unity.h> (~772 tok)
+
+## .worktrees/story-2.3-backfill-flag/backend/src/ingest/
+
+- `routes.js` — API routes: POST (1 endpoints) (~483 tok)
+
+## .worktrees/story-2.3-backfill-flag/backend/src/serve/
+
+- `routes.js` — API routes: GET (2 endpoints) (~282 tok)
+
+## .worktrees/story-2.3-backfill-flag/backend/src/store/
+
+- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~509 tok)
+  - fn `toRow` L9-21 (~102 tok)
+  - fn `fromRow` L22-35 (~105 tok)
+  - fn `insertReading` L36-41 (~76 tok)
+  - fn `getLatest` L42-49 (~93 tok)
+  - fn `getLatestCapturedAt` L50-54 (~47 tok)
+
+## .worktrees/story-2.3-backfill-flag/backend/test/
+
+- `backfill.test.js` — testApp: postReadings, getRawRow (~1336 tok)
+  - fn `testApp` L6-9 (~28 tok)
+  - fn `postReadings` L10-18 (~56 tok)
+  - fn `getRawRow` L19-128 (~1210 tok)
 
 ## _bmad-output/planning-artifacts/
 

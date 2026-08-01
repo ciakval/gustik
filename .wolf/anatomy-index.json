@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:54:12.416Z",
-    "fileCount": 344,
+    "lastScanned": "2026-08-01T18:56:19.714Z",
+    "fileCount": 348,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "64499bb4e3330b9bed28cf5603c9b29d76657ab8204af30a7f4e71daae744c15",
-    "storeUpdatedAt": "2026-08-01T18:54:12.423Z"
+    "renderedHash": "81f98aad939c437030a233756a0436a8ee7fb52dfa1f8845090aff4a702582d2",
+    "storeUpdatedAt": "2026-08-01T18:56:19.724Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4313,6 +4313,102 @@
       "size": 4573,
       "mtimeMs": 1785610452369.7852,
       "updatedAt": "2026-08-01T18:54:12.416Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.3-backfill-flag/backend/test/backfill.test.js": {
+      "description": "testApp: postReadings, getRawRow",
+      "tokens": 1336,
+      "hash": "65bd1c550eead0e2",
+      "size": 4674,
+      "mtimeMs": 1785610538149.0994,
+      "updatedAt": "2026-08-01T18:55:38.200Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 6,
+          "endLine": 9,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 10,
+          "endLine": 18,
+          "tokens": 56
+        },
+        {
+          "name": "getRawRow",
+          "kind": "fn",
+          "startLine": 19,
+          "endLine": 128,
+          "tokens": 1210
+        }
+      ]
+    },
+    ".worktrees/story-2.3-backfill-flag/backend/src/serve/routes.js": {
+      "description": "API routes: GET (2 endpoints)",
+      "tokens": 282,
+      "hash": "87ae43a532bac745",
+      "size": 984,
+      "mtimeMs": 1785610562250.255,
+      "updatedAt": "2026-08-01T18:56:02.307Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.3-backfill-flag/backend/src/store/readings.js": {
+      "description": "Insert a single reading. No-op (idempotent) if clientId already exists.",
+      "tokens": 509,
+      "hash": "ccd47095f4361255",
+      "size": 1781,
+      "mtimeMs": 1785610571439.948,
+      "updatedAt": "2026-08-01T18:56:11.491Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "toRow",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 21,
+          "tokens": 102
+        },
+        {
+          "name": "fromRow",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 35,
+          "tokens": 105
+        },
+        {
+          "name": "insertReading",
+          "kind": "fn",
+          "startLine": 36,
+          "endLine": 41,
+          "tokens": 76
+        },
+        {
+          "name": "getLatest",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 49,
+          "tokens": 93
+        },
+        {
+          "name": "getLatestCapturedAt",
+          "kind": "fn",
+          "startLine": 50,
+          "endLine": 54,
+          "tokens": 47
+        }
+      ]
+    },
+    ".worktrees/story-2.3-backfill-flag/backend/src/ingest/routes.js": {
+      "description": "API routes: POST (1 endpoints)",
+      "tokens": 483,
+      "hash": "2e25f45998d4fb08",
+      "size": 1689,
+      "mtimeMs": 1785610579659.7021,
+      "updatedAt": "2026-08-01T18:56:19.714Z",
       "source": "hook"
     }
   }

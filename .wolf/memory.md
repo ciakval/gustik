@@ -209,3 +209,7 @@
 | 18:53 | Edited .worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.cpp | modified clear() | ~29 |
 | 18:54 | Edited .worktrees/story-2.2-backfill/firmware/src/main.cpp | added 2 condition(s) | ~335 |
 | 18:54 | Edited .worktrees/story-2.2-backfill/firmware/src/main.cpp | 2→3 lines | ~15 |
+| 18:55 | Created .worktrees/story-2.3-backfill-flag/backend/test/backfill.test.js | — | ~1336 |
+| 18:56 | Created .worktrees/story-2.3-backfill-flag/backend/src/serve/routes.js | — | ~282 |
+| 18:56 | Edited .worktrees/story-2.3-backfill-flag/backend/src/store/readings.js | added nullish coalescing | ~140 |
+| 18:56 | Created .worktrees/story-2.3-backfill-flag/backend/src/ingest/routes.js | — | ~483 |
