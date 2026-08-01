@@ -43,3 +43,11 @@ export function getLatest(db) {
   const row = db.prepare('SELECT * FROM readings ORDER BY captured_at DESC LIMIT 1').get();
   return fromRow(row);
 }
+
+// Snapshot used by the ingest layer to decide backfilled vs live (AD-9) -
+// null when the table is empty (first-ever write is never "older than"
+// anything, so it's live).
+export function getLatestCapturedAt(db) {
+  const row = db.prepare('SELECT MAX(captured_at) AS capturedAt FROM readings').get();
+  return row.capturedAt ?? null;
+}
