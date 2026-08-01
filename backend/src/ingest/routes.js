@@ -1,5 +1,5 @@
-import { insertReading } from '../store/readings.js';
-import { broadcastReading } from '../serve/routes.js';
+import { insertReading, getLatestCapturedAt } from '../store/readings.js';
+import { broadcastReading, broadcastHistoryChanged } from '../serve/routes.js';
 
 function isAuthorized(request, token) {
   const header = request.headers.authorization ?? '';
@@ -22,11 +22,25 @@ export function registerIngestRoutes(fastify, { ingestToken }) {
     }
 
     const readings = Array.isArray(request.body) ? request.body : [request.body];
+    // Snapshot once per request (AD-9: "older than the last SO FAR
+    // received" at the moment the batch arrives) - every record in this
+    // batch is compared against the same baseline, not against each other.
+    const latestCapturedAtBeforeBatch = getLatestCapturedAt(fastify.db);
+
+    let anyBackfilled = false;
     for (const reading of readings) {
-      const { inserted } = insertReading(fastify.db, reading);
+      const backfilled = latestCapturedAtBeforeBatch !== null && reading.capturedAt < latestCapturedAtBeforeBatch;
+      const { inserted } = insertReading(fastify.db, reading, { backfilled });
       if (inserted) {
-        broadcastReading(fastify, wireShape(reading));
+        if (backfilled) {
+          anyBackfilled = true;
+        } else {
+          broadcastReading(fastify, wireShape(reading));
+        }
       }
+    }
+    if (anyBackfilled) {
+      broadcastHistoryChanged(fastify);
     }
 
     return reply.code(201).send({ written: readings.length });
