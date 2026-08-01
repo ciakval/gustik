@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T15:21:54.692Z",
-    "fileCount": 273,
+    "lastScanned": "2026-08-01T15:46:13.681Z",
+    "fileCount": 274,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "63fd72bf1b7a19065d53a55ca60100bd29cda50de29f421c64940aa76de0cd8b",
-    "storeUpdatedAt": "2026-08-01T15:21:54.693Z"
+    "renderedHash": "50e362c23884e3b3445d704d2d84467ccdc5688256bf3f1e9a4ccce26987f03b",
+    "storeUpdatedAt": "2026-08-01T15:46:13.693Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3604,6 +3604,15 @@
       "mtimeMs": 1785582272753.4705,
       "updatedAt": "2026-08-01T15:21:54.688Z",
       "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/epics.md": {
+      "description": "gustik - Epic Breakdown",
+      "tokens": 9058,
+      "hash": "9bfd4170eaa9bd56",
+      "size": 39235,
+      "mtimeMs": 1785599173620.513,
+      "updatedAt": "2026-08-01T15:46:13.680Z",
+      "source": "hook"
     }
   }
 }

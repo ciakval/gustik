@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T15:21:54.692Z
-> Files: 273 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T15:46:13.681Z
+> Files: 274 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -640,6 +640,10 @@
 - `devcontainer.json` (~639 tok)
 - `Dockerfile` — Docker container definition (~675 tok)
 - `post-create.sh` (~342 tok)
+
+## _bmad-output/planning-artifacts/
+
+- `epics.md` — gustik - Epic Breakdown (~9058 tok)
 
 ## _bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/
 
