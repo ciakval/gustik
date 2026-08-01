@@ -1,13 +1,12 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T12:17:19.543Z
-> Files: 269 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T15:21:54.692Z
+> Files: 273 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~71 tok)
 - `CLAUDE.md` — CLAUDE.md (~1219 tok)
-- `README.md` — Project documentation (~1 tok)
 
 ## .claude/
 
@@ -638,9 +637,20 @@
 
 ## .devcontainer/
 
-- `devcontainer.json` (~489 tok)
+- `devcontainer.json` (~639 tok)
 - `Dockerfile` — Docker container definition (~675 tok)
-- `post-create.sh` (~204 tok)
+- `post-create.sh` (~342 tok)
+
+## _bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/
+
+- `.memlog.md` (~2968 tok)
+- `ARCHITECTURE-SPINE.md` — Architecture Spine — Gustik (~3456 tok)
+
+## _bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/
+
+- `review-adversarial.md` — Adversarial Review — Gustik Architecture Spine (~4168 tok)
+- `review-rubric.md` — Review: ARCHITECTURE-SPINE.md (Gustik, 2026-08-01) (~3087 tok)
+- `review-versions.md` — Review: Stack Versions & Reality-Check — Gustik Architecture Spine (~2511 tok)
 
 ## _bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/
 

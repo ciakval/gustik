@@ -24,6 +24,30 @@
       "related_bugs": ["bug-001"],
       "occurrences": 1,
       "last_seen": "2026-08-01T12:18:00Z"
+    },
+    {
+      "id": "bug-003",
+      "timestamp": "2026-08-01T15:22:00Z",
+      "error_message": "Stop hook: 'Files edited 3+ times this session (ARCHITECTURE-SPINE.md) but buglog.json was not updated.' — false-positive trigger, not an actual bug.",
+      "file": "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/ARCHITECTURE-SPINE.md",
+      "root_cause": "Not a bug — the multi-edit heuristic can't distinguish 'fixing a mistake repeatedly' from a document going through a defined multi-pass authoring process. ARCHITECTURE-SPINE.md was edited 6+ times in one session because the bmad-architecture skill's Finalize sequence is inherently multi-pass by design: Fast-path draft, then a 3-lens reviewer gate (rubric checklist + version/currency + adversarial-divergence, each a parallel subagent) whose findings get applied back into the same file as separate, scoped edits (one per AD/section fixed).",
+      "fix": "No code fix needed. Logging this so a future session reading buglog.json before re-debugging doesn't mistake repeated edits to a BMAD spine/PRD/spec artifact for a sign something went wrong — that pattern is expected for any bmad-* skill with a reviewer-gate Finalize step, not just this run.",
+      "tags": ["openwolf", "hooks", "stop", "buglog", "false-positive", "bmad", "heuristic"],
+      "related_bugs": ["bug-002"],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T15:22:00Z"
+    },
+    {
+      "id": "bug-004",
+      "timestamp": "2026-08-01T15:24:00Z",
+      "error_message": "Stop hook kept repeating 'ACTION REQUIRED: Files edited 3+ times this session ... but buglog.json was not updated' every turn, even immediately after bug-003 was logged to buglog.json in the previous turn.",
+      "file": ".wolf/hooks/stop.js",
+      "root_cause": "checkForMissingBugLogs() (stop.js:145-158) checked `session.files_written.some(w => w.file.includes(\"buglog.json\"))` to decide whether buglog.json had been updated. But post-write.js exits early for every path under .wolf/ ('Skip processing for .wolf/ internal files to avoid slow self-referential updates', post-write.js:39-42) — before it ever reaches the line that pushes to session.files_written. So writes to .wolf/buglog.json itself can never appear in files_written, and the check was unsatisfiable: no edit to buglog.json, however correct or recent, could ever clear the reminder. Same bug *class* as bug-002 (a Stop-hook check whose required evidence structurally can never be produced), but an independent root cause/code path — that one was a date-format mismatch in shared.js, this one is a tracking-array exclusion colliding with a check that assumed inclusion.",
+      "fix": "Rewrote checkForMissingBugLogs() to check buglog.json's own mtime via fs.statSync against session.started, mirroring the pattern checkStatusFreshness() already used correctly for STATUS.md (which checks the file's mtime directly, not files_written). Verified by replicating the exact comparison inline against the real buglog.json mtime and the current session's recorded `started` timestamp — now correctly evaluates true after an edit, where it was unconditionally false before.",
+      "tags": ["openwolf", "hooks", "stop", "buglog", "session-tracking", "logic-bug", "unsatisfiable-check"],
+      "related_bugs": ["bug-002", "bug-003"],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T15:24:00Z"
     }
   ]
 }

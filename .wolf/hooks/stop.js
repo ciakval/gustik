@@ -150,7 +150,20 @@ function checkForMissingBugLogs(wolfDir, session) {
         .map(([file]) => path.basename(file));
     if (multiEditFiles.length === 0)
         return null;
-    const buglogWritten = session.files_written.some(w => w.file.includes("buglog.json"));
+    // post-write.js exits early for every .wolf/* path ("avoid slow self-referential
+    // updates"), so buglog.json edits are never pushed into session.files_written —
+    // checking that array here can never be true. Check the file's own mtime instead,
+    // the same way checkStatusFreshness() already does for STATUS.md.
+    const buglogPath = path.join(wolfDir, "buglog.json");
+    let buglogWritten = false;
+    try {
+        const stat = fs.statSync(buglogPath);
+        const sessionStartMs = session.started ? Date.parse(session.started) : 0;
+        buglogWritten = !sessionStartMs || stat.mtimeMs >= sessionStartMs;
+    }
+    catch {
+        buglogWritten = false;
+    }
     if (!buglogWritten) {
         return `ACTION REQUIRED: Files edited 3+ times this session (${multiEditFiles.join(", ")}) but buglog.json was not updated. Log the bug fixes to .wolf/buglog.json now.`;
     }
