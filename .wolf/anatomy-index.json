@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:47:36.985Z",
-    "fileCount": 331,
+    "lastScanned": "2026-08-01T18:51:36.674Z",
+    "fileCount": 338,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "c859df5700ec3633615b7da65ab0ac6cdf02eb806d1b0576b90218337247e1f2",
-    "storeUpdatedAt": "2026-08-01T18:47:36.992Z"
+    "renderedHash": "664a26c06c2576998d06e9d43f9796667a64b584ea5a97e50ad4911750b018e8",
+    "storeUpdatedAt": "2026-08-01T18:51:36.681Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4196,6 +4196,69 @@
       "size": 799,
       "mtimeMs": 1785610056933.9983,
       "updatedAt": "2026-08-01T18:47:36.985Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/test_ring_buffer.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 955,
+      "hash": "1dc68752f61fd004",
+      "size": 3578,
+      "mtimeMs": 1785610254275.378,
+      "updatedAt": "2026-08-01T18:50:54.344Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.1-local-buffer/firmware/src/transmit/ring_buffer_index.h": {
+      "description": "pragma once",
+      "tokens": 517,
+      "hash": "1e05c67aac258e1c",
+      "size": 1936,
+      "mtimeMs": 1785610237516.0928,
+      "updatedAt": "2026-08-01T18:50:37.572Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.1-local-buffer/firmware/src/transmit/buffer_capacity.h": {
+      "description": "pragma once",
+      "tokens": 83,
+      "hash": "e9999571c3cd41c0",
+      "size": 308,
+      "mtimeMs": 1785610192597.375,
+      "updatedAt": "2026-08-01T18:49:52.655Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.1-local-buffer/firmware/src/transmit/buffer_capacity.cpp": {
+      "description": "include \"transmit/buffer_capacity.h\"",
+      "tokens": 72,
+      "hash": "d5c256d5041db628",
+      "size": 270,
+      "mtimeMs": 1785610197272.7373,
+      "updatedAt": "2026-08-01T18:49:57.319Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.1-local-buffer/firmware/src/transmit/hw/flash_buffer.h": {
+      "description": "pragma once",
+      "tokens": 318,
+      "hash": "064b553774d828b1",
+      "size": 1190,
+      "mtimeMs": 1785610241386.8545,
+      "updatedAt": "2026-08-01T18:50:41.465Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.1-local-buffer/firmware/src/transmit/hw/flash_buffer.cpp": {
+      "description": "include \"transmit/hw/flash_buffer.h\"",
+      "tokens": 551,
+      "hash": "a5d0861b5219830c",
+      "size": 2066,
+      "mtimeMs": 1785610271467.167,
+      "updatedAt": "2026-08-01T18:51:11.516Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.1-local-buffer/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 1022,
+      "hash": "cf8880a9bb3a4c52",
+      "size": 3832,
+      "mtimeMs": 1785610296624.8093,
+      "updatedAt": "2026-08-01T18:51:36.674Z",
       "source": "hook"
     }
   }

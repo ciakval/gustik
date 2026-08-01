@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:47:36.985Z
-> Files: 331 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:51:36.674Z
+> Files: 338 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -799,6 +799,25 @@
 
 - `dashboard-format.test.js` — Declares capturedAt (~484 tok)
 - `dashboard-static.test.js` — Declares testApp (~212 tok)
+
+## .worktrees/story-2.1-local-buffer/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~1022 tok)
+
+## .worktrees/story-2.1-local-buffer/firmware/src/transmit/
+
+- `buffer_capacity.cpp` — include "transmit/buffer_capacity.h" (~72 tok)
+- `buffer_capacity.h` — pragma once (~83 tok)
+- `ring_buffer_index.h` — pragma once (~517 tok)
+
+## .worktrees/story-2.1-local-buffer/firmware/src/transmit/hw/
+
+- `flash_buffer.cpp` — include "transmit/hw/flash_buffer.h" (~551 tok)
+- `flash_buffer.h` — pragma once (~318 tok)
+
+## .worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/
+
+- `test_ring_buffer.cpp` — include <unity.h> (~955 tok)
 
 ## _bmad-output/planning-artifacts/
 

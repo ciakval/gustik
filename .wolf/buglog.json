@@ -206,6 +206,22 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T18:48:00.000Z"
+    },
+    {
+      "id": "bug-012",
+      "timestamp": "2026-08-01T18:50:54.359Z",
+      "error_message": "Wrong reference: test_capacity_covers_at_least_4_hours_at_3_second_interval should be test_reset_reinitializes_capacity_and_clears",
+      "file": ".worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/test_ring_buffer.cpp",
+      "root_cause": "Used \"test_capacity_covers_at_least_4_hours_at_3_second_interval\" instead of \"test_reset_reinitializes_capacity_and_clears\"",
+      "fix": "Changed test_capacity_covers_at_least_4_hours_at_3_second_interval → test_reset_reinitializes_capacity_and_clears",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:50:54.359Z"
     }
   ]
 }

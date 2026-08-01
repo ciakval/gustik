@@ -187,3 +187,17 @@
 | 18:47 | Created .worktrees/story-1.6-dashboard/backend/src/static/dashboard.js | — | ~604 |
 | 18:47 | Edited .worktrees/story-1.6-dashboard/backend/src/store/db.js | added 2 import(s) | ~27 |
 | 18:47 | Edited .worktrees/story-1.6-dashboard/backend/src/store/db.js | added 1 condition(s) | ~77 |
+| 18:49 | Created .worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/test_ring_buffer.cpp | — | ~877 |
+| 18:49 | Created .worktrees/story-2.1-local-buffer/firmware/src/transmit/ring_buffer_index.h | — | ~442 |
+| 18:49 | Created .worktrees/story-2.1-local-buffer/firmware/src/transmit/buffer_capacity.h | — | ~83 |
+| 18:49 | Created .worktrees/story-2.1-local-buffer/firmware/src/transmit/buffer_capacity.cpp | — | ~72 |
+| 18:50 | Created .worktrees/story-2.1-local-buffer/firmware/src/transmit/hw/flash_buffer.h | — | ~319 |
+| 18:50 | Edited .worktrees/story-2.1-local-buffer/firmware/src/transmit/ring_buffer_index.h | modified RingBufferIndex() | ~96 |
+| 18:50 | Edited .worktrees/story-2.1-local-buffer/firmware/src/transmit/hw/flash_buffer.h | inline fix | ~8 |
+| 18:50 | Edited .worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/test_ring_buffer.cpp | modified test_reset_reinitializes_capacity_and_clears() | ~81 |
+| 18:50 | Edited .worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/test_ring_buffer.cpp | 2→3 lines | ~49 |
+| 18:51 | Created .worktrees/story-2.1-local-buffer/firmware/src/transmit/hw/flash_buffer.cpp | — | ~551 |
+| 18:51 | Edited .worktrees/story-2.1-local-buffer/firmware/src/main.cpp | 4→6 lines | ~58 |
+| 18:51 | Edited .worktrees/story-2.1-local-buffer/firmware/src/main.cpp | 8→9 lines | ~65 |
+| 18:51 | Edited .worktrees/story-2.1-local-buffer/firmware/src/main.cpp | 3→5 lines | ~77 |
+| 18:51 | Edited .worktrees/story-2.1-local-buffer/firmware/src/main.cpp | buffering() → push() | ~142 |
