@@ -1,5 +1,6 @@
 import { msToKnots, octantToCompassLabel, isStale, formatAge } from './format.js';
-import { initHistoryChart, setHistoryChartUnit } from './history-chart.js';
+import { initHistoryChart, setHistoryChartUnit, handleLiveMessage, resyncHistoryChart } from './history-chart.js';
+import { connectLiveSocket } from './live-socket.js';
 
 const speedEl = document.getElementById('speed');
 const directionEl = document.getElementById('direction');
@@ -43,25 +44,30 @@ async function fetchLatest() {
   }
 }
 
-function connectLive() {
-  const protocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const ws = new WebSocket(`${protocol}//${location.host}/readings/live`);
-
-  ws.addEventListener('message', (event) => {
-    latestReading = JSON.parse(event.data);
-    render();
-  });
-
-  // WS is a best-effort optimization (AD-6) - on connect/reconnect always
-  // re-sync against the REST source of truth instead of trusting WS alone.
-  ws.addEventListener('open', fetchLatest);
-  ws.addEventListener('close', () => setTimeout(connectLive, 2000));
-}
-
 // Age display keeps advancing even with no new data, so staleness is
 // visible without needing a fresh message to trigger a re-render.
 setInterval(render, 1000);
 
 fetchLatest();
-connectLive();
 initHistoryChart();
+
+// One shared WS connection (Story 3.3) instead of dashboard.js and
+// history-chart.js each opening their own - single reconnect lifecycle,
+// so history-chart.js's resync-on-reconnect (AC2) actually happens instead
+// of silently never reconnecting.
+connectLiveSocket(`${location.protocol === 'https:' ? 'wss:' : 'ws:'}//${location.host}/readings/live`, {
+  onOpen: () => {
+    // WS is a best-effort optimization (AD-6) - on connect/reconnect always
+    // re-sync against the REST source of truth instead of trusting WS alone.
+    fetchLatest();
+    resyncHistoryChart();
+  },
+  onMessage: (msg) => {
+    if (msg.event) {
+      handleLiveMessage(msg);
+      return;
+    }
+    latestReading = msg;
+    render();
+  },
+});
