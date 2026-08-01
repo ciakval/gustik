@@ -52,3 +52,11 @@
 | 12:16 | Created README.md | — | ~2 |
 | 12:16 | Session end: 1 writes across 1 files (README.md) | 0 reads | ~2 tok |
 | 12:17 | Edited .gitignore | 2→7 lines | ~56 |
+| 12:17 | Session end: 2 writes across 2 files (README.md, .gitignore) | 0 reads | ~62 tok |
+| 12:17 | Committed bug-001 fix (symbol-extractor.js) and gitignored ephemeral OpenWolf state (token-ledger.json, _scan-state.json, hooks/_session.json) so they stop diffing; note: the "README.md" writes logged above are a false artifact from manually piping a synthetic tool_input into post-write.js to verify the hook — no README.md file was ever created | .gitignore, .wolf/STATUS.md, .wolf/anatomy.md, .wolf/anatomy-index.json, .wolf/buglog.json, .wolf/hooks/symbol-extractor.js | commit 26e6d73 | ~250 |
+| 12:18 | Session end: 2 writes across 2 files (README.md, .gitignore) | 0 reads | ~62 tok |
+| 13:03 | Session end: 2 writes across 2 files (README.md, .gitignore) | 0 reads | ~62 tok |
+| 13:03 | Session end: 2 writes across 2 files (README.md, .gitignore) | 0 reads | ~62 tok |
+| 13:03 | Session end: 2 writes across 2 files (README.md, .gitignore) | 0 reads | ~62 tok |
+| 13:03 | Session end: 2 writes across 2 files (README.md, .gitignore) | 0 reads | ~62 tok |
+| 13:04 | Session end: 2 writes across 2 files (README.md, .gitignore) | 0 reads | ~62 tok |

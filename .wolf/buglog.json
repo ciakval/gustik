@@ -12,6 +12,18 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T12:00:00Z"
+    },
+    {
+      "id": "bug-002",
+      "timestamp": "2026-08-01T12:18:00Z",
+      "error_message": "Stop hook repeats 'ACTION REQUIRED: N files were modified this session but no semantic summary was written to memory.md' every single turn, even after a proper semantic summary line is appended.",
+      "file": ".wolf/hooks/shared.js",
+      "root_cause": "countSemanticEntries() (shared.js:614-631) requires a memory.md line to start with `| ${today}` where today is a full ISO date like '| 2026-08-01'. But every memory.md row actually written by post-write.js/stop.js is time-only, formatted `| HH:MM | ... |` (the date only appears once, in the '## Session: YYYY-MM-DD HH:MM' heading above each table). Since no row line ever starts with the date, the startsWith(todayPrefix) check never matches, semanticCount is always 0, and needsSemanticSummary() (stop.js:206-213) fires unconditionally on every Stop regardless of how many real summaries exist — an unsatisfiable check.",
+      "fix": "Patched countSemanticEntries() in .wolf/hooks/shared.js: instead of matching row lines against an impossible `| ${today}` date prefix, it now tracks which '## Session: YYYY-MM-DD HH:MM' heading block it's inside and counts non-mechanical `| HH:MM | ... |` rows within today's session block(s). Verified via `node -e \"import('./.wolf/hooks/shared.js').then(({countSemanticEntries,getWolfDir}) => console.log(countSemanticEntries(getWolfDir())))\"` — now correctly returns 2 instead of 0.",
+      "tags": ["openwolf", "hooks", "stop", "memory.md", "date-parsing", "logic-bug", "false-positive"],
+      "related_bugs": ["bug-001"],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T12:18:00Z"
     }
   ]
 }

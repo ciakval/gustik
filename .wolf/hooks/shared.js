@@ -616,11 +616,18 @@ export function countSemanticEntries(wolfDir) {
     try {
         const content = fs.readFileSync(memoryPath, "utf-8");
         const mechanical = /^\|\s*[\d:]+\s*\|\s*(Created|Edited|Multi-edited|Session end:|designqc:)/;
+        const row = /^\|\s*\d{1,2}:\d{2}\s*\|/;
+        const sessionHeading = /^##\s*Session:\s*(\d{4}-\d{2}-\d{2})/;
         const today = new Date().toISOString().slice(0, 10);
-        const todayPrefix = `| ${today}`;
+        let inTodaySession = false;
         let count = 0;
         for (const line of content.split("\n")) {
-            if (line.startsWith(todayPrefix) && !mechanical.test(line))
+            const headingMatch = line.match(sessionHeading);
+            if (headingMatch) {
+                inTodaySession = headingMatch[1] === today;
+                continue;
+            }
+            if (inTodaySession && row.test(line) && !mechanical.test(line))
                 count++;
         }
         return count;
