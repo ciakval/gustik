@@ -8,7 +8,14 @@
       "file": ".wolf/hooks/symbol-extractor.js",
       "root_cause": "The OpenWolf install commit (f532148, 'chore: add OpenWolf files and CLAUDE.md') never copied symbol-extractor.js into .wolf/hooks/, even though post-write.js imports it. Every other hook file was present and matched the version shipped in the globally installed openwolf@2.0.1 npm package (dist/hooks/*.js), so this was an install/packaging gap, not a version mismatch. Because post-write.js's main() wraps everything in main().catch(() => process.exit(0)), runtime errors inside main are swallowed silently — but a top-level ESM import failure happens before main() is ever called, so it crashed loudly on every Write/Edit/MultiEdit for the whole session instead of being masked like other errors would be.",
       "fix": "Copied .wolf/hooks/symbol-extractor.js from /usr/lib/node_modules/openwolf/dist/hooks/symbol-extractor.js (globally installed openwolf@2.0.1 — confirmed same version via diff against the project's post-write.js, which matched byte-for-byte except a sourceMappingURL comment). Verified by piping a synthetic Write tool_input JSON into `node .wolf/hooks/post-write.js` and confirming exit code 0. Ran `openwolf scan` afterward to backfill anatomy.md entries that the hook had failed to write during the outage. File is untracked in git as of this fix — needs `git add .wolf/hooks/symbol-extractor.js` to persist.",
-      "tags": ["openwolf", "hooks", "post-write", "esm", "missing-file", "install-bug"],
+      "tags": [
+        "openwolf",
+        "hooks",
+        "post-write",
+        "esm",
+        "missing-file",
+        "install-bug"
+      ],
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T12:00:00Z"
@@ -20,8 +27,18 @@
       "file": ".wolf/hooks/shared.js",
       "root_cause": "countSemanticEntries() (shared.js:614-631) requires a memory.md line to start with `| ${today}` where today is a full ISO date like '| 2026-08-01'. But every memory.md row actually written by post-write.js/stop.js is time-only, formatted `| HH:MM | ... |` (the date only appears once, in the '## Session: YYYY-MM-DD HH:MM' heading above each table). Since no row line ever starts with the date, the startsWith(todayPrefix) check never matches, semanticCount is always 0, and needsSemanticSummary() (stop.js:206-213) fires unconditionally on every Stop regardless of how many real summaries exist — an unsatisfiable check.",
       "fix": "Patched countSemanticEntries() in .wolf/hooks/shared.js: instead of matching row lines against an impossible `| ${today}` date prefix, it now tracks which '## Session: YYYY-MM-DD HH:MM' heading block it's inside and counts non-mechanical `| HH:MM | ... |` rows within today's session block(s). Verified via `node -e \"import('./.wolf/hooks/shared.js').then(({countSemanticEntries,getWolfDir}) => console.log(countSemanticEntries(getWolfDir())))\"` — now correctly returns 2 instead of 0.",
-      "tags": ["openwolf", "hooks", "stop", "memory.md", "date-parsing", "logic-bug", "false-positive"],
-      "related_bugs": ["bug-001"],
+      "tags": [
+        "openwolf",
+        "hooks",
+        "stop",
+        "memory.md",
+        "date-parsing",
+        "logic-bug",
+        "false-positive"
+      ],
+      "related_bugs": [
+        "bug-001"
+      ],
       "occurrences": 1,
       "last_seen": "2026-08-01T12:18:00Z"
     },
@@ -32,8 +49,18 @@
       "file": "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/ARCHITECTURE-SPINE.md",
       "root_cause": "Not a bug — the multi-edit heuristic can't distinguish 'fixing a mistake repeatedly' from a document going through a defined multi-pass authoring process. ARCHITECTURE-SPINE.md was edited 6+ times in one session because the bmad-architecture skill's Finalize sequence is inherently multi-pass by design: Fast-path draft, then a 3-lens reviewer gate (rubric checklist + version/currency + adversarial-divergence, each a parallel subagent) whose findings get applied back into the same file as separate, scoped edits (one per AD/section fixed).",
       "fix": "No code fix needed. Logging this so a future session reading buglog.json before re-debugging doesn't mistake repeated edits to a BMAD spine/PRD/spec artifact for a sign something went wrong — that pattern is expected for any bmad-* skill with a reviewer-gate Finalize step, not just this run.",
-      "tags": ["openwolf", "hooks", "stop", "buglog", "false-positive", "bmad", "heuristic"],
-      "related_bugs": ["bug-002"],
+      "tags": [
+        "openwolf",
+        "hooks",
+        "stop",
+        "buglog",
+        "false-positive",
+        "bmad",
+        "heuristic"
+      ],
+      "related_bugs": [
+        "bug-002"
+      ],
       "occurrences": 1,
       "last_seen": "2026-08-01T15:22:00Z"
     },
@@ -44,10 +71,72 @@
       "file": ".wolf/hooks/stop.js",
       "root_cause": "checkForMissingBugLogs() (stop.js:145-158) checked `session.files_written.some(w => w.file.includes(\"buglog.json\"))` to decide whether buglog.json had been updated. But post-write.js exits early for every path under .wolf/ ('Skip processing for .wolf/ internal files to avoid slow self-referential updates', post-write.js:39-42) — before it ever reaches the line that pushes to session.files_written. So writes to .wolf/buglog.json itself can never appear in files_written, and the check was unsatisfiable: no edit to buglog.json, however correct or recent, could ever clear the reminder. Same bug *class* as bug-002 (a Stop-hook check whose required evidence structurally can never be produced), but an independent root cause/code path — that one was a date-format mismatch in shared.js, this one is a tracking-array exclusion colliding with a check that assumed inclusion.",
       "fix": "Rewrote checkForMissingBugLogs() to check buglog.json's own mtime via fs.statSync against session.started, mirroring the pattern checkStatusFreshness() already used correctly for STATUS.md (which checks the file's mtime directly, not files_written). Verified by replicating the exact comparison inline against the real buglog.json mtime and the current session's recorded `started` timestamp — now correctly evaluates true after an edit, where it was unconditionally false before.",
-      "tags": ["openwolf", "hooks", "stop", "buglog", "session-tracking", "logic-bug", "unsatisfiable-check"],
-      "related_bugs": ["bug-002", "bug-003"],
+      "tags": [
+        "openwolf",
+        "hooks",
+        "stop",
+        "buglog",
+        "session-tracking",
+        "logic-bug",
+        "unsatisfiable-check"
+      ],
+      "related_bugs": [
+        "bug-002",
+        "bug-003"
+      ],
       "occurrences": 1,
       "last_seen": "2026-08-01T15:24:00Z"
+    },
+    {
+      "id": "bug-005",
+      "timestamp": "2026-08-01T18:28:37.716Z",
+      "error_message": "Null/undefined access in ",
+      "file": ".worktrees/story-1.5-serve-latest/backend/test/serve.test.js",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:28:37.716Z"
+    },
+    {
+      "id": "bug-006",
+      "timestamp": "2026-08-01T18:31:20.906Z",
+      "error_message": "Function not marked async",
+      "file": ".worktrees/story-1.5-serve-latest/backend/src/app.js",
+      "root_cause": "Function uses await but wasn't declared async",
+      "fix": "Added async modifier",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:31:20.906Z"
+    },
+    {
+      "id": "bug-007",
+      "timestamp": "2026-08-01T18:35:00.000Z",
+      "error_message": "500 Internal Server Error: 'socket.send is not a function' on GET /readings/live (WS route); WS client connection fails / hangs",
+      "file": "backend/src/app.js",
+      "root_cause": "@fastify/websocket (v11.0.2) attaches its route-interception (onRoute) hook asynchronously during its own plugin registration. Calling `fastify.register(fastifyWebsocket)` without awaiting it, then declaring `{websocket:true}` routes synchronously in the very next statement on the SAME fastify instance, runs the route registration before the hook is live - the route is treated as a plain HTTP route and the handler receives something that is not a real ws.WebSocket (no .send method), even though app.listen()/app.inject() eventually resolves the plugin boot queue fine for everything else.",
+      "fix": "Declare all `{websocket:true}` (and any) routes inside a nested `fastify.register(async (instance) => { ...routes... })` child plugin context registered AFTER `fastify.register(fastifyWebsocket)`, matching the pattern in the @fastify/websocket README. Avvio (Fastify's plugin boot system) guarantees a child .register() call is fully sequenced after the parent plugin it follows, which a bare synchronous route declaration in the same context is not.",
+      "tags": [
+        "fastify",
+        "websocket",
+        "@fastify/websocket",
+        "plugin-registration-order",
+        "backend",
+        "story-1.5"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:35:00.000Z"
     }
   ]
 }

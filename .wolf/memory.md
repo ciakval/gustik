@@ -131,3 +131,14 @@
 | 18:23 | Created .worktrees/story-1.3-ingest-endpoint/backend/.dockerignore | — | ~9 |
 | 18:23 | Created .worktrees/story-1.3-ingest-endpoint/backend/.gitignore | — | ~12 |
 | 18:23 | Edited .worktrees/story-1.3-ingest-endpoint/backend/package.json | inline fix | ~8 |
+| 18:30 | Story 1.3 complete: TDD'd ingest endpoint (POST /readings auth+idempotent write, GET /health), backend project founded (Fastify 5.11/better-sqlite3 13.0/Docker). 11 tests green. Merged epic1/story-1.3-ingest-endpoint -> dev, pushed both branches. Also fixed devcontainer Dockerfile (added build-essential+python3, needed for better-sqlite3 native compile - was missing entirely). | backend/**, .devcontainer/Dockerfile | merged to dev, worktree cleaned up | ~15000 |
+| 18:24 | Edited .worktrees/story-1.5-serve-latest/backend/package.json | 4→5 lines | ~33 |
+| 18:25 | Created .worktrees/story-1.5-serve-latest/backend/test/serve.test.js | — | ~733 |
+| 18:27 | Edited .worktrees/story-1.5-serve-latest/backend/test/serve.test.js | modified withTimeout() | ~362 |
+| 18:28 | Edited .worktrees/story-1.5-serve-latest/backend/test/serve.test.js | added optional chaining | ~330 |
+| 18:28 | Created .worktrees/story-1.5-serve-latest/backend/src/serve/routes.js | — | ~190 |
+| 18:29 | Created .worktrees/story-1.5-serve-latest/backend/src/serve/routes.js | — | ~172 |
+| 18:29 | Created .worktrees/story-1.5-serve-latest/backend/src/app.js | — | ~188 |
+| 18:29 | Created .worktrees/story-1.5-serve-latest/backend/src/ingest/routes.js | — | ~295 |
+| 18:30 | Edited .worktrees/story-1.5-serve-latest/backend/test/serve.test.js | added 1 import(s) | ~43 |
+| 18:31 | Edited .worktrees/story-1.5-serve-latest/backend/src/app.js | expanded (+6 lines) | ~167 |

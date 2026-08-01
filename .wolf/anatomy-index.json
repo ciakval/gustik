@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:23:36.831Z",
-    "fileCount": 288,
+    "lastScanned": "2026-08-01T18:31:20.894Z",
+    "fileCount": 293,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "851e43aebbc30bfffa544781f88005637c9f6395541bb20b64b2ec43ae8ddefb",
-    "storeUpdatedAt": "2026-08-01T18:23:36.838Z"
+    "renderedHash": "29d30dd39f10cee196242af54a9f54eac5487ebcff8cce786fd668752f2845cb",
+    "storeUpdatedAt": "2026-08-01T18:31:20.902Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3756,6 +3756,74 @@
       "size": 44,
       "mtimeMs": 1785608597734.9067,
       "updatedAt": "2026-08-01T18:23:17.791Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.5-serve-latest/backend/package.json": {
+      "description": "Node.js package manifest",
+      "tokens": 94,
+      "hash": "1489e753a2db6d94",
+      "size": 328,
+      "mtimeMs": 1785608699430.9062,
+      "updatedAt": "2026-08-01T18:24:59.474Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.5-serve-latest/backend/test/serve.test.js": {
+      "description": "testApp: postReadings, withTimeout",
+      "tokens": 838,
+      "hash": "06e4b6c316f37f6c",
+      "size": 2930,
+      "mtimeMs": 1785609011496.6033,
+      "updatedAt": "2026-08-01T18:30:11.539Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 6,
+          "endLine": 9,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 10,
+          "endLine": 46,
+          "tokens": 385
+        },
+        {
+          "name": "withTimeout",
+          "kind": "fn",
+          "startLine": 47,
+          "endLine": 88,
+          "tokens": 383
+        }
+      ]
+    },
+    ".worktrees/story-1.5-serve-latest/backend/src/serve/routes.js": {
+      "description": "API routes: GET (2 endpoints)",
+      "tokens": 172,
+      "hash": "18030954e7a5ba9c",
+      "size": 600,
+      "mtimeMs": 1785608942561.1562,
+      "updatedAt": "2026-08-01T18:29:02.631Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.5-serve-latest/backend/src/app.js": {
+      "description": "Exports buildApp",
+      "tokens": 286,
+      "hash": "e60a4992d1abdb22",
+      "size": 1000,
+      "mtimeMs": 1785609080853.7383,
+      "updatedAt": "2026-08-01T18:31:20.894Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.5-serve-latest/backend/src/ingest/routes.js": {
+      "description": "API routes: POST (1 endpoints)",
+      "tokens": 295,
+      "hash": "934ce2caf2688087",
+      "size": 1032,
+      "mtimeMs": 1785608958752.3198,
+      "updatedAt": "2026-08-01T18:29:18.825Z",
       "source": "hook"
     }
   }

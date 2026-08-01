@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:23:36.831Z
-> Files: 288 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:31:20.894Z
+> Files: 293 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -674,6 +674,29 @@
   - fn `testApp` L6-87 (~720 tok)
 - `store.test.js` — Declares freshDb (~529 tok)
   - fn `freshDb` L6-70 (~475 tok)
+
+## .worktrees/story-1.5-serve-latest/backend/
+
+- `package.json` — Node.js package manifest (~94 tok)
+
+## .worktrees/story-1.5-serve-latest/backend/src/
+
+- `app.js` — Exports buildApp (~286 tok)
+
+## .worktrees/story-1.5-serve-latest/backend/src/ingest/
+
+- `routes.js` — API routes: POST (1 endpoints) (~295 tok)
+
+## .worktrees/story-1.5-serve-latest/backend/src/serve/
+
+- `routes.js` — API routes: GET (2 endpoints) (~172 tok)
+
+## .worktrees/story-1.5-serve-latest/backend/test/
+
+- `serve.test.js` — testApp: postReadings, withTimeout (~838 tok)
+  - fn `testApp` L6-9 (~28 tok)
+  - fn `postReadings` L10-46 (~385 tok)
+  - fn `withTimeout` L47-88 (~383 tok)
 
 ## _bmad-output/planning-artifacts/
 

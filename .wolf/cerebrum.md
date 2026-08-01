@@ -11,6 +11,11 @@
 ## Key Learnings
 
 - **Project:** gustik
+- **[2026-08-01] `@fastify/websocket` v11 registration order gotcha.** Must be registered with `await fastify.register(fastifyWebsocket)` (or routes declared inside a nested `fastify.register(async (instance) => {...})` child context) BEFORE any `{websocket:true}` route is declared. Declaring the route synchronously right after an un-awaited `fastify.register(fastifyWebsocket)` on the same instance runs before the plugin's onRoute hook attaches — the handler then receives an object without `.send()`, causing a 500 on connect. See buglog bug-007. `backend/src/app.js` uses the nested-register pattern; keep it when touching that file.
+- **[2026-08-01] Node 24's native global `WebSocket` client (undici-based) throws an internal `TypeError` in `#onSocketClose` against a `ws`-server (`@fastify/websocket`) in this container — root cause not isolated (likely an undici/Node 24 bug, not our code).** Use the `ws` npm package as the WS client in backend tests instead (`import { WebSocket } from 'ws'`), not the global. Confirmed reliable.
+- **Backend test framework: Node's built-in `node:test` + `node:assert/strict`, zero extra deps for assertions.** Not pinned explicitly by the architecture spine, chosen to avoid adding an unpinned framework dependency. `ws` is the one exception (dev-only, for WS client tests - see above). Keep using `node:test` for all backend stories unless a real limitation forces a change.
+- **This devcontainer's base image had no `make`/`gcc`/`python3`.** `better-sqlite3` (pinned in architecture) needs to compile from source via node-gyp when no prebuilt binary matches. Fixed by adding `build-essential` + `python3` to `.devcontainer/Dockerfile` (commit on `dev`, not story-specific) — also mirrored into `backend/Dockerfile` itself since `node:24-bookworm-slim` is equally minimal and the architecture spine already flagged this exact risk ("Docker base image... hrozí kompilace ze zdroje").
+- **No `docker` binary in this devcontainer.** Cannot build-verify `backend/Dockerfile`/`docker-compose.yml`. Every story that touches Docker files should note this as an unverified-by-CI gap in its commit/TODO, not silently claim it works.
 
 ## Do-Not-Repeat
 
