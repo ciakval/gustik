@@ -1,4 +1,17 @@
 {
   "version": 1,
-  "bugs": []
+  "bugs": [
+    {
+      "id": "bug-001",
+      "timestamp": "2026-08-01T12:00:00Z",
+      "error_message": "PostToolUse:write hook error — Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspaces/gustik/.wolf/hooks/symbol-extractor.js' imported from /workspaces/gustik/.wolf/hooks/post-write.js",
+      "file": ".wolf/hooks/symbol-extractor.js",
+      "root_cause": "The OpenWolf install commit (f532148, 'chore: add OpenWolf files and CLAUDE.md') never copied symbol-extractor.js into .wolf/hooks/, even though post-write.js imports it. Every other hook file was present and matched the version shipped in the globally installed openwolf@2.0.1 npm package (dist/hooks/*.js), so this was an install/packaging gap, not a version mismatch. Because post-write.js's main() wraps everything in main().catch(() => process.exit(0)), runtime errors inside main are swallowed silently — but a top-level ESM import failure happens before main() is ever called, so it crashed loudly on every Write/Edit/MultiEdit for the whole session instead of being masked like other errors would be.",
+      "fix": "Copied .wolf/hooks/symbol-extractor.js from /usr/lib/node_modules/openwolf/dist/hooks/symbol-extractor.js (globally installed openwolf@2.0.1 — confirmed same version via diff against the project's post-write.js, which matched byte-for-byte except a sourceMappingURL comment). Verified by piping a synthetic Write tool_input JSON into `node .wolf/hooks/post-write.js` and confirming exit code 0. Ran `openwolf scan` afterward to backfill anatomy.md entries that the hook had failed to write during the outage. File is untracked in git as of this fix — needs `git add .wolf/hooks/symbol-extractor.js` to persist.",
+      "tags": ["openwolf", "hooks", "post-write", "esm", "missing-file", "install-bug"],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T12:00:00Z"
+    }
+  ]
 }

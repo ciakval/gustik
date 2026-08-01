@@ -3,3 +3,8 @@
 
 # BMAD session memory
 _bmad-output/**/.memlog.md
+
+# OpenWolf ephemeral/local machine state (churns every session, no cross-session value)
+.wolf/token-ledger.json
+.wolf/_scan-state.json
+.wolf/hooks/_session.json

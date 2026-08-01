@@ -1,12 +1,13 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T11:03:20.558Z
-> Files: 263 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T12:17:19.543Z
+> Files: 269 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
-- `.gitignore` — Git ignore rules (~28 tok)
-- `CLAUDE.md` — OpenWolf (~57 tok)
+- `.gitignore` — Git ignore rules (~71 tok)
+- `CLAUDE.md` — CLAUDE.md (~1219 tok)
+- `README.md` — Project documentation (~1 tok)
 
 ## .claude/
 
@@ -646,6 +647,14 @@
 - `.memlog.md` (~589 tok)
 - `addendum.md` — Addendum: Gustik (~1174 tok)
 - `brief.md` — Product Brief: Gustik (~1940 tok)
+
+## _bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/
+
+- `.memlog.md` (~792 tok)
+- `addendum.md` — Addendum: Gustik PRD (~1184 tok)
+- `prd.md` — PRD: Gustik (~7336 tok)
+- `reconcile-brief-addendum.md` — Reconciliation — brief.md + addendum.md vs prd.md + addendum.md (~1252 tok)
+- `review-rubric.md` — PRD Quality Review — Gustik (prd-gustik-2026-08-01) (~2837 tok)
 
 ## _bmad/
 
