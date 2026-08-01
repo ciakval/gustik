@@ -142,3 +142,24 @@
 | 18:29 | Created .worktrees/story-1.5-serve-latest/backend/src/ingest/routes.js | — | ~295 |
 | 18:30 | Edited .worktrees/story-1.5-serve-latest/backend/test/serve.test.js | added 1 import(s) | ~43 |
 | 18:31 | Edited .worktrees/story-1.5-serve-latest/backend/src/app.js | expanded (+6 lines) | ~167 |
+| 18:34 | Created .worktrees/story-1.1-wind-speed/firmware/platformio.ini | — | ~282 |
+| 18:34 | Created .worktrees/story-1.1-wind-speed/firmware/test/test_native/test_wind_speed.cpp | — | ~312 |
+| 18:34 | Created .worktrees/story-1.1-wind-speed/firmware/src/correct/wind_speed.h | — | ~223 |
+| 18:34 | Created .worktrees/story-1.1-wind-speed/firmware/src/correct/wind_speed.cpp | — | ~89 |
+| 18:34 | Edited .worktrees/story-1.1-wind-speed/firmware/platformio.ini | inline fix | ~10 |
+| 18:35 | Edited .worktrees/story-1.1-wind-speed/firmware/platformio.ini | 4→5 lines | ~30 |
+| 18:35 | Edited .worktrees/story-1.1-wind-speed/firmware/platformio.ini | 5→6 lines | ~40 |
+| 18:35 | Created .worktrees/story-1.1-wind-speed/firmware/src/sense/anemometer.h | — | ~162 |
+| 18:35 | Created .worktrees/story-1.1-wind-speed/firmware/src/sense/anemometer.cpp | — | ~128 |
+| 18:35 | Created .worktrees/story-1.1-wind-speed/firmware/src/main.cpp | — | ~322 |
+| 18:36 | Created TODO.md | — | ~807 |
+| 18:36 | Created .worktrees/story-1.1-wind-speed/firmware/.gitignore | — | ~8 |
+| 18:38 | Created .worktrees/story-1.2-wind-direction/firmware/test/test_native/test_wind_direction.cpp | — | ~835 |
+| 18:38 | Created .worktrees/story-1.2-wind-direction/firmware/src/correct/wind_direction.h | — | ~333 |
+| 18:38 | Created .worktrees/story-1.2-wind-direction/firmware/src/correct/wind_direction.cpp | — | ~207 |
+| 18:39 | Created .worktrees/story-1.2-wind-direction/firmware/src/sense/vane.h | — | ~136 |
+| 18:39 | Created .worktrees/story-1.2-wind-direction/firmware/src/sense/vane.cpp | — | ~244 |
+| 18:39 | Created .worktrees/story-1.2-wind-direction/firmware/src/sense/magnetometer.h | — | ~169 |
+| 18:39 | Created .worktrees/story-1.2-wind-direction/firmware/src/sense/magnetometer.cpp | — | ~280 |
+| 18:39 | Created .worktrees/story-1.2-wind-direction/firmware/src/main.cpp | — | ~524 |
+| 18:40 | Edited CLAUDE.md | 3→8 lines | ~439 |

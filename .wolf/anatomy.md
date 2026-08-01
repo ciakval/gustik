@@ -1,12 +1,13 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:31:20.894Z
-> Files: 293 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:40:28.648Z
+> Files: 310 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
-- `CLAUDE.md` — CLAUDE.md (~1219 tok)
+- `CLAUDE.md` — CLAUDE.md (~1512 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~757 tok)
 
 ## .claude/
 
@@ -640,6 +641,49 @@
 - `devcontainer.json` (~639 tok)
 - `Dockerfile` — Docker container definition (~687 tok)
 - `post-create.sh` (~342 tok)
+
+## .worktrees/story-1.1-wind-speed/firmware/
+
+- `.gitignore` — Git ignore rules (~8 tok)
+- `platformio.ini` (~299 tok)
+
+## .worktrees/story-1.1-wind-speed/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~322 tok)
+
+## .worktrees/story-1.1-wind-speed/firmware/src/correct/
+
+- `wind_speed.cpp` — include "correct/wind_speed.h" (~89 tok)
+- `wind_speed.h` — pragma once (~223 tok)
+
+## .worktrees/story-1.1-wind-speed/firmware/src/sense/
+
+- `anemometer.cpp` — include "sense/anemometer.h" (~128 tok)
+- `anemometer.h` — pragma once (~162 tok)
+
+## .worktrees/story-1.1-wind-speed/firmware/test/test_native/
+
+- `test_wind_speed.cpp` — include <unity.h> (~312 tok)
+
+## .worktrees/story-1.2-wind-direction/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~524 tok)
+
+## .worktrees/story-1.2-wind-direction/firmware/src/correct/
+
+- `wind_direction.cpp` — include "correct/wind_direction.h" (~207 tok)
+- `wind_direction.h` — pragma once (~333 tok)
+
+## .worktrees/story-1.2-wind-direction/firmware/src/sense/
+
+- `magnetometer.cpp` — include "sense/magnetometer.h" (~280 tok)
+- `magnetometer.h` — pragma once (~169 tok)
+- `vane.cpp` — include "sense/vane.h" (~244 tok)
+- `vane.h` — pragma once (~136 tok)
+
+## .worktrees/story-1.2-wind-direction/firmware/test/test_native/
+
+- `test_wind_direction.cpp` — include <unity.h> (~835 tok)
 
 ## .worktrees/story-1.3-ingest-endpoint/backend/
 

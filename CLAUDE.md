@@ -10,7 +10,12 @@ This project uses OpenWolf for context management. Read and follow `.wolf/OPENWO
 
 ## Project state
 
-**Gustik has no application code yet.** The repository currently contains only planning artifacts (BMAD) and dev-environment tooling (OpenWolf, devcontainer). There is no package.json, build system, linter, or test suite to run — do not invent commands for these. When implementation starts (firmware and/or web dashboard), this section and the OpenWolf files (`.wolf/STATUS.md`, `.wolf/anatomy.md`) should be updated to reflect the real stack and commands.
+Implementation is underway, working `_bmad-output/planning-artifacts/epics.md`'s 18 stories on an integration branch `dev` (one short-lived branch + git worktree per story, merged back to `dev` after tests pass — see `.worktrees/` convention, gitignored). `main` stays at the last human-reviewed point; `dev` accumulates completed stories. Two subprojects exist:
+
+- **`backend/`** — Node.js 24 + Fastify 5.11.x + better-sqlite3 13.0.x. `npm install && npm test` (test runner: built-in `node:test`, zero extra assertion deps — see cerebrum.md). `npm start` runs the server (needs `INGEST_TOKEN` env var). `Dockerfile`/`docker-compose.yml` exist but are **not build-verified** — no `docker` binary in this devcontainer, see `TODO.md`.
+- **`firmware/`** — PlatformIO project, ESP32 Arduino core 2.x (`[env:esp32dev]`, real hardware target — **not build-verified**, no ESP32 toolchain/hardware in this devcontainer). Hardware-coupled code (ISR pulse counting, I2C, WiFi/HTTP, GPIO) lives under `sense/`/`transmit/`(hw parts)/`config/`/`main.cpp` and is untested here. Pure algorithmic logic (unit conversions, yaw correction, buffer math) lives under `correct/` (Arduino.h-free) and IS unit-tested via `pio test -e native` (PlatformIO's host-native env — lightweight, no ESP32 download). Install PlatformIO with `uv tool install platformio` if not already on PATH.
+
+No dashboard code yet (Story 1.6+). See `.wolf/STATUS.md` for the current quest and `TODO.md` for everything flagged for human review (Docker build verification, real-hardware firmware verification, placeholder calibration constants, Epic 5's physical-only stories).
 
 ## What Gustik is
 

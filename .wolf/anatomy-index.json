@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:31:20.894Z",
-    "fileCount": 293,
+    "lastScanned": "2026-08-01T18:40:28.648Z",
+    "fileCount": 310,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "29d30dd39f10cee196242af54a9f54eac5487ebcff8cce786fd668752f2845cb",
-    "storeUpdatedAt": "2026-08-01T18:31:20.902Z"
+    "renderedHash": "c5349548038db583409840460b5f71166dd5cac38bf48f92515bf7c900d601ca",
+    "storeUpdatedAt": "2026-08-01T18:40:28.655Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3598,12 +3598,12 @@
     },
     "CLAUDE.md": {
       "description": "CLAUDE.md",
-      "tokens": 1219,
-      "hash": "70c0d56e5066a7f7",
-      "size": 4908,
-      "mtimeMs": 1785582272753.4705,
-      "updatedAt": "2026-08-01T15:21:54.688Z",
-      "source": "scan"
+      "tokens": 1512,
+      "hash": "1884311e64fc5f38",
+      "size": 6091,
+      "mtimeMs": 1785609628606.2673,
+      "updatedAt": "2026-08-01T18:40:28.647Z",
+      "source": "hook"
     },
     "_bmad-output/planning-artifacts/epics.md": {
       "description": "gustik - Epic Breakdown",
@@ -3824,6 +3824,159 @@
       "size": 1032,
       "mtimeMs": 1785608958752.3198,
       "updatedAt": "2026-08-01T18:29:18.825Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/platformio.ini": {
+      "description": "",
+      "tokens": 299,
+      "hash": "af7d83e49eea16cb",
+      "size": 1120,
+      "mtimeMs": 1785609310504.995,
+      "updatedAt": "2026-08-01T18:35:10.567Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/test/test_native/test_wind_speed.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 312,
+      "hash": "d99dda2b3d327d49",
+      "size": 1168,
+      "mtimeMs": 1785609257661.5693,
+      "updatedAt": "2026-08-01T18:34:17.707Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/src/correct/wind_speed.h": {
+      "description": "pragma once",
+      "tokens": 223,
+      "hash": "dcf9b034d56c6af7",
+      "size": 836,
+      "mtimeMs": 1785609268355.7686,
+      "updatedAt": "2026-08-01T18:34:28.404Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/src/correct/wind_speed.cpp": {
+      "description": "include \"correct/wind_speed.h\"",
+      "tokens": 89,
+      "hash": "5188f64cabc74023",
+      "size": 333,
+      "mtimeMs": 1785609271838.4885,
+      "updatedAt": "2026-08-01T18:34:31.886Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/src/sense/anemometer.h": {
+      "description": "pragma once",
+      "tokens": 162,
+      "hash": "0445e1ab0e7e819f",
+      "size": 607,
+      "mtimeMs": 1785609328418.156,
+      "updatedAt": "2026-08-01T18:35:28.478Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/src/sense/anemometer.cpp": {
+      "description": "include \"sense/anemometer.h\"",
+      "tokens": 128,
+      "hash": "fdf7866adfafc305",
+      "size": 480,
+      "mtimeMs": 1785609340986.9707,
+      "updatedAt": "2026-08-01T18:35:41.037Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 322,
+      "hash": "16bed063add0b798",
+      "size": 1207,
+      "mtimeMs": 1785609352735.733,
+      "updatedAt": "2026-08-01T18:35:52.788Z",
+      "source": "hook"
+    },
+    "TODO.md": {
+      "description": "TODO — items flagged for Mlok's review",
+      "tokens": 757,
+      "hash": "1edeceb951f29256",
+      "size": 3045,
+      "mtimeMs": 1785609399684.1123,
+      "updatedAt": "2026-08-01T18:36:39.731Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.1-wind-speed/firmware/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 8,
+      "hash": "e47827332f528853",
+      "size": 29,
+      "mtimeMs": 1785609419433.03,
+      "updatedAt": "2026-08-01T18:36:59.486Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/test/test_native/test_wind_direction.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 835,
+      "hash": "56be00d7c00992d6",
+      "size": 3130,
+      "mtimeMs": 1785609497357.1038,
+      "updatedAt": "2026-08-01T18:38:17.403Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/src/correct/wind_direction.h": {
+      "description": "pragma once",
+      "tokens": 333,
+      "hash": "532538ac07e6936a",
+      "size": 1248,
+      "mtimeMs": 1785609525205.501,
+      "updatedAt": "2026-08-01T18:38:45.250Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/src/correct/wind_direction.cpp": {
+      "description": "include \"correct/wind_direction.h\"",
+      "tokens": 207,
+      "hash": "13f8a438113bc60a",
+      "size": 773,
+      "mtimeMs": 1785609529967.2178,
+      "updatedAt": "2026-08-01T18:38:50.022Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/src/sense/vane.h": {
+      "description": "pragma once",
+      "tokens": 136,
+      "hash": "6d020dbec5b77f33",
+      "size": 510,
+      "mtimeMs": 1785609543819.695,
+      "updatedAt": "2026-08-01T18:39:03.883Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/src/sense/vane.cpp": {
+      "description": "include \"sense/vane.h\"",
+      "tokens": 244,
+      "hash": "cf18a250d5d532fc",
+      "size": 913,
+      "mtimeMs": 1785609551138.932,
+      "updatedAt": "2026-08-01T18:39:11.190Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/src/sense/magnetometer.h": {
+      "description": "pragma once",
+      "tokens": 169,
+      "hash": "5415e8c3ee4d0979",
+      "size": 631,
+      "mtimeMs": 1785609556385.67,
+      "updatedAt": "2026-08-01T18:39:16.441Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/src/sense/magnetometer.cpp": {
+      "description": "include \"sense/magnetometer.h\"",
+      "tokens": 280,
+      "hash": "1f52315a0a419778",
+      "size": 1050,
+      "mtimeMs": 1785609567317.6375,
+      "updatedAt": "2026-08-01T18:39:27.365Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.2-wind-direction/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 524,
+      "hash": "5f5a8d0763ac97ce",
+      "size": 1962,
+      "mtimeMs": 1785609578630.3696,
+      "updatedAt": "2026-08-01T18:39:38.674Z",
       "source": "hook"
     }
   }
