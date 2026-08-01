@@ -5,12 +5,14 @@ ARG USER_UID=1000
 ARG USER_GID=1000
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
+        build-essential \
         ca-certificates \
         curl \
         gnupg \
         git \
         less \
         openssh-client \
+        python3 \
         sudo \
         vim \
     && rm -rf /var/lib/apt/lists/*
