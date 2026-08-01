@@ -9,6 +9,7 @@
 #include "transmit/reading.h"
 #include "transmit/connection_monitor.h"
 #include "transmit/buffer_capacity.h"
+#include "transmit/led_policy.h"
 #include "transmit/hw/wifi_client.h"
 #include "transmit/hw/clock.h"
 #include "transmit/hw/flash_buffer.h"
@@ -19,6 +20,7 @@ namespace {
 constexpr unsigned long kSampleIntervalMs = 3000;
 constexpr uint8_t kAnemometerPin = 27;
 constexpr uint8_t kVanePin = 34;
+constexpr uint8_t kDisconnectLedPin = 2;
 
 // TODO(calibration): measure against a reference anemometer before
 // deployment - see correct/wind_speed.h.
@@ -55,6 +57,7 @@ void setup() {
     anemometer.begin(kAnemometerPin);
     vane.begin(kVanePin);
     magnetometer.begin();
+    pinMode(kDisconnectLedPin, OUTPUT);
     transmitClient.begin(kWifiSsid, kWifiPassword, kBackendBaseUrl, kIngestToken);
     clock_.begin();
     // NFR-4: buffer must cover >=4h at the sampling interval in use.
@@ -111,5 +114,8 @@ void loop() {
         connectionMonitor.recordSendFailure();
         flashBuffer.push(reading);
     }
+    // Story 2.4 (FR-5/NFR-2): reflects connection health on every cycle,
+    // immediately - see led_policy.h for why no debounce is used here.
+    digitalWrite(kDisconnectLedPin, shouldLedSignalDisconnect(connectionMonitor.isHealthy()) ? HIGH : LOW);
     clock_.resyncIfNeeded();
 }
