@@ -19,10 +19,16 @@ public:
     void push(const Reading &reading);
 
     // Reads back all buffered readings in oldest-to-newest order (the
-    // order Story 2.2's backfill send must use, AD-2) and clears the
-    // buffer - callers are responsible for actually sending them first if
-    // that matters (best-effort per FR-4, not this class's concern).
-    std::vector<Reading> drainAll();
+    // order Story 2.2's backfill send must use, AD-2) WITHOUT clearing the
+    // buffer - callers must call clear() themselves only after a backfill
+    // send actually succeeds (Story 2.2 AC2: a send that fails partway
+    // must not lose the buffered data - the same records get retried on
+    // the next reconnect).
+    std::vector<Reading> peekAll();
+
+    // Clears the buffer. Only call after a backfill send has actually
+    // succeeded end to end.
+    void clear();
 
     size_t count() const { return index_.count(); }
 

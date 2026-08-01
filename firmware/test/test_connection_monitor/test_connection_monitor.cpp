@@ -44,6 +44,29 @@ void test_repeated_failures_do_not_throw_or_change_after_first(void) {
     TEST_ASSERT_FALSE(monitor.isHealthy());
 }
 
+void test_just_recovered_true_on_the_success_that_ends_an_outage(void) {
+    // Story 2.2 AC1's trigger: backfill should fire exactly on the
+    // transition from unhealthy -> healthy, not on every healthy cycle.
+    ConnectionMonitor monitor;
+    monitor.recordSendFailure();
+    monitor.recordSendFailure();
+    monitor.recordSendSuccess();
+    TEST_ASSERT_TRUE(monitor.justRecovered());
+}
+
+void test_just_recovered_false_when_already_healthy(void) {
+    ConnectionMonitor monitor;
+    monitor.recordSendSuccess();
+    monitor.recordSendSuccess(); // second consecutive success - not a recovery
+    TEST_ASSERT_FALSE(monitor.justRecovered());
+}
+
+void test_just_recovered_false_on_a_failure(void) {
+    ConnectionMonitor monitor;
+    monitor.recordSendFailure();
+    TEST_ASSERT_FALSE(monitor.justRecovered());
+}
+
 int main(int argc, char **argv) {
     UNITY_BEGIN();
     RUN_TEST(test_starts_unhealthy_until_first_successful_send);
@@ -51,5 +74,8 @@ int main(int argc, char **argv) {
     RUN_TEST(test_becomes_unhealthy_after_a_send_failure);
     RUN_TEST(test_recovers_to_healthy_after_next_successful_send);
     RUN_TEST(test_repeated_failures_do_not_throw_or_change_after_first);
+    RUN_TEST(test_just_recovered_true_on_the_success_that_ends_an_outage);
+    RUN_TEST(test_just_recovered_false_when_already_healthy);
+    RUN_TEST(test_just_recovered_false_on_a_failure);
     return UNITY_END();
 }

@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <WiFi.h>
+#include <vector>
 #include "sense/anemometer.h"
 #include "sense/vane.h"
 #include "sense/magnetometer.h"
@@ -92,6 +93,18 @@ void loop() {
     bool sent = transmitClient.send(&reading, 1);
     if (sent) {
         connectionMonitor.recordSendSuccess();
+        // Story 2.2 AC1: on the reconnect that ends an outage, send
+        // everything buffered during it as one array-of-N POST (AD-8),
+        // oldest-to-newest (AD-2). Only clear the buffer once that backfill
+        // send actually succeeds (AC2) - a failure leaves it queued for the
+        // next reconnect, and already-received records are safe from
+        // duplication via the backend's client_id UNIQUE constraint either way.
+        if (connectionMonitor.justRecovered() && flashBuffer.count() > 0) {
+            std::vector<Reading> buffered = flashBuffer.peekAll();
+            if (transmitClient.send(buffered.data(), buffered.size())) {
+                flashBuffer.clear();
+            }
+        }
     } else {
         // Story 2.1: buffer locally instead of dropping - best-effort
         // (FR-4), sampling keeps going regardless of buffer/flash state.

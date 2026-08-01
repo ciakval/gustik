@@ -34,7 +34,7 @@ void FlashBuffer::push(const Reading &reading) {
     f.close();
 }
 
-std::vector<Reading> FlashBuffer::drainAll() {
+std::vector<Reading> FlashBuffer::peekAll() {
     std::vector<Reading> result;
     for (size_t slot : index_.oldestToNewestSlots()) {
         File f = LittleFS.open(slotPath(slot), "r");
@@ -63,6 +63,9 @@ std::vector<Reading> FlashBuffer::drainAll() {
         r.rssiDbm = fields[6].toInt();
         result.push_back(r);
     }
-    index_.drain();
     return result;
+}
+
+void FlashBuffer::clear() {
+    index_.drain();
 }
