@@ -1,0 +1,31 @@
+{
+  "name": "gustik",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "USER_UID": "1000",
+      "USER_GID": "1000"
+    }
+  },
+  "remoteUser": "dev",
+
+  // Reuse host authentication instead of re-logging-in inside the container:
+  //  - ~/.claude.json + ~/.claude: Claude Code session/credentials
+  //  - ~/.gitconfig: your name/email/signing config (read-only)
+  // SSH agent forwarding for git@github.com is handled automatically by
+  // VS Code's Dev Containers extension when ssh-agent is running on the
+  // host (check with `ssh-add -l` before opening the container). As a
+  // fallback/alternative, export GH_TOKEN or GITHUB_TOKEN on the host and
+  // it will be passed through for gh + HTTPS git.
+  "mounts": [
+    "source=${localEnv:HOME}/.claude.json,target=/home/dev/.claude.json,type=bind",
+    "source=${localEnv:HOME}/.claude,target=/home/dev/.claude,type=bind",
+    "source=${localEnv:HOME}/.gitconfig,target=/home/dev/.gitconfig,type=bind,readonly"
+  ],
+  "remoteEnv": {
+    "GH_TOKEN": "${localEnv:GH_TOKEN}",
+    "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}"
+  },
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh > /home/dev/post-create.log 2>&1"
+}
