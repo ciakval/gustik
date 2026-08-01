@@ -1,0 +1,3519 @@
+{
+  "version": 1,
+  "meta": {
+    "lastScanned": "2026-08-01T11:03:20.558Z",
+    "fileCount": 263,
+    "hits": 0,
+    "misses": 0,
+    "renderedHash": "5925f16c964b90569ce7d6ca0d041ca0d2063d4eb8cab963725b9b510269db0f",
+    "storeUpdatedAt": "2026-08-01T11:03:20.561Z"
+  },
+  "files": {
+    "_bmad/_config/bmad-help.csv": {
+      "description": "",
+      "tokens": 2604,
+      "hash": "8e9eb34ad46f7f55",
+      "size": 9776,
+      "mtimeMs": 1785575791362.728,
+      "updatedAt": "2026-08-01T11:03:20.488Z",
+      "source": "scan"
+    },
+    "_bmad/_config/files-manifest.csv": {
+      "description": "",
+      "tokens": 10018,
+      "hash": "b60a0f733fc42329",
+      "size": 37567,
+      "mtimeMs": 1785575791358.728,
+      "updatedAt": "2026-08-01T11:03:20.489Z",
+      "source": "scan"
+    },
+    "_bmad/_config/manifest.yaml": {
+      "description": "",
+      "tokens": 143,
+      "hash": "de794d1d6cf05728",
+      "size": 500,
+      "mtimeMs": 1785575791270.728,
+      "updatedAt": "2026-08-01T11:03:20.490Z",
+      "source": "scan"
+    },
+    "_bmad/_config/skill-manifest.csv": {
+      "description": "",
+      "tokens": 3190,
+      "hash": "201998503aa8b865",
+      "size": 11971,
+      "mtimeMs": 1785575791274.728,
+      "updatedAt": "2026-08-01T11:03:20.490Z",
+      "source": "scan"
+    },
+    "_bmad/bmm/config.yaml": {
+      "description": "BMM Module Configuration",
+      "tokens": 144,
+      "hash": "0f9abfaab42b2cdf",
+      "size": 504,
+      "mtimeMs": 1785575791214.728,
+      "updatedAt": "2026-08-01T11:03:20.491Z",
+      "source": "scan"
+    },
+    "_bmad/bmm/module-help.csv": {
+      "description": "",
+      "tokens": 1863,
+      "hash": "ad4373d7e58a31aa",
+      "size": 6989,
+      "mtimeMs": 1785575791112.174,
+      "updatedAt": "2026-08-01T11:03:20.492Z",
+      "source": "scan"
+    },
+    "_bmad/config.toml": {
+      "description": "─────────────────────────────────────────────────────────────────",
+      "tokens": 940,
+      "hash": "dbeef51f6d5609b5",
+      "size": 3568,
+      "mtimeMs": 1785575791262.728,
+      "updatedAt": "2026-08-01T11:03:20.493Z",
+      "source": "scan"
+    },
+    "_bmad/config.user.toml": {
+      "description": "─────────────────────────────────────────────────────────────────",
+      "tokens": 199,
+      "hash": "b428d0772fc63d86",
+      "size": 958,
+      "mtimeMs": 1785575791262.728,
+      "updatedAt": "2026-08-01T11:03:20.494Z",
+      "source": "scan"
+    },
+    "_bmad/core/config.yaml": {
+      "description": "CORE Module Configuration",
+      "tokens": 73,
+      "hash": "a559467e27e0b670",
+      "size": 254,
+      "mtimeMs": 1785575791218.728,
+      "updatedAt": "2026-08-01T11:03:20.495Z",
+      "source": "scan"
+    },
+    "_bmad/core/module-help.csv": {
+      "description": "",
+      "tokens": 775,
+      "hash": "e801caeb1bf64842",
+      "size": 2911,
+      "mtimeMs": 1785575791199.4653,
+      "updatedAt": "2026-08-01T11:03:20.495Z",
+      "source": "scan"
+    },
+    "_bmad/custom/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 4,
+      "hash": "973b03a33f142c22",
+      "size": 12,
+      "mtimeMs": 1785575790846.0903,
+      "updatedAt": "2026-08-01T11:03:20.496Z",
+      "source": "scan"
+    },
+    "_bmad/custom/config.toml": {
+      "description": "Team / enterprise overrides for _bmad/config.toml.",
+      "tokens": 99,
+      "hash": "d00d0bb7e0e03a7e",
+      "size": 348,
+      "mtimeMs": 1785575791358.728,
+      "updatedAt": "2026-08-01T11:03:20.496Z",
+      "source": "scan"
+    },
+    "_bmad/custom/config.user.toml": {
+      "description": "Personal overrides for _bmad/config.toml.",
+      "tokens": 46,
+      "hash": "92af88b1942ddfd6",
+      "size": 162,
+      "mtimeMs": 1785575791358.728,
+      "updatedAt": "2026-08-01T11:03:20.497Z",
+      "source": "scan"
+    },
+    "_bmad/scripts/memlog.py": {
+      "description": "memlog — an append-only memory log: LLM-optimal working memory for a skill.",
+      "tokens": 2619,
+      "hash": "3b00f82ca33dc422",
+      "size": 9187,
+      "mtimeMs": 1785575790843.5112,
+      "updatedAt": "2026-08-01T11:03:20.499Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "now",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 84,
+          "tokens": 21
+        },
+        {
+          "name": "resolve",
+          "kind": "fn",
+          "startLine": 85,
+          "endLine": 89,
+          "tokens": 59
+        },
+        {
+          "name": "split",
+          "kind": "fn",
+          "startLine": 90,
+          "endLine": 109,
+          "tokens": 236
+        },
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 110,
+          "endLine": 115,
+          "tokens": 82
+        },
+        {
+          "name": "touch",
+          "kind": "fn",
+          "startLine": 116,
+          "endLine": 121,
+          "tokens": 49
+        },
+        {
+          "name": "write_atomic",
+          "kind": "fn",
+          "startLine": 122,
+          "endLine": 131,
+          "tokens": 94
+        },
+        {
+          "name": "entry_count",
+          "kind": "fn",
+          "startLine": 132,
+          "endLine": 135,
+          "tokens": 30
+        },
+        {
+          "name": "ack",
+          "kind": "fn",
+          "startLine": 136,
+          "endLine": 144,
+          "tokens": 71
+        },
+        {
+          "name": "cmd_init",
+          "kind": "fn",
+          "startLine": 145,
+          "endLine": 163,
+          "tokens": 170
+        },
+        {
+          "name": "cmd_append",
+          "kind": "fn",
+          "startLine": 164,
+          "endLine": 179,
+          "tokens": 174
+        },
+        {
+          "name": "cmd_set",
+          "kind": "fn",
+          "startLine": 180,
+          "endLine": 189,
+          "tokens": 67
+        },
+        {
+          "name": "add_target",
+          "kind": "fn",
+          "startLine": 190,
+          "endLine": 196,
+          "tokens": 103
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 197,
+          "endLine": 225,
+          "tokens": 320
+        }
+      ]
+    },
+    "_bmad/scripts/resolve_config.py": {
+      "description": "load_toml, deep_merge, extract_key, main",
+      "tokens": 1635,
+      "hash": "f41149160898aea8",
+      "size": 5722,
+      "mtimeMs": 1785575790844.5413,
+      "updatedAt": "2026-08-01T11:03:20.499Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "load_toml",
+          "kind": "fn",
+          "startLine": 47,
+          "endLine": 72,
+          "tokens": 249
+        },
+        {
+          "name": "_detect_keyed_merge_field",
+          "kind": "fn",
+          "startLine": 73,
+          "endLine": 81,
+          "tokens": 82
+        },
+        {
+          "name": "_merge_by_key",
+          "kind": "fn",
+          "startLine": 82,
+          "endLine": 104,
+          "tokens": 201
+        },
+        {
+          "name": "_merge_arrays",
+          "kind": "fn",
+          "startLine": 105,
+          "endLine": 113,
+          "tokens": 99
+        },
+        {
+          "name": "deep_merge",
+          "kind": "fn",
+          "startLine": 114,
+          "endLine": 127,
+          "tokens": 135
+        },
+        {
+          "name": "extract_key",
+          "kind": "fn",
+          "startLine": 128,
+          "endLine": 138,
+          "tokens": 78
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 139,
+          "endLine": 179,
+          "tokens": 373
+        }
+      ]
+    },
+    "_bmad/scripts/resolve_customization.py": {
+      "description": "find_project_root, load_toml, deep_merge, extract_key + 2 more",
+      "tokens": 2371,
+      "hash": "23fb9040b08c7eb9",
+      "size": 8310,
+      "mtimeMs": 1785575790846.0903,
+      "updatedAt": "2026-08-01T11:03:20.500Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "find_project_root",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 68,
+          "tokens": 84
+        },
+        {
+          "name": "load_toml",
+          "kind": "fn",
+          "startLine": 69,
+          "endLine": 97,
+          "tokens": 290
+        },
+        {
+          "name": "_detect_keyed_merge_field",
+          "kind": "fn",
+          "startLine": 98,
+          "endLine": 114,
+          "tokens": 206
+        },
+        {
+          "name": "_merge_by_key",
+          "kind": "fn",
+          "startLine": 115,
+          "endLine": 140,
+          "tokens": 202
+        },
+        {
+          "name": "_merge_arrays",
+          "kind": "fn",
+          "startLine": 141,
+          "endLine": 151,
+          "tokens": 142
+        },
+        {
+          "name": "deep_merge",
+          "kind": "fn",
+          "startLine": 152,
+          "endLine": 170,
+          "tokens": 200
+        },
+        {
+          "name": "extract_key",
+          "kind": "fn",
+          "startLine": 171,
+          "endLine": 181,
+          "tokens": 78
+        },
+        {
+          "name": "write_json_stdout",
+          "kind": "fn",
+          "startLine": 182,
+          "endLine": 189,
+          "tokens": 91
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 190,
+          "endLine": 241,
+          "tokens": 484
+        }
+      ]
+    },
+    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/.memlog.md": {
+      "description": "",
+      "tokens": 589,
+      "hash": "673040b77e84c0d1",
+      "size": 2544,
+      "mtimeMs": 1785581065316.356,
+      "updatedAt": "2026-08-01T11:03:20.501Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/addendum.md": {
+      "description": "Addendum: Gustik",
+      "tokens": 1174,
+      "hash": "703cfdae40b4d4ce",
+      "size": 5096,
+      "mtimeMs": 1785581056341.7065,
+      "updatedAt": "2026-08-01T11:03:20.501Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/brief.md": {
+      "description": "Product Brief: Gustik",
+      "tokens": 1940,
+      "hash": "e58b5fd5da42c8ce",
+      "size": 8631,
+      "mtimeMs": 1785580958373.577,
+      "updatedAt": "2026-08-01T11:03:20.502Z",
+      "source": "scan"
+    },
+    ".claude/commands/reframe.md": {
+      "description": "Mode: migrate [framework]",
+      "tokens": 551,
+      "hash": "17a75695be5d4629",
+      "size": 2221,
+      "mtimeMs": 1785582200480.4683,
+      "updatedAt": "2026-08-01T11:03:20.502Z",
+      "source": "scan"
+    },
+    ".claude/commands/security-audit.md": {
+      "description": "Layer 1 — Dependencies",
+      "tokens": 510,
+      "hash": "e6f7e0b7337c9c86",
+      "size": 2060,
+      "mtimeMs": 1785582200480.4075,
+      "updatedAt": "2026-08-01T11:03:20.502Z",
+      "source": "scan"
+    },
+    ".claude/rules/openwolf.md": {
+      "description": "",
+      "tokens": 328,
+      "hash": "6d735b2c1c54a916",
+      "size": 1323,
+      "mtimeMs": 1785582200468.6204,
+      "updatedAt": "2026-08-01T11:03:20.502Z",
+      "source": "scan"
+    },
+    ".claude/settings.json": {
+      "description": "",
+      "tokens": 536,
+      "hash": "312e0b0c8c971756",
+      "size": 1874,
+      "mtimeMs": 1785582200466.8774,
+      "updatedAt": "2026-08-01T11:03:20.502Z",
+      "source": "scan"
+    },
+    ".claude/settings.local.json": {
+      "description": "",
+      "tokens": 115,
+      "hash": "72076b922373b74e",
+      "size": 400,
+      "mtimeMs": 1785577175229.7812,
+      "updatedAt": "2026-08-01T11:03:20.502Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-advanced-elicitation/methods.csv": {
+      "description": "",
+      "tokens": 3860,
+      "hash": "d110ff5f076fb942",
+      "size": 14854,
+      "mtimeMs": 1785575791381.835,
+      "updatedAt": "2026-08-01T11:03:20.503Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-advanced-elicitation/SKILL.md": {
+      "description": "Advanced Elicitation",
+      "tokens": 1588,
+      "hash": "705cc827cab89285",
+      "size": 6352,
+      "mtimeMs": 1785575791380.981,
+      "updatedAt": "2026-08-01T11:03:20.503Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-analyst/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 957,
+      "hash": "7191f4a60ada7dba",
+      "size": 3357,
+      "mtimeMs": 1785575791429.6135,
+      "updatedAt": "2026-08-01T11:03:20.504Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-analyst/SKILL.md": {
+      "description": "Mary — Business Analyst",
+      "tokens": 1127,
+      "hash": "fca38a404e79508e",
+      "size": 4525,
+      "mtimeMs": 1785575791429.2651,
+      "updatedAt": "2026-08-01T11:03:20.504Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-architect/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 776,
+      "hash": "d9763009d7c20246",
+      "size": 2723,
+      "mtimeMs": 1785575791496.9165,
+      "updatedAt": "2026-08-01T11:03:20.504Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-architect/SKILL.md": {
+      "description": "Winston — System Architect",
+      "tokens": 1120,
+      "hash": "82bbf22ff3a45717",
+      "size": 4499,
+      "mtimeMs": 1785575791496.567,
+      "updatedAt": "2026-08-01T11:03:20.504Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-dev/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 952,
+      "hash": "01a45ac2420f920c",
+      "size": 3341,
+      "mtimeMs": 1785575791524.3176,
+      "updatedAt": "2026-08-01T11:03:20.505Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-dev/SKILL.md": {
+      "description": "Amelia — Senior Software Engineer",
+      "tokens": 1136,
+      "hash": "54ab6d9d60d7ed7e",
+      "size": 4565,
+      "mtimeMs": 1785575791523.8804,
+      "updatedAt": "2026-08-01T11:03:20.505Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-pm/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 867,
+      "hash": "afc2250de25241ac",
+      "size": 3040,
+      "mtimeMs": 1785575791472.075,
+      "updatedAt": "2026-08-01T11:03:20.506Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-pm/SKILL.md": {
+      "description": "John — Product Manager",
+      "tokens": 1120,
+      "hash": "e2ebea0bf6ee158f",
+      "size": 4497,
+      "mtimeMs": 1785575791471.712,
+      "updatedAt": "2026-08-01T11:03:20.506Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-tech-writer/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 945,
+      "hash": "bb828f2d26a13687",
+      "size": 3315,
+      "mtimeMs": 1785575791432.0896,
+      "updatedAt": "2026-08-01T11:03:20.506Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-tech-writer/explain-concept.md": {
+      "description": "Explain Concept",
+      "tokens": 170,
+      "hash": "6ea82dbe4e41d4bb",
+      "size": 687,
+      "mtimeMs": 1785575791432.497,
+      "updatedAt": "2026-08-01T11:03:20.506Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-tech-writer/mermaid-gen.md": {
+      "description": "Mermaid Generate",
+      "tokens": 169,
+      "hash": "1d83fcc5fa842bc3",
+      "size": 684,
+      "mtimeMs": 1785575791432.881,
+      "updatedAt": "2026-08-01T11:03:20.506Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-tech-writer/SKILL.md": {
+      "description": "Paige — Technical Writer",
+      "tokens": 1141,
+      "hash": "7544242ff68d0ddf",
+      "size": 4582,
+      "mtimeMs": 1785575791431.6716,
+      "updatedAt": "2026-08-01T11:03:20.506Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-tech-writer/validate-doc.md": {
+      "description": "Validate Documentation",
+      "tokens": 164,
+      "hash": "3b8d25f60be19171",
+      "size": 659,
+      "mtimeMs": 1785575791433.2683,
+      "updatedAt": "2026-08-01T11:03:20.506Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-tech-writer/write-document.md": {
+      "description": "Write Document",
+      "tokens": 231,
+      "hash": "c0ddfd981f765b82",
+      "size": 931,
+      "mtimeMs": 1785575791433.6328,
+      "updatedAt": "2026-08-01T11:03:20.507Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-ux-designer/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 723,
+      "hash": "3df7da44945f9df3",
+      "size": 2536,
+      "mtimeMs": 1785575791473.7676,
+      "updatedAt": "2026-08-01T11:03:20.507Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-agent-ux-designer/SKILL.md": {
+      "description": "Sally — UX Designer",
+      "tokens": 1125,
+      "hash": "d780ae59b9fb7e3a",
+      "size": 4518,
+      "mtimeMs": 1785575791473.302,
+      "updatedAt": "2026-08-01T11:03:20.507Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-architecture/assets/spine-template.md": {
+      "description": "Architecture Spine — {name}",
+      "tokens": 1083,
+      "hash": "ef4ff795624eb543",
+      "size": 4357,
+      "mtimeMs": 1785575791499.7588,
+      "updatedAt": "2026-08-01T11:03:20.507Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-architecture/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 1735,
+      "hash": "137b418e1bb94041",
+      "size": 6093,
+      "mtimeMs": 1785575791500.1638,
+      "updatedAt": "2026-08-01T11:03:20.508Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-architecture/references/headless.md": {
+      "description": "Headless",
+      "tokens": 662,
+      "hash": "4db2708f335c94cb",
+      "size": 2660,
+      "mtimeMs": 1785575791501.3096,
+      "updatedAt": "2026-08-01T11:03:20.508Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-architecture/references/reviewer-gate.md": {
+      "description": "Reviewer Gate",
+      "tokens": 807,
+      "hash": "d32e32a3c1d59b56",
+      "size": 3245,
+      "mtimeMs": 1785575791501.9578,
+      "updatedAt": "2026-08-01T11:03:20.508Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-architecture/scripts/lint_spine.py": {
+      "description": "lint-spine — the mechanical half of spine decision-integrity, done deterministically.",
+      "tokens": 2989,
+      "hash": "040e0f1c13d31e6a",
+      "size": 10472,
+      "mtimeMs": 1785575791503.0042,
+      "updatedAt": "2026-08-01T11:03:20.509Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "split_frontmatter",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 59,
+          "tokens": 226
+        },
+        {
+          "name": "blank_fences",
+          "kind": "fn",
+          "startLine": 60,
+          "endLine": 65,
+          "tokens": 76
+        },
+        {
+          "name": "line_of",
+          "kind": "fn",
+          "startLine": 66,
+          "endLine": 69,
+          "tokens": 24
+        },
+        {
+          "name": "find_placeholders",
+          "kind": "fn",
+          "startLine": 70,
+          "endLine": 90,
+          "tokens": 274
+        },
+        {
+          "name": "find_frontmatter_placeholders",
+          "kind": "fn",
+          "startLine": 91,
+          "endLine": 108,
+          "tokens": 226
+        },
+        {
+          "name": "find_ad_issues",
+          "kind": "fn",
+          "startLine": 109,
+          "endLine": 152,
+          "tokens": 485
+        },
+        {
+          "name": "find_unpinned_stack",
+          "kind": "fn",
+          "startLine": 153,
+          "endLine": 200,
+          "tokens": 617
+        },
+        {
+          "name": "_table_cells",
+          "kind": "fn",
+          "startLine": 201,
+          "endLine": 210,
+          "tokens": 82
+        },
+        {
+          "name": "lint",
+          "kind": "fn",
+          "startLine": 211,
+          "endLine": 229,
+          "tokens": 177
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 230,
+          "endLine": 258,
+          "tokens": 331
+        }
+      ]
+    },
+    ".claude/skills/bmad-architecture/scripts/tests/test_lint_spine.py": {
+      "description": "Tests for lint_spine.py. Run: uv run --with pytest pytest scripts/tests/test_lint_spine.py",
+      "tokens": 2830,
+      "hash": "e86bb9a62c5cca74",
+      "size": 9932,
+      "mtimeMs": 1785575791504.0813,
+      "updatedAt": "2026-08-01T11:03:20.510Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "cats",
+          "kind": "fn",
+          "startLine": 59,
+          "endLine": 62,
+          "tokens": 23
+        },
+        {
+          "name": "test_clean_spine_passes",
+          "kind": "fn",
+          "startLine": 63,
+          "endLine": 68,
+          "tokens": 41
+        },
+        {
+          "name": "test_mermaid_braces_not_flagged",
+          "kind": "fn",
+          "startLine": 69,
+          "endLine": 74,
+          "tokens": 60
+        },
+        {
+          "name": "test_placeholder_markers_caught",
+          "kind": "fn",
+          "startLine": 75,
+          "endLine": 80,
+          "tokens": 48
+        },
+        {
+          "name": "test_similar_to_caught",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 86,
+          "tokens": 59
+        },
+        {
+          "name": "test_unfilled_template_token_caught",
+          "kind": "fn",
+          "startLine": 87,
+          "endLine": 92,
+          "tokens": 62
+        },
+        {
+          "name": "test_duplicate_ad_id_caught",
+          "kind": "fn",
+          "startLine": 93,
+          "endLine": 98,
+          "tokens": 57
+        },
+        {
+          "name": "test_non_monotonic_ad_id_caught",
+          "kind": "fn",
+          "startLine": 99,
+          "endLine": 106,
+          "tokens": 94
+        },
+        {
+          "name": "test_missing_field_caught",
+          "kind": "fn",
+          "startLine": 107,
+          "endLine": 112,
+          "tokens": 74
+        },
+        {
+          "name": "test_unpinned_dep_caught",
+          "kind": "fn",
+          "startLine": 113,
+          "endLine": 118,
+          "tokens": 50
+        },
+        {
+          "name": "test_placeholder_version_caught",
+          "kind": "fn",
+          "startLine": 119,
+          "endLine": 124,
+          "tokens": 72
+        },
+        {
+          "name": "test_no_stack_section_ok",
+          "kind": "fn",
+          "startLine": 125,
+          "endLine": 130,
+          "tokens": 44
+        },
+        {
+          "name": "test_stack_skeleton_row_not_version_pinned",
+          "kind": "fn",
+          "startLine": 131,
+          "endLine": 137,
+          "tokens": 93
+        },
+        {
+          "name": "test_stack_html_comment_not_parsed_as_row",
+          "kind": "fn",
+          "startLine": 138,
+          "endLine": 143,
+          "tokens": 65
+        },
+        {
+          "name": "test_template_token_is_low_severity",
+          "kind": "fn",
+          "startLine": 144,
+          "endLine": 152,
+          "tokens": 132
+        },
+        {
+          "name": "test_no_frontmatter_body_still_scanned",
+          "kind": "fn",
+          "startLine": 153,
+          "endLine": 158,
+          "tokens": 77
+        },
+        {
+          "name": "test_frontmatter_value_with_dashes_not_truncated",
+          "kind": "fn",
+          "startLine": 159,
+          "endLine": 166,
+          "tokens": 123
+        },
+        {
+          "name": "test_ad_heading_in_fence_not_counted",
+          "kind": "fn",
+          "startLine": 167,
+          "endLine": 176,
+          "tokens": 114
+        },
+        {
+          "name": "test_stack_table_flags_only_the_unpinned_row",
+          "kind": "fn",
+          "startLine": 177,
+          "endLine": 184,
+          "tokens": 103
+        },
+        {
+          "name": "test_stack_table_all_pinned_ok",
+          "kind": "fn",
+          "startLine": 185,
+          "endLine": 191,
+          "tokens": 69
+        },
+        {
+          "name": "test_fenced_stack_rows_not_parsed",
+          "kind": "fn",
+          "startLine": 192,
+          "endLine": 200,
+          "tokens": 134
+        },
+        {
+          "name": "test_fenced_stack_heading_not_live",
+          "kind": "fn",
+          "startLine": 201,
+          "endLine": 207,
+          "tokens": 84
+        },
+        {
+          "name": "test_renamed_stack_heading_still_scanned",
+          "kind": "fn",
+          "startLine": 208,
+          "endLine": 216,
+          "tokens": 124
+        },
+        {
+          "name": "test_reordered_columns_pair_name_to_version",
+          "kind": "fn",
+          "startLine": 217,
+          "endLine": 225,
+          "tokens": 128
+        },
+        {
+          "name": "test_placeholder_line_number_is_absolute",
+          "kind": "fn",
+          "startLine": 226,
+          "endLine": 239,
+          "tokens": 132
+        },
+        {
+          "name": "test_missing_spine_file_reports_error",
+          "kind": "fn",
+          "startLine": 240,
+          "endLine": 245,
+          "tokens": 69
+        },
+        {
+          "name": "test_frontmatter_unfilled_token_caught",
+          "kind": "fn",
+          "startLine": 246,
+          "endLine": 253,
+          "tokens": 127
+        },
+        {
+          "name": "test_frontmatter_tbd_caught",
+          "kind": "fn",
+          "startLine": 254,
+          "endLine": 260,
+          "tokens": 82
+        },
+        {
+          "name": "test_unreadable_spine_returns_error_not_crash",
+          "kind": "fn",
+          "startLine": 261,
+          "endLine": 271,
+          "tokens": 144
+        }
+      ]
+    },
+    ".claude/skills/bmad-architecture/SKILL.md": {
+      "description": "BMad Architecture",
+      "tokens": 3446,
+      "hash": "a56c7a0abc45e1db",
+      "size": 13888,
+      "mtimeMs": 1785575791498.3845,
+      "updatedAt": "2026-08-01T11:03:20.510Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/analysis/catalog-analysis.md": {
+      "description": "BMad Brainstorming Catalog — Deep Analysis",
+      "tokens": 5825,
+      "hash": "d4e742da96467454",
+      "size": 23567,
+      "mtimeMs": 1785575791385.2852,
+      "updatedAt": "2026-08-01T11:03:20.511Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/analysis/method-matrix.csv": {
+      "description": "",
+      "tokens": 2355,
+      "hash": "d6c47ab85b9a134d",
+      "size": 8831,
+      "mtimeMs": 1785575791385.6897,
+      "updatedAt": "2026-08-01T11:03:20.512Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/assets/brain-icons.json": {
+      "description": "",
+      "tokens": 11781,
+      "hash": "a101c56e89f1d0f9",
+      "size": 41231,
+      "mtimeMs": 1785575791387.673,
+      "updatedAt": "2026-08-01T11:03:20.512Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/assets/brain-methods.csv": {
+      "description": "Declares and",
+      "tokens": 5187,
+      "hash": "fff112eabca1a9cb",
+      "size": 19519,
+      "mtimeMs": 1785575791388.1816,
+      "updatedAt": "2026-08-01T11:03:20.513Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/assets/brain-selector.html": {
+      "description": "BMad Method Brainstorming Selection",
+      "tokens": 65087,
+      "hash": "798f27c743b85342",
+      "size": 244467,
+      "mtimeMs": 1785575791388.72,
+      "updatedAt": "2026-08-01T11:03:20.515Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 1229,
+      "hash": "21fcbc60c78db99c",
+      "size": 4313,
+      "mtimeMs": 1785575791391.161,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/converge.md": {
+      "description": "Converging: Narrow & Decide",
+      "tokens": 733,
+      "hash": "1528c32ddc64f806",
+      "size": 2961,
+      "mtimeMs": 1785575791392.349,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/finalize.md": {
+      "description": "Wrap-Up: Synthesis & Artifacts",
+      "tokens": 1219,
+      "hash": "b6074e7fb4d86ffc",
+      "size": 4898,
+      "mtimeMs": 1785575791392.753,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/headless.md": {
+      "description": "Headless Mode",
+      "tokens": 1241,
+      "hash": "b8ea5951199cff7e",
+      "size": 4989,
+      "mtimeMs": 1785575791393.2434,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/in-chat-techniques.md": {
+      "description": "Choosing Techniques In Chat",
+      "tokens": 543,
+      "hash": "18239464e3e4f00e",
+      "size": 2200,
+      "mtimeMs": 1785575791393.6714,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/mode-autonomous.md": {
+      "description": "Mode: Ideate For Me",
+      "tokens": 442,
+      "hash": "79fba5391ef293ce",
+      "size": 1780,
+      "mtimeMs": 1785575791394.0818,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/mode-facilitator.md": {
+      "description": "Mode: Facilitator",
+      "tokens": 241,
+      "hash": "1b908498d285d190",
+      "size": 970,
+      "mtimeMs": 1785575791394.4888,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/mode-partner.md": {
+      "description": "Mode: Creative Partner",
+      "tokens": 399,
+      "hash": "caa0ed378c116def",
+      "size": 1606,
+      "mtimeMs": 1785575791394.8538,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/references/resume.md": {
+      "description": "Resuming a Session",
+      "tokens": 183,
+      "hash": "0f79535d72eefe6c",
+      "size": 737,
+      "mtimeMs": 1785575791395.2283,
+      "updatedAt": "2026-08-01T11:03:20.516Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-brainstorming/scripts/brain.py": {
+      "description": "Serve the brainstorming technique library without loading it all into context.",
+      "tokens": 10392,
+      "hash": "b84770d5d55fa17b",
+      "size": 36430,
+      "mtimeMs": 1785575791396.48,
+      "updatedAt": "2026-08-01T11:03:20.517Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "load",
+          "kind": "fn",
+          "startLine": 50,
+          "endLine": 59,
+          "tokens": 80
+        },
+        {
+          "name": "load_extra",
+          "kind": "fn",
+          "startLine": 60,
+          "endLine": 80,
+          "tokens": 288
+        },
+        {
+          "name": "categories",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 87,
+          "tokens": 60
+        },
+        {
+          "name": "filter_cats",
+          "kind": "fn",
+          "startLine": 88,
+          "endLine": 94,
+          "tokens": 62
+        },
+        {
+          "name": "find",
+          "kind": "fn",
+          "startLine": 95,
+          "endLine": 103,
+          "tokens": 90
+        },
+        {
+          "name": "resolve_detail",
+          "kind": "fn",
+          "startLine": 104,
+          "endLine": 115,
+          "tokens": 150
+        },
+        {
+          "name": "fmt_categories",
+          "kind": "fn",
+          "startLine": 116,
+          "endLine": 121,
+          "tokens": 61
+        },
+        {
+          "name": "fmt_list",
+          "kind": "fn",
+          "startLine": 122,
+          "endLine": 127,
+          "tokens": 80
+        },
+        {
+          "name": "fmt_show",
+          "kind": "fn",
+          "startLine": 128,
+          "endLine": 147,
+          "tokens": 181
+        },
+        {
+          "name": "pretty",
+          "kind": "fn",
+          "startLine": 148,
+          "endLine": 176,
+          "tokens": 415
+        },
+        {
+          "name": "_load_icons",
+          "kind": "fn",
+          "startLine": 177,
+          "endLine": 189,
+          "tokens": 140
+        },
+        {
+          "name": "_hsl_hex",
+          "kind": "fn",
+          "startLine": 190,
+          "endLine": 196,
+          "tokens": 61
+        },
+        {
+          "name": "category_style",
+          "kind": "fn",
+          "startLine": 197,
+          "endLine": 205,
+          "tokens": 120
+        },
+        {
+          "name": "tech_icon",
+          "kind": "fn",
+          "startLine": 206,
+          "endLine": 547,
+          "tokens": 5285
+        },
+        {
+          "name": "_good_for_label",
+          "kind": "fn",
+          "startLine": 548,
+          "endLine": 552,
+          "tokens": 49
+        },
+        {
+          "name": "_svg",
+          "kind": "fn",
+          "startLine": 553,
+          "endLine": 556,
+          "tokens": 39
+        },
+        {
+          "name": "_card",
+          "kind": "fn",
+          "startLine": 557,
+          "endLine": 577,
+          "tokens": 320
+        },
+        {
+          "name": "_invent_card",
+          "kind": "fn",
+          "startLine": 578,
+          "endLine": 587,
+          "tokens": 142
+        },
+        {
+          "name": "html_doc",
+          "kind": "fn",
+          "startLine": 588,
+          "endLine": 668,
+          "tokens": 1040
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 669,
+          "endLine": 741,
+          "tokens": 1044
+        }
+      ]
+    },
+    ".claude/skills/bmad-brainstorming/scripts/tests/test_brain.py": {
+      "description": "Tests for brain.py. Run: uv run -m pytest scripts/tests/test_brain.py",
+      "tokens": 2351,
+      "hash": "5f150395d5aa9552",
+      "size": 8232,
+      "mtimeMs": 1785575791397.5051,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "lib",
+          "kind": "fn",
+          "startLine": 25,
+          "endLine": 32,
+          "tokens": 73
+        },
+        {
+          "name": "test_load_normalizes_detail",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 39,
+          "tokens": 53
+        },
+        {
+          "name": "test_categories_counts_sorted",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 43,
+          "tokens": 42
+        },
+        {
+          "name": "test_filter_is_case_insensitive",
+          "kind": "fn",
+          "startLine": 44,
+          "endLine": 48,
+          "tokens": 55
+        },
+        {
+          "name": "test_filter_none_returns_all",
+          "kind": "fn",
+          "startLine": 49,
+          "endLine": 52,
+          "tokens": 30
+        },
+        {
+          "name": "test_find_hits_and_misses",
+          "kind": "fn",
+          "startLine": 53,
+          "endLine": 58,
+          "tokens": 62
+        },
+        {
+          "name": "test_resolve_detail_present",
+          "kind": "fn",
+          "startLine": 59,
+          "endLine": 63,
+          "tokens": 50
+        },
+        {
+          "name": "test_resolve_detail_absent_is_none",
+          "kind": "fn",
+          "startLine": 64,
+          "endLine": 68,
+          "tokens": 48
+        },
+        {
+          "name": "test_resolve_detail_missing_file_warns_not_fatal",
+          "kind": "fn",
+          "startLine": 69,
+          "endLine": 75,
+          "tokens": 72
+        },
+        {
+          "name": "test_show_inlines_detail",
+          "kind": "fn",
+          "startLine": 76,
+          "endLine": 81,
+          "tokens": 64
+        },
+        {
+          "name": "test_show_simple_has_no_detail",
+          "kind": "fn",
+          "startLine": 82,
+          "endLine": 87,
+          "tokens": 54
+        },
+        {
+          "name": "test_show_all_missing_returns_1",
+          "kind": "fn",
+          "startLine": 88,
+          "endLine": 91,
+          "tokens": 32
+        },
+        {
+          "name": "test_list_filtered_text",
+          "kind": "fn",
+          "startLine": 92,
+          "endLine": 97,
+          "tokens": 72
+        },
+        {
+          "name": "test_list_bare_is_refused",
+          "kind": "fn",
+          "startLine": 98,
+          "endLine": 105,
+          "tokens": 96
+        },
+        {
+          "name": "test_list_all_dumps_everything",
+          "kind": "fn",
+          "startLine": 106,
+          "endLine": 111,
+          "tokens": 69
+        },
+        {
+          "name": "test_json_output",
+          "kind": "fn",
+          "startLine": 112,
+          "endLine": 118,
+          "tokens": 61
+        },
+        {
+          "name": "test_random_respects_n_and_category",
+          "kind": "fn",
+          "startLine": 119,
+          "endLine": 125,
+          "tokens": 89
+        },
+        {
+          "name": "test_random_negative_n_does_not_crash",
+          "kind": "fn",
+          "startLine": 126,
+          "endLine": 131,
+          "tokens": 75
+        },
+        {
+          "name": "test_missing_file_returns_2",
+          "kind": "fn",
+          "startLine": 132,
+          "endLine": 137,
+          "tokens": 58
+        },
+        {
+          "name": "test_html_requires_out",
+          "kind": "fn",
+          "startLine": 138,
+          "endLine": 143,
+          "tokens": 64
+        },
+        {
+          "name": "test_html_writes_selection_page",
+          "kind": "fn",
+          "startLine": 144,
+          "endLine": 154,
+          "tokens": 142
+        },
+        {
+          "name": "test_html_creates_missing_parent",
+          "kind": "fn",
+          "startLine": 155,
+          "endLine": 170,
+          "tokens": 170
+        },
+        {
+          "name": "extra",
+          "kind": "fn",
+          "startLine": 171,
+          "endLine": 176,
+          "tokens": 32
+        },
+        {
+          "name": "test_extra_merges_into_categories",
+          "kind": "fn",
+          "startLine": 177,
+          "endLine": 183,
+          "tokens": 94
+        },
+        {
+          "name": "test_extra_appears_in_list_and_random",
+          "kind": "fn",
+          "startLine": 184,
+          "endLine": 188,
+          "tokens": 65
+        },
+        {
+          "name": "test_extra_is_first_class_in_html",
+          "kind": "fn",
+          "startLine": 189,
+          "endLine": 197,
+          "tokens": 119
+        },
+        {
+          "name": "test_extra_missing_file_returns_2",
+          "kind": "fn",
+          "startLine": 198,
+          "endLine": 201,
+          "tokens": 46
+        },
+        {
+          "name": "test_unknown_category_style_uses_fallback_glyph",
+          "kind": "fn",
+          "startLine": 202,
+          "endLine": 207,
+          "tokens": 67
+        },
+        {
+          "name": "test_shipped_selector_is_in_sync_with_catalog",
+          "kind": "fn",
+          "startLine": 208,
+          "endLine": 218,
+          "tokens": 174
+        }
+      ]
+    },
+    ".claude/skills/bmad-brainstorming/SKILL.md": {
+      "description": "BMad Brainstorming",
+      "tokens": 2336,
+      "hash": "399ddc752fc786b5",
+      "size": 9413,
+      "mtimeMs": 1785575791383.9937,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 465,
+      "hash": "571d81087b7a6d91",
+      "size": 1631,
+      "mtimeMs": 1785575791506.0403,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/SKILL.md": {
+      "description": "Implementation Readiness",
+      "tokens": 1216,
+      "hash": "a7e12eae2bdb5a95",
+      "size": 4890,
+      "mtimeMs": 1785575791505.6035,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/steps/step-01-document-discovery.md": {
+      "description": "Step 1: Document Discovery",
+      "tokens": 1223,
+      "hash": "c763b512d5590612",
+      "size": 4939,
+      "mtimeMs": 1785575791506.9734,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/steps/step-02-prd-analysis.md": {
+      "description": "Step 2: PRD Analysis",
+      "tokens": 1101,
+      "hash": "38be2bf4b924c0b5",
+      "size": 4444,
+      "mtimeMs": 1785575791507.4402,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/steps/step-03-epic-coverage-validation.md": {
+      "description": "Step 3: Epic Coverage Validation",
+      "tokens": 1003,
+      "hash": "7b187f03a47cba03",
+      "size": 4058,
+      "mtimeMs": 1785575791507.9233,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/steps/step-04-ux-alignment.md": {
+      "description": "Step 4: UX Alignment",
+      "tokens": 816,
+      "hash": "f71e5f0d77615e88",
+      "size": 3306,
+      "mtimeMs": 1785575791508.3572,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/steps/step-05-epic-quality-review.md": {
+      "description": "Step 5: Epic Quality Review",
+      "tokens": 1667,
+      "hash": "d8a84e57f4e3a321",
+      "size": 6716,
+      "mtimeMs": 1785575791508.7935,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/steps/step-06-final-assessment.md": {
+      "description": "Step 6: Final Assessment",
+      "tokens": 878,
+      "hash": "1b9c8c2a21950f85",
+      "size": 3552,
+      "mtimeMs": 1785575791509.1753,
+      "updatedAt": "2026-08-01T11:03:20.518Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-check-implementation-readiness/templates/readiness-report-template.md": {
+      "description": "Implementation Readiness Assessment Report",
+      "tokens": 24,
+      "hash": "0da97ab1e38818e6",
+      "size": 95,
+      "mtimeMs": 1785575791510.3572,
+      "updatedAt": "2026-08-01T11:03:20.519Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 461,
+      "hash": "1a1e0c3a8914adda",
+      "size": 1616,
+      "mtimeMs": 1785575791525.9185,
+      "updatedAt": "2026-08-01T11:03:20.519Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/generate-trail.md": {
+      "description": "Generate Review Trail",
+      "tokens": 493,
+      "hash": "4a5936d86fbe5a85",
+      "size": 1992,
+      "mtimeMs": 1785575791526.3323,
+      "updatedAt": "2026-08-01T11:03:20.519Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/SKILL.md": {
+      "description": "Checkpoint Review Workflow",
+      "tokens": 786,
+      "hash": "34613078dbea9c55",
+      "size": 3161,
+      "mtimeMs": 1785575791525.5488,
+      "updatedAt": "2026-08-01T11:03:20.519Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/step-01-orientation.md": {
+      "description": "Step 1: Orientation",
+      "tokens": 1238,
+      "hash": "d9e3b949c36d49a0",
+      "size": 5004,
+      "mtimeMs": 1785575791526.7102,
+      "updatedAt": "2026-08-01T11:03:20.519Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/step-02-walkthrough.md": {
+      "description": "Step 2: Walkthrough",
+      "tokens": 1029,
+      "hash": "66cf893f8f968ee8",
+      "size": 4172,
+      "mtimeMs": 1785575791527.0774,
+      "updatedAt": "2026-08-01T11:03:20.519Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/step-03-detail-pass.md": {
+      "description": "Step 3: Detail Pass",
+      "tokens": 1231,
+      "hash": "d48163b9f305f15a",
+      "size": 4990,
+      "mtimeMs": 1785575791527.4634,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/step-04-testing.md": {
+      "description": "Step 4: Testing",
+      "tokens": 665,
+      "hash": "28a56e868968ea2d",
+      "size": 2698,
+      "mtimeMs": 1785575791527.9321,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-checkpoint-preview/step-05-wrapup.md": {
+      "description": "Step 5: Wrap-Up",
+      "tokens": 376,
+      "hash": "c2d4dbc17fed4f8e",
+      "size": 1525,
+      "mtimeMs": 1785575791528.4302,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-code-review/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 460,
+      "hash": "94ad662fdf3fda37",
+      "size": 1614,
+      "mtimeMs": 1785575791530.1648,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-code-review/SKILL.md": {
+      "description": "Code Review Workflow",
+      "tokens": 1080,
+      "hash": "8cad441a79809e4e",
+      "size": 4330,
+      "mtimeMs": 1785575791529.7144,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-code-review/steps/step-01-gather-context.md": {
+      "description": "Step 1: Gather Context",
+      "tokens": 1612,
+      "hash": "d0ee7558605e9d48",
+      "size": 6481,
+      "mtimeMs": 1785575791531.18,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-code-review/steps/step-02-review.md": {
+      "description": "Step 2: Review",
+      "tokens": 516,
+      "hash": "950a900442975ed6",
+      "size": 2069,
+      "mtimeMs": 1785575791531.7197,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-code-review/steps/step-03-triage.md": {
+      "description": "Step 3: Triage",
+      "tokens": 843,
+      "hash": "8be5918542234084",
+      "size": 3375,
+      "mtimeMs": 1785575791532.2612,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-code-review/steps/step-04-present.md": {
+      "description": "Step 4: Present and Act",
+      "tokens": 1573,
+      "hash": "1bded625413479aa",
+      "size": 6328,
+      "mtimeMs": 1785575791532.6504,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-correct-course/checklist.md": {
+      "description": "Change Navigation Checklist",
+      "tokens": 2909,
+      "hash": "3e082b95def90ccb",
+      "size": 11634,
+      "mtimeMs": 1785575791535.0176,
+      "updatedAt": "2026-08-01T11:03:20.520Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-correct-course/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 468,
+      "hash": "78095d25afb5b2d4",
+      "size": 1640,
+      "mtimeMs": 1785575791535.4512,
+      "updatedAt": "2026-08-01T11:03:20.521Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-correct-course/SKILL.md": {
+      "description": "Correct Course - Sprint Change Management Workflow",
+      "tokens": 3381,
+      "hash": "5064ef2e7aedfb09",
+      "size": 13551,
+      "mtimeMs": 1785575791534.5203,
+      "updatedAt": "2026-08-01T11:03:20.521Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-architecture/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 477,
+      "hash": "618be49b0286f18d",
+      "size": 1671,
+      "mtimeMs": 1785575791512.606,
+      "updatedAt": "2026-08-01T11:03:20.522Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-architecture/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-architecture (create intent)",
+      "tokens": 760,
+      "hash": "4b1673582dc8e095",
+      "size": 3050,
+      "mtimeMs": 1785575791512.2004,
+      "updatedAt": "2026-08-01T11:03:20.522Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-epics-and-stories/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 474,
+      "hash": "da9e43605bc6aec8",
+      "size": 1665,
+      "mtimeMs": 1785575791514.443,
+      "updatedAt": "2026-08-01T11:03:20.523Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-epics-and-stories/SKILL.md": {
+      "description": "Create Epics and Stories",
+      "tokens": 1265,
+      "hash": "4ec9ec255c2c0e97",
+      "size": 5087,
+      "mtimeMs": 1785575791513.9814,
+      "updatedAt": "2026-08-01T11:03:20.523Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-epics-and-stories/steps/step-01-validate-prerequisites.md": {
+      "description": "Step 1: Validate Prerequisites and Extract Requirements",
+      "tokens": 2727,
+      "hash": "7181608c1ee4e55c",
+      "size": 10960,
+      "mtimeMs": 1785575791515.7522,
+      "updatedAt": "2026-08-01T11:03:20.523Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-epics-and-stories/steps/step-02-design-epics.md": {
+      "description": "Step 2: Design Epic List",
+      "tokens": 2188,
+      "hash": "7c66987808c1f84e",
+      "size": 8809,
+      "mtimeMs": 1785575791516.2463,
+      "updatedAt": "2026-08-01T11:03:20.523Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-epics-and-stories/steps/step-03-create-stories.md": {
+      "description": "Step 3: Generate Epics and Stories",
+      "tokens": 2072,
+      "hash": "c5b787a82e4e49ed",
+      "size": 8351,
+      "mtimeMs": 1785575791516.6533,
+      "updatedAt": "2026-08-01T11:03:20.523Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-epics-and-stories/steps/step-04-final-validation.md": {
+      "description": "Step 4: Final Validation",
+      "tokens": 1318,
+      "hash": "6b83fcf177c24c6b",
+      "size": 5325,
+      "mtimeMs": 1785575791517.0557,
+      "updatedAt": "2026-08-01T11:03:20.523Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-epics-and-stories/templates/epics-template.md": {
+      "description": "{{project_name}} - Epic Breakdown",
+      "tokens": 277,
+      "hash": "a804f740155156d8",
+      "size": 1105,
+      "mtimeMs": 1785575791518.34,
+      "updatedAt": "2026-08-01T11:03:20.523Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-prd/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 461,
+      "hash": "0c990af4c0a75540",
+      "size": 1616,
+      "mtimeMs": 1785575791475.6594,
+      "updatedAt": "2026-08-01T11:03:20.524Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-prd/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-prd (create intent)",
+      "tokens": 717,
+      "hash": "143c5c2d85734021",
+      "size": 2877,
+      "mtimeMs": 1785575791475.2798,
+      "updatedAt": "2026-08-01T11:03:20.524Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-story/checklist.md": {
+      "description": "🎯 Story Context Quality Competition Prompt",
+      "tokens": 3574,
+      "hash": "b94e28e774c3be02",
+      "size": 14349,
+      "mtimeMs": 1785575791537.486,
+      "updatedAt": "2026-08-01T11:03:20.524Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-story/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 469,
+      "hash": "1204f6de06443692",
+      "size": 1643,
+      "mtimeMs": 1785575791537.894,
+      "updatedAt": "2026-08-01T11:03:20.524Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-story/discover-inputs.md": {
+      "description": "Discover Inputs Protocol",
+      "tokens": 978,
+      "hash": "dfedba6a8ea05c9a",
+      "size": 3911,
+      "mtimeMs": 1785575791538.2856,
+      "updatedAt": "2026-08-01T11:03:20.525Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-story/SKILL.md": {
+      "description": "Create Story Workflow",
+      "tokens": 5866,
+      "hash": "692ab872ebaa1979",
+      "size": 23519,
+      "mtimeMs": 1785575791537.0767,
+      "updatedAt": "2026-08-01T11:03:20.525Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-create-story/template.md": {
+      "description": "Story {{epic_num}}.{{story_num}}: {{story_title}}",
+      "tokens": 237,
+      "hash": "29ba697368d77e88",
+      "size": 948,
+      "mtimeMs": 1785575791538.772,
+      "updatedAt": "2026-08-01T11:03:20.525Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-customize/scripts/list_customizable_skills.py": {
+      "description": "Enumerate customizable BMad skills installed alongside this one.",
+      "tokens": 2301,
+      "hash": "8787f542930b9277",
+      "size": 8061,
+      "mtimeMs": 1785575791400.5132,
+      "updatedAt": "2026-08-01T11:03:20.526Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "default_skills_root",
+          "kind": "fn",
+          "startLine": 44,
+          "endLine": 52,
+          "tokens": 89
+        },
+        {
+          "name": "read_frontmatter_description",
+          "kind": "fn",
+          "startLine": 53,
+          "endLine": 81,
+          "tokens": 295
+        },
+        {
+          "name": "load_customize",
+          "kind": "fn",
+          "startLine": 82,
+          "endLine": 90,
+          "tokens": 75
+        },
+        {
+          "name": "scan_skills",
+          "kind": "fn",
+          "startLine": 91,
+          "endLine": 167,
+          "tokens": 808
+        },
+        {
+          "name": "parse_args",
+          "kind": "fn",
+          "startLine": 168,
+          "endLine": 202,
+          "tokens": 327
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 203,
+          "endLine": 232,
+          "tokens": 251
+        }
+      ]
+    },
+    ".claude/skills/bmad-customize/scripts/tests/test_list_customizable_skills.py": {
+      "description": "Unit tests for list_customizable_skills.py.",
+      "tokens": 2641,
+      "hash": "24c3d384b3b5d490",
+      "size": 9244,
+      "mtimeMs": 1785575791401.84,
+      "updatedAt": "2026-08-01T11:03:20.526Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "_load_module",
+          "kind": "fn",
+          "startLine": 32,
+          "endLine": 41,
+          "tokens": 76
+        },
+        {
+          "name": "_make_skill",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 50,
+          "tokens": 104
+        },
+        {
+          "name": "ScannerTest",
+          "kind": "class",
+          "startLine": 51,
+          "endLine": 250,
+          "tokens": 2229
+        }
+      ]
+    },
+    ".claude/skills/bmad-customize/SKILL.md": {
+      "description": "BMad Customize",
+      "tokens": 1661,
+      "hash": "6461073f9322f5f2",
+      "size": 6703,
+      "mtimeMs": 1785575791399.5505,
+      "updatedAt": "2026-08-01T11:03:20.526Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/compile-epic-context.md": {
+      "description": "Compile Epic Context",
+      "tokens": 747,
+      "hash": "fa300a04e9b1f494",
+      "size": 2990,
+      "mtimeMs": 1785575791540.5786,
+      "updatedAt": "2026-08-01T11:03:20.526Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 250,
+      "hash": "bd4302195867ac47",
+      "size": 872,
+      "mtimeMs": 1785575791540.975,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/SKILL.md": {
+      "description": "Dev Auto Workflow",
+      "tokens": 1221,
+      "hash": "f4243eae074acf5e",
+      "size": 4895,
+      "mtimeMs": 1785575791540.1829,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/spec-template.md": {
+      "description": "Intent",
+      "tokens": 1015,
+      "hash": "7c340be50e2a460b",
+      "size": 4067,
+      "mtimeMs": 1785575791541.4734,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/step-01-clarify-and-route.md": {
+      "description": "Step 1: Clarify and Route",
+      "tokens": 1550,
+      "hash": "53298afe9de0bc9d",
+      "size": 6230,
+      "mtimeMs": 1785575791541.9082,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/step-02-plan.md": {
+      "description": "Step 2: Plan",
+      "tokens": 541,
+      "hash": "a3e67ddd96216ea7",
+      "size": 2161,
+      "mtimeMs": 1785575791542.3887,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/step-03-implement.md": {
+      "description": "Step 3: Implement",
+      "tokens": 580,
+      "hash": "814893db2ca997d8",
+      "size": 2322,
+      "mtimeMs": 1785575791542.7524,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-auto/step-04-review.md": {
+      "description": "Step 4: Review",
+      "tokens": 1677,
+      "hash": "d7742250a55139fb",
+      "size": 6743,
+      "mtimeMs": 1785575791543.1257,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-story/checklist.md": {
+      "description": "🎯 Enhanced Definition of Done Checklist",
+      "tokens": 1092,
+      "hash": "630b68c6824a8785",
+      "size": 4389,
+      "mtimeMs": 1785575791544.9695,
+      "updatedAt": "2026-08-01T11:03:20.527Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-story/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 460,
+      "hash": "592fa7948c461460",
+      "size": 1613,
+      "mtimeMs": 1785575791545.434,
+      "updatedAt": "2026-08-01T11:03:20.528Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-dev-story/SKILL.md": {
+      "description": "Dev Story Workflow",
+      "tokens": 6661,
+      "hash": "f12801307b157f04",
+      "size": 26709,
+      "mtimeMs": 1785575791544.4485,
+      "updatedAt": "2026-08-01T11:03:20.528Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/checklist.md": {
+      "description": "Document Project Workflow - Validation Checklist",
+      "tokens": 2520,
+      "hash": "581b0b034c25de17",
+      "size": 10101,
+      "mtimeMs": 1785575791435.7795,
+      "updatedAt": "2026-08-01T11:03:20.528Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 455,
+      "hash": "3bbb5044fafdd865",
+      "size": 1596,
+      "mtimeMs": 1785575791436.2163,
+      "updatedAt": "2026-08-01T11:03:20.528Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/documentation-requirements.csv": {
+      "description": ";**/*.test.*;**/*.spec.*,.env*;config/*;*.config.*;.config/;settings/,*auth*.ts;*session*.ts;middleware/auth*;*.guard.ts;*authenticat*;*permission*...",
+      "tokens": 2154,
+      "hash": "d1253b99e88250f2",
+      "size": 8076,
+      "mtimeMs": 1785575791436.689,
+      "updatedAt": "2026-08-01T11:03:20.529Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/instructions.md": {
+      "description": "Document Project Workflow Router",
+      "tokens": 1291,
+      "hash": "9f4bc3a46559ffd4",
+      "size": 5164,
+      "mtimeMs": 1785575791437.1548,
+      "updatedAt": "2026-08-01T11:03:20.529Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/SKILL.md": {
+      "description": "Document Project Workflow",
+      "tokens": 665,
+      "hash": "806d73f66a8f3f3e",
+      "size": 2671,
+      "mtimeMs": 1785575791435.2988,
+      "updatedAt": "2026-08-01T11:03:20.529Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/templates/deep-dive-template.md": {
+      "description": "{{target_name}} - Deep Dive Documentation",
+      "tokens": 1462,
+      "hash": "6198aa731d87d6a3",
+      "size": 5854,
+      "mtimeMs": 1785575791438.1882,
+      "updatedAt": "2026-08-01T11:03:20.529Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/templates/index-template.md": {
+      "description": "{{project_name}} Documentation Index",
+      "tokens": 1124,
+      "hash": "42c8a14f53088e4f",
+      "size": 4510,
+      "mtimeMs": 1785575791438.5808,
+      "updatedAt": "2026-08-01T11:03:20.529Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/templates/project-overview-template.md": {
+      "description": "{{project_name}} - Project Overview",
+      "tokens": 488,
+      "hash": "a7c7325b75a5a678",
+      "size": 1951,
+      "mtimeMs": 1785575791438.9358,
+      "updatedAt": "2026-08-01T11:03:20.529Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/templates/project-scan-report-schema.json": {
+      "description": "",
+      "tokens": 1382,
+      "hash": "8466965321f1db22",
+      "size": 4836,
+      "mtimeMs": 1785575791439.3193,
+      "updatedAt": "2026-08-01T11:03:20.529Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/templates/source-tree-template.md": {
+      "description": "{{project_name}} - Source Tree Analysis",
+      "tokens": 540,
+      "hash": "109bc335ebb22f93",
+      "size": 2160,
+      "mtimeMs": 1785575791439.7053,
+      "updatedAt": "2026-08-01T11:03:20.530Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/workflows/deep-dive-instructions.md": {
+      "description": "Deep-Dive Documentation Instructions",
+      "tokens": 2994,
+      "hash": "a79e24b93a25ab45",
+      "size": 12143,
+      "mtimeMs": 1785575791440.7573,
+      "updatedAt": "2026-08-01T11:03:20.530Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/workflows/deep-dive-workflow.md": {
+      "description": "Deep-Dive Documentation Sub-Workflow",
+      "tokens": 244,
+      "hash": "a64d98dfa3b771df",
+      "size": 979,
+      "mtimeMs": 1785575791441.1663,
+      "updatedAt": "2026-08-01T11:03:20.530Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/workflows/full-scan-instructions.md": {
+      "description": "Full Project Scan Instructions",
+      "tokens": 10741,
+      "hash": "2235945df2ae2612",
+      "size": 43434,
+      "mtimeMs": 1785575791441.5684,
+      "updatedAt": "2026-08-01T11:03:20.530Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-document-project/workflows/full-scan-workflow.md": {
+      "description": "Full Project Scan Sub-Workflow",
+      "tokens": 242,
+      "hash": "3bff88a392c16602",
+      "size": 970,
+      "mtimeMs": 1785575791442.0713,
+      "updatedAt": "2026-08-01T11:03:20.530Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 476,
+      "hash": "462ef14dc1e1f6d1",
+      "size": 1667,
+      "mtimeMs": 1785575791455.3337,
+      "updatedAt": "2026-08-01T11:03:20.530Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/domain-steps/step-01-init.md": {
+      "description": "Domain Research Step 1: Domain Research Scope Confirmation",
+      "tokens": 1332,
+      "hash": "efee243f13ef5440",
+      "size": 5394,
+      "mtimeMs": 1785575791456.7908,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/domain-steps/step-02-domain-analysis.md": {
+      "description": "Domain Research Step 2: Industry Analysis",
+      "tokens": 2143,
+      "hash": "385a288d9bbb0adf",
+      "size": 8640,
+      "mtimeMs": 1785575791457.3098,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/domain-steps/step-03-competitive-landscape.md": {
+      "description": "Domain Research Step 3: Competitive Landscape",
+      "tokens": 2364,
+      "hash": "f10aa088ba00c594",
+      "size": 9525,
+      "mtimeMs": 1785575791457.7935,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/domain-steps/step-04-regulatory-focus.md": {
+      "description": "Domain Research Step 4: Regulatory Focus",
+      "tokens": 1726,
+      "hash": "d22035529efe9199",
+      "size": 6967,
+      "mtimeMs": 1785575791458.293,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/domain-steps/step-05-technical-trends.md": {
+      "description": "Domain Research Step 5: Technical Trends",
+      "tokens": 1859,
+      "hash": "fd6c577010171679",
+      "size": 7506,
+      "mtimeMs": 1785575791458.7104,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/domain-steps/step-06-research-synthesis.md": {
+      "description": "Domain Research Step 6: Research Synthesis and Completion",
+      "tokens": 4287,
+      "hash": "805f2cb7005a4fb0",
+      "size": 17221,
+      "mtimeMs": 1785575791459.1555,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/research.template.md": {
+      "description": "Research Report: {{research_type}}",
+      "tokens": 146,
+      "hash": "507bb6729476246b",
+      "size": 581,
+      "mtimeMs": 1785575791459.6384,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-domain-research/SKILL.md": {
+      "description": "Domain Research Workflow",
+      "tokens": 1189,
+      "hash": "2308f7e21f78d7f2",
+      "size": 4771,
+      "mtimeMs": 1785575791454.773,
+      "updatedAt": "2026-08-01T11:03:20.531Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-edit-prd/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 485,
+      "hash": "35cc2dfb3eda73a0",
+      "size": 1701,
+      "mtimeMs": 1785575791477.2375,
+      "updatedAt": "2026-08-01T11:03:20.532Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-edit-prd/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-prd (update intent)",
+      "tokens": 726,
+      "hash": "31ecfe3c16513d99",
+      "size": 2912,
+      "mtimeMs": 1785575791476.8442,
+      "updatedAt": "2026-08-01T11:03:20.532Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-editorial-review-prose/SKILL.md": {
+      "description": "Editorial Review - Prose",
+      "tokens": 1271,
+      "hash": "b3687fe805673786",
+      "size": 5100,
+      "mtimeMs": 1785575791403.6968,
+      "updatedAt": "2026-08-01T11:03:20.532Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-editorial-review-structure/SKILL.md": {
+      "description": "Editorial Review - Structure",
+      "tokens": 2705,
+      "hash": "164444359d74f695",
+      "size": 10818,
+      "mtimeMs": 1785575791404.9832,
+      "updatedAt": "2026-08-01T11:03:20.532Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-forge-idea/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 503,
+      "hash": "ef5fadd1df3550ca",
+      "size": 1760,
+      "mtimeMs": 1785575791406.721,
+      "updatedAt": "2026-08-01T11:03:20.533Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-forge-idea/scripts/resolve_personas.py": {
+      "description": "Resolve the personas and parties the forge can bring into the room.",
+      "tokens": 2830,
+      "hash": "3da694c23e5fb29f",
+      "size": 9917,
+      "mtimeMs": 1785575791407.5972,
+      "updatedAt": "2026-08-01T11:03:20.533Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "_run_json",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 61,
+          "tokens": 124
+        },
+        {
+          "name": "_load_toml",
+          "kind": "fn",
+          "startLine": 62,
+          "endLine": 72,
+          "tokens": 78
+        },
+        {
+          "name": "load_agents",
+          "kind": "fn",
+          "startLine": 73,
+          "endLine": 90,
+          "tokens": 212
+        },
+        {
+          "name": "find_party_skill",
+          "kind": "fn",
+          "startLine": 91,
+          "endLine": 107,
+          "tokens": 161
+        },
+        {
+          "name": "load_party_workflow",
+          "kind": "fn",
+          "startLine": 108,
+          "endLine": 118,
+          "tokens": 175
+        },
+        {
+          "name": "load_party_overrides",
+          "kind": "fn",
+          "startLine": 119,
+          "endLine": 138,
+          "tokens": 235
+        },
+        {
+          "name": "_alias",
+          "kind": "fn",
+          "startLine": 139,
+          "endLine": 146,
+          "tokens": 71
+        },
+        {
+          "name": "build_pool",
+          "kind": "fn",
+          "startLine": 147,
+          "endLine": 200,
+          "tokens": 592
+        },
+        {
+          "name": "_brief",
+          "kind": "fn",
+          "startLine": 201,
+          "endLine": 209,
+          "tokens": 90
+        },
+        {
+          "name": "resolve_parties",
+          "kind": "fn",
+          "startLine": 210,
+          "endLine": 230,
+          "tokens": 197
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 231,
+          "endLine": 261,
+          "tokens": 332
+        },
+        {
+          "name": "_emit",
+          "kind": "fn",
+          "startLine": 262,
+          "endLine": 271,
+          "tokens": 75
+        }
+      ]
+    },
+    ".claude/skills/bmad-forge-idea/scripts/tests/test_resolve_personas.py": {
+      "description": "Unit tests for resolve_personas.py — pool merge, alias, party resolution.",
+      "tokens": 1810,
+      "hash": "1c4fa4b1d68bfbd1",
+      "size": 6343,
+      "mtimeMs": 1785575791408.5857,
+      "updatedAt": "2026-08-01T11:03:20.534Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "TestAlias",
+          "kind": "class",
+          "startLine": 20,
+          "endLine": 28,
+          "tokens": 89
+        },
+        {
+          "name": "TestBuildPool",
+          "kind": "class",
+          "startLine": 29,
+          "endLine": 76,
+          "tokens": 722
+        },
+        {
+          "name": "TestResolveParties",
+          "kind": "class",
+          "startLine": 77,
+          "endLine": 117,
+          "tokens": 581
+        },
+        {
+          "name": "TestOverrideMergeFallback",
+          "kind": "class",
+          "startLine": 118,
+          "endLine": 139,
+          "tokens": 282
+        }
+      ]
+    },
+    ".claude/skills/bmad-forge-idea/SKILL.md": {
+      "description": "BMad Forge Idea",
+      "tokens": 2527,
+      "hash": "c62ac3a30a4c7a32",
+      "size": 10134,
+      "mtimeMs": 1785575791406.3706,
+      "updatedAt": "2026-08-01T11:03:20.534Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-generate-project-context/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 469,
+      "hash": "00b6e893b93a1be7",
+      "size": 1643,
+      "mtimeMs": 1785575791520.0544,
+      "updatedAt": "2026-08-01T11:03:20.534Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-generate-project-context/project-context-template.md": {
+      "description": "Project Context for AI Agents",
+      "tokens": 136,
+      "hash": "54e351394ceceb0a",
+      "size": 543,
+      "mtimeMs": 1785575791520.4207,
+      "updatedAt": "2026-08-01T11:03:20.534Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-generate-project-context/SKILL.md": {
+      "description": "Generate Project Context Workflow",
+      "tokens": 956,
+      "hash": "f25e05d8c3923f33",
+      "size": 3839,
+      "mtimeMs": 1785575791519.6543,
+      "updatedAt": "2026-08-01T11:03:20.534Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-generate-project-context/steps/step-01-discover.md": {
+      "description": "Step 1: Context Discovery & Initialization",
+      "tokens": 1492,
+      "hash": "8b2c8c7375f8a3c2",
+      "size": 6016,
+      "mtimeMs": 1785575791521.372,
+      "updatedAt": "2026-08-01T11:03:20.534Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-generate-project-context/steps/step-02-generate.md": {
+      "description": "Step 2: Context Rules Generation",
+      "tokens": 2269,
+      "hash": "b1f063edae66a740",
+      "size": 9135,
+      "mtimeMs": 1785575791521.8108,
+      "updatedAt": "2026-08-01T11:03:20.535Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-generate-project-context/steps/step-03-complete.md": {
+      "description": "Step 3: Context Completion & Finalization",
+      "tokens": 2072,
+      "hash": "e61463db76a8fa06",
+      "size": 8370,
+      "mtimeMs": 1785575791522.3179,
+      "updatedAt": "2026-08-01T11:03:20.535Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-help/SKILL.md": {
+      "description": "BMad Help",
+      "tokens": 1146,
+      "hash": "718077d741e20d9c",
+      "size": 4617,
+      "mtimeMs": 1785575791410.143,
+      "updatedAt": "2026-08-01T11:03:20.535Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-index-docs/SKILL.md": {
+      "description": "Index Docs",
+      "tokens": 411,
+      "hash": "a855d7060414e73c",
+      "size": 1641,
+      "mtimeMs": 1785575791411.5896,
+      "updatedAt": "2026-08-01T11:03:20.535Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 476,
+      "hash": "f47af9158893dd3f",
+      "size": 1668,
+      "mtimeMs": 1785575791461.3958,
+      "updatedAt": "2026-08-01T11:03:20.535Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/research.template.md": {
+      "description": "Research Report: {{research_type}}",
+      "tokens": 146,
+      "hash": "507bb6729476246b",
+      "size": 581,
+      "mtimeMs": 1785575791461.9036,
+      "updatedAt": "2026-08-01T11:03:20.535Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/SKILL.md": {
+      "description": "Market Research Workflow",
+      "tokens": 1174,
+      "hash": "13f2c2148061dc66",
+      "size": 4711,
+      "mtimeMs": 1785575791461.028,
+      "updatedAt": "2026-08-01T11:03:20.536Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/steps/step-01-init.md": {
+      "description": "Market Research Step 1: Market Research Initialization",
+      "tokens": 1591,
+      "hash": "64d5501aea0c0005",
+      "size": 6422,
+      "mtimeMs": 1785575791463.054,
+      "updatedAt": "2026-08-01T11:03:20.536Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/steps/step-02-customer-behavior.md": {
+      "description": "Market Research Step 2: Customer Behavior and Segments",
+      "tokens": 2299,
+      "hash": "bac4de244049f90d",
+      "size": 9265,
+      "mtimeMs": 1785575791463.3953,
+      "updatedAt": "2026-08-01T11:03:20.536Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/steps/step-03-customer-pain-points.md": {
+      "description": "Market Research Step 3: Customer Pain Points and Needs",
+      "tokens": 2378,
+      "hash": "5b2418ccaaa89291",
+      "size": 9581,
+      "mtimeMs": 1785575791463.8462,
+      "updatedAt": "2026-08-01T11:03:20.536Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/steps/step-04-customer-decisions.md": {
+      "description": "Market Research Step 4: Customer Decisions and Journey",
+      "tokens": 2487,
+      "hash": "f0bc25f2179b7490",
+      "size": 10020,
+      "mtimeMs": 1785575791464.2334,
+      "updatedAt": "2026-08-01T11:03:20.536Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/steps/step-05-competitive-analysis.md": {
+      "description": "Market Research Step 5: Competitive Analysis",
+      "tokens": 1423,
+      "hash": "17532051ad232cfc",
+      "size": 5756,
+      "mtimeMs": 1785575791464.6204,
+      "updatedAt": "2026-08-01T11:03:20.536Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-market-research/steps/step-06-research-completion.md": {
+      "description": "Market Research Step 6: Research Completion",
+      "tokens": 4830,
+      "hash": "4f5d3158a8462656",
+      "size": 19394,
+      "mtimeMs": 1785575791465.0767,
+      "updatedAt": "2026-08-01T11:03:20.536Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 3522,
+      "hash": "fee7fe153c853f94",
+      "size": 12380,
+      "mtimeMs": 1785575791413.4192,
+      "updatedAt": "2026-08-01T11:03:20.537Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/references/create-party.md": {
+      "description": "Creating a Party",
+      "tokens": 2233,
+      "hash": "2f810332c36c17d1",
+      "size": 9007,
+      "mtimeMs": 1785575791414.4204,
+      "updatedAt": "2026-08-01T11:03:20.537Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/references/mode-agent-team.md": {
+      "description": "Agent-Team Mode",
+      "tokens": 511,
+      "hash": "def759a17f4bb454",
+      "size": 2052,
+      "mtimeMs": 1785575791414.988,
+      "updatedAt": "2026-08-01T11:03:20.537Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/references/mode-auto.md": {
+      "description": "Auto Mode",
+      "tokens": 272,
+      "hash": "a37fd24f76dfcde3",
+      "size": 1095,
+      "mtimeMs": 1785575791415.7634,
+      "updatedAt": "2026-08-01T11:03:20.537Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/references/mode-subagent.md": {
+      "description": "Subagent Mode",
+      "tokens": 1042,
+      "hash": "86161b24a0b13b8f",
+      "size": 4191,
+      "mtimeMs": 1785575791416.242,
+      "updatedAt": "2026-08-01T11:03:20.538Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/references/party-memory.md": {
+      "description": "Party Memory",
+      "tokens": 970,
+      "hash": "800b4b4b920bb881",
+      "size": 3903,
+      "mtimeMs": 1785575791416.7158,
+      "updatedAt": "2026-08-01T11:03:20.538Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/scripts/resolve_party.py": {
+      "description": "Resolve the party-mode roster, lazily.",
+      "tokens": 3013,
+      "hash": "663a1ffa8406564c",
+      "size": 10560,
+      "mtimeMs": 1785575791417.713,
+      "updatedAt": "2026-08-01T11:03:20.539Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "_run_json",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 59,
+          "tokens": 124
+        },
+        {
+          "name": "load_agents",
+          "kind": "fn",
+          "startLine": 60,
+          "endLine": 68,
+          "tokens": 112
+        },
+        {
+          "name": "load_workflow",
+          "kind": "fn",
+          "startLine": 69,
+          "endLine": 85,
+          "tokens": 215
+        },
+        {
+          "name": "_alias",
+          "kind": "fn",
+          "startLine": 86,
+          "endLine": 93,
+          "tokens": 71
+        },
+        {
+          "name": "build_collective",
+          "kind": "fn",
+          "startLine": 94,
+          "endLine": 150,
+          "tokens": 640
+        },
+        {
+          "name": "resolve_members",
+          "kind": "fn",
+          "startLine": 151,
+          "endLine": 162,
+          "tokens": 122
+        },
+        {
+          "name": "group_menu",
+          "kind": "fn",
+          "startLine": 163,
+          "endLine": 177,
+          "tokens": 138
+        },
+        {
+          "name": "find_group",
+          "kind": "fn",
+          "startLine": 178,
+          "endLine": 184,
+          "tokens": 46
+        },
+        {
+          "name": "group_detail",
+          "kind": "fn",
+          "startLine": 185,
+          "endLine": 208,
+          "tokens": 309
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 209,
+          "endLine": 263,
+          "tokens": 691
+        },
+        {
+          "name": "_emit",
+          "kind": "fn",
+          "startLine": 264,
+          "endLine": 273,
+          "tokens": 75
+        }
+      ]
+    },
+    ".claude/skills/bmad-party-mode/scripts/tests/test-resolve_party.py": {
+      "description": "Unit tests for resolve_party.py — merge, alias, override, group resolution.",
+      "tokens": 1912,
+      "hash": "bb53fe03ec3013ed",
+      "size": 6695,
+      "mtimeMs": 1785575791418.8066,
+      "updatedAt": "2026-08-01T11:03:20.539Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "TestAlias",
+          "kind": "class",
+          "startLine": 20,
+          "endLine": 28,
+          "tokens": 89
+        },
+        {
+          "name": "TestBuildCollective",
+          "kind": "class",
+          "startLine": 29,
+          "endLine": 55,
+          "tokens": 433
+        },
+        {
+          "name": "TestResolveMembers",
+          "kind": "class",
+          "startLine": 56,
+          "endLine": 68,
+          "tokens": 168
+        },
+        {
+          "name": "TestGroups",
+          "kind": "class",
+          "startLine": 69,
+          "endLine": 87,
+          "tokens": 211
+        },
+        {
+          "name": "TestGroupDetail",
+          "kind": "class",
+          "startLine": 88,
+          "endLine": 124,
+          "tokens": 556
+        },
+        {
+          "name": "TestInstalledCodesIsDefaultRoom",
+          "kind": "class",
+          "startLine": 125,
+          "endLine": 147,
+          "tokens": 320
+        }
+      ]
+    },
+    ".claude/skills/bmad-party-mode/SKILL.md": {
+      "description": "Party Mode",
+      "tokens": 2334,
+      "hash": "783fef00cf5a889c",
+      "size": 9385,
+      "mtimeMs": 1785575791413.057,
+      "updatedAt": "2026-08-01T11:03:20.540Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/assets/headless-schemas.md": {
+      "description": "Headless Mode JSON Schemas",
+      "tokens": 506,
+      "hash": "8d3621333a724005",
+      "size": 2038,
+      "mtimeMs": 1785575791479.4915,
+      "updatedAt": "2026-08-01T11:03:20.540Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/assets/prd-template.md": {
+      "description": "PRD Template",
+      "tokens": 2483,
+      "hash": "41e77bd5c4ee81c3",
+      "size": 10034,
+      "mtimeMs": 1785575791479.9258,
+      "updatedAt": "2026-08-01T11:03:20.540Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/assets/prd-validation-checklist.md": {
+      "description": "PRD Quality Rubric",
+      "tokens": 1841,
+      "hash": "41d9f09064772a92",
+      "size": 7432,
+      "mtimeMs": 1785575791480.38,
+      "updatedAt": "2026-08-01T11:03:20.540Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/assets/validation-report-template.html": {
+      "description": "PRD Validation: TEMPLATE_PRD_NAME",
+      "tokens": 2903,
+      "hash": "a80becdd8205d2d7",
+      "size": 10893,
+      "mtimeMs": 1785575791480.8965,
+      "updatedAt": "2026-08-01T11:03:20.541Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 2260,
+      "hash": "5da1c87df2022c3e",
+      "size": 7922,
+      "mtimeMs": 1785575791481.337,
+      "updatedAt": "2026-08-01T11:03:20.541Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/references/headless.md": {
+      "description": "Headless Mode",
+      "tokens": 827,
+      "hash": "4dad58ebee63933a",
+      "size": 3314,
+      "mtimeMs": 1785575791482.773,
+      "updatedAt": "2026-08-01T11:03:20.541Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/references/validate.md": {
+      "description": "Validate",
+      "tokens": 1367,
+      "hash": "71f28774e85c673a",
+      "size": 5503,
+      "mtimeMs": 1785575791483.2185,
+      "updatedAt": "2026-08-01T11:03:20.541Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prd/SKILL.md": {
+      "description": "BMad PRD",
+      "tokens": 3413,
+      "hash": "85f0a3ea5fee06fc",
+      "size": 13728,
+      "mtimeMs": 1785575791478.534,
+      "updatedAt": "2026-08-01T11:03:20.543Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/agents/artifact-analyzer.md": {
+      "description": "Artifact Analyzer",
+      "tokens": 658,
+      "hash": "7bdc44830f8d5933",
+      "size": 2646,
+      "mtimeMs": 1785575791444.8752,
+      "updatedAt": "2026-08-01T11:03:20.543Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/agents/web-researcher.md": {
+      "description": "Web Researcher",
+      "tokens": 436,
+      "hash": "6e9127bb9bd3e4b1",
+      "size": 1756,
+      "mtimeMs": 1785575791445.2312,
+      "updatedAt": "2026-08-01T11:03:20.543Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/assets/prfaq-template.md": {
+      "description": "{Headline}",
+      "tokens": 355,
+      "hash": "b27e6964f0437ab4",
+      "size": 1434,
+      "mtimeMs": 1785575791446.237,
+      "updatedAt": "2026-08-01T11:03:20.543Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/bmad-manifest.json": {
+      "description": "",
+      "tokens": 134,
+      "hash": "7908cab6f0cd66f1",
+      "size": 469,
+      "mtimeMs": 1785575791446.6296,
+      "updatedAt": "2026-08-01T11:03:20.544Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 462,
+      "hash": "8994f925bab65bd3",
+      "size": 1618,
+      "mtimeMs": 1785575791447.0227,
+      "updatedAt": "2026-08-01T11:03:20.544Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/references/customer-faq.md": {
+      "description": "Stage 3: Customer FAQ",
+      "tokens": 921,
+      "hash": "96f8565197649c58",
+      "size": 3697,
+      "mtimeMs": 1785575791448.4556,
+      "updatedAt": "2026-08-01T11:03:20.544Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/references/internal-faq.md": {
+      "description": "Stage 4: Internal FAQ",
+      "tokens": 978,
+      "hash": "26eb83f844cda1ed",
+      "size": 3928,
+      "mtimeMs": 1785575791449.119,
+      "updatedAt": "2026-08-01T11:03:20.544Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/references/press-release.md": {
+      "description": "Stage 2: The Press Release",
+      "tokens": 1070,
+      "hash": "c406adb0e2d2cc32",
+      "size": 4308,
+      "mtimeMs": 1785575791449.615,
+      "updatedAt": "2026-08-01T11:03:20.544Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/references/verdict.md": {
+      "description": "Stage 5: The Verdict",
+      "tokens": 1118,
+      "hash": "1a1cbc34090114d3",
+      "size": 4494,
+      "mtimeMs": 1785575791450.1284,
+      "updatedAt": "2026-08-01T11:03:20.544Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-prfaq/SKILL.md": {
+      "description": "Working Backwards: The PRFAQ Challenge",
+      "tokens": 2689,
+      "hash": "353da1cc8837e880",
+      "size": 10802,
+      "mtimeMs": 1785575791443.9119,
+      "updatedAt": "2026-08-01T11:03:20.545Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-product-brief/assets/brief-template.md": {
+      "description": "Product Brief Template",
+      "tokens": 400,
+      "hash": "bb28edf75d023067",
+      "size": 1606,
+      "mtimeMs": 1785575791452.9849,
+      "updatedAt": "2026-08-01T11:03:20.545Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-product-brief/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 1495,
+      "hash": "cdd7b417de5b280a",
+      "size": 5242,
+      "mtimeMs": 1785575791453.3667,
+      "updatedAt": "2026-08-01T11:03:20.545Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-product-brief/SKILL.md": {
+      "description": "Overview",
+      "tokens": 2896,
+      "hash": "0d569d109cd61a80",
+      "size": 11632,
+      "mtimeMs": 1785575791451.82,
+      "updatedAt": "2026-08-01T11:03:20.545Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-qa-generate-e2e-tests/checklist.md": {
+      "description": "QA Automate - Validation Checklist",
+      "tokens": 223,
+      "hash": "b58f810aeb1040c2",
+      "size": 891,
+      "mtimeMs": 1785575791547.8716,
+      "updatedAt": "2026-08-01T11:03:20.545Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-qa-generate-e2e-tests/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 468,
+      "hash": "04a99926b2d79318",
+      "size": 1639,
+      "mtimeMs": 1785575791548.4656,
+      "updatedAt": "2026-08-01T11:03:20.546Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-qa-generate-e2e-tests/SKILL.md": {
+      "description": "QA Generate E2E Tests Workflow",
+      "tokens": 1410,
+      "hash": "9e78729569b2dc8e",
+      "size": 5652,
+      "mtimeMs": 1785575791547.3267,
+      "updatedAt": "2026-08-01T11:03:20.546Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/compile-epic-context.md": {
+      "description": "Compile Epic Context",
+      "tokens": 730,
+      "hash": "5cfda02f252941e4",
+      "size": 2922,
+      "mtimeMs": 1785575791550.6655,
+      "updatedAt": "2026-08-01T11:03:20.546Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 254,
+      "hash": "ebb082e10f887a68",
+      "size": 888,
+      "mtimeMs": 1785575791550.998,
+      "updatedAt": "2026-08-01T11:03:20.546Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/SKILL.md": {
+      "description": "Quick Dev New Preview Workflow",
+      "tokens": 1445,
+      "hash": "18c2002a48dee2d4",
+      "size": 5795,
+      "mtimeMs": 1785575791550.2751,
+      "updatedAt": "2026-08-01T11:03:20.546Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/spec-template.md": {
+      "description": "Intent",
+      "tokens": 868,
+      "hash": "68d0e3b9acaa0c22",
+      "size": 3481,
+      "mtimeMs": 1785575791551.331,
+      "updatedAt": "2026-08-01T11:03:20.546Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/step-01-clarify-and-route.md": {
+      "description": "Step 1: Clarify and Route",
+      "tokens": 2472,
+      "hash": "c6066ba0d4fd6cb9",
+      "size": 9959,
+      "mtimeMs": 1785575791551.735,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/step-02-plan.md": {
+      "description": "Step 2: Plan",
+      "tokens": 799,
+      "hash": "66576a0b14f77d59",
+      "size": 3213,
+      "mtimeMs": 1785575791552.1306,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/step-03-implement.md": {
+      "description": "Step 3: Implement",
+      "tokens": 483,
+      "hash": "207e8a1238d725bb",
+      "size": 1932,
+      "mtimeMs": 1785575791552.514,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/step-04-review.md": {
+      "description": "Step 4: Review",
+      "tokens": 1109,
+      "hash": "9db75caff2e22c61",
+      "size": 4480,
+      "mtimeMs": 1785575791552.947,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/step-05-present.md": {
+      "description": "Step 5: Present",
+      "tokens": 1085,
+      "hash": "ea49ce8703d4946e",
+      "size": 4363,
+      "mtimeMs": 1785575791553.4253,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/step-oneshot.md": {
+      "description": "Step One-Shot: Implement, Review, Present",
+      "tokens": 1044,
+      "hash": "0a9f86e6b81c60f7",
+      "size": 4197,
+      "mtimeMs": 1785575791553.9077,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-quick-dev/sync-sprint-status.md": {
+      "description": "Sync Sprint Status",
+      "tokens": 350,
+      "hash": "c0f2fdb940984206",
+      "size": 1401,
+      "mtimeMs": 1785575791554.3386,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-retrospective/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 473,
+      "hash": "4ad7e7e7154b480e",
+      "size": 1659,
+      "mtimeMs": 1785575791556.2527,
+      "updatedAt": "2026-08-01T11:03:20.547Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-retrospective/SKILL.md": {
+      "description": "Retrospective Workflow",
+      "tokens": 15798,
+      "hash": "af09b92e4928bbc9",
+      "size": 65521,
+      "mtimeMs": 1785575791555.8103,
+      "updatedAt": "2026-08-01T11:03:20.548Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-review-adversarial-general/SKILL.md": {
+      "description": "Adversarial Review (General)",
+      "tokens": 360,
+      "hash": "3b70b004b662c3a0",
+      "size": 1447,
+      "mtimeMs": 1785575791420.5083,
+      "updatedAt": "2026-08-01T11:03:20.548Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-review-edge-case-hunter/references/deletion-check.md": {
+      "description": "Deletion Check",
+      "tokens": 252,
+      "hash": "0f1f124e4e957147",
+      "size": 1009,
+      "mtimeMs": 1785575791423.288,
+      "updatedAt": "2026-08-01T11:03:20.548Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-review-edge-case-hunter/SKILL.md": {
+      "description": "Edge Case Hunter Review",
+      "tokens": 1189,
+      "hash": "03087a3f1e935f7a",
+      "size": 4775,
+      "mtimeMs": 1785575791422.168,
+      "updatedAt": "2026-08-01T11:03:20.548Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-shard-doc/SKILL.md": {
+      "description": "Shard Document",
+      "tokens": 1036,
+      "hash": "3a1538536514725f",
+      "size": 4142,
+      "mtimeMs": 1785575791424.6824,
+      "updatedAt": "2026-08-01T11:03:20.548Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-spec/assets/headless-schemas.md": {
+      "description": "Headless JSON Response",
+      "tokens": 296,
+      "hash": "83afb3614716db23",
+      "size": 1187,
+      "mtimeMs": 1785575791427.0034,
+      "updatedAt": "2026-08-01T11:03:20.548Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-spec/assets/spec-template.md": {
+      "description": "{Spec Title}",
+      "tokens": 589,
+      "hash": "94ef029b842dfa7f",
+      "size": 2366,
+      "mtimeMs": 1785575791427.4148,
+      "updatedAt": "2026-08-01T11:03:20.548Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-spec/customize.toml": {
+      "description": "/project-context.md`) if needed.",
+      "tokens": 619,
+      "hash": "b0181ba5d4038feb",
+      "size": 2166,
+      "mtimeMs": 1785575791427.759,
+      "updatedAt": "2026-08-01T11:03:20.549Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-spec/SKILL.md": {
+      "description": "BMad Spec",
+      "tokens": 3571,
+      "hash": "a2baaf6b6bf00040",
+      "size": 14340,
+      "mtimeMs": 1785575791426.0286,
+      "updatedAt": "2026-08-01T11:03:20.549Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-sprint-planning/checklist.md": {
+      "description": "Sprint Planning Validation Checklist",
+      "tokens": 338,
+      "hash": "11b0b1ff20657b8e",
+      "size": 1383,
+      "mtimeMs": 1785575791557.9143,
+      "updatedAt": "2026-08-01T11:03:20.549Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-sprint-planning/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 458,
+      "hash": "f7bde2f792e8604f",
+      "size": 1606,
+      "mtimeMs": 1785575791558.2776,
+      "updatedAt": "2026-08-01T11:03:20.550Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-sprint-planning/SKILL.md": {
+      "description": "Sprint Planning Workflow",
+      "tokens": 2977,
+      "hash": "aa828c5ceeb2aa87",
+      "size": 11960,
+      "mtimeMs": 1785575791557.4802,
+      "updatedAt": "2026-08-01T11:03:20.550Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-sprint-planning/sprint-status-template.yaml": {
+      "description": "Sprint Status Template",
+      "tokens": 648,
+      "hash": "317b65e5fc0844a9",
+      "size": 2266,
+      "mtimeMs": 1785575791558.6455,
+      "updatedAt": "2026-08-01T11:03:20.550Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-sprint-status/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 459,
+      "hash": "96261fd227befaa4",
+      "size": 1609,
+      "mtimeMs": 1785575791560.6833,
+      "updatedAt": "2026-08-01T11:03:20.551Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-sprint-status/SKILL.md": {
+      "description": "Sprint Status Workflow",
+      "tokens": 3239,
+      "hash": "a0dcb85d89cbbc6f",
+      "size": 12992,
+      "mtimeMs": 1785575791560.1978,
+      "updatedAt": "2026-08-01T11:03:20.551Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 478,
+      "hash": "7f567fddb04674f8",
+      "size": 1674,
+      "mtimeMs": 1785575791467.036,
+      "updatedAt": "2026-08-01T11:03:20.551Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/research.template.md": {
+      "description": "Research Report: {{research_type}}",
+      "tokens": 146,
+      "hash": "507bb6729476246b",
+      "size": 581,
+      "mtimeMs": 1785575791467.3801,
+      "updatedAt": "2026-08-01T11:03:20.551Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/SKILL.md": {
+      "description": "Technical Research Workflow",
+      "tokens": 1206,
+      "hash": "290c5aec88886a62",
+      "size": 4839,
+      "mtimeMs": 1785575791466.63,
+      "updatedAt": "2026-08-01T11:03:20.552Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/technical-steps/step-01-init.md": {
+      "description": "Technical Research Step 1: Technical Research Scope Confirmation",
+      "tokens": 1379,
+      "hash": "c9a1627ecd26227e",
+      "size": 5581,
+      "mtimeMs": 1785575791468.2917,
+      "updatedAt": "2026-08-01T11:03:20.552Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/technical-steps/step-02-technical-overview.md": {
+      "description": "Technical Research Step 2: Technology Stack Analysis",
+      "tokens": 2345,
+      "hash": "9c7582241038b162",
+      "size": 9447,
+      "mtimeMs": 1785575791468.6406,
+      "updatedAt": "2026-08-01T11:03:20.552Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/technical-steps/step-03-integration-patterns.md": {
+      "description": "Technical Research Step 3: Integration Patterns",
+      "tokens": 2482,
+      "hash": "005d517a2f962e21",
+      "size": 9995,
+      "mtimeMs": 1785575791469.043,
+      "updatedAt": "2026-08-01T11:03:20.552Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/technical-steps/step-04-architectural-patterns.md": {
+      "description": "Technical Research Step 4: Architectural Patterns",
+      "tokens": 1787,
+      "hash": "4636f23e9c585a7a",
+      "size": 7212,
+      "mtimeMs": 1785575791469.457,
+      "updatedAt": "2026-08-01T11:03:20.552Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/technical-steps/step-05-implementation-research.md": {
+      "description": "Technical Research Step 5: Implementation Research",
+      "tokens": 1928,
+      "hash": "e2b8a2c79bcebadc",
+      "size": 7774,
+      "mtimeMs": 1785575791469.7905,
+      "updatedAt": "2026-08-01T11:03:20.552Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-technical-research/technical-steps/step-06-research-synthesis.md": {
+      "description": "Technical Research Step 6: Technical Synthesis and Completion",
+      "tokens": 5308,
+      "hash": "64d9303ef0c9ce83",
+      "size": 21304,
+      "mtimeMs": 1785575791470.2478,
+      "updatedAt": "2026-08-01T11:03:20.552Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/color-themes.md": {
+      "description": "Color Themes Renderer",
+      "tokens": 255,
+      "hash": "48fac7943e8584cc",
+      "size": 1022,
+      "mtimeMs": 1785575791486.0295,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/design-directions.md": {
+      "description": "Design Directions Renderer",
+      "tokens": 263,
+      "hash": "eab73b948da76a27",
+      "size": 1056,
+      "mtimeMs": 1785575791486.7327,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/design-example-editorial.md": {
+      "description": "Brand & Style",
+      "tokens": 1839,
+      "hash": "a659166845b1a4ed",
+      "size": 7363,
+      "mtimeMs": 1785575791487.153,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/design-example-mobile.md": {
+      "description": "Brand & Style",
+      "tokens": 1230,
+      "hash": "a93fb9f114f2e83a",
+      "size": 4957,
+      "mtimeMs": 1785575791487.6,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/design-example-shadcn.md": {
+      "description": "Brand & Style",
+      "tokens": 1589,
+      "hash": "25e0dfb2bb214839",
+      "size": 6376,
+      "mtimeMs": 1785575791487.9656,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/excalidraw-wireframe.md": {
+      "description": "Excalidraw Wireframe Renderer",
+      "tokens": 476,
+      "hash": "660bbcdebff50cd0",
+      "size": 1901,
+      "mtimeMs": 1785575791488.5017,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/experience-example-mobile.md": {
+      "description": "Quill — Experience Spine",
+      "tokens": 1269,
+      "hash": "f8cd54c92193cd8c",
+      "size": 5123,
+      "mtimeMs": 1785575791488.904,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/experience-example-shadcn.md": {
+      "description": "Drift — Experience Spine",
+      "tokens": 2299,
+      "hash": "d6ca16e87b768e8b",
+      "size": 9279,
+      "mtimeMs": 1785575791489.2874,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/headless-schemas.md": {
+      "description": "Headless Mode JSON Schemas",
+      "tokens": 650,
+      "hash": "e3a773dde85286f1",
+      "size": 2615,
+      "mtimeMs": 1785575791489.6562,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/key-screens.md": {
+      "description": "Key Screens Renderer",
+      "tokens": 545,
+      "hash": "ff1c5060673dd595",
+      "size": 2186,
+      "mtimeMs": 1785575791490.0977,
+      "updatedAt": "2026-08-01T11:03:20.553Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/assets/validation-report-template.html": {
+      "description": "UX Design Validation: TEMPLATE_UX_SPEC_NAME",
+      "tokens": 2916,
+      "hash": "8656945636fabe96",
+      "size": 10945,
+      "mtimeMs": 1785575791490.47,
+      "updatedAt": "2026-08-01T11:03:20.554Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 1262,
+      "hash": "c6f94676004a24ee",
+      "size": 4424,
+      "mtimeMs": 1785575791490.857,
+      "updatedAt": "2026-08-01T11:03:20.554Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/references/creative-tools.md": {
+      "description": "Creative Tools",
+      "tokens": 456,
+      "hash": "349b6b5e8353c2fa",
+      "size": 1825,
+      "mtimeMs": 1785575791492.019,
+      "updatedAt": "2026-08-01T11:03:20.554Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/references/design-md-spec.md": {
+      "description": "DESIGN.md Spec — Working Reference",
+      "tokens": 818,
+      "hash": "d04d5f663607aba3",
+      "size": 3298,
+      "mtimeMs": 1785575791492.4795,
+      "updatedAt": "2026-08-01T11:03:20.554Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/references/headless.md": {
+      "description": "Headless Mode",
+      "tokens": 574,
+      "hash": "8da7e23d269b1644",
+      "size": 2310,
+      "mtimeMs": 1785575791492.8862,
+      "updatedAt": "2026-08-01T11:03:20.555Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/references/validate.md": {
+      "description": "Validate",
+      "tokens": 1663,
+      "hash": "336d5be5ca860dc6",
+      "size": 6713,
+      "mtimeMs": 1785575791493.2795,
+      "updatedAt": "2026-08-01T11:03:20.555Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/SKILL.md": {
+      "description": "BMad UX",
+      "tokens": 2653,
+      "hash": "250d2794f2b8e316",
+      "size": 10700,
+      "mtimeMs": 1785575791484.7146,
+      "updatedAt": "2026-08-01T11:03:20.555Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-validate-prd/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 493,
+      "hash": "bfb3c8af5b81b2cd",
+      "size": 1731,
+      "mtimeMs": 1785575791494.9678,
+      "updatedAt": "2026-08-01T11:03:20.556Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-validate-prd/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-prd (validate intent)",
+      "tokens": 729,
+      "hash": "931439b8c84bc454",
+      "size": 2925,
+      "mtimeMs": 1785575791494.6052,
+      "updatedAt": "2026-08-01T11:03:20.556Z",
+      "source": "scan"
+    },
+    ".devcontainer/devcontainer.json": {
+      "description": "",
+      "tokens": 489,
+      "hash": "45c99c7d886fdbef",
+      "size": 1711,
+      "mtimeMs": 1785581990400.5781,
+      "updatedAt": "2026-08-01T11:03:20.556Z",
+      "source": "scan"
+    },
+    ".devcontainer/Dockerfile": {
+      "description": "Docker container definition",
+      "tokens": 675,
+      "hash": "e48163f222f2eca0",
+      "size": 2529,
+      "mtimeMs": 1785582100844.3901,
+      "updatedAt": "2026-08-01T11:03:20.556Z",
+      "source": "scan"
+    },
+    ".devcontainer/post-create.sh": {
+      "description": "",
+      "tokens": 204,
+      "hash": "2ded43b0ebc1af6c",
+      "size": 713,
+      "mtimeMs": 1785581704252.6306,
+      "updatedAt": "2026-08-01T11:03:20.556Z",
+      "source": "scan"
+    },
+    ".gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 28,
+      "hash": "0c627a0ac4869185",
+      "size": 102,
+      "mtimeMs": 1785581589419.22,
+      "updatedAt": "2026-08-01T11:03:20.556Z",
+      "source": "scan"
+    },
+    "CLAUDE.md": {
+      "description": "OpenWolf",
+      "tokens": 57,
+      "hash": "b1ca356fa9d5f3a6",
+      "size": 225,
+      "mtimeMs": 1785582200468.6946,
+      "updatedAt": "2026-08-01T11:03:20.556Z",
+      "source": "scan"
+    }
+  }
+}
