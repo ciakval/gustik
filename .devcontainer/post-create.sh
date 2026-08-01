@@ -6,6 +6,7 @@ set -euo pipefail
 echo "node:   $(node --version)"
 echo "claude: $(claude --version 2>/dev/null || echo 'not found')"
 echo "gh:     $(gh --version | head -n1)"
+echo "uv:     $(uv --version 2>/dev/null || echo 'not found')"
 
 if ssh-add -l >/dev/null 2>&1; then
     echo "ssh agent: forwarded, $(ssh-add -l | wc -l) key(s) loaded"

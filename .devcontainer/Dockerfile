@@ -42,3 +42,7 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN mkdir -p /etc/ssh && ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts 2>/dev/null
 
 USER $USERNAME
+
+# uv, a fast Python package/dependency manager
+ENV PATH="/home/$USERNAME/.local/bin:${PATH}"
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
