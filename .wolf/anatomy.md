@@ -1,11 +1,11 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T15:46:13.681Z
-> Files: 274 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:23:36.831Z
+> Files: 288 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
-- `.gitignore` — Git ignore rules (~71 tok)
+- `.gitignore` — Git ignore rules (~98 tok)
 - `CLAUDE.md` — CLAUDE.md (~1219 tok)
 
 ## .claude/
@@ -638,8 +638,42 @@
 ## .devcontainer/
 
 - `devcontainer.json` (~639 tok)
-- `Dockerfile` — Docker container definition (~675 tok)
+- `Dockerfile` — Docker container definition (~687 tok)
 - `post-create.sh` (~342 tok)
+
+## .worktrees/story-1.3-ingest-endpoint/backend/
+
+- `.dockerignore` (~9 tok)
+- `.gitignore` — Git ignore rules (~12 tok)
+- `docker-compose.yml` — Docker Compose services (~77 tok)
+- `Dockerfile` — Docker container definition (~147 tok)
+- `package.json` — Node.js package manifest (~84 tok)
+
+## .worktrees/story-1.3-ingest-endpoint/backend/src/
+
+- `app.js` — Exports buildApp (~129 tok)
+- `index.js` — Declares port (~125 tok)
+
+## .worktrees/story-1.3-ingest-endpoint/backend/src/health/
+
+- `routes.js` — API routes: GET (1 endpoints) (~78 tok)
+
+## .worktrees/story-1.3-ingest-endpoint/backend/src/ingest/
+
+- `routes.js` — API routes: POST (1 endpoints) (~191 tok)
+
+## .worktrees/story-1.3-ingest-endpoint/backend/src/store/
+
+- `db.js` — Exports openDb (~184 tok)
+- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~412 tok)
+
+## .worktrees/story-1.3-ingest-endpoint/backend/test/
+
+- `health.test.js` — Declares app (~180 tok)
+- `ingest.test.js` — Declares testApp (~769 tok)
+  - fn `testApp` L6-87 (~720 tok)
+- `store.test.js` — Declares freshDb (~529 tok)
+  - fn `freshDb` L6-70 (~475 tok)
 
 ## _bmad-output/planning-artifacts/
 
