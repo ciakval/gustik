@@ -228,3 +228,14 @@
 | 19:02 | Edited .worktrees/story-3.1-history/backend/src/store/readings.js | modified fromRow() | ~86 |
 | 19:02 | Edited .worktrees/story-3.1-history/backend/src/store/readings.js | modified getLatestCapturedAt() | ~221 |
 | 19:02 | Edited .worktrees/story-3.1-history/backend/src/serve/routes.js | modified registerServeRoutes() | ~148 |
+| 19:04 | Created .worktrees/story-3.2-graph/backend/test/history-chart-data.test.js | — | ~378 |
+| 19:04 | Created .worktrees/story-3.2-graph/backend/src/static/history-chart-data.js | — | ~99 |
+| 19:04 | Created .worktrees/story-3.2-graph/backend/src/static/history-chart.js | — | ~906 |
+| 19:05 | Created .worktrees/story-3.2-graph/backend/src/static/history-chart-data.js | — | ~194 |
+| 19:05 | Created .worktrees/story-3.2-graph/backend/test/history-chart-data.test.js | — | ~399 |
+| 19:05 | Created .worktrees/story-3.2-graph/backend/src/static/history-chart.js | — | ~979 |
+| 19:05 | Edited .worktrees/story-3.2-graph/backend/src/static/index.html | expanded (+25 lines) | ~383 |
+| 19:06 | Edited .worktrees/story-3.2-graph/backend/src/static/dashboard.js | added 1 import(s) | ~46 |
+| 19:06 | Edited .worktrees/story-3.2-graph/backend/src/static/dashboard.js | modified setUnit() | ~61 |
+| 19:06 | Edited .worktrees/story-3.2-graph/backend/src/static/dashboard.js | 2→3 lines | ~14 |
+| 19:06 | Edited .worktrees/story-3.2-graph/backend/test/dashboard-static.test.js | expanded (+7 lines) | ~149 |

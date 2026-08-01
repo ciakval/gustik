@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T19:02:43.282Z",
-    "fileCount": 357,
+    "lastScanned": "2026-08-01T19:06:17.964Z",
+    "fileCount": 363,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "75a8d2b88bbbab576763d9b93407d287ba4898aaed2404e63500d86f2046c28f",
-    "storeUpdatedAt": "2026-08-01T19:02:43.290Z"
+    "renderedHash": "365728667de93d857d0807666854382afd96105e502789fb16c6794d03cd2e1b",
+    "storeUpdatedAt": "2026-08-01T19:06:17.972Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4557,6 +4557,141 @@
       "size": 1233,
       "mtimeMs": 1785610963229.6838,
       "updatedAt": "2026-08-01T19:02:43.282Z",
+      "source": "hook"
+    },
+    ".worktrees/story-3.2-graph/backend/test/history-chart-data.test.js": {
+      "description": "Declares READINGS",
+      "tokens": 399,
+      "hash": "8fbfc098492c28f0",
+      "size": 1395,
+      "mtimeMs": 1785611121755.4072,
+      "updatedAt": "2026-08-01T19:05:21.821Z",
+      "source": "hook"
+    },
+    ".worktrees/story-3.2-graph/backend/src/static/history-chart-data.js": {
+      "description": "x is a numeric timestamp (ms since epoch), not the ISO string or Chart.js's",
+      "tokens": 194,
+      "hash": "76e4f2e7ca38f3ea",
+      "size": 679,
+      "mtimeMs": 1785611113435.107,
+      "updatedAt": "2026-08-01T19:05:13.503Z",
+      "source": "hook"
+    },
+    ".worktrees/story-3.2-graph/backend/src/static/history-chart.js": {
+      "description": "Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart",
+      "tokens": 979,
+      "hash": "151c311d86d07940",
+      "size": 3427,
+      "mtimeMs": 1785611138188.0002,
+      "updatedAt": "2026-08-01T19:05:38.257Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "speedAxisLabel",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 12,
+          "tokens": 28
+        },
+        {
+          "name": "formatTimeTick",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 16,
+          "tokens": 29
+        },
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 79,
+          "tokens": 568
+        },
+        {
+          "name": "setHistoryChartReadings",
+          "kind": "fn",
+          "startLine": 80,
+          "endLine": 84,
+          "tokens": 28
+        },
+        {
+          "name": "setHistoryChartUnit",
+          "kind": "fn",
+          "startLine": 85,
+          "endLine": 89,
+          "tokens": 23
+        },
+        {
+          "name": "fetchHistory",
+          "kind": "fn",
+          "startLine": 90,
+          "endLine": 95,
+          "tokens": 46
+        },
+        {
+          "name": "initHistoryChart",
+          "kind": "fn",
+          "startLine": 96,
+          "endLine": 112,
+          "tokens": 194
+        }
+      ]
+    },
+    ".worktrees/story-3.2-graph/backend/src/static/index.html": {
+      "description": "Gustik — vítr živě",
+      "tokens": 872,
+      "hash": "45c3be63644b0ad5",
+      "size": 3303,
+      "mtimeMs": 1785611153160.5398,
+      "updatedAt": "2026-08-01T19:05:53.203Z",
+      "source": "hook"
+    },
+    ".worktrees/story-3.2-graph/backend/src/static/dashboard.js": {
+      "description": "speedEl: render, setUnit, fetchLatest, connectLive",
+      "tokens": 640,
+      "hash": "4c6c4c064720ec81",
+      "size": 2238,
+      "mtimeMs": 1785611169118.5664,
+      "updatedAt": "2026-08-01T19:06:09.168Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 25,
+          "tokens": 141
+        },
+        {
+          "name": "setUnit",
+          "kind": "fn",
+          "startLine": 26,
+          "endLine": 36,
+          "tokens": 95
+        },
+        {
+          "name": "fetchLatest",
+          "kind": "fn",
+          "startLine": 37,
+          "endLine": 45,
+          "tokens": 53
+        },
+        {
+          "name": "connectLive",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 68,
+          "tokens": 218
+        }
+      ]
+    },
+    ".worktrees/story-3.2-graph/backend/test/dashboard-static.test.js": {
+      "description": "Declares testApp",
+      "tokens": 297,
+      "hash": "1ce4e792b7c3ab0a",
+      "size": 1037,
+      "mtimeMs": 1785611177913.3079,
+      "updatedAt": "2026-08-01T19:06:17.964Z",
       "source": "hook"
     }
   }

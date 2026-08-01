@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:02:43.282Z
-> Files: 357 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:06:17.964Z
+> Files: 363 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -905,6 +905,29 @@
 - `history.test.js` — testApp: postReadings (~990 tok)
   - fn `testApp` L5-8 (~28 tok)
   - fn `postReadings` L9-83 (~929 tok)
+
+## .worktrees/story-3.2-graph/backend/src/static/
+
+- `dashboard.js` — speedEl: render, setUnit, fetchLatest, connectLive (~640 tok)
+  - fn `render` L13-25 (~141 tok)
+  - fn `setUnit` L26-36 (~95 tok)
+  - fn `fetchLatest` L37-45 (~53 tok)
+  - fn `connectLive` L46-68 (~218 tok)
+- `history-chart-data.js` — x is a numeric timestamp (ms since epoch), not the ISO string or Chart.js's (~194 tok)
+- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart (~979 tok)
+  - fn `speedAxisLabel` L9-12 (~28 tok)
+  - fn `formatTimeTick` L13-16 (~29 tok)
+  - fn `render` L17-79 (~568 tok)
+  - fn `setHistoryChartReadings` L80-84 (~28 tok)
+  - fn `setHistoryChartUnit` L85-89 (~23 tok)
+  - fn `fetchHistory` L90-95 (~46 tok)
+  - fn `initHistoryChart` L96-112 (~194 tok)
+- `index.html` — Gustik — vítr živě (~872 tok)
+
+## .worktrees/story-3.2-graph/backend/test/
+
+- `dashboard-static.test.js` — Declares testApp (~297 tok)
+- `history-chart-data.test.js` — Declares READINGS (~399 tok)
 
 ## _bmad-output/planning-artifacts/
 
