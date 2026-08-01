@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:56:19.714Z",
-    "fileCount": 348,
+    "lastScanned": "2026-08-01T18:58:30.674Z",
+    "fileCount": 351,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "81f98aad939c437030a233756a0436a8ee7fb52dfa1f8845090aff4a702582d2",
-    "storeUpdatedAt": "2026-08-01T18:56:19.724Z"
+    "renderedHash": "a6667e929938c4347fee65f9eb7dd400902c9844fbb375aaf2a29bd283772242",
+    "storeUpdatedAt": "2026-08-01T18:58:30.682Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4409,6 +4409,33 @@
       "size": 1689,
       "mtimeMs": 1785610579659.7021,
       "updatedAt": "2026-08-01T18:56:19.714Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.4-led-signal/firmware/test/test_led_policy/test_led_policy.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 246,
+      "hash": "b9dd5754448ff986",
+      "size": 922,
+      "mtimeMs": 1785610660526.8013,
+      "updatedAt": "2026-08-01T18:57:40.578Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.4-led-signal/firmware/src/transmit/led_policy.h": {
+      "description": "pragma once",
+      "tokens": 122,
+      "hash": "048695c78c7a513e",
+      "size": 456,
+      "mtimeMs": 1785610672803.7607,
+      "updatedAt": "2026-08-01T18:57:52.843Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.4-led-signal/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 1318,
+      "hash": "93e909d527cb8446",
+      "size": 4941,
+      "mtimeMs": 1785610710631.7856,
+      "updatedAt": "2026-08-01T18:58:30.674Z",
       "source": "hook"
     }
   }

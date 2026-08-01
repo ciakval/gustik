@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:56:19.714Z
-> Files: 348 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:58:30.674Z
+> Files: 351 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -860,6 +860,18 @@
   - fn `testApp` L6-9 (~28 tok)
   - fn `postReadings` L10-18 (~56 tok)
   - fn `getRawRow` L19-128 (~1210 tok)
+
+## .worktrees/story-2.4-led-signal/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~1318 tok)
+
+## .worktrees/story-2.4-led-signal/firmware/src/transmit/
+
+- `led_policy.h` — pragma once (~122 tok)
+
+## .worktrees/story-2.4-led-signal/firmware/test/test_led_policy/
+
+- `test_led_policy.cpp` — include <unity.h> (~246 tok)
 
 ## _bmad-output/planning-artifacts/
 
