@@ -1,8 +1,14 @@
-import { getLatest } from '../store/readings.js';
+import { getLatest, getHistory } from '../store/readings.js';
 
 export function registerServeRoutes(fastify) {
   fastify.get('/readings/latest', async () => {
     return { reading: getLatest(fastify.db) };
+  });
+
+  // Never accepts a unit parameter (Consistency Conventions) - always SI on
+  // the wire, unit conversion is client-only (FR-10).
+  fastify.get('/readings/history', async () => {
+    return { readings: getHistory(fastify.db) };
   });
 
   fastify.get('/readings/live', { websocket: true }, (socket) => {

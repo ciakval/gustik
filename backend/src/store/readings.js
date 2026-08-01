@@ -29,6 +29,10 @@ function fromRow(row) {
   };
 }
 
+function startOfUtcDayIso(date) {
+  return `${date.toISOString().slice(0, 10)}T00:00:00.000Z`;
+}
+
 /**
  * Insert a single reading. No-op (idempotent) if clientId already exists.
  * receivedAt/backfilled are the ingest layer's decision, not the caller's data.
@@ -50,4 +54,15 @@ export function getLatest(db) {
 export function getLatestCapturedAt(db) {
   const row = db.prepare('SELECT MAX(captured_at) AS capturedAt FROM readings').get();
   return row.capturedAt ?? null;
+}
+
+// Time series covering at minimum the current race day (FR-8), ascending by
+// captured_at. `now` is injectable for tests; production callers use the
+// default (real current time).
+export function getHistory(db, { now = new Date() } = {}) {
+  const since = startOfUtcDayIso(now);
+  const rows = db
+    .prepare('SELECT * FROM readings WHERE captured_at >= ? ORDER BY captured_at ASC')
+    .all(since);
+  return rows.map(fromRow);
 }
