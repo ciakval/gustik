@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T19:23:36.155Z",
-    "fileCount": 382,
+    "lastScanned": "2026-08-01T22:57:09.360Z",
+    "fileCount": 389,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "b3db6f23576e2d28b1b3f9071ff31632b44eae714d18046c82ec1878d86f59a7",
-    "storeUpdatedAt": "2026-08-01T19:23:36.161Z"
+    "renderedHash": "558e6401a02d5a5264b20e33e980d11940eb9ac4758271d77184ecfff410fbc0",
+    "storeUpdatedAt": "2026-08-01T22:57:09.367Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4967,6 +4967,134 @@
       "size": 4208,
       "mtimeMs": 1785612096729.2937,
       "updatedAt": "2026-08-01T19:21:36.781Z",
+      "source": "hook"
+    },
+    ".worktrees/ci-pipeline/backend/eslint.config.js": {
+      "description": "', 'node_modules/**'],",
+      "tokens": 332,
+      "hash": "b20fad1051522504",
+      "size": 1162,
+      "mtimeMs": 1785624454674.3906,
+      "updatedAt": "2026-08-01T22:47:34.742Z",
+      "source": "hook"
+    },
+    ".worktrees/ci-pipeline/backend/package.json": {
+      "description": "Node.js package manifest",
+      "tokens": 157,
+      "hash": "cf461f6519b34834",
+      "size": 547,
+      "mtimeMs": 1785624483545.2708,
+      "updatedAt": "2026-08-01T22:48:03.600Z",
+      "source": "hook"
+    },
+    ".worktrees/ci-pipeline/backend/src/static/history-chart.js": {
+      "description": "Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis",
+      "tokens": 953,
+      "hash": "af25eed24b325a72",
+      "size": 3335,
+      "mtimeMs": 1785624499297.5405,
+      "updatedAt": "2026-08-01T22:48:19.347Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "speedAxisLabel",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 12,
+          "tokens": 28
+        },
+        {
+          "name": "formatTimeTick",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 16,
+          "tokens": 29
+        },
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 78,
+          "tokens": 542
+        },
+        {
+          "name": "setHistoryChartReadings",
+          "kind": "fn",
+          "startLine": 79,
+          "endLine": 83,
+          "tokens": 28
+        },
+        {
+          "name": "setHistoryChartUnit",
+          "kind": "fn",
+          "startLine": 84,
+          "endLine": 88,
+          "tokens": 23
+        },
+        {
+          "name": "fetchHistory",
+          "kind": "fn",
+          "startLine": 89,
+          "endLine": 95,
+          "tokens": 55
+        },
+        {
+          "name": "initHistoryChart",
+          "kind": "fn",
+          "startLine": 96,
+          "endLine": 102,
+          "tokens": 74
+        },
+        {
+          "name": "handleLiveMessage",
+          "kind": "fn",
+          "startLine": 103,
+          "endLine": 111,
+          "tokens": 95
+        },
+        {
+          "name": "resyncHistoryChart",
+          "kind": "fn",
+          "startLine": 112,
+          "endLine": 115,
+          "tokens": 17
+        }
+      ]
+    },
+    ".worktrees/ci-pipeline/.github/workflows/ci.yml": {
+      "description": "CI: CI",
+      "tokens": 3108,
+      "hash": "c17fb14fbc02d678",
+      "size": 10881,
+      "mtimeMs": 1785624717968.0288,
+      "updatedAt": "2026-08-01T22:51:58.020Z",
+      "source": "hook"
+    },
+    ".worktrees/ci-pipeline/backend/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 14,
+      "hash": "4460fe9d3c9dbf22",
+      "size": 49,
+      "mtimeMs": 1785624656958.2754,
+      "updatedAt": "2026-08-01T22:50:57.004Z",
+      "source": "hook"
+    },
+    ".worktrees/ci-pipeline/firmware/platformio.ini": {
+      "description": "",
+      "tokens": 443,
+      "hash": "3a5986a852ae3f39",
+      "size": 1660,
+      "mtimeMs": 1785624924571.5745,
+      "updatedAt": "2026-08-01T22:55:24.618Z",
+      "source": "hook"
+    },
+    ".worktrees/ci-pipeline/TODO.md": {
+      "description": "TODO — items flagged for Mlok's review",
+      "tokens": 1622,
+      "hash": "2693868dbfdc6b67",
+      "size": 6536,
+      "mtimeMs": 1785625029311.561,
+      "updatedAt": "2026-08-01T22:57:09.360Z",
       "source": "hook"
     }
   }

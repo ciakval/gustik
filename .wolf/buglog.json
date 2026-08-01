@@ -290,6 +290,26 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T19:20:00.000Z"
+    },
+    {
+      "id": "bug-017",
+      "timestamp": "2026-08-01T22:55:00.000Z",
+      "error_message": "UnknownPackageError: Could not find the package with 'platformio/framework-arduinoespressif32 @ ~2.0.14' requirements",
+      "file": "firmware/platformio.ini",
+      "root_cause": "[env:esp32dev] pinned `platform_packages: framework-arduinoespressif32 @ ~2.0.14`, following the architecture spine's decision to use the 'stable 2.x' Arduino-ESP32 core. That decision was made without ever actually running `pio run -e esp32dev` (the devcontainer this project was scaffolded in has no ESP32 toolchain and this was assumed to be hardware-gated - it's actually only internet-gated, first discovered while setting up the CI pipeline and trying the build for real). The PlatformIO registry no longer serves ANY 2.x framework-arduinoespressif32 release - `pio pkg search framework-arduinoespressif32` returns exactly one result, version 3.20017.x. The 2.x line appears to have been fully retired from the registry since the architecture decision was made.",
+      "fix": "Removed the platform_packages override entirely and let `platform = espressif32 @ ~6.4.0` resolve its own compatible framework version, which resolved to 3.20011.230801 (Arduino-ESP32 core 3.x). Build succeeds (`pio run -e esp32dev`, SUCCESS, 48s) and produces firmware.bin/firmware.elf/bootloader.bin/partitions.bin as expected. Updated platformio.ini's header comment and cerebrum.md's Decision Log to correct the stale '2.x, not 3.x' framing - 3.x is now the only currently-maintained line, so this was accepted rather than fought.",
+      "tags": [
+        "firmware",
+        "platformio",
+        "esp32",
+        "version-pin",
+        "registry",
+        "architecture-correction",
+        "ci-pipeline"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T22:55:00.000Z"
     }
   ]
 }

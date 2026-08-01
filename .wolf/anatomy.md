@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:23:36.155Z
-> Files: 382 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T22:57:09.360Z
+> Files: 389 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -641,6 +641,37 @@
 - `devcontainer.json` (~639 tok)
 - `Dockerfile` — Docker container definition (~740 tok)
 - `post-create.sh` (~342 tok)
+
+## .worktrees/ci-pipeline/
+
+- `TODO.md` — TODO — items flagged for Mlok's review (~1622 tok)
+
+## .worktrees/ci-pipeline/.github/workflows/
+
+- `ci.yml` — CI: CI (~3108 tok)
+
+## .worktrees/ci-pipeline/backend/
+
+- `.gitignore` — Git ignore rules (~14 tok)
+- `eslint.config.js` — ', 'node_modules/**'], (~332 tok)
+- `package.json` — Node.js package manifest (~157 tok)
+
+## .worktrees/ci-pipeline/backend/src/static/
+
+- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis (~953 tok)
+  - fn `speedAxisLabel` L9-12 (~28 tok)
+  - fn `formatTimeTick` L13-16 (~29 tok)
+  - fn `render` L17-78 (~542 tok)
+  - fn `setHistoryChartReadings` L79-83 (~28 tok)
+  - fn `setHistoryChartUnit` L84-88 (~23 tok)
+  - fn `fetchHistory` L89-95 (~55 tok)
+  - fn `initHistoryChart` L96-102 (~74 tok)
+  - fn `handleLiveMessage` L103-111 (~95 tok)
+  - fn `resyncHistoryChart` L112-115 (~17 tok)
+
+## .worktrees/ci-pipeline/firmware/
+
+- `platformio.ini` (~443 tok)
 
 ## .worktrees/story-1.1-wind-speed/firmware/
 

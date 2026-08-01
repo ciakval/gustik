@@ -271,3 +271,12 @@
 | 19:21 | Edited .worktrees/story-4.2-manual/TODO.md | expanded (+18 lines) | ~328 |
 | 19:23 | Edited CLAUDE.md | yet() → dashboard() | ~560 |
 | 19:24 | Session end: 157 writes across 71 files (.gitignore, package.json, Dockerfile, store.test.js, db.js) | 44 reads | ~62557 tok |
+| 22:47 | Created .worktrees/ci-pipeline/backend/eslint.config.js | — | ~332 |
+| 22:48 | Edited .worktrees/ci-pipeline/backend/package.json | 4→5 lines | ~30 |
+| 22:48 | Edited .worktrees/ci-pipeline/backend/src/static/history-chart.js | 3→2 lines | ~25 |
+| 22:50 | Created .worktrees/ci-pipeline/.github/workflows/ci.yml | — | ~2966 |
+| 22:50 | Edited .worktrees/ci-pipeline/backend/.gitignore | 3→4 lines | ~13 |
+| 22:51 | Edited .worktrees/ci-pipeline/.github/workflows/ci.yml | added error handling | ~590 |
+| 22:53 | Edited .worktrees/ci-pipeline/firmware/platformio.ini | 7→5 lines | ~29 |
+| 22:55 | Created .worktrees/ci-pipeline/firmware/platformio.ini | — | ~443 |
+| 22:57 | Edited .worktrees/ci-pipeline/TODO.md | expanded (+38 lines) | ~960 |
