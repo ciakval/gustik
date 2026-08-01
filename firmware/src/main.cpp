@@ -14,6 +14,8 @@
 #include "transmit/hw/wifi_client.h"
 #include "transmit/hw/clock.h"
 #include "transmit/hw/flash_buffer.h"
+#include "config/station_config.h"
+#include "config/hw/config_loader.h"
 
 namespace {
 // Sampling interval per FR-1 (~2-5s) - exact value pending flash/buffer
@@ -30,14 +32,6 @@ constexpr AnemometerCalibration kAnemometerCalibration{.metersPerSecondPerHz = 1
 // TODO(calibration): hard-iron calibration for the actual installed
 // magnetometer/boat mount - see correct/wind_direction.h and TODO.md.
 constexpr MagnetometerCalibration kMagnetometerCalibration{.hardIronOffsetX = 0.0, .hardIronOffsetY = 0.0};
-
-// TODO(config): static values for this story only - Story 4.1 replaces
-// this with the on-flash config file (1-2 networks + token, AD-10), never
-// compiled into firmware source in the real deployment.
-constexpr const char *kWifiSsid = "CHANGE_ME_SSID";
-constexpr const char *kWifiPassword = "CHANGE_ME_PASSWORD";
-constexpr const char *kBackendBaseUrl = "http://CHANGE_ME_BACKEND_HOST";
-constexpr const char *kIngestToken = "CHANGE_ME_TOKEN";
 
 Anemometer anemometer;
 Vane vane;
@@ -60,7 +54,12 @@ void setup() {
     vane.begin(kVanePin);
     magnetometer.begin();
     pinMode(kDisconnectLedPin, OUTPUT);
-    transmitClient.begin(kWifiSsid, kWifiPassword, kBackendBaseUrl, kIngestToken);
+    // Story 4.1 (AD-10): credentials/token come from an on-flash config
+    // file, never compiled into firmware source. An empty/missing config
+    // (see config_loader.h) just means WiFi never connects - visible via
+    // the disconnect LED - not a crash.
+    StationConfig stationConfig = loadStationConfig();
+    transmitClient.begin(stationConfig);
     clock_.begin();
     // NFR-4: buffer must cover >=4h at the sampling interval in use.
     flashBuffer.begin(computeBufferCapacityForHours(4.0, kSampleIntervalMs / 1000.0));

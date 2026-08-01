@@ -1,0 +1,18 @@
+# Gustik station config (Story 4.1, AD-10).
+#
+# THIS IS A TEMPLATE, not the real config - copy it to config.txt, fill in
+# real values, then upload with `pio run -t uploadfs` (filesystem upload,
+# NOT `pio run -t upload` which reflashes the program). config.txt itself
+# is gitignored - never commit real credentials.
+#
+# network1 = highest priority (tried first if both are in range). A second
+# network is optional - delete network2.* entirely if there's only one.
+
+network1.ssid=CHANGE_ME_SHORE_WIFI_SSID
+network1.password=CHANGE_ME_SHORE_WIFI_PASSWORD
+
+network2.ssid=CHANGE_ME_MOBILE_HOTSPOT_SSID
+network2.password=CHANGE_ME_MOBILE_HOTSPOT_PASSWORD
+
+backend.url=http://CHANGE_ME_BACKEND_HOST:3000
+backend.token=CHANGE_ME_INGEST_TOKEN
