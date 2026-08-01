@@ -1,3 +1,7 @@
 .pio/
 .pioenvs/
 .piolibdeps/
+
+# Real station config with live WiFi credentials + ingest token (AD-10) -
+# never committed. data/config.example.txt is the template, copy+fill it.
+data/config.txt
