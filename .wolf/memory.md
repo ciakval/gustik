@@ -201,3 +201,11 @@
 | 18:51 | Edited .worktrees/story-2.1-local-buffer/firmware/src/main.cpp | 8→9 lines | ~65 |
 | 18:51 | Edited .worktrees/story-2.1-local-buffer/firmware/src/main.cpp | 3→5 lines | ~77 |
 | 18:51 | Edited .worktrees/story-2.1-local-buffer/firmware/src/main.cpp | buffering() → push() | ~142 |
+| 18:53 | Edited .worktrees/story-2.2-backfill/firmware/test/test_connection_monitor/test_connection_monitor.cpp | modified test_just_recovered_true_on_the_success_that_ends_an_outage() | ~376 |
+| 18:53 | Created .worktrees/story-2.2-backfill/firmware/src/transmit/connection_monitor.h | — | ~228 |
+| 18:53 | Edited .worktrees/story-2.2-backfill/firmware/src/transmit/connection_monitor.cpp | modified recordSendSuccess() | ~92 |
+| 18:53 | Created .worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.h | — | ~378 |
+| 18:53 | Edited .worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.cpp | drainAll() → peekAll() | ~36 |
+| 18:53 | Edited .worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.cpp | modified clear() | ~29 |
+| 18:54 | Edited .worktrees/story-2.2-backfill/firmware/src/main.cpp | added 2 condition(s) | ~335 |
+| 18:54 | Edited .worktrees/story-2.2-backfill/firmware/src/main.cpp | 2→3 lines | ~15 |

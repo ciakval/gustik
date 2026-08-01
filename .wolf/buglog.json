@@ -222,6 +222,22 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T18:50:54.359Z"
+    },
+    {
+      "id": "bug-013",
+      "timestamp": "2026-08-01T18:53:49.853Z",
+      "error_message": "Wrong reference: drainAll should be peekAll",
+      "file": ".worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.cpp",
+      "root_cause": "Used \"drainAll\" instead of \"peekAll\"",
+      "fix": "Changed drainAll → peekAll",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:53:49.853Z"
     }
   ]
 }

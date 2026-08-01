@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:51:36.674Z",
-    "fileCount": 338,
+    "lastScanned": "2026-08-01T18:54:12.416Z",
+    "fileCount": 344,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "664a26c06c2576998d06e9d43f9796667a64b584ea5a97e50ad4911750b018e8",
-    "storeUpdatedAt": "2026-08-01T18:51:36.681Z"
+    "renderedHash": "64499bb4e3330b9bed28cf5603c9b29d76657ab8204af30a7f4e71daae744c15",
+    "storeUpdatedAt": "2026-08-01T18:54:12.423Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4259,6 +4259,60 @@
       "size": 3832,
       "mtimeMs": 1785610296624.8093,
       "updatedAt": "2026-08-01T18:51:36.674Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.2-backfill/firmware/test/test_connection_monitor/test_connection_monitor.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 772,
+      "hash": "30637bb63a4df232",
+      "size": 2893,
+      "mtimeMs": 1785610380061.5127,
+      "updatedAt": "2026-08-01T18:53:00.107Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.2-backfill/firmware/src/transmit/connection_monitor.h": {
+      "description": "pragma once",
+      "tokens": 228,
+      "hash": "bd19e8a671d5a01a",
+      "size": 853,
+      "mtimeMs": 1785610392520.02,
+      "updatedAt": "2026-08-01T18:53:12.561Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.2-backfill/firmware/src/transmit/connection_monitor.cpp": {
+      "description": "include \"transmit/connection_monitor.h\"",
+      "tokens": 104,
+      "hash": "810c2ac703933f0c",
+      "size": 388,
+      "mtimeMs": 1785610403886.657,
+      "updatedAt": "2026-08-01T18:53:23.946Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.h": {
+      "description": "pragma once",
+      "tokens": 378,
+      "hash": "68c2dc53c8a19682",
+      "size": 1417,
+      "mtimeMs": 1785610420574.4758,
+      "updatedAt": "2026-08-01T18:53:40.616Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.cpp": {
+      "description": "include \"transmit/hw/flash_buffer.h\"",
+      "tokens": 559,
+      "hash": "ea4ff0d98d4692f4",
+      "size": 2096,
+      "mtimeMs": 1785610435660.1843,
+      "updatedAt": "2026-08-01T18:53:55.717Z",
+      "source": "hook"
+    },
+    ".worktrees/story-2.2-backfill/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 1220,
+      "hash": "95fead3a5dc86ab8",
+      "size": 4573,
+      "mtimeMs": 1785610452369.7852,
+      "updatedAt": "2026-08-01T18:54:12.416Z",
       "source": "hook"
     }
   }

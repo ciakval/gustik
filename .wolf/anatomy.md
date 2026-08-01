@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:51:36.674Z
-> Files: 338 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:54:12.416Z
+> Files: 344 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -818,6 +818,24 @@
 ## .worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/
 
 - `test_ring_buffer.cpp` — include <unity.h> (~955 tok)
+
+## .worktrees/story-2.2-backfill/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~1220 tok)
+
+## .worktrees/story-2.2-backfill/firmware/src/transmit/
+
+- `connection_monitor.cpp` — include "transmit/connection_monitor.h" (~104 tok)
+- `connection_monitor.h` — pragma once (~228 tok)
+
+## .worktrees/story-2.2-backfill/firmware/src/transmit/hw/
+
+- `flash_buffer.cpp` — include "transmit/hw/flash_buffer.h" (~559 tok)
+- `flash_buffer.h` — pragma once (~378 tok)
+
+## .worktrees/story-2.2-backfill/firmware/test/test_connection_monitor/
+
+- `test_connection_monitor.cpp` — include <unity.h> (~772 tok)
 
 ## _bmad-output/planning-artifacts/
 
