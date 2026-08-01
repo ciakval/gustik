@@ -1,0 +1,17 @@
+{
+  "name": "gustik-backend",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "better-sqlite3": "13.0.0",
+    "fastify": "5.11.0"
+  }
+}
