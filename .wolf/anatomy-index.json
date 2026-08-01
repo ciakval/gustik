@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T18:40:28.648Z",
-    "fileCount": 310,
+    "lastScanned": "2026-08-01T18:47:36.985Z",
+    "fileCount": 331,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "c5349548038db583409840460b5f71166dd5cac38bf48f92515bf7c900d601ca",
-    "storeUpdatedAt": "2026-08-01T18:40:28.655Z"
+    "renderedHash": "c859df5700ec3633615b7da65ab0ac6cdf02eb806d1b0576b90218337247e1f2",
+    "storeUpdatedAt": "2026-08-01T18:47:36.992Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3977,6 +3977,225 @@
       "size": 1962,
       "mtimeMs": 1785609578630.3696,
       "updatedAt": "2026-08-01T18:39:38.674Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/reading.h": {
+      "description": "pragma once",
+      "tokens": 136,
+      "hash": "8de61951c86d9545",
+      "size": 508,
+      "mtimeMs": 1785609708683.4011,
+      "updatedAt": "2026-08-01T18:41:48.728Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/test/test_transmit_payload/test_transmit_payload.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 587,
+      "hash": "aa2090767b906343",
+      "size": 2201,
+      "mtimeMs": 1785609719265.162,
+      "updatedAt": "2026-08-01T18:41:59.311Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/test/test_connection_monitor/test_connection_monitor.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 503,
+      "hash": "d2edefe2caa95171",
+      "size": 1886,
+      "mtimeMs": 1785609728037.3513,
+      "updatedAt": "2026-08-01T18:42:08.088Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/platformio.ini": {
+      "description": "",
+      "tokens": 304,
+      "hash": "258ff6634c7d7711",
+      "size": 1138,
+      "mtimeMs": 1785609739206.745,
+      "updatedAt": "2026-08-01T18:42:19.259Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/payload.h": {
+      "description": "pragma once",
+      "tokens": 104,
+      "hash": "0feb83633e24eb22",
+      "size": 387,
+      "mtimeMs": 1785609743361.0857,
+      "updatedAt": "2026-08-01T18:42:23.423Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/connection_monitor.h": {
+      "description": "pragma once",
+      "tokens": 153,
+      "hash": "35405ab7e6353d1e",
+      "size": 571,
+      "mtimeMs": 1785609748736.1672,
+      "updatedAt": "2026-08-01T18:42:28.780Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/payload.cpp": {
+      "description": "include \"transmit/payload.h\"",
+      "tokens": 227,
+      "hash": "5bc9fc508ea7fe97",
+      "size": 849,
+      "mtimeMs": 1785609760706.5662,
+      "updatedAt": "2026-08-01T18:42:40.756Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/connection_monitor.cpp": {
+      "description": "include \"transmit/connection_monitor.h\"",
+      "tokens": 67,
+      "hash": "00ad53224462b567",
+      "size": 250,
+      "mtimeMs": 1785609766212.0457,
+      "updatedAt": "2026-08-01T18:42:46.265Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/hw/wifi_client.h": {
+      "description": "pragma once",
+      "tokens": 313,
+      "hash": "ca38ffa61eab1a2f",
+      "size": 1172,
+      "mtimeMs": 1785609786461.0117,
+      "updatedAt": "2026-08-01T18:43:06.513Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/hw/wifi_client.cpp": {
+      "description": "include \"transmit/hw/wifi_client.h\"",
+      "tokens": 423,
+      "hash": "5be6af59d6980035",
+      "size": 1585,
+      "mtimeMs": 1785609794253.384,
+      "updatedAt": "2026-08-01T18:43:14.319Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/hw/clock.h": {
+      "description": "pragma once",
+      "tokens": 216,
+      "hash": "9aef0a59c55b382e",
+      "size": 810,
+      "mtimeMs": 1785609818569.846,
+      "updatedAt": "2026-08-01T18:43:38.621Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/transmit/hw/clock.cpp": {
+      "description": "include \"transmit/hw/clock.h\"",
+      "tokens": 197,
+      "hash": "bd5ba62168006285",
+      "size": 737,
+      "mtimeMs": 1785609824210.821,
+      "updatedAt": "2026-08-01T18:43:44.270Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.4-transmit/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 926,
+      "hash": "bb961930c01b205f",
+      "size": 3471,
+      "mtimeMs": 1785609843067.7253,
+      "updatedAt": "2026-08-01T18:44:03.119Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.6-dashboard/backend/test/dashboard-format.test.js": {
+      "description": "Declares capturedAt",
+      "tokens": 484,
+      "hash": "7e349af5c62ff657",
+      "size": 1693,
+      "mtimeMs": 1785609906910.7913,
+      "updatedAt": "2026-08-01T18:45:06.966Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.6-dashboard/backend/src/static/format.js": {
+      "description": "Exports msToKnots, octantToCompassLabel, isStale, formatAge",
+      "tokens": 240,
+      "hash": "fe793287a7eba969",
+      "size": 839,
+      "mtimeMs": 1785609919695.405,
+      "updatedAt": "2026-08-01T18:45:19.752Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.6-dashboard/backend/test/dashboard-static.test.js": {
+      "description": "Declares testApp",
+      "tokens": 212,
+      "hash": "c1abf492e3844294",
+      "size": 740,
+      "mtimeMs": 1785609929303.8665,
+      "updatedAt": "2026-08-01T18:45:29.361Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.6-dashboard/backend/package.json": {
+      "description": "Node.js package manifest",
+      "tokens": 117,
+      "hash": "4dc929d78a477168",
+      "size": 409,
+      "mtimeMs": 1785609979726.2842,
+      "updatedAt": "2026-08-01T18:46:19.793Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.6-dashboard/backend/src/app.js": {
+      "description": "Exports buildApp",
+      "tokens": 361,
+      "hash": "0b51da5d8cb8d6cf",
+      "size": 1261,
+      "mtimeMs": 1785609997466.5625,
+      "updatedAt": "2026-08-01T18:46:37.514Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.6-dashboard/backend/src/static/index.html": {
+      "description": "Gustik — vítr živě",
+      "tokens": 721,
+      "hash": "dfc74e9d71b59d93",
+      "size": 2736,
+      "mtimeMs": 1785610013679.0945,
+      "updatedAt": "2026-08-01T18:46:53.730Z",
+      "source": "hook"
+    },
+    ".worktrees/story-1.6-dashboard/backend/src/static/dashboard.js": {
+      "description": "speedEl: render, setUnit, fetchLatest, connectLive",
+      "tokens": 604,
+      "hash": "32e3bccbd99511c5",
+      "size": 2113,
+      "mtimeMs": 1785610024278.4485,
+      "updatedAt": "2026-08-01T18:47:04.338Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 24,
+          "tokens": 141
+        },
+        {
+          "name": "setUnit",
+          "kind": "fn",
+          "startLine": 25,
+          "endLine": 34,
+          "tokens": 86
+        },
+        {
+          "name": "fetchLatest",
+          "kind": "fn",
+          "startLine": 35,
+          "endLine": 43,
+          "tokens": 53
+        },
+        {
+          "name": "connectLive",
+          "kind": "fn",
+          "startLine": 44,
+          "endLine": 65,
+          "tokens": 212
+        }
+      ]
+    },
+    ".worktrees/story-1.6-dashboard/backend/src/store/db.js": {
+      "description": "Exports openDb",
+      "tokens": 229,
+      "hash": "16b647ecc618a2e4",
+      "size": 799,
+      "mtimeMs": 1785610056933.9983,
+      "updatedAt": "2026-08-01T18:47:36.985Z",
       "source": "hook"
     }
   }

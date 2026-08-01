@@ -155,6 +155,57 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T18:55:00.000Z"
+    },
+    {
+      "id": "bug-009",
+      "timestamp": "2026-08-01T18:47:32.025Z",
+      "error_message": "Incorrect value in code",
+      "file": ".worktrees/story-1.6-dashboard/backend/src/store/db.js",
+      "root_cause": "Had 'better-sqlite3'",
+      "fix": "Changed to 'node:fs'",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:47:32.025Z"
+    },
+    {
+      "id": "bug-010",
+      "timestamp": "2026-08-01T18:47:36.995Z",
+      "error_message": "Significant refactor of ",
+      "file": ".worktrees/story-1.6-dashboard/backend/src/store/db.js",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 8→11 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:47:36.995Z"
+    },
+    {
+      "id": "bug-011",
+      "timestamp": "2026-08-01T18:48:00.000Z",
+      "error_message": "TypeError: Cannot open database because the directory does not exist - thrown by better-sqlite3's `new Database(path)` when actually running `node src/index.js` locally (not via the injected/in-memory test suite) with the default DB_PATH './data/gustik.sqlite'",
+      "file": "backend/src/store/db.js",
+      "root_cause": "openDb() never created the parent directory of the SQLite file path. This was invisible to the whole backend test suite because every test uses dbPath=':memory:', which never touches the filesystem. Only caught by manually starting the real server and curling it (Story 1.6 smoke test) - the injected fastify tests never start a real listener against a real file path either. `backend/Dockerfile` happens to `mkdir -p data` as a build step, masking the same gap there too - a bare `npm start` outside Docker (or a Docker image without that RUN line) would hit this.",
+      "fix": "openDb() now calls `fs.mkdirSync(path.dirname(dbPath), { recursive: true })` before opening the database, for any non-':memory:' path. Verified via a real `node src/index.js` run against a scratch DB_PATH plus curl round-trip (GET /, GET /dashboard.js, GET /format.js, POST /readings, GET /readings/latest) - all correct, including static file MIME types.",
+      "tags": [
+        "backend",
+        "better-sqlite3",
+        "filesystem",
+        "smoke-test-only",
+        "not-caught-by-unit-tests",
+        "story-1.6"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:48:00.000Z"
     }
   ]
 }

@@ -163,3 +163,27 @@
 | 18:39 | Created .worktrees/story-1.2-wind-direction/firmware/src/sense/magnetometer.cpp | — | ~280 |
 | 18:39 | Created .worktrees/story-1.2-wind-direction/firmware/src/main.cpp | — | ~524 |
 | 18:40 | Edited CLAUDE.md | 3→8 lines | ~439 |
+| 18:41 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/reading.h | — | ~136 |
+| 18:41 | Created .worktrees/story-1.4-transmit/firmware/test/test_transmit_payload/test_transmit_payload.cpp | — | ~587 |
+| 18:42 | Created .worktrees/story-1.4-transmit/firmware/test/test_connection_monitor/test_connection_monitor.cpp | — | ~503 |
+| 18:42 | Edited .worktrees/story-1.4-transmit/firmware/platformio.ini | inline fix | ~15 |
+| 18:42 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/payload.h | — | ~104 |
+| 18:42 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/connection_monitor.h | — | ~153 |
+| 18:42 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/payload.cpp | — | ~227 |
+| 18:42 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/connection_monitor.cpp | — | ~67 |
+| 18:43 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/hw/wifi_client.h | — | ~313 |
+| 18:43 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/hw/wifi_client.cpp | — | ~423 |
+| 18:43 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/hw/clock.h | — | ~216 |
+| 18:43 | Created .worktrees/story-1.4-transmit/firmware/src/transmit/hw/clock.cpp | — | ~197 |
+| 18:44 | Created .worktrees/story-1.4-transmit/firmware/src/main.cpp | — | ~926 |
+| 18:45 | Created .worktrees/story-1.6-dashboard/backend/test/dashboard-format.test.js | — | ~484 |
+| 18:45 | Created .worktrees/story-1.6-dashboard/backend/src/static/format.js | — | ~240 |
+| 18:45 | Created .worktrees/story-1.6-dashboard/backend/test/dashboard-static.test.js | — | ~212 |
+| 18:45 | Edited .worktrees/story-1.6-dashboard/backend/package.json | 5→6 lines | ~43 |
+| 18:46 | Edited .worktrees/story-1.6-dashboard/backend/package.json | inline fix | ~9 |
+| 18:46 | Edited .worktrees/story-1.6-dashboard/backend/package.json | inline fix | ~10 |
+| 18:46 | Created .worktrees/story-1.6-dashboard/backend/src/app.js | — | ~361 |
+| 18:46 | Created .worktrees/story-1.6-dashboard/backend/src/static/index.html | — | ~721 |
+| 18:47 | Created .worktrees/story-1.6-dashboard/backend/src/static/dashboard.js | — | ~604 |
+| 18:47 | Edited .worktrees/story-1.6-dashboard/backend/src/store/db.js | added 2 import(s) | ~27 |
+| 18:47 | Edited .worktrees/story-1.6-dashboard/backend/src/store/db.js | added 1 condition(s) | ~77 |

@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:40:28.648Z
-> Files: 310 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T18:47:36.985Z
+> Files: 331 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -719,6 +719,37 @@
 - `store.test.js` — Declares freshDb (~529 tok)
   - fn `freshDb` L6-70 (~475 tok)
 
+## .worktrees/story-1.4-transmit/firmware/
+
+- `platformio.ini` (~304 tok)
+
+## .worktrees/story-1.4-transmit/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~926 tok)
+
+## .worktrees/story-1.4-transmit/firmware/src/transmit/
+
+- `connection_monitor.cpp` — include "transmit/connection_monitor.h" (~67 tok)
+- `connection_monitor.h` — pragma once (~153 tok)
+- `payload.cpp` — include "transmit/payload.h" (~227 tok)
+- `payload.h` — pragma once (~104 tok)
+- `reading.h` — pragma once (~136 tok)
+
+## .worktrees/story-1.4-transmit/firmware/src/transmit/hw/
+
+- `clock.cpp` — include "transmit/hw/clock.h" (~197 tok)
+- `clock.h` — pragma once (~216 tok)
+- `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~423 tok)
+- `wifi_client.h` — pragma once (~313 tok)
+
+## .worktrees/story-1.4-transmit/firmware/test/test_connection_monitor/
+
+- `test_connection_monitor.cpp` — include <unity.h> (~503 tok)
+
+## .worktrees/story-1.4-transmit/firmware/test/test_transmit_payload/
+
+- `test_transmit_payload.cpp` — include <unity.h> (~587 tok)
+
 ## .worktrees/story-1.5-serve-latest/backend/
 
 - `package.json` — Node.js package manifest (~94 tok)
@@ -741,6 +772,33 @@
   - fn `testApp` L6-9 (~28 tok)
   - fn `postReadings` L10-46 (~385 tok)
   - fn `withTimeout` L47-88 (~383 tok)
+
+## .worktrees/story-1.6-dashboard/backend/
+
+- `package.json` — Node.js package manifest (~117 tok)
+
+## .worktrees/story-1.6-dashboard/backend/src/
+
+- `app.js` — Exports buildApp (~361 tok)
+
+## .worktrees/story-1.6-dashboard/backend/src/static/
+
+- `dashboard.js` — speedEl: render, setUnit, fetchLatest, connectLive (~604 tok)
+  - fn `render` L12-24 (~141 tok)
+  - fn `setUnit` L25-34 (~86 tok)
+  - fn `fetchLatest` L35-43 (~53 tok)
+  - fn `connectLive` L44-65 (~212 tok)
+- `format.js` — Exports msToKnots, octantToCompassLabel, isStale, formatAge (~240 tok)
+- `index.html` — Gustik — vítr živě (~721 tok)
+
+## .worktrees/story-1.6-dashboard/backend/src/store/
+
+- `db.js` — Exports openDb (~229 tok)
+
+## .worktrees/story-1.6-dashboard/backend/test/
+
+- `dashboard-format.test.js` — Declares capturedAt (~484 tok)
+- `dashboard-static.test.js` — Declares testApp (~212 tok)
 
 ## _bmad-output/planning-artifacts/
 
