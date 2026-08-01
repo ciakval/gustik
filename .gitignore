@@ -1,2 +1,5 @@
 # Claude local settings
 .claude/settings.local.json
+
+# BMAD session memory
+_bmad-output/**/.memlog.md
