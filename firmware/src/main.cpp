@@ -10,6 +10,7 @@
 #include "transmit/connection_monitor.h"
 #include "transmit/buffer_capacity.h"
 #include "transmit/led_policy.h"
+#include "transmit/rssi_latch.h"
 #include "transmit/hw/wifi_client.h"
 #include "transmit/hw/clock.h"
 #include "transmit/hw/flash_buffer.h"
@@ -45,6 +46,7 @@ WifiTransmitClient transmitClient;
 StationClock clock_;
 ConnectionMonitor connectionMonitor;
 FlashBuffer flashBuffer;
+RssiAvailabilityLatch rssiLatch;
 unsigned long lastSampleAt = 0;
 unsigned long nextClientSeq = 0;
 
@@ -88,8 +90,13 @@ void loop() {
     reading.clockSynced = clock_.isSynced();
     reading.windSpeedMs = windSpeedMs;
     reading.windDirOctant = windDirOctant;
-    reading.rssiValid = false; // wired up in Story 2.5
-    reading.rssiDbm = 0;
+    // Story 2.5 (FR-6): standard ESP32 WiFi API, read at the moment of
+    // measurement. Latch stays true through brief reconnects once the
+    // Station has scanned successfully at least once since boot (AC2).
+    bool wifiConnectedThisCycle = WiFi.status() == WL_CONNECTED;
+    rssiLatch.recordScanResult(wifiConnectedThisCycle);
+    reading.rssiValid = rssiLatch.isAvailable();
+    reading.rssiDbm = reading.rssiValid ? WiFi.RSSI() : 0;
 
     // AC2: a failed send never blocks/crashes/restarts - it just leaves
     // this cycle's reading unsent and the loop continues on schedule.
