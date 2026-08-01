@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T19:00:14.994Z",
-    "fileCount": 354,
+    "lastScanned": "2026-08-01T19:02:43.282Z",
+    "fileCount": 357,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "fc9c7e9f6026afba098d8858c4f72eca0ce454c846ec8be3cf7acf71da4abd5b",
-    "storeUpdatedAt": "2026-08-01T19:00:15.001Z"
+    "renderedHash": "75a8d2b88bbbab576763d9b93407d287ba4898aaed2404e63500d86f2046c28f",
+    "storeUpdatedAt": "2026-08-01T19:02:43.290Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4463,6 +4463,100 @@
       "size": 5370,
       "mtimeMs": 1785610814950.5696,
       "updatedAt": "2026-08-01T19:00:14.994Z",
+      "source": "hook"
+    },
+    ".worktrees/story-3.1-history/backend/test/history.test.js": {
+      "description": "testApp: postReadings",
+      "tokens": 990,
+      "hash": "7346ddf007a4ada2",
+      "size": 3465,
+      "mtimeMs": 1785610930096.4883,
+      "updatedAt": "2026-08-01T19:02:10.151Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 83,
+          "tokens": 929
+        }
+      ]
+    },
+    ".worktrees/story-3.1-history/backend/src/store/readings.js": {
+      "description": "Insert a single reading. No-op (idempotent) if clientId already exists.",
+      "tokens": 662,
+      "hash": "9971def24dca479b",
+      "size": 2314,
+      "mtimeMs": 1785610954676.5374,
+      "updatedAt": "2026-08-01T19:02:34.727Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "toRow",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 21,
+          "tokens": 102
+        },
+        {
+          "name": "fromRow",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 31,
+          "tokens": 58
+        },
+        {
+          "name": "startOfUtcDayIso",
+          "kind": "fn",
+          "startLine": 32,
+          "endLine": 39,
+          "tokens": 75
+        },
+        {
+          "name": "insertReading",
+          "kind": "fn",
+          "startLine": 40,
+          "endLine": 45,
+          "tokens": 76
+        },
+        {
+          "name": "getLatest",
+          "kind": "fn",
+          "startLine": 46,
+          "endLine": 53,
+          "tokens": 93
+        },
+        {
+          "name": "getLatestCapturedAt",
+          "kind": "fn",
+          "startLine": 54,
+          "endLine": 61,
+          "tokens": 100
+        },
+        {
+          "name": "getHistory",
+          "kind": "fn",
+          "startLine": 62,
+          "endLine": 69,
+          "tokens": 72
+        }
+      ]
+    },
+    ".worktrees/story-3.1-history/backend/src/serve/routes.js": {
+      "description": "API routes: GET (3 endpoints)",
+      "tokens": 353,
+      "hash": "11747403142d3aaa",
+      "size": 1233,
+      "mtimeMs": 1785610963229.6838,
+      "updatedAt": "2026-08-01T19:02:43.282Z",
       "source": "hook"
     }
   }

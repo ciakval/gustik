@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:00:14.994Z
-> Files: 354 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:02:43.282Z
+> Files: 357 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -884,6 +884,27 @@
 ## .worktrees/story-2.5-rssi/firmware/test/test_rssi_latch/
 
 - `test_rssi_latch.cpp` — include <unity.h> (~408 tok)
+
+## .worktrees/story-3.1-history/backend/src/serve/
+
+- `routes.js` — API routes: GET (3 endpoints) (~353 tok)
+
+## .worktrees/story-3.1-history/backend/src/store/
+
+- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~662 tok)
+  - fn `toRow` L9-21 (~102 tok)
+  - fn `fromRow` L22-31 (~58 tok)
+  - fn `startOfUtcDayIso` L32-39 (~75 tok)
+  - fn `insertReading` L40-45 (~76 tok)
+  - fn `getLatest` L46-53 (~93 tok)
+  - fn `getLatestCapturedAt` L54-61 (~100 tok)
+  - fn `getHistory` L62-69 (~72 tok)
+
+## .worktrees/story-3.1-history/backend/test/
+
+- `history.test.js` — testApp: postReadings (~990 tok)
+  - fn `testApp` L5-8 (~28 tok)
+  - fn `postReadings` L9-83 (~929 tok)
 
 ## _bmad-output/planning-artifacts/
 

@@ -224,3 +224,7 @@
 | 19:00 | Edited .worktrees/story-2.5-rssi/firmware/src/main.cpp | 1→2 lines | ~18 |
 | 19:00 | Edited .worktrees/story-2.5-rssi/firmware/src/main.cpp | 2→3 lines | ~26 |
 | 19:00 | Edited .worktrees/story-2.5-rssi/firmware/src/main.cpp | modified 5() | ~119 |
+| 19:02 | Created .worktrees/story-3.1-history/backend/test/history.test.js | — | ~990 |
+| 19:02 | Edited .worktrees/story-3.1-history/backend/src/store/readings.js | modified fromRow() | ~86 |
+| 19:02 | Edited .worktrees/story-3.1-history/backend/src/store/readings.js | modified getLatestCapturedAt() | ~221 |
+| 19:02 | Edited .worktrees/story-3.1-history/backend/src/serve/routes.js | modified registerServeRoutes() | ~148 |
