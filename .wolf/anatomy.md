@@ -1,13 +1,13 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:18:40.189Z
-> Files: 378 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:21:36.781Z
+> Files: 382 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
 - `CLAUDE.md` — CLAUDE.md (~1512 tok)
-- `TODO.md` — TODO — items flagged for Mlok's review (~757 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~1046 tok)
 
 ## .claude/
 
@@ -984,6 +984,19 @@
 ## .worktrees/story-4.1-wifi-config/firmware/test/test_station_config/
 
 - `test_station_config.cpp` — include <unity.h> (~1018 tok)
+
+## .worktrees/story-4.2-manual/
+
+- `TODO.md` — TODO — items flagged for Mlok's review (~1046 tok)
+
+## .worktrees/story-4.2-manual/backend/src/static/
+
+- `index.html` — Gustik — vítr živě (~897 tok)
+- `manual.html` — Gustik — návod k obsluze (~991 tok)
+
+## .worktrees/story-4.2-manual/backend/test/
+
+- `manual.test.js` — Declares testApp (~356 tok)
 
 ## _bmad-output/planning-artifacts/
 

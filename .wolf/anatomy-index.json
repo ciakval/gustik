@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T19:18:40.189Z",
-    "fileCount": 378,
+    "lastScanned": "2026-08-01T19:21:36.781Z",
+    "fileCount": 382,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "0334140d85abc82410bdba7d8f44491cbfbd1dc2f1d8cc7daacba419cf93d9eb",
-    "storeUpdatedAt": "2026-08-01T19:18:40.196Z"
+    "renderedHash": "21d7004947004d41a9390071f6f9541e925e8b36ddd2c5d0c2c30759d3267e80",
+    "storeUpdatedAt": "2026-08-01T19:21:36.788Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3891,11 +3891,11 @@
     },
     "TODO.md": {
       "description": "TODO — items flagged for Mlok's review",
-      "tokens": 757,
-      "hash": "1edeceb951f29256",
-      "size": 3045,
-      "mtimeMs": 1785609399684.1123,
-      "updatedAt": "2026-08-01T18:36:39.731Z",
+      "tokens": 1046,
+      "hash": "34c0048ea1241c06",
+      "size": 4208,
+      "mtimeMs": 1785612078010.3887,
+      "updatedAt": "2026-08-01T19:21:18.063Z",
       "source": "hook"
     },
     ".worktrees/story-1.1-wind-speed/firmware/.gitignore": {
@@ -4931,6 +4931,42 @@
       "size": 5271,
       "mtimeMs": 1785611920151.323,
       "updatedAt": "2026-08-01T19:18:40.189Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.2-manual/backend/test/manual.test.js": {
+      "description": "Declares testApp",
+      "tokens": 356,
+      "hash": "f7202114ad8d7388",
+      "size": 1251,
+      "mtimeMs": 1785612009732.512,
+      "updatedAt": "2026-08-01T19:20:09.784Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.2-manual/backend/src/static/manual.html": {
+      "description": "Gustik — návod k obsluze",
+      "tokens": 991,
+      "hash": "fd075d5619f36ee1",
+      "size": 3948,
+      "mtimeMs": 1785612042257.4062,
+      "updatedAt": "2026-08-01T19:20:42.307Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.2-manual/backend/src/static/index.html": {
+      "description": "Gustik — vítr živě",
+      "tokens": 897,
+      "hash": "80485bfa310377dd",
+      "size": 3398,
+      "mtimeMs": 1785612052954.8494,
+      "updatedAt": "2026-08-01T19:20:52.997Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.2-manual/TODO.md": {
+      "description": "TODO — items flagged for Mlok's review",
+      "tokens": 1046,
+      "hash": "34c0048ea1241c06",
+      "size": 4208,
+      "mtimeMs": 1785612096729.2937,
+      "updatedAt": "2026-08-01T19:21:36.781Z",
       "source": "hook"
     }
   }

@@ -264,3 +264,8 @@
 | 19:18 | Edited .worktrees/story-4.1-wifi-config/firmware/src/main.cpp | 3→5 lines | ~48 |
 | 19:18 | Edited .worktrees/story-4.1-wifi-config/firmware/src/main.cpp | removed 9 lines | ~6 |
 | 19:18 | Edited .worktrees/story-4.1-wifi-config/firmware/src/main.cpp | modified 1() | ~112 |
+| 19:20 | Created .worktrees/story-4.2-manual/backend/test/manual.test.js | — | ~356 |
+| 19:20 | Created .worktrees/story-4.2-manual/backend/src/static/manual.html | — | ~991 |
+| 19:20 | Edited .worktrees/story-4.2-manual/backend/src/static/index.html | 5→6 lines | ~69 |
+| 19:21 | Edited TODO.md | expanded (+18 lines) | ~328 |
+| 19:21 | Edited .worktrees/story-4.2-manual/TODO.md | expanded (+18 lines) | ~328 |
