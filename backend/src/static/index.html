@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gustik — vítr živě</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #0b1220;
+    --fg: #e8edf5;
+    --muted: #8a97ab;
+    --accent: #4fb0ff;
+    --stale: #ff6b5e;
+    --card: #121b2e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 1rem 3rem;
+  }
+  h1 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 1.5rem;
+  }
+  .card {
+    width: 100%;
+    max-width: 480px;
+    background: var(--card);
+    border-radius: 1rem;
+    padding: 2rem 1.5rem;
+    text-align: center;
+  }
+  .speed {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .unit-toggle {
+    margin-top: 0.5rem;
+  }
+  .unit-toggle button {
+    background: none;
+    border: 1px solid var(--muted);
+    color: var(--muted);
+    border-radius: 999px;
+    padding: 0.25rem 0.9rem;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+  .unit-toggle button[aria-pressed="true"] {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #051422;
+    font-weight: 600;
+  }
+  .direction {
+    margin-top: 1.75rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  .direction-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .age {
+    margin-top: 1.75rem;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .age.stale {
+    color: var(--stale);
+    font-weight: 600;
+  }
+  .note {
+    max-width: 480px;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+  <h1>Gustik — vítr živě</h1>
+  <div class="card">
+    <div class="direction-label">rychlost větru</div>
+    <div class="speed" id="speed">–</div>
+    <div class="unit-toggle" role="group" aria-label="Jednotka rychlosti">
+      <button id="unit-ms" aria-pressed="true">m/s</button>
+      <button id="unit-kt" aria-pressed="false">uzly</button>
+    </div>
+    <div class="direction-label">směr</div>
+    <div class="direction" id="direction">–</div>
+    <div class="age" id="age">čekám na první záznam…</div>
+  </div>
+  <p class="note">Orientační data, nekalibrováno proti referenčnímu přístroji. Neslouží jako automatický bezpečnostní alert.</p>
+  <script type="module" src="/dashboard.js"></script>
+</body>
+</html>

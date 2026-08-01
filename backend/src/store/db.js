@@ -1,3 +1,5 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import Database from 'better-sqlite3';
 
 const SCHEMA = `
@@ -15,9 +17,12 @@ CREATE TABLE IF NOT EXISTS readings (
 CREATE INDEX IF NOT EXISTS idx_readings_captured_at ON readings (captured_at);
 `;
 
-export function openDb(path) {
-  const db = new Database(path);
-  if (path !== ':memory:') {
+export function openDb(dbPath) {
+  if (dbPath !== ':memory:') {
+    fs.mkdirSync(path.dirname(dbPath), { recursive: true });
+  }
+  const db = new Database(dbPath);
+  if (dbPath !== ':memory:') {
     db.pragma('journal_mode = WAL');
   }
   db.exec(SCHEMA);
