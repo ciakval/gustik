@@ -6,28 +6,66 @@ file collects things that need a human decision, physical hardware access,
 or verification this devcontainer cannot do — nothing here blocked the
 session from continuing to the next story.
 
-## Needs verification on a machine with Docker
+## CI pipeline added (`.github/workflows/ci.yml`) — needs your SSH credentials to actually deploy
 
-- `backend/Dockerfile` + `backend/docker-compose.yml` (Story 1.3): no `docker`
-  binary is available in this devcontainer, so the image build has never
-  actually been run. Please `docker compose build` (from `backend/`) once
-  before relying on it for deployment. The image should build fine —
-  standard `node:24-bookworm-slim` + `npm ci` + native module — but it is
-  genuinely unverified.
+Lint+build+test now run on every push/PR (backend: eslint + `node:test` +
+`docker build`; firmware: `pio check` + `pio test -e native` + a real
+`pio run -e esp32dev` build, see below). Firmware gets packaged as a
+90-day build artifact on every push, and as a GitHub Release on version
+tags (`v*`). Backend deploy is real (rsync + `docker compose up -d --build`
+over SSH) but currently a no-op until you configure it:
 
-## Needs verification on real ESP32 hardware / a machine with the PlatformIO ESP32 toolchain
+1. Add these **repository secrets** (Settings → Secrets and variables →
+   Actions → Secrets): `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_SSH_KEY`
+   (private key PEM, matching a public key already in that user's
+   `~/.ssh/authorized_keys` on the server), `DEPLOY_PATH` (e.g.
+   `/opt/gustik`), and optionally `DEPLOY_PORT` (defaults to 22).
+2. On the server itself, at `DEPLOY_PATH`, once by hand: create a `.env`
+   file (see `backend/.env.example`) with the real `INGEST_TOKEN` — CI's
+   rsync never touches `.env`, so it survives every future deploy.
+3. Add a **repository variable** (same page, Variables tab, not Secrets)
+   `DEPLOY_ENABLED` = `true`. This is the actual on/off switch (job-level
+   `if:` conditions can't read the secrets context at all, see cerebrum.md)
+   — flip it once 1-2 are done, and the next push to `main` deploys for
+   real.
+4. `docker-compose.yml` currently only `expose`s port 3000 (container-
+   network-internal), assuming an existing reverse-proxy (Caddy, per the
+   architecture spine) shares a Docker network with it — if your Caddy
+   setup is different (separate compose stack, host networking, etc.),
+   you'll need to adjust `docker-compose.yml` accordingly (e.g. a shared
+   `networks:` entry, or a `ports:` mapping) before the deployed
+   container is actually reachable.
 
-- All firmware stories (Epic 1: 1.1, 1.2, 1.4; Epic 2: 2.1, 2.2, 2.4, 2.5;
-  Epic 4: 4.1): `firmware/platformio.ini`'s `[env:esp32dev]` target has never
-  been built. This devcontainer has no ESP32 toolchain downloaded (that's a
-  large download gated behind actually having hardware to flash) and no
-  physical ESP32/sensors attached. What **is** verified: the pure-logic
-  core of each story (unit conversion math, yaw correction, buffer
-  ring behavior, etc.) via `pio test -e native` — see cerebrum.md's firmware
-  test strategy entry for the split between tested pure logic and untested
-  hardware-coupled code (ISR pulse counting, I2C reads, WiFi/HTTP, GPIO).
-  Please build+flash+smoke-test each firmware story on real hardware before
-  the regatta.
+`backend/Dockerfile` is now build-verified by CI on every push (previously
+completely untested — no `docker` binary in this devcontainer even now).
+
+## Firmware `[env:esp32dev]` — now build-verified, still needs real hardware
+
+`pio run -e esp32dev` was assumed hardware-gated and never actually tried
+until the CI pipeline task ran it for real — turns out it only needed
+internet access (ESP32 toolchain download), which was available the whole
+time. It builds clean now (both in this devcontainer and continuously in
+CI) — **but two things still need real hardware, which no devcontainer or
+CI runner has:**
+
+- **Flash+smoke-test on an actual ESP32** before the regatta — the build
+  succeeding proves the code compiles for the real target, not that any
+  hardware-coupled code (ISR pulse counting, I2C reads, WiFi/HTTP, GPIO,
+  LittleFS) actually works on real silicon. Grab a build artifact from
+  the CI run (or a tagged release) and flash it, or just `pio run -t
+  upload -e esp32dev` from a machine with the device attached.
+- **Flash usage is tight: 90.6% (1.19MB of 1.31MB)** at the current code
+  size, per the first real CI build. There's no OTA mechanism (station is
+  flashed by hand once), so the default partition table's two-OTA-slot
+  layout wastes space that isn't needed — a custom single-app partition
+  table would recover meaningful headroom if this becomes a real
+  constraint as more code is added. Not implemented (out of scope for
+  the CI task that surfaced it) - see cerebrum.md Decision Log.
+
+Also: the ESP32 Arduino core version ended up as 3.x, not the "stable
+2.x" the architecture spine originally called for — the registry no
+longer serves any 2.x release at all. See cerebrum.md Decision Log/buglog
+bug-017 for the full correction.
 
 ## Calibration constants — placeholder values, must be measured
 

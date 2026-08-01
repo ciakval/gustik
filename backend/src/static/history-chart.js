@@ -20,7 +20,6 @@ function render() {
 
   if (!chart) {
     const ctx = document.getElementById('history-chart');
-    // eslint-disable-next-line no-undef -- Chart is a global from the vendored UMD bundle
     chart = new Chart(ctx, {
       type: 'line',
       data: {
