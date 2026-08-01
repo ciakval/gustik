@@ -19,3 +19,10 @@ test('GET /format.js serves the static JS module used by the dashboard', async (
   const res = await app.inject({ method: 'GET', url: '/format.js' });
   assert.equal(res.statusCode, 200);
 });
+
+test('GET /vendor/chart.umd.min.js serves the vendored Chart.js bundle (no CDN dependency)', async () => {
+  const app = testApp();
+  const res = await app.inject({ method: 'GET', url: '/vendor/chart.umd.min.js' });
+  assert.equal(res.statusCode, 200);
+  assert.match(res.body, /Chart\.js/);
+});

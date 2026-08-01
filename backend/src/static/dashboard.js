@@ -1,4 +1,5 @@
 import { msToKnots, octantToCompassLabel, isStale, formatAge } from './format.js';
+import { initHistoryChart, setHistoryChartUnit } from './history-chart.js';
 
 const speedEl = document.getElementById('speed');
 const directionEl = document.getElementById('direction');
@@ -27,6 +28,7 @@ function setUnit(next) {
   unitMsBtn.setAttribute('aria-pressed', String(unit === 'ms'));
   unitKtBtn.setAttribute('aria-pressed', String(unit === 'kt'));
   render();
+  setHistoryChartUnit(unit);
 }
 
 unitMsBtn.addEventListener('click', () => setUnit('ms'));
@@ -62,3 +64,4 @@ setInterval(render, 1000);
 
 fetchLatest();
 connectLive();
+initHistoryChart();
