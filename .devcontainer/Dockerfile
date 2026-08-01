@@ -30,6 +30,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
     && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g @anthropic-ai/claude-code
+RUN npm install -g openwolf
 
 # Non-root user. UID/GID match the host user by default so bind-mounted
 # host files (~/.claude, ~/.gitconfig) stay writable/readable without chown.
@@ -37,6 +38,16 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m -s /bin/bash $USERNAME \
     && echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
+
+# Persist bash history across container rebuilds. /commandhistory is backed
+# by a named volume (see devcontainer.json), so it survives even though the
+# rest of the home directory is rebuilt from scratch each time. history -a
+# flushes after every command instead of only on a clean shell exit.
+RUN mkdir -p /commandhistory \
+    && chown $USER_UID:$USER_GID /commandhistory \
+    && echo "export HISTFILE=/commandhistory/.bash_history" >> /home/$USERNAME/.bashrc \
+    && echo "export HISTSIZE=10000 HISTFILESIZE=20000" >> /home/$USERNAME/.bashrc \
+    && echo 'PROMPT_COMMAND="history -a; ${PROMPT_COMMAND:-}"' >> /home/$USERNAME/.bashrc
 
 # Trust GitHub's host key up front so SSH-based git works non-interactively
 RUN mkdir -p /etc/ssh && ssh-keyscan -H github.com >> /etc/ssh/ssh_known_hosts 2>/dev/null
