@@ -7,6 +7,7 @@ ARG USER_GID=1000
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         ca-certificates \
+        chromium \
         curl \
         gnupg \
         git \
@@ -16,6 +17,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         sudo \
         vim \
     && rm -rf /var/lib/apt/lists/*
+
+# For puppeteer-core-driven browser tests (backend/test/*.browser.test.js) -
+# puppeteer-core itself ships no browser binary, this provides one.
+ENV CHROMIUM_PATH=/usr/bin/chromium
 
 # GitHub CLI
 RUN curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg -o /usr/share/keyrings/githubcli-archive-keyring.gpg \
