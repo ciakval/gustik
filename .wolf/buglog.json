@@ -137,6 +137,24 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T18:35:00.000Z"
+    },
+    {
+      "id": "bug-008",
+      "timestamp": "2026-08-01T18:55:00.000Z",
+      "error_message": "undefined reference to pulsesToWindSpeedMs(...) at link time under `pio test -e native`, despite src/correct/wind_speed.cpp existing and platformio.ini's build_src_filter listing it",
+      "file": "firmware/platformio.ini",
+      "root_cause": "PlatformIO's unit test runner does NOT compile src/ into the test build by default, regardless of build_src_filter - that filter only controls the app build. Needed the separate `test_build_src = yes` option to pull src/ (filtered) into the test binary too. A second, unrelated issue stacked on top: PlatformIO's bundled Unity is built WITHOUT double-precision assertion support by default (`UNITY_INCLUDE_DOUBLE` undefined), so TEST_ASSERT_EQUAL_DOUBLE silently reports 'Unity Double Precision Disabled' failures even once linking succeeded.",
+      "fix": "In the [env:native] section: add `test_build_src = yes`, and add `build_flags = -DUNITY_INCLUDE_DOUBLE`. Both are required for any native-test env testing double-returning pure logic (wind speed, yaw correction, etc.) - carry them into every firmware story's native env.",
+      "tags": [
+        "platformio",
+        "unity",
+        "native-test-env",
+        "firmware",
+        "story-1.1"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T18:55:00.000Z"
     }
   ]
 }
