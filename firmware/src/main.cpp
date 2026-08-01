@@ -1,9 +1,14 @@
 #include <Arduino.h>
+#include <WiFi.h>
 #include "sense/anemometer.h"
 #include "sense/vane.h"
 #include "sense/magnetometer.h"
 #include "correct/wind_speed.h"
 #include "correct/wind_direction.h"
+#include "transmit/reading.h"
+#include "transmit/connection_monitor.h"
+#include "transmit/hw/wifi_client.h"
+#include "transmit/hw/clock.h"
 
 namespace {
 // Sampling interval per FR-1 (~2-5s) - exact value pending flash/buffer
@@ -20,21 +25,34 @@ constexpr AnemometerCalibration kAnemometerCalibration{.metersPerSecondPerHz = 1
 // magnetometer/boat mount - see correct/wind_direction.h and TODO.md.
 constexpr MagnetometerCalibration kMagnetometerCalibration{.hardIronOffsetX = 0.0, .hardIronOffsetY = 0.0};
 
+// TODO(config): static values for this story only - Story 4.1 replaces
+// this with the on-flash config file (1-2 networks + token, AD-10), never
+// compiled into firmware source in the real deployment.
+constexpr const char *kWifiSsid = "CHANGE_ME_SSID";
+constexpr const char *kWifiPassword = "CHANGE_ME_PASSWORD";
+constexpr const char *kBackendBaseUrl = "http://CHANGE_ME_BACKEND_HOST";
+constexpr const char *kIngestToken = "CHANGE_ME_TOKEN";
+
 Anemometer anemometer;
 Vane vane;
 Magnetometer magnetometer;
+WifiTransmitClient transmitClient;
+StationClock clock_;
+ConnectionMonitor connectionMonitor;
 unsigned long lastSampleAt = 0;
+unsigned long nextClientSeq = 0;
 
-// Latest computed readings. Wind speed in m/s (FR-1); wind direction as a
-// north-relative octant 0-7 (FR-2, AD-5 - never degrees).
-double windSpeedMs = 0.0;
-int windDirOctant = 0;
+String makeClientId() {
+    return WiFi.macAddress() + "-" + String(nextClientSeq++);
+}
 } // namespace
 
 void setup() {
     anemometer.begin(kAnemometerPin);
     vane.begin(kVanePin);
     magnetometer.begin();
+    transmitClient.begin(kWifiSsid, kWifiPassword, kBackendBaseUrl, kIngestToken);
+    clock_.begin();
     lastSampleAt = millis();
 }
 
@@ -47,11 +65,31 @@ void loop() {
     lastSampleAt = now;
 
     unsigned long pulses = anemometer.readAndResetPulseCount();
-    windSpeedMs = pulsesToWindSpeedMs(pulses, intervalSeconds, kAnemometerCalibration);
+    double windSpeedMs = pulsesToWindSpeedMs(pulses, intervalSeconds, kAnemometerCalibration);
 
     int rawVaneOctant = vane.readRawOctant();
     double magX, magY;
     magnetometer.readRawXY(magX, magY);
     double yawDegrees = magnetometerHeadingDegrees(magX, magY, kMagnetometerCalibration);
-    windDirOctant = correctWindDirectionOctant(rawVaneOctant, yawDegrees);
+    int windDirOctant = correctWindDirectionOctant(rawVaneOctant, yawDegrees);
+
+    Reading reading;
+    reading.clientId = makeClientId().c_str();
+    reading.capturedAt = clock_.nowIso8601().c_str();
+    reading.clockSynced = clock_.isSynced();
+    reading.windSpeedMs = windSpeedMs;
+    reading.windDirOctant = windDirOctant;
+    reading.rssiValid = false; // wired up in Story 2.5
+    reading.rssiDbm = 0;
+
+    // AC2: a failed send never blocks/crashes/restarts - it just leaves
+    // this cycle's reading unsent and the loop continues on schedule.
+    // Local buffering (so the reading isn't silently dropped) is Story 2.1.
+    bool sent = transmitClient.send(&reading, 1);
+    if (sent) {
+        connectionMonitor.recordSendSuccess();
+    } else {
+        connectionMonitor.recordSendFailure();
+    }
+    clock_.resyncIfNeeded();
 }
