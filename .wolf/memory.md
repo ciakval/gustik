@@ -250,3 +250,17 @@
 | 19:13 | Edited .worktrees/story-3.3-resync/backend/src/static/history-chart.js | modified fetchHistory() | ~240 |
 | 19:13 | Edited .worktrees/story-3.3-resync/backend/src/static/dashboard.js | inline fix | ~33 |
 | 19:13 | Edited .worktrees/story-3.3-resync/backend/src/static/dashboard.js | modified if() | ~104 |
+| 19:16 | Created .worktrees/story-4.1-wifi-config/firmware/test/test_station_config/test_station_config.cpp | — | ~1018 |
+| 19:16 | Edited .worktrees/story-4.1-wifi-config/firmware/platformio.ini | inline fix | ~19 |
+| 19:16 | Created .worktrees/story-4.1-wifi-config/firmware/src/config/station_config.h | — | ~414 |
+| 19:16 | Created .worktrees/story-4.1-wifi-config/firmware/src/config/station_config.cpp | — | ~704 |
+| 19:17 | Created .worktrees/story-4.1-wifi-config/firmware/data/config.example.txt | — | ~197 |
+| 19:17 | Edited .worktrees/story-4.1-wifi-config/firmware/.gitignore | 3→7 lines | ~52 |
+| 19:17 | Created .worktrees/story-4.1-wifi-config/firmware/src/config/hw/config_loader.h | — | ~122 |
+| 19:17 | Created .worktrees/story-4.1-wifi-config/firmware/src/config/hw/config_loader.cpp | — | ~110 |
+| 19:17 | Created .worktrees/story-4.1-wifi-config/firmware/src/transmit/hw/wifi_client.h | — | ~367 |
+| 19:18 | Created .worktrees/story-4.1-wifi-config/firmware/src/transmit/hw/wifi_client.cpp | — | ~678 |
+| 19:18 | Edited .worktrees/story-4.1-wifi-config/firmware/src/transmit/hw/wifi_client.cpp | 4→3 lines | ~17 |
+| 19:18 | Edited .worktrees/story-4.1-wifi-config/firmware/src/main.cpp | 3→5 lines | ~48 |
+| 19:18 | Edited .worktrees/story-4.1-wifi-config/firmware/src/main.cpp | removed 9 lines | ~6 |
+| 19:18 | Edited .worktrees/story-4.1-wifi-config/firmware/src/main.cpp | modified 1() | ~112 |

@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:13:18.039Z
-> Files: 367 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:18:40.189Z
+> Files: 378 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -952,6 +952,38 @@
 - `live-socket.test.js` — withTimeout: withLiveApp (~904 tok)
   - fn `withTimeout` L7-13 (~53 tok)
   - fn `withLiveApp` L14-94 (~789 tok)
+
+## .worktrees/story-4.1-wifi-config/firmware/
+
+- `.gitignore` — Git ignore rules (~52 tok)
+- `platformio.ini` (~308 tok)
+
+## .worktrees/story-4.1-wifi-config/firmware/data/
+
+- `config.example.txt` — Gustik station config (Story 4.1, AD-10). (~185 tok)
+
+## .worktrees/story-4.1-wifi-config/firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~1406 tok)
+
+## .worktrees/story-4.1-wifi-config/firmware/src/config/
+
+- `station_config.cpp` — include "config/station_config.h" (~704 tok)
+- `station_config.h` — pragma once (~414 tok)
+
+## .worktrees/story-4.1-wifi-config/firmware/src/config/hw/
+
+- `config_loader.cpp` — include "config/hw/config_loader.h" (~110 tok)
+- `config_loader.h` — pragma once (~122 tok)
+
+## .worktrees/story-4.1-wifi-config/firmware/src/transmit/hw/
+
+- `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~665 tok)
+- `wifi_client.h` — pragma once (~367 tok)
+
+## .worktrees/story-4.1-wifi-config/firmware/test/test_station_config/
+
+- `test_station_config.cpp` — include <unity.h> (~1018 tok)
 
 ## _bmad-output/planning-artifacts/
 

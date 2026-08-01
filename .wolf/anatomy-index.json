@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T19:13:18.039Z",
-    "fileCount": 367,
+    "lastScanned": "2026-08-01T19:18:40.189Z",
+    "fileCount": 378,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "23e304ab9c0d2d1aee558af89750c0a437908f412b9d1bd905b33e55598731c4",
-    "storeUpdatedAt": "2026-08-01T19:13:18.046Z"
+    "renderedHash": "0334140d85abc82410bdba7d8f44491cbfbd1dc2f1d8cc7daacba419cf93d9eb",
+    "storeUpdatedAt": "2026-08-01T19:18:40.196Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -4833,6 +4833,105 @@
           "tokens": 17
         }
       ]
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/test/test_station_config/test_station_config.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 1018,
+      "hash": "b469f5fd7346b822",
+      "size": 3815,
+      "mtimeMs": 1785611778273.2925,
+      "updatedAt": "2026-08-01T19:16:18.320Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/platformio.ini": {
+      "description": "",
+      "tokens": 308,
+      "hash": "4d5a749ad3844426",
+      "size": 1154,
+      "mtimeMs": 1785611787111.7163,
+      "updatedAt": "2026-08-01T19:16:27.152Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/src/config/station_config.h": {
+      "description": "pragma once",
+      "tokens": 414,
+      "hash": "76034748a491c78a",
+      "size": 1552,
+      "mtimeMs": 1785611804954.8752,
+      "updatedAt": "2026-08-01T19:16:45.006Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/src/config/station_config.cpp": {
+      "description": "include \"config/station_config.h\"",
+      "tokens": 704,
+      "hash": "f72bf0e0c218f4c4",
+      "size": 2639,
+      "mtimeMs": 1785611819735.2847,
+      "updatedAt": "2026-08-01T19:16:59.796Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/data/config.example.txt": {
+      "description": "Gustik station config (Story 4.1, AD-10).",
+      "tokens": 185,
+      "hash": "50f547e07e407ca1",
+      "size": 738,
+      "mtimeMs": 1785611840518.701,
+      "updatedAt": "2026-08-01T19:17:20.570Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 52,
+      "hash": "83a9e475ca76c4bd",
+      "size": 194,
+      "mtimeMs": 1785611848875.9602,
+      "updatedAt": "2026-08-01T19:17:28.922Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/src/config/hw/config_loader.h": {
+      "description": "pragma once",
+      "tokens": 122,
+      "hash": "c142557fb36de5c6",
+      "size": 454,
+      "mtimeMs": 1785611860816.412,
+      "updatedAt": "2026-08-01T19:17:40.868Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/src/config/hw/config_loader.cpp": {
+      "description": "include \"config/hw/config_loader.h\"",
+      "tokens": 110,
+      "hash": "2f294a0ff4aa394d",
+      "size": 409,
+      "mtimeMs": 1785611865137.477,
+      "updatedAt": "2026-08-01T19:17:45.194Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/src/transmit/hw/wifi_client.h": {
+      "description": "pragma once",
+      "tokens": 367,
+      "hash": "f24ec6c8d96e1f19",
+      "size": 1375,
+      "mtimeMs": 1785611878116.8914,
+      "updatedAt": "2026-08-01T19:17:58.170Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/src/transmit/hw/wifi_client.cpp": {
+      "description": "include \"transmit/hw/wifi_client.h\"",
+      "tokens": 665,
+      "hash": "31941afb246f137b",
+      "size": 2493,
+      "mtimeMs": 1785611898201.4446,
+      "updatedAt": "2026-08-01T19:18:18.252Z",
+      "source": "hook"
+    },
+    ".worktrees/story-4.1-wifi-config/firmware/src/main.cpp": {
+      "description": "include <Arduino.h>",
+      "tokens": 1406,
+      "hash": "c09652432a89fe74",
+      "size": 5271,
+      "mtimeMs": 1785611920151.323,
+      "updatedAt": "2026-08-01T19:18:40.189Z",
+      "source": "hook"
     }
   }
 }
