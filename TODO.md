@@ -39,6 +39,24 @@ session from continuing to the next story.
   principle — will land as a named, configurable constant, not computed yet
   since it needs the real installed magnetometer on the actual boat mount.
 
+## Product/security decision needed: mobile hotspot credentials in the manual (Story 4.2)
+
+- Story 4.2's AC2 says the manual should state the exact SSID/password of
+  the backup mobile hotspot so a non-technical rozhodčí can type it into
+  their phone. But `backend/src/static/manual.html` is served with **no
+  auth** (matches the dashboard's own public, no-login design, FR-9) —
+  publishing the hotspot's real password there means anyone with the URL
+  can read it, which defeats the point of it being a password.
+  `manual.html` was written with a placeholder ("see the label on the
+  Station") instead of a real credential, and flags this tension inline.
+  **Needs a decision from Mlok**: (a) accept it as-is and put the real
+  SSID/password on a physical label on the Station enclosure instead
+  (Story 5.2's mechanical work), (b) accept the weak "URL isn't
+  advertised" security-through-obscurity and put the real password in the
+  manual anyway, or (c) something else. Neither the PRD nor architecture
+  spine resolved this explicitly — NFR-8 only gates the write endpoint,
+  read endpoints (dashboard, and now the manual) are consciously public.
+
 ## Open questions carried from PRD/architecture (unchanged, still open)
 
 See `.wolf/STATUS.md` "Open decisions carried from PRD/architecture" for the

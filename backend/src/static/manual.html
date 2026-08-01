@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gustik — návod k obsluze</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #0b1220;
+    --fg: #e8edf5;
+    --muted: #8a97ab;
+    --accent: #4fb0ff;
+    --card: #121b2e;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    padding: 1.5rem 1rem 3rem;
+    max-width: 640px;
+    margin-inline: auto;
+    line-height: 1.5;
+  }
+  h1 { font-size: 1.3rem; }
+  h2 {
+    font-size: 1rem;
+    color: var(--accent);
+    margin-top: 2rem;
+    border-bottom: 1px solid var(--muted);
+    padding-bottom: 0.3rem;
+  }
+  .card {
+    background: var(--card);
+    border-radius: 0.75rem;
+    padding: 1rem 1.25rem;
+    margin: 0.75rem 0;
+  }
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    color: var(--accent);
+  }
+  code {
+    background: var(--card);
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+  }
+</style>
+</head>
+<body>
+  <h1>Gustik — návod k obsluze</h1>
+  <p>Tento návod je určen rozhodčímu bez technického zázemí. Pokrývá zapnutí Stanice, jak poznat, že funguje, a co dělat, když ne.</p>
+
+  <h2>1. Zapnutí</h2>
+  <div class="card">
+    <p>Připoj Stanici k plně nabité USB-C powerbance. Stanice se sama zapne a začne se připojovat k síti — nic dalšího není potřeba (žádný notebook, žádné zadávání hesel).</p>
+  </div>
+
+  <h2>2. Wi-Fi</h2>
+  <div class="card">
+    <p>Stanice se sama pokusí připojit k předem nastavené síti (síť na břehu, případně záložní mobilní hotspot). Žádný fyzický přepínač mezi sítěmi v současné verzi neexistuje — přepnutí je automatické.</p>
+    <p><strong>Pokud se používá záložní mobilní hotspot:</strong> SSID a heslo hotspotu, který si máš nastavit na svém telefonu, najdeš na štítku na Stanici (ne v tomto veřejném návodu — tahle stránka je bez přihlašování dostupná komukoliv, proto se sem hesla nepíší). Pokud štítek chybí, ozvi se Mlokovi.</p>
+  </div>
+
+  <h2>3. Jak poznat, že Stanice funguje (LED)</h2>
+  <div class="card">
+    <p><strong>LED zhasnutá</strong> = Stanice je připojená a odesílá data. Vše v pořádku.</p>
+    <p><strong>LED svítí</strong> = Stanice se nemůže připojit/odeslat data (do 10 s od zjištění výpadku). Stanice se sama snaží znovu připojit — není potřeba nic mačkat ani restartovat. Pokud LED svítí dlouho (několik minut), zkontroluj dashboard (bod 4) a pokud data nepřibývají, přejdi na bod 5.</p>
+  </div>
+
+  <h2>4. Ověření čerstvých dat na dashboardu</h2>
+  <div class="card">
+    <p>Otevři dashboard (odkaz dole na této stránce) na telefonu nebo počítači. Pod aktuální rychlostí a směrem je vidět, jak stará jsou data ("naposledy před X s/min").</p>
+    <p>Pokud je údaj starší než 2 minuty, zobrazí se červeně — to znamená, že aktuální číslo už nemusí odpovídat realitě, i když se pořád zobrazuje.</p>
+  </div>
+
+  <h2>5. Co dělat, když něco nefunguje</h2>
+  <div class="card">
+    <p>1. Zkontroluj, že powerbanka je nabitá a kabel je pořádně zapojený.</p>
+    <p>2. Počkej 1-2 minuty — Stanice se sama pokouší znovu připojit, výpadek signálu na vodě není neobvyklý.</p>
+    <p>3. Pokud LED svítí déle než 5 minut a dashboard neukazuje čerstvá data, zapiš si přibližný čas selhání (pro pozdější vyhodnocení) a pokračuj v rozhodování podle posledních známých podmínek a vlastního úsudku — Stanice je pomocný nástroj, ne jediný zdroj pravdy o bezpečnosti.</p>
+    <p>4. Kontakt na Mloka pro řešení mimo den akce: <em>(doplní Mlok před nasazením)</em>.</p>
+  </div>
+
+  <p><a class="back-link" href="/">&larr; Zpět na dashboard</a></p>
+</body>
+</html>
