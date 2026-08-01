@@ -25,6 +25,14 @@
   // ~/.bash_history, so plain shell history also survives rebuilds without
   // mixing into the host's own history file. See Dockerfile for the
   // .bashrc wiring.
+  //
+  // HOST_HOME (below) is passed through so post-create.sh can symlink the
+  // host's home path (e.g. /home/ciakval) to the container's /home/dev.
+  // Claude Code's plugin manager writes absolute installLocation paths into
+  // ~/.claude/plugins/*.json using whichever home path was live when it
+  // wrote them (host or container) — since that file is bind-mounted and
+  // shared between both, without this alias, paths written from one side
+  // 404 when read from the other.
   "mounts": [
     "source=${localEnv:HOME}/.claude.json,target=/home/dev/.claude.json,type=bind",
     "source=${localEnv:HOME}/.claude,target=/home/dev/.claude,type=bind",
@@ -33,7 +41,8 @@
   ],
   "remoteEnv": {
     "GH_TOKEN": "${localEnv:GH_TOKEN}",
-    "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}"
+    "GITHUB_TOKEN": "${localEnv:GITHUB_TOKEN}",
+    "HOST_HOME": "${localEnv:HOME}"
   },
 
   "postCreateCommand": "bash .devcontainer/post-create.sh > /home/dev/post-create.log 2>&1"
