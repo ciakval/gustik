@@ -1,0 +1,15 @@
+services:
+  backend:
+    build: .
+    restart: unless-stopped
+    environment:
+      - PORT=3000
+      - DB_PATH=/app/data/gustik.sqlite
+      - INGEST_TOKEN=${INGEST_TOKEN}
+    volumes:
+      - gustik-data:/app/data
+    expose:
+      - "3000"
+
+volumes:
+  gustik-data:
