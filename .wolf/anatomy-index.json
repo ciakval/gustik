@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T19:21:36.781Z",
+    "lastScanned": "2026-08-01T19:23:36.155Z",
     "fileCount": 382,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "21d7004947004d41a9390071f6f9541e925e8b36ddd2c5d0c2c30759d3267e80",
-    "storeUpdatedAt": "2026-08-01T19:21:36.788Z"
+    "renderedHash": "b3db6f23576e2d28b1b3f9071ff31632b44eae714d18046c82ec1878d86f59a7",
+    "storeUpdatedAt": "2026-08-01T19:23:36.161Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3598,11 +3598,11 @@
     },
     "CLAUDE.md": {
       "description": "CLAUDE.md",
-      "tokens": 1512,
-      "hash": "1884311e64fc5f38",
-      "size": 6091,
-      "mtimeMs": 1785609628606.2673,
-      "updatedAt": "2026-08-01T18:40:28.647Z",
+      "tokens": 1624,
+      "hash": "2187264d937392d2",
+      "size": 6544,
+      "mtimeMs": 1785612216106.1892,
+      "updatedAt": "2026-08-01T19:23:36.155Z",
       "source": "hook"
     },
     "_bmad-output/planning-artifacts/epics.md": {

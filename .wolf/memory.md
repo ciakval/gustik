@@ -269,3 +269,4 @@
 | 19:20 | Edited .worktrees/story-4.2-manual/backend/src/static/index.html | 5→6 lines | ~69 |
 | 19:21 | Edited TODO.md | expanded (+18 lines) | ~328 |
 | 19:21 | Edited .worktrees/story-4.2-manual/TODO.md | expanded (+18 lines) | ~328 |
+| 19:23 | Edited CLAUDE.md | yet() → dashboard() | ~560 |

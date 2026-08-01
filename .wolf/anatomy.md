@@ -1,12 +1,12 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:21:36.781Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:23:36.155Z
 > Files: 382 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
-- `CLAUDE.md` — CLAUDE.md (~1512 tok)
+- `CLAUDE.md` — CLAUDE.md (~1624 tok)
 - `TODO.md` — TODO — items flagged for Mlok's review (~1046 tok)
 
 ## .claude/
