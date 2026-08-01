@@ -1,0 +1,289 @@
+name: CI
+
+on:
+  push:
+    branches: [main, dev]
+    tags: ['v*']
+  pull_request:
+    branches: [main, dev]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: '24'
+  PYTHON_VERSION: '3.12'
+
+jobs:
+  # ---------------------------------------------------------------------
+  # Backend (Node.js/Fastify) — lint, test, build (Dockerfile) verification
+  # ---------------------------------------------------------------------
+
+  lint-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+
+  test-backend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+      - run: npm ci
+      - run: npm test
+
+  # Verifies backend/Dockerfile actually builds - this has no coverage
+  # anywhere else (the devcontainer this project was scaffolded in has no
+  # docker binary). Build-only, no push - deploy-backend rebuilds on the
+  # server itself over SSH, see that job's comments for why.
+  docker-build-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t gustik-backend:ci ./backend
+
+  # ---------------------------------------------------------------------
+  # Firmware (PlatformIO/ESP32) — static analysis, native unit tests,
+  # real esp32dev build (this devcontainer has never downloaded the ESP32
+  # toolchain; GitHub's runners have full internet access and no hardware
+  # gating, so this is the first real build-verification of [env:esp32dev]).
+  # ---------------------------------------------------------------------
+
+  lint-firmware:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: firmware
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - run: pip install platformio
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: platformio-native-${{ hashFiles('firmware/platformio.ini') }}
+          restore-keys: platformio-native-
+      # cppcheck via the native env (no ESP32 toolchain needed for static
+      # analysis). Only fails on HIGH-severity defects - a first pass on
+      # this codebase found 26 LOW-severity false-positive "unused
+      # function" notes (cppcheck can't see cross-file usage without
+      # whole-program mode) and zero HIGH/MEDIUM, so HIGH is a safe,
+      # meaningful gate without pre-existing noise breaking every build.
+      - run: pio check -e native --skip-packages --fail-on-defect=high
+
+  test-firmware:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: firmware
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - run: pip install platformio
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: platformio-native-${{ hashFiles('firmware/platformio.ini') }}
+          restore-keys: platformio-native-
+      - run: pio test -e native
+
+  build-firmware-esp32:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: firmware
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - run: pip install platformio
+      - uses: actions/cache@v4
+        with:
+          path: ~/.platformio
+          key: platformio-esp32dev-${{ hashFiles('firmware/platformio.ini') }}
+          restore-keys: platformio-esp32dev-
+      - run: pio run -e esp32dev
+      - uses: actions/upload-artifact@v4
+        with:
+          name: gustik-firmware-esp32dev-${{ github.sha }}
+          path: |
+            firmware/.pio/build/esp32dev/firmware.bin
+            firmware/.pio/build/esp32dev/firmware.elf
+            firmware/.pio/build/esp32dev/bootloader.bin
+            firmware/.pio/build/esp32dev/partitions.bin
+          if-no-files-found: error
+          retention-days: 90
+
+  # ---------------------------------------------------------------------
+  # Gate job - single required status check for branch protection,
+  # regardless of how many jobs above this line get added/renamed later.
+  # ---------------------------------------------------------------------
+
+  ci-success:
+    if: always()
+    needs:
+      - lint-backend
+      - test-backend
+      - docker-build-backend
+      - lint-firmware
+      - test-firmware
+      - build-firmware-esp32
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fail if any required job failed or was cancelled
+        run: |
+          if [[ "${{ contains(needs.*.result, 'failure') }}" == "true" ]] || \
+             [[ "${{ contains(needs.*.result, 'cancelled') }}" == "true" ]]; then
+            echo "One or more required CI jobs did not succeed:"
+            echo '${{ toJSON(needs) }}'
+            exit 1
+          fi
+
+  # ---------------------------------------------------------------------
+  # Deploy backend — real deployment over SSH, main branch only.
+  #
+  # Gated on a repository VARIABLE (Settings > Secrets and variables >
+  # Actions > Variables), not a secret - job-level `if:` conditions can't
+  # read the secrets context at all (actionlint catches this), so the
+  # secrets themselves can't double as their own on/off switch. Flip the
+  # switch once everything below is in place:
+  #
+  #   DEPLOY_ENABLED (Variable) = true   - explicit opt-in, keeps this job
+  #                                        a no-op (not a failure) until
+  #                                        deployment is actually ready
+  #
+  # Requires these repository secrets (placeholders until provided):
+  #   DEPLOY_HOST      - server hostname/IP
+  #   DEPLOY_USER      - SSH user
+  #   DEPLOY_SSH_KEY   - private key (PEM), matching a public key already
+  #                      in that user's ~/.ssh/authorized_keys on the server
+  #   DEPLOY_PATH      - absolute path on the server to sync backend/ into
+  #                      and run `docker compose` from (e.g. /opt/gustik)
+  #   DEPLOY_PORT      - optional, defaults to 22
+  #
+  # Strategy: rsync the backend/ source to the server, then build+run there
+  # with `docker compose up -d --build`. Chosen over a registry-push flow
+  # (build in CI, push to GHCR, pull on server) because it needs nothing
+  # but SSH access - no registry auth, no image transfer bandwidth concern
+  # for a single small self-hosted instance. The server's own docker-
+  # compose.yml/.env (holding the real INGEST_TOKEN) are never touched by
+  # rsync (--exclude=.env) and must be created once by hand on first setup
+  # - see backend/docker-compose.yml and backend/.env.example.
+  # ---------------------------------------------------------------------
+
+  deploy-backend:
+    needs: [lint-backend, test-backend, docker-build-backend]
+    if: >-
+      github.event_name == 'push' &&
+      github.ref == 'refs/heads/main' &&
+      vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure SSH
+        env:
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Rsync backend source to server
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          rsync -az --delete \
+            --exclude='.env' \
+            --exclude='node_modules' \
+            --exclude='data' \
+            -e "ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT" \
+            backend/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+
+      - name: Build and restart on the server
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" \
+            "cd '$DEPLOY_PATH' && docker compose up -d --build && docker image prune -f"
+
+      - name: Health check
+        env:
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" '
+            for i in $(seq 1 10); do
+              if curl -fsS http://localhost:3000/health > /dev/null; then
+                echo "Health check passed"
+                exit 0
+              fi
+              sleep 3
+            done
+            echo "Health check failed after deploy"
+            exit 1
+          '
+
+  # ---------------------------------------------------------------------
+  # Package firmware as a release artifact (not a real device deploy -
+  # there is no OTA mechanism, a station is flashed by hand once). Runs
+  # on version tags (v1.0.0 etc); every push to main/dev already gets a
+  # 90-day workflow artifact from build-firmware-esp32 above regardless.
+  # ---------------------------------------------------------------------
+
+  release-firmware:
+    needs: build-firmware-esp32
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: gustik-firmware-esp32dev-${{ github.sha }}
+          path: dist
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" dist/* \
+            --repo "${{ github.repository }}" \
+            --title "Firmware ${{ github.ref_name }}" \
+            --notes "Automated esp32dev build from ${{ github.sha }}. Flash with \`pio run -t upload -e esp32dev\`, or manually with esptool using firmware.bin/bootloader.bin/partitions.bin."
