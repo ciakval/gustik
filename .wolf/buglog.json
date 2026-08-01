@@ -254,6 +254,42 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T18:56:11.503Z"
+    },
+    {
+      "id": "bug-015",
+      "timestamp": "2026-08-01T19:12:25.349Z",
+      "error_message": "Significant refactor of ",
+      "file": ".worktrees/story-3.3-resync/backend/test/live-socket.test.js",
+      "root_cause": "3 lines replaced/restructured",
+      "fix": "Rewrote 8→5 lines (3 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T19:12:25.349Z"
+    },
+    {
+      "id": "bug-016",
+      "timestamp": "2026-08-01T19:20:00.000Z",
+      "error_message": "history-chart.js (Story 3.2) opened its own dedicated WebSocket connection with no reconnect logic - if that specific connection ever dropped (network hiccup, server restart, mobile browser backgrounding), the history chart would silently stop receiving history-changed events forever, defeating Story 3.3 AC2 (\"dashboard always resyncs on WS reconnect\") before that story was even implemented",
+      "file": "backend/src/static/history-chart.js",
+      "root_cause": "Story 1.6's dashboard.js already had correct reconnect-with-retry logic for its own live-reading WebSocket (ws.addEventListener('close', () => setTimeout(connectLive, 2000))). Story 3.2 added a second, independent WebSocket connection in history-chart.js for the history-changed event, but copied only the 'message'+'open' handlers, not the 'close'-triggers-reconnect handler - an oversight, not a deliberate choice. Caught while implementing Story 3.3 and specifically reasoning through AC2's reconnect requirement, before any real network drop ever exposed it at runtime.",
+      "fix": "Consolidated to one shared WS connection module (src/static/live-socket.js, connectLiveSocket()) with a single reconnect lifecycle used by both dashboard.js and history-chart.js, instead of two independent ad-hoc connections. Verified the reconnect path specifically with a real dropped connection (test force-closes the server-side socket via `ws`, asserts the client's onOpen fires again after reconnecting) - not just a static code read-through.",
+      "tags": [
+        "frontend",
+        "websocket",
+        "reconnect",
+        "dashboard",
+        "story-3.2",
+        "story-3.3",
+        "caught-before-runtime"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-01T19:20:00.000Z"
     }
   ]
 }

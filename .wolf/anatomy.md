@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:06:17.964Z
-> Files: 363 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T19:13:18.039Z
+> Files: 367 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -639,7 +639,7 @@
 ## .devcontainer/
 
 - `devcontainer.json` (~639 tok)
-- `Dockerfile` — Docker container definition (~687 tok)
+- `Dockerfile` — Docker container definition (~740 tok)
 - `post-create.sh` (~342 tok)
 
 ## .worktrees/story-1.1-wind-speed/firmware/
@@ -928,6 +928,30 @@
 
 - `dashboard-static.test.js` — Declares testApp (~297 tok)
 - `history-chart-data.test.js` — Declares READINGS (~399 tok)
+
+## .worktrees/story-3.3-resync/backend/src/static/
+
+- `dashboard.js` — speedEl: render, setUnit, fetchLatest (~713 tok)
+  - fn `render` L14-26 (~141 tok)
+  - fn `setUnit` L27-37 (~95 tok)
+  - fn `fetchLatest` L38-74 (~318 tok)
+- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis (~979 tok)
+  - fn `speedAxisLabel` L9-12 (~28 tok)
+  - fn `formatTimeTick` L13-16 (~29 tok)
+  - fn `render` L17-79 (~568 tok)
+  - fn `setHistoryChartReadings` L80-84 (~28 tok)
+  - fn `setHistoryChartUnit` L85-89 (~23 tok)
+  - fn `fetchHistory` L90-96 (~55 tok)
+  - fn `initHistoryChart` L97-103 (~74 tok)
+  - fn `handleLiveMessage` L104-112 (~95 tok)
+  - fn `resyncHistoryChart` L113-116 (~17 tok)
+- `live-socket.js` — Single shared WS connection lifecycle for the dashboard - both the live (~492 tok)
+
+## .worktrees/story-3.3-resync/backend/test/
+
+- `live-socket.test.js` — withTimeout: withLiveApp (~904 tok)
+  - fn `withTimeout` L7-13 (~53 tok)
+  - fn `withLiveApp` L14-94 (~789 tok)
 
 ## _bmad-output/planning-artifacts/
 

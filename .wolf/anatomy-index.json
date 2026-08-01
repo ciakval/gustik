@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T19:06:17.964Z",
-    "fileCount": 363,
+    "lastScanned": "2026-08-01T19:13:18.039Z",
+    "fileCount": 367,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "365728667de93d857d0807666854382afd96105e502789fb16c6794d03cd2e1b",
-    "storeUpdatedAt": "2026-08-01T19:06:17.972Z"
+    "renderedHash": "23e304ab9c0d2d1aee558af89750c0a437908f412b9d1bd905b33e55598731c4",
+    "storeUpdatedAt": "2026-08-01T19:13:18.046Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3571,11 +3571,11 @@
     },
     ".devcontainer/Dockerfile": {
       "description": "Docker container definition",
-      "tokens": 687,
-      "hash": "85f5c66a6af1b3c8",
-      "size": 2573,
-      "mtimeMs": 1785608443874.668,
-      "updatedAt": "2026-08-01T18:20:43.927Z",
+      "tokens": 740,
+      "hash": "a1e8ff794aa88180",
+      "size": 2774,
+      "mtimeMs": 1785611402445.5442,
+      "updatedAt": "2026-08-01T19:10:02.495Z",
       "source": "hook"
     },
     ".devcontainer/post-create.sh": {
@@ -4693,6 +4693,146 @@
       "mtimeMs": 1785611177913.3079,
       "updatedAt": "2026-08-01T19:06:17.964Z",
       "source": "hook"
+    },
+    ".worktrees/story-3.3-resync/backend/src/static/live-socket.js": {
+      "description": "Single shared WS connection lifecycle for the dashboard - both the live",
+      "tokens": 492,
+      "hash": "fc645327c6972347",
+      "size": 1719,
+      "mtimeMs": 1785611524877.9631,
+      "updatedAt": "2026-08-01T19:12:04.933Z",
+      "source": "hook"
+    },
+    ".worktrees/story-3.3-resync/backend/test/live-socket.test.js": {
+      "description": "withTimeout: withLiveApp",
+      "tokens": 904,
+      "hash": "150bd225de9a15a5",
+      "size": 3162,
+      "mtimeMs": 1785611545276.8154,
+      "updatedAt": "2026-08-01T19:12:25.337Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "withTimeout",
+          "kind": "fn",
+          "startLine": 7,
+          "endLine": 13,
+          "tokens": 53
+        },
+        {
+          "name": "withLiveApp",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 94,
+          "tokens": 789
+        }
+      ]
+    },
+    ".worktrees/story-3.3-resync/backend/src/static/dashboard.js": {
+      "description": "speedEl: render, setUnit, fetchLatest",
+      "tokens": 713,
+      "hash": "d42c273411dbcab2",
+      "size": 2494,
+      "mtimeMs": 1785611597992.0046,
+      "updatedAt": "2026-08-01T19:13:18.039Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 14,
+          "endLine": 26,
+          "tokens": 141
+        },
+        {
+          "name": "setUnit",
+          "kind": "fn",
+          "startLine": 27,
+          "endLine": 37,
+          "tokens": 95
+        },
+        {
+          "name": "fetchLatest",
+          "kind": "fn",
+          "startLine": 38,
+          "endLine": 74,
+          "tokens": 318
+        }
+      ]
+    },
+    ".worktrees/story-3.3-resync/backend/src/static/history-chart.js": {
+      "description": "Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis",
+      "tokens": 979,
+      "hash": "fc460ebc452d4b67",
+      "size": 3426,
+      "mtimeMs": 1785611583544.0818,
+      "updatedAt": "2026-08-01T19:13:03.598Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "speedAxisLabel",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 12,
+          "tokens": 28
+        },
+        {
+          "name": "formatTimeTick",
+          "kind": "fn",
+          "startLine": 13,
+          "endLine": 16,
+          "tokens": 29
+        },
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 79,
+          "tokens": 568
+        },
+        {
+          "name": "setHistoryChartReadings",
+          "kind": "fn",
+          "startLine": 80,
+          "endLine": 84,
+          "tokens": 28
+        },
+        {
+          "name": "setHistoryChartUnit",
+          "kind": "fn",
+          "startLine": 85,
+          "endLine": 89,
+          "tokens": 23
+        },
+        {
+          "name": "fetchHistory",
+          "kind": "fn",
+          "startLine": 90,
+          "endLine": 96,
+          "tokens": 55
+        },
+        {
+          "name": "initHistoryChart",
+          "kind": "fn",
+          "startLine": 97,
+          "endLine": 103,
+          "tokens": 74
+        },
+        {
+          "name": "handleLiveMessage",
+          "kind": "fn",
+          "startLine": 104,
+          "endLine": 112,
+          "tokens": 95
+        },
+        {
+          "name": "resyncHistoryChart",
+          "kind": "fn",
+          "startLine": 113,
+          "endLine": 116,
+          "tokens": 17
+        }
+      ]
     }
   }
 }
