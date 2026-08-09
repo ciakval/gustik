@@ -70,6 +70,43 @@ test('POST /readings with a repeated clientId is a no-op and still returns succe
   assert.equal(getLatest(app.db).windSpeedMs, 3.5);
 });
 
+test('POST /readings with a non-ISO-8601 capturedAt (e.g. space instead of "T", no "Z") returns 400 and writes nothing', async () => {
+  const app = testApp();
+  const res = await app.inject({
+    method: 'POST',
+    url: '/readings',
+    headers: { authorization: 'Bearer secret-token' },
+    payload: [{ ...VALID_READING, capturedAt: '2026-08-01 09:00:00' }],
+  });
+  assert.equal(res.statusCode, 400);
+  assert.equal(getLatest(app.db), null);
+});
+
+test('POST /readings with an explicit non-UTC offset capturedAt is accepted and normalized to UTC', async () => {
+  const app = testApp();
+  const res = await app.inject({
+    method: 'POST',
+    url: '/readings',
+    headers: { authorization: 'Bearer secret-token' },
+    payload: [{ ...VALID_READING, clientId: 'r-offset', capturedAt: '2026-08-01T11:00:00.000+02:00' }],
+  });
+  assert.ok(res.statusCode >= 200 && res.statusCode < 300, `expected 2xx, got ${res.statusCode}`);
+  assert.equal(getLatest(app.db).capturedAt, '2026-08-01T09:00:00.000Z');
+});
+
+test('POST /readings with a naive capturedAt is accepted and normalized as Europe/Prague local time', async () => {
+  const app = testApp();
+  const res = await app.inject({
+    method: 'POST',
+    url: '/readings',
+    headers: { authorization: 'Bearer secret-token' },
+    payload: [{ ...VALID_READING, clientId: 'r-naive', capturedAt: '2026-08-01T11:00:00' }],
+  });
+  assert.ok(res.statusCode >= 200 && res.statusCode < 300, `expected 2xx, got ${res.statusCode}`);
+  // August in Prague is CEST (+02:00): 11:00 local -> 09:00 UTC
+  assert.equal(getLatest(app.db).capturedAt, '2026-08-01T09:00:00.000Z');
+});
+
 test('POST /readings accepts an array of N records (backfill shape)', async () => {
   const app = testApp();
   const res = await app.inject({

@@ -34,6 +34,24 @@ test('GET /readings/history returns today\'s records ascending by capturedAt, in
   assert.deepEqual(Object.keys(readings[0]).sort(), ['capturedAt', 'rssiDbm', 'windDirOctant', 'windSpeedMs']);
 });
 
+test('GET /readings/history sorts correctly when records mix "Z" and explicit-offset capturedAt for the same day', async () => {
+  const app = testApp();
+  const today = new Date().toISOString().slice(0, 10);
+  await postReadings(app, [
+    // 11:00 in UTC+02:00 == 09:00 UTC - earlier than the next record despite
+    // sorting later as a raw string if offsets weren't normalized away.
+    { clientId: 'h-offset', capturedAt: `${today}T11:00:00.000+02:00`, clockSynced: true, windSpeedMs: 1, windDirOctant: 0, rssiDbm: -50 },
+    { clientId: 'h-utc', capturedAt: `${today}T10:00:00.000Z`, clockSynced: true, windSpeedMs: 2, windDirOctant: 1, rssiDbm: -55 },
+  ]);
+
+  const res = await app.inject({ method: 'GET', url: '/readings/history' });
+  const { readings } = JSON.parse(res.body);
+  assert.deepEqual(
+    readings.map((r) => r.windSpeedMs),
+    [1, 2],
+  );
+});
+
 test('GET /readings/history excludes records from a previous day', async () => {
   const app = testApp();
   const today = new Date().toISOString().slice(0, 10);
