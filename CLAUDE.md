@@ -35,7 +35,7 @@ Full detail lives in `_bmad-output/planning-artifacts/briefs/brief-gustik-2026-0
 - `.wolf/` — OpenWolf state: `STATUS.md` (current quest / next steps, read first), `anatomy.md` (file index with token costs, check before reading files), `cerebrum.md` (learned preferences/conventions/decisions), `buglog.json` (known bugs+fixes), `memory.md` (session log).
 - `_bmad/` — BMAD method installation (agents, workflows, config). `_bmad/config.toml` is installer-managed/read-only; durable overrides go in `_bmad/custom/`.
 - `_bmad-output/planning-artifacts/` — BMAD-generated planning docs (currently: the product brief). `_bmad-output/implementation-artifacts/` is where epics/stories will land once planning moves into implementation.
-- `docs/` — project knowledge base referenced by BMAD (`project_knowledge` in config.toml); currently empty.
+- `docs/` — project knowledge base referenced by BMAD (`project_knowledge` in config.toml); also holds `docs/superpowers/specs/` — design docs from the Superpowers workflow, used for post-v1 changes outside BMAD's epic/story scope (see "Choosing a workflow" below).
 - `.claude/commands/` — custom slash commands: `reframe` (UI framework selection, mirrors the OpenWolf `reframe` skill) and `security-audit` (layered security audit workflow).
 - `.claude/skills/` — the full BMAD agent/workflow skill set (analyst, PM, architect, dev, UX designer, tech writer personas plus supporting workflows like brainstorming, PRD, architecture, story creation).
 - `.devcontainer/` — Debian trixie-slim container with Node.js, Claude Code CLI, `openwolf` CLI, GitHub CLI, and `uv` preinstalled; see below.
@@ -43,6 +43,20 @@ Full detail lives in `_bmad-output/planning-artifacts/briefs/brief-gustik-2026-0
 ## Working with BMAD
 
 This project uses the BMAD method for planning (product brief → PRD → architecture → epics/stories → dev). Relevant skills are prefixed `bmad-*` (e.g. `bmad-product-brief`, `bmad-prd`, `bmad-architecture`, `bmad-create-epics-and-stories`, `bmad-dev-story`) and agent personas are invoked by name (Mary=Analyst, John=PM, Winston=Architect, Sally=UX, Amelia=Dev, Paige=Tech Writer — see `_bmad/config.toml` for the full roster). The product brief exists; next BMAD steps per its standard flow would be PRD and architecture docs, not yet created.
+
+## Choosing a workflow for new work: BMAD vs Superpowers
+
+The BMAD flow above shipped v1: product brief → `epics.md` → 16 stories → implemented and merged to `dev` (see "Project state"). That backlog is exhausted — per `.wolf/STATUS.md`, the only work still planned from it is Epic 5 (physical/mechanical, Mlok-only) and the verification items in `TODO.md`. Everything else from here on is post-launch: bug reports, small feature or UX requests, ad-hoc fixes against the deployed app — not new epics.
+
+For that kind of scoped, single-concern change, default to the **Superpowers** workflow instead of spinning up BMAD ceremony: `superpowers:brainstorming` (clarify + design) → a spec written to `docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md` → `superpowers:writing-plans` → implementation via TDD (`superpowers:test-driven-development`). This is lighter-weight than BMAD's epic/story machinery and fits a change that touches a handful of files without needing a PRD or architecture-doc update.
+
+Reserve BMAD (`bmad-create-epics-and-stories`, `bmad-dev-story`, the agent personas) for work that's genuinely epic-shaped: a new Story 5.x once physical hardware exists to test against, or anything large/novel enough to need multi-story breakdown or changes to the PRD/architecture docs. If a change only needs `epics.md` read for context, not written to, it's a Superpowers change, not a BMAD one.
+
+Either flow touches the same repo, so OpenWolf's session bookkeeping (`STATUS.md`, `anatomy.md`, `cerebrum.md`, `buglog.json`, `memory.md`) is mandatory regardless of which one produced the change — those rules are orthogonal to the planning method and apply on top of both.
+
+Artifact locations:
+- BMAD: `_bmad-output/planning-artifacts/` (brief, `epics.md`); `_bmad-output/implementation-artifacts/` (stories, if the BMAD flow is used again).
+- Superpowers: `docs/superpowers/specs/`.
 
 ## Dev environment
 
