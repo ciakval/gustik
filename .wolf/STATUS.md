@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-01
+> Last updated: 2026-08-09
 
 ---
 
@@ -20,6 +20,7 @@
 - 16 real bugs found+fixed+logged this phase (`.wolf/buglog.json` bug-007 through bug-016; a few auto-detected low-signal entries are mixed in between). Highlights: `@fastify/websocket` registration-order gotcha, PlatformIO native test env config, `openDb()` missing directory (caught by manual smoke test, not `:memory:` tests), a buffer-data-loss bug caught before it shipped (Story 2.1→2.2), a dual-WebSocket reconnect gap caught before it shipped (Story 3.2→3.3).
 - `TODO.md` (repo root) tracks everything needing human/physical verification or a product decision — Docker build verification, real-hardware firmware verification, placeholder calibration constants, the mobile-hotspot-credentials-in-a-public-manual tension (Story 4.2), Epic 5.
 - CLAUDE.md "Project state" and this file updated to reflect real code throughout (was "no application code yet" at session start).
+- **[2026-08-09] First post-launch change, done via Superpowers (not a new BMAD story)**: `/readings` ingest now accepts timezone-aware (`Z` or explicit `±HH:MM` offset) and naive (assumed Europe/Prague local time) `capturedAt` timestamps, normalizing all of them to canonical UTC before storage so the history query's lexicographic sort (`backend/src/store/readings.js`) keeps working unmodified. New `backend/src/ingest/timestamp.js` (`normalizeCapturedAt`, 8 unit tests) does the conversion; `backend/src/ingest/routes.js` wires it in. Dashboard history chart now displays times in Europe/Prague (new `backend/src/static/timezone.js`) instead of hardcoded UTC — verified with a real headless-Chromium screenshot showing the correct local tick. Backend test count: 43 → 55. See `docs/superpowers/specs/2026-08-09-timestamp-timezone-support-design.md` and `docs/superpowers/plans/2026-08-09-timestamp-timezone-support.md`. CLAUDE.md's new "Choosing a workflow for new work" section documents why this used Superpowers instead of BMAD.
 
 ---
 

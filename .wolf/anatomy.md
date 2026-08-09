@@ -1,13 +1,13 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-09T20:43:03.150Z
-> Files: 391 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-09T22:04:02.270Z
+> Files: 442 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
-- `CLAUDE.md` — CLAUDE.md (~1624 tok)
-- `TODO.md` — TODO — items flagged for Mlok's review (~1046 tok)
+- `CLAUDE.md` — CLAUDE.md (~2136 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~1622 tok)
 
 ## .claude/
 
@@ -642,392 +642,9 @@
 - `Dockerfile` — Docker container definition (~740 tok)
 - `post-create.sh` (~342 tok)
 
-## .worktrees/ci-pipeline/
-
-- `TODO.md` — TODO — items flagged for Mlok's review (~1622 tok)
-
-## .worktrees/ci-pipeline/.github/workflows/
+## .github/workflows/
 
 - `ci.yml` — CI: CI (~3108 tok)
-
-## .worktrees/ci-pipeline/backend/
-
-- `.gitignore` — Git ignore rules (~14 tok)
-- `eslint.config.js` — ', 'node_modules/**'], (~332 tok)
-- `package.json` — Node.js package manifest (~157 tok)
-
-## .worktrees/ci-pipeline/backend/src/static/
-
-- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis (~953 tok)
-  - fn `speedAxisLabel` L9-12 (~28 tok)
-  - fn `formatTimeTick` L13-16 (~29 tok)
-  - fn `render` L17-78 (~542 tok)
-  - fn `setHistoryChartReadings` L79-83 (~28 tok)
-  - fn `setHistoryChartUnit` L84-88 (~23 tok)
-  - fn `fetchHistory` L89-95 (~55 tok)
-  - fn `initHistoryChart` L96-102 (~74 tok)
-  - fn `handleLiveMessage` L103-111 (~95 tok)
-  - fn `resyncHistoryChart` L112-115 (~17 tok)
-
-## .worktrees/ci-pipeline/firmware/
-
-- `platformio.ini` (~443 tok)
-
-## .worktrees/story-1.1-wind-speed/firmware/
-
-- `.gitignore` — Git ignore rules (~8 tok)
-- `platformio.ini` (~299 tok)
-
-## .worktrees/story-1.1-wind-speed/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~322 tok)
-
-## .worktrees/story-1.1-wind-speed/firmware/src/correct/
-
-- `wind_speed.cpp` — include "correct/wind_speed.h" (~89 tok)
-- `wind_speed.h` — pragma once (~223 tok)
-
-## .worktrees/story-1.1-wind-speed/firmware/src/sense/
-
-- `anemometer.cpp` — include "sense/anemometer.h" (~128 tok)
-- `anemometer.h` — pragma once (~162 tok)
-
-## .worktrees/story-1.1-wind-speed/firmware/test/test_native/
-
-- `test_wind_speed.cpp` — include <unity.h> (~312 tok)
-
-## .worktrees/story-1.2-wind-direction/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~524 tok)
-
-## .worktrees/story-1.2-wind-direction/firmware/src/correct/
-
-- `wind_direction.cpp` — include "correct/wind_direction.h" (~207 tok)
-- `wind_direction.h` — pragma once (~333 tok)
-
-## .worktrees/story-1.2-wind-direction/firmware/src/sense/
-
-- `magnetometer.cpp` — include "sense/magnetometer.h" (~280 tok)
-- `magnetometer.h` — pragma once (~169 tok)
-- `vane.cpp` — include "sense/vane.h" (~244 tok)
-- `vane.h` — pragma once (~136 tok)
-
-## .worktrees/story-1.2-wind-direction/firmware/test/test_native/
-
-- `test_wind_direction.cpp` — include <unity.h> (~835 tok)
-
-## .worktrees/story-1.3-ingest-endpoint/backend/
-
-- `.dockerignore` (~9 tok)
-- `.gitignore` — Git ignore rules (~12 tok)
-- `docker-compose.yml` — Docker Compose services (~77 tok)
-- `Dockerfile` — Docker container definition (~147 tok)
-- `package.json` — Node.js package manifest (~84 tok)
-
-## .worktrees/story-1.3-ingest-endpoint/backend/src/
-
-- `app.js` — Exports buildApp (~129 tok)
-- `index.js` — Declares port (~125 tok)
-
-## .worktrees/story-1.3-ingest-endpoint/backend/src/health/
-
-- `routes.js` — API routes: GET (1 endpoints) (~78 tok)
-
-## .worktrees/story-1.3-ingest-endpoint/backend/src/ingest/
-
-- `routes.js` — API routes: POST (1 endpoints) (~191 tok)
-
-## .worktrees/story-1.3-ingest-endpoint/backend/src/store/
-
-- `db.js` — Exports openDb (~184 tok)
-- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~412 tok)
-
-## .worktrees/story-1.3-ingest-endpoint/backend/test/
-
-- `health.test.js` — Declares app (~180 tok)
-- `ingest.test.js` — Declares testApp (~769 tok)
-  - fn `testApp` L6-87 (~720 tok)
-- `store.test.js` — Declares freshDb (~529 tok)
-  - fn `freshDb` L6-70 (~475 tok)
-
-## .worktrees/story-1.4-transmit/firmware/
-
-- `platformio.ini` (~304 tok)
-
-## .worktrees/story-1.4-transmit/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~926 tok)
-
-## .worktrees/story-1.4-transmit/firmware/src/transmit/
-
-- `connection_monitor.cpp` — include "transmit/connection_monitor.h" (~67 tok)
-- `connection_monitor.h` — pragma once (~153 tok)
-- `payload.cpp` — include "transmit/payload.h" (~227 tok)
-- `payload.h` — pragma once (~104 tok)
-- `reading.h` — pragma once (~136 tok)
-
-## .worktrees/story-1.4-transmit/firmware/src/transmit/hw/
-
-- `clock.cpp` — include "transmit/hw/clock.h" (~197 tok)
-- `clock.h` — pragma once (~216 tok)
-- `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~423 tok)
-- `wifi_client.h` — pragma once (~313 tok)
-
-## .worktrees/story-1.4-transmit/firmware/test/test_connection_monitor/
-
-- `test_connection_monitor.cpp` — include <unity.h> (~503 tok)
-
-## .worktrees/story-1.4-transmit/firmware/test/test_transmit_payload/
-
-- `test_transmit_payload.cpp` — include <unity.h> (~587 tok)
-
-## .worktrees/story-1.5-serve-latest/backend/
-
-- `package.json` — Node.js package manifest (~94 tok)
-
-## .worktrees/story-1.5-serve-latest/backend/src/
-
-- `app.js` — Exports buildApp (~286 tok)
-
-## .worktrees/story-1.5-serve-latest/backend/src/ingest/
-
-- `routes.js` — API routes: POST (1 endpoints) (~295 tok)
-
-## .worktrees/story-1.5-serve-latest/backend/src/serve/
-
-- `routes.js` — API routes: GET (2 endpoints) (~172 tok)
-
-## .worktrees/story-1.5-serve-latest/backend/test/
-
-- `serve.test.js` — testApp: postReadings, withTimeout (~838 tok)
-  - fn `testApp` L6-9 (~28 tok)
-  - fn `postReadings` L10-46 (~385 tok)
-  - fn `withTimeout` L47-88 (~383 tok)
-
-## .worktrees/story-1.6-dashboard/backend/
-
-- `package.json` — Node.js package manifest (~117 tok)
-
-## .worktrees/story-1.6-dashboard/backend/src/
-
-- `app.js` — Exports buildApp (~361 tok)
-
-## .worktrees/story-1.6-dashboard/backend/src/static/
-
-- `dashboard.js` — speedEl: render, setUnit, fetchLatest, connectLive (~604 tok)
-  - fn `render` L12-24 (~141 tok)
-  - fn `setUnit` L25-34 (~86 tok)
-  - fn `fetchLatest` L35-43 (~53 tok)
-  - fn `connectLive` L44-65 (~212 tok)
-- `format.js` — Exports msToKnots, octantToCompassLabel, isStale, formatAge (~240 tok)
-- `index.html` — Gustik — vítr živě (~721 tok)
-
-## .worktrees/story-1.6-dashboard/backend/src/store/
-
-- `db.js` — Exports openDb (~229 tok)
-
-## .worktrees/story-1.6-dashboard/backend/test/
-
-- `dashboard-format.test.js` — Declares capturedAt (~484 tok)
-- `dashboard-static.test.js` — Declares testApp (~212 tok)
-
-## .worktrees/story-2.1-local-buffer/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~1022 tok)
-
-## .worktrees/story-2.1-local-buffer/firmware/src/transmit/
-
-- `buffer_capacity.cpp` — include "transmit/buffer_capacity.h" (~72 tok)
-- `buffer_capacity.h` — pragma once (~83 tok)
-- `ring_buffer_index.h` — pragma once (~517 tok)
-
-## .worktrees/story-2.1-local-buffer/firmware/src/transmit/hw/
-
-- `flash_buffer.cpp` — include "transmit/hw/flash_buffer.h" (~551 tok)
-- `flash_buffer.h` — pragma once (~318 tok)
-
-## .worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/
-
-- `test_ring_buffer.cpp` — include <unity.h> (~955 tok)
-
-## .worktrees/story-2.2-backfill/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~1220 tok)
-
-## .worktrees/story-2.2-backfill/firmware/src/transmit/
-
-- `connection_monitor.cpp` — include "transmit/connection_monitor.h" (~104 tok)
-- `connection_monitor.h` — pragma once (~228 tok)
-
-## .worktrees/story-2.2-backfill/firmware/src/transmit/hw/
-
-- `flash_buffer.cpp` — include "transmit/hw/flash_buffer.h" (~559 tok)
-- `flash_buffer.h` — pragma once (~378 tok)
-
-## .worktrees/story-2.2-backfill/firmware/test/test_connection_monitor/
-
-- `test_connection_monitor.cpp` — include <unity.h> (~772 tok)
-
-## .worktrees/story-2.3-backfill-flag/backend/src/ingest/
-
-- `routes.js` — API routes: POST (1 endpoints) (~483 tok)
-
-## .worktrees/story-2.3-backfill-flag/backend/src/serve/
-
-- `routes.js` — API routes: GET (2 endpoints) (~282 tok)
-
-## .worktrees/story-2.3-backfill-flag/backend/src/store/
-
-- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~509 tok)
-  - fn `toRow` L9-21 (~102 tok)
-  - fn `fromRow` L22-35 (~105 tok)
-  - fn `insertReading` L36-41 (~76 tok)
-  - fn `getLatest` L42-49 (~93 tok)
-  - fn `getLatestCapturedAt` L50-54 (~47 tok)
-
-## .worktrees/story-2.3-backfill-flag/backend/test/
-
-- `backfill.test.js` — testApp: postReadings, getRawRow (~1336 tok)
-  - fn `testApp` L6-9 (~28 tok)
-  - fn `postReadings` L10-18 (~56 tok)
-  - fn `getRawRow` L19-128 (~1210 tok)
-
-## .worktrees/story-2.4-led-signal/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~1318 tok)
-
-## .worktrees/story-2.4-led-signal/firmware/src/transmit/
-
-- `led_policy.h` — pragma once (~122 tok)
-
-## .worktrees/story-2.4-led-signal/firmware/test/test_led_policy/
-
-- `test_led_policy.cpp` — include <unity.h> (~246 tok)
-
-## .worktrees/story-2.5-rssi/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~1432 tok)
-
-## .worktrees/story-2.5-rssi/firmware/src/transmit/
-
-- `rssi_latch.h` — pragma once (~155 tok)
-
-## .worktrees/story-2.5-rssi/firmware/test/test_rssi_latch/
-
-- `test_rssi_latch.cpp` — include <unity.h> (~408 tok)
-
-## .worktrees/story-3.1-history/backend/src/serve/
-
-- `routes.js` — API routes: GET (3 endpoints) (~353 tok)
-
-## .worktrees/story-3.1-history/backend/src/store/
-
-- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~662 tok)
-  - fn `toRow` L9-21 (~102 tok)
-  - fn `fromRow` L22-31 (~58 tok)
-  - fn `startOfUtcDayIso` L32-39 (~75 tok)
-  - fn `insertReading` L40-45 (~76 tok)
-  - fn `getLatest` L46-53 (~93 tok)
-  - fn `getLatestCapturedAt` L54-61 (~100 tok)
-  - fn `getHistory` L62-69 (~72 tok)
-
-## .worktrees/story-3.1-history/backend/test/
-
-- `history.test.js` — testApp: postReadings (~990 tok)
-  - fn `testApp` L5-8 (~28 tok)
-  - fn `postReadings` L9-83 (~929 tok)
-
-## .worktrees/story-3.2-graph/backend/src/static/
-
-- `dashboard.js` — speedEl: render, setUnit, fetchLatest, connectLive (~640 tok)
-  - fn `render` L13-25 (~141 tok)
-  - fn `setUnit` L26-36 (~95 tok)
-  - fn `fetchLatest` L37-45 (~53 tok)
-  - fn `connectLive` L46-68 (~218 tok)
-- `history-chart-data.js` — x is a numeric timestamp (ms since epoch), not the ISO string or Chart.js's (~194 tok)
-- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart (~979 tok)
-  - fn `speedAxisLabel` L9-12 (~28 tok)
-  - fn `formatTimeTick` L13-16 (~29 tok)
-  - fn `render` L17-79 (~568 tok)
-  - fn `setHistoryChartReadings` L80-84 (~28 tok)
-  - fn `setHistoryChartUnit` L85-89 (~23 tok)
-  - fn `fetchHistory` L90-95 (~46 tok)
-  - fn `initHistoryChart` L96-112 (~194 tok)
-- `index.html` — Gustik — vítr živě (~872 tok)
-
-## .worktrees/story-3.2-graph/backend/test/
-
-- `dashboard-static.test.js` — Declares testApp (~297 tok)
-- `history-chart-data.test.js` — Declares READINGS (~399 tok)
-
-## .worktrees/story-3.3-resync/backend/src/static/
-
-- `dashboard.js` — speedEl: render, setUnit, fetchLatest (~713 tok)
-  - fn `render` L14-26 (~141 tok)
-  - fn `setUnit` L27-37 (~95 tok)
-  - fn `fetchLatest` L38-74 (~318 tok)
-- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis (~979 tok)
-  - fn `speedAxisLabel` L9-12 (~28 tok)
-  - fn `formatTimeTick` L13-16 (~29 tok)
-  - fn `render` L17-79 (~568 tok)
-  - fn `setHistoryChartReadings` L80-84 (~28 tok)
-  - fn `setHistoryChartUnit` L85-89 (~23 tok)
-  - fn `fetchHistory` L90-96 (~55 tok)
-  - fn `initHistoryChart` L97-103 (~74 tok)
-  - fn `handleLiveMessage` L104-112 (~95 tok)
-  - fn `resyncHistoryChart` L113-116 (~17 tok)
-- `live-socket.js` — Single shared WS connection lifecycle for the dashboard - both the live (~492 tok)
-
-## .worktrees/story-3.3-resync/backend/test/
-
-- `live-socket.test.js` — withTimeout: withLiveApp (~904 tok)
-  - fn `withTimeout` L7-13 (~53 tok)
-  - fn `withLiveApp` L14-94 (~789 tok)
-
-## .worktrees/story-4.1-wifi-config/firmware/
-
-- `.gitignore` — Git ignore rules (~52 tok)
-- `platformio.ini` (~308 tok)
-
-## .worktrees/story-4.1-wifi-config/firmware/data/
-
-- `config.example.txt` — Gustik station config (Story 4.1, AD-10). (~185 tok)
-
-## .worktrees/story-4.1-wifi-config/firmware/src/
-
-- `main.cpp` — include <Arduino.h> (~1406 tok)
-
-## .worktrees/story-4.1-wifi-config/firmware/src/config/
-
-- `station_config.cpp` — include "config/station_config.h" (~704 tok)
-- `station_config.h` — pragma once (~414 tok)
-
-## .worktrees/story-4.1-wifi-config/firmware/src/config/hw/
-
-- `config_loader.cpp` — include "config/hw/config_loader.h" (~110 tok)
-- `config_loader.h` — pragma once (~122 tok)
-
-## .worktrees/story-4.1-wifi-config/firmware/src/transmit/hw/
-
-- `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~665 tok)
-- `wifi_client.h` — pragma once (~367 tok)
-
-## .worktrees/story-4.1-wifi-config/firmware/test/test_station_config/
-
-- `test_station_config.cpp` — include <unity.h> (~1018 tok)
-
-## .worktrees/story-4.2-manual/
-
-- `TODO.md` — TODO — items flagged for Mlok's review (~1046 tok)
-
-## .worktrees/story-4.2-manual/backend/src/static/
-
-- `index.html` — Gustik — vítr živě (~897 tok)
-- `manual.html` — Gustik — návod k obsluze (~991 tok)
-
-## .worktrees/story-4.2-manual/backend/test/
-
-- `manual.test.js` — Declares testApp (~356 tok)
 
 ## _bmad-output/planning-artifacts/
 
@@ -1121,15 +738,367 @@
   - fn `write_json_stdout` L182-189 (~91 tok)
   - fn `main` L190-241 (~484 tok)
 
+## backend/
+
+- `.dockerignore` — Docker ignore rules (~9 tok)
+- `.gitignore` — Git ignore rules (~14 tok)
+- `docker-compose.yml` — Docker Compose services (~77 tok)
+- `Dockerfile` — Docker container definition (~147 tok)
+- `eslint.config.js` — ESLint flat configuration (~332 tok)
+- `package-lock.json` — npm lock file (~28748 tok)
+- `package.json` — Node.js package manifest (~157 tok)
+
+## backend/data/
+
+- `gustik.sqlite-shm` (~8738 tok)
+- `gustik.sqlite-wal` (~37351 tok)
+
+## backend/src/
+
+- `app.js` — Exports buildApp (~361 tok)
+- `index.js` — Declares port (~125 tok)
+
+## backend/src/health/
+
+- `routes.js` — API routes: GET (1 endpoints) (~78 tok)
+
 ## backend/src/ingest/
 
-- `routes.js` — API routes: POST (1 endpoints) (~730 tok)
-  - fn `isAuthorized` L4-16 (~173 tok)
-  - fn `isValidCapturedAt` L17-20 (~46 tok)
-  - fn `wireShape` L21-29 (~58 tok)
-  - fn `registerIngestRoutes` L30-67 (~409 tok)
+- `routes.js` — API routes: POST (1 endpoints) (~757 tok)
+  - fn `isAuthorized` L5-9 (~39 tok)
+  - fn `wireShape` L10-18 (~58 tok)
+  - fn `registerIngestRoutes` L19-68 (~600 tok)
+- `timestamp.js` — Normalizes a captured-at timestamp to canonical UTC (~898 tok)
+  - fn `partsToUtcMs` L20-33 (~113 tok)
+  - fn `renderAsIfUtcMs` L34-46 (~187 tok)
+  - fn `pragueWallClockToUtcMs` L47-63 (~226 tok)
+  - fn `normalizeCapturedAt` L64-90 (~199 tok)
+
+## backend/src/serve/
+
+- `routes.js` — API routes: GET (3 endpoints) (~353 tok)
+
+## backend/src/static/
+
+- `dashboard.js` — speedEl: render, setUnit, fetchLatest (~713 tok)
+  - fn `render` L14-26 (~141 tok)
+  - fn `setUnit` L27-37 (~95 tok)
+  - fn `fetchLatest` L38-74 (~318 tok)
+- `format.js` — Exports msToKnots, octantToCompassLabel, isStale, formatAge (~240 tok)
+- `history-chart-data.js` — x is a numeric timestamp (ms since epoch), not the ISO string or Chart.js's (~194 tok)
+- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis (~961 tok)
+  - fn `speedAxisLabel` L10-13 (~28 tok)
+  - fn `formatTimeTick` L14-17 (~23 tok)
+  - fn `render` L18-79 (~542 tok)
+  - fn `setHistoryChartReadings` L80-84 (~28 tok)
+  - fn `setHistoryChartUnit` L85-89 (~23 tok)
+  - fn `fetchHistory` L90-96 (~55 tok)
+  - fn `initHistoryChart` L97-103 (~74 tok)
+  - fn `handleLiveMessage` L104-112 (~95 tok)
+  - fn `resyncHistoryChart` L113-116 (~17 tok)
+- `index.html` — Gustik — vítr živě (~897 tok)
+- `live-socket.js` — Single shared WS connection lifecycle for the dashboard - both the live (~492 tok)
+- `manual.html` — Gustik — návod k obsluze (~991 tok)
+- `timezone.js` — Single named seam for the dashboard's display timezone. A future (~162 tok)
+
+## backend/src/static/vendor/
+
+- `chart.js.LICENSE.md` (~274 tok)
+
+## backend/src/store/
+
+- `db.js` — Exports openDb (~229 tok)
+- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~662 tok)
+  - fn `toRow` L9-21 (~102 tok)
+  - fn `fromRow` L22-31 (~58 tok)
+  - fn `startOfUtcDayIso` L32-39 (~75 tok)
+  - fn `insertReading` L40-45 (~76 tok)
+  - fn `getLatest` L46-53 (~93 tok)
+  - fn `getLatestCapturedAt` L54-61 (~100 tok)
+  - fn `getHistory` L62-69 (~72 tok)
 
 ## backend/test/
 
-- `ingest.test.js` — Declares testApp (~898 tok)
-  - fn `testApp` L6-99 (~848 tok)
+- `backfill.test.js` — testApp: postReadings, getRawRow (~1336 tok)
+  - fn `testApp` L6-9 (~28 tok)
+  - fn `postReadings` L10-18 (~56 tok)
+  - fn `getRawRow` L19-128 (~1210 tok)
+- `dashboard-format.test.js` — Declares capturedAt (~484 tok)
+- `dashboard-static.test.js` — Declares testApp (~297 tok)
+- `health.test.js` — Declares app (~180 tok)
+- `history-chart-data.test.js` — Declares READINGS (~399 tok)
+- `history.test.js` — testApp: postReadings (~1239 tok)
+  - fn `testApp` L5-8 (~28 tok)
+  - fn `postReadings` L9-101 (~1178 tok)
+- `ingest.test.js` — Declares testApp (~1232 tok)
+  - fn `testApp` L6-124 (~1183 tok)
+- `live-socket.test.js` — withTimeout: withLiveApp (~904 tok)
+  - fn `withTimeout` L7-13 (~53 tok)
+  - fn `withLiveApp` L14-94 (~789 tok)
+- `manual.test.js` — Declares testApp (~356 tok)
+- `serve.test.js` — testApp: postReadings, withTimeout (~838 tok)
+  - fn `testApp` L6-9 (~28 tok)
+  - fn `postReadings` L10-46 (~385 tok)
+  - fn `withTimeout` L47-88 (~383 tok)
+- `store.test.js` — Declares freshDb (~529 tok)
+  - fn `freshDb` L6-70 (~475 tok)
+- `timestamp.test.js` (~489 tok)
+
+## docs/superpowers/plans/
+
+- `2026-08-09-timestamp-timezone-support.md` — Timestamp Timezone Support Implementation Plan (~4942 tok)
+
+## docs/superpowers/specs/
+
+- `2026-08-09-timestamp-timezone-support-design.md` — Timestamp timezone support — design (~1546 tok)
+
+## firmware/
+
+- `.gitignore` — Git ignore rules (~52 tok)
+- `platformio.ini` (~443 tok)
+
+## firmware/.pio/libdeps/native/
+
+- `integrity.dat` (~8 tok)
+
+## firmware/.pio/libdeps/native/Unity/
+
+- `.editorconfig` — Editor configuration (~156 tok)
+- `.gitattributes` — Git attributes (~158 tok)
+- `.gitignore` — Git ignore rules (~104 tok)
+- `.piopm` (~43 tok)
+- `CMakeLists.txt` — CMake build configuration (~1587 tok)
+- `library.json` (~129 tok)
+- `LICENSE.txt` (~280 tok)
+- `meson_options.txt` (~93 tok)
+- `meson.build` — build script written by : Michael Gene Brockus. (~456 tok)
+- `platformio-build.py` (~137 tok)
+- `README.md` — Project documentation (~2078 tok)
+- `unityConfig.cmake` (~15 tok)
+
+## firmware/.pio/libdeps/native/Unity/.github/workflows/
+
+- `main.yml` — Continuous Integration Workflow: Test case suite run + validation build check (~246 tok)
+
+## firmware/.pio/libdeps/native/Unity/auto/
+
+- `__init__.py` — Unity - A Test Framework for C (~92 tok)
+- `colour_prompt.rb` — Unity - A Test Framework for C (~930 tok)
+- `colour_reporter.rb` — Unity - A Test Framework for C (~318 tok)
+- `extract_version.py` — Unity - A Test Framework for C (~178 tok)
+- `generate_config.yml` — Unity - A Test Framework for C (~455 tok)
+- `generate_module.rb` — Unity - A Test Framework for C (~3062 tok)
+- `generate_test_runner.rb` — Unity - A Test Framework for C (~5971 tok)
+- `parse_output.rb` — Unity - A Test Framework for C (~3724 tok)
+- `run_test.erb` — Declares char (~265 tok)
+- `stylize_as_junit.py` — Unity - A Test Framework for C (~1923 tok)
+  - class `UnityTestSummary` L18-162 (~1792 tok)
+- `stylize_as_junit.rb` — Unity - A Test Framework for C (~2099 tok)
+- `test_file_filter.rb` — Unity - A Test Framework for C (~219 tok)
+- `type_sanitizer.rb` — Unity - A Test Framework for C (~139 tok)
+- `unity_test_summary.py` — Unity - A Test Framework for C (~1476 tok)
+  - class `UnityTestSummary` L14-141 (~1366 tok)
+- `unity_test_summary.rb` — Unity - A Test Framework for C (~1120 tok)
+- `yaml_helper.rb` — Unity - A Test Framework for C (~153 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/
+
+- `unity_config.h` — Declares of (~3496 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_1/
+
+- `makefile` — Unity - A Test Framework for C (~619 tok)
+- `meson.build` (~259 tok)
+- `readme.txt` (~72 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_1/src/
+
+- `ProductionCode.c` — Declares is (~337 tok)
+- `ProductionCode.h` (~119 tok)
+- `ProductionCode2.c` (~188 tok)
+- `ProductionCode2.h` (~112 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_1/subprojects/
+
+- `unity.wrap` (~21 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_1/test/
+
+- `TestProductionCode.c` — Declares on (~773 tok)
+- `TestProductionCode2.c` (~254 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_1/test/test_runners/
+
+- `TestProductionCode_Runner.c` — define RUN_TEST(TestFunc, TestLineNum) \ (~571 tok)
+- `TestProductionCode2_Runner.c` — define RUN_TEST(TestFunc, TestLineNum) \ (~337 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_2/
+
+- `makefile` — Unity - A Test Framework for C (~500 tok)
+- `readme.txt` (~44 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_2/src/
+
+- `ProductionCode.c` — Declares is (~334 tok)
+- `ProductionCode.h` (~119 tok)
+- `ProductionCode2.c` (~186 tok)
+- `ProductionCode2.h` (~112 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_2/test/
+
+- `TestProductionCode.c` — Declares on (~793 tok)
+- `TestProductionCode2.c` (~282 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/
+
+- `all_tests.c` — Declares char (~155 tok)
+- `TestProductionCode_Runner.c` (~292 tok)
+- `TestProductionCode2_Runner.c` (~170 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_3/
+
+- `rakefile_helper.rb` — Unity - A Test Framework for C (~2198 tok)
+- `rakefile.rb` — Unity - A Test Framework for C (~284 tok)
+- `readme.txt` (~174 tok)
+- `target_gcc_32.yml` — Unity - A Test Framework for C (~352 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_3/helper/
+
+- `UnityHelper.c` — Declares EXAMPLE_STRUCT_T (~208 tok)
+- `UnityHelper.h` — Declares EXAMPLE_STRUCT_T (~230 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_3/src/
+
+- `ProductionCode.c` — Declares is (~334 tok)
+- `ProductionCode.h` (~119 tok)
+- `ProductionCode2.c` (~186 tok)
+- `ProductionCode2.h` (~112 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_3/test/
+
+- `TestProductionCode.c` — Declares on (~765 tok)
+- `TestProductionCode2.c` (~253 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_4/
+
+- `meson.build` — build script written by : Michael Brockus. (~68 tok)
+- `readme.txt` — Declares the (~107 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_4/src/
+
+- `meson.build` — build script written by : Michael Brockus. (~146 tok)
+- `ProductionCode.c` — Declares is (~337 tok)
+- `ProductionCode.h` (~119 tok)
+- `ProductionCode2.c` (~188 tok)
+- `ProductionCode2.h` (~112 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_4/subprojects/
+
+- `unity.wrap` (~29 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_4/test/
+
+- `meson.build` — build script written by : Michael Brockus. (~43 tok)
+- `TestProductionCode.c` — Declares on (~773 tok)
+- `TestProductionCode2.c` (~292 tok)
+
+## firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/
+
+- `meson.build` — build script written by : Michael Brockus. (~139 tok)
+- `TestProductionCode_Runner.c` — define RUN_TEST(TestFunc, TestLineNum) \ (~571 tok)
+- `TestProductionCode2_Runner.c` — define RUN_TEST(TestFunc, TestLineNum) \ (~337 tok)
+
+## firmware/.pio/libdeps/native/Unity/src/
+
+- `meson.build` — build script written by : Michael Gene Brockus. (~92 tok)
+- `unity_internals.h` — Declares void (~27882 tok)
+- `unity.c` — Declares char (~23088 tok)
+- `unity.h` — Declares if (~26922 tok)
+
+## firmware/data/
+
+- `config.example.txt` — Gustik station config (Story 4.1, AD-10). (~185 tok)
+
+## firmware/src/
+
+- `main.cpp` — include <Arduino.h> (~1506 tok)
+
+## firmware/src/config/
+
+- `station_config.cpp` — include "config/station_config.h" (~754 tok)
+- `station_config.h` — pragma once (~444 tok)
+
+## firmware/src/config/hw/
+
+- `config_loader.cpp` — include "config/hw/config_loader.h" (~117 tok)
+- `config_loader.h` — pragma once (~130 tok)
+
+## firmware/src/correct/
+
+- `wind_direction.cpp` — include "correct/wind_direction.h" (~221 tok)
+- `wind_direction.h` — pragma once (~357 tok)
+- `wind_speed.cpp` — include "correct/wind_speed.h" (~96 tok)
+- `wind_speed.h` — pragma once (~239 tok)
+
+## firmware/src/sense/
+
+- `anemometer.cpp` — include "sense/anemometer.h" (~138 tok)
+- `anemometer.h` — pragma once (~174 tok)
+- `magnetometer.cpp` — include "sense/magnetometer.h" (~300 tok)
+- `magnetometer.h` — pragma once (~181 tok)
+- `vane.cpp` — include "sense/vane.h" (~261 tok)
+- `vane.h` — pragma once (~146 tok)
+
+## firmware/src/transmit/
+
+- `buffer_capacity.cpp` — include "transmit/buffer_capacity.h" (~78 tok)
+- `buffer_capacity.h` — pragma once (~88 tok)
+- `connection_monitor.cpp` — include "transmit/connection_monitor.h" (~111 tok)
+- `connection_monitor.h` — pragma once (~244 tok)
+- `led_policy.h` — pragma once (~131 tok)
+- `payload.cpp` — include "transmit/payload.h" (~243 tok)
+- `payload.h` — pragma once (~111 tok)
+- `reading.h` — pragma once (~146 tok)
+- `ring_buffer_index.h` — pragma once (~554 tok)
+- `rssi_latch.h` — pragma once (~166 tok)
+
+## firmware/src/transmit/hw/
+
+- `clock.cpp` — include "transmit/hw/clock.h" (~211 tok)
+- `clock.h` — pragma once (~232 tok)
+- `flash_buffer.cpp` — include "transmit/hw/flash_buffer.h" (~599 tok)
+- `flash_buffer.h` — pragma once (~405 tok)
+- `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~713 tok)
+- `wifi_client.h` — pragma once (~393 tok)
+
+## firmware/test/test_connection_monitor/
+
+- `test_connection_monitor.cpp` — include <unity.h> (~827 tok)
+
+## firmware/test/test_led_policy/
+
+- `test_led_policy.cpp` — include <unity.h> (~264 tok)
+
+## firmware/test/test_ring_buffer/
+
+- `test_ring_buffer.cpp` — include <unity.h> (~1023 tok)
+
+## firmware/test/test_rssi_latch/
+
+- `test_rssi_latch.cpp` — include <unity.h> (~437 tok)
+
+## firmware/test/test_station_config/
+
+- `test_station_config.cpp` — include <unity.h> (~1090 tok)
+
+## firmware/test/test_transmit_payload/
+
+- `test_transmit_payload.cpp` — include <unity.h> (~629 tok)
+
+## firmware/test/test_wind_direction/
+
+- `test_wind_direction.cpp` — include <unity.h> (~895 tok)
+
+## firmware/test/test_wind_speed/
+
+- `test_wind_speed.cpp` — include <unity.h> (~334 tok)

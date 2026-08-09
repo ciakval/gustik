@@ -291,3 +291,27 @@
 | 20:43 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~110 |
 | 20:52 | Root-caused "Docker history shows 00:00 / new data invisible" (bug-019): getHistory's string-compared date filter silently drops any captured_at not in exact ISO 'T'/'Z' shape; reproduced with plain node --test, not Docker-specific | backend/src/ingest/routes.js, backend/test/ingest.test.js, .wolf/buglog.json, .wolf/cerebrum.md | Fixed: POST /readings now rejects malformed capturedAt with 400 (TDD, 44/44 tests + lint pass) | ~900 |
 | 20:44 | Session end: 3 writes across 2 files (ingest.test.js, routes.js) | 14 reads | ~481 tok |
+
+## Session: 2026-08-09 21:08
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:52 | Created docs/superpowers/specs/2026-08-09-timestamp-timezone-support-design.md | — | ~1649 |
+| 21:52 | Session end: 1 writes across 1 files (2026-08-09-timestamp-timezone-support-design.md) | 5 reads | ~2496 tok |
+| 21:54 | Edited CLAUDE.md | inline fix | ~71 |
+| 21:54 | Edited CLAUDE.md | expanded (+14 lines) | ~509 |
+| 21:55 | Session end: 3 writes across 2 files (2026-08-09-timestamp-timezone-support-design.md, CLAUDE.md) | 6 reads | ~4742 tok |
+| 21:59 | Created docs/superpowers/plans/2026-08-09-timestamp-timezone-support.md | — | ~5271 |
+| 21:59 | Session end: 4 writes across 3 files (2026-08-09-timestamp-timezone-support-design.md, CLAUDE.md, 2026-08-09-timestamp-timezone-support.md) | 8 reads | ~11288 tok |
+| 22:00 | Created backend/test/timestamp.test.js | — | ~489 |
+| 22:01 | Created backend/src/ingest/timestamp.js | — | ~898 |
+| 22:01 | Edited backend/test/ingest.test.js | modified CEST() | ~382 |
+| 22:01 | Edited backend/test/history.test.js | expanded (+18 lines) | ~306 |
+| 22:01 | Edited backend/src/ingest/routes.js | modified isAuthorized() | ~108 |
+| 22:01 | Edited backend/src/ingest/routes.js | modified if() | ~282 |
+| 22:01 | Created backend/src/static/timezone.js | — | ~162 |
+| 22:02 | Edited backend/src/static/history-chart.js | added 1 import(s) | ~38 |
+| 22:02 | Edited backend/src/static/history-chart.js | modified formatTimeTick() | ~23 |
+| 22:03 | Created backend/_manual-verify-screenshot.cjs | — | ~219 |
+| 22:03 | Edited backend/_manual-verify-screenshot.cjs | inline fix | ~15 |
+| 22:10 | Session summary: timestamp/timezone ingest support shipped (naive=Europe/Prague, explicit offsets accepted, all normalized to canonical UTC; history chart displays Europe/Prague not UTC) via Superpowers brainstorm->spec->plan->execute flow, not a new BMAD story | backend/src/ingest/timestamp.js, backend/src/ingest/routes.js, backend/src/static/timezone.js, backend/src/static/history-chart.js, backend/test/{timestamp,ingest,history}.test.js, CLAUDE.md, .wolf/cerebrum.md | 55/55 tests pass, verified in real browser via headless Chromium screenshot |

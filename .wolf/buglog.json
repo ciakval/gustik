@@ -346,6 +346,86 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-09T20:50:00.000Z"
+    },
+    {
+      "id": "bug-020",
+      "timestamp": "2026-08-09T22:01:15.818Z",
+      "error_message": "Missing await",
+      "file": "backend/test/ingest.test.js",
+      "root_cause": "Async call without await — returned Promise instead of value",
+      "fix": "Added await to async call",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-09T22:01:15.818Z"
+    },
+    {
+      "id": "bug-021",
+      "timestamp": "2026-08-09T22:01:22.396Z",
+      "error_message": "Missing await",
+      "file": "backend/test/history.test.js",
+      "root_cause": "Async call without await — returned Promise instead of value",
+      "fix": "Added await to async call",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-09T22:01:22.396Z"
+    },
+    {
+      "id": "bug-022",
+      "timestamp": "2026-08-09T22:01:37.744Z",
+      "error_message": "Significant refactor of ",
+      "file": "backend/src/ingest/routes.js",
+      "root_cause": "9 lines replaced/restructured",
+      "fix": "Rewrote 21→10 lines (9 removed) | Also: const readings = Array.isArray(request.body) ? req; const invalid = readings.find((reading) => !isVali",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-08-09T22:01:43.622Z"
+    },
+    {
+      "id": "bug-023",
+      "timestamp": "2026-08-09T22:02:04.706Z",
+      "error_message": "Wrong return value",
+      "file": "backend/src/static/history-chart.js",
+      "root_cause": "Was returning: new Date(timestampMs).toISOString().slice(11, 16);",
+      "fix": "Now returns: formatLocalTime(timestampMs);",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-09T22:02:04.706Z"
+    },
+    {
+      "id": "bug-024",
+      "timestamp": "2026-08-09T22:03:17.298Z",
+      "error_message": "Wrong reference: 800 should be 1400",
+      "file": "backend/_manual-verify-screenshot.cjs",
+      "root_cause": "Used \"800\" instead of \"1400\"",
+      "fix": "Changed 800 → 1400",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "cjs"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-09T22:03:17.298Z"
     }
   ]
 }
