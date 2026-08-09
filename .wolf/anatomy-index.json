@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-01T22:57:09.360Z",
-    "fileCount": 389,
+    "lastScanned": "2026-08-09T20:43:03.150Z",
+    "fileCount": 391,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "558e6401a02d5a5264b20e33e980d11940eb9ac4758271d77184ecfff410fbc0",
-    "storeUpdatedAt": "2026-08-01T22:57:09.367Z"
+    "renderedHash": "9e9b22e8df5a0f532f5f23c556a47d4091d391a9c013863dd1398c11aa0c1ee1",
+    "storeUpdatedAt": "2026-08-09T20:43:03.157Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5096,6 +5096,63 @@
       "mtimeMs": 1785625029311.561,
       "updatedAt": "2026-08-01T22:57:09.360Z",
       "source": "hook"
+    },
+    "backend/test/ingest.test.js": {
+      "description": "Declares testApp",
+      "tokens": 898,
+      "hash": "ffd241b992c2113e",
+      "size": 3140,
+      "mtimeMs": 1786308170642.8733,
+      "updatedAt": "2026-08-09T20:42:50.697Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 6,
+          "endLine": 99,
+          "tokens": 848
+        }
+      ]
+    },
+    "backend/src/ingest/routes.js": {
+      "description": "API routes: POST (1 endpoints)",
+      "tokens": 730,
+      "hash": "2dd5a44220794e4d",
+      "size": 2554,
+      "mtimeMs": 1786308183077.748,
+      "updatedAt": "2026-08-09T20:43:03.149Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "isAuthorized",
+          "kind": "fn",
+          "startLine": 4,
+          "endLine": 16,
+          "tokens": 173
+        },
+        {
+          "name": "isValidCapturedAt",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 20,
+          "tokens": 46
+        },
+        {
+          "name": "wireShape",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 29,
+          "tokens": 58
+        },
+        {
+          "name": "registerIngestRoutes",
+          "kind": "fn",
+          "startLine": 30,
+          "endLine": 67,
+          "tokens": 409
+        }
+      ]
     }
   }
 }

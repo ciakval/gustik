@@ -310,6 +310,42 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-01T22:55:00.000Z"
+    },
+    {
+      "id": "bug-018",
+      "timestamp": "2026-08-09T20:42:50.723Z",
+      "error_message": "Missing await",
+      "file": "backend/test/ingest.test.js",
+      "root_cause": "Async call without await — returned Promise instead of value",
+      "fix": "Added await to async call",
+      "tags": [
+        "auto-detected",
+        "async-fix",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-09T20:42:50.723Z"
+    },
+    {
+      "id": "bug-019",
+      "timestamp": "2026-08-09T20:50:00.000Z",
+      "error_message": "History chart/table shows 00:00 for every point and never reflects newly-inserted readings, when manually POSTing test readings to a running backend (reported against a Docker-started instance, but reproduced identically against a plain `node src/index.js` run — not actually Docker-specific)",
+      "file": "backend/src/ingest/routes.js",
+      "root_cause": "getHistory() (backend/src/store/readings.js) filters `WHERE captured_at >= ?` using plain lexicographic TEXT comparison against a generated 'YYYY-MM-DDTHH:MM:SS.sssZ' cutoff string. POST /readings never validated the client-supplied capturedAt string, so any reading whose format deviates from that exact ISO-8601 'T'.../'Z' shape (e.g. 'YYYY-MM-DD HH:MM:SS' with a space, which is what the shell `date` command and many quick manual-test scripts produce, or a date-only string) sorts before the cutoff in plain string comparison (space 0x20 < 'T' 0x5A) and is silently dropped from every /readings/history response, even though the row is genuinely from today. The write itself still succeeds (201), so nothing in the response indicates data was lost - it just never appears in the chart. Confirmed reproducible: inserted a well-formed ISO reading and a space-separated 'now' reading into the same fresh in-memory DB; GET /readings/history returned only the well-formed one. The pre-existing local dev DB (backend/data/gustik.sqlite, gitignored) already had 12 rows in the broken space-separated shape from earlier manual testing, all invisible to /readings/history.",
+      "fix": "Added strict ISO-8601 UTC validation (regex `/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/` plus a Date.parse sanity check) at the POST /readings boundary in ingest/routes.js — malformed capturedAt now returns 400 immediately instead of being stored and silently excluded later. Verified against firmware/src/transmit/hw/clock.cpp (`strftime(..., \"%Y-%m-%dT%H:%M:%S.000Z\", ...)`) - real device payloads always match this shape, so the validation cannot reject legitimate hardware data, only malformed manual/test input. Added a TDD regression test in backend/test/ingest.test.js.",
+      "tags": [
+        "backend",
+        "ingest",
+        "timestamp",
+        "iso-8601",
+        "history",
+        "validation",
+        "docker-red-herring"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-09T20:50:00.000Z"
     }
   ]
 }

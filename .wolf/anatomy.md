@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-01T22:57:09.360Z
-> Files: 389 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-09T20:43:03.150Z
+> Files: 391 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -1120,3 +1120,16 @@
   - fn `extract_key` L171-181 (~78 tok)
   - fn `write_json_stdout` L182-189 (~91 tok)
   - fn `main` L190-241 (~484 tok)
+
+## backend/src/ingest/
+
+- `routes.js` — API routes: POST (1 endpoints) (~730 tok)
+  - fn `isAuthorized` L4-16 (~173 tok)
+  - fn `isValidCapturedAt` L17-20 (~46 tok)
+  - fn `wireShape` L21-29 (~58 tok)
+  - fn `registerIngestRoutes` L30-67 (~409 tok)
+
+## backend/test/
+
+- `ingest.test.js` — Declares testApp (~898 tok)
+  - fn `testApp` L6-99 (~848 tok)

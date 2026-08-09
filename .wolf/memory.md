@@ -280,3 +280,14 @@
 | 22:53 | Edited .worktrees/ci-pipeline/firmware/platformio.ini | 7→5 lines | ~29 |
 | 22:55 | Created .worktrees/ci-pipeline/firmware/platformio.ini | — | ~443 |
 | 22:57 | Edited .worktrees/ci-pipeline/TODO.md | expanded (+38 lines) | ~960 |
+| 22:58 | Session end: 166 writes across 73 files (.gitignore, package.json, Dockerfile, store.test.js, db.js) | 50 reads | ~72449 tok |
+
+## Session: 2026-08-09 20:37
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 20:42 | Edited backend/test/ingest.test.js | expanded (+12 lines) | ~153 |
+| 20:42 | Edited backend/src/ingest/routes.js | modified isAuthorized() | ~218 |
+| 20:43 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~110 |
+| 20:52 | Root-caused "Docker history shows 00:00 / new data invisible" (bug-019): getHistory's string-compared date filter silently drops any captured_at not in exact ISO 'T'/'Z' shape; reproduced with plain node --test, not Docker-specific | backend/src/ingest/routes.js, backend/test/ingest.test.js, .wolf/buglog.json, .wolf/cerebrum.md | Fixed: POST /readings now rejects malformed capturedAt with 400 (TDD, 44/44 tests + lint pass) | ~900 |
+| 20:44 | Session end: 3 writes across 2 files (ingest.test.js, routes.js) | 14 reads | ~481 tok |
