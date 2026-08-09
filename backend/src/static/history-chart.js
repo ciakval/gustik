@@ -1,4 +1,5 @@
 import { buildSpeedPoints, buildDirectionPoints } from './history-chart-data.js';
+import { formatLocalTime } from './timezone.js';
 
 const OCTANT_LABELS = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
 
@@ -11,7 +12,7 @@ function speedAxisLabel(unit) {
 }
 
 function formatTimeTick(timestampMs) {
-  return new Date(timestampMs).toISOString().slice(11, 16);
+  return formatLocalTime(timestampMs);
 }
 
 function render() {
