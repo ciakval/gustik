@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-10T19:26:48.218Z
-> Files: 454 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-10T20:10:57.627Z
+> Files: 460 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -645,7 +645,25 @@
 
 ## .github/workflows/
 
-- `ci.yml` — CI: CI (~3396 tok)
+- `ci.yml` — CI: CI (~3348 tok)
+
+## .worktrees/chore-ghcr-backend-deploy/
+
+- `CLAUDE.md` — CLAUDE.md (~2162 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~1624 tok)
+
+## .worktrees/chore-ghcr-backend-deploy/.github/workflows/
+
+- `ci.yml` — CI: CI (~3719 tok)
+
+## .worktrees/chore-ghcr-backend-deploy/.wolf/
+
+- `cerebrum.md` — Cerebrum (~4972 tok)
+- `STATUS.md` — STATUS — gustik (~3649 tok)
+
+## .worktrees/chore-ghcr-backend-deploy/backend/
+
+- `compose.yaml` — Docker Compose: 2 services (~200 tok)
 
 ## _bmad-output/planning-artifacts/
 

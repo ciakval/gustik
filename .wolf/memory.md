@@ -335,4 +335,21 @@
 | 19:24 | Edited TODO.md | 32→28 lines | ~458 |
 | 21:20 | Session summary: backend deployment implemented and live-verified at https://gustik.remesh.cz — real server bombur.remesh.cz, container "gustik" on external Docker network "proxy", Caddy forwards gustik.remesh.cz to gustik:3000 (user updated Caddyfile by hand). CI deploy-backend job rewired to real secret/var names, switched rsync->tar (server has no rsync, no sudo), added .env-from-secret write step, health check now hits public URL. Manually dry-ran full deploy via SSH before enabling: caught+fixed 2 bugs (stray local .env almost synced to server; unscoped docker image prune touched unrelated projects' images) - see buglog bug-025/bug-026 | backend/docker-compose.yml, backend/.env.example, .github/workflows/ci.yml, TODO.md, .wolf/STATUS.md, .wolf/cerebrum.md, .wolf/buglog.json | placeholder nginx container removed from server, real backend running and health-checked; DEPLOY_ENABLED left unset pending user go-ahead | ~9000 |
 | 19:27 | Session end: 7 writes across 3 files (docker-compose.yml, ci.yml, TODO.md) | 5 reads | ~7516 tok |
+| 19:54 | Session end: 7 writes across 3 files (docker-compose.yml, ci.yml, TODO.md) | 5 reads | ~7516 tok |
+| 19:57 | Edited .github/workflows/ci.yml | 14→11 lines | ~230 |
+| 19:57 | Edited .github/workflows/ci.yml | 12→15 lines | ~175 |
+| 19:59 | Session end: 9 writes across 3 files (docker-compose.yml, ci.yml, TODO.md) | 5 reads | ~8063 tok |
+| 20:04 | Edited .worktrees/chore-ghcr-backend-deploy/backend/compose.yaml | 4→9 lines | ~114 |
+| 20:04 | Edited .worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml | expanded (+19 lines) | ~352 |
+| 20:04 | Edited .worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml | 7→7 lines | ~38 |
+| 20:05 | Edited .worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml | expanded (+9 lines) | ~1148 |
+| 20:05 | Edited .worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml | 2→2 lines | ~37 |
+| 20:06 | Edited .worktrees/chore-ghcr-backend-deploy/TODO.md | 17→21 lines | ~391 |
+| 20:07 | Edited .worktrees/chore-ghcr-backend-deploy/CLAUDE.md | inline fix | ~172 |
+| 20:07 | Edited .worktrees/chore-ghcr-backend-deploy/.wolf/cerebrum.md | inline fix | ~145 |
+| 20:07 | Edited .worktrees/chore-ghcr-backend-deploy/.wolf/STATUS.md | inline fix | ~50 |
+| 20:08 | Edited .worktrees/chore-ghcr-backend-deploy/.wolf/STATUS.md | 1→2 lines | ~1179 |
+| 20:08 | Edited .worktrees/chore-ghcr-backend-deploy/.wolf/cerebrum.md | 1→3 lines | ~455 |
+| 20:10 | Edited .worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml | 8→9 lines | ~85 |
+| 20:13 | Session end: 21 writes across 7 files (docker-compose.yml, ci.yml, TODO.md, compose.yaml, CLAUDE.md) | 12 reads | ~27467 tok |
 | 20:15 | Session summary: switched deploy sync back to rsync (server got rsync installed), then implemented GHCR-based deploy on branch chore/ghcr-backend-deploy + worktree - build once in CI (build-backend-image job, docker/build-push-action, pushes :latest+:sha to ghcr.io/ciakval/gustik-backend on main only), server now docker compose pull && up -d instead of rebuilding, GHCR login on server is a fresh ephemeral GITHUB_TOKEN each deploy (never stored). Also renamed docker-compose.yml -> compose.yaml (Compose v2 convention) | backend/compose.yaml, backend/.env.example, .github/workflows/ci.yml, TODO.md, CLAUDE.md, .wolf/STATUS.md, .wolf/cerebrum.md | YAML+actionlint clean, 55/55 tests pass, rsync re-verified against real server; GHCR push/pull path itself unverified until merge (build-backend-image only pushes on main) | ~11000 |

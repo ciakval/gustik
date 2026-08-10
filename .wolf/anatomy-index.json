@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-10T19:26:48.218Z",
-    "fileCount": 454,
+    "lastScanned": "2026-08-10T20:10:57.627Z",
+    "fileCount": 460,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "52713275f442ba91ac6cce2358f90b62111c027419f3dd7b337c05f56a58c10d",
-    "storeUpdatedAt": "2026-08-10T19:26:48.220Z"
+    "renderedHash": "96a53b90a3faa11f13fc205b714a7db09fbcd50336acfaa69d5eff7930293622",
+    "storeUpdatedAt": "2026-08-10T20:10:57.633Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3598,12 +3598,12 @@
     },
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
-      "tokens": 3396,
-      "hash": "7a6be3e6bdb52288",
-      "size": 11892,
-      "mtimeMs": 1786389814923.1555,
-      "updatedAt": "2026-08-10T19:26:48.132Z",
-      "source": "scan"
+      "tokens": 3348,
+      "hash": "011e0c46fbf52b86",
+      "size": 11722,
+      "mtimeMs": 1786391873635.196,
+      "updatedAt": "2026-08-10T19:57:53.687Z",
+      "source": "hook"
     },
     ".gitignore": {
       "description": "Git ignore rules",
@@ -5815,6 +5815,60 @@
       "mtimeMs": 1786389866461.6282,
       "updatedAt": "2026-08-10T19:26:48.214Z",
       "source": "scan"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/backend/compose.yaml": {
+      "description": "Docker Compose: 2 services",
+      "tokens": 200,
+      "hash": "2bdd0a55b901653f",
+      "size": 699,
+      "mtimeMs": 1786392243234.3826,
+      "updatedAt": "2026-08-10T20:04:03.301Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml": {
+      "description": "CI: CI",
+      "tokens": 3719,
+      "hash": "753109eea2cb5a83",
+      "size": 13020,
+      "mtimeMs": 1786392657580.9453,
+      "updatedAt": "2026-08-10T20:10:57.626Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/TODO.md": {
+      "description": "TODO — items flagged for Mlok's review",
+      "tokens": 1624,
+      "hash": "9ba072bea3e06799",
+      "size": 6533,
+      "mtimeMs": 1786392405150.3523,
+      "updatedAt": "2026-08-10T20:06:45.198Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/CLAUDE.md": {
+      "description": "CLAUDE.md",
+      "tokens": 2162,
+      "hash": "203f15b2aa0d9cba",
+      "size": 8714,
+      "mtimeMs": 1786392427128.95,
+      "updatedAt": "2026-08-10T20:07:07.180Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/.wolf/cerebrum.md": {
+      "description": "Cerebrum",
+      "tokens": 4972,
+      "hash": "803f77ac3617f69f",
+      "size": 19948,
+      "mtimeMs": 1786392506683.3083,
+      "updatedAt": "2026-08-10T20:08:26.734Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/.wolf/STATUS.md": {
+      "description": "STATUS — gustik",
+      "tokens": 3649,
+      "hash": "f7f6a3fca23d04f1",
+      "size": 14714,
+      "mtimeMs": 1786392490634.4749,
+      "updatedAt": "2026-08-10T20:08:10.683Z",
+      "source": "hook"
     }
   }
 }
