@@ -1,6 +1,7 @@
 services:
   backend:
     build: .
+    container_name: gustik
     restart: unless-stopped
     environment:
       - PORT=3000
@@ -8,8 +9,14 @@ services:
       - INGEST_TOKEN=${INGEST_TOKEN}
     volumes:
       - gustik-data:/app/data
+    networks:
+      - proxy
     expose:
       - "3000"
+
+networks:
+  proxy:
+    external: true
 
 volumes:
   gustik-data:

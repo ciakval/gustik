@@ -179,23 +179,37 @@ jobs:
   #                                        a no-op (not a failure) until
   #                                        deployment is actually ready
   #
-  # Requires these repository secrets (placeholders until provided):
-  #   DEPLOY_HOST      - server hostname/IP
-  #   DEPLOY_USER      - SSH user
-  #   DEPLOY_SSH_KEY   - private key (PEM), matching a public key already
-  #                      in that user's ~/.ssh/authorized_keys on the server
-  #   DEPLOY_PATH      - absolute path on the server to sync backend/ into
-  #                      and run `docker compose` from (e.g. /opt/gustik)
-  #   DEPLOY_PORT      - optional, defaults to 22
+  # Requires these repository variables (Settings > Variables):
+  #   VPS_HOST       - server hostname
+  #   VPS_USER       - SSH user
+  #   VPS_SSH_PORT   - SSH port
+  #   DEPLOY_DIR     - absolute path on the server to sync backend/ into
+  #                    and run `docker compose` from
+  # and this repository secret:
+  #   VPS_SSH_KEY    - private key (PEM), matching a public key already
+  #                    in that user's ~/.ssh/authorized_keys on the server
   #
-  # Strategy: rsync the backend/ source to the server, then build+run there
-  # with `docker compose up -d --build`. Chosen over a registry-push flow
-  # (build in CI, push to GHCR, pull on server) because it needs nothing
-  # but SSH access - no registry auth, no image transfer bandwidth concern
-  # for a single small self-hosted instance. The server's own docker-
-  # compose.yml/.env (holding the real INGEST_TOKEN) are never touched by
-  # rsync (--exclude=.env) and must be created once by hand on first setup
-  # - see backend/docker-compose.yml and backend/.env.example.
+  # Strategy: ship the backend/ source to the server over a tar/ssh pipe,
+  # then build+run there with `docker compose up -d --build`. Chosen over
+  # a registry-push flow (build in CI, push to GHCR, pull on server)
+  # because it needs nothing but SSH access - no registry auth, no image
+  # transfer bandwidth concern for a single small self-hosted instance.
+  # rsync was the original plan but the server has no rsync binary and
+  # the deploy user has no sudo to install one (verified via `sudo -n`),
+  # so this uses tar (present everywhere, no extra dependency) instead -
+  # the target dir is wiped and re-extracted fresh each deploy, which is
+  # safe because the sqlite data lives in a named Docker volume
+  # (gustik-data), not a bind mount under DEPLOY_DIR. .env is written
+  # fresh on every deploy from the INGEST_TOKEN secret (see "Write .env
+  # on the server" below) - it's GitHub-managed now, not a hand-
+  # maintained server file, so wiping it here is fine too.
+  #
+  # The container joins the pre-existing external Docker network `proxy`,
+  # which Caddy (a separate, human-managed compose project on the same
+  # host, not touched by this workflow) also sits on - Caddy's Caddyfile
+  # reverse-proxies gustik.remesh.cz to this container by its container_name
+  # (`gustik`) on port 3000. No port is published to the host; Caddy owns
+  # 80/443 there.
   # ---------------------------------------------------------------------
 
   deploy-backend:
@@ -211,56 +225,62 @@ jobs:
 
       - name: Configure SSH
         env:
-          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
+          VPS_SSH_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_SSH_PORT: ${{ vars.VPS_SSH_PORT }}
         run: |
           mkdir -p ~/.ssh
-          printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          printf '%s\n' "$VPS_SSH_KEY" > ~/.ssh/deploy_key
           chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p "$DEPLOY_PORT" -H "$DEPLOY_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -p "$VPS_SSH_PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Rsync backend source to server
+      - name: Ship backend source to server
         env:
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          VPS_USER: ${{ vars.VPS_USER }}
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_SSH_PORT: ${{ vars.VPS_SSH_PORT }}
+          DEPLOY_DIR: ${{ vars.DEPLOY_DIR }}
         run: |
-          rsync -az --delete \
-            --exclude='.env' \
-            --exclude='node_modules' \
-            --exclude='data' \
-            -e "ssh -i ~/.ssh/deploy_key -p $DEPLOY_PORT" \
-            backend/ "$DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH/"
+          ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
+            "rm -rf '$DEPLOY_DIR' && mkdir -p '$DEPLOY_DIR'"
+          tar czf - --exclude='.env' --exclude='node_modules' --exclude='data' -C backend . \
+            | ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
+              "tar xzf - -C '$DEPLOY_DIR'"
+
+      - name: Write .env on the server
+        env:
+          VPS_USER: ${{ vars.VPS_USER }}
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_SSH_PORT: ${{ vars.VPS_SSH_PORT }}
+          DEPLOY_DIR: ${{ vars.DEPLOY_DIR }}
+          INGEST_TOKEN: ${{ secrets.INGEST_TOKEN }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
+            "cat > '$DEPLOY_DIR/.env'" <<EOF
+          INGEST_TOKEN=$INGEST_TOKEN
+          EOF
 
       - name: Build and restart on the server
         env:
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          VPS_USER: ${{ vars.VPS_USER }}
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_SSH_PORT: ${{ vars.VPS_SSH_PORT }}
+          DEPLOY_DIR: ${{ vars.DEPLOY_DIR }}
         run: |
-          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" \
-            "cd '$DEPLOY_PATH' && docker compose up -d --build && docker image prune -f"
+          ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
+            "cd '$DEPLOY_DIR' && docker compose up -d --build && docker image prune -f --filter 'label=com.docker.compose.project=gustik'"
 
       - name: Health check
-        env:
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_PORT: ${{ secrets.DEPLOY_PORT || '22' }}
         run: |
-          ssh -i ~/.ssh/deploy_key -p "$DEPLOY_PORT" "$DEPLOY_USER@$DEPLOY_HOST" '
-            for i in $(seq 1 10); do
-              if curl -fsS http://localhost:3000/health > /dev/null; then
-                echo "Health check passed"
-                exit 0
-              fi
-              sleep 3
-            done
-            echo "Health check failed after deploy"
-            exit 1
-          '
+          for i in $(seq 1 10); do
+            if curl -fsS https://gustik.remesh.cz/health > /dev/null; then
+              echo "Health check passed"
+              exit 0
+            fi
+            sleep 3
+          done
+          echo "Health check failed after deploy"
+          exit 1
 
   # ---------------------------------------------------------------------
   # Package firmware as a release artifact (not a real device deploy -

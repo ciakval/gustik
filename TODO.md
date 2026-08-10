@@ -6,37 +6,33 @@ file collects things that need a human decision, physical hardware access,
 or verification this devcontainer cannot do — nothing here blocked the
 session from continuing to the next story.
 
-## CI pipeline added (`.github/workflows/ci.yml`) — needs your SSH credentials to actually deploy
+## CI pipeline (`.github/workflows/ci.yml`) — backend deploy now wired and live
 
-Lint+build+test now run on every push/PR (backend: eslint + `node:test` +
+Lint+build+test run on every push/PR (backend: eslint + `node:test` +
 `docker build`; firmware: `pio check` + `pio test -e native` + a real
 `pio run -e esp32dev` build, see below). Firmware gets packaged as a
 90-day build artifact on every push, and as a GitHub Release on version
-tags (`v*`). Backend deploy is real (rsync + `docker compose up -d --build`
-over SSH) but currently a no-op until you configure it:
+tags (`v*`).
 
-1. Add these **repository secrets** (Settings → Secrets and variables →
-   Actions → Secrets): `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_SSH_KEY`
-   (private key PEM, matching a public key already in that user's
-   `~/.ssh/authorized_keys` on the server), `DEPLOY_PATH` (e.g.
-   `/opt/gustik`), and optionally `DEPLOY_PORT` (defaults to 22).
-2. On the server itself, at `DEPLOY_PATH`, once by hand: create a `.env`
-   file (see `backend/.env.example`) with the real `INGEST_TOKEN` — CI's
-   rsync never touches `.env`, so it survives every future deploy.
-3. Add a **repository variable** (same page, Variables tab, not Secrets)
-   `DEPLOY_ENABLED` = `true`. This is the actual on/off switch (job-level
-   `if:` conditions can't read the secrets context at all, see cerebrum.md)
-   — flip it once 1-2 are done, and the next push to `main` deploys for
-   real.
-4. `docker-compose.yml` currently only `expose`s port 3000 (container-
-   network-internal), assuming an existing reverse-proxy (Caddy, per the
-   architecture spine) shares a Docker network with it — if your Caddy
-   setup is different (separate compose stack, host networking, etc.),
-   you'll need to adjust `docker-compose.yml` accordingly (e.g. a shared
-   `networks:` entry, or a `ports:` mapping) before the deployed
-   container is actually reachable.
+Backend deploy to `bombur.remesh.cz` (real server, `plachtis` account,
+`DEPLOY_DIR=/home/plachtis/DOCKER/gustik`) is real and configured: repo
+secrets `VPS_SSH_KEY` / `INGEST_TOKEN`, repo variables `VPS_HOST` /
+`VPS_USER` / `VPS_SSH_PORT` / `DEPLOY_DIR` are all set. Deploy step ships
+`backend/` over a tar/ssh pipe (not rsync — the server has neither the
+`rsync` binary nor sudo to install one), writes `.env` fresh from the
+`INGEST_TOKEN` secret every deploy, then `docker compose up -d --build`
+and a scoped `docker image prune` (filtered to this project's label —
+an unscoped prune was tried once by hand during setup and reclaimed
+1.5GB of *other* projects' dangling images on the shared host, which is
+out of this project's bounds). Container is named `gustik`, joins the
+pre-existing external `proxy` Docker network, and is reverse-proxied by
+the host's Caddy instance (`gustik.remesh.cz → gustik:3000`) — a
+separate, human-managed compose project this workflow never touches.
+`DEPLOY_ENABLED` variable is the on/off switch; flip it in Settings →
+Variables once you're ready for pushes to `main` to auto-deploy for real
+(job-level `if:` can't read the secrets context, see cerebrum.md).
 
-`backend/Dockerfile` is now build-verified by CI on every push (previously
+`backend/Dockerfile` is build-verified by CI on every push (previously
 completely untested — no `docker` binary in this devcontainer even now).
 
 ## Firmware `[env:esp32dev]` — now build-verified, still needs real hardware
