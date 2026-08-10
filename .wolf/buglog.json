@@ -466,6 +466,24 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-10T21:15:00Z"
+    },
+    {
+      "id": "bug-027",
+      "timestamp": "2026-08-10T20:10:00Z",
+      "error_message": "build-backend-image job failed: docker/build-push-action@v6 - \"buildx failed with: Learn more at https://docs.docker.com/go/build-cache-backends/\"",
+      "file": ".github/workflows/ci.yml",
+      "root_cause": "cache-from/cache-to: type=gha requires a buildx builder that supports the GitHub Actions cache backend. The default docker driver auto-created by build-push-action does not support it - docker/setup-buildx-action must run first to provision a docker-container driver builder.",
+      "fix": "Added a docker/setup-buildx-action@v3 step before docker/login-action@v3 and docker/build-push-action@v6.",
+      "tags": [
+        "ci",
+        "docker",
+        "buildx",
+        "ghcr",
+        "cache"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-10T20:10:00Z"
     }
   ]
 }

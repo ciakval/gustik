@@ -1,5 +1,10 @@
 services:
   backend:
+    # image: pulled by CI's deploy step (docker compose pull && up -d), built
+    # and pushed to GHCR by the build-backend-image CI job on every push to
+    # main. build: is for local dev only (docker compose up --build) - the
+    # deploy server never builds, it only pulls this tag.
+    image: ghcr.io/ciakval/gustik-backend:latest
     build: .
     container_name: gustik
     restart: unless-stopped

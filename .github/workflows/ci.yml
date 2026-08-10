@@ -54,15 +54,35 @@ jobs:
       - run: npm ci
       - run: npm test
 
-  # Verifies backend/Dockerfile actually builds - this has no coverage
-  # anywhere else (the devcontainer this project was scaffolded in has no
-  # docker binary). Build-only, no push - deploy-backend rebuilds on the
-  # server itself over SSH, see that job's comments for why.
-  docker-build-backend:
+  # Builds backend/Dockerfile on every push/PR (this has no coverage
+  # anywhere else - the devcontainer this project was scaffolded in has no
+  # docker binary). On a push to main only, also pushes the built image to
+  # GHCR (tagged :latest and :<sha>) - deploy-backend then just pulls that
+  # tag and runs it, instead of rebuilding from source on the server. PRs
+  # and other branches get build-only verification, no push (no reason to
+  # publish an image for code that isn't deploying).
+  build-backend-image:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t gustik-backend:ci ./backend
+      - uses: docker/setup-buildx-action@v3
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - uses: docker/build-push-action@v6
+        with:
+          context: ./backend
+          push: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+          tags: |
+            ghcr.io/${{ github.repository_owner }}/gustik-backend:latest
+            ghcr.io/${{ github.repository_owner }}/gustik-backend:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
   # ---------------------------------------------------------------------
   # Firmware (PlatformIO/ESP32) — static analysis, native unit tests,
@@ -151,7 +171,7 @@ jobs:
     needs:
       - lint-backend
       - test-backend
-      - docker-build-backend
+      - build-backend-image
       - lint-firmware
       - test-firmware
       - build-firmware-esp32
@@ -183,23 +203,25 @@ jobs:
   #   VPS_HOST       - server hostname
   #   VPS_USER       - SSH user
   #   VPS_SSH_PORT   - SSH port
-  #   DEPLOY_DIR     - absolute path on the server to sync backend/ into
-  #                    and run `docker compose` from
+  #   DEPLOY_DIR     - absolute path on the server to sync compose.yaml
+  #                    into and run `docker compose` from
   # and this repository secret:
   #   VPS_SSH_KEY    - private key (PEM), matching a public key already
   #                    in that user's ~/.ssh/authorized_keys on the server
   #
-  # Strategy: rsync the backend/ source to the server, then build+run there
-  # with `docker compose up -d --build`. Chosen over a registry-push flow
-  # (build in CI, push to GHCR, pull on server) because it needs nothing
-  # but SSH access - no registry auth, no image transfer bandwidth concern
-  # for a single small self-hosted instance. (The server briefly had no
-  # rsync binary and no sudo to install one, so this used a tar/ssh pipe
-  # for one deploy - rsync is installed now, see buglog bug-025/bug-026.)
-  # .env is written fresh on every deploy from the INGEST_TOKEN secret
-  # (see "Write .env on the server" below) - it's GitHub-managed now, not
-  # a hand-maintained server file, and rsync's --exclude=.env leaves
-  # whatever's there from the previous deploy alone until that step runs.
+  # Strategy: the image is already built and pushed to GHCR by
+  # build-backend-image above (tags :latest and :<sha>) - this job never
+  # builds anything itself. It ships only compose.yaml to the server (not
+  # the source tree - nothing to build there anymore), logs the server
+  # into GHCR using this run's own short-lived GITHUB_TOKEN (never stored
+  # permanently - each deploy re-authenticates fresh), then
+  # `docker compose pull && up -d`. Chosen over rsync-and-build-on-server
+  # (the original approach) because the image the server runs is then
+  # provably the exact same bytes build-backend-image already
+  # build-verified in CI, not a separate rebuild that could drift from
+  # what CI tested. .env is written fresh on every deploy from the
+  # INGEST_TOKEN secret (see "Write .env on the server" below) - it's
+  # GitHub-managed now, not a hand-maintained server file.
   #
   # The container joins the pre-existing external Docker network `proxy`,
   # which Caddy (a separate, human-managed compose project on the same
@@ -210,7 +232,7 @@ jobs:
   # ---------------------------------------------------------------------
 
   deploy-backend:
-    needs: [lint-backend, test-backend, docker-build-backend]
+    needs: [lint-backend, test-backend, build-backend-image]
     if: >-
       github.event_name == 'push' &&
       github.ref == 'refs/heads/main' &&
@@ -231,7 +253,7 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$VPS_SSH_PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Rsync backend source to server
+      - name: Sync compose.yaml to server
         env:
           VPS_USER: ${{ vars.VPS_USER }}
           VPS_HOST: ${{ vars.VPS_HOST }}
@@ -240,12 +262,8 @@ jobs:
         run: |
           ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
             "mkdir -p '$DEPLOY_DIR'"
-          rsync -az --delete \
-            --exclude='.env' \
-            --exclude='node_modules' \
-            --exclude='data' \
-            -e "ssh -i ~/.ssh/deploy_key -p $VPS_SSH_PORT" \
-            backend/ "$VPS_USER@$VPS_HOST:$DEPLOY_DIR/"
+          rsync -az -e "ssh -i ~/.ssh/deploy_key -p $VPS_SSH_PORT" \
+            backend/compose.yaml "$VPS_USER@$VPS_HOST:$DEPLOY_DIR/compose.yaml"
 
       - name: Write .env on the server
         env:
@@ -260,7 +278,18 @@ jobs:
           INGEST_TOKEN=$INGEST_TOKEN
           EOF
 
-      - name: Build and restart on the server
+      - name: Log in to GHCR on the server
+        env:
+          VPS_USER: ${{ vars.VPS_USER }}
+          VPS_HOST: ${{ vars.VPS_HOST }}
+          VPS_SSH_PORT: ${{ vars.VPS_SSH_PORT }}
+          GHCR_USER: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
+            "docker login ghcr.io -u '$GHCR_USER' --password-stdin" <<< "$GHCR_TOKEN"
+
+      - name: Pull and restart on the server
         env:
           VPS_USER: ${{ vars.VPS_USER }}
           VPS_HOST: ${{ vars.VPS_HOST }}
@@ -268,7 +297,7 @@ jobs:
           DEPLOY_DIR: ${{ vars.DEPLOY_DIR }}
         run: |
           ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
-            "cd '$DEPLOY_DIR' && docker compose up -d --build && docker image prune -f --filter 'label=com.docker.compose.project=gustik'"
+            "cd '$DEPLOY_DIR' && docker compose pull && docker compose up -d && docker image prune -f --filter 'label=com.docker.compose.project=gustik'"
 
       - name: Health check
         run: |
