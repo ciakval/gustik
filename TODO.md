@@ -15,22 +15,26 @@ Lint+build+test run on every push/PR (backend: eslint + `node:test` +
 tags (`v*`).
 
 Backend deploy to `bombur.remesh.cz` (real server, `plachtis` account,
-`DEPLOY_DIR=/home/plachtis/DOCKER/gustik`) is real and configured: repo
-secrets `VPS_SSH_KEY` / `INGEST_TOKEN`, repo variables `VPS_HOST` /
-`VPS_USER` / `VPS_SSH_PORT` / `DEPLOY_DIR` are all set. Deploy step ships
-`backend/` over a tar/ssh pipe (not rsync — the server has neither the
-`rsync` binary nor sudo to install one), writes `.env` fresh from the
-`INGEST_TOKEN` secret every deploy, then `docker compose up -d --build`
-and a scoped `docker image prune` (filtered to this project's label —
-an unscoped prune was tried once by hand during setup and reclaimed
-1.5GB of *other* projects' dangling images on the shared host, which is
-out of this project's bounds). Container is named `gustik`, joins the
-pre-existing external `proxy` Docker network, and is reverse-proxied by
-the host's Caddy instance (`gustik.remesh.cz → gustik:3000`) — a
-separate, human-managed compose project this workflow never touches.
-`DEPLOY_ENABLED` variable is the on/off switch; flip it in Settings →
-Variables once you're ready for pushes to `main` to auto-deploy for real
-(job-level `if:` can't read the secrets context, see cerebrum.md).
+`DEPLOY_DIR=/home/plachtis/DOCKER/gustik`) is real, configured, and
+**live** (`DEPLOY_ENABLED=true`): repo secrets `VPS_SSH_KEY` /
+`INGEST_TOKEN`, repo variables `VPS_HOST` / `VPS_USER` / `VPS_SSH_PORT` /
+`DEPLOY_DIR` are all set. `build-backend-image` builds `backend/Dockerfile`
+on every push/PR and, on a push to `main`, pushes it to GHCR
+(`ghcr.io/ciakval/gustik-backend`, tagged `:latest` and `:<sha>`) - the
+image running in production is the exact same one CI build-verified, not
+a separate rebuild. `deploy-backend` then only ships `backend/compose.yaml`
+to the server (rsync - reinstalled on the server by hand after briefly
+being unavailable, see buglog bug-025/bug-026), writes `.env` fresh from
+the `INGEST_TOKEN` secret, logs the server into GHCR with this run's own
+short-lived `GITHUB_TOKEN` (re-authenticates fresh every deploy, nothing
+stored permanently), then `docker compose pull && up -d` and a scoped
+`docker image prune` (filtered to this project's label - an unscoped
+prune was tried once by hand during setup and reclaimed 1.5GB of *other*
+projects' dangling images on the shared host, which is out of this
+project's bounds). Container is named `gustik`, joins the pre-existing
+external `proxy` Docker network, and is reverse-proxied by the host's
+Caddy instance (`gustik.remesh.cz → gustik:3000`) - a separate,
+human-managed compose project this workflow never touches.
 
 `backend/Dockerfile` is build-verified by CI on every push (previously
 completely untested — no `docker` binary in this devcontainer even now).
