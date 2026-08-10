@@ -316,3 +316,22 @@
 | 22:03 | Edited backend/_manual-verify-screenshot.cjs | inline fix | ~15 |
 | 22:10 | Session summary: timestamp/timezone ingest support shipped (naive=Europe/Prague, explicit offsets accepted, all normalized to canonical UTC; history chart displays Europe/Prague not UTC) via Superpowers brainstorm->spec->plan->execute flow, not a new BMAD story | backend/src/ingest/timestamp.js, backend/src/ingest/routes.js, backend/src/static/timezone.js, backend/src/static/history-chart.js, backend/test/{timestamp,ingest,history}.test.js, CLAUDE.md, .wolf/cerebrum.md | 55/55 tests pass, verified in real browser via headless Chromium screenshot |
 | 22:05 | Session end: 15 writes across 11 files (2026-08-09-timestamp-timezone-support-design.md, CLAUDE.md, 2026-08-09-timestamp-timezone-support.md, timestamp.test.js, timestamp.js) | 9 reads | ~14227 tok |
+
+## Session: 2026-08-10 18:49
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-10 18:52
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 19:18 | Edited backend/docker-compose.yml | expanded (+7 lines) | ~104 |
+| 19:19 | Edited .github/workflows/ci.yml | modified variables() | ~1349 |
+| 19:21 | Edited .github/workflows/ci.yml | 9→14 lines | ~281 |
+| 19:21 | Edited .github/workflows/ci.yml | 13→12 lines | ~168 |
+| 19:21 | Edited .github/workflows/ci.yml | "node_modules" → ".env" | ~27 |
+| 19:23 | Edited .github/workflows/ci.yml | 3→3 lines | ~66 |
+| 19:24 | Edited TODO.md | 32→28 lines | ~458 |
+| 21:20 | Session summary: backend deployment implemented and live-verified at https://gustik.remesh.cz — real server bombur.remesh.cz, container "gustik" on external Docker network "proxy", Caddy forwards gustik.remesh.cz to gustik:3000 (user updated Caddyfile by hand). CI deploy-backend job rewired to real secret/var names, switched rsync->tar (server has no rsync, no sudo), added .env-from-secret write step, health check now hits public URL. Manually dry-ran full deploy via SSH before enabling: caught+fixed 2 bugs (stray local .env almost synced to server; unscoped docker image prune touched unrelated projects' images) - see buglog bug-025/bug-026 | backend/docker-compose.yml, backend/.env.example, .github/workflows/ci.yml, TODO.md, .wolf/STATUS.md, .wolf/cerebrum.md, .wolf/buglog.json | placeholder nginx container removed from server, real backend running and health-checked; DEPLOY_ENABLED left unset pending user go-ahead | ~9000 |
+| 19:27 | Session end: 7 writes across 3 files (docker-compose.yml, ci.yml, TODO.md) | 5 reads | ~7516 tok |

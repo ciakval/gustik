@@ -1,13 +1,14 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-09T22:04:02.270Z
-> Files: 442 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-10T19:26:48.218Z
+> Files: 454 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
 - `CLAUDE.md` — CLAUDE.md (~2136 tok)
-- `TODO.md` — TODO — items flagged for Mlok's review (~1622 tok)
+- `deploy.txt` (~25 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~1556 tok)
 
 ## .claude/
 
@@ -644,7 +645,7 @@
 
 ## .github/workflows/
 
-- `ci.yml` — CI: CI (~3108 tok)
+- `ci.yml` — CI: CI (~3396 tok)
 
 ## _bmad-output/planning-artifacts/
 
@@ -742,7 +743,7 @@
 
 - `.dockerignore` — Docker ignore rules (~9 tok)
 - `.gitignore` — Git ignore rules (~14 tok)
-- `docker-compose.yml` — Docker Compose services (~77 tok)
+- `docker-compose.yml` — Docker Compose services (~104 tok)
 - `Dockerfile` — Docker container definition (~147 tok)
 - `eslint.config.js` — ESLint flat configuration (~332 tok)
 - `package-lock.json` — npm lock file (~28748 tok)
@@ -1102,3 +1103,61 @@
 ## firmware/test/test_wind_speed/
 
 - `test_wind_speed.cpp` — include <unity.h> (~334 tok)
+
+## scripts/
+
+- `.python-version` (~2 tok)
+- `pyproject.toml` — Python project configuration (~111 tok)
+- `qmc5883p-calibration.json` (~60 tok)
+- `README.md` — Project documentation (~1139 tok)
+
+## scripts/src/gustik_scripts/
+
+- `__init__.py` (~52 tok)
+- `__main__.py` (~24 tok)
+- `calibration.py` — CalibrationError: covers_all_axes, unswept_axes, apply, from_samples + 5 more (~2915 tok)
+  - class `CalibrationError` L45-48 (~25 tok)
+  - fn `_spans` L49-58 (~84 tok)
+  - fn `_widest_two` L59-64 (~62 tok)
+  - class `MagCalibration` L65-207 (~1664 tok)
+  - fn `describe_spin` L208-257 (~572 tok)
+- `orientation.py` — OrientationError: axis_letter, left, horizontal, vertical + 4 more (~2856 tok)
+  - class `OrientationError` L51-64 (~82 tok)
+  - fn `_normalise_axis` L65-78 (~138 tok)
+  - fn `axis_letter` L79-83 (~39 tok)
+  - fn `_cross` L84-91 (~41 tok)
+  - fn `_dot` L92-96 (~27 tok)
+  - class `Orientation` L97-161 (~710 tok)
+  - fn `rotation_summary` L162-206 (~404 tok)
+  - fn `up_axis_for` L207-243 (~477 tok)
+  - fn `detect_up_axis` L244-273 (~437 tok)
+- `qmc5883p.py` — QMC5883PError: close, set_range, set_mode_continuous, set_mode_suspend + 3 more (~8563 tok)
+  - class `QMC5883PError` L114-117 (~28 tok)
+  - class `QMC5883P` L118-493 (~4622 tok)
+  - fn `_build_parser` L494-542 (~842 tok)
+  - fn `_run_calibrate` L543-600 (~837 tok)
+  - fn `_run_check_rotation` L601-636 (~492 tok)
+  - fn `main` L637-684 (~536 tok)
+
+## scripts/tests/
+
+- `test_calibration.py` — Tests for hard-iron / soft-iron calibration (pure math, no hardware). (~2179 tok)
+  - fn `_circle` L16-30 (~126 tok)
+  - class `TestIdentityCalibration` L31-36 (~59 tok)
+  - class `TestHardIron` L37-58 (~294 tok)
+  - class `TestSoftIron` L59-80 (~291 tok)
+  - fn `_sphere` L81-98 (~154 tok)
+  - class `TestSweptAxes` L99-128 (~419 tok)
+  - class `TestRoundTrip` L129-162 (~420 tok)
+  - class `TestDescribeSpin` L163-190 (~346 tok)
+- `test_orientation.py` — Tests for the mounting-orientation model (pure math, no hardware). (~2794 tok)
+  - fn `_field` L9-23 (~196 tok)
+  - class `TestAxisSpec` L24-36 (~134 tok)
+  - class `TestHeadingFlatMount` L37-62 (~327 tok)
+  - class `TestHeadingUpsideDown` L63-83 (~272 tok)
+  - class `TestHeadingVerticalMount` L84-96 (~149 tok)
+  - class `TestDeclination` L97-107 (~127 tok)
+  - class `TestVerticalComponent` L108-118 (~132 tok)
+  - class `TestUpAxisSign` L119-160 (~440 tok)
+  - class `TestDetectUpAxis` L161-190 (~358 tok)
+  - class `TestRotationSummary` L191-241 (~611 tok)

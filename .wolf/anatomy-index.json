@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-09T22:04:02.270Z",
-    "fileCount": 442,
+    "lastScanned": "2026-08-10T19:26:48.218Z",
+    "fileCount": 454,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "9be14c308a64c8cf3051d37b024d4c80a3b1b051e9ed406f4c0a3319101b6bde",
-    "storeUpdatedAt": "2026-08-09T22:04:02.272Z"
+    "renderedHash": "52713275f442ba91ac6cce2358f90b62111c027419f3dd7b337c05f56a58c10d",
+    "storeUpdatedAt": "2026-08-10T19:26:48.220Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -15,7 +15,7 @@
       "hash": "8e9eb34ad46f7f55",
       "size": 9776,
       "mtimeMs": 1785575791362.728,
-      "updatedAt": "2026-08-09T22:04:02.023Z",
+      "updatedAt": "2026-08-10T19:26:48.005Z",
       "source": "scan"
     },
     "_bmad/_config/files-manifest.csv": {
@@ -24,7 +24,7 @@
       "hash": "b60a0f733fc42329",
       "size": 37567,
       "mtimeMs": 1785575791358.728,
-      "updatedAt": "2026-08-09T22:04:02.025Z",
+      "updatedAt": "2026-08-10T19:26:48.006Z",
       "source": "scan"
     },
     "_bmad/_config/manifest.yaml": {
@@ -33,7 +33,7 @@
       "hash": "de794d1d6cf05728",
       "size": 500,
       "mtimeMs": 1785575791270.728,
-      "updatedAt": "2026-08-09T22:04:02.026Z",
+      "updatedAt": "2026-08-10T19:26:48.006Z",
       "source": "scan"
     },
     "_bmad/_config/skill-manifest.csv": {
@@ -42,7 +42,7 @@
       "hash": "201998503aa8b865",
       "size": 11971,
       "mtimeMs": 1785575791274.728,
-      "updatedAt": "2026-08-09T22:04:02.028Z",
+      "updatedAt": "2026-08-10T19:26:48.007Z",
       "source": "scan"
     },
     "_bmad/bmm/config.yaml": {
@@ -51,7 +51,7 @@
       "hash": "0f9abfaab42b2cdf",
       "size": 504,
       "mtimeMs": 1785575791214.728,
-      "updatedAt": "2026-08-09T22:04:02.029Z",
+      "updatedAt": "2026-08-10T19:26:48.008Z",
       "source": "scan"
     },
     "_bmad/bmm/module-help.csv": {
@@ -60,7 +60,7 @@
       "hash": "ad4373d7e58a31aa",
       "size": 6989,
       "mtimeMs": 1785575791112.174,
-      "updatedAt": "2026-08-09T22:04:02.030Z",
+      "updatedAt": "2026-08-10T19:26:48.008Z",
       "source": "scan"
     },
     "_bmad/config.toml": {
@@ -69,7 +69,7 @@
       "hash": "dbeef51f6d5609b5",
       "size": 3568,
       "mtimeMs": 1785575791262.728,
-      "updatedAt": "2026-08-09T22:04:02.031Z",
+      "updatedAt": "2026-08-10T19:26:48.009Z",
       "source": "scan"
     },
     "_bmad/config.user.toml": {
@@ -78,7 +78,7 @@
       "hash": "b428d0772fc63d86",
       "size": 958,
       "mtimeMs": 1785575791262.728,
-      "updatedAt": "2026-08-09T22:04:02.032Z",
+      "updatedAt": "2026-08-10T19:26:48.010Z",
       "source": "scan"
     },
     "_bmad/core/config.yaml": {
@@ -87,7 +87,7 @@
       "hash": "a559467e27e0b670",
       "size": 254,
       "mtimeMs": 1785575791218.728,
-      "updatedAt": "2026-08-09T22:04:02.033Z",
+      "updatedAt": "2026-08-10T19:26:48.010Z",
       "source": "scan"
     },
     "_bmad/core/module-help.csv": {
@@ -96,7 +96,7 @@
       "hash": "e801caeb1bf64842",
       "size": 2911,
       "mtimeMs": 1785575791199.4653,
-      "updatedAt": "2026-08-09T22:04:02.034Z",
+      "updatedAt": "2026-08-10T19:26:48.011Z",
       "source": "scan"
     },
     "_bmad/custom/.gitignore": {
@@ -105,7 +105,7 @@
       "hash": "973b03a33f142c22",
       "size": 12,
       "mtimeMs": 1785575790846.0903,
-      "updatedAt": "2026-08-09T22:04:02.034Z",
+      "updatedAt": "2026-08-10T19:26:48.012Z",
       "source": "scan"
     },
     "_bmad/custom/config.toml": {
@@ -114,7 +114,7 @@
       "hash": "d00d0bb7e0e03a7e",
       "size": 348,
       "mtimeMs": 1785575791358.728,
-      "updatedAt": "2026-08-09T22:04:02.035Z",
+      "updatedAt": "2026-08-10T19:26:48.012Z",
       "source": "scan"
     },
     "_bmad/custom/config.user.toml": {
@@ -123,7 +123,7 @@
       "hash": "92af88b1942ddfd6",
       "size": 162,
       "mtimeMs": 1785575791358.728,
-      "updatedAt": "2026-08-09T22:04:02.036Z",
+      "updatedAt": "2026-08-10T19:26:48.013Z",
       "source": "scan"
     },
     "_bmad/scripts/memlog.py": {
@@ -132,7 +132,7 @@
       "hash": "3b00f82ca33dc422",
       "size": 9187,
       "mtimeMs": 1785575790843.5112,
-      "updatedAt": "2026-08-09T22:04:02.039Z",
+      "updatedAt": "2026-08-10T19:26:48.014Z",
       "source": "scan",
       "symbols": [
         {
@@ -234,7 +234,7 @@
       "hash": "f41149160898aea8",
       "size": 5722,
       "mtimeMs": 1785575790844.5413,
-      "updatedAt": "2026-08-09T22:04:02.041Z",
+      "updatedAt": "2026-08-10T19:26:48.015Z",
       "source": "scan",
       "symbols": [
         {
@@ -294,7 +294,7 @@
       "hash": "23fb9040b08c7eb9",
       "size": 8310,
       "mtimeMs": 1785575790846.0903,
-      "updatedAt": "2026-08-09T22:04:02.042Z",
+      "updatedAt": "2026-08-10T19:26:48.016Z",
       "source": "scan",
       "symbols": [
         {
@@ -368,7 +368,7 @@
       "hash": "08f6d8bf7df2c22d",
       "size": 11872,
       "mtimeMs": 1785597708646.7217,
-      "updatedAt": "2026-08-09T22:04:02.043Z",
+      "updatedAt": "2026-08-10T19:26:48.017Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/ARCHITECTURE-SPINE.md": {
@@ -377,7 +377,7 @@
       "hash": "066e1b748f282ef5",
       "size": 14679,
       "mtimeMs": 1785597706024.5881,
-      "updatedAt": "2026-08-09T22:04:02.045Z",
+      "updatedAt": "2026-08-10T19:26:48.018Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-adversarial.md": {
@@ -386,7 +386,7 @@
       "hash": "d5d3fc055db8187f",
       "size": 16832,
       "mtimeMs": 1785597466189.267,
-      "updatedAt": "2026-08-09T22:04:02.046Z",
+      "updatedAt": "2026-08-10T19:26:48.019Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-rubric.md": {
@@ -395,7 +395,7 @@
       "hash": "5acdb931545879d0",
       "size": 12430,
       "mtimeMs": 1785597489710.5337,
-      "updatedAt": "2026-08-09T22:04:02.047Z",
+      "updatedAt": "2026-08-10T19:26:48.020Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-versions.md": {
@@ -404,7 +404,7 @@
       "hash": "f3f49d57df1fae83",
       "size": 10109,
       "mtimeMs": 1785597424753.0703,
-      "updatedAt": "2026-08-09T22:04:02.048Z",
+      "updatedAt": "2026-08-10T19:26:48.020Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/.memlog.md": {
@@ -413,7 +413,7 @@
       "hash": "673040b77e84c0d1",
       "size": 2544,
       "mtimeMs": 1785581065316.356,
-      "updatedAt": "2026-08-09T22:04:02.049Z",
+      "updatedAt": "2026-08-10T19:26:48.021Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/addendum.md": {
@@ -422,7 +422,7 @@
       "hash": "703cfdae40b4d4ce",
       "size": 5096,
       "mtimeMs": 1785581056341.7065,
-      "updatedAt": "2026-08-09T22:04:02.050Z",
+      "updatedAt": "2026-08-10T19:26:48.022Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/brief.md": {
@@ -431,7 +431,7 @@
       "hash": "e58b5fd5da42c8ce",
       "size": 8631,
       "mtimeMs": 1785580958373.577,
-      "updatedAt": "2026-08-09T22:04:02.055Z",
+      "updatedAt": "2026-08-10T19:26:48.022Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/epics.md": {
@@ -440,7 +440,7 @@
       "hash": "9bfd4170eaa9bd56",
       "size": 39235,
       "mtimeMs": 1785599173620.513,
-      "updatedAt": "2026-08-09T22:04:02.057Z",
+      "updatedAt": "2026-08-10T19:26:48.024Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/.memlog.md": {
@@ -449,7 +449,7 @@
       "hash": "5f3218ef6732fe71",
       "size": 3402,
       "mtimeMs": 1785586326038.3728,
-      "updatedAt": "2026-08-09T22:04:02.058Z",
+      "updatedAt": "2026-08-10T19:26:48.024Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/addendum.md": {
@@ -458,7 +458,7 @@
       "hash": "4dfa78dbd1254a43",
       "size": 5191,
       "mtimeMs": 1785586006011.046,
-      "updatedAt": "2026-08-09T22:04:02.059Z",
+      "updatedAt": "2026-08-10T19:26:48.025Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/prd.md": {
@@ -467,7 +467,7 @@
       "hash": "f920fea8be6c72fd",
       "size": 32319,
       "mtimeMs": 1785586265241.3887,
-      "updatedAt": "2026-08-09T22:04:02.060Z",
+      "updatedAt": "2026-08-10T19:26:48.026Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/reconcile-brief-addendum.md": {
@@ -476,7 +476,7 @@
       "hash": "e463cb1b969b0bcc",
       "size": 5123,
       "mtimeMs": 1785585292623.3054,
-      "updatedAt": "2026-08-09T22:04:02.061Z",
+      "updatedAt": "2026-08-10T19:26:48.026Z",
       "source": "scan"
     },
     "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/review-rubric.md": {
@@ -485,7 +485,7 @@
       "hash": "8b19a15f304db0e3",
       "size": 11580,
       "mtimeMs": 1785585437812.8557,
-      "updatedAt": "2026-08-09T22:04:02.063Z",
+      "updatedAt": "2026-08-10T19:26:48.027Z",
       "source": "scan"
     },
     ".claude/commands/reframe.md": {
@@ -494,7 +494,7 @@
       "hash": "17a75695be5d4629",
       "size": 2221,
       "mtimeMs": 1785582200480.4683,
-      "updatedAt": "2026-08-09T22:04:02.064Z",
+      "updatedAt": "2026-08-10T19:26:48.027Z",
       "source": "scan"
     },
     ".claude/commands/security-audit.md": {
@@ -503,7 +503,7 @@
       "hash": "e6f7e0b7337c9c86",
       "size": 2060,
       "mtimeMs": 1785582200480.4075,
-      "updatedAt": "2026-08-09T22:04:02.064Z",
+      "updatedAt": "2026-08-10T19:26:48.027Z",
       "source": "scan"
     },
     ".claude/rules/openwolf.md": {
@@ -512,7 +512,7 @@
       "hash": "6d735b2c1c54a916",
       "size": 1323,
       "mtimeMs": 1785582200468.6204,
-      "updatedAt": "2026-08-09T22:04:02.064Z",
+      "updatedAt": "2026-08-10T19:26:48.027Z",
       "source": "scan"
     },
     ".claude/settings.json": {
@@ -521,7 +521,7 @@
       "hash": "9b91690b2cbcbfba",
       "size": 1875,
       "mtimeMs": 1785589881534.3645,
-      "updatedAt": "2026-08-09T22:04:02.065Z",
+      "updatedAt": "2026-08-10T19:26:48.028Z",
       "source": "scan"
     },
     ".claude/settings.local.json": {
@@ -530,7 +530,7 @@
       "hash": "72076b922373b74e",
       "size": 400,
       "mtimeMs": 1785577175229.7812,
-      "updatedAt": "2026-08-09T22:04:02.065Z",
+      "updatedAt": "2026-08-10T19:26:48.028Z",
       "source": "scan"
     },
     ".claude/skills/bmad-advanced-elicitation/methods.csv": {
@@ -539,7 +539,7 @@
       "hash": "d110ff5f076fb942",
       "size": 14854,
       "mtimeMs": 1785575791381.835,
-      "updatedAt": "2026-08-09T22:04:02.067Z",
+      "updatedAt": "2026-08-10T19:26:48.029Z",
       "source": "scan"
     },
     ".claude/skills/bmad-advanced-elicitation/SKILL.md": {
@@ -548,7 +548,7 @@
       "hash": "705cc827cab89285",
       "size": 6352,
       "mtimeMs": 1785575791380.981,
-      "updatedAt": "2026-08-09T22:04:02.067Z",
+      "updatedAt": "2026-08-10T19:26:48.030Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-analyst/customize.toml": {
@@ -557,7 +557,7 @@
       "hash": "7191f4a60ada7dba",
       "size": 3357,
       "mtimeMs": 1785575791429.6135,
-      "updatedAt": "2026-08-09T22:04:02.068Z",
+      "updatedAt": "2026-08-10T19:26:48.030Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-analyst/SKILL.md": {
@@ -566,7 +566,7 @@
       "hash": "fca38a404e79508e",
       "size": 4525,
       "mtimeMs": 1785575791429.2651,
-      "updatedAt": "2026-08-09T22:04:02.069Z",
+      "updatedAt": "2026-08-10T19:26:48.031Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-architect/customize.toml": {
@@ -575,7 +575,7 @@
       "hash": "d9763009d7c20246",
       "size": 2723,
       "mtimeMs": 1785575791496.9165,
-      "updatedAt": "2026-08-09T22:04:02.070Z",
+      "updatedAt": "2026-08-10T19:26:48.031Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-architect/SKILL.md": {
@@ -584,7 +584,7 @@
       "hash": "82bbf22ff3a45717",
       "size": 4499,
       "mtimeMs": 1785575791496.567,
-      "updatedAt": "2026-08-09T22:04:02.070Z",
+      "updatedAt": "2026-08-10T19:26:48.031Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-dev/customize.toml": {
@@ -593,7 +593,7 @@
       "hash": "01a45ac2420f920c",
       "size": 3341,
       "mtimeMs": 1785575791524.3176,
-      "updatedAt": "2026-08-09T22:04:02.071Z",
+      "updatedAt": "2026-08-10T19:26:48.032Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-dev/SKILL.md": {
@@ -602,7 +602,7 @@
       "hash": "54ab6d9d60d7ed7e",
       "size": 4565,
       "mtimeMs": 1785575791523.8804,
-      "updatedAt": "2026-08-09T22:04:02.071Z",
+      "updatedAt": "2026-08-10T19:26:48.032Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-pm/customize.toml": {
@@ -611,7 +611,7 @@
       "hash": "afc2250de25241ac",
       "size": 3040,
       "mtimeMs": 1785575791472.075,
-      "updatedAt": "2026-08-09T22:04:02.072Z",
+      "updatedAt": "2026-08-10T19:26:48.033Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-pm/SKILL.md": {
@@ -620,7 +620,7 @@
       "hash": "e2ebea0bf6ee158f",
       "size": 4497,
       "mtimeMs": 1785575791471.712,
-      "updatedAt": "2026-08-09T22:04:02.072Z",
+      "updatedAt": "2026-08-10T19:26:48.033Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-tech-writer/customize.toml": {
@@ -629,7 +629,7 @@
       "hash": "bb828f2d26a13687",
       "size": 3315,
       "mtimeMs": 1785575791432.0896,
-      "updatedAt": "2026-08-09T22:04:02.073Z",
+      "updatedAt": "2026-08-10T19:26:48.034Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-tech-writer/explain-concept.md": {
@@ -638,7 +638,7 @@
       "hash": "6ea82dbe4e41d4bb",
       "size": 687,
       "mtimeMs": 1785575791432.497,
-      "updatedAt": "2026-08-09T22:04:02.073Z",
+      "updatedAt": "2026-08-10T19:26:48.034Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-tech-writer/mermaid-gen.md": {
@@ -647,7 +647,7 @@
       "hash": "1d83fcc5fa842bc3",
       "size": 684,
       "mtimeMs": 1785575791432.881,
-      "updatedAt": "2026-08-09T22:04:02.073Z",
+      "updatedAt": "2026-08-10T19:26:48.035Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-tech-writer/SKILL.md": {
@@ -656,7 +656,7 @@
       "hash": "7544242ff68d0ddf",
       "size": 4582,
       "mtimeMs": 1785575791431.6716,
-      "updatedAt": "2026-08-09T22:04:02.073Z",
+      "updatedAt": "2026-08-10T19:26:48.035Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-tech-writer/validate-doc.md": {
@@ -665,7 +665,7 @@
       "hash": "3b8d25f60be19171",
       "size": 659,
       "mtimeMs": 1785575791433.2683,
-      "updatedAt": "2026-08-09T22:04:02.074Z",
+      "updatedAt": "2026-08-10T19:26:48.035Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-tech-writer/write-document.md": {
@@ -674,7 +674,7 @@
       "hash": "c0ddfd981f765b82",
       "size": 931,
       "mtimeMs": 1785575791433.6328,
-      "updatedAt": "2026-08-09T22:04:02.074Z",
+      "updatedAt": "2026-08-10T19:26:48.035Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-ux-designer/customize.toml": {
@@ -683,7 +683,7 @@
       "hash": "3df7da44945f9df3",
       "size": 2536,
       "mtimeMs": 1785575791473.7676,
-      "updatedAt": "2026-08-09T22:04:02.074Z",
+      "updatedAt": "2026-08-10T19:26:48.036Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-ux-designer/SKILL.md": {
@@ -692,7 +692,7 @@
       "hash": "d780ae59b9fb7e3a",
       "size": 4518,
       "mtimeMs": 1785575791473.302,
-      "updatedAt": "2026-08-09T22:04:02.075Z",
+      "updatedAt": "2026-08-10T19:26:48.036Z",
       "source": "scan"
     },
     ".claude/skills/bmad-architecture/assets/spine-template.md": {
@@ -701,7 +701,7 @@
       "hash": "ef4ff795624eb543",
       "size": 4357,
       "mtimeMs": 1785575791499.7588,
-      "updatedAt": "2026-08-09T22:04:02.075Z",
+      "updatedAt": "2026-08-10T19:26:48.037Z",
       "source": "scan"
     },
     ".claude/skills/bmad-architecture/customize.toml": {
@@ -710,7 +710,7 @@
       "hash": "137b418e1bb94041",
       "size": 6093,
       "mtimeMs": 1785575791500.1638,
-      "updatedAt": "2026-08-09T22:04:02.076Z",
+      "updatedAt": "2026-08-10T19:26:48.037Z",
       "source": "scan"
     },
     ".claude/skills/bmad-architecture/references/headless.md": {
@@ -719,7 +719,7 @@
       "hash": "4db2708f335c94cb",
       "size": 2660,
       "mtimeMs": 1785575791501.3096,
-      "updatedAt": "2026-08-09T22:04:02.076Z",
+      "updatedAt": "2026-08-10T19:26:48.038Z",
       "source": "scan"
     },
     ".claude/skills/bmad-architecture/references/reviewer-gate.md": {
@@ -728,7 +728,7 @@
       "hash": "d32e32a3c1d59b56",
       "size": 3245,
       "mtimeMs": 1785575791501.9578,
-      "updatedAt": "2026-08-09T22:04:02.076Z",
+      "updatedAt": "2026-08-10T19:26:48.038Z",
       "source": "scan"
     },
     ".claude/skills/bmad-architecture/scripts/lint_spine.py": {
@@ -737,7 +737,7 @@
       "hash": "040e0f1c13d31e6a",
       "size": 10472,
       "mtimeMs": 1785575791503.0042,
-      "updatedAt": "2026-08-09T22:04:02.077Z",
+      "updatedAt": "2026-08-10T19:26:48.039Z",
       "source": "scan",
       "symbols": [
         {
@@ -818,7 +818,7 @@
       "hash": "e86bb9a62c5cca74",
       "size": 9932,
       "mtimeMs": 1785575791504.0813,
-      "updatedAt": "2026-08-09T22:04:02.079Z",
+      "updatedAt": "2026-08-10T19:26:48.040Z",
       "source": "scan",
       "symbols": [
         {
@@ -1032,7 +1032,7 @@
       "hash": "a56c7a0abc45e1db",
       "size": 13888,
       "mtimeMs": 1785575791498.3845,
-      "updatedAt": "2026-08-09T22:04:02.079Z",
+      "updatedAt": "2026-08-10T19:26:48.041Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/analysis/catalog-analysis.md": {
@@ -1041,7 +1041,7 @@
       "hash": "d4e742da96467454",
       "size": 23567,
       "mtimeMs": 1785575791385.2852,
-      "updatedAt": "2026-08-09T22:04:02.079Z",
+      "updatedAt": "2026-08-10T19:26:48.041Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/analysis/method-matrix.csv": {
@@ -1050,7 +1050,7 @@
       "hash": "d6c47ab85b9a134d",
       "size": 8831,
       "mtimeMs": 1785575791385.6897,
-      "updatedAt": "2026-08-09T22:04:02.080Z",
+      "updatedAt": "2026-08-10T19:26:48.042Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/assets/brain-icons.json": {
@@ -1059,7 +1059,7 @@
       "hash": "a101c56e89f1d0f9",
       "size": 41231,
       "mtimeMs": 1785575791387.673,
-      "updatedAt": "2026-08-09T22:04:02.082Z",
+      "updatedAt": "2026-08-10T19:26:48.043Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/assets/brain-methods.csv": {
@@ -1068,7 +1068,7 @@
       "hash": "fff112eabca1a9cb",
       "size": 19519,
       "mtimeMs": 1785575791388.1816,
-      "updatedAt": "2026-08-09T22:04:02.083Z",
+      "updatedAt": "2026-08-10T19:26:48.044Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/assets/brain-selector.html": {
@@ -1077,7 +1077,7 @@
       "hash": "798f27c743b85342",
       "size": 244467,
       "mtimeMs": 1785575791388.72,
-      "updatedAt": "2026-08-09T22:04:02.085Z",
+      "updatedAt": "2026-08-10T19:26:48.046Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/customize.toml": {
@@ -1086,7 +1086,7 @@
       "hash": "21fcbc60c78db99c",
       "size": 4313,
       "mtimeMs": 1785575791391.161,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.046Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/converge.md": {
@@ -1095,7 +1095,7 @@
       "hash": "1528c32ddc64f806",
       "size": 2961,
       "mtimeMs": 1785575791392.349,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.046Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/finalize.md": {
@@ -1104,7 +1104,7 @@
       "hash": "b6074e7fb4d86ffc",
       "size": 4898,
       "mtimeMs": 1785575791392.753,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.047Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/headless.md": {
@@ -1113,7 +1113,7 @@
       "hash": "b8ea5951199cff7e",
       "size": 4989,
       "mtimeMs": 1785575791393.2434,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.047Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/in-chat-techniques.md": {
@@ -1122,7 +1122,7 @@
       "hash": "18239464e3e4f00e",
       "size": 2200,
       "mtimeMs": 1785575791393.6714,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.048Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/mode-autonomous.md": {
@@ -1131,7 +1131,7 @@
       "hash": "79fba5391ef293ce",
       "size": 1780,
       "mtimeMs": 1785575791394.0818,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.048Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/mode-facilitator.md": {
@@ -1140,7 +1140,7 @@
       "hash": "1b908498d285d190",
       "size": 970,
       "mtimeMs": 1785575791394.4888,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.048Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/mode-partner.md": {
@@ -1149,7 +1149,7 @@
       "hash": "caa0ed378c116def",
       "size": 1606,
       "mtimeMs": 1785575791394.8538,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.048Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/references/resume.md": {
@@ -1158,7 +1158,7 @@
       "hash": "0f79535d72eefe6c",
       "size": 737,
       "mtimeMs": 1785575791395.2283,
-      "updatedAt": "2026-08-09T22:04:02.086Z",
+      "updatedAt": "2026-08-10T19:26:48.048Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/scripts/brain.py": {
@@ -1167,7 +1167,7 @@
       "hash": "b84770d5d55fa17b",
       "size": 36430,
       "mtimeMs": 1785575791396.48,
-      "updatedAt": "2026-08-09T22:04:02.088Z",
+      "updatedAt": "2026-08-10T19:26:48.049Z",
       "source": "scan",
       "symbols": [
         {
@@ -1318,7 +1318,7 @@
       "hash": "5f150395d5aa9552",
       "size": 8232,
       "mtimeMs": 1785575791397.5051,
-      "updatedAt": "2026-08-09T22:04:02.088Z",
+      "updatedAt": "2026-08-10T19:26:48.050Z",
       "source": "scan",
       "symbols": [
         {
@@ -1532,7 +1532,7 @@
       "hash": "399ddc752fc786b5",
       "size": 9413,
       "mtimeMs": 1785575791383.9937,
-      "updatedAt": "2026-08-09T22:04:02.088Z",
+      "updatedAt": "2026-08-10T19:26:48.050Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/customize.toml": {
@@ -1541,7 +1541,7 @@
       "hash": "571d81087b7a6d91",
       "size": 1631,
       "mtimeMs": 1785575791506.0403,
-      "updatedAt": "2026-08-09T22:04:02.089Z",
+      "updatedAt": "2026-08-10T19:26:48.050Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/SKILL.md": {
@@ -1550,7 +1550,7 @@
       "hash": "a7e12eae2bdb5a95",
       "size": 4890,
       "mtimeMs": 1785575791505.6035,
-      "updatedAt": "2026-08-09T22:04:02.089Z",
+      "updatedAt": "2026-08-10T19:26:48.050Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/steps/step-01-document-discovery.md": {
@@ -1559,7 +1559,7 @@
       "hash": "c763b512d5590612",
       "size": 4939,
       "mtimeMs": 1785575791506.9734,
-      "updatedAt": "2026-08-09T22:04:02.089Z",
+      "updatedAt": "2026-08-10T19:26:48.051Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/steps/step-02-prd-analysis.md": {
@@ -1568,7 +1568,7 @@
       "hash": "38be2bf4b924c0b5",
       "size": 4444,
       "mtimeMs": 1785575791507.4402,
-      "updatedAt": "2026-08-09T22:04:02.089Z",
+      "updatedAt": "2026-08-10T19:26:48.051Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/steps/step-03-epic-coverage-validation.md": {
@@ -1577,7 +1577,7 @@
       "hash": "7b187f03a47cba03",
       "size": 4058,
       "mtimeMs": 1785575791507.9233,
-      "updatedAt": "2026-08-09T22:04:02.089Z",
+      "updatedAt": "2026-08-10T19:26:48.052Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/steps/step-04-ux-alignment.md": {
@@ -1586,7 +1586,7 @@
       "hash": "f71e5f0d77615e88",
       "size": 3306,
       "mtimeMs": 1785575791508.3572,
-      "updatedAt": "2026-08-09T22:04:02.089Z",
+      "updatedAt": "2026-08-10T19:26:48.052Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/steps/step-05-epic-quality-review.md": {
@@ -1595,7 +1595,7 @@
       "hash": "d8a84e57f4e3a321",
       "size": 6716,
       "mtimeMs": 1785575791508.7935,
-      "updatedAt": "2026-08-09T22:04:02.089Z",
+      "updatedAt": "2026-08-10T19:26:48.053Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/steps/step-06-final-assessment.md": {
@@ -1604,7 +1604,7 @@
       "hash": "1b9c8c2a21950f85",
       "size": 3552,
       "mtimeMs": 1785575791509.1753,
-      "updatedAt": "2026-08-09T22:04:02.090Z",
+      "updatedAt": "2026-08-10T19:26:48.053Z",
       "source": "scan"
     },
     ".claude/skills/bmad-check-implementation-readiness/templates/readiness-report-template.md": {
@@ -1613,7 +1613,7 @@
       "hash": "0da97ab1e38818e6",
       "size": 95,
       "mtimeMs": 1785575791510.3572,
-      "updatedAt": "2026-08-09T22:04:02.090Z",
+      "updatedAt": "2026-08-10T19:26:48.054Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/customize.toml": {
@@ -1622,7 +1622,7 @@
       "hash": "1a1e0c3a8914adda",
       "size": 1616,
       "mtimeMs": 1785575791525.9185,
-      "updatedAt": "2026-08-09T22:04:02.090Z",
+      "updatedAt": "2026-08-10T19:26:48.054Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/generate-trail.md": {
@@ -1631,7 +1631,7 @@
       "hash": "4a5936d86fbe5a85",
       "size": 1992,
       "mtimeMs": 1785575791526.3323,
-      "updatedAt": "2026-08-09T22:04:02.090Z",
+      "updatedAt": "2026-08-10T19:26:48.055Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/SKILL.md": {
@@ -1640,7 +1640,7 @@
       "hash": "34613078dbea9c55",
       "size": 3161,
       "mtimeMs": 1785575791525.5488,
-      "updatedAt": "2026-08-09T22:04:02.090Z",
+      "updatedAt": "2026-08-10T19:26:48.055Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/step-01-orientation.md": {
@@ -1649,7 +1649,7 @@
       "hash": "d9e3b949c36d49a0",
       "size": 5004,
       "mtimeMs": 1785575791526.7102,
-      "updatedAt": "2026-08-09T22:04:02.090Z",
+      "updatedAt": "2026-08-10T19:26:48.055Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/step-02-walkthrough.md": {
@@ -1658,7 +1658,7 @@
       "hash": "66cf893f8f968ee8",
       "size": 4172,
       "mtimeMs": 1785575791527.0774,
-      "updatedAt": "2026-08-09T22:04:02.091Z",
+      "updatedAt": "2026-08-10T19:26:48.055Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/step-03-detail-pass.md": {
@@ -1667,7 +1667,7 @@
       "hash": "d48163b9f305f15a",
       "size": 4990,
       "mtimeMs": 1785575791527.4634,
-      "updatedAt": "2026-08-09T22:04:02.091Z",
+      "updatedAt": "2026-08-10T19:26:48.056Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/step-04-testing.md": {
@@ -1676,7 +1676,7 @@
       "hash": "28a56e868968ea2d",
       "size": 2698,
       "mtimeMs": 1785575791527.9321,
-      "updatedAt": "2026-08-09T22:04:02.091Z",
+      "updatedAt": "2026-08-10T19:26:48.056Z",
       "source": "scan"
     },
     ".claude/skills/bmad-checkpoint-preview/step-05-wrapup.md": {
@@ -1685,7 +1685,7 @@
       "hash": "c2d4dbc17fed4f8e",
       "size": 1525,
       "mtimeMs": 1785575791528.4302,
-      "updatedAt": "2026-08-09T22:04:02.091Z",
+      "updatedAt": "2026-08-10T19:26:48.057Z",
       "source": "scan"
     },
     ".claude/skills/bmad-code-review/customize.toml": {
@@ -1694,7 +1694,7 @@
       "hash": "94ad662fdf3fda37",
       "size": 1614,
       "mtimeMs": 1785575791530.1648,
-      "updatedAt": "2026-08-09T22:04:02.092Z",
+      "updatedAt": "2026-08-10T19:26:48.057Z",
       "source": "scan"
     },
     ".claude/skills/bmad-code-review/SKILL.md": {
@@ -1703,7 +1703,7 @@
       "hash": "8cad441a79809e4e",
       "size": 4330,
       "mtimeMs": 1785575791529.7144,
-      "updatedAt": "2026-08-09T22:04:02.092Z",
+      "updatedAt": "2026-08-10T19:26:48.057Z",
       "source": "scan"
     },
     ".claude/skills/bmad-code-review/steps/step-01-gather-context.md": {
@@ -1712,7 +1712,7 @@
       "hash": "d0ee7558605e9d48",
       "size": 6481,
       "mtimeMs": 1785575791531.18,
-      "updatedAt": "2026-08-09T22:04:02.092Z",
+      "updatedAt": "2026-08-10T19:26:48.057Z",
       "source": "scan"
     },
     ".claude/skills/bmad-code-review/steps/step-02-review.md": {
@@ -1721,7 +1721,7 @@
       "hash": "950a900442975ed6",
       "size": 2069,
       "mtimeMs": 1785575791531.7197,
-      "updatedAt": "2026-08-09T22:04:02.093Z",
+      "updatedAt": "2026-08-10T19:26:48.059Z",
       "source": "scan"
     },
     ".claude/skills/bmad-code-review/steps/step-03-triage.md": {
@@ -1730,7 +1730,7 @@
       "hash": "8be5918542234084",
       "size": 3375,
       "mtimeMs": 1785575791532.2612,
-      "updatedAt": "2026-08-09T22:04:02.094Z",
+      "updatedAt": "2026-08-10T19:26:48.060Z",
       "source": "scan"
     },
     ".claude/skills/bmad-code-review/steps/step-04-present.md": {
@@ -1739,7 +1739,7 @@
       "hash": "1bded625413479aa",
       "size": 6328,
       "mtimeMs": 1785575791532.6504,
-      "updatedAt": "2026-08-09T22:04:02.094Z",
+      "updatedAt": "2026-08-10T19:26:48.061Z",
       "source": "scan"
     },
     ".claude/skills/bmad-correct-course/checklist.md": {
@@ -1748,7 +1748,7 @@
       "hash": "3e082b95def90ccb",
       "size": 11634,
       "mtimeMs": 1785575791535.0176,
-      "updatedAt": "2026-08-09T22:04:02.094Z",
+      "updatedAt": "2026-08-10T19:26:48.061Z",
       "source": "scan"
     },
     ".claude/skills/bmad-correct-course/customize.toml": {
@@ -1757,7 +1757,7 @@
       "hash": "78095d25afb5b2d4",
       "size": 1640,
       "mtimeMs": 1785575791535.4512,
-      "updatedAt": "2026-08-09T22:04:02.096Z",
+      "updatedAt": "2026-08-10T19:26:48.062Z",
       "source": "scan"
     },
     ".claude/skills/bmad-correct-course/SKILL.md": {
@@ -1766,7 +1766,7 @@
       "hash": "5064ef2e7aedfb09",
       "size": 13551,
       "mtimeMs": 1785575791534.5203,
-      "updatedAt": "2026-08-09T22:04:02.096Z",
+      "updatedAt": "2026-08-10T19:26:48.062Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-architecture/customize.toml": {
@@ -1775,7 +1775,7 @@
       "hash": "618be49b0286f18d",
       "size": 1671,
       "mtimeMs": 1785575791512.606,
-      "updatedAt": "2026-08-09T22:04:02.097Z",
+      "updatedAt": "2026-08-10T19:26:48.062Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-architecture/SKILL.md": {
@@ -1784,7 +1784,7 @@
       "hash": "4b1673582dc8e095",
       "size": 3050,
       "mtimeMs": 1785575791512.2004,
-      "updatedAt": "2026-08-09T22:04:02.097Z",
+      "updatedAt": "2026-08-10T19:26:48.062Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/customize.toml": {
@@ -1793,7 +1793,7 @@
       "hash": "da9e43605bc6aec8",
       "size": 1665,
       "mtimeMs": 1785575791514.443,
-      "updatedAt": "2026-08-09T22:04:02.097Z",
+      "updatedAt": "2026-08-10T19:26:48.063Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/SKILL.md": {
@@ -1802,7 +1802,7 @@
       "hash": "4ec9ec255c2c0e97",
       "size": 5087,
       "mtimeMs": 1785575791513.9814,
-      "updatedAt": "2026-08-09T22:04:02.097Z",
+      "updatedAt": "2026-08-10T19:26:48.063Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/steps/step-01-validate-prerequisites.md": {
@@ -1811,7 +1811,7 @@
       "hash": "7181608c1ee4e55c",
       "size": 10960,
       "mtimeMs": 1785575791515.7522,
-      "updatedAt": "2026-08-09T22:04:02.098Z",
+      "updatedAt": "2026-08-10T19:26:48.063Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/steps/step-02-design-epics.md": {
@@ -1820,7 +1820,7 @@
       "hash": "7c66987808c1f84e",
       "size": 8809,
       "mtimeMs": 1785575791516.2463,
-      "updatedAt": "2026-08-09T22:04:02.098Z",
+      "updatedAt": "2026-08-10T19:26:48.064Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/steps/step-03-create-stories.md": {
@@ -1829,7 +1829,7 @@
       "hash": "c5b787a82e4e49ed",
       "size": 8351,
       "mtimeMs": 1785575791516.6533,
-      "updatedAt": "2026-08-09T22:04:02.098Z",
+      "updatedAt": "2026-08-10T19:26:48.064Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/steps/step-04-final-validation.md": {
@@ -1838,7 +1838,7 @@
       "hash": "6b83fcf177c24c6b",
       "size": 5325,
       "mtimeMs": 1785575791517.0557,
-      "updatedAt": "2026-08-09T22:04:02.098Z",
+      "updatedAt": "2026-08-10T19:26:48.065Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/templates/epics-template.md": {
@@ -1847,7 +1847,7 @@
       "hash": "a804f740155156d8",
       "size": 1105,
       "mtimeMs": 1785575791518.34,
-      "updatedAt": "2026-08-09T22:04:02.098Z",
+      "updatedAt": "2026-08-10T19:26:48.065Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-prd/customize.toml": {
@@ -1856,7 +1856,7 @@
       "hash": "0c990af4c0a75540",
       "size": 1616,
       "mtimeMs": 1785575791475.6594,
-      "updatedAt": "2026-08-09T22:04:02.099Z",
+      "updatedAt": "2026-08-10T19:26:48.066Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-prd/SKILL.md": {
@@ -1865,7 +1865,7 @@
       "hash": "143c5c2d85734021",
       "size": 2877,
       "mtimeMs": 1785575791475.2798,
-      "updatedAt": "2026-08-09T22:04:02.099Z",
+      "updatedAt": "2026-08-10T19:26:48.066Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-story/checklist.md": {
@@ -1874,7 +1874,7 @@
       "hash": "b94e28e774c3be02",
       "size": 14349,
       "mtimeMs": 1785575791537.486,
-      "updatedAt": "2026-08-09T22:04:02.100Z",
+      "updatedAt": "2026-08-10T19:26:48.067Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-story/customize.toml": {
@@ -1883,7 +1883,7 @@
       "hash": "1204f6de06443692",
       "size": 1643,
       "mtimeMs": 1785575791537.894,
-      "updatedAt": "2026-08-09T22:04:02.100Z",
+      "updatedAt": "2026-08-10T19:26:48.067Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-story/discover-inputs.md": {
@@ -1892,7 +1892,7 @@
       "hash": "dfedba6a8ea05c9a",
       "size": 3911,
       "mtimeMs": 1785575791538.2856,
-      "updatedAt": "2026-08-09T22:04:02.100Z",
+      "updatedAt": "2026-08-10T19:26:48.068Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-story/SKILL.md": {
@@ -1901,7 +1901,7 @@
       "hash": "692ab872ebaa1979",
       "size": 23519,
       "mtimeMs": 1785575791537.0767,
-      "updatedAt": "2026-08-09T22:04:02.101Z",
+      "updatedAt": "2026-08-10T19:26:48.068Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-story/template.md": {
@@ -1910,7 +1910,7 @@
       "hash": "29ba697368d77e88",
       "size": 948,
       "mtimeMs": 1785575791538.772,
-      "updatedAt": "2026-08-09T22:04:02.101Z",
+      "updatedAt": "2026-08-10T19:26:48.068Z",
       "source": "scan"
     },
     ".claude/skills/bmad-customize/scripts/list_customizable_skills.py": {
@@ -1919,7 +1919,7 @@
       "hash": "8787f542930b9277",
       "size": 8061,
       "mtimeMs": 1785575791400.5132,
-      "updatedAt": "2026-08-09T22:04:02.102Z",
+      "updatedAt": "2026-08-10T19:26:48.069Z",
       "source": "scan",
       "symbols": [
         {
@@ -1972,7 +1972,7 @@
       "hash": "24c3d384b3b5d490",
       "size": 9244,
       "mtimeMs": 1785575791401.84,
-      "updatedAt": "2026-08-09T22:04:02.103Z",
+      "updatedAt": "2026-08-10T19:26:48.070Z",
       "source": "scan",
       "symbols": [
         {
@@ -2004,7 +2004,7 @@
       "hash": "6461073f9322f5f2",
       "size": 6703,
       "mtimeMs": 1785575791399.5505,
-      "updatedAt": "2026-08-09T22:04:02.103Z",
+      "updatedAt": "2026-08-10T19:26:48.070Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/compile-epic-context.md": {
@@ -2013,7 +2013,7 @@
       "hash": "fa300a04e9b1f494",
       "size": 2990,
       "mtimeMs": 1785575791540.5786,
-      "updatedAt": "2026-08-09T22:04:02.103Z",
+      "updatedAt": "2026-08-10T19:26:48.070Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/customize.toml": {
@@ -2022,7 +2022,7 @@
       "hash": "bd4302195867ac47",
       "size": 872,
       "mtimeMs": 1785575791540.975,
-      "updatedAt": "2026-08-09T22:04:02.103Z",
+      "updatedAt": "2026-08-10T19:26:48.071Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/SKILL.md": {
@@ -2031,7 +2031,7 @@
       "hash": "f4243eae074acf5e",
       "size": 4895,
       "mtimeMs": 1785575791540.1829,
-      "updatedAt": "2026-08-09T22:04:02.103Z",
+      "updatedAt": "2026-08-10T19:26:48.071Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/spec-template.md": {
@@ -2040,7 +2040,7 @@
       "hash": "7c340be50e2a460b",
       "size": 4067,
       "mtimeMs": 1785575791541.4734,
-      "updatedAt": "2026-08-09T22:04:02.104Z",
+      "updatedAt": "2026-08-10T19:26:48.071Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/step-01-clarify-and-route.md": {
@@ -2049,7 +2049,7 @@
       "hash": "53298afe9de0bc9d",
       "size": 6230,
       "mtimeMs": 1785575791541.9082,
-      "updatedAt": "2026-08-09T22:04:02.104Z",
+      "updatedAt": "2026-08-10T19:26:48.071Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/step-02-plan.md": {
@@ -2058,7 +2058,7 @@
       "hash": "a3e67ddd96216ea7",
       "size": 2161,
       "mtimeMs": 1785575791542.3887,
-      "updatedAt": "2026-08-09T22:04:02.104Z",
+      "updatedAt": "2026-08-10T19:26:48.072Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/step-03-implement.md": {
@@ -2067,7 +2067,7 @@
       "hash": "814893db2ca997d8",
       "size": 2322,
       "mtimeMs": 1785575791542.7524,
-      "updatedAt": "2026-08-09T22:04:02.104Z",
+      "updatedAt": "2026-08-10T19:26:48.072Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/step-04-review.md": {
@@ -2076,7 +2076,7 @@
       "hash": "d7742250a55139fb",
       "size": 6743,
       "mtimeMs": 1785575791543.1257,
-      "updatedAt": "2026-08-09T22:04:02.104Z",
+      "updatedAt": "2026-08-10T19:26:48.072Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-story/checklist.md": {
@@ -2085,7 +2085,7 @@
       "hash": "630b68c6824a8785",
       "size": 4389,
       "mtimeMs": 1785575791544.9695,
-      "updatedAt": "2026-08-09T22:04:02.104Z",
+      "updatedAt": "2026-08-10T19:26:48.073Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-story/customize.toml": {
@@ -2094,7 +2094,7 @@
       "hash": "592fa7948c461460",
       "size": 1613,
       "mtimeMs": 1785575791545.434,
-      "updatedAt": "2026-08-09T22:04:02.105Z",
+      "updatedAt": "2026-08-10T19:26:48.073Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-story/SKILL.md": {
@@ -2103,7 +2103,7 @@
       "hash": "f12801307b157f04",
       "size": 26709,
       "mtimeMs": 1785575791544.4485,
-      "updatedAt": "2026-08-09T22:04:02.105Z",
+      "updatedAt": "2026-08-10T19:26:48.073Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/checklist.md": {
@@ -2112,7 +2112,7 @@
       "hash": "581b0b034c25de17",
       "size": 10101,
       "mtimeMs": 1785575791435.7795,
-      "updatedAt": "2026-08-09T22:04:02.106Z",
+      "updatedAt": "2026-08-10T19:26:48.074Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/customize.toml": {
@@ -2121,7 +2121,7 @@
       "hash": "3bbb5044fafdd865",
       "size": 1596,
       "mtimeMs": 1785575791436.2163,
-      "updatedAt": "2026-08-09T22:04:02.106Z",
+      "updatedAt": "2026-08-10T19:26:48.074Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/documentation-requirements.csv": {
@@ -2130,7 +2130,7 @@
       "hash": "d1253b99e88250f2",
       "size": 8076,
       "mtimeMs": 1785575791436.689,
-      "updatedAt": "2026-08-09T22:04:02.107Z",
+      "updatedAt": "2026-08-10T19:26:48.075Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/instructions.md": {
@@ -2139,7 +2139,7 @@
       "hash": "9f4bc3a46559ffd4",
       "size": 5164,
       "mtimeMs": 1785575791437.1548,
-      "updatedAt": "2026-08-09T22:04:02.107Z",
+      "updatedAt": "2026-08-10T19:26:48.075Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/SKILL.md": {
@@ -2148,7 +2148,7 @@
       "hash": "806d73f66a8f3f3e",
       "size": 2671,
       "mtimeMs": 1785575791435.2988,
-      "updatedAt": "2026-08-09T22:04:02.107Z",
+      "updatedAt": "2026-08-10T19:26:48.075Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/templates/deep-dive-template.md": {
@@ -2157,7 +2157,7 @@
       "hash": "6198aa731d87d6a3",
       "size": 5854,
       "mtimeMs": 1785575791438.1882,
-      "updatedAt": "2026-08-09T22:04:02.107Z",
+      "updatedAt": "2026-08-10T19:26:48.076Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/templates/index-template.md": {
@@ -2166,7 +2166,7 @@
       "hash": "42c8a14f53088e4f",
       "size": 4510,
       "mtimeMs": 1785575791438.5808,
-      "updatedAt": "2026-08-09T22:04:02.107Z",
+      "updatedAt": "2026-08-10T19:26:48.076Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/templates/project-overview-template.md": {
@@ -2175,7 +2175,7 @@
       "hash": "a7c7325b75a5a678",
       "size": 1951,
       "mtimeMs": 1785575791438.9358,
-      "updatedAt": "2026-08-09T22:04:02.107Z",
+      "updatedAt": "2026-08-10T19:26:48.076Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/templates/project-scan-report-schema.json": {
@@ -2184,7 +2184,7 @@
       "hash": "8466965321f1db22",
       "size": 4836,
       "mtimeMs": 1785575791439.3193,
-      "updatedAt": "2026-08-09T22:04:02.108Z",
+      "updatedAt": "2026-08-10T19:26:48.077Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/templates/source-tree-template.md": {
@@ -2193,7 +2193,7 @@
       "hash": "109bc335ebb22f93",
       "size": 2160,
       "mtimeMs": 1785575791439.7053,
-      "updatedAt": "2026-08-09T22:04:02.108Z",
+      "updatedAt": "2026-08-10T19:26:48.077Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/workflows/deep-dive-instructions.md": {
@@ -2202,7 +2202,7 @@
       "hash": "a79e24b93a25ab45",
       "size": 12143,
       "mtimeMs": 1785575791440.7573,
-      "updatedAt": "2026-08-09T22:04:02.108Z",
+      "updatedAt": "2026-08-10T19:26:48.077Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/workflows/deep-dive-workflow.md": {
@@ -2211,7 +2211,7 @@
       "hash": "a64d98dfa3b771df",
       "size": 979,
       "mtimeMs": 1785575791441.1663,
-      "updatedAt": "2026-08-09T22:04:02.108Z",
+      "updatedAt": "2026-08-10T19:26:48.078Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/workflows/full-scan-instructions.md": {
@@ -2220,7 +2220,7 @@
       "hash": "2235945df2ae2612",
       "size": 43434,
       "mtimeMs": 1785575791441.5684,
-      "updatedAt": "2026-08-09T22:04:02.108Z",
+      "updatedAt": "2026-08-10T19:26:48.079Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/workflows/full-scan-workflow.md": {
@@ -2229,7 +2229,7 @@
       "hash": "3bff88a392c16602",
       "size": 970,
       "mtimeMs": 1785575791442.0713,
-      "updatedAt": "2026-08-09T22:04:02.108Z",
+      "updatedAt": "2026-08-10T19:26:48.079Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/customize.toml": {
@@ -2238,7 +2238,7 @@
       "hash": "462ef14dc1e1f6d1",
       "size": 1667,
       "mtimeMs": 1785575791455.3337,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.080Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/domain-steps/step-01-init.md": {
@@ -2247,7 +2247,7 @@
       "hash": "efee243f13ef5440",
       "size": 5394,
       "mtimeMs": 1785575791456.7908,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.080Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/domain-steps/step-02-domain-analysis.md": {
@@ -2256,7 +2256,7 @@
       "hash": "385a288d9bbb0adf",
       "size": 8640,
       "mtimeMs": 1785575791457.3098,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.080Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/domain-steps/step-03-competitive-landscape.md": {
@@ -2265,7 +2265,7 @@
       "hash": "f10aa088ba00c594",
       "size": 9525,
       "mtimeMs": 1785575791457.7935,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.081Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/domain-steps/step-04-regulatory-focus.md": {
@@ -2274,7 +2274,7 @@
       "hash": "d22035529efe9199",
       "size": 6967,
       "mtimeMs": 1785575791458.293,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.081Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/domain-steps/step-05-technical-trends.md": {
@@ -2283,7 +2283,7 @@
       "hash": "fd6c577010171679",
       "size": 7506,
       "mtimeMs": 1785575791458.7104,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.081Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/domain-steps/step-06-research-synthesis.md": {
@@ -2292,7 +2292,7 @@
       "hash": "805f2cb7005a4fb0",
       "size": 17221,
       "mtimeMs": 1785575791459.1555,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.082Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/research.template.md": {
@@ -2301,7 +2301,7 @@
       "hash": "507bb6729476246b",
       "size": 581,
       "mtimeMs": 1785575791459.6384,
-      "updatedAt": "2026-08-09T22:04:02.109Z",
+      "updatedAt": "2026-08-10T19:26:48.082Z",
       "source": "scan"
     },
     ".claude/skills/bmad-domain-research/SKILL.md": {
@@ -2310,7 +2310,7 @@
       "hash": "2308f7e21f78d7f2",
       "size": 4771,
       "mtimeMs": 1785575791454.773,
-      "updatedAt": "2026-08-09T22:04:02.110Z",
+      "updatedAt": "2026-08-10T19:26:48.082Z",
       "source": "scan"
     },
     ".claude/skills/bmad-edit-prd/customize.toml": {
@@ -2319,7 +2319,7 @@
       "hash": "35cc2dfb3eda73a0",
       "size": 1701,
       "mtimeMs": 1785575791477.2375,
-      "updatedAt": "2026-08-09T22:04:02.110Z",
+      "updatedAt": "2026-08-10T19:26:48.083Z",
       "source": "scan"
     },
     ".claude/skills/bmad-edit-prd/SKILL.md": {
@@ -2328,7 +2328,7 @@
       "hash": "31ecfe3c16513d99",
       "size": 2912,
       "mtimeMs": 1785575791476.8442,
-      "updatedAt": "2026-08-09T22:04:02.110Z",
+      "updatedAt": "2026-08-10T19:26:48.083Z",
       "source": "scan"
     },
     ".claude/skills/bmad-editorial-review-prose/SKILL.md": {
@@ -2337,7 +2337,7 @@
       "hash": "b3687fe805673786",
       "size": 5100,
       "mtimeMs": 1785575791403.6968,
-      "updatedAt": "2026-08-09T22:04:02.111Z",
+      "updatedAt": "2026-08-10T19:26:48.083Z",
       "source": "scan"
     },
     ".claude/skills/bmad-editorial-review-structure/SKILL.md": {
@@ -2346,7 +2346,7 @@
       "hash": "164444359d74f695",
       "size": 10818,
       "mtimeMs": 1785575791404.9832,
-      "updatedAt": "2026-08-09T22:04:02.111Z",
+      "updatedAt": "2026-08-10T19:26:48.083Z",
       "source": "scan"
     },
     ".claude/skills/bmad-forge-idea/customize.toml": {
@@ -2355,7 +2355,7 @@
       "hash": "ef5fadd1df3550ca",
       "size": 1760,
       "mtimeMs": 1785575791406.721,
-      "updatedAt": "2026-08-09T22:04:02.111Z",
+      "updatedAt": "2026-08-10T19:26:48.083Z",
       "source": "scan"
     },
     ".claude/skills/bmad-forge-idea/scripts/resolve_personas.py": {
@@ -2364,7 +2364,7 @@
       "hash": "3da694c23e5fb29f",
       "size": 9917,
       "mtimeMs": 1785575791407.5972,
-      "updatedAt": "2026-08-09T22:04:02.112Z",
+      "updatedAt": "2026-08-10T19:26:48.084Z",
       "source": "scan",
       "symbols": [
         {
@@ -2459,7 +2459,7 @@
       "hash": "1c4fa4b1d68bfbd1",
       "size": 6343,
       "mtimeMs": 1785575791408.5857,
-      "updatedAt": "2026-08-09T22:04:02.113Z",
+      "updatedAt": "2026-08-10T19:26:48.085Z",
       "source": "scan",
       "symbols": [
         {
@@ -2498,7 +2498,7 @@
       "hash": "c62ac3a30a4c7a32",
       "size": 10134,
       "mtimeMs": 1785575791406.3706,
-      "updatedAt": "2026-08-09T22:04:02.113Z",
+      "updatedAt": "2026-08-10T19:26:48.085Z",
       "source": "scan"
     },
     ".claude/skills/bmad-generate-project-context/customize.toml": {
@@ -2507,7 +2507,7 @@
       "hash": "00b6e893b93a1be7",
       "size": 1643,
       "mtimeMs": 1785575791520.0544,
-      "updatedAt": "2026-08-09T22:04:02.114Z",
+      "updatedAt": "2026-08-10T19:26:48.085Z",
       "source": "scan"
     },
     ".claude/skills/bmad-generate-project-context/project-context-template.md": {
@@ -2516,7 +2516,7 @@
       "hash": "54e351394ceceb0a",
       "size": 543,
       "mtimeMs": 1785575791520.4207,
-      "updatedAt": "2026-08-09T22:04:02.114Z",
+      "updatedAt": "2026-08-10T19:26:48.086Z",
       "source": "scan"
     },
     ".claude/skills/bmad-generate-project-context/SKILL.md": {
@@ -2525,7 +2525,7 @@
       "hash": "f25e05d8c3923f33",
       "size": 3839,
       "mtimeMs": 1785575791519.6543,
-      "updatedAt": "2026-08-09T22:04:02.114Z",
+      "updatedAt": "2026-08-10T19:26:48.086Z",
       "source": "scan"
     },
     ".claude/skills/bmad-generate-project-context/steps/step-01-discover.md": {
@@ -2534,7 +2534,7 @@
       "hash": "8b2c8c7375f8a3c2",
       "size": 6016,
       "mtimeMs": 1785575791521.372,
-      "updatedAt": "2026-08-09T22:04:02.114Z",
+      "updatedAt": "2026-08-10T19:26:48.087Z",
       "source": "scan"
     },
     ".claude/skills/bmad-generate-project-context/steps/step-02-generate.md": {
@@ -2543,7 +2543,7 @@
       "hash": "b1f063edae66a740",
       "size": 9135,
       "mtimeMs": 1785575791521.8108,
-      "updatedAt": "2026-08-09T22:04:02.114Z",
+      "updatedAt": "2026-08-10T19:26:48.087Z",
       "source": "scan"
     },
     ".claude/skills/bmad-generate-project-context/steps/step-03-complete.md": {
@@ -2552,7 +2552,7 @@
       "hash": "e61463db76a8fa06",
       "size": 8370,
       "mtimeMs": 1785575791522.3179,
-      "updatedAt": "2026-08-09T22:04:02.114Z",
+      "updatedAt": "2026-08-10T19:26:48.087Z",
       "source": "scan"
     },
     ".claude/skills/bmad-help/SKILL.md": {
@@ -2561,7 +2561,7 @@
       "hash": "718077d741e20d9c",
       "size": 4617,
       "mtimeMs": 1785575791410.143,
-      "updatedAt": "2026-08-09T22:04:02.114Z",
+      "updatedAt": "2026-08-10T19:26:48.088Z",
       "source": "scan"
     },
     ".claude/skills/bmad-index-docs/SKILL.md": {
@@ -2570,7 +2570,7 @@
       "hash": "a855d7060414e73c",
       "size": 1641,
       "mtimeMs": 1785575791411.5896,
-      "updatedAt": "2026-08-09T22:04:02.115Z",
+      "updatedAt": "2026-08-10T19:26:48.088Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/customize.toml": {
@@ -2579,7 +2579,7 @@
       "hash": "f47af9158893dd3f",
       "size": 1668,
       "mtimeMs": 1785575791461.3958,
-      "updatedAt": "2026-08-09T22:04:02.115Z",
+      "updatedAt": "2026-08-10T19:26:48.088Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/research.template.md": {
@@ -2588,7 +2588,7 @@
       "hash": "507bb6729476246b",
       "size": 581,
       "mtimeMs": 1785575791461.9036,
-      "updatedAt": "2026-08-09T22:04:02.115Z",
+      "updatedAt": "2026-08-10T19:26:48.088Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/SKILL.md": {
@@ -2597,7 +2597,7 @@
       "hash": "13f2c2148061dc66",
       "size": 4711,
       "mtimeMs": 1785575791461.028,
-      "updatedAt": "2026-08-09T22:04:02.115Z",
+      "updatedAt": "2026-08-10T19:26:48.088Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/steps/step-01-init.md": {
@@ -2606,7 +2606,7 @@
       "hash": "64d5501aea0c0005",
       "size": 6422,
       "mtimeMs": 1785575791463.054,
-      "updatedAt": "2026-08-09T22:04:02.116Z",
+      "updatedAt": "2026-08-10T19:26:48.089Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/steps/step-02-customer-behavior.md": {
@@ -2615,7 +2615,7 @@
       "hash": "bac4de244049f90d",
       "size": 9265,
       "mtimeMs": 1785575791463.3953,
-      "updatedAt": "2026-08-09T22:04:02.116Z",
+      "updatedAt": "2026-08-10T19:26:48.090Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/steps/step-03-customer-pain-points.md": {
@@ -2624,7 +2624,7 @@
       "hash": "5b2418ccaaa89291",
       "size": 9581,
       "mtimeMs": 1785575791463.8462,
-      "updatedAt": "2026-08-09T22:04:02.116Z",
+      "updatedAt": "2026-08-10T19:26:48.090Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/steps/step-04-customer-decisions.md": {
@@ -2633,7 +2633,7 @@
       "hash": "f0bc25f2179b7490",
       "size": 10020,
       "mtimeMs": 1785575791464.2334,
-      "updatedAt": "2026-08-09T22:04:02.116Z",
+      "updatedAt": "2026-08-10T19:26:48.090Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/steps/step-05-competitive-analysis.md": {
@@ -2642,7 +2642,7 @@
       "hash": "17532051ad232cfc",
       "size": 5756,
       "mtimeMs": 1785575791464.6204,
-      "updatedAt": "2026-08-09T22:04:02.116Z",
+      "updatedAt": "2026-08-10T19:26:48.091Z",
       "source": "scan"
     },
     ".claude/skills/bmad-market-research/steps/step-06-research-completion.md": {
@@ -2651,7 +2651,7 @@
       "hash": "4f5d3158a8462656",
       "size": 19394,
       "mtimeMs": 1785575791465.0767,
-      "updatedAt": "2026-08-09T22:04:02.116Z",
+      "updatedAt": "2026-08-10T19:26:48.091Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/customize.toml": {
@@ -2660,7 +2660,7 @@
       "hash": "fee7fe153c853f94",
       "size": 12380,
       "mtimeMs": 1785575791413.4192,
-      "updatedAt": "2026-08-09T22:04:02.117Z",
+      "updatedAt": "2026-08-10T19:26:48.092Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/references/create-party.md": {
@@ -2669,7 +2669,7 @@
       "hash": "2f810332c36c17d1",
       "size": 9007,
       "mtimeMs": 1785575791414.4204,
-      "updatedAt": "2026-08-09T22:04:02.117Z",
+      "updatedAt": "2026-08-10T19:26:48.093Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/references/mode-agent-team.md": {
@@ -2678,7 +2678,7 @@
       "hash": "def759a17f4bb454",
       "size": 2052,
       "mtimeMs": 1785575791414.988,
-      "updatedAt": "2026-08-09T22:04:02.117Z",
+      "updatedAt": "2026-08-10T19:26:48.093Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/references/mode-auto.md": {
@@ -2687,7 +2687,7 @@
       "hash": "a37fd24f76dfcde3",
       "size": 1095,
       "mtimeMs": 1785575791415.7634,
-      "updatedAt": "2026-08-09T22:04:02.117Z",
+      "updatedAt": "2026-08-10T19:26:48.094Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/references/mode-subagent.md": {
@@ -2696,7 +2696,7 @@
       "hash": "86161b24a0b13b8f",
       "size": 4191,
       "mtimeMs": 1785575791416.242,
-      "updatedAt": "2026-08-09T22:04:02.117Z",
+      "updatedAt": "2026-08-10T19:26:48.094Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/references/party-memory.md": {
@@ -2705,7 +2705,7 @@
       "hash": "800b4b4b920bb881",
       "size": 3903,
       "mtimeMs": 1785575791416.7158,
-      "updatedAt": "2026-08-09T22:04:02.118Z",
+      "updatedAt": "2026-08-10T19:26:48.094Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/scripts/resolve_party.py": {
@@ -2714,7 +2714,7 @@
       "hash": "663a1ffa8406564c",
       "size": 10560,
       "mtimeMs": 1785575791417.713,
-      "updatedAt": "2026-08-09T22:04:02.119Z",
+      "updatedAt": "2026-08-10T19:26:48.096Z",
       "source": "scan",
       "symbols": [
         {
@@ -2802,7 +2802,7 @@
       "hash": "bb53fe03ec3013ed",
       "size": 6695,
       "mtimeMs": 1785575791418.8066,
-      "updatedAt": "2026-08-09T22:04:02.119Z",
+      "updatedAt": "2026-08-10T19:26:48.097Z",
       "source": "scan",
       "symbols": [
         {
@@ -2855,7 +2855,7 @@
       "hash": "783fef00cf5a889c",
       "size": 9385,
       "mtimeMs": 1785575791413.057,
-      "updatedAt": "2026-08-09T22:04:02.119Z",
+      "updatedAt": "2026-08-10T19:26:48.099Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/assets/headless-schemas.md": {
@@ -2864,7 +2864,7 @@
       "hash": "8d3621333a724005",
       "size": 2038,
       "mtimeMs": 1785575791479.4915,
-      "updatedAt": "2026-08-09T22:04:02.120Z",
+      "updatedAt": "2026-08-10T19:26:48.100Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/assets/prd-template.md": {
@@ -2873,7 +2873,7 @@
       "hash": "41e77bd5c4ee81c3",
       "size": 10034,
       "mtimeMs": 1785575791479.9258,
-      "updatedAt": "2026-08-09T22:04:02.120Z",
+      "updatedAt": "2026-08-10T19:26:48.101Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/assets/prd-validation-checklist.md": {
@@ -2882,7 +2882,7 @@
       "hash": "41d9f09064772a92",
       "size": 7432,
       "mtimeMs": 1785575791480.38,
-      "updatedAt": "2026-08-09T22:04:02.121Z",
+      "updatedAt": "2026-08-10T19:26:48.102Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/assets/validation-report-template.html": {
@@ -2891,7 +2891,7 @@
       "hash": "a80becdd8205d2d7",
       "size": 10893,
       "mtimeMs": 1785575791480.8965,
-      "updatedAt": "2026-08-09T22:04:02.121Z",
+      "updatedAt": "2026-08-10T19:26:48.103Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/customize.toml": {
@@ -2900,7 +2900,7 @@
       "hash": "5da1c87df2022c3e",
       "size": 7922,
       "mtimeMs": 1785575791481.337,
-      "updatedAt": "2026-08-09T22:04:02.122Z",
+      "updatedAt": "2026-08-10T19:26:48.103Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/references/headless.md": {
@@ -2909,7 +2909,7 @@
       "hash": "4dad58ebee63933a",
       "size": 3314,
       "mtimeMs": 1785575791482.773,
-      "updatedAt": "2026-08-09T22:04:02.122Z",
+      "updatedAt": "2026-08-10T19:26:48.103Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/references/validate.md": {
@@ -2918,7 +2918,7 @@
       "hash": "71f28774e85c673a",
       "size": 5503,
       "mtimeMs": 1785575791483.2185,
-      "updatedAt": "2026-08-09T22:04:02.122Z",
+      "updatedAt": "2026-08-10T19:26:48.104Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/SKILL.md": {
@@ -2927,7 +2927,7 @@
       "hash": "85f0a3ea5fee06fc",
       "size": 13728,
       "mtimeMs": 1785575791478.534,
-      "updatedAt": "2026-08-09T22:04:02.123Z",
+      "updatedAt": "2026-08-10T19:26:48.104Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/agents/artifact-analyzer.md": {
@@ -2936,7 +2936,7 @@
       "hash": "7bdc44830f8d5933",
       "size": 2646,
       "mtimeMs": 1785575791444.8752,
-      "updatedAt": "2026-08-09T22:04:02.123Z",
+      "updatedAt": "2026-08-10T19:26:48.105Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/agents/web-researcher.md": {
@@ -2945,7 +2945,7 @@
       "hash": "6e9127bb9bd3e4b1",
       "size": 1756,
       "mtimeMs": 1785575791445.2312,
-      "updatedAt": "2026-08-09T22:04:02.123Z",
+      "updatedAt": "2026-08-10T19:26:48.105Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/assets/prfaq-template.md": {
@@ -2954,7 +2954,7 @@
       "hash": "b27e6964f0437ab4",
       "size": 1434,
       "mtimeMs": 1785575791446.237,
-      "updatedAt": "2026-08-09T22:04:02.123Z",
+      "updatedAt": "2026-08-10T19:26:48.105Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/bmad-manifest.json": {
@@ -2963,7 +2963,7 @@
       "hash": "7908cab6f0cd66f1",
       "size": 469,
       "mtimeMs": 1785575791446.6296,
-      "updatedAt": "2026-08-09T22:04:02.123Z",
+      "updatedAt": "2026-08-10T19:26:48.107Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/customize.toml": {
@@ -2972,7 +2972,7 @@
       "hash": "8994f925bab65bd3",
       "size": 1618,
       "mtimeMs": 1785575791447.0227,
-      "updatedAt": "2026-08-09T22:04:02.124Z",
+      "updatedAt": "2026-08-10T19:26:48.107Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/references/customer-faq.md": {
@@ -2981,7 +2981,7 @@
       "hash": "96f8565197649c58",
       "size": 3697,
       "mtimeMs": 1785575791448.4556,
-      "updatedAt": "2026-08-09T22:04:02.124Z",
+      "updatedAt": "2026-08-10T19:26:48.108Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/references/internal-faq.md": {
@@ -2990,7 +2990,7 @@
       "hash": "26eb83f844cda1ed",
       "size": 3928,
       "mtimeMs": 1785575791449.119,
-      "updatedAt": "2026-08-09T22:04:02.124Z",
+      "updatedAt": "2026-08-10T19:26:48.108Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/references/press-release.md": {
@@ -2999,7 +2999,7 @@
       "hash": "c406adb0e2d2cc32",
       "size": 4308,
       "mtimeMs": 1785575791449.615,
-      "updatedAt": "2026-08-09T22:04:02.124Z",
+      "updatedAt": "2026-08-10T19:26:48.109Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/references/verdict.md": {
@@ -3008,7 +3008,7 @@
       "hash": "1a1cbc34090114d3",
       "size": 4494,
       "mtimeMs": 1785575791450.1284,
-      "updatedAt": "2026-08-09T22:04:02.124Z",
+      "updatedAt": "2026-08-10T19:26:48.109Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/SKILL.md": {
@@ -3017,7 +3017,7 @@
       "hash": "353da1cc8837e880",
       "size": 10802,
       "mtimeMs": 1785575791443.9119,
-      "updatedAt": "2026-08-09T22:04:02.124Z",
+      "updatedAt": "2026-08-10T19:26:48.109Z",
       "source": "scan"
     },
     ".claude/skills/bmad-product-brief/assets/brief-template.md": {
@@ -3026,7 +3026,7 @@
       "hash": "bb28edf75d023067",
       "size": 1606,
       "mtimeMs": 1785575791452.9849,
-      "updatedAt": "2026-08-09T22:04:02.125Z",
+      "updatedAt": "2026-08-10T19:26:48.110Z",
       "source": "scan"
     },
     ".claude/skills/bmad-product-brief/customize.toml": {
@@ -3035,7 +3035,7 @@
       "hash": "cdd7b417de5b280a",
       "size": 5242,
       "mtimeMs": 1785575791453.3667,
-      "updatedAt": "2026-08-09T22:04:02.125Z",
+      "updatedAt": "2026-08-10T19:26:48.110Z",
       "source": "scan"
     },
     ".claude/skills/bmad-product-brief/SKILL.md": {
@@ -3044,7 +3044,7 @@
       "hash": "0d569d109cd61a80",
       "size": 11632,
       "mtimeMs": 1785575791451.82,
-      "updatedAt": "2026-08-09T22:04:02.125Z",
+      "updatedAt": "2026-08-10T19:26:48.110Z",
       "source": "scan"
     },
     ".claude/skills/bmad-qa-generate-e2e-tests/checklist.md": {
@@ -3053,7 +3053,7 @@
       "hash": "b58f810aeb1040c2",
       "size": 891,
       "mtimeMs": 1785575791547.8716,
-      "updatedAt": "2026-08-09T22:04:02.126Z",
+      "updatedAt": "2026-08-10T19:26:48.111Z",
       "source": "scan"
     },
     ".claude/skills/bmad-qa-generate-e2e-tests/customize.toml": {
@@ -3062,7 +3062,7 @@
       "hash": "04a99926b2d79318",
       "size": 1639,
       "mtimeMs": 1785575791548.4656,
-      "updatedAt": "2026-08-09T22:04:02.126Z",
+      "updatedAt": "2026-08-10T19:26:48.111Z",
       "source": "scan"
     },
     ".claude/skills/bmad-qa-generate-e2e-tests/SKILL.md": {
@@ -3071,7 +3071,7 @@
       "hash": "9e78729569b2dc8e",
       "size": 5652,
       "mtimeMs": 1785575791547.3267,
-      "updatedAt": "2026-08-09T22:04:02.126Z",
+      "updatedAt": "2026-08-10T19:26:48.111Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/compile-epic-context.md": {
@@ -3080,7 +3080,7 @@
       "hash": "5cfda02f252941e4",
       "size": 2922,
       "mtimeMs": 1785575791550.6655,
-      "updatedAt": "2026-08-09T22:04:02.126Z",
+      "updatedAt": "2026-08-10T19:26:48.112Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/customize.toml": {
@@ -3089,7 +3089,7 @@
       "hash": "ebb082e10f887a68",
       "size": 888,
       "mtimeMs": 1785575791550.998,
-      "updatedAt": "2026-08-09T22:04:02.127Z",
+      "updatedAt": "2026-08-10T19:26:48.112Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/SKILL.md": {
@@ -3098,7 +3098,7 @@
       "hash": "18c2002a48dee2d4",
       "size": 5795,
       "mtimeMs": 1785575791550.2751,
-      "updatedAt": "2026-08-09T22:04:02.127Z",
+      "updatedAt": "2026-08-10T19:26:48.112Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/spec-template.md": {
@@ -3107,7 +3107,7 @@
       "hash": "68d0e3b9acaa0c22",
       "size": 3481,
       "mtimeMs": 1785575791551.331,
-      "updatedAt": "2026-08-09T22:04:02.127Z",
+      "updatedAt": "2026-08-10T19:26:48.112Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/step-01-clarify-and-route.md": {
@@ -3116,7 +3116,7 @@
       "hash": "c6066ba0d4fd6cb9",
       "size": 9959,
       "mtimeMs": 1785575791551.735,
-      "updatedAt": "2026-08-09T22:04:02.127Z",
+      "updatedAt": "2026-08-10T19:26:48.113Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/step-02-plan.md": {
@@ -3125,7 +3125,7 @@
       "hash": "66576a0b14f77d59",
       "size": 3213,
       "mtimeMs": 1785575791552.1306,
-      "updatedAt": "2026-08-09T22:04:02.127Z",
+      "updatedAt": "2026-08-10T19:26:48.113Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/step-03-implement.md": {
@@ -3134,7 +3134,7 @@
       "hash": "207e8a1238d725bb",
       "size": 1932,
       "mtimeMs": 1785575791552.514,
-      "updatedAt": "2026-08-09T22:04:02.128Z",
+      "updatedAt": "2026-08-10T19:26:48.113Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/step-04-review.md": {
@@ -3143,7 +3143,7 @@
       "hash": "9db75caff2e22c61",
       "size": 4480,
       "mtimeMs": 1785575791552.947,
-      "updatedAt": "2026-08-09T22:04:02.128Z",
+      "updatedAt": "2026-08-10T19:26:48.114Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/step-05-present.md": {
@@ -3152,7 +3152,7 @@
       "hash": "ea49ce8703d4946e",
       "size": 4363,
       "mtimeMs": 1785575791553.4253,
-      "updatedAt": "2026-08-09T22:04:02.128Z",
+      "updatedAt": "2026-08-10T19:26:48.114Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/step-oneshot.md": {
@@ -3161,7 +3161,7 @@
       "hash": "0a9f86e6b81c60f7",
       "size": 4197,
       "mtimeMs": 1785575791553.9077,
-      "updatedAt": "2026-08-09T22:04:02.128Z",
+      "updatedAt": "2026-08-10T19:26:48.114Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/sync-sprint-status.md": {
@@ -3170,7 +3170,7 @@
       "hash": "c0f2fdb940984206",
       "size": 1401,
       "mtimeMs": 1785575791554.3386,
-      "updatedAt": "2026-08-09T22:04:02.128Z",
+      "updatedAt": "2026-08-10T19:26:48.115Z",
       "source": "scan"
     },
     ".claude/skills/bmad-retrospective/customize.toml": {
@@ -3179,7 +3179,7 @@
       "hash": "4ad7e7e7154b480e",
       "size": 1659,
       "mtimeMs": 1785575791556.2527,
-      "updatedAt": "2026-08-09T22:04:02.128Z",
+      "updatedAt": "2026-08-10T19:26:48.115Z",
       "source": "scan"
     },
     ".claude/skills/bmad-retrospective/SKILL.md": {
@@ -3188,7 +3188,7 @@
       "hash": "af09b92e4928bbc9",
       "size": 65521,
       "mtimeMs": 1785575791555.8103,
-      "updatedAt": "2026-08-09T22:04:02.129Z",
+      "updatedAt": "2026-08-10T19:26:48.115Z",
       "source": "scan"
     },
     ".claude/skills/bmad-review-adversarial-general/SKILL.md": {
@@ -3197,7 +3197,7 @@
       "hash": "3b70b004b662c3a0",
       "size": 1447,
       "mtimeMs": 1785575791420.5083,
-      "updatedAt": "2026-08-09T22:04:02.129Z",
+      "updatedAt": "2026-08-10T19:26:48.115Z",
       "source": "scan"
     },
     ".claude/skills/bmad-review-edge-case-hunter/references/deletion-check.md": {
@@ -3206,7 +3206,7 @@
       "hash": "0f1f124e4e957147",
       "size": 1009,
       "mtimeMs": 1785575791423.288,
-      "updatedAt": "2026-08-09T22:04:02.129Z",
+      "updatedAt": "2026-08-10T19:26:48.116Z",
       "source": "scan"
     },
     ".claude/skills/bmad-review-edge-case-hunter/SKILL.md": {
@@ -3215,7 +3215,7 @@
       "hash": "03087a3f1e935f7a",
       "size": 4775,
       "mtimeMs": 1785575791422.168,
-      "updatedAt": "2026-08-09T22:04:02.129Z",
+      "updatedAt": "2026-08-10T19:26:48.116Z",
       "source": "scan"
     },
     ".claude/skills/bmad-shard-doc/SKILL.md": {
@@ -3224,7 +3224,7 @@
       "hash": "3a1538536514725f",
       "size": 4142,
       "mtimeMs": 1785575791424.6824,
-      "updatedAt": "2026-08-09T22:04:02.129Z",
+      "updatedAt": "2026-08-10T19:26:48.116Z",
       "source": "scan"
     },
     ".claude/skills/bmad-spec/assets/headless-schemas.md": {
@@ -3233,7 +3233,7 @@
       "hash": "83afb3614716db23",
       "size": 1187,
       "mtimeMs": 1785575791427.0034,
-      "updatedAt": "2026-08-09T22:04:02.129Z",
+      "updatedAt": "2026-08-10T19:26:48.116Z",
       "source": "scan"
     },
     ".claude/skills/bmad-spec/assets/spec-template.md": {
@@ -3242,7 +3242,7 @@
       "hash": "94ef029b842dfa7f",
       "size": 2366,
       "mtimeMs": 1785575791427.4148,
-      "updatedAt": "2026-08-09T22:04:02.129Z",
+      "updatedAt": "2026-08-10T19:26:48.117Z",
       "source": "scan"
     },
     ".claude/skills/bmad-spec/customize.toml": {
@@ -3251,7 +3251,7 @@
       "hash": "b0181ba5d4038feb",
       "size": 2166,
       "mtimeMs": 1785575791427.759,
-      "updatedAt": "2026-08-09T22:04:02.130Z",
+      "updatedAt": "2026-08-10T19:26:48.117Z",
       "source": "scan"
     },
     ".claude/skills/bmad-spec/SKILL.md": {
@@ -3260,7 +3260,7 @@
       "hash": "a2baaf6b6bf00040",
       "size": 14340,
       "mtimeMs": 1785575791426.0286,
-      "updatedAt": "2026-08-09T22:04:02.130Z",
+      "updatedAt": "2026-08-10T19:26:48.117Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-planning/checklist.md": {
@@ -3269,7 +3269,7 @@
       "hash": "11b0b1ff20657b8e",
       "size": 1383,
       "mtimeMs": 1785575791557.9143,
-      "updatedAt": "2026-08-09T22:04:02.130Z",
+      "updatedAt": "2026-08-10T19:26:48.118Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-planning/customize.toml": {
@@ -3278,7 +3278,7 @@
       "hash": "f7bde2f792e8604f",
       "size": 1606,
       "mtimeMs": 1785575791558.2776,
-      "updatedAt": "2026-08-09T22:04:02.131Z",
+      "updatedAt": "2026-08-10T19:26:48.118Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-planning/SKILL.md": {
@@ -3287,7 +3287,7 @@
       "hash": "aa828c5ceeb2aa87",
       "size": 11960,
       "mtimeMs": 1785575791557.4802,
-      "updatedAt": "2026-08-09T22:04:02.132Z",
+      "updatedAt": "2026-08-10T19:26:48.118Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-planning/sprint-status-template.yaml": {
@@ -3296,7 +3296,7 @@
       "hash": "317b65e5fc0844a9",
       "size": 2266,
       "mtimeMs": 1785575791558.6455,
-      "updatedAt": "2026-08-09T22:04:02.132Z",
+      "updatedAt": "2026-08-10T19:26:48.119Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-status/customize.toml": {
@@ -3305,7 +3305,7 @@
       "hash": "96261fd227befaa4",
       "size": 1609,
       "mtimeMs": 1785575791560.6833,
-      "updatedAt": "2026-08-09T22:04:02.133Z",
+      "updatedAt": "2026-08-10T19:26:48.119Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-status/SKILL.md": {
@@ -3314,7 +3314,7 @@
       "hash": "a0dcb85d89cbbc6f",
       "size": 12992,
       "mtimeMs": 1785575791560.1978,
-      "updatedAt": "2026-08-09T22:04:02.134Z",
+      "updatedAt": "2026-08-10T19:26:48.120Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/customize.toml": {
@@ -3323,7 +3323,7 @@
       "hash": "7f567fddb04674f8",
       "size": 1674,
       "mtimeMs": 1785575791467.036,
-      "updatedAt": "2026-08-09T22:04:02.134Z",
+      "updatedAt": "2026-08-10T19:26:48.120Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/research.template.md": {
@@ -3332,7 +3332,7 @@
       "hash": "507bb6729476246b",
       "size": 581,
       "mtimeMs": 1785575791467.3801,
-      "updatedAt": "2026-08-09T22:04:02.134Z",
+      "updatedAt": "2026-08-10T19:26:48.121Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/SKILL.md": {
@@ -3341,7 +3341,7 @@
       "hash": "290c5aec88886a62",
       "size": 4839,
       "mtimeMs": 1785575791466.63,
-      "updatedAt": "2026-08-09T22:04:02.134Z",
+      "updatedAt": "2026-08-10T19:26:48.121Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/technical-steps/step-01-init.md": {
@@ -3350,7 +3350,7 @@
       "hash": "c9a1627ecd26227e",
       "size": 5581,
       "mtimeMs": 1785575791468.2917,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.121Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/technical-steps/step-02-technical-overview.md": {
@@ -3359,7 +3359,7 @@
       "hash": "9c7582241038b162",
       "size": 9447,
       "mtimeMs": 1785575791468.6406,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.122Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/technical-steps/step-03-integration-patterns.md": {
@@ -3368,7 +3368,7 @@
       "hash": "005d517a2f962e21",
       "size": 9995,
       "mtimeMs": 1785575791469.043,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.122Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/technical-steps/step-04-architectural-patterns.md": {
@@ -3377,7 +3377,7 @@
       "hash": "4636f23e9c585a7a",
       "size": 7212,
       "mtimeMs": 1785575791469.457,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.123Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/technical-steps/step-05-implementation-research.md": {
@@ -3386,7 +3386,7 @@
       "hash": "e2b8a2c79bcebadc",
       "size": 7774,
       "mtimeMs": 1785575791469.7905,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.123Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/technical-steps/step-06-research-synthesis.md": {
@@ -3395,7 +3395,7 @@
       "hash": "64d9303ef0c9ce83",
       "size": 21304,
       "mtimeMs": 1785575791470.2478,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.123Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/color-themes.md": {
@@ -3404,7 +3404,7 @@
       "hash": "48fac7943e8584cc",
       "size": 1022,
       "mtimeMs": 1785575791486.0295,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.124Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/design-directions.md": {
@@ -3413,7 +3413,7 @@
       "hash": "eab73b948da76a27",
       "size": 1056,
       "mtimeMs": 1785575791486.7327,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.124Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/design-example-editorial.md": {
@@ -3422,7 +3422,7 @@
       "hash": "a659166845b1a4ed",
       "size": 7363,
       "mtimeMs": 1785575791487.153,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.125Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/design-example-mobile.md": {
@@ -3431,7 +3431,7 @@
       "hash": "a93fb9f114f2e83a",
       "size": 4957,
       "mtimeMs": 1785575791487.6,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.125Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/design-example-shadcn.md": {
@@ -3440,7 +3440,7 @@
       "hash": "25e0dfb2bb214839",
       "size": 6376,
       "mtimeMs": 1785575791487.9656,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.125Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/excalidraw-wireframe.md": {
@@ -3449,7 +3449,7 @@
       "hash": "660bbcdebff50cd0",
       "size": 1901,
       "mtimeMs": 1785575791488.5017,
-      "updatedAt": "2026-08-09T22:04:02.135Z",
+      "updatedAt": "2026-08-10T19:26:48.125Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/experience-example-mobile.md": {
@@ -3458,7 +3458,7 @@
       "hash": "f8cd54c92193cd8c",
       "size": 5123,
       "mtimeMs": 1785575791488.904,
-      "updatedAt": "2026-08-09T22:04:02.136Z",
+      "updatedAt": "2026-08-10T19:26:48.126Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/experience-example-shadcn.md": {
@@ -3467,7 +3467,7 @@
       "hash": "d6ca16e87b768e8b",
       "size": 9279,
       "mtimeMs": 1785575791489.2874,
-      "updatedAt": "2026-08-09T22:04:02.136Z",
+      "updatedAt": "2026-08-10T19:26:48.126Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/headless-schemas.md": {
@@ -3476,7 +3476,7 @@
       "hash": "e3a773dde85286f1",
       "size": 2615,
       "mtimeMs": 1785575791489.6562,
-      "updatedAt": "2026-08-09T22:04:02.136Z",
+      "updatedAt": "2026-08-10T19:26:48.127Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/key-screens.md": {
@@ -3485,7 +3485,7 @@
       "hash": "ff1c5060673dd595",
       "size": 2186,
       "mtimeMs": 1785575791490.0977,
-      "updatedAt": "2026-08-09T22:04:02.136Z",
+      "updatedAt": "2026-08-10T19:26:48.127Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/validation-report-template.html": {
@@ -3494,7 +3494,7 @@
       "hash": "8656945636fabe96",
       "size": 10945,
       "mtimeMs": 1785575791490.47,
-      "updatedAt": "2026-08-09T22:04:02.136Z",
+      "updatedAt": "2026-08-10T19:26:48.127Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/customize.toml": {
@@ -3503,7 +3503,7 @@
       "hash": "c6f94676004a24ee",
       "size": 4424,
       "mtimeMs": 1785575791490.857,
-      "updatedAt": "2026-08-09T22:04:02.137Z",
+      "updatedAt": "2026-08-10T19:26:48.128Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/references/creative-tools.md": {
@@ -3512,7 +3512,7 @@
       "hash": "349b6b5e8353c2fa",
       "size": 1825,
       "mtimeMs": 1785575791492.019,
-      "updatedAt": "2026-08-09T22:04:02.137Z",
+      "updatedAt": "2026-08-10T19:26:48.128Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/references/design-md-spec.md": {
@@ -3521,7 +3521,7 @@
       "hash": "d04d5f663607aba3",
       "size": 3298,
       "mtimeMs": 1785575791492.4795,
-      "updatedAt": "2026-08-09T22:04:02.137Z",
+      "updatedAt": "2026-08-10T19:26:48.129Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/references/headless.md": {
@@ -3530,7 +3530,7 @@
       "hash": "8da7e23d269b1644",
       "size": 2310,
       "mtimeMs": 1785575791492.8862,
-      "updatedAt": "2026-08-09T22:04:02.137Z",
+      "updatedAt": "2026-08-10T19:26:48.129Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/references/validate.md": {
@@ -3539,7 +3539,7 @@
       "hash": "336d5be5ca860dc6",
       "size": 6713,
       "mtimeMs": 1785575791493.2795,
-      "updatedAt": "2026-08-09T22:04:02.138Z",
+      "updatedAt": "2026-08-10T19:26:48.129Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/SKILL.md": {
@@ -3548,7 +3548,7 @@
       "hash": "250d2794f2b8e316",
       "size": 10700,
       "mtimeMs": 1785575791484.7146,
-      "updatedAt": "2026-08-09T22:04:02.138Z",
+      "updatedAt": "2026-08-10T19:26:48.130Z",
       "source": "scan"
     },
     ".claude/skills/bmad-validate-prd/customize.toml": {
@@ -3557,7 +3557,7 @@
       "hash": "bfb3c8af5b81b2cd",
       "size": 1731,
       "mtimeMs": 1785575791494.9678,
-      "updatedAt": "2026-08-09T22:04:02.138Z",
+      "updatedAt": "2026-08-10T19:26:48.130Z",
       "source": "scan"
     },
     ".claude/skills/bmad-validate-prd/SKILL.md": {
@@ -3566,7 +3566,7 @@
       "hash": "931439b8c84bc454",
       "size": 2925,
       "mtimeMs": 1785575791494.6052,
-      "updatedAt": "2026-08-09T22:04:02.138Z",
+      "updatedAt": "2026-08-10T19:26:48.130Z",
       "source": "scan"
     },
     ".devcontainer/devcontainer.json": {
@@ -3575,7 +3575,7 @@
       "hash": "cd10674bc6daa295",
       "size": 2236,
       "mtimeMs": 1785595070477.2944,
-      "updatedAt": "2026-08-09T22:04:02.139Z",
+      "updatedAt": "2026-08-10T19:26:48.131Z",
       "source": "scan"
     },
     ".devcontainer/Dockerfile": {
@@ -3583,8 +3583,8 @@
       "tokens": 740,
       "hash": "a1e8ff794aa88180",
       "size": 2774,
-      "mtimeMs": 1785611402445.5442,
-      "updatedAt": "2026-08-09T22:04:02.140Z",
+      "mtimeMs": 1786387643668.0386,
+      "updatedAt": "2026-08-10T19:26:48.132Z",
       "source": "scan"
     },
     ".devcontainer/post-create.sh": {
@@ -3593,16 +3593,16 @@
       "hash": "7935eb91cbcc6494",
       "size": 1200,
       "mtimeMs": 1785595075161.6138,
-      "updatedAt": "2026-08-09T22:04:02.141Z",
+      "updatedAt": "2026-08-10T19:26:48.132Z",
       "source": "scan"
     },
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
-      "tokens": 3108,
-      "hash": "c17fb14fbc02d678",
-      "size": 10881,
-      "mtimeMs": 1785625098854.502,
-      "updatedAt": "2026-08-09T22:04:02.142Z",
+      "tokens": 3396,
+      "hash": "7a6be3e6bdb52288",
+      "size": 11892,
+      "mtimeMs": 1786389814923.1555,
+      "updatedAt": "2026-08-10T19:26:48.132Z",
       "source": "scan"
     },
     ".gitignore": {
@@ -3611,7 +3611,7 @@
       "hash": "c877722cd1ce9af4",
       "size": 365,
       "mtimeMs": 1785608328911.2026,
-      "updatedAt": "2026-08-09T22:04:02.142Z",
+      "updatedAt": "2026-08-10T19:26:48.132Z",
       "source": "scan"
     },
     "backend/.dockerignore": {
@@ -3619,8 +3619,8 @@
       "tokens": 9,
       "hash": "4d30ea23184afc36",
       "size": 32,
-      "mtimeMs": 1785608642761.734,
-      "updatedAt": "2026-08-09T22:04:02.143Z",
+      "mtimeMs": 1786387643674.7324,
+      "updatedAt": "2026-08-10T19:26:48.133Z",
       "source": "scan"
     },
     "backend/.gitignore": {
@@ -3628,8 +3628,8 @@
       "tokens": 14,
       "hash": "4460fe9d3c9dbf22",
       "size": 49,
-      "mtimeMs": 1785625098854.8672,
-      "updatedAt": "2026-08-09T22:04:02.144Z",
+      "mtimeMs": 1786387643675.5603,
+      "updatedAt": "2026-08-10T19:26:48.133Z",
       "source": "scan"
     },
     "backend/data/gustik.sqlite-shm": {
@@ -3638,7 +3638,7 @@
       "hash": "57ccaeaa6dbabb0f",
       "size": 32768,
       "mtimeMs": 1786312957322.1846,
-      "updatedAt": "2026-08-09T22:04:02.144Z",
+      "updatedAt": "2026-08-10T19:26:48.134Z",
       "source": "scan"
     },
     "backend/data/gustik.sqlite-wal": {
@@ -3647,16 +3647,16 @@
       "hash": "6f6216a5187a2964",
       "size": 140112,
       "mtimeMs": 1786312957322.1846,
-      "updatedAt": "2026-08-09T22:04:02.145Z",
+      "updatedAt": "2026-08-10T19:26:48.136Z",
       "source": "scan"
     },
     "backend/docker-compose.yml": {
       "description": "Docker Compose services",
-      "tokens": 77,
-      "hash": "0fe631db4576ca2a",
-      "size": 269,
-      "mtimeMs": 1785608642762.0996,
-      "updatedAt": "2026-08-09T22:04:02.145Z",
+      "tokens": 104,
+      "hash": "c2f395cf7bdd423a",
+      "size": 363,
+      "mtimeMs": 1786389521414.7087,
+      "updatedAt": "2026-08-10T19:26:48.137Z",
       "source": "scan"
     },
     "backend/Dockerfile": {
@@ -3664,8 +3664,8 @@
       "tokens": 147,
       "hash": "03479a84fce8a20a",
       "size": 551,
-      "mtimeMs": 1785608642762.0996,
-      "updatedAt": "2026-08-09T22:04:02.146Z",
+      "mtimeMs": 1786387643675.8958,
+      "updatedAt": "2026-08-10T19:26:48.137Z",
       "source": "scan"
     },
     "backend/eslint.config.js": {
@@ -3673,8 +3673,8 @@
       "tokens": 332,
       "hash": "b20fad1051522504",
       "size": 1162,
-      "mtimeMs": 1785625098855.3977,
-      "updatedAt": "2026-08-09T22:04:02.147Z",
+      "mtimeMs": 1786387643676.8108,
+      "updatedAt": "2026-08-10T19:26:48.137Z",
       "source": "scan"
     },
     "backend/package-lock.json": {
@@ -3682,8 +3682,8 @@
       "tokens": 28748,
       "hash": "e16e1f2e2f38a052",
       "size": 100617,
-      "mtimeMs": 1785625104132.0474,
-      "updatedAt": "2026-08-09T22:04:02.149Z",
+      "mtimeMs": 1786387643677.8838,
+      "updatedAt": "2026-08-10T19:26:48.137Z",
       "source": "scan"
     },
     "backend/package.json": {
@@ -3691,8 +3691,8 @@
       "tokens": 157,
       "hash": "cf461f6519b34834",
       "size": 547,
-      "mtimeMs": 1785625098855.997,
-      "updatedAt": "2026-08-09T22:04:02.149Z",
+      "mtimeMs": 1786387643678.3503,
+      "updatedAt": "2026-08-10T19:26:48.137Z",
       "source": "scan"
     },
     "backend/src/app.js": {
@@ -3700,8 +3700,8 @@
       "tokens": 361,
       "hash": "0b51da5d8cb8d6cf",
       "size": 1261,
-      "mtimeMs": 1785610120738.1863,
-      "updatedAt": "2026-08-09T22:04:02.149Z",
+      "mtimeMs": 1786387643678.3503,
+      "updatedAt": "2026-08-10T19:26:48.138Z",
       "source": "scan"
     },
     "backend/src/health/routes.js": {
@@ -3709,8 +3709,8 @@
       "tokens": 78,
       "hash": "2de3852491c629ae",
       "size": 270,
-      "mtimeMs": 1785608642763.0857,
-      "updatedAt": "2026-08-09T22:04:02.149Z",
+      "mtimeMs": 1786387643679.8381,
+      "updatedAt": "2026-08-10T19:26:48.138Z",
       "source": "scan"
     },
     "backend/src/index.js": {
@@ -3718,8 +3718,8 @@
       "tokens": 125,
       "hash": "69e6bc0a27bbcce5",
       "size": 437,
-      "mtimeMs": 1785608642763.0857,
-      "updatedAt": "2026-08-09T22:04:02.150Z",
+      "mtimeMs": 1786387643680.9448,
+      "updatedAt": "2026-08-10T19:26:48.138Z",
       "source": "scan"
     },
     "backend/src/ingest/routes.js": {
@@ -3727,8 +3727,8 @@
       "tokens": 757,
       "hash": "d2d3c3accbb76c2c",
       "size": 2649,
-      "mtimeMs": 1786312903545.0298,
-      "updatedAt": "2026-08-09T22:04:02.150Z",
+      "mtimeMs": 1786387643681.4805,
+      "updatedAt": "2026-08-10T19:26:48.138Z",
       "source": "scan",
       "symbols": [
         {
@@ -3759,8 +3759,8 @@
       "tokens": 898,
       "hash": "b2119267f466304e",
       "size": 3140,
-      "mtimeMs": 1786312862360.5012,
-      "updatedAt": "2026-08-09T22:04:02.150Z",
+      "mtimeMs": 1786387643681.88,
+      "updatedAt": "2026-08-10T19:26:48.140Z",
       "source": "scan",
       "symbols": [
         {
@@ -3798,8 +3798,8 @@
       "tokens": 353,
       "hash": "11747403142d3aaa",
       "size": 1233,
-      "mtimeMs": 1785610999130.6704,
-      "updatedAt": "2026-08-09T22:04:02.150Z",
+      "mtimeMs": 1786387643682.6255,
+      "updatedAt": "2026-08-10T19:26:48.140Z",
       "source": "scan"
     },
     "backend/src/static/dashboard.js": {
@@ -3807,8 +3807,8 @@
       "tokens": 713,
       "hash": "d42c273411dbcab2",
       "size": 2494,
-      "mtimeMs": 1785611698349.276,
-      "updatedAt": "2026-08-09T22:04:02.152Z",
+      "mtimeMs": 1786387643682.6255,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan",
       "symbols": [
         {
@@ -3839,8 +3839,8 @@
       "tokens": 240,
       "hash": "fe793287a7eba969",
       "size": 839,
-      "mtimeMs": 1785610120738.7515,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643683.8538,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/static/history-chart-data.js": {
@@ -3848,8 +3848,8 @@
       "tokens": 194,
       "hash": "76e4f2e7ca38f3ea",
       "size": 679,
-      "mtimeMs": 1785611336775.2214,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643684.5896,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/static/history-chart.js": {
@@ -3857,8 +3857,8 @@
       "tokens": 961,
       "hash": "c7728ff1a3a7398e",
       "size": 3363,
-      "mtimeMs": 1786312924647.0671,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643685.0027,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan",
       "symbols": [
         {
@@ -3931,8 +3931,8 @@
       "tokens": 897,
       "hash": "80485bfa310377dd",
       "size": 3398,
-      "mtimeMs": 1785612132413.4473,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643685.4487,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/static/live-socket.js": {
@@ -3940,8 +3940,8 @@
       "tokens": 492,
       "hash": "fc645327c6972347",
       "size": 1719,
-      "mtimeMs": 1785611698349.4885,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643685.8997,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/static/manual.html": {
@@ -3949,8 +3949,8 @@
       "tokens": 991,
       "hash": "fd075d5619f36ee1",
       "size": 3948,
-      "mtimeMs": 1785612132413.5095,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643686.2502,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/static/timezone.js": {
@@ -3958,8 +3958,8 @@
       "tokens": 162,
       "hash": "74d2456c023308b4",
       "size": 567,
-      "mtimeMs": 1786312919193.366,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643686.5913,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/static/vendor/chart.js.LICENSE.md": {
@@ -3967,8 +3967,8 @@
       "tokens": 274,
       "hash": "41a84aa2caba645f",
       "size": 1093,
-      "mtimeMs": 1785611336775.3171,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643686.5913,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/store/db.js": {
@@ -3976,8 +3976,8 @@
       "tokens": 229,
       "hash": "16b647ecc618a2e4",
       "size": 799,
-      "mtimeMs": 1785610120738.9204,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643688.993,
+      "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
     },
     "backend/src/store/readings.js": {
@@ -3985,8 +3985,8 @@
       "tokens": 662,
       "hash": "9971def24dca479b",
       "size": 2314,
-      "mtimeMs": 1785610999130.804,
-      "updatedAt": "2026-08-09T22:04:02.153Z",
+      "mtimeMs": 1786387643689.8672,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan",
       "symbols": [
         {
@@ -4045,8 +4045,8 @@
       "tokens": 1336,
       "hash": "65bd1c550eead0e2",
       "size": 4674,
-      "mtimeMs": 1785610615203.6113,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643690.7146,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan",
       "symbols": [
         {
@@ -4077,8 +4077,8 @@
       "tokens": 484,
       "hash": "7e349af5c62ff657",
       "size": 1693,
-      "mtimeMs": 1785610120738.9744,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643691.0981,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan"
     },
     "backend/test/dashboard-static.test.js": {
@@ -4086,8 +4086,8 @@
       "tokens": 297,
       "hash": "1ce4e792b7c3ab0a",
       "size": 1037,
-      "mtimeMs": 1785611336777.2244,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643691.705,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan"
     },
     "backend/test/health.test.js": {
@@ -4095,8 +4095,8 @@
       "tokens": 180,
       "hash": "36e28f66139e1985",
       "size": 627,
-      "mtimeMs": 1785608642764.495,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643692.085,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan"
     },
     "backend/test/history-chart-data.test.js": {
@@ -4104,8 +4104,8 @@
       "tokens": 399,
       "hash": "8fbfc098492c28f0",
       "size": 1395,
-      "mtimeMs": 1785611336777.2244,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643692.5662,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan"
     },
     "backend/test/history.test.js": {
@@ -4113,8 +4113,8 @@
       "tokens": 1239,
       "hash": "88aa2a48ed05df09",
       "size": 4336,
-      "mtimeMs": 1786312882336.2686,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643692.9832,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan",
       "symbols": [
         {
@@ -4138,8 +4138,8 @@
       "tokens": 1232,
       "hash": "1bc16ac477d9c498",
       "size": 4310,
-      "mtimeMs": 1786312875732.4895,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643693.388,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan",
       "symbols": [
         {
@@ -4156,8 +4156,8 @@
       "tokens": 904,
       "hash": "150bd225de9a15a5",
       "size": 3162,
-      "mtimeMs": 1785611698349.561,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643693.8516,
+      "updatedAt": "2026-08-10T19:26:48.142Z",
       "source": "scan",
       "symbols": [
         {
@@ -4181,8 +4181,8 @@
       "tokens": 356,
       "hash": "f7202114ad8d7388",
       "size": 1251,
-      "mtimeMs": 1785612132413.5933,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643694.2915,
+      "updatedAt": "2026-08-10T19:26:48.143Z",
       "source": "scan"
     },
     "backend/test/serve.test.js": {
@@ -4190,8 +4190,8 @@
       "tokens": 838,
       "hash": "06e4b6c316f37f6c",
       "size": 2930,
-      "mtimeMs": 1785609154085.9517,
-      "updatedAt": "2026-08-09T22:04:02.154Z",
+      "mtimeMs": 1786387643694.8716,
+      "updatedAt": "2026-08-10T19:26:48.143Z",
       "source": "scan",
       "symbols": [
         {
@@ -4222,8 +4222,8 @@
       "tokens": 529,
       "hash": "02d834e9e4b61047",
       "size": 1850,
-      "mtimeMs": 1785608642764.728,
-      "updatedAt": "2026-08-09T22:04:02.155Z",
+      "mtimeMs": 1786387643695.3442,
+      "updatedAt": "2026-08-10T19:26:48.143Z",
       "source": "scan",
       "symbols": [
         {
@@ -4240,8 +4240,8 @@
       "tokens": 489,
       "hash": "fc9e07f614e203eb",
       "size": 1711,
-      "mtimeMs": 1786312848843.8557,
-      "updatedAt": "2026-08-09T22:04:02.155Z",
+      "mtimeMs": 1786387643695.71,
+      "updatedAt": "2026-08-10T19:26:48.143Z",
       "source": "scan"
     },
     "CLAUDE.md": {
@@ -4249,8 +4249,17 @@
       "tokens": 2136,
       "hash": "c273a27922010c17",
       "size": 8611,
-      "mtimeMs": 1786312499675.0178,
-      "updatedAt": "2026-08-09T22:04:02.155Z",
+      "mtimeMs": 1786387643673.7566,
+      "updatedAt": "2026-08-10T19:26:48.143Z",
+      "source": "scan"
+    },
+    "deploy.txt": {
+      "description": "",
+      "tokens": 25,
+      "hash": "83aaa3e122906c6b",
+      "size": 99,
+      "mtimeMs": 1786387925723.5752,
+      "updatedAt": "2026-08-10T19:26:48.144Z",
       "source": "scan"
     },
     "docs/superpowers/plans/2026-08-09-timestamp-timezone-support.md": {
@@ -4258,8 +4267,8 @@
       "tokens": 4942,
       "hash": "810ae2f849071a92",
       "size": 19794,
-      "mtimeMs": 1786312761654.6704,
-      "updatedAt": "2026-08-09T22:04:02.155Z",
+      "mtimeMs": 1786387643696.8135,
+      "updatedAt": "2026-08-10T19:26:48.144Z",
       "source": "scan"
     },
     "docs/superpowers/specs/2026-08-09-timestamp-timezone-support-design.md": {
@@ -4267,8 +4276,8 @@
       "tokens": 1546,
       "hash": "a6bad9cbce032ec9",
       "size": 6213,
-      "mtimeMs": 1786312357721.3074,
-      "updatedAt": "2026-08-09T22:04:02.156Z",
+      "mtimeMs": 1786387643697.6687,
+      "updatedAt": "2026-08-10T19:26:48.145Z",
       "source": "scan"
     },
     "firmware/.gitignore": {
@@ -4276,8 +4285,8 @@
       "tokens": 52,
       "hash": "83a9e475ca76c4bd",
       "size": 194,
-      "mtimeMs": 1785611956441.7095,
-      "updatedAt": "2026-08-09T22:04:02.156Z",
+      "mtimeMs": 1786387643698.1848,
+      "updatedAt": "2026-08-10T19:26:48.145Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/integrity.dat": {
@@ -4286,7 +4295,7 @@
       "hash": "039210f7485cdbc2",
       "size": 27,
       "mtimeMs": 1785609438606.3228,
-      "updatedAt": "2026-08-09T22:04:02.159Z",
+      "updatedAt": "2026-08-10T19:26:48.147Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/.editorconfig": {
@@ -4295,7 +4304,7 @@
       "hash": "916722fd6e353435",
       "size": 583,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.160Z",
+      "updatedAt": "2026-08-10T19:26:48.148Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/.gitattributes": {
@@ -4304,7 +4313,7 @@
       "hash": "d14fe4b2b44dfdb3",
       "size": 590,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.161Z",
+      "updatedAt": "2026-08-10T19:26:48.148Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/.github/workflows/main.yml": {
@@ -4313,7 +4322,7 @@
       "hash": "61e7ab1cc72c1ffe",
       "size": 860,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.163Z",
+      "updatedAt": "2026-08-10T19:26:48.149Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/.gitignore": {
@@ -4322,7 +4331,7 @@
       "hash": "e7a707fc79d7d9fa",
       "size": 387,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.164Z",
+      "updatedAt": "2026-08-10T19:26:48.150Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/.piopm": {
@@ -4331,7 +4340,7 @@
       "hash": "4dc692c27a9fafec",
       "size": 158,
       "mtimeMs": 1785609438658.2036,
-      "updatedAt": "2026-08-09T22:04:02.165Z",
+      "updatedAt": "2026-08-10T19:26:48.150Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/__init__.py": {
@@ -4340,7 +4349,7 @@
       "hash": "dc5f1a388cbfcafb",
       "size": 319,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.167Z",
+      "updatedAt": "2026-08-10T19:26:48.151Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/colour_prompt.rb": {
@@ -4349,7 +4358,7 @@
       "hash": "7d025dc3d3c144ec",
       "size": 3484,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.167Z",
+      "updatedAt": "2026-08-10T19:26:48.152Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/colour_reporter.rb": {
@@ -4358,7 +4367,7 @@
       "hash": "e427c53bb8ce2b73",
       "size": 1189,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.168Z",
+      "updatedAt": "2026-08-10T19:26:48.152Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/extract_version.py": {
@@ -4367,7 +4376,7 @@
       "hash": "0139dbaa7c7ba9ef",
       "size": 622,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.168Z",
+      "updatedAt": "2026-08-10T19:26:48.153Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/generate_config.yml": {
@@ -4376,7 +4385,7 @@
       "hash": "280540cd9faebbb1",
       "size": 1592,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.169Z",
+      "updatedAt": "2026-08-10T19:26:48.153Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/generate_module.rb": {
@@ -4385,7 +4394,7 @@
       "hash": "5ef398da03ada798",
       "size": 11480,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.169Z",
+      "updatedAt": "2026-08-10T19:26:48.154Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/generate_test_runner.rb": {
@@ -4394,7 +4403,7 @@
       "hash": "6dfebf6f2f315ed3",
       "size": 22388,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.170Z",
+      "updatedAt": "2026-08-10T19:26:48.154Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/parse_output.rb": {
@@ -4403,7 +4412,7 @@
       "hash": "8ab4d62e8d625ded",
       "size": 13963,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.171Z",
+      "updatedAt": "2026-08-10T19:26:48.154Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/run_test.erb": {
@@ -4412,7 +4421,7 @@
       "hash": "cd074e81ca884b36",
       "size": 991,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.171Z",
+      "updatedAt": "2026-08-10T19:26:48.154Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/stylize_as_junit.py": {
@@ -4421,7 +4430,7 @@
       "hash": "8bea3f7c639d98d0",
       "size": 6728,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.172Z",
+      "updatedAt": "2026-08-10T19:26:48.155Z",
       "source": "scan",
       "symbols": [
         {
@@ -4439,7 +4448,7 @@
       "hash": "b77dcff8e5b47069",
       "size": 7870,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.173Z",
+      "updatedAt": "2026-08-10T19:26:48.155Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/test_file_filter.rb": {
@@ -4448,7 +4457,7 @@
       "hash": "abc7b8f5479342f7",
       "size": 819,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.173Z",
+      "updatedAt": "2026-08-10T19:26:48.155Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/type_sanitizer.rb": {
@@ -4457,7 +4466,7 @@
       "hash": "1ec15145e274c626",
       "size": 518,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.174Z",
+      "updatedAt": "2026-08-10T19:26:48.156Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/unity_test_summary.py": {
@@ -4466,7 +4475,7 @@
       "hash": "9a738920c7629205",
       "size": 5163,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.175Z",
+      "updatedAt": "2026-08-10T19:26:48.156Z",
       "source": "scan",
       "symbols": [
         {
@@ -4484,7 +4493,7 @@
       "hash": "34ae8bb089e36bb6",
       "size": 4200,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.175Z",
+      "updatedAt": "2026-08-10T19:26:48.156Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/yaml_helper.rb": {
@@ -4493,7 +4502,7 @@
       "hash": "e3d6bb4e33af69ab",
       "size": 572,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.176Z",
+      "updatedAt": "2026-08-10T19:26:48.157Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/CMakeLists.txt": {
@@ -4502,7 +4511,7 @@
       "hash": "ddbd7855b6f8d0c3",
       "size": 6348,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.176Z",
+      "updatedAt": "2026-08-10T19:26:48.157Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/makefile": {
@@ -4511,7 +4520,7 @@
       "hash": "e6db4f6b1f64be61",
       "size": 2319,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.178Z",
+      "updatedAt": "2026-08-10T19:26:48.157Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/meson.build": {
@@ -4520,7 +4529,7 @@
       "hash": "be8c73a2515d1a45",
       "size": 968,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.179Z",
+      "updatedAt": "2026-08-10T19:26:48.158Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/readme.txt": {
@@ -4529,7 +4538,7 @@
       "hash": "a87dd987594b19ac",
       "size": 287,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.179Z",
+      "updatedAt": "2026-08-10T19:26:48.158Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/src/ProductionCode.c": {
@@ -4538,7 +4547,7 @@
       "hash": "d16bf252a40cb2af",
       "size": 1177,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.180Z",
+      "updatedAt": "2026-08-10T19:26:48.159Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/src/ProductionCode.h": {
@@ -4547,7 +4556,7 @@
       "hash": "08e9e4c21cb7f2e5",
       "size": 416,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.181Z",
+      "updatedAt": "2026-08-10T19:26:48.159Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/src/ProductionCode2.c": {
@@ -4556,7 +4565,7 @@
       "hash": "e64976d5356e9d88",
       "size": 655,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.182Z",
+      "updatedAt": "2026-08-10T19:26:48.160Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/src/ProductionCode2.h": {
@@ -4565,7 +4574,7 @@
       "hash": "1233fa975323d342",
       "size": 389,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.182Z",
+      "updatedAt": "2026-08-10T19:26:48.160Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/subprojects/unity.wrap": {
@@ -4574,7 +4583,7 @@
       "hash": "93991b6297f1567d",
       "size": 77,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.183Z",
+      "updatedAt": "2026-08-10T19:26:48.161Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/test/test_runners/TestProductionCode_Runner.c": {
@@ -4583,7 +4592,7 @@
       "hash": "b6ec7bb984eddea8",
       "size": 1998,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.185Z",
+      "updatedAt": "2026-08-10T19:26:48.162Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/test/test_runners/TestProductionCode2_Runner.c": {
@@ -4592,7 +4601,7 @@
       "hash": "2c84d6b954a6810a",
       "size": 1178,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.186Z",
+      "updatedAt": "2026-08-10T19:26:48.162Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/test/TestProductionCode.c": {
@@ -4601,7 +4610,7 @@
       "hash": "09aa195fd45bcdc0",
       "size": 2703,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.187Z",
+      "updatedAt": "2026-08-10T19:26:48.163Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/test/TestProductionCode2.c": {
@@ -4610,7 +4619,7 @@
       "hash": "93deff7ba980be0a",
       "size": 887,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.187Z",
+      "updatedAt": "2026-08-10T19:26:48.163Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/makefile": {
@@ -4619,7 +4628,7 @@
       "hash": "c8572b87337683d2",
       "size": 1873,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.189Z",
+      "updatedAt": "2026-08-10T19:26:48.164Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/readme.txt": {
@@ -4628,7 +4637,7 @@
       "hash": "a03bf4ac2d294a03",
       "size": 175,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.190Z",
+      "updatedAt": "2026-08-10T19:26:48.164Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/src/ProductionCode.c": {
@@ -4637,7 +4646,7 @@
       "hash": "85bd096a3ecd02bb",
       "size": 1166,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.191Z",
+      "updatedAt": "2026-08-10T19:26:48.165Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/src/ProductionCode.h": {
@@ -4646,7 +4655,7 @@
       "hash": "08e9e4c21cb7f2e5",
       "size": 416,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.191Z",
+      "updatedAt": "2026-08-10T19:26:48.165Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/src/ProductionCode2.c": {
@@ -4655,7 +4664,7 @@
       "hash": "dfc464dbe59ec75f",
       "size": 651,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.192Z",
+      "updatedAt": "2026-08-10T19:26:48.165Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/src/ProductionCode2.h": {
@@ -4664,7 +4673,7 @@
       "hash": "1233fa975323d342",
       "size": 389,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.196Z",
+      "updatedAt": "2026-08-10T19:26:48.166Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/all_tests.c": {
@@ -4673,7 +4682,7 @@
       "hash": "3737c6c174dfd927",
       "size": 542,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.199Z",
+      "updatedAt": "2026-08-10T19:26:48.167Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/TestProductionCode_Runner.c": {
@@ -4682,7 +4691,7 @@
       "hash": "3b1dd5e131617dc8",
       "size": 1021,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.200Z",
+      "updatedAt": "2026-08-10T19:26:48.167Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/TestProductionCode2_Runner.c": {
@@ -4691,7 +4700,7 @@
       "hash": "f33332449aa9ac06",
       "size": 592,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.201Z",
+      "updatedAt": "2026-08-10T19:26:48.168Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/test/TestProductionCode.c": {
@@ -4700,7 +4709,7 @@
       "hash": "a8da122b752c83e2",
       "size": 2774,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.201Z",
+      "updatedAt": "2026-08-10T19:26:48.168Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/test/TestProductionCode2.c": {
@@ -4709,7 +4718,7 @@
       "hash": "7d6cbce19b71d3f7",
       "size": 985,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.202Z",
+      "updatedAt": "2026-08-10T19:26:48.168Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/helper/UnityHelper.c": {
@@ -4718,7 +4727,7 @@
       "hash": "8ab6b54ab3365ebd",
       "size": 726,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.203Z",
+      "updatedAt": "2026-08-10T19:26:48.170Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/helper/UnityHelper.h": {
@@ -4727,7 +4736,7 @@
       "hash": "17a123845fa535d3",
       "size": 804,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.204Z",
+      "updatedAt": "2026-08-10T19:26:48.170Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/rakefile_helper.rb": {
@@ -4736,7 +4745,7 @@
       "hash": "ef97742b2d5e6ddc",
       "size": 8239,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.205Z",
+      "updatedAt": "2026-08-10T19:26:48.171Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/rakefile.rb": {
@@ -4745,7 +4754,7 @@
       "hash": "12ec7b96cca1cd5b",
       "size": 1063,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.205Z",
+      "updatedAt": "2026-08-10T19:26:48.171Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/readme.txt": {
@@ -4754,7 +4763,7 @@
       "hash": "2af5e731fb1db0dd",
       "size": 696,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.206Z",
+      "updatedAt": "2026-08-10T19:26:48.171Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/src/ProductionCode.c": {
@@ -4763,7 +4772,7 @@
       "hash": "85bd096a3ecd02bb",
       "size": 1166,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.207Z",
+      "updatedAt": "2026-08-10T19:26:48.172Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/src/ProductionCode.h": {
@@ -4772,7 +4781,7 @@
       "hash": "08e9e4c21cb7f2e5",
       "size": 416,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.208Z",
+      "updatedAt": "2026-08-10T19:26:48.173Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/src/ProductionCode2.c": {
@@ -4781,7 +4790,7 @@
       "hash": "dfc464dbe59ec75f",
       "size": 651,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.209Z",
+      "updatedAt": "2026-08-10T19:26:48.173Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/src/ProductionCode2.h": {
@@ -4790,7 +4799,7 @@
       "hash": "1233fa975323d342",
       "size": 389,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.209Z",
+      "updatedAt": "2026-08-10T19:26:48.173Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/target_gcc_32.yml": {
@@ -4799,7 +4808,7 @@
       "hash": "28ce8022cb558905",
       "size": 1232,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.210Z",
+      "updatedAt": "2026-08-10T19:26:48.174Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/test/TestProductionCode.c": {
@@ -4808,7 +4817,7 @@
       "hash": "6f347e21e71ae36c",
       "size": 2677,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.211Z",
+      "updatedAt": "2026-08-10T19:26:48.175Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/test/TestProductionCode2.c": {
@@ -4817,7 +4826,7 @@
       "hash": "79764a696adb4919",
       "size": 885,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.211Z",
+      "updatedAt": "2026-08-10T19:26:48.175Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/meson.build": {
@@ -4826,7 +4835,7 @@
       "hash": "57c7db3a27769920",
       "size": 253,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.213Z",
+      "updatedAt": "2026-08-10T19:26:48.176Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/readme.txt": {
@@ -4835,7 +4844,7 @@
       "hash": "d16faba668694cac",
       "size": 425,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.214Z",
+      "updatedAt": "2026-08-10T19:26:48.176Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/src/meson.build": {
@@ -4844,7 +4853,7 @@
       "hash": "94cfe0c2645b5853",
       "size": 544,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.215Z",
+      "updatedAt": "2026-08-10T19:26:48.177Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/src/ProductionCode.c": {
@@ -4853,7 +4862,7 @@
       "hash": "d16bf252a40cb2af",
       "size": 1177,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.216Z",
+      "updatedAt": "2026-08-10T19:26:48.177Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/src/ProductionCode.h": {
@@ -4862,7 +4871,7 @@
       "hash": "08e9e4c21cb7f2e5",
       "size": 416,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.217Z",
+      "updatedAt": "2026-08-10T19:26:48.177Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/src/ProductionCode2.c": {
@@ -4871,7 +4880,7 @@
       "hash": "e64976d5356e9d88",
       "size": 655,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.218Z",
+      "updatedAt": "2026-08-10T19:26:48.178Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/src/ProductionCode2.h": {
@@ -4880,7 +4889,7 @@
       "hash": "1233fa975323d342",
       "size": 389,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.219Z",
+      "updatedAt": "2026-08-10T19:26:48.178Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/subprojects/unity.wrap": {
@@ -4889,7 +4898,7 @@
       "hash": "8a66c4f56c82ad36",
       "size": 106,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.220Z",
+      "updatedAt": "2026-08-10T19:26:48.178Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/test/meson.build": {
@@ -4898,7 +4907,7 @@
       "hash": "785bb1c9ed0714a8",
       "size": 159,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.223Z",
+      "updatedAt": "2026-08-10T19:26:48.179Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/meson.build": {
@@ -4907,7 +4916,7 @@
       "hash": "896a68a5a4b35ab4",
       "size": 520,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.224Z",
+      "updatedAt": "2026-08-10T19:26:48.179Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/TestProductionCode_Runner.c": {
@@ -4916,7 +4925,7 @@
       "hash": "b6ec7bb984eddea8",
       "size": 1998,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.225Z",
+      "updatedAt": "2026-08-10T19:26:48.180Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/TestProductionCode2_Runner.c": {
@@ -4925,7 +4934,7 @@
       "hash": "2c84d6b954a6810a",
       "size": 1178,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.226Z",
+      "updatedAt": "2026-08-10T19:26:48.180Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/test/TestProductionCode.c": {
@@ -4934,7 +4943,7 @@
       "hash": "cd07778f7419a0f1",
       "size": 2704,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.226Z",
+      "updatedAt": "2026-08-10T19:26:48.180Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/test/TestProductionCode2.c": {
@@ -4943,7 +4952,7 @@
       "hash": "25d4cacfd59afaf9",
       "size": 1020,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.227Z",
+      "updatedAt": "2026-08-10T19:26:48.180Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/unity_config.h": {
@@ -4952,7 +4961,7 @@
       "hash": "2c9913cbbf063153",
       "size": 12235,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.228Z",
+      "updatedAt": "2026-08-10T19:26:48.181Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/library.json": {
@@ -4961,7 +4970,7 @@
       "hash": "d30e422a51aef4e8",
       "size": 449,
       "mtimeMs": 1770034980968.509,
-      "updatedAt": "2026-08-09T22:04:02.228Z",
+      "updatedAt": "2026-08-10T19:26:48.181Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/LICENSE.txt": {
@@ -4970,7 +4979,7 @@
       "hash": "907d9e859c643370",
       "size": 1118,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.229Z",
+      "updatedAt": "2026-08-10T19:26:48.182Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/meson_options.txt": {
@@ -4979,7 +4988,7 @@
       "hash": "8eb365b2e7a931c0",
       "size": 370,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.229Z",
+      "updatedAt": "2026-08-10T19:26:48.182Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/meson.build": {
@@ -4988,7 +4997,7 @@
       "hash": "b90bfb870b5a79d3",
       "size": 1708,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.230Z",
+      "updatedAt": "2026-08-10T19:26:48.183Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/platformio-build.py": {
@@ -4997,7 +5006,7 @@
       "hash": "64758324d5cbdac2",
       "size": 479,
       "mtimeMs": 1770035037526.0984,
-      "updatedAt": "2026-08-09T22:04:02.231Z",
+      "updatedAt": "2026-08-10T19:26:48.183Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/README.md": {
@@ -5006,7 +5015,7 @@
       "hash": "24e9990b70b74368",
       "size": 8309,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.232Z",
+      "updatedAt": "2026-08-10T19:26:48.184Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/src/meson.build": {
@@ -5015,7 +5024,7 @@
       "hash": "c00c9012f3a170d9",
       "size": 342,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.233Z",
+      "updatedAt": "2026-08-10T19:26:48.184Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/src/unity_internals.h": {
@@ -5024,7 +5033,7 @@
       "hash": "fcd8b3f6b412ac0a",
       "size": 97587,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.234Z",
+      "updatedAt": "2026-08-10T19:26:48.186Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/src/unity.c": {
@@ -5033,7 +5042,7 @@
       "hash": "b90e735a54cf3b37",
       "size": 80805,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.236Z",
+      "updatedAt": "2026-08-10T19:26:48.187Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/src/unity.h": {
@@ -5042,7 +5051,7 @@
       "hash": "9db174d3c2c6424f",
       "size": 94225,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.237Z",
+      "updatedAt": "2026-08-10T19:26:48.189Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/unityConfig.cmake": {
@@ -5051,7 +5060,7 @@
       "hash": "addf5bb044d859fd",
       "size": 54,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-09T22:04:02.238Z",
+      "updatedAt": "2026-08-10T19:26:48.190Z",
       "source": "scan"
     },
     "firmware/data/config.example.txt": {
@@ -5059,8 +5068,8 @@
       "tokens": 185,
       "hash": "50f547e07e407ca1",
       "size": 738,
-      "mtimeMs": 1785611956441.7095,
-      "updatedAt": "2026-08-09T22:04:02.240Z",
+      "mtimeMs": 1786387643698.8105,
+      "updatedAt": "2026-08-10T19:26:48.190Z",
       "source": "scan"
     },
     "firmware/platformio.ini": {
@@ -5068,8 +5077,8 @@
       "tokens": 443,
       "hash": "3a5986a852ae3f39",
       "size": 1660,
-      "mtimeMs": 1785625098856.3154,
-      "updatedAt": "2026-08-09T22:04:02.241Z",
+      "mtimeMs": 1786387643699.5093,
+      "updatedAt": "2026-08-10T19:26:48.191Z",
       "source": "scan"
     },
     "firmware/src/config/hw/config_loader.cpp": {
@@ -5077,8 +5086,8 @@
       "tokens": 117,
       "hash": "2f294a0ff4aa394d",
       "size": 409,
-      "mtimeMs": 1785611956443.0005,
-      "updatedAt": "2026-08-09T22:04:02.242Z",
+      "mtimeMs": 1786387643700.1013,
+      "updatedAt": "2026-08-10T19:26:48.191Z",
       "source": "scan"
     },
     "firmware/src/config/hw/config_loader.h": {
@@ -5086,8 +5095,8 @@
       "tokens": 130,
       "hash": "c142557fb36de5c6",
       "size": 454,
-      "mtimeMs": 1785611956443.1116,
-      "updatedAt": "2026-08-09T22:04:02.242Z",
+      "mtimeMs": 1786387643700.8474,
+      "updatedAt": "2026-08-10T19:26:48.191Z",
       "source": "scan"
     },
     "firmware/src/config/station_config.cpp": {
@@ -5095,8 +5104,8 @@
       "tokens": 754,
       "hash": "f72bf0e0c218f4c4",
       "size": 2639,
-      "mtimeMs": 1785611956443.2285,
-      "updatedAt": "2026-08-09T22:04:02.243Z",
+      "mtimeMs": 1786387643701.6426,
+      "updatedAt": "2026-08-10T19:26:48.192Z",
       "source": "scan"
     },
     "firmware/src/config/station_config.h": {
@@ -5104,8 +5113,8 @@
       "tokens": 444,
       "hash": "76034748a491c78a",
       "size": 1552,
-      "mtimeMs": 1785611956443.2834,
-      "updatedAt": "2026-08-09T22:04:02.244Z",
+      "mtimeMs": 1786387643702.0208,
+      "updatedAt": "2026-08-10T19:26:48.192Z",
       "source": "scan"
     },
     "firmware/src/correct/wind_direction.cpp": {
@@ -5113,8 +5122,8 @@
       "tokens": 221,
       "hash": "13f8a438113bc60a",
       "size": 773,
-      "mtimeMs": 1785609601468.457,
-      "updatedAt": "2026-08-09T22:04:02.245Z",
+      "mtimeMs": 1786387643702.639,
+      "updatedAt": "2026-08-10T19:26:48.193Z",
       "source": "scan"
     },
     "firmware/src/correct/wind_direction.h": {
@@ -5122,8 +5131,8 @@
       "tokens": 357,
       "hash": "532538ac07e6936a",
       "size": 1248,
-      "mtimeMs": 1785609601468.457,
-      "updatedAt": "2026-08-09T22:04:02.246Z",
+      "mtimeMs": 1786387643703.1152,
+      "updatedAt": "2026-08-10T19:26:48.193Z",
       "source": "scan"
     },
     "firmware/src/correct/wind_speed.cpp": {
@@ -5131,8 +5140,8 @@
       "tokens": 96,
       "hash": "5188f64cabc74023",
       "size": 333,
-      "mtimeMs": 1785609435860.525,
-      "updatedAt": "2026-08-09T22:04:02.247Z",
+      "mtimeMs": 1786387643703.9788,
+      "updatedAt": "2026-08-10T19:26:48.193Z",
       "source": "scan"
     },
     "firmware/src/correct/wind_speed.h": {
@@ -5140,8 +5149,8 @@
       "tokens": 239,
       "hash": "dcf9b034d56c6af7",
       "size": 836,
-      "mtimeMs": 1785609435860.6907,
-      "updatedAt": "2026-08-09T22:04:02.247Z",
+      "mtimeMs": 1786387643704.4336,
+      "updatedAt": "2026-08-10T19:26:48.194Z",
       "source": "scan"
     },
     "firmware/src/main.cpp": {
@@ -5149,8 +5158,8 @@
       "tokens": 1506,
       "hash": "c09652432a89fe74",
       "size": 5271,
-      "mtimeMs": 1785611956443.3823,
-      "updatedAt": "2026-08-09T22:04:02.248Z",
+      "mtimeMs": 1786387643704.6753,
+      "updatedAt": "2026-08-10T19:26:48.194Z",
       "source": "scan"
     },
     "firmware/src/sense/anemometer.cpp": {
@@ -5158,8 +5167,8 @@
       "tokens": 138,
       "hash": "fdf7866adfafc305",
       "size": 480,
-      "mtimeMs": 1785609435860.8662,
-      "updatedAt": "2026-08-09T22:04:02.249Z",
+      "mtimeMs": 1786387643705.0378,
+      "updatedAt": "2026-08-10T19:26:48.194Z",
       "source": "scan"
     },
     "firmware/src/sense/anemometer.h": {
@@ -5167,8 +5176,8 @@
       "tokens": 174,
       "hash": "0445e1ab0e7e819f",
       "size": 607,
-      "mtimeMs": 1785609435861.312,
-      "updatedAt": "2026-08-09T22:04:02.249Z",
+      "mtimeMs": 1786387643705.304,
+      "updatedAt": "2026-08-10T19:26:48.195Z",
       "source": "scan"
     },
     "firmware/src/sense/magnetometer.cpp": {
@@ -5176,8 +5185,8 @@
       "tokens": 300,
       "hash": "1f52315a0a419778",
       "size": 1050,
-      "mtimeMs": 1785609601468.457,
-      "updatedAt": "2026-08-09T22:04:02.250Z",
+      "mtimeMs": 1786387643705.8801,
+      "updatedAt": "2026-08-10T19:26:48.195Z",
       "source": "scan"
     },
     "firmware/src/sense/magnetometer.h": {
@@ -5185,8 +5194,8 @@
       "tokens": 181,
       "hash": "5415e8c3ee4d0979",
       "size": 631,
-      "mtimeMs": 1785609601468.457,
-      "updatedAt": "2026-08-09T22:04:02.250Z",
+      "mtimeMs": 1786387643706.227,
+      "updatedAt": "2026-08-10T19:26:48.195Z",
       "source": "scan"
     },
     "firmware/src/sense/vane.cpp": {
@@ -5194,8 +5203,8 @@
       "tokens": 261,
       "hash": "cf18a250d5d532fc",
       "size": 913,
-      "mtimeMs": 1785609601468.457,
-      "updatedAt": "2026-08-09T22:04:02.251Z",
+      "mtimeMs": 1786387643706.5374,
+      "updatedAt": "2026-08-10T19:26:48.195Z",
       "source": "scan"
     },
     "firmware/src/sense/vane.h": {
@@ -5203,8 +5212,8 @@
       "tokens": 146,
       "hash": "6d020dbec5b77f33",
       "size": 510,
-      "mtimeMs": 1785609601468.457,
-      "updatedAt": "2026-08-09T22:04:02.251Z",
+      "mtimeMs": 1786387643706.9092,
+      "updatedAt": "2026-08-10T19:26:48.196Z",
       "source": "scan"
     },
     "firmware/src/transmit/buffer_capacity.cpp": {
@@ -5212,8 +5221,8 @@
       "tokens": 78,
       "hash": "d5c256d5041db628",
       "size": 270,
-      "mtimeMs": 1785610322355.4814,
-      "updatedAt": "2026-08-09T22:04:02.252Z",
+      "mtimeMs": 1786387643706.9092,
+      "updatedAt": "2026-08-10T19:26:48.196Z",
       "source": "scan"
     },
     "firmware/src/transmit/buffer_capacity.h": {
@@ -5221,8 +5230,8 @@
       "tokens": 88,
       "hash": "e9999571c3cd41c0",
       "size": 308,
-      "mtimeMs": 1785610322355.6206,
-      "updatedAt": "2026-08-09T22:04:02.253Z",
+      "mtimeMs": 1786387643707.9097,
+      "updatedAt": "2026-08-10T19:26:48.197Z",
       "source": "scan"
     },
     "firmware/src/transmit/connection_monitor.cpp": {
@@ -5230,8 +5239,8 @@
       "tokens": 111,
       "hash": "810c2ac703933f0c",
       "size": 388,
-      "mtimeMs": 1785610486949.384,
-      "updatedAt": "2026-08-09T22:04:02.253Z",
+      "mtimeMs": 1786387643708.7039,
+      "updatedAt": "2026-08-10T19:26:48.198Z",
       "source": "scan"
     },
     "firmware/src/transmit/connection_monitor.h": {
@@ -5239,8 +5248,8 @@
       "tokens": 244,
       "hash": "bd19e8a671d5a01a",
       "size": 853,
-      "mtimeMs": 1785610486949.461,
-      "updatedAt": "2026-08-09T22:04:02.253Z",
+      "mtimeMs": 1786387643709.1013,
+      "updatedAt": "2026-08-10T19:26:48.198Z",
       "source": "scan"
     },
     "firmware/src/transmit/hw/clock.cpp": {
@@ -5248,8 +5257,8 @@
       "tokens": 211,
       "hash": "bd5ba62168006285",
       "size": 737,
-      "mtimeMs": 1785609867590.949,
-      "updatedAt": "2026-08-09T22:04:02.254Z",
+      "mtimeMs": 1786387643709.7046,
+      "updatedAt": "2026-08-10T19:26:48.200Z",
       "source": "scan"
     },
     "firmware/src/transmit/hw/clock.h": {
@@ -5257,8 +5266,8 @@
       "tokens": 232,
       "hash": "9aef0a59c55b382e",
       "size": 810,
-      "mtimeMs": 1785609867591.4321,
-      "updatedAt": "2026-08-09T22:04:02.255Z",
+      "mtimeMs": 1786387643710.173,
+      "updatedAt": "2026-08-10T19:26:48.201Z",
       "source": "scan"
     },
     "firmware/src/transmit/hw/flash_buffer.cpp": {
@@ -5266,8 +5275,8 @@
       "tokens": 599,
       "hash": "ea4ff0d98d4692f4",
       "size": 2096,
-      "mtimeMs": 1785610486949.5933,
-      "updatedAt": "2026-08-09T22:04:02.255Z",
+      "mtimeMs": 1786387643710.8625,
+      "updatedAt": "2026-08-10T19:26:48.201Z",
       "source": "scan"
     },
     "firmware/src/transmit/hw/flash_buffer.h": {
@@ -5275,8 +5284,8 @@
       "tokens": 405,
       "hash": "68c2dc53c8a19682",
       "size": 1417,
-      "mtimeMs": 1785610486949.6636,
-      "updatedAt": "2026-08-09T22:04:02.255Z",
+      "mtimeMs": 1786387643711.2253,
+      "updatedAt": "2026-08-10T19:26:48.201Z",
       "source": "scan"
     },
     "firmware/src/transmit/hw/wifi_client.cpp": {
@@ -5284,8 +5293,8 @@
       "tokens": 713,
       "hash": "31941afb246f137b",
       "size": 2493,
-      "mtimeMs": 1785611956443.3823,
-      "updatedAt": "2026-08-09T22:04:02.256Z",
+      "mtimeMs": 1786387643711.7927,
+      "updatedAt": "2026-08-10T19:26:48.202Z",
       "source": "scan"
     },
     "firmware/src/transmit/hw/wifi_client.h": {
@@ -5293,8 +5302,8 @@
       "tokens": 393,
       "hash": "f24ec6c8d96e1f19",
       "size": 1375,
-      "mtimeMs": 1785611956443.5737,
-      "updatedAt": "2026-08-09T22:04:02.257Z",
+      "mtimeMs": 1786387643712.3752,
+      "updatedAt": "2026-08-10T19:26:48.203Z",
       "source": "scan"
     },
     "firmware/src/transmit/led_policy.h": {
@@ -5302,8 +5311,8 @@
       "tokens": 131,
       "hash": "048695c78c7a513e",
       "size": 456,
-      "mtimeMs": 1785610733934.7498,
-      "updatedAt": "2026-08-09T22:04:02.257Z",
+      "mtimeMs": 1786387643712.85,
+      "updatedAt": "2026-08-10T19:26:48.203Z",
       "source": "scan"
     },
     "firmware/src/transmit/payload.cpp": {
@@ -5311,8 +5320,8 @@
       "tokens": 243,
       "hash": "5bc9fc508ea7fe97",
       "size": 849,
-      "mtimeMs": 1785609867591.742,
-      "updatedAt": "2026-08-09T22:04:02.258Z",
+      "mtimeMs": 1786387643713.2073,
+      "updatedAt": "2026-08-10T19:26:48.203Z",
       "source": "scan"
     },
     "firmware/src/transmit/payload.h": {
@@ -5320,8 +5329,8 @@
       "tokens": 111,
       "hash": "0feb83633e24eb22",
       "size": 387,
-      "mtimeMs": 1785609867591.8354,
-      "updatedAt": "2026-08-09T22:04:02.258Z",
+      "mtimeMs": 1786387643713.6519,
+      "updatedAt": "2026-08-10T19:26:48.204Z",
       "source": "scan"
     },
     "firmware/src/transmit/reading.h": {
@@ -5329,8 +5338,8 @@
       "tokens": 146,
       "hash": "8de61951c86d9545",
       "size": 508,
-      "mtimeMs": 1785609867591.891,
-      "updatedAt": "2026-08-09T22:04:02.259Z",
+      "mtimeMs": 1786387643713.9692,
+      "updatedAt": "2026-08-10T19:26:48.204Z",
       "source": "scan"
     },
     "firmware/src/transmit/ring_buffer_index.h": {
@@ -5338,8 +5347,8 @@
       "tokens": 554,
       "hash": "1e05c67aac258e1c",
       "size": 1936,
-      "mtimeMs": 1785610322355.723,
-      "updatedAt": "2026-08-09T22:04:02.259Z",
+      "mtimeMs": 1786387643714.37,
+      "updatedAt": "2026-08-10T19:26:48.204Z",
       "source": "scan"
     },
     "firmware/src/transmit/rssi_latch.h": {
@@ -5347,8 +5356,8 @@
       "tokens": 166,
       "hash": "a00eea28cce0cb71",
       "size": 580,
-      "mtimeMs": 1785610841405.8025,
-      "updatedAt": "2026-08-09T22:04:02.260Z",
+      "mtimeMs": 1786387643714.8818,
+      "updatedAt": "2026-08-10T19:26:48.205Z",
       "source": "scan"
     },
     "firmware/test/test_connection_monitor/test_connection_monitor.cpp": {
@@ -5356,8 +5365,8 @@
       "tokens": 827,
       "hash": "30637bb63a4df232",
       "size": 2893,
-      "mtimeMs": 1785610486949.6636,
-      "updatedAt": "2026-08-09T22:04:02.260Z",
+      "mtimeMs": 1786387643716.2322,
+      "updatedAt": "2026-08-10T19:26:48.205Z",
       "source": "scan"
     },
     "firmware/test/test_led_policy/test_led_policy.cpp": {
@@ -5365,8 +5374,8 @@
       "tokens": 264,
       "hash": "b9dd5754448ff986",
       "size": 922,
-      "mtimeMs": 1785610733935.3079,
-      "updatedAt": "2026-08-09T22:04:02.261Z",
+      "mtimeMs": 1786387643716.5774,
+      "updatedAt": "2026-08-10T19:26:48.205Z",
       "source": "scan"
     },
     "firmware/test/test_ring_buffer/test_ring_buffer.cpp": {
@@ -5374,8 +5383,8 @@
       "tokens": 1023,
       "hash": "1dc68752f61fd004",
       "size": 3578,
-      "mtimeMs": 1785610322356.211,
-      "updatedAt": "2026-08-09T22:04:02.262Z",
+      "mtimeMs": 1786387643717.7432,
+      "updatedAt": "2026-08-10T19:26:48.206Z",
       "source": "scan"
     },
     "firmware/test/test_rssi_latch/test_rssi_latch.cpp": {
@@ -5383,8 +5392,8 @@
       "tokens": 437,
       "hash": "d72441a402ffbbfb",
       "size": 1529,
-      "mtimeMs": 1785610841405.8025,
-      "updatedAt": "2026-08-09T22:04:02.262Z",
+      "mtimeMs": 1786387643718.2812,
+      "updatedAt": "2026-08-10T19:26:48.206Z",
       "source": "scan"
     },
     "firmware/test/test_station_config/test_station_config.cpp": {
@@ -5392,8 +5401,8 @@
       "tokens": 1090,
       "hash": "b469f5fd7346b822",
       "size": 3815,
-      "mtimeMs": 1785611956443.9468,
-      "updatedAt": "2026-08-09T22:04:02.263Z",
+      "mtimeMs": 1786387643718.928,
+      "updatedAt": "2026-08-10T19:26:48.209Z",
       "source": "scan"
     },
     "firmware/test/test_transmit_payload/test_transmit_payload.cpp": {
@@ -5401,8 +5410,8 @@
       "tokens": 629,
       "hash": "aa2090767b906343",
       "size": 2201,
-      "mtimeMs": 1785609867591.891,
-      "updatedAt": "2026-08-09T22:04:02.264Z",
+      "mtimeMs": 1786387643719.8655,
+      "updatedAt": "2026-08-10T19:26:48.209Z",
       "source": "scan"
     },
     "firmware/test/test_wind_direction/test_wind_direction.cpp": {
@@ -5410,8 +5419,8 @@
       "tokens": 895,
       "hash": "56be00d7c00992d6",
       "size": 3130,
-      "mtimeMs": 1785609601470.6758,
-      "updatedAt": "2026-08-09T22:04:02.265Z",
+      "mtimeMs": 1786387643719.8655,
+      "updatedAt": "2026-08-10T19:26:48.210Z",
       "source": "scan"
     },
     "firmware/test/test_wind_speed/test_wind_speed.cpp": {
@@ -5419,17 +5428,392 @@
       "tokens": 334,
       "hash": "d99dda2b3d327d49",
       "size": 1168,
-      "mtimeMs": 1785609601470.6758,
-      "updatedAt": "2026-08-09T22:04:02.266Z",
+      "mtimeMs": 1786387643720.6863,
+      "updatedAt": "2026-08-10T19:26:48.210Z",
       "source": "scan"
+    },
+    "scripts/.python-version": {
+      "description": "",
+      "tokens": 2,
+      "hash": "7b55f8e67b5623c4",
+      "size": 5,
+      "mtimeMs": 1786387643722.6912,
+      "updatedAt": "2026-08-10T19:26:48.210Z",
+      "source": "scan"
+    },
+    "scripts/pyproject.toml": {
+      "description": "Python project configuration",
+      "tokens": 111,
+      "hash": "05eb6a4ff933a167",
+      "size": 386,
+      "mtimeMs": 1786387643723.054,
+      "updatedAt": "2026-08-10T19:26:48.211Z",
+      "source": "scan"
+    },
+    "scripts/qmc5883p-calibration.json": {
+      "description": "",
+      "tokens": 60,
+      "hash": "84b0022a48fa853a",
+      "size": 208,
+      "mtimeMs": 1786387643723.134,
+      "updatedAt": "2026-08-10T19:26:48.211Z",
+      "source": "scan"
+    },
+    "scripts/README.md": {
+      "description": "Project documentation",
+      "tokens": 1139,
+      "hash": "c4e9d93c8eac9f41",
+      "size": 4567,
+      "mtimeMs": 1786387643722.8289,
+      "updatedAt": "2026-08-10T19:26:48.211Z",
+      "source": "scan"
+    },
+    "scripts/src/gustik_scripts/__init__.py": {
+      "description": "",
+      "tokens": 52,
+      "hash": "6d8b2d36ce359b26",
+      "size": 179,
+      "mtimeMs": 1786387643723.7083,
+      "updatedAt": "2026-08-10T19:26:48.212Z",
+      "source": "scan"
+    },
+    "scripts/src/gustik_scripts/__main__.py": {
+      "description": "",
+      "tokens": 24,
+      "hash": "504931ea896b6944",
+      "size": 84,
+      "mtimeMs": 1786387643723.835,
+      "updatedAt": "2026-08-10T19:26:48.212Z",
+      "source": "scan"
+    },
+    "scripts/src/gustik_scripts/calibration.py": {
+      "description": "CalibrationError: covers_all_axes, unswept_axes, apply, from_samples + 5 more",
+      "tokens": 2915,
+      "hash": "9f51e9434b003567",
+      "size": 10202,
+      "mtimeMs": 1786387643723.9348,
+      "updatedAt": "2026-08-10T19:26:48.212Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "CalibrationError",
+          "kind": "class",
+          "startLine": 45,
+          "endLine": 48,
+          "tokens": 25
+        },
+        {
+          "name": "_spans",
+          "kind": "fn",
+          "startLine": 49,
+          "endLine": 58,
+          "tokens": 84
+        },
+        {
+          "name": "_widest_two",
+          "kind": "fn",
+          "startLine": 59,
+          "endLine": 64,
+          "tokens": 62
+        },
+        {
+          "name": "MagCalibration",
+          "kind": "class",
+          "startLine": 65,
+          "endLine": 207,
+          "tokens": 1664
+        },
+        {
+          "name": "describe_spin",
+          "kind": "fn",
+          "startLine": 208,
+          "endLine": 257,
+          "tokens": 572
+        }
+      ]
+    },
+    "scripts/src/gustik_scripts/orientation.py": {
+      "description": "OrientationError: axis_letter, left, horizontal, vertical + 4 more",
+      "tokens": 2856,
+      "hash": "64419e288d6bd831",
+      "size": 9994,
+      "mtimeMs": 1786387643724.0557,
+      "updatedAt": "2026-08-10T19:26:48.213Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "OrientationError",
+          "kind": "class",
+          "startLine": 51,
+          "endLine": 64,
+          "tokens": 82
+        },
+        {
+          "name": "_normalise_axis",
+          "kind": "fn",
+          "startLine": 65,
+          "endLine": 78,
+          "tokens": 138
+        },
+        {
+          "name": "axis_letter",
+          "kind": "fn",
+          "startLine": 79,
+          "endLine": 83,
+          "tokens": 39
+        },
+        {
+          "name": "_cross",
+          "kind": "fn",
+          "startLine": 84,
+          "endLine": 91,
+          "tokens": 41
+        },
+        {
+          "name": "_dot",
+          "kind": "fn",
+          "startLine": 92,
+          "endLine": 96,
+          "tokens": 27
+        },
+        {
+          "name": "Orientation",
+          "kind": "class",
+          "startLine": 97,
+          "endLine": 161,
+          "tokens": 710
+        },
+        {
+          "name": "rotation_summary",
+          "kind": "fn",
+          "startLine": 162,
+          "endLine": 206,
+          "tokens": 404
+        },
+        {
+          "name": "up_axis_for",
+          "kind": "fn",
+          "startLine": 207,
+          "endLine": 243,
+          "tokens": 477
+        },
+        {
+          "name": "detect_up_axis",
+          "kind": "fn",
+          "startLine": 244,
+          "endLine": 273,
+          "tokens": 437
+        }
+      ]
+    },
+    "scripts/src/gustik_scripts/qmc5883p.py": {
+      "description": "QMC5883PError: close, set_range, set_mode_continuous, set_mode_suspend + 3 more",
+      "tokens": 8563,
+      "hash": "7eb5eb3524771993",
+      "size": 29970,
+      "mtimeMs": 1786387643724.2964,
+      "updatedAt": "2026-08-10T19:26:48.213Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "QMC5883PError",
+          "kind": "class",
+          "startLine": 114,
+          "endLine": 117,
+          "tokens": 28
+        },
+        {
+          "name": "QMC5883P",
+          "kind": "class",
+          "startLine": 118,
+          "endLine": 493,
+          "tokens": 4622
+        },
+        {
+          "name": "_build_parser",
+          "kind": "fn",
+          "startLine": 494,
+          "endLine": 542,
+          "tokens": 842
+        },
+        {
+          "name": "_run_calibrate",
+          "kind": "fn",
+          "startLine": 543,
+          "endLine": 600,
+          "tokens": 837
+        },
+        {
+          "name": "_run_check_rotation",
+          "kind": "fn",
+          "startLine": 601,
+          "endLine": 636,
+          "tokens": 492
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 637,
+          "endLine": 684,
+          "tokens": 536
+        }
+      ]
+    },
+    "scripts/tests/test_calibration.py": {
+      "description": "Tests for hard-iron / soft-iron calibration (pure math, no hardware).",
+      "tokens": 2179,
+      "hash": "16aa4a28698c10e3",
+      "size": 7624,
+      "mtimeMs": 1786387643724.2964,
+      "updatedAt": "2026-08-10T19:26:48.214Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "_circle",
+          "kind": "fn",
+          "startLine": 16,
+          "endLine": 30,
+          "tokens": 126
+        },
+        {
+          "name": "TestIdentityCalibration",
+          "kind": "class",
+          "startLine": 31,
+          "endLine": 36,
+          "tokens": 59
+        },
+        {
+          "name": "TestHardIron",
+          "kind": "class",
+          "startLine": 37,
+          "endLine": 58,
+          "tokens": 294
+        },
+        {
+          "name": "TestSoftIron",
+          "kind": "class",
+          "startLine": 59,
+          "endLine": 80,
+          "tokens": 291
+        },
+        {
+          "name": "_sphere",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 98,
+          "tokens": 154
+        },
+        {
+          "name": "TestSweptAxes",
+          "kind": "class",
+          "startLine": 99,
+          "endLine": 128,
+          "tokens": 419
+        },
+        {
+          "name": "TestRoundTrip",
+          "kind": "class",
+          "startLine": 129,
+          "endLine": 162,
+          "tokens": 420
+        },
+        {
+          "name": "TestDescribeSpin",
+          "kind": "class",
+          "startLine": 163,
+          "endLine": 190,
+          "tokens": 346
+        }
+      ]
+    },
+    "scripts/tests/test_orientation.py": {
+      "description": "Tests for the mounting-orientation model (pure math, no hardware).",
+      "tokens": 2794,
+      "hash": "0ad394c6f8c85c95",
+      "size": 9779,
+      "mtimeMs": 1786387643724.7693,
+      "updatedAt": "2026-08-10T19:26:48.214Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "_field",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 23,
+          "tokens": 196
+        },
+        {
+          "name": "TestAxisSpec",
+          "kind": "class",
+          "startLine": 24,
+          "endLine": 36,
+          "tokens": 134
+        },
+        {
+          "name": "TestHeadingFlatMount",
+          "kind": "class",
+          "startLine": 37,
+          "endLine": 62,
+          "tokens": 327
+        },
+        {
+          "name": "TestHeadingUpsideDown",
+          "kind": "class",
+          "startLine": 63,
+          "endLine": 83,
+          "tokens": 272
+        },
+        {
+          "name": "TestHeadingVerticalMount",
+          "kind": "class",
+          "startLine": 84,
+          "endLine": 96,
+          "tokens": 149
+        },
+        {
+          "name": "TestDeclination",
+          "kind": "class",
+          "startLine": 97,
+          "endLine": 107,
+          "tokens": 127
+        },
+        {
+          "name": "TestVerticalComponent",
+          "kind": "class",
+          "startLine": 108,
+          "endLine": 118,
+          "tokens": 132
+        },
+        {
+          "name": "TestUpAxisSign",
+          "kind": "class",
+          "startLine": 119,
+          "endLine": 160,
+          "tokens": 440
+        },
+        {
+          "name": "TestDetectUpAxis",
+          "kind": "class",
+          "startLine": 161,
+          "endLine": 190,
+          "tokens": 358
+        },
+        {
+          "name": "TestRotationSummary",
+          "kind": "class",
+          "startLine": 191,
+          "endLine": 241,
+          "tokens": 611
+        }
+      ]
     },
     "TODO.md": {
       "description": "TODO — items flagged for Mlok's review",
-      "tokens": 1622,
-      "hash": "2693868dbfdc6b67",
-      "size": 6536,
-      "mtimeMs": 1785625098854.7104,
-      "updatedAt": "2026-08-09T22:04:02.267Z",
+      "tokens": 1556,
+      "hash": "1f0bbe52dd22fbe9",
+      "size": 6268,
+      "mtimeMs": 1786389866461.6282,
+      "updatedAt": "2026-08-10T19:26:48.214Z",
       "source": "scan"
     }
   }
