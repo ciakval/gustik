@@ -189,20 +189,17 @@ jobs:
   #   VPS_SSH_KEY    - private key (PEM), matching a public key already
   #                    in that user's ~/.ssh/authorized_keys on the server
   #
-  # Strategy: ship the backend/ source to the server over a tar/ssh pipe,
-  # then build+run there with `docker compose up -d --build`. Chosen over
-  # a registry-push flow (build in CI, push to GHCR, pull on server)
-  # because it needs nothing but SSH access - no registry auth, no image
-  # transfer bandwidth concern for a single small self-hosted instance.
-  # rsync was the original plan but the server has no rsync binary and
-  # the deploy user has no sudo to install one (verified via `sudo -n`),
-  # so this uses tar (present everywhere, no extra dependency) instead -
-  # the target dir is wiped and re-extracted fresh each deploy, which is
-  # safe because the sqlite data lives in a named Docker volume
-  # (gustik-data), not a bind mount under DEPLOY_DIR. .env is written
-  # fresh on every deploy from the INGEST_TOKEN secret (see "Write .env
-  # on the server" below) - it's GitHub-managed now, not a hand-
-  # maintained server file, so wiping it here is fine too.
+  # Strategy: rsync the backend/ source to the server, then build+run there
+  # with `docker compose up -d --build`. Chosen over a registry-push flow
+  # (build in CI, push to GHCR, pull on server) because it needs nothing
+  # but SSH access - no registry auth, no image transfer bandwidth concern
+  # for a single small self-hosted instance. (The server briefly had no
+  # rsync binary and no sudo to install one, so this used a tar/ssh pipe
+  # for one deploy - rsync is installed now, see buglog bug-025/bug-026.)
+  # .env is written fresh on every deploy from the INGEST_TOKEN secret
+  # (see "Write .env on the server" below) - it's GitHub-managed now, not
+  # a hand-maintained server file, and rsync's --exclude=.env leaves
+  # whatever's there from the previous deploy alone until that step runs.
   #
   # The container joins the pre-existing external Docker network `proxy`,
   # which Caddy (a separate, human-managed compose project on the same
@@ -234,7 +231,7 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$VPS_SSH_PORT" -H "$VPS_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-      - name: Ship backend source to server
+      - name: Rsync backend source to server
         env:
           VPS_USER: ${{ vars.VPS_USER }}
           VPS_HOST: ${{ vars.VPS_HOST }}
@@ -242,10 +239,13 @@ jobs:
           DEPLOY_DIR: ${{ vars.DEPLOY_DIR }}
         run: |
           ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
-            "rm -rf '$DEPLOY_DIR' && mkdir -p '$DEPLOY_DIR'"
-          tar czf - --exclude='.env' --exclude='node_modules' --exclude='data' -C backend . \
-            | ssh -i ~/.ssh/deploy_key -p "$VPS_SSH_PORT" "$VPS_USER@$VPS_HOST" \
-              "tar xzf - -C '$DEPLOY_DIR'"
+            "mkdir -p '$DEPLOY_DIR'"
+          rsync -az --delete \
+            --exclude='.env' \
+            --exclude='node_modules' \
+            --exclude='data' \
+            -e "ssh -i ~/.ssh/deploy_key -p $VPS_SSH_PORT" \
+            backend/ "$VPS_USER@$VPS_HOST:$DEPLOY_DIR/"
 
       - name: Write .env on the server
         env:
