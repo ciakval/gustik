@@ -484,6 +484,25 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-10T20:10:00Z"
+    },
+    {
+      "id": "bug-028",
+      "timestamp": "2026-08-11T00:00:00Z",
+      "error_message": "No runtime error observed yet (caught before it manifested) - would have shown as config.txt silently never found on boot, WiFi never connecting despite a correctly-uploaded config file.",
+      "file": "firmware/platformio.ini",
+      "root_cause": "src/config/hw/config_loader.cpp uses LittleFS.begin()/LittleFS.open(\"/config.txt\"), but [env:esp32dev] never set board_build.filesystem = littlefs. PlatformIO defaults the uploadfs target to a SPIFFS image without that setting, so pio run -t uploadfs would silently build/upload the wrong filesystem format - LittleFS.open() would find nothing even though the upload itself reported success. Caught during the first-ever real hardware bring-up/WiFi-connectivity test in this repo (no ESP32 hardware available in the devcontainer this was originally built in - see cerebrum.md - so this path was never actually exercised until now).",
+      "fix": "Added board_build.filesystem = littlefs under [env:esp32dev] in firmware/platformio.ini. Verified end-to-end: pio run -t uploadfs followed by pio run -t upload on real hardware, then a real config.txt (with real WiFi credentials) was found and parsed on boot, and the device connected to WiFi successfully.",
+      "tags": [
+        "firmware",
+        "platformio",
+        "littlefs",
+        "spiffs",
+        "config-provisioning",
+        "hardware-verification"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-11T00:00:00Z"
     }
   ]
 }

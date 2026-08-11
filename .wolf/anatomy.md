@@ -874,7 +874,7 @@
 ## firmware/
 
 - `.gitignore` — Git ignore rules (~52 tok)
-- `platformio.ini` (~443 tok)
+- `platformio.ini` — esp32dev + native envs; esp32dev now sets `board_build.filesystem = littlefs` (~500 tok)
 
 ## firmware/.pio/libdeps/native/
 
@@ -1040,7 +1040,7 @@
 
 ## firmware/src/
 
-- `main.cpp` — include <Arduino.h> (~1506 tok)
+- `main.cpp` — include <Arduino.h>; wiring + Serial diagnostics (one line/cycle: WiFi/IP/RSSI, send, clock sync, buffer count) + config-loaded (GPIO25) and WiFi-connected (GPIO26) diagnostic LEDs alongside the existing disconnect LED (GPIO2) (~1650 tok)
 
 ## firmware/src/config/
 
