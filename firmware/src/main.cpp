@@ -24,6 +24,14 @@ constexpr unsigned long kSampleIntervalMs = 3000;
 constexpr uint8_t kAnemometerPin = 27;
 constexpr uint8_t kVanePin = 34;
 constexpr uint8_t kDisconnectLedPin = 2;
+// Diagnostic LEDs (2026-08-11, hardware bring-up): grouped with the sensor
+// wiring above (27/34) on the EN/RST-button side of a standard 30-pin
+// ESP32-WROOM DevKitC. Isolate WiFi-connect failures from backend-reachable
+// failures, which kDisconnectLedPin alone can't distinguish - see
+// docs/superpowers/specs/2026-08-11-firmware-diagnostics-design.md.
+constexpr uint8_t kConfigLoadedLedPin = 25;  // on once config.txt parsed >=1 network
+constexpr uint8_t kWifiConnectedLedPin = 26; // mirrors WiFi.status()==WL_CONNECTED
+constexpr unsigned long kSerialBaudRate = 115200;
 
 // TODO(calibration): measure against a reference anemometer before
 // deployment - see correct/wind_speed.h.
@@ -50,15 +58,23 @@ String makeClientId() {
 } // namespace
 
 void setup() {
+    Serial.begin(kSerialBaudRate);
     anemometer.begin(kAnemometerPin);
     vane.begin(kVanePin);
     magnetometer.begin();
     pinMode(kDisconnectLedPin, OUTPUT);
+    pinMode(kConfigLoadedLedPin, OUTPUT);
+    pinMode(kWifiConnectedLedPin, OUTPUT);
     // Story 4.1 (AD-10): credentials/token come from an on-flash config
     // file, never compiled into firmware source. An empty/missing config
     // (see config_loader.h) just means WiFi never connects - visible via
     // the disconnect LED - not a crash.
     StationConfig stationConfig = loadStationConfig();
+    bool configLoaded = !stationConfig.networks.empty();
+    digitalWrite(kConfigLoadedLedPin, configLoaded ? HIGH : LOW);
+    Serial.println("\n--- Gustik station boot ---");
+    Serial.printf("config.txt: %d network(s) configured, backend=%s\n",
+                   static_cast<int>(stationConfig.networks.size()), stationConfig.backendBaseUrl.c_str());
     transmitClient.begin(stationConfig);
     clock_.begin();
     // NFR-4: buffer must cover >=4h at the sampling interval in use.
@@ -96,6 +112,7 @@ void loop() {
     rssiLatch.recordScanResult(wifiConnectedThisCycle);
     reading.rssiValid = rssiLatch.isAvailable();
     reading.rssiDbm = reading.rssiValid ? WiFi.RSSI() : 0;
+    digitalWrite(kWifiConnectedLedPin, wifiConnectedThisCycle ? HIGH : LOW);
 
     // AC2: a failed send never blocks/crashes/restarts - it just leaves
     // this cycle's reading unsent and the loop continues on schedule.
@@ -124,4 +141,11 @@ void loop() {
     // immediately - see led_policy.h for why no debounce is used here.
     digitalWrite(kDisconnectLedPin, shouldLedSignalDisconnect(connectionMonitor.isHealthy()) ? HIGH : LOW);
     clock_.resyncIfNeeded();
+
+    Serial.printf("[%lums] wifi=%s%s%s%s%d sent=%s clockSynced=%s buffered=%u\n", now,
+                  wifiConnectedThisCycle ? "up" : "down",
+                  wifiConnectedThisCycle ? " ip=" : "", wifiConnectedThisCycle ? WiFi.localIP().toString().c_str() : "",
+                  wifiConnectedThisCycle ? " rssi=" : "", wifiConnectedThisCycle ? WiFi.RSSI() : 0,
+                  sent ? "yes" : "no", clock_.isSynced() ? "yes" : "no",
+                  static_cast<unsigned>(flashBuffer.count()));
 }
