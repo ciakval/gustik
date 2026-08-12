@@ -2,9 +2,12 @@
 
 // Hard-iron calibration offsets for the magnetometer, deliberately
 // configurable data rather than hardcoded magic numbers (Story 1.2 AC3) -
-// must be measured on the actual installed unit/boat before deployment,
-// see TODO.md. Soft-iron correction is deferred (v1 accepts hard-iron-only
-// accuracy, sufficient for 8-octant resolution per NFR-6).
+// measured on the bench 2026-08-11 (see main.cpp's kMagnetometerCalibration
+// and scripts/README.md), but a calibration describes one rigid assembly -
+// redo it once mounted in the final boat enclosure (Story 5.2) if the
+// sensor's mount or magnetic surroundings change. Soft-iron correction is
+// deferred (v1 accepts hard-iron-only accuracy, sufficient for 8-octant
+// resolution per NFR-6).
 struct MagnetometerCalibration {
     double hardIronOffsetX;
     double hardIronOffsetY;

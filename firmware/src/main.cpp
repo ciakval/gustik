@@ -37,9 +37,18 @@ constexpr unsigned long kSerialBaudRate = 115200;
 // deployment - see correct/wind_speed.h.
 constexpr AnemometerCalibration kAnemometerCalibration{.metersPerSecondPerHz = 1.2};
 
-// TODO(calibration): hard-iron calibration for the actual installed
-// magnetometer/boat mount - see correct/wind_direction.h and TODO.md.
-constexpr MagnetometerCalibration kMagnetometerCalibration{.hardIronOffsetX = 0.0, .hardIronOffsetY = 0.0};
+// Hard-iron offsets measured 2026-08-11 on the bench (scripts/, tumble
+// calibration - see scripts/qmc5883p-calibration.json: offset=[1713.5,
+// -1984.0, 1714.0] at field_range=8G, which sense/magnetometer.cpp's
+// begin() also sets). hardIronOffsetY is the *negative* of the JSON's raw
+// Y offset (-1984.0 -> 1984.0) because magnetometer.cpp's readRawXY()
+// returns Y already sign-flipped for the confirmed real mount orientation
+// (up=-z, forward=+x) - see the comment there. Soft-iron (scale) is not
+// applied - deliberately deferred, see wind_direction.h. NOTE: this
+// calibration describes one rigid assembly (scripts/README.md) - it was
+// captured on the bench, not the final boat-mounted enclosure; redo it if
+// the sensor's mount or magnetic surroundings change before Story 5.2.
+constexpr MagnetometerCalibration kMagnetometerCalibration{.hardIronOffsetX = 1713.5, .hardIronOffsetY = 1984.0};
 
 Anemometer anemometer;
 Vane vane;

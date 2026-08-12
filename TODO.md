@@ -73,9 +73,14 @@ bug-017 for the full correction.
   is a placeholder (`1.2`), not measured against the actual salvaged
   WH1080/WH1090 anemometer. Measure against a reference anemometer or the
   datasheet's rotation→speed constant before trusting readings.
-- Magnetometer hard-iron/soft-iron calibration (Story 1.2 AC3): same
-  principle — will land as a named, configurable constant, not computed yet
-  since it needs the real installed magnetometer on the actual boat mount.
+- Magnetometer hard-iron calibration (Story 1.2 AC3): **measured 2026-08-11**
+  on the bench against the real QMC5883P chip (`firmware/src/main.cpp`'s
+  `kMagnetometerCalibration`, sourced from `scripts/qmc5883p-calibration.json`
+  — see `scripts/README.md` for the bench procedure). Soft-iron (scale) is
+  still deliberately deferred, not a gap — NFR-6 accepts hard-iron-only
+  accuracy. Caveat: a calibration describes one rigid assembly, so this
+  should be re-measured once the sensor is mounted in its final boat
+  enclosure (Story 5.2), not assumed to carry over unchanged.
 
 ## Product/security decision needed: mobile hotspot credentials in the manual (Story 4.2)
 
@@ -99,8 +104,10 @@ bug-017 for the full correction.
 
 See `.wolf/STATUS.md` "Open decisions carried from PRD/architecture" for the
 full list (magnetometer physical placement, shore/hotspot physical switch,
-real-world Wi-Fi range, buffer capacity / sampling interval exact values,
-HMC5883L vs QMC5883L sourcing confirmation).
+real-world Wi-Fi range, buffer capacity / sampling interval exact values).
+~~HMC5883L vs QMC5883L sourcing confirmation~~ — **resolved 2026-08-11**:
+real chip confirmed QMC5883P (I2C `0x2C`), not either — see bug-029 and
+`scripts/README.md`.
 
 ## Epic 5 — not attempted (physical/mechanical, no code deliverable)
 

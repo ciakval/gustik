@@ -56,6 +56,35 @@ real hardware, undetected until now (native tests can't catch it — no
 filesystem involved). Fixed alongside this change since it directly
 blocks the WiFi bring-up test.
 
+## Addendum (same session): magnetometer wiring, real chip mismatch
+
+Once WiFi+backend were confirmed working end-to-end, Mlok asked which pins
+to wire the magnetometer to and pointed at `scripts/` (a bench-side Python
+I2C driver, added separately in commit `d901ee9`, never previously
+cross-checked against the firmware) for lessons learned characterizing the
+real sensor with a USB-I2C bridge. That surfaced a real mismatch (bug-029):
+firmware targeted QMC5883L (I2C `0x0D`) on an unconfirmed architecture-time
+assumption; the real chip is QMC5883P (I2C `0x2C`), a different register
+map entirely. `firmware/src/sense/magnetometer.cpp`/`.h` rewritten to match
+(mirrors `scripts/src/gustik_scripts/qmc5883p.py`), `firmware/src/main.cpp`
+now carries the real bench-measured hard-iron offsets from
+`scripts/qmc5883p-calibration.json` instead of `0.0`/`0.0` placeholders,
+range set to 8G to match. The bench testing also confirmed the real mount's
+handedness (`up=-z`, `forward=+x` — chip mounted upside down), which
+requires negating the raw Y axis; done in `magnetometer.cpp` (hardware
+layer) rather than `correct/wind_direction.cpp` (kept generic/pure/tested,
+unchanged) — see the comments in both files for the exact sign-convention
+derivation. Wiring answer: I2C default pins, `SDA→GPIO21`, `SCL→GPIO22`
+(ESP32 Arduino core default via bare `Wire.begin()`, unclaimed by any other
+pin in this firmware), `VCC→3.3V`, `GND→GND`.
+
+Not yet verified against real silicon — the magnetometer isn't physically
+wired to the ESP32 yet, only build-verified + cross-checked against the
+bench driver's register map. Also: the calibration describes the bench
+assembly, not the final boat-mounted enclosure — `scripts/README.md` is
+explicit that a calibration is only valid for one rigid assembly, so
+Story 5.2 (physical mounting) should prompt a recalibration.
+
 ## Not done / explicitly out of scope
 
 - No pure-function extraction for the two new LEDs' logic — both are a

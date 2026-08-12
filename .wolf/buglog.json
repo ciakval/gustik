@@ -503,6 +503,27 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-11T00:00:00Z"
+    },
+    {
+      "id": "bug-029",
+      "timestamp": "2026-08-11T01:00:00Z",
+      "error_message": "No runtime error observed on the ESP32 side yet (I2C address 0x0D would just NACK or return garbage from whatever unrelated device might be at that address) - caught by cross-referencing bench characterization work in scripts/ before ever wiring the real chip to the ESP32.",
+      "file": "firmware/src/sense/magnetometer.cpp",
+      "root_cause": "The firmware magnetometer driver targeted QMC5883L (I2C address 0x0D, single CTRL1 register) based on an architecture-time assumption (see cerebrum.md 2026-08-01 Decision Log: \"GY-271/273 modules... mostly ship QMC5883L die\") that was never actually confirmed against the real purchased part - flagged as an open risk in TODO.md/STATUS.md ever since. Separately, scripts/ (a bench-side Python driver using a USB-I2C bridge, added in commit d901ee9, outside firmware/ entirely) had already established the real chip is a QMC5883P at I2C address 0x2C, with a completely different register map (CTRL1/CTRL2 split, different data start register, two undocumented QST init registers) - the two facts had never been cross-checked against each other until this session.",
+      "fix": "Rewrote firmware/src/sense/magnetometer.cpp to the QMC5883P register map (address 0x2C, CTRL1 0x0A / CTRL2 0x0B / data start 0x01, QST init sequence at 0x0D/0x29), mirroring scripts/src/gustik_scripts/qmc5883p.py. Set range to 8G to match scripts/qmc5883p-calibration.json (offsets are raw-LSB and range-specific). Also applied the real bench-measured hard-iron offsets in firmware/src/main.cpp (previously hardcoded 0.0/0.0 placeholders) and the mount-specific Y-axis sign flip the bench testing confirmed (up=-z, forward=+x - see scripts/README.md \"Verify the mount\"), documented in both files. Verified firmware/src builds clean and native tests still pass; the magnetometer itself is not yet physically wired to this ESP32 to confirm the new register map against real silicon (I2C error in serial log is expected - sensor unconnected).",
+      "tags": [
+        "firmware",
+        "magnetometer",
+        "i2c",
+        "qmc5883p",
+        "calibration",
+        "hardware-verification"
+      ],
+      "related_bugs": [
+        "bug-028"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-11T01:00:00Z"
     }
   ]
 }

@@ -1063,8 +1063,8 @@
 
 - `anemometer.cpp` — include "sense/anemometer.h" (~138 tok)
 - `anemometer.h` — pragma once (~174 tok)
-- `magnetometer.cpp` — include "sense/magnetometer.h" (~300 tok)
-- `magnetometer.h` — pragma once (~181 tok)
+- `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x (~450 tok)
+- `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22 (~230 tok)
 - `vane.cpp` — include "sense/vane.h" (~261 tok)
 - `vane.h` — pragma once (~146 tok)
 
