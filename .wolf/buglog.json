@@ -524,6 +524,52 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-11T01:00:00Z"
+    },
+    {
+      "id": "bug-030",
+      "timestamp": "2026-08-12T00:00:00Z",
+      "error_message": "Backend stopped receiving new data after the magnetometer was physically wired up for the first time; no error (and, on closer look, no periodic diagnostic line at all) printed on Serial",
+      "file": "firmware/src/sense/magnetometer.cpp",
+      "root_cause": "sense/magnetometer.cpp's readRawXY() called Wire.beginTransmission()/Wire.endTransmission(false)/Wire.requestFrom() with no timeout set and no return-code checking. arduino-esp32's I2C driver is documented to hang indefinitely (or for whole seconds) on a stuck bus, clock stretching, or an unresponsive/badly-wired device (espressif/arduino-esp32 issues #349 'I2C/Wire/TwoWire can lock up or cease working in some conditions', #5934). readRawXY() runs once per 3s sample cycle, and the one Serial.printf per cycle in main.cpp's loop() came *after* it - so an I2C hang froze the entire loop silently: no more Serial output (matching 'no errors printed'), no more transmitClient.send() calls (matching 'backend doesn't receive new data'), not even a crash/reset. Every other blocking call in this codebase (WiFi connect, HTTPClient, NTP sync) was already explicitly bounded with a timeout per the project's 'never block indefinitely' rule - I2C was the one path that wasn't, and it's also the one path newly exercised for the first time against real hardware (magnetometer had never been physically wired before this session, see cerebrum.md 2026-08-11 note).",
+      "fix": "Added `Wire.setTimeOut(1000)` in Magnetometer::begin() right after Wire.begin() to bound every subsequent Wire call. Changed Magnetometer::begin()/readRawXY() to return bool and actually check Wire.endTransmission()/Wire.requestFrom() return codes instead of assuming success - a failed I2C transaction now returns false instead of silently reading garbage or hanging. main.cpp now falls back to the last successfully-measured heading (lastKnownYawDegrees) on a failed magnetometer read instead of blocking or dropping the reading, and logs magnetometer=ok/FAIL plus init success/failure on a new per-cycle 'sensors:' Serial line, alongside pulse count, wind speed, vane octant, yaw degrees, and wind direction octant - giving explicit success/failure visibility into every sensor readout, not just transmit. Verified: `pio test -e native` still 43/43 (all changes are in hardware-coupled files outside the native build filter) and a real `pio run -e esp32dev` build succeeds clean (91.9% flash, unchanged). Not yet re-verified against real silicon with the magnetometer physically attached (no ESP32 hardware in this devcontainer) - flagged for Mlok to confirm on the real device.",
+      "tags": [
+        "firmware",
+        "i2c",
+        "wire",
+        "magnetometer",
+        "hang",
+        "timeout",
+        "serial-diagnostics",
+        "wifi-reconnect"
+      ],
+      "related_bugs": [
+        "bug-029"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-12T00:00:00Z"
+    },
+    {
+      "id": "bug-031",
+      "timestamp": "2026-08-12T05:45:00Z",
+      "error_message": "Backend never received new data even though the firmware's own Serial diagnostics reported 'sent=yes' every single cycle, continuously, for 8+ minutes (GET /readings/latest stayed frozen at an old capturedAt the whole time)",
+      "file": "firmware/src/main.cpp",
+      "root_cause": "makeClientId() built clientId as `WiFi.macAddress() + \"-\" + nextClientSeq` where nextClientSeq is a plain RAM global that resets to 0 on every boot. backend's readings table has `client_id TEXT NOT NULL UNIQUE` and insertReading() uses `ON CONFLICT(client_id) DO NOTHING` (backend/src/store/readings.js) - a deliberate idempotency guarantee for Story 2.2 backfill retries. But POST /readings (backend/src/ingest/routes.js) returns 201 unconditionally regardless of whether any row was actually inserted (the `inserted` flag is only checked to decide whether to broadcast over WS, never reflected in the HTTP response). This device has been reflashed/rebooted many times during real-hardware bring-up (2026-08-11 WiFi test, magnetometer wiring test, today's diagnostics fix, this session's own upload) - every reboot regenerates the exact same low-numbered clientIds (MAC-0, MAC-1, MAC-2, ...) a previous boot already generated and got stored, so every POST since boot silently no-ops until this boot's counter organically climbs past the highest sequence number any earlier boot ever reached (in this case, past 8+ minutes / ~160 cycles worth). Diagnosed live: connected to the real device over /dev/ttyUSB0 from this devcontainer, confirmed Serial showed continuous `sent=yes`/`clockSynced=yes` while `curl https://gustik.remesh.cz/readings/latest` stayed frozen at a capturedAt over 8 minutes stale across two checks.",
+      "fix": "makeClientId() now takes the reading's own capturedAt (wall-clock ISO-8601, computed before clientId so the ordering in loop() changed too) and folds it into the ID: `WiFi.macAddress() + \"-\" + capturedAt + \"-\" + nextClientSeq`. A real wall-clock timestamp can't repeat across reboots (reboot takes far longer than one second, and the sample interval is 3s), so this makes clientId collisions require the same device to reboot within the same captured second - practically impossible - while nextClientSeq is kept as a same-boot tie-breaker in case the clock never syncs. Verified end-to-end for real: rebuilt (`pio run -e esp32dev`, clean, 92.0% flash), uploaded to the physical device over /dev/ttyUSB0 (`pio run -t upload`), watched it boot/reconnect/reconnect on Serial, then confirmed `curl https://gustik.remesh.cz/readings/latest` returned a capturedAt within 3-4 seconds of real wall-clock time and kept advancing on a second check ~20s later - live data flowing again. `pio test -e native` still 43/43 (change is in main.cpp, hardware-coupled, outside the native build filter).",
+      "tags": [
+        "firmware",
+        "backend",
+        "client-id",
+        "idempotency",
+        "unique-constraint",
+        "silent-data-loss",
+        "reboot",
+        "hardware-verification"
+      ],
+      "related_bugs": [
+        "bug-030"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-12T05:48:14Z"
     }
   ]
 }

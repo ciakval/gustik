@@ -1040,7 +1040,7 @@
 
 ## firmware/src/
 
-- `main.cpp` — include <Arduino.h>; wiring + Serial diagnostics (one line/cycle: WiFi/IP/RSSI, send, clock sync, buffer count) + config-loaded (GPIO25) and WiFi-connected (GPIO26) diagnostic LEDs alongside the existing disconnect LED (GPIO2) (~1650 tok)
+- `main.cpp` — include <Arduino.h>; wiring + 2 Serial diagnostic lines/cycle (sensors: pulses/windSpeed/vane/magnetometer ok-or-FAIL/yaw/windDir; wifi: up-or-down/ssid/ip/rssi/sent/clockSynced/buffered) + config-loaded (GPIO25) and WiFi-connected (GPIO26) diagnostic LEDs alongside the existing disconnect LED (GPIO2); falls back to lastKnownYawDegrees on a magnetometer read failure; makeClientId() folds in capturedAt (not just a boot-reset counter) so clientId can't collide across reboots (bug-031 fix) (~1680 tok)
 
 ## firmware/src/config/
 
@@ -1063,8 +1063,8 @@
 
 - `anemometer.cpp` — include "sense/anemometer.h" (~138 tok)
 - `anemometer.h` — pragma once (~174 tok)
-- `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x (~450 tok)
-- `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22 (~230 tok)
+- `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk) (~480 tok)
+- `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure) (~250 tok)
 - `vane.cpp` — include "sense/vane.h" (~261 tok)
 - `vane.h` — pragma once (~146 tok)
 
@@ -1087,7 +1087,7 @@
 - `clock.h` — pragma once (~232 tok)
 - `flash_buffer.cpp` — include "transmit/hw/flash_buffer.h" (~599 tok)
 - `flash_buffer.h` — pragma once (~405 tok)
-- `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~713 tok)
+- `wifi_client.cpp` — ensureWifiConnected() now cycles through ALL configured+in-range networks (priority order) per call, not just the top-priority scan match, so a visible-but-unconnectable network no longer blocks fallback to the other one (bug-030 fix) (~830 tok)
 - `wifi_client.h` — pragma once (~393 tok)
 
 ## firmware/test/test_connection_monitor/
