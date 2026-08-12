@@ -60,9 +60,26 @@ FlashBuffer flashBuffer;
 RssiAvailabilityLatch rssiLatch;
 unsigned long lastSampleAt = 0;
 unsigned long nextClientSeq = 0;
+// Falls back to the last successfully-read heading on a magnetometer I2C
+// failure (see sense/magnetometer.h) instead of dropping the reading or
+// blocking - defaults to 0deg/north until the first successful read.
+double lastKnownYawDegrees = 0.0;
 
-String makeClientId() {
-    return WiFi.macAddress() + "-" + String(nextClientSeq++);
+// clientId must stay unique across reboots, not just within one boot - the
+// backend's client_id UNIQUE constraint (ON CONFLICT DO NOTHING) is what
+// makes backfill retries safe (Story 2.2), but it silently no-ops any
+// POST whose clientId collides with a row from an earlier boot, and
+// POST /readings still returns 201 either way (see bug-031). A counter
+// that resets to 0 on every reboot collides with low-numbered clientIds
+// this same device (same WiFi.macAddress()) already sent and stored in a
+// previous boot - exactly what happened during real-hardware testing.
+// Folding in the reading's own capturedAt (wall-clock, not boot-relative)
+// makes collisions require the same device to reboot within the same
+// captured second, which the sample interval (>=3s apart) and reboot time
+// both rule out in practice; nextClientSeq stays only as a same-boot
+// tie-breaker in case the clock never syncs.
+String makeClientId(const std::string &capturedAt) {
+    return WiFi.macAddress() + "-" + String(capturedAt.c_str()) + "-" + String(nextClientSeq++);
 }
 } // namespace
 
@@ -70,7 +87,7 @@ void setup() {
     Serial.begin(kSerialBaudRate);
     anemometer.begin(kAnemometerPin);
     vane.begin(kVanePin);
-    magnetometer.begin();
+    bool magnetometerReady = magnetometer.begin();
     pinMode(kDisconnectLedPin, OUTPUT);
     pinMode(kConfigLoadedLedPin, OUTPUT);
     pinMode(kWifiConnectedLedPin, OUTPUT);
@@ -84,6 +101,7 @@ void setup() {
     Serial.println("\n--- Gustik station boot ---");
     Serial.printf("config.txt: %d network(s) configured, backend=%s\n",
                    static_cast<int>(stationConfig.networks.size()), stationConfig.backendBaseUrl.c_str());
+    Serial.printf("magnetometer init: %s\n", magnetometerReady ? "ok" : "FAILED (I2C error - check wiring/address)");
     transmitClient.begin(stationConfig);
     clock_.begin();
     // NFR-4: buffer must cover >=4h at the sampling interval in use.
@@ -103,14 +121,24 @@ void loop() {
     double windSpeedMs = pulsesToWindSpeedMs(pulses, intervalSeconds, kAnemometerCalibration);
 
     int rawVaneOctant = vane.readRawOctant();
-    double magX, magY;
-    magnetometer.readRawXY(magX, magY);
-    double yawDegrees = magnetometerHeadingDegrees(magX, magY, kMagnetometerCalibration);
+    double magX = 0.0, magY = 0.0;
+    bool magnetometerOk = magnetometer.readRawXY(magX, magY);
+    if (magnetometerOk) {
+        lastKnownYawDegrees = magnetometerHeadingDegrees(magX, magY, kMagnetometerCalibration);
+    }
+    // A failed I2C read never blocks this cycle or drops the reading - it
+    // just reuses the last successfully-measured heading (see bug-030).
+    double yawDegrees = lastKnownYawDegrees;
     int windDirOctant = correctWindDirectionOctant(rawVaneOctant, yawDegrees);
 
+    Serial.printf("[%lums] sensors: pulses=%lu windSpeedMs=%.2f vaneOctant=%d magnetometer=%s yawDeg=%.1f windDirOctant=%d\n", now,
+                  pulses, windSpeedMs, rawVaneOctant,
+                  magnetometerOk ? "ok" : "FAIL(using last-known heading)",
+                  yawDegrees, windDirOctant);
+
     Reading reading;
-    reading.clientId = makeClientId().c_str();
     reading.capturedAt = clock_.nowIso8601().c_str();
+    reading.clientId = makeClientId(reading.capturedAt).c_str();
     reading.clockSynced = clock_.isSynced();
     reading.windSpeedMs = windSpeedMs;
     reading.windDirOctant = windDirOctant;
@@ -151,8 +179,9 @@ void loop() {
     digitalWrite(kDisconnectLedPin, shouldLedSignalDisconnect(connectionMonitor.isHealthy()) ? HIGH : LOW);
     clock_.resyncIfNeeded();
 
-    Serial.printf("[%lums] wifi=%s%s%s%s%d sent=%s clockSynced=%s buffered=%u\n", now,
+    Serial.printf("[%lums] wifi=%s%s%s%s%s%s%d sent=%s clockSynced=%s buffered=%u\n", now,
                   wifiConnectedThisCycle ? "up" : "down",
+                  wifiConnectedThisCycle ? " ssid=" : "", wifiConnectedThisCycle ? WiFi.SSID().c_str() : "",
                   wifiConnectedThisCycle ? " ip=" : "", wifiConnectedThisCycle ? WiFi.localIP().toString().c_str() : "",
                   wifiConnectedThisCycle ? " rssi=" : "", wifiConnectedThisCycle ? WiFi.RSSI() : 0,
                   sent ? "yes" : "no", clock_.isSynced() ? "yes" : "no",

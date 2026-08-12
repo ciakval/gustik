@@ -13,11 +13,20 @@
 // args), VCC -> 3.3V, GND -> GND.
 class Magnetometer {
 public:
-    void begin();
+    // Returns false if any init register write was NACK'd/timed out (bad
+    // wiring, wrong address, unpowered chip) - the caller should surface
+    // this rather than assume the chip is ready.
+    bool begin();
 
     // Raw, uncalibrated X/left magnetometer axis readings (Y is returned
     // negated - see magnetometer.cpp for why). Calibration (hard-iron
     // offset) is applied downstream in correct::magnetometerHeadingDegrees,
     // not here - see Story 1.2 AC3.
-    void readRawXY(double &x, double &y);
+    //
+    // Returns false (x/y left unmodified) on any I2C failure - a NACK, bus
+    // error, or short read. Never blocks indefinitely: begin() bounds every
+    // Wire call with a timeout, so a stuck/faulty magnetometer degrades to
+    // "this cycle's read failed" instead of freezing the whole sampling
+    // loop (see bug-030 in buglog.json).
+    bool readRawXY(double &x, double &y);
 };

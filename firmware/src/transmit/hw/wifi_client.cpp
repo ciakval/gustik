@@ -2,6 +2,7 @@
 #include "transmit/payload.h"
 #include <WiFi.h>
 #include <HTTPClient.h>
+#include <algorithm>
 #include <vector>
 #include <string>
 
@@ -19,6 +20,20 @@ std::vector<std::string> scanAvailableSsids() {
     }
     return ssids;
 }
+
+// Best-effort, bounded connect attempt against one network - never blocks
+// the sampling loop indefinitely (AC2: no restart/operator intervention
+// needed, but also no unbounded blocking on a dead network).
+bool tryConnect(const WifiNetwork &network) {
+    WiFi.disconnect();
+    WiFi.begin(network.ssid.c_str(), network.password.c_str());
+
+    unsigned long start = millis();
+    while (WiFi.status() != WL_CONNECTED && millis() - start < kWifiConnectTimeoutMs) {
+        delay(100);
+    }
+    return WiFi.status() == WL_CONNECTED;
+}
 } // namespace
 
 void WifiTransmitClient::begin(const StationConfig &config) {
@@ -35,25 +50,29 @@ bool WifiTransmitClient::ensureWifiConnected() {
     }
 
     // Story 4.1 AC2: connect to whichever configured network is actually
-    // in range, in priority order - unattended, no operator input.
+    // in range, in priority order - unattended, no operator input. Try
+    // every in-range configured network in turn (not just the top
+    // priority one) so a network that's visible in the scan but won't
+    // actually connect (wrong password, AP rejecting the station) doesn't
+    // permanently block falling back to the other configured network.
     std::vector<std::string> availableSsids = scanAvailableSsids();
-    int chosen = selectNetworkIndex(config_.networks, availableSsids);
-    if (chosen < 0) {
-        return false; // none of the configured networks are in range right now
-    }
+    for (size_t attempt = 0; attempt < config_.networks.size(); attempt++) {
+        int chosen = selectNetworkIndex(config_.networks, availableSsids);
+        if (chosen < 0) {
+            break; // none of the remaining configured networks are in range
+        }
 
-    const WifiNetwork &network = config_.networks[chosen];
-    WiFi.disconnect();
-    WiFi.begin(network.ssid.c_str(), network.password.c_str());
+        const WifiNetwork &network = config_.networks[chosen];
+        if (tryConnect(network)) {
+            return true;
+        }
 
-    // Best-effort, bounded reconnect attempt - never blocks the sampling
-    // loop indefinitely (AC2: no restart/operator intervention needed, but
-    // also no unbounded blocking on a dead network).
-    unsigned long start = millis();
-    while (WiFi.status() != WL_CONNECTED && millis() - start < kWifiConnectTimeoutMs) {
-        delay(100);
+        // Drop this SSID from the candidate pool so the next loop
+        // iteration's selectNetworkIndex falls through to the next
+        // priority network instead of retrying the one that just failed.
+        availableSsids.erase(std::remove(availableSsids.begin(), availableSsids.end(), network.ssid), availableSsids.end());
     }
-    return WiFi.status() == WL_CONNECTED;
+    return false;
 }
 
 bool WifiTransmitClient::send(const Reading *readings, size_t count) {

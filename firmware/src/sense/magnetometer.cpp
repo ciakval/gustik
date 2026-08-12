@@ -20,29 +20,46 @@ constexpr uint8_t kCtrl2Range8G = 0b00001000;
 // bits 3:2 = ODR, bits 1:0 = mode=continuous(0b11)).
 constexpr uint8_t kCtrl1Continuous100Hz = 0xCB;
 
-void writeRegister(uint8_t reg, uint8_t value) {
+bool writeRegister(uint8_t reg, uint8_t value) {
     Wire.beginTransmission(kI2cAddress);
     Wire.write(reg);
     Wire.write(value);
-    Wire.endTransmission();
+    return Wire.endTransmission() == 0;
 }
 } // namespace
 
-void Magnetometer::begin() {
+bool Magnetometer::begin() {
     Wire.begin();
-    writeRegister(kRegMystery0D, 0x40);
-    writeRegister(kRegSign0x29, 0x06);
-    writeRegister(kRegCtrl2, kCtrl2Range8G);
-    writeRegister(kRegCtrl1, kCtrl1Continuous100Hz);
+    // ESP32's I2C driver can otherwise hang indefinitely (or for whole
+    // seconds at a time) on a stuck bus, clock stretching, or an
+    // unresponsive/badly-wired device - well-known arduino-esp32 behavior
+    // (e.g. espressif/arduino-esp32 issues #349, #5934). A magnetometer
+    // wiring problem freezing the whole sampling loop (never sending,
+    // never printing) was exactly bug-030 - bound every Wire call so a bad
+    // read degrades to "this cycle failed" instead of a silent freeze.
+    // 1000ms is the smallest value some arduino-esp32 3.x releases honor.
+    Wire.setTimeOut(1000);
+    bool ok = true;
+    ok &= writeRegister(kRegMystery0D, 0x40);
+    ok &= writeRegister(kRegSign0x29, 0x06);
+    ok &= writeRegister(kRegCtrl2, kCtrl2Range8G);
+    ok &= writeRegister(kRegCtrl1, kCtrl1Continuous100Hz);
+    return ok;
 }
 
-void Magnetometer::readRawXY(double &x, double &y) {
+bool Magnetometer::readRawXY(double &x, double &y) {
     Wire.beginTransmission(kI2cAddress);
     Wire.write(kRegDataStart);
-    Wire.endTransmission(false);
+    if (Wire.endTransmission(false) != 0) {
+        return false; // NACK/bus error selecting the data register
+    }
+
     // X_L,X_H,Y_L,Y_H only - Z is skipped (v1 has no tilt compensation,
     // see wind_direction.h).
-    Wire.requestFrom(kI2cAddress, static_cast<uint8_t>(4));
+    uint8_t received = Wire.requestFrom(kI2cAddress, static_cast<uint8_t>(4));
+    if (received != 4) {
+        return false; // device didn't return all 4 requested bytes
+    }
 
     int16_t rawX = Wire.read() | (Wire.read() << 8);
     int16_t rawY = Wire.read() | (Wire.read() << 8);
@@ -57,4 +74,5 @@ void Magnetometer::readRawXY(double &x, double &y) {
     // offset - see the comment there.
     x = static_cast<double>(rawX);
     y = static_cast<double>(-rawY);
+    return true;
 }
