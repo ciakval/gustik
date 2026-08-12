@@ -11,3 +11,6 @@ _bmad-output/**/.memlog.md
 
 # git worktrees for isolated per-story implementation (superpowers:using-git-worktrees)
 .worktrees/
+
+# VS Code settings
+**/.vscode
