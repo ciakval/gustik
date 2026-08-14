@@ -353,3 +353,102 @@
 | 20:10 | Edited .worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml | 8→9 lines | ~85 |
 | 20:13 | Session end: 21 writes across 7 files (docker-compose.yml, ci.yml, TODO.md, compose.yaml, CLAUDE.md) | 12 reads | ~27467 tok |
 | 20:15 | Session summary: switched deploy sync back to rsync (server got rsync installed), then implemented GHCR-based deploy on branch chore/ghcr-backend-deploy + worktree - build once in CI (build-backend-image job, docker/build-push-action, pushes :latest+:sha to ghcr.io/ciakval/gustik-backend on main only), server now docker compose pull && up -d instead of rebuilding, GHCR login on server is a fresh ephemeral GITHUB_TOKEN each deploy (never stored). Also renamed docker-compose.yml -> compose.yaml (Compose v2 convention) | backend/compose.yaml, backend/.env.example, .github/workflows/ci.yml, TODO.md, CLAUDE.md, .wolf/STATUS.md, .wolf/cerebrum.md | YAML+actionlint clean, 55/55 tests pass, rsync re-verified against real server; GHCR push/pull path itself unverified until merge (build-backend-image only pushes on main) | ~11000 |
+## Session: 2026-08-14 13:30
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-14 13:39
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 13:39 | Created docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | — | ~2695 |
+| 13:39 | Created backend/test/aggregate.test.js | — | ~1325 |
+| 13:40 | Created backend/src/serve/aggregate.js | — | ~1450 |
+| 13:40 | Created backend/src/store/localday.js | — | ~564 |
+| 13:40 | Edited backend/src/store/readings.js | added 1 condition(s) | ~239 |
+| 13:41 | Edited backend/src/store/readings.js | added nullish coalescing | ~624 |
+| 13:41 | Edited backend/src/store/readings.js | added 1 import(s) | ~21 |
+| 13:41 | Edited backend/src/serve/aggregate.js | added 2 condition(s) | ~390 |
+| 13:41 | Created backend/src/serve/routes.js | — | ~1508 |
+| 13:41 | Edited backend/src/app.js | 1→5 lines | ~82 |
+| 13:42 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~198 |
+| 13:42 | Edited backend/src/ingest/routes.js | modified for() | ~272 |
+| 13:42 | Created backend/test/history-range.test.js | — | ~1406 |
+| 13:42 | Created backend/test/status.test.js | — | ~1353 |
+| 13:43 | Edited backend/test/history.test.js | 4→6 lines | ~89 |
+| 13:43 | Created backend/src/static/compass.js | — | ~954 |
+| 13:44 | Created backend/src/static/timerange.js | — | ~1122 |
+| 13:44 | Created backend/test/compass.test.js | — | ~727 |
+| 13:44 | Created backend/test/timerange.test.js | — | ~1386 |
+| 13:45 | Created backend/src/static/timezone.js | — | ~541 |
+| 13:45 | Created backend/src/static/beaufort.js | — | ~434 |
+| 13:45 | Created backend/src/static/styles.css | — | ~1435 |
+| 13:46 | Created backend/src/static/timerange-ui.js | — | ~1123 |
+| 13:46 | Created backend/src/static/history-chart-data.js | — | ~927 |
+| 13:47 | Created backend/test/history-chart-data.test.js | — | ~1081 |
+| 13:47 | Created backend/src/static/history-chart.js | — | ~2171 |
+| 13:48 | Created backend/src/static/index.html | — | ~864 |
+| 13:48 | Created backend/src/static/dashboard.js | — | ~1240 |
+| 13:48 | Edited backend/src/static/dashboard.js | 3→3 lines | ~37 |
+| 13:48 | Created backend/src/static/status.html | — | ~519 |
+| 13:49 | Created backend/src/static/status.js | — | ~2777 |
+| 13:49 | Created backend/test/status-static.test.js | — | ~389 |
+| 13:49 | Edited backend/eslint.config.js | 7→11 lines | ~86 |
+| 13:52 | Edited backend/src/static/format.js | added 1 condition(s) | ~130 |
+| 13:52 | Edited backend/src/static/history-chart.js | added optional chaining | ~102 |
+| 13:52 | Edited backend/src/static/styles.css | CSS: max-height, overflow-y | ~68 |
+| 13:52 | Edited backend/src/static/status.html | 2→2 lines | ~19 |
+| 13:53 | Edited backend/src/static/manual.html | 2→4 lines | ~171 |
+| 13:53 | Edited backend/src/static/manual.html | 2→3 lines | ~111 |
+| 14:05 | Dashboard UX rework complete: Czech compass rose + rotated arrow glyphs (bug-037), Grafana-style range/resolution control with server-side bucketing + gust band, Prague day boundary fix (bug-036), new /status.html diagnostics page + GET /readings/status + in-memory ingest ring buffer | backend/src/{serve,store,ingest,static}/*, docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | 115/115 tests pass, lint clean, headless-Chromium render of both pages OK; UNCOMMITTED on main pending review | ~95k |
+| 14:51 | Created backend/test/ingest-response.test.js | — | ~1384 |
+| 14:51 | Edited backend/src/ingest/routes.js | 5→3 lines | ~61 |
+| 14:52 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~578 |
+| 14:52 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~242 |
+| 14:52 | Edited docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | expanded (+32 lines) | ~632 |
+| 14:55 | POST /readings response contract rewritten to signal what actually happened (201 stored / 200+warning nothing stored / 400 empty batch; {received,inserted,duplicates,backfilled}, `written` removed) - closes the follow-up flagged after bug-031 | backend/src/ingest/routes.js, backend/test/ingest-response.test.js, docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | 123/123 tests pass, lint clean, curl smoke test of all 7 cases OK | ~18k |
+| 15:02 | Created firmware/src/transmit/ingest_response.h | — | ~530 |
+| 15:02 | Created firmware/src/transmit/ingest_response.cpp | — | ~1089 |
+| 15:03 | Created firmware/test/test_ingest_response/test_ingest_response.cpp | — | ~1431 |
+| 15:03 | Edited firmware/src/transmit/hw/wifi_client.h | added 1 condition(s) | ~276 |
+| 15:03 | Edited firmware/src/transmit/hw/wifi_client.h | 5→7 lines | ~120 |
+| 15:04 | Edited firmware/src/transmit/hw/wifi_client.cpp | added 1 condition(s) | ~366 |
+| 15:04 | Edited firmware/src/transmit/hw/wifi_client.cpp | 2→3 lines | ~30 |
+| 15:04 | Edited firmware/src/main.cpp | modified if() | ~80 |
+| 15:04 | Edited firmware/src/main.cpp | modified if() | ~184 |
+| 15:04 | Edited firmware/src/main.cpp | modified c_str() | ~270 |
+| 15:04 | Edited firmware/src/main.cpp | 1→2 lines | ~19 |
+| 15:04 | Created docs/rust-firmware/README.md | — | ~758 |
+| 15:05 | Edited docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | added 1 condition(s) | ~633 |
+| 15:05 | Created docs/rust-firmware/01-feasibility.md | — | ~2656 |
+| 15:30 | Firmware now parses+logs the backend's inserted/received counts: new pure transmit/ingest_response.{h,cpp}, send() returns SendResult, Serial replaces `sent=yes` with `stored=N/M` and a loud BACKEND STORED NOTHING alarm | firmware/src/transmit/ingest_response.*, transmit/hw/wifi_client.*, main.cpp, test/test_ingest_response/ | pio test native 57/57, esp32dev build clean 92.3% flash, host cross-check vs real backend bytes OK; NOT flashed to device | ~30k |
+| 15:06 | Edited TODO.md | 2→5 lines | ~83 |
+| 15:06 | Created docs/rust-firmware/02-crate-inventory.md | — | ~3300 |
+| 15:13 | Created docs/rust-firmware/03-risks-and-gaps.md | — | ~2178 |
+| 15:13 | Created docs/rust-firmware/04-migration-plan.md | — | ~1996 |
+| 15:14 | Created docs/rust-firmware/05-open-questions.md | — | ~1234 |
+| 15:20 | Session summary: Rust firmware feasibility study (research-only, no code). Researched the 2026 esp-rs ecosystem via web (esp-hal 1.1.2, esp-radio 1.0.0-beta.0, esp-rtos, esp-storage, sequential-storage, reqwless, esp-mbedtls, sntpc, qmc5883p, esp-idf-svc 0.52.1, espup/Xtensa toolchain state, rustc Tier-3 target list) and mapped it capability-by-capability onto the real firmware modules. Verdict: feasible; recommend no_std/esp-hal+Embassy in a parallel `firmware-rs/` tree, C++ firmware untouched. Two sharp edges: Xtensa needs espup's compiler fork, and no_std TLS with cert verification needs git-only esp-mbedtls. Wrote docs/rust-firmware/{README,01-feasibility,02-crate-inventory,03-risks-and-gaps,04-migration-plan,05-open-questions}.md; updated anatomy.md descriptions + cerebrum Decision Log. 8 open questions left for Mlok (chip choice, no_std vs std, git TLS deps, own driver vs crate, defmt vs plain text, repo placement) - answers may trigger a respin. | docs/rust-firmware/*, .wolf/anatomy.md, .wolf/cerebrum.md | done | ~85k |
+| 18:51 | Created docs/rust-firmware/05-open-questions.md | — | ~1491 |
+| 18:52 | Edited docs/rust-firmware/03-risks-and-gaps.md | modified Decision() | ~963 |
+| 18:52 | Edited docs/rust-firmware/03-risks-and-gaps.md | modified Decision() | ~517 |
+| 18:52 | Edited docs/rust-firmware/03-risks-and-gaps.md | 11→11 lines | ~261 |
+| 18:53 | Edited docs/rust-firmware/03-risks-and-gaps.md | expanded (+6 lines) | ~139 |
+| 18:53 | Edited docs/rust-firmware/02-crate-inventory.md | modified Decision() | ~479 |
+| 18:53 | Edited docs/rust-firmware/02-crate-inventory.md | 6→9 lines | ~180 |
+| 18:53 | Edited docs/rust-firmware/02-crate-inventory.md | 2→6 lines | ~115 |
+| 18:53 | Edited docs/rust-firmware/04-migration-plan.md | bus() → calibration() | ~493 |
+| 18:53 | Edited docs/rust-firmware/04-migration-plan.md | 11→12 lines | ~262 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 1→3 lines | ~52 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 3→6 lines | ~132 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | "embedded-hal-mock" → "qmc5883p" | ~67 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 4→8 lines | ~184 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 4→7 lines | ~107 |
+| 18:54 | Edited docs/rust-firmware/01-feasibility.md | 3→4 lines | ~100 |
+| 18:54 | Edited docs/rust-firmware/01-feasibility.md | 9→10 lines | ~180 |
+| 18:54 | Edited docs/rust-firmware/01-feasibility.md | 3→8 lines | ~106 |
+| 18:55 | Edited docs/rust-firmware/01-feasibility.md | 4→5 lines | ~59 |
+| 18:55 | Edited docs/rust-firmware/01-feasibility.md | 7→7 lines | ~155 |
+| 18:55 | Created docs/rust-firmware/README.md | — | ~1081 |
+| 15:45 | Re-spun the Rust firmware study after Mlok answered Q1-Q4 (ESP32 stays / no_std / unverified TLS accepted / use qmc5883p crate). Verified two load-bearing claims with real commands before rewriting: live backend completes a TLS1.3 handshake restricted to embedded-tls's cipher+curve (curl --tls13-ciphers TLS_AES_128_GCM_SHA256 --curves X25519 -> 200) and serves an ECDSA cert; qmc5883p crate register map matches our proven map except it omits the 0x0D=0x40 QST init write. Updated all 6 docs: TLS demoted from top risk, gustik-drivers crate dropped, phase-3 estimate revised down, no git deps anywhere. | docs/rust-firmware/*, .wolf/{STATUS,cerebrum,anatomy}.md | done | ~40k |
+| 15:46 | Learning: the anatomy.md auto-scanner OVERWRITES hand-written file descriptions whenever the file's content changes (regenerates them from the H1 heading). Had to rewrite the docs/rust-firmware/ descriptions a second time after editing the docs. | .wolf/anatomy.md | noted | ~1k |

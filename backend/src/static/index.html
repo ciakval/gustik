@@ -4,135 +4,72 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Gustik — vítr živě</title>
-<style>
-  :root {
-    color-scheme: light dark;
-    --bg: #0b1220;
-    --fg: #e8edf5;
-    --muted: #8a97ab;
-    --accent: #4fb0ff;
-    --stale: #ff6b5e;
-    --card: #121b2e;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: var(--bg);
-    color: var(--fg);
-    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1.5rem 1rem 3rem;
-  }
-  h1 {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0 0 1.5rem;
-  }
-  .card {
-    width: 100%;
-    max-width: 480px;
-    background: var(--card);
-    border-radius: 1rem;
-    padding: 2rem 1.5rem;
-    text-align: center;
-  }
-  .speed {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-  }
-  .unit-toggle {
-    margin-top: 0.5rem;
-  }
-  .unit-toggle button {
-    background: none;
-    border: 1px solid var(--muted);
-    color: var(--muted);
-    border-radius: 999px;
-    padding: 0.25rem 0.9rem;
-    font-size: 0.85rem;
-    cursor: pointer;
-  }
-  .unit-toggle button[aria-pressed="true"] {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: #051422;
-    font-weight: 600;
-  }
-  .direction {
-    margin-top: 1.75rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-  }
-  .direction-label {
-    font-size: 0.85rem;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-  .age {
-    margin-top: 1.75rem;
-    font-size: 0.9rem;
-    color: var(--muted);
-  }
-  .age.stale {
-    color: var(--stale);
-    font-weight: 600;
-  }
-  .note {
-    max-width: 480px;
-    margin-top: 1.5rem;
-    font-size: 0.8rem;
-    color: var(--muted);
-    text-align: center;
-  }
-  .history-card {
-    width: 100%;
-    max-width: 720px;
-    background: var(--card);
-    border-radius: 1rem;
-    padding: 1.5rem;
-    margin-top: 1.5rem;
-  }
-  .history-card h2 {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--muted);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0 0 1rem;
-  }
-  #history-chart {
-    width: 100%;
-    max-height: 320px;
-  }
-</style>
+<link rel="stylesheet" href="/styles.css">
 </head>
 <body>
-  <h1>Gustik — vítr živě</h1>
-  <div class="card">
-    <div class="direction-label">rychlost větru</div>
-    <div class="speed" id="speed">–</div>
-    <div class="unit-toggle" role="group" aria-label="Jednotka rychlosti">
-      <button id="unit-ms" aria-pressed="true">m/s</button>
-      <button id="unit-kt" aria-pressed="false">uzly</button>
+  <div class="page">
+    <h1>Gustik — vítr živě</h1>
+
+    <div class="card live">
+      <div>
+        <div class="eyebrow">rychlost větru</div>
+        <div class="speed" id="speed">–</div>
+        <div class="speed-secondary" id="speed-secondary"></div>
+        <div class="beaufort" id="beaufort"></div>
+        <div class="unit-toggle" role="group" aria-label="Jednotka rychlosti">
+          <button type="button" id="unit-ms" aria-pressed="true">m/s</button>
+          <button type="button" id="unit-kt" aria-pressed="false">uzly</button>
+        </div>
+        <div class="age" id="age">čekám na první záznam…</div>
+      </div>
+
+      <div class="compass">
+        <div class="eyebrow">vítr fouká od</div>
+        <!-- Fixed 8-point rose. Only the arrow group rotates, in whole 45°
+             steps - the vane has 8 physical positions and the UI must never
+             imply finer precision (NFR-6 / AD-5). -->
+        <svg viewBox="0 0 200 200" role="img" aria-labelledby="compass-title">
+          <title id="compass-title">Kompasová růžice se směrem větru</title>
+          <circle cx="100" cy="100" r="76" fill="none" stroke="#22304a" stroke-width="2"/>
+          <circle cx="100" cy="100" r="4" fill="#8a97ab"/>
+          <g fill="#8a97ab" font-size="15" font-family="system-ui, sans-serif" text-anchor="middle" dominant-baseline="middle">
+            <text x="100" y="14" font-size="17" font-weight="700" fill="#e8edf5">S</text>
+            <text x="161" y="39">SV</text>
+            <text x="186" y="100">V</text>
+            <text x="161" y="161">JV</text>
+            <text x="100" y="187">J</text>
+            <text x="39" y="161">JZ</text>
+            <text x="14" y="100">Z</text>
+            <text x="39" y="39">SZ</text>
+          </g>
+          <g class="compass-arrow" id="compass-arrow" hidden>
+            <!-- Base orientation = wind from the north: shaft runs from the
+                 top of the ring inward, head pointing at the centre. -->
+            <line x1="100" y1="34" x2="100" y2="82" stroke="#4fb0ff" stroke-width="6" stroke-linecap="round"/>
+            <path d="M100 100 L90 78 L110 78 Z" fill="#4fb0ff"/>
+          </g>
+        </svg>
+        <div class="compass-label" id="direction-label">–</div>
+        <div class="compass-name" id="direction-name">čekám na data</div>
+      </div>
     </div>
-    <div class="direction-label">směr</div>
-    <div class="direction" id="direction">–</div>
-    <div class="age" id="age">čekám na první záznam…</div>
+
+    <p class="note">Orientační data, nekalibrováno proti referenčnímu přístroji. Neslouží jako automatický bezpečnostní alert.</p>
+
+    <div class="card">
+      <h2>Historie</h2>
+      <div id="timerange"></div>
+      <div class="chart-wrap">
+        <canvas id="history-chart"></canvas>
+      </div>
+      <p class="empty" id="history-empty" hidden>Ve zvoleném období nejsou žádná data.</p>
+    </div>
+
+    <p class="note footer-links">
+      <a href="/manual.html">Návod k obsluze</a>
+      <a href="/status.html">Stav stanice</a>
+    </p>
   </div>
-  <p class="note">Orientační data, nekalibrováno proti referenčnímu přístroji. Neslouží jako automatický bezpečnostní alert.</p>
-  <div class="history-card">
-    <h2>Historie (dnešní den)</h2>
-    <canvas id="history-chart"></canvas>
-  </div>
-  <p class="note"><a href="/manual.html" style="color: var(--accent)">Návod k obsluze</a></p>
   <script src="/vendor/chart.umd.min.js"></script>
   <script type="module" src="/dashboard.js"></script>
 </body>

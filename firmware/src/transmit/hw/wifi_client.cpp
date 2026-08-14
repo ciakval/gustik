@@ -8,6 +8,7 @@
 
 namespace {
 constexpr unsigned long kWifiConnectTimeoutMs = 5000;
+constexpr int kMaxResponseBodyBytes = 1024;
 
 // Scans for nearby networks and returns their SSIDs. Bounded/best-effort -
 // WiFi.scanNetworks() blocks until done or a timeout internally; we just
@@ -75,9 +76,10 @@ bool WifiTransmitClient::ensureWifiConnected() {
     return false;
 }
 
-bool WifiTransmitClient::send(const Reading *readings, size_t count) {
+SendResult WifiTransmitClient::send(const Reading *readings, size_t count) {
+    SendResult result;
     if (!ensureWifiConnected()) {
-        return false;
+        return result; // ok=false, statusCode=0 - never blocks the loop (AC2)
     }
 
     HTTPClient http;
@@ -86,8 +88,21 @@ bool WifiTransmitClient::send(const Reading *readings, size_t count) {
     http.addHeader("Authorization", String("Bearer ") + config_.ingestToken.c_str());
 
     String body = buildReadingsPayloadJson(readings, count).c_str();
-    int statusCode = http.POST(body);
+    result.statusCode = http.POST(body);
+    result.ok = result.statusCode >= 200 && result.statusCode < 300;
+
+    // Read the body before end() (which releases the connection). Bounded on
+    // purpose: getString() buffers the whole response in RAM, and this is an
+    // ESP32 - the real response is well under 200 bytes, so anything larger
+    // is not our backend answering and is not worth the heap. A declared
+    // size of -1 (chunked/unknown) is read anyway; Fastify sends
+    // Content-Length for these bodies, so that path only happens on
+    // something unexpected, and the parser tolerates whatever it gets.
+    const int declaredSize = http.getSize();
+    if (declaredSize <= kMaxResponseBodyBytes) {
+        result.response = parseIngestResponse(std::string(http.getString().c_str()));
+    }
     http.end();
 
-    return statusCode >= 200 && statusCode < 300;
+    return result;
 }

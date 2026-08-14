@@ -14,6 +14,10 @@ export function buildApp({ dbPath, ingestToken }) {
   const fastify = Fastify({ logger: false });
   fastify.decorate('db', openDb(dbPath));
   fastify.decorate('wsClients', new Set());
+  // Bounded in-memory log of recent POST /readings calls, oldest first, for
+  // the diagnostics page. Deliberately not persisted: it is a "what is the
+  // device doing right now" view, not a record.
+  fastify.decorate('ingestEvents', []);
   fastify.register(fastifyWebsocket);
   fastify.register(fastifyStatic, { root: staticRoot });
 

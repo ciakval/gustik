@@ -11,6 +11,7 @@
 #include "transmit/buffer_capacity.h"
 #include "transmit/led_policy.h"
 #include "transmit/rssi_latch.h"
+#include "transmit/ingest_response.h"
 #include "transmit/hw/wifi_client.h"
 #include "transmit/hw/clock.h"
 #include "transmit/hw/flash_buffer.h"
@@ -153,7 +154,8 @@ void loop() {
 
     // AC2: a failed send never blocks/crashes/restarts - it just leaves
     // this cycle's reading unsent and the loop continues on schedule.
-    bool sent = transmitClient.send(&reading, 1);
+    SendResult sendResult = transmitClient.send(&reading, 1);
+    bool sent = sendResult.ok;
     if (sent) {
         connectionMonitor.recordSendSuccess();
         // Story 2.2 AC1: on the reconnect that ends an outage, send
@@ -164,7 +166,13 @@ void loop() {
         // duplication via the backend's client_id UNIQUE constraint either way.
         if (connectionMonitor.justRecovered() && flashBuffer.count() > 0) {
             std::vector<Reading> buffered = flashBuffer.peekAll();
-            if (transmitClient.send(buffered.data(), buffered.size())) {
+            SendResult backfillResult = transmitClient.send(buffered.data(), buffered.size());
+            Serial.printf("[%lums] backfill: %u buffered reading(s) %s\n", now,
+                          static_cast<unsigned>(buffered.size()),
+                          describeIngestOutcome(backfillResult.ok, backfillResult.statusCode,
+                                                backfillResult.response)
+                              .c_str());
+            if (backfillResult.ok) {
                 flashBuffer.clear();
             }
         }
@@ -179,11 +187,17 @@ void loop() {
     digitalWrite(kDisconnectLedPin, shouldLedSignalDisconnect(connectionMonitor.isHealthy()) ? HIGH : LOW);
     clock_.resyncIfNeeded();
 
-    Serial.printf("[%lums] wifi=%s%s%s%s%s%s%d sent=%s clockSynced=%s buffered=%u\n", now,
+    // `sent=yes` alone was actively misleading: it meant "the POST returned
+    // 2xx", not "the backend stored the reading" - the exact gap bug-031
+    // hid in. describeIngestOutcome() reports the backend's own
+    // stored/received counts and shouts when a successful request stored
+    // nothing at all.
+    Serial.printf("[%lums] wifi=%s%s%s%s%s%s%d %s clockSynced=%s buffered=%u\n", now,
                   wifiConnectedThisCycle ? "up" : "down",
                   wifiConnectedThisCycle ? " ssid=" : "", wifiConnectedThisCycle ? WiFi.SSID().c_str() : "",
                   wifiConnectedThisCycle ? " ip=" : "", wifiConnectedThisCycle ? WiFi.localIP().toString().c_str() : "",
                   wifiConnectedThisCycle ? " rssi=" : "", wifiConnectedThisCycle ? WiFi.RSSI() : 0,
-                  sent ? "yes" : "no", clock_.isSynced() ? "yes" : "no",
+                  describeIngestOutcome(sendResult.ok, sendResult.statusCode, sendResult.response).c_str(),
+                  clock_.isSynced() ? "yes" : "no",
                   static_cast<unsigned>(flashBuffer.count()));
 }

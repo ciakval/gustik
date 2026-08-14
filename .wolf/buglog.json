@@ -4,10 +4,10 @@
     {
       "id": "bug-001",
       "timestamp": "2026-08-01T12:00:00Z",
-      "error_message": "PostToolUse:write hook error \u2014 Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspaces/gustik/.wolf/hooks/symbol-extractor.js' imported from /workspaces/gustik/.wolf/hooks/post-write.js",
+      "error_message": "PostToolUse:write hook error — Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspaces/gustik/.wolf/hooks/symbol-extractor.js' imported from /workspaces/gustik/.wolf/hooks/post-write.js",
       "file": ".wolf/hooks/symbol-extractor.js",
-      "root_cause": "The OpenWolf install commit (f532148, 'chore: add OpenWolf files and CLAUDE.md') never copied symbol-extractor.js into .wolf/hooks/, even though post-write.js imports it. Every other hook file was present and matched the version shipped in the globally installed openwolf@2.0.1 npm package (dist/hooks/*.js), so this was an install/packaging gap, not a version mismatch. Because post-write.js's main() wraps everything in main().catch(() => process.exit(0)), runtime errors inside main are swallowed silently \u2014 but a top-level ESM import failure happens before main() is ever called, so it crashed loudly on every Write/Edit/MultiEdit for the whole session instead of being masked like other errors would be.",
-      "fix": "Copied .wolf/hooks/symbol-extractor.js from /usr/lib/node_modules/openwolf/dist/hooks/symbol-extractor.js (globally installed openwolf@2.0.1 \u2014 confirmed same version via diff against the project's post-write.js, which matched byte-for-byte except a sourceMappingURL comment). Verified by piping a synthetic Write tool_input JSON into `node .wolf/hooks/post-write.js` and confirming exit code 0. Ran `openwolf scan` afterward to backfill anatomy.md entries that the hook had failed to write during the outage. File is untracked in git as of this fix \u2014 needs `git add .wolf/hooks/symbol-extractor.js` to persist.",
+      "root_cause": "The OpenWolf install commit (f532148, 'chore: add OpenWolf files and CLAUDE.md') never copied symbol-extractor.js into .wolf/hooks/, even though post-write.js imports it. Every other hook file was present and matched the version shipped in the globally installed openwolf@2.0.1 npm package (dist/hooks/*.js), so this was an install/packaging gap, not a version mismatch. Because post-write.js's main() wraps everything in main().catch(() => process.exit(0)), runtime errors inside main are swallowed silently — but a top-level ESM import failure happens before main() is ever called, so it crashed loudly on every Write/Edit/MultiEdit for the whole session instead of being masked like other errors would be.",
+      "fix": "Copied .wolf/hooks/symbol-extractor.js from /usr/lib/node_modules/openwolf/dist/hooks/symbol-extractor.js (globally installed openwolf@2.0.1 — confirmed same version via diff against the project's post-write.js, which matched byte-for-byte except a sourceMappingURL comment). Verified by piping a synthetic Write tool_input JSON into `node .wolf/hooks/post-write.js` and confirming exit code 0. Ran `openwolf scan` afterward to backfill anatomy.md entries that the hook had failed to write during the outage. File is untracked in git as of this fix — needs `git add .wolf/hooks/symbol-extractor.js` to persist.",
       "tags": [
         "openwolf",
         "hooks",
@@ -25,8 +25,8 @@
       "timestamp": "2026-08-01T12:18:00Z",
       "error_message": "Stop hook repeats 'ACTION REQUIRED: N files were modified this session but no semantic summary was written to memory.md' every single turn, even after a proper semantic summary line is appended.",
       "file": ".wolf/hooks/shared.js",
-      "root_cause": "countSemanticEntries() (shared.js:614-631) requires a memory.md line to start with `| ${today}` where today is a full ISO date like '| 2026-08-01'. But every memory.md row actually written by post-write.js/stop.js is time-only, formatted `| HH:MM | ... |` (the date only appears once, in the '## Session: YYYY-MM-DD HH:MM' heading above each table). Since no row line ever starts with the date, the startsWith(todayPrefix) check never matches, semanticCount is always 0, and needsSemanticSummary() (stop.js:206-213) fires unconditionally on every Stop regardless of how many real summaries exist \u2014 an unsatisfiable check.",
-      "fix": "Patched countSemanticEntries() in .wolf/hooks/shared.js: instead of matching row lines against an impossible `| ${today}` date prefix, it now tracks which '## Session: YYYY-MM-DD HH:MM' heading block it's inside and counts non-mechanical `| HH:MM | ... |` rows within today's session block(s). Verified via `node -e \"import('./.wolf/hooks/shared.js').then(({countSemanticEntries,getWolfDir}) => console.log(countSemanticEntries(getWolfDir())))\"` \u2014 now correctly returns 2 instead of 0.",
+      "root_cause": "countSemanticEntries() (shared.js:614-631) requires a memory.md line to start with `| ${today}` where today is a full ISO date like '| 2026-08-01'. But every memory.md row actually written by post-write.js/stop.js is time-only, formatted `| HH:MM | ... |` (the date only appears once, in the '## Session: YYYY-MM-DD HH:MM' heading above each table). Since no row line ever starts with the date, the startsWith(todayPrefix) check never matches, semanticCount is always 0, and needsSemanticSummary() (stop.js:206-213) fires unconditionally on every Stop regardless of how many real summaries exist — an unsatisfiable check.",
+      "fix": "Patched countSemanticEntries() in .wolf/hooks/shared.js: instead of matching row lines against an impossible `| ${today}` date prefix, it now tracks which '## Session: YYYY-MM-DD HH:MM' heading block it's inside and counts non-mechanical `| HH:MM | ... |` rows within today's session block(s). Verified via `node -e \"import('./.wolf/hooks/shared.js').then(({countSemanticEntries,getWolfDir}) => console.log(countSemanticEntries(getWolfDir())))\"` — now correctly returns 2 instead of 0.",
       "tags": [
         "openwolf",
         "hooks",
@@ -45,10 +45,10 @@
     {
       "id": "bug-003",
       "timestamp": "2026-08-01T15:22:00Z",
-      "error_message": "Stop hook: 'Files edited 3+ times this session (ARCHITECTURE-SPINE.md) but buglog.json was not updated.' \u2014 false-positive trigger, not an actual bug.",
+      "error_message": "Stop hook: 'Files edited 3+ times this session (ARCHITECTURE-SPINE.md) but buglog.json was not updated.' — false-positive trigger, not an actual bug.",
       "file": "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/ARCHITECTURE-SPINE.md",
-      "root_cause": "Not a bug \u2014 the multi-edit heuristic can't distinguish 'fixing a mistake repeatedly' from a document going through a defined multi-pass authoring process. ARCHITECTURE-SPINE.md was edited 6+ times in one session because the bmad-architecture skill's Finalize sequence is inherently multi-pass by design: Fast-path draft, then a 3-lens reviewer gate (rubric checklist + version/currency + adversarial-divergence, each a parallel subagent) whose findings get applied back into the same file as separate, scoped edits (one per AD/section fixed).",
-      "fix": "No code fix needed. Logging this so a future session reading buglog.json before re-debugging doesn't mistake repeated edits to a BMAD spine/PRD/spec artifact for a sign something went wrong \u2014 that pattern is expected for any bmad-* skill with a reviewer-gate Finalize step, not just this run.",
+      "root_cause": "Not a bug — the multi-edit heuristic can't distinguish 'fixing a mistake repeatedly' from a document going through a defined multi-pass authoring process. ARCHITECTURE-SPINE.md was edited 6+ times in one session because the bmad-architecture skill's Finalize sequence is inherently multi-pass by design: Fast-path draft, then a 3-lens reviewer gate (rubric checklist + version/currency + adversarial-divergence, each a parallel subagent) whose findings get applied back into the same file as separate, scoped edits (one per AD/section fixed).",
+      "fix": "No code fix needed. Logging this so a future session reading buglog.json before re-debugging doesn't mistake repeated edits to a BMAD spine/PRD/spec artifact for a sign something went wrong — that pattern is expected for any bmad-* skill with a reviewer-gate Finalize step, not just this run.",
       "tags": [
         "openwolf",
         "hooks",
@@ -69,8 +69,8 @@
       "timestamp": "2026-08-01T15:24:00Z",
       "error_message": "Stop hook kept repeating 'ACTION REQUIRED: Files edited 3+ times this session ... but buglog.json was not updated' every turn, even immediately after bug-003 was logged to buglog.json in the previous turn.",
       "file": ".wolf/hooks/stop.js",
-      "root_cause": "checkForMissingBugLogs() (stop.js:145-158) checked `session.files_written.some(w => w.file.includes(\"buglog.json\"))` to decide whether buglog.json had been updated. But post-write.js exits early for every path under .wolf/ ('Skip processing for .wolf/ internal files to avoid slow self-referential updates', post-write.js:39-42) \u2014 before it ever reaches the line that pushes to session.files_written. So writes to .wolf/buglog.json itself can never appear in files_written, and the check was unsatisfiable: no edit to buglog.json, however correct or recent, could ever clear the reminder. Same bug *class* as bug-002 (a Stop-hook check whose required evidence structurally can never be produced), but an independent root cause/code path \u2014 that one was a date-format mismatch in shared.js, this one is a tracking-array exclusion colliding with a check that assumed inclusion.",
-      "fix": "Rewrote checkForMissingBugLogs() to check buglog.json's own mtime via fs.statSync against session.started, mirroring the pattern checkStatusFreshness() already used correctly for STATUS.md (which checks the file's mtime directly, not files_written). Verified by replicating the exact comparison inline against the real buglog.json mtime and the current session's recorded `started` timestamp \u2014 now correctly evaluates true after an edit, where it was unconditionally false before.",
+      "root_cause": "checkForMissingBugLogs() (stop.js:145-158) checked `session.files_written.some(w => w.file.includes(\"buglog.json\"))` to decide whether buglog.json had been updated. But post-write.js exits early for every path under .wolf/ ('Skip processing for .wolf/ internal files to avoid slow self-referential updates', post-write.js:39-42) — before it ever reaches the line that pushes to session.files_written. So writes to .wolf/buglog.json itself can never appear in files_written, and the check was unsatisfiable: no edit to buglog.json, however correct or recent, could ever clear the reminder. Same bug *class* as bug-002 (a Stop-hook check whose required evidence structurally can never be produced), but an independent root cause/code path — that one was a date-format mismatch in shared.js, this one is a tracking-array exclusion colliding with a check that assumed inclusion.",
+      "fix": "Rewrote checkForMissingBugLogs() to check buglog.json's own mtime via fs.statSync against session.started, mirroring the pattern checkStatusFreshness() already used correctly for STATUS.md (which checks the file's mtime directly, not files_written). Verified by replicating the exact comparison inline against the real buglog.json mtime and the current session's recorded `started` timestamp — now correctly evaluates true after an edit, where it was unconditionally false before.",
       "tags": [
         "openwolf",
         "hooks",
@@ -178,7 +178,7 @@
       "error_message": "Significant refactor of ",
       "file": ".worktrees/story-1.6-dashboard/backend/src/store/db.js",
       "root_cause": "3 lines replaced/restructured",
-      "fix": "Rewrote 8\u219211 lines (3 removed)",
+      "fix": "Rewrote 8→11 lines (3 removed)",
       "tags": [
         "auto-detected",
         "refactor",
@@ -213,7 +213,7 @@
       "error_message": "Wrong reference: test_capacity_covers_at_least_4_hours_at_3_second_interval should be test_reset_reinitializes_capacity_and_clears",
       "file": ".worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/test_ring_buffer.cpp",
       "root_cause": "Used \"test_capacity_covers_at_least_4_hours_at_3_second_interval\" instead of \"test_reset_reinitializes_capacity_and_clears\"",
-      "fix": "Changed test_capacity_covers_at_least_4_hours_at_3_second_interval \u2192 test_reset_reinitializes_capacity_and_clears",
+      "fix": "Changed test_capacity_covers_at_least_4_hours_at_3_second_interval → test_reset_reinitializes_capacity_and_clears",
       "tags": [
         "auto-detected",
         "wrong-reference",
@@ -229,7 +229,7 @@
       "error_message": "Wrong reference: drainAll should be peekAll",
       "file": ".worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.cpp",
       "root_cause": "Used \"drainAll\" instead of \"peekAll\"",
-      "fix": "Changed drainAll \u2192 peekAll",
+      "fix": "Changed drainAll → peekAll",
       "tags": [
         "auto-detected",
         "wrong-reference",
@@ -261,7 +261,7 @@
       "error_message": "Significant refactor of ",
       "file": ".worktrees/story-3.3-resync/backend/test/live-socket.test.js",
       "root_cause": "3 lines replaced/restructured",
-      "fix": "Rewrote 8\u21925 lines (3 removed)",
+      "fix": "Rewrote 8→5 lines (3 removed)",
       "tags": [
         "auto-detected",
         "refactor",
@@ -316,7 +316,7 @@
       "timestamp": "2026-08-09T20:42:50.723Z",
       "error_message": "Missing await",
       "file": "backend/test/ingest.test.js",
-      "root_cause": "Async call without await \u2014 returned Promise instead of value",
+      "root_cause": "Async call without await — returned Promise instead of value",
       "fix": "Added await to async call",
       "tags": [
         "auto-detected",
@@ -330,10 +330,10 @@
     {
       "id": "bug-019",
       "timestamp": "2026-08-09T20:50:00.000Z",
-      "error_message": "History chart/table shows 00:00 for every point and never reflects newly-inserted readings, when manually POSTing test readings to a running backend (reported against a Docker-started instance, but reproduced identically against a plain `node src/index.js` run \u2014 not actually Docker-specific)",
+      "error_message": "History chart/table shows 00:00 for every point and never reflects newly-inserted readings, when manually POSTing test readings to a running backend (reported against a Docker-started instance, but reproduced identically against a plain `node src/index.js` run — not actually Docker-specific)",
       "file": "backend/src/ingest/routes.js",
       "root_cause": "getHistory() (backend/src/store/readings.js) filters `WHERE captured_at >= ?` using plain lexicographic TEXT comparison against a generated 'YYYY-MM-DDTHH:MM:SS.sssZ' cutoff string. POST /readings never validated the client-supplied capturedAt string, so any reading whose format deviates from that exact ISO-8601 'T'.../'Z' shape (e.g. 'YYYY-MM-DD HH:MM:SS' with a space, which is what the shell `date` command and many quick manual-test scripts produce, or a date-only string) sorts before the cutoff in plain string comparison (space 0x20 < 'T' 0x5A) and is silently dropped from every /readings/history response, even though the row is genuinely from today. The write itself still succeeds (201), so nothing in the response indicates data was lost - it just never appears in the chart. Confirmed reproducible: inserted a well-formed ISO reading and a space-separated 'now' reading into the same fresh in-memory DB; GET /readings/history returned only the well-formed one. The pre-existing local dev DB (backend/data/gustik.sqlite, gitignored) already had 12 rows in the broken space-separated shape from earlier manual testing, all invisible to /readings/history.",
-      "fix": "Added strict ISO-8601 UTC validation (regex `/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/` plus a Date.parse sanity check) at the POST /readings boundary in ingest/routes.js \u2014 malformed capturedAt now returns 400 immediately instead of being stored and silently excluded later. Verified against firmware/src/transmit/hw/clock.cpp (`strftime(..., \"%Y-%m-%dT%H:%M:%S.000Z\", ...)`) - real device payloads always match this shape, so the validation cannot reject legitimate hardware data, only malformed manual/test input. Added a TDD regression test in backend/test/ingest.test.js.",
+      "fix": "Added strict ISO-8601 UTC validation (regex `/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/` plus a Date.parse sanity check) at the POST /readings boundary in ingest/routes.js — malformed capturedAt now returns 400 immediately instead of being stored and silently excluded later. Verified against firmware/src/transmit/hw/clock.cpp (`strftime(..., \"%Y-%m-%dT%H:%M:%S.000Z\", ...)`) - real device payloads always match this shape, so the validation cannot reject legitimate hardware data, only malformed manual/test input. Added a TDD regression test in backend/test/ingest.test.js.",
       "tags": [
         "backend",
         "ingest",
@@ -352,7 +352,7 @@
       "timestamp": "2026-08-09T22:01:15.818Z",
       "error_message": "Missing await",
       "file": "backend/test/ingest.test.js",
-      "root_cause": "Async call without await \u2014 returned Promise instead of value",
+      "root_cause": "Async call without await — returned Promise instead of value",
       "fix": "Added await to async call",
       "tags": [
         "auto-detected",
@@ -368,7 +368,7 @@
       "timestamp": "2026-08-09T22:01:22.396Z",
       "error_message": "Missing await",
       "file": "backend/test/history.test.js",
-      "root_cause": "Async call without await \u2014 returned Promise instead of value",
+      "root_cause": "Async call without await — returned Promise instead of value",
       "fix": "Added await to async call",
       "tags": [
         "auto-detected",
@@ -385,7 +385,7 @@
       "error_message": "Significant refactor of ",
       "file": "backend/src/ingest/routes.js",
       "root_cause": "9 lines replaced/restructured",
-      "fix": "Rewrote 21\u219210 lines (9 removed) | Also: const readings = Array.isArray(request.body) ? req; const invalid = readings.find((reading) => !isVali",
+      "fix": "Rewrote 21→10 lines (9 removed) | Also: const readings = Array.isArray(request.body) ? req; const invalid = readings.find((reading) => !isVali",
       "tags": [
         "auto-detected",
         "refactor",
@@ -417,7 +417,7 @@
       "error_message": "Wrong reference: 800 should be 1400",
       "file": "backend/_manual-verify-screenshot.cjs",
       "root_cause": "Used \"800\" instead of \"1400\"",
-      "fix": "Changed 800 \u2192 1400",
+      "fix": "Changed 800 → 1400",
       "tags": [
         "auto-detected",
         "wrong-reference",
@@ -570,6 +570,213 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-12T05:48:14Z"
+    },
+    {
+      "id": "bug-032",
+      "timestamp": "2026-08-14T11:40:58.881Z",
+      "error_message": "Significant refactor of ",
+      "file": "backend/src/store/readings.js",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 13→27 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T11:40:58.881Z"
+    },
+    {
+      "id": "bug-033",
+      "timestamp": "2026-08-14T11:41:11.609Z",
+      "error_message": "Null/undefined access in ",
+      "file": "backend/src/store/readings.js",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T11:41:11.609Z"
+    },
+    {
+      "id": "bug-034",
+      "timestamp": "2026-08-14T11:52:20.249Z",
+      "error_message": "Null/undefined access in ",
+      "file": "backend/src/static/history-chart.js",
+      "root_cause": "Property access on potentially null/undefined value",
+      "fix": "Added null safety (optional chaining or null check)",
+      "tags": [
+        "auto-detected",
+        "null-safety",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T11:52:20.249Z"
+    },
+    {
+      "id": "bug-035",
+      "timestamp": "2026-08-14T11:52:28.462Z",
+      "error_message": "Incorrect value in code",
+      "file": "backend/src/static/status.html",
+      "root_cause": "Had \"table-wrap\"",
+      "fix": "Changed to \"table-wrap scroll\"",
+      "tags": [
+        "auto-detected",
+        "wrong-value",
+        "html"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T11:52:28.462Z"
+    },
+    {
+      "id": "bug-036",
+      "timestamp": "2026-08-14T12:10:00.000Z",
+      "error_message": "Mlok: 'the display doesn't look so good' - history graph resets mid-morning and wind direction is unreadable",
+      "file": "backend/src/store/readings.js",
+      "root_cause": "getHistory() cut the window at start of the UTC day (startOfUtcDayIso). Europe/Prague is UTC+2 in summer, so the 'current race day' graph actually reset at 02:00 local time - every reading between local midnight and 02:00 belonged to the previous UTC day and silently vanished from the graph. Never noticed because all earlier testing happened well after 02:00 local.",
+      "fix": "New backend/src/store/localday.js (startOfLocalDayIso, Intl-based, DST-correct - re-reads the zone offset AT the candidate instant, not at 'now', so a DST-transition day still lands on midnight). getHistory()/getHistoryFull() default to it instead of the UTC day, and both now also accept explicit from/to bounds so the client controls the window anyway.",
+      "tags": [
+        "timezone",
+        "history",
+        "utc",
+        "dst",
+        "dashboard"
+      ],
+      "related_bugs": [
+        "bug-019"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T12:10:00.000Z"
+    },
+    {
+      "id": "bug-037",
+      "timestamp": "2026-08-14T12:10:00.000Z",
+      "error_message": "Wind direction on the history graph jumps between the top and the bottom of the chart on consecutive samples",
+      "file": "backend/src/static/history-chart.js",
+      "root_cause": "Direction was plotted as a scatter series on a LINEAR right-hand y-axis running 0..7 (octant as a plain number). Direction is a circular quantity: a wind oscillating around north alternates between octant 7 and octant 0, which on a linear axis is a full-scale jump from top to bottom and back. Same class of error made aggregation impossible - an arithmetic mean of octants 7 and 1 is 4, the exact opposite direction.",
+      "fix": "Direction is now drawn as rotated arrow glyphs (Chart.js per-point pointStyle 'triangle' + rotation) on a hidden 0..1 carrier axis - the value is encoded as an ANGLE, so wraparound is structurally impossible. Averaging goes through circularMeanOctant() (unit-vector mean, snapped back to an octant), implemented in both backend/src/serve/aggregate.js and backend/src/static/compass.js with tests asserting the [7,1] -> 0 case and the exactly-opposing [2,6] zero-vector fallback.",
+      "tags": [
+        "dashboard",
+        "chart",
+        "wind-direction",
+        "circular-mean",
+        "chartjs"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T12:10:00.000Z"
+    },
+    {
+      "id": "bug-038",
+      "timestamp": "2026-08-14T12:51:57.559Z",
+      "error_message": "Significant refactor of ",
+      "file": "backend/src/ingest/routes.js",
+      "root_cause": "5 lines replaced/restructured",
+      "fix": "Rewrote 5→3 lines (5 removed) | Also: duplicates: readings.length - insertedCount,; return reply.code(201).send({ written: readings.le",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "js"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-08-14T12:52:19.687Z"
+    },
+    {
+      "id": "bug-038",
+      "timestamp": "2026-08-14T12:55:00.000Z",
+      "error_message": "POST /readings answered 201 {written: N} even when every row was silently discarded as a duplicate clientId (root enabler of bug-031)",
+      "file": "backend/src/ingest/routes.js",
+      "root_cause": "The response reported `written: readings.length` - the number of rows RECEIVED, not the number STORED. insertReading() uses ON CONFLICT(client_id) DO NOTHING (deliberate Story 2.2 backfill-retry safety net) and its `inserted` return value was computed but never surfaced, so a batch discarded in full was indistinguishable from a batch fully stored. This is what let bug-031 hide for hours: the device printed sent=yes every cycle while nothing reached the DB.",
+      "fix": "Response contract rewritten: 401 bad token; 400 when nothing was stored AND the batch is at fault (unparseable capturedAt, or - new - an empty batch); 201 when at least one row was stored; 200 + an explicit `warning` when the batch was understood but nothing new was stored. Every 2xx body is {received, inserted, duplicates, backfilled} with received == inserted + duplicates. `written` removed rather than aliased (misleading name, sole producer, firmware ignores the body). Duplicates deliberately remain 2xx - a non-2xx would make main.cpp re-buffer rows already safely stored, since it clears its flash buffer only on 2xx. Verified with 8 new tests plus a real curl smoke test of all seven cases.",
+      "tags": [
+        "ingest",
+        "http-contract",
+        "idempotency",
+        "duplicates",
+        "observability"
+      ],
+      "related_bugs": [
+        "bug-031"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T12:55:00.000Z"
+    },
+    {
+      "id": "bug-040",
+      "timestamp": "2026-08-14T13:03:50.187Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/transmit/hw/wifi_client.h",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 5→7 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "h"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:03:50.187Z"
+    },
+    {
+      "id": "bug-041",
+      "timestamp": "2026-08-14T13:04:01.253Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/transmit/hw/wifi_client.cpp",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 16→30 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:04:01.253Z"
+    },
+    {
+      "id": "bug-042",
+      "timestamp": "2026-08-14T13:04:27.288Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/main.cpp",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 7→13 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:04:27.288Z"
+    },
+    {
+      "id": "bug-039",
+      "timestamp": "2026-08-14T13:30:00.000Z",
+      "error_message": "Firmware Serial printed `sent=yes` for a POST that stored nothing - the device could not distinguish 'request succeeded' from 'reading was stored' (the device-side half of bug-031)",
+      "file": "firmware/src/main.cpp",
+      "root_cause": "WifiTransmitClient::send() returned a bare bool meaning `statusCode >= 200 && < 300`, and main.cpp printed it as `sent=yes`. The backend's client_id UNIQUE + ON CONFLICT DO NOTHING means a 2xx batch can be discarded in full, so `sent=yes` was true and useless at the same time - exactly the sentence bug-031 hid behind for hours.",
+      "fix": "New pure module firmware/src/transmit/ingest_response.{h,cpp} (parseIngestResponse + describeIngestOutcome, no Arduino.h, native-tested - firmware suite 43 -> 57). send() now returns SendResult{ok, statusCode, response} with an explicit operator bool(); the body is read before http.end() and bounded at 1KB. Serial now prints e.g. `send=ok http=201 stored=1/1` or `send=ok http=200 stored=0/1 !! BACKEND STORED NOTHING (duplicate clientId)`, and the backfill path got its own line. hasCounts requires BOTH received and inserted so an old-contract backend degrades to `(no counts in response)` rather than a phantom inserted=0 that would read as the alarm. Cross-checked by compiling the real firmware parser on the host against the six real response bodies captured from the running backend.",
+      "tags": [
+        "firmware",
+        "observability",
+        "serial-diagnostics",
+        "http-contract",
+        "ingest"
+      ],
+      "related_bugs": [
+        "bug-031",
+        "bug-038"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:30:00.000Z"
     }
   ]
 }
