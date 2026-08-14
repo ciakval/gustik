@@ -408,3 +408,20 @@
 | 14:52 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~242 |
 | 14:52 | Edited docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | expanded (+32 lines) | ~632 |
 | 14:55 | POST /readings response contract rewritten to signal what actually happened (201 stored / 200+warning nothing stored / 400 empty batch; {received,inserted,duplicates,backfilled}, `written` removed) - closes the follow-up flagged after bug-031 | backend/src/ingest/routes.js, backend/test/ingest-response.test.js, docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | 123/123 tests pass, lint clean, curl smoke test of all 7 cases OK | ~18k |
+| 15:02 | Created firmware/src/transmit/ingest_response.h | — | ~530 |
+| 15:02 | Created firmware/src/transmit/ingest_response.cpp | — | ~1089 |
+| 15:03 | Created firmware/test/test_ingest_response/test_ingest_response.cpp | — | ~1431 |
+| 15:03 | Edited firmware/src/transmit/hw/wifi_client.h | added 1 condition(s) | ~276 |
+| 15:03 | Edited firmware/src/transmit/hw/wifi_client.h | 5→7 lines | ~120 |
+| 15:04 | Edited firmware/src/transmit/hw/wifi_client.cpp | added 1 condition(s) | ~366 |
+| 15:04 | Edited firmware/src/transmit/hw/wifi_client.cpp | 2→3 lines | ~30 |
+| 15:04 | Edited firmware/src/main.cpp | modified if() | ~80 |
+| 15:04 | Edited firmware/src/main.cpp | modified if() | ~184 |
+| 15:04 | Edited firmware/src/main.cpp | modified c_str() | ~270 |
+| 15:04 | Edited firmware/src/main.cpp | 1→2 lines | ~19 |
+| 15:04 | Created docs/rust-firmware/README.md | — | ~758 |
+| 15:05 | Edited docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | added 1 condition(s) | ~633 |
+| 15:05 | Created docs/rust-firmware/01-feasibility.md | — | ~2656 |
+| 15:30 | Firmware now parses+logs the backend's inserted/received counts: new pure transmit/ingest_response.{h,cpp}, send() returns SendResult, Serial replaces `sent=yes` with `stored=N/M` and a loud BACKEND STORED NOTHING alarm | firmware/src/transmit/ingest_response.*, transmit/hw/wifi_client.*, main.cpp, test/test_ingest_response/ | pio test native 57/57, esp32dev build clean 92.3% flash, host cross-check vs real backend bytes OK; NOT flashed to device | ~30k |
+| 15:06 | Edited TODO.md | 2→5 lines | ~83 |
+| 15:06 | Created docs/rust-firmware/02-crate-inventory.md | — | ~3300 |

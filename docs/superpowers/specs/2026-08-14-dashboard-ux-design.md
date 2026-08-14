@@ -183,13 +183,38 @@ Empty batches now `400`: both firmware call sites are guarded (`main.cpp` sends 
 reading or a buffer it has just checked is non-empty), so an empty POST means a caller bug and a
 2xx would hide it.
 
+### 5. Firmware reads the counts (added on Mlok's follow-up ask)
+
+`WifiTransmitClient::send()` returned a bare `bool` meaning "the POST returned 2xx", and `main.cpp`
+printed that as `sent=yes`. That is precisely the sentence bug-031 hid behind. Now:
+
+- New **pure** module `firmware/src/transmit/ingest_response.{h,cpp}` — `parseIngestResponse()` and
+  `describeIngestOutcome()`. No `Arduino.h`, so it is built and unit-tested by `[env:native]`
+  (14 new tests; firmware suite **43 → 57**), matching the existing hardware/logic split.
+- It is a minimal field scanner, not a JSON parser. The only producer of these bodies is our own
+  backend, the payload is a flat object of integer fields, and an ESP32 sitting above 90% flash
+  cannot spare a JSON library. The quoted name is searched **with both quotes**, so `inserted_total`
+  and `notinserted` cannot match `inserted`.
+- `hasCounts` is false unless **both** `received` and `inserted` were found. Half-parsed counts are
+  worse than none: a phantom `inserted: 0` reads exactly like the alarm. This is also what makes
+  deploy ordering safe — firmware flashed before the backend redeploys sees the old
+  `{"written": 1}`, reports `(no counts in response)`, and does not false-alarm.
+- `send()` now returns a `SendResult {ok, statusCode, response}` with an `explicit operator bool()`,
+  so `if (client.send(...))` still reads naturally while a caller wanting the counts must name the
+  struct. The response body is read before `end()` and bounded at 1 KB — `getString()` buffers the
+  whole response in RAM.
+- Serial per-cycle line replaces `sent=yes|no` with, e.g., `send=ok http=201 stored=1/1`,
+  `send=ok http=201 stored=4/5 backfilled=4 (duplicates=1)`, or the alarm
+  `send=ok http=200 stored=0/1 !! BACKEND STORED NOTHING (duplicate clientId)`. The backfill path
+  gets its own line, which it never had.
+
 ## Out of scope
 
-- **The firmware does not yet read any of this.** `WifiTransmitClient::send()` checks only
-  `statusCode >= 200 && < 300`, so the new counts are visible via `/status.html` and `curl` but not
-  in the device's own Serial diagnostics. Making the firmware parse `inserted` and report a
-  "sent but stored nothing" state on Serial is the natural next step — it needs a rebuild and
-  reflash to have any effect, so it is a separate change.
+- **Not flashed to the physical device.** The change is build-verified (`pio run -e esp32dev` clean,
+  flash 91.9% → 92.3%, ~101 KB headroom left) and cross-checked against real backend bytes on the
+  host, but the running Station still has the previous firmware. Flashing is a physical action on a
+  device that is currently working, and the new Serial line only says anything new once the backend
+  branch is also deployed.
 - No persistence for `ingestEvents` — deliberately in-memory only.
 - No auth on the status page — consistent with FR-9's public, no-login dashboard.
 

@@ -54,8 +54,11 @@ CI runner has:**
   LittleFS) actually works on real silicon. Grab a build artifact from
   the CI run (or a tagged release) and flash it, or just `pio run -t
   upload -e esp32dev` from a machine with the device attached.
-- **Flash usage is tight: 90.6% (1.19MB of 1.31MB)** at the current code
-  size, per the first real CI build. There's no OTA mechanism (station is
+- **Flash usage is tight: 92.3% (1.21MB of 1.31MB)** as of the 2026-08-14
+  ingest-response logging change — was 90.6% at the first real CI build,
+  91.9% after the magnetometer/diagnostics work, so roughly 101KB of
+  headroom is left and it has only ever moved one way. There's no OTA
+  mechanism (station is
   flashed by hand once), so the default partition table's two-OTA-slot
   layout wastes space that isn't needed — a custom single-app partition
   table would recover meaningful headroom if this becomes a real

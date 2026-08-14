@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-14T12:52:52.640Z",
-    "fileCount": 478,
+    "lastScanned": "2026-08-14T13:06:59.490Z",
+    "fileCount": 484,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "295ffd25033c28469ac1d854f60d98543d5982163f863e071e29e24548cd9706",
-    "storeUpdatedAt": "2026-08-14T12:52:52.648Z"
+    "renderedHash": "3951475e27d6f63c214a81505838fd01e523c1326df2ad731a3f950fd5fcbf56",
+    "storeUpdatedAt": "2026-08-14T13:06:59.498Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5363,13 +5363,13 @@
       "source": "scan"
     },
     "firmware/src/main.cpp": {
-      "description": "include <Arduino.h>; wiring + 2 Serial diagnostic lines/cycle (sensors: pulses/windSpeed/vane/magnetometer ok-or-FAIL/yaw/windDir; wifi: up-or-down/ssid/ip/rssi/sent/clockSynced/buffered) + config-loaded (GPIO25) and WiFi-connected (GPIO26) diagnostic LEDs alongside the existing disconnect LED (GPIO2); falls back to lastKnownYawDegrees on a magnetometer read failure; makeClientId() folds in capturedAt (not just a boot-reset counter) so clientId can't collide across reboots (bug-031 fix)",
-      "tokens": 1680,
-      "hash": "c09652432a89fe74",
-      "size": 5271,
-      "mtimeMs": 1786387643704.6753,
-      "updatedAt": "2026-08-14T11:39:26.626Z",
-      "source": "md-import"
+      "description": "include <Arduino.h>",
+      "tokens": 2810,
+      "hash": "dd18458b9f713cc0",
+      "size": 10537,
+      "mtimeMs": 1786712673282.107,
+      "updatedAt": "2026-08-14T13:04:33.376Z",
+      "source": "hook"
     },
     "firmware/src/sense/anemometer.cpp": {
       "description": "include \"sense/anemometer.h\"",
@@ -5498,22 +5498,22 @@
       "source": "scan"
     },
     "firmware/src/transmit/hw/wifi_client.cpp": {
-      "description": "ensureWifiConnected() now cycles through ALL configured+in-range networks (priority order) per call, not just the top-priority scan match, so a visible-but-unconnectable network no longer blocks fallback to the other one (bug-030 fix)",
-      "tokens": 830,
-      "hash": "31941afb246f137b",
-      "size": 2493,
-      "mtimeMs": 1786387643711.7927,
-      "updatedAt": "2026-08-14T11:39:26.626Z",
-      "source": "md-import"
+      "description": "include \"transmit/hw/wifi_client.h\"",
+      "tokens": 1133,
+      "hash": "56aca52860d5169f",
+      "size": 4248,
+      "mtimeMs": 1786712644884.162,
+      "updatedAt": "2026-08-14T13:04:04.984Z",
+      "source": "hook"
     },
     "firmware/src/transmit/hw/wifi_client.h": {
       "description": "pragma once",
-      "tokens": 393,
-      "hash": "f24ec6c8d96e1f19",
-      "size": 1375,
-      "mtimeMs": 1786387643712.3752,
-      "updatedAt": "2026-08-10T19:26:48.203Z",
-      "source": "scan"
+      "tokens": 653,
+      "hash": "2d8704be2b7b10a1",
+      "size": 2447,
+      "mtimeMs": 1786712630076.0078,
+      "updatedAt": "2026-08-14T13:03:50.173Z",
+      "source": "hook"
     },
     "firmware/src/transmit/led_policy.h": {
       "description": "pragma once",
@@ -6018,12 +6018,12 @@
     },
     "TODO.md": {
       "description": "TODO — items flagged for Mlok's review",
-      "tokens": 1556,
-      "hash": "1f0bbe52dd22fbe9",
-      "size": 6268,
-      "mtimeMs": 1786389866461.6282,
-      "updatedAt": "2026-08-10T19:26:48.214Z",
-      "source": "scan"
+      "tokens": 1786,
+      "hash": "39da1fbee3d860c7",
+      "size": 7187,
+      "mtimeMs": 1786712803148.587,
+      "updatedAt": "2026-08-14T13:06:43.249Z",
+      "source": "hook"
     },
     ".worktrees/chore-ghcr-backend-deploy/backend/compose.yaml": {
       "description": "Docker Compose: 2 services",
@@ -6087,11 +6087,11 @@
     },
     "docs/superpowers/specs/2026-08-14-dashboard-ux-design.md": {
       "description": "Dashboard UX rework — wind direction, graph resolution, status page",
-      "tokens": 3018,
-      "hash": "43456ff83653b4dc",
-      "size": 12168,
-      "mtimeMs": 1786711972540.509,
-      "updatedAt": "2026-08-14T12:52:52.639Z",
+      "tokens": 3482,
+      "hash": "1050043143e9f49b",
+      "size": 14031,
+      "mtimeMs": 1786712746148.621,
+      "updatedAt": "2026-08-14T13:05:46.243Z",
       "source": "hook"
     },
     "backend/test/aggregate.test.js": {
@@ -6553,6 +6553,60 @@
           "tokens": 1270
         }
       ]
+    },
+    "firmware/src/transmit/ingest_response.h": {
+      "description": "pragma once",
+      "tokens": 530,
+      "hash": "4a5622f1fee31486",
+      "size": 1986,
+      "mtimeMs": 1786712561024.7104,
+      "updatedAt": "2026-08-14T13:02:41.117Z",
+      "source": "hook"
+    },
+    "firmware/src/transmit/ingest_response.cpp": {
+      "description": "include \"transmit/ingest_response.h\"",
+      "tokens": 1089,
+      "hash": "504c97c7c7f2bbb2",
+      "size": 4081,
+      "mtimeMs": 1786712579234.6157,
+      "updatedAt": "2026-08-14T13:02:59.328Z",
+      "source": "hook"
+    },
+    "firmware/test/test_ingest_response/test_ingest_response.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 1431,
+      "hash": "db57006f74a963ba",
+      "size": 5363,
+      "mtimeMs": 1786712606846.8455,
+      "updatedAt": "2026-08-14T13:03:26.943Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/README.md": {
+      "description": "Project documentation",
+      "tokens": 710,
+      "hash": "b2933b41c4f6dbc9",
+      "size": 2854,
+      "mtimeMs": 1786712691522.1858,
+      "updatedAt": "2026-08-14T13:04:51.618Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/01-feasibility.md": {
+      "description": "01 — Feasibility and route selection",
+      "tokens": 2490,
+      "hash": "8242ea0007638e9c",
+      "size": 10016,
+      "mtimeMs": 1786712750245.0388,
+      "updatedAt": "2026-08-14T13:05:50.341Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/02-crate-inventory.md": {
+      "description": "02 — Crate inventory",
+      "tokens": 3093,
+      "hash": "fe135a3c7ea07e91",
+      "size": 12452,
+      "mtimeMs": 1786712819396.6143,
+      "updatedAt": "2026-08-14T13:06:59.490Z",
+      "source": "hook"
     }
   }
 }

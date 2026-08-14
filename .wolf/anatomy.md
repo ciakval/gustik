@@ -1,14 +1,14 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-14T12:52:52.640Z
-> Files: 478 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-14T13:06:59.490Z
+> Files: 484 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
 - `CLAUDE.md` — CLAUDE.md (~2136 tok)
 - `deploy.txt` (~25 tok)
-- `TODO.md` — TODO — items flagged for Mlok's review (~1556 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~1786 tok)
 
 ## .claude/
 
@@ -954,6 +954,12 @@
 
 - `wind-sensor-wiring.md` — WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits (~1100 tok)
 
+## docs/rust-firmware/
+
+- `01-feasibility.md` — 01 — Feasibility and route selection (~2490 tok)
+- `02-crate-inventory.md` — 02 — Crate inventory (~3093 tok)
+- `README.md` — Project documentation (~710 tok)
+
 ## docs/superpowers/plans/
 
 - `2026-08-09-timestamp-timezone-support.md` — Timestamp Timezone Support Implementation Plan (~4942 tok)
@@ -961,7 +967,7 @@
 ## docs/superpowers/specs/
 
 - `2026-08-09-timestamp-timezone-support-design.md` — Timestamp timezone support — design (~1546 tok)
-- `2026-08-14-dashboard-ux-design.md` — Dashboard UX rework — wind direction, graph resolution, status page (~3018 tok)
+- `2026-08-14-dashboard-ux-design.md` — Dashboard UX rework — wind direction, graph resolution, status page (~3482 tok)
 
 ## firmware/
 
@@ -1132,7 +1138,7 @@
 
 ## firmware/src/
 
-- `main.cpp` — include <Arduino.h>; wiring + 2 Serial diagnostic lines/cycle (sensors: pulses/windSpeed/vane/magnetometer ok-or-FAIL/yaw/windDir; wifi: up-or-down/ssid/ip/rssi/sent/clockSynced/buffered) + config-loaded (GPIO25) and WiFi-connected (GPIO26) diagnostic LEDs alongside the existing disconnect LED (GPIO2); falls back to lastKnownYawDegrees on a magnetometer read failure; makeClientId() folds in capturedAt (not just a boot-reset counter) so clientId can't collide across reboots (bug-031 fix) (~1680 tok)
+- `main.cpp` — include <Arduino.h> (~2810 tok)
 
 ## firmware/src/config/
 
@@ -1166,6 +1172,8 @@
 - `buffer_capacity.h` — pragma once (~88 tok)
 - `connection_monitor.cpp` — include "transmit/connection_monitor.h" (~111 tok)
 - `connection_monitor.h` — pragma once (~244 tok)
+- `ingest_response.cpp` — include "transmit/ingest_response.h" (~1089 tok)
+- `ingest_response.h` — pragma once (~530 tok)
 - `led_policy.h` — pragma once (~131 tok)
 - `payload.cpp` — include "transmit/payload.h" (~243 tok)
 - `payload.h` — pragma once (~111 tok)
@@ -1179,12 +1187,16 @@
 - `clock.h` — pragma once (~232 tok)
 - `flash_buffer.cpp` — include "transmit/hw/flash_buffer.h" (~599 tok)
 - `flash_buffer.h` — pragma once (~405 tok)
-- `wifi_client.cpp` — ensureWifiConnected() now cycles through ALL configured+in-range networks (priority order) per call, not just the top-priority scan match, so a visible-but-unconnectable network no longer blocks fallback to the other one (bug-030 fix) (~830 tok)
-- `wifi_client.h` — pragma once (~393 tok)
+- `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~1133 tok)
+- `wifi_client.h` — pragma once (~653 tok)
 
 ## firmware/test/test_connection_monitor/
 
 - `test_connection_monitor.cpp` — include <unity.h> (~827 tok)
+
+## firmware/test/test_ingest_response/
+
+- `test_ingest_response.cpp` — include <unity.h> (~1431 tok)
 
 ## firmware/test/test_led_policy/
 

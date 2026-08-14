@@ -708,6 +708,75 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-14T12:55:00.000Z"
+    },
+    {
+      "id": "bug-040",
+      "timestamp": "2026-08-14T13:03:50.187Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/transmit/hw/wifi_client.h",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 5→7 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "h"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:03:50.187Z"
+    },
+    {
+      "id": "bug-041",
+      "timestamp": "2026-08-14T13:04:01.253Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/transmit/hw/wifi_client.cpp",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 16→30 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:04:01.253Z"
+    },
+    {
+      "id": "bug-042",
+      "timestamp": "2026-08-14T13:04:27.288Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/main.cpp",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 7→13 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:04:27.288Z"
+    },
+    {
+      "id": "bug-039",
+      "timestamp": "2026-08-14T13:30:00.000Z",
+      "error_message": "Firmware Serial printed `sent=yes` for a POST that stored nothing - the device could not distinguish 'request succeeded' from 'reading was stored' (the device-side half of bug-031)",
+      "file": "firmware/src/main.cpp",
+      "root_cause": "WifiTransmitClient::send() returned a bare bool meaning `statusCode >= 200 && < 300`, and main.cpp printed it as `sent=yes`. The backend's client_id UNIQUE + ON CONFLICT DO NOTHING means a 2xx batch can be discarded in full, so `sent=yes` was true and useless at the same time - exactly the sentence bug-031 hid behind for hours.",
+      "fix": "New pure module firmware/src/transmit/ingest_response.{h,cpp} (parseIngestResponse + describeIngestOutcome, no Arduino.h, native-tested - firmware suite 43 -> 57). send() now returns SendResult{ok, statusCode, response} with an explicit operator bool(); the body is read before http.end() and bounded at 1KB. Serial now prints e.g. `send=ok http=201 stored=1/1` or `send=ok http=200 stored=0/1 !! BACKEND STORED NOTHING (duplicate clientId)`, and the backfill path got its own line. hasCounts requires BOTH received and inserted so an old-contract backend degrades to `(no counts in response)` rather than a phantom inserted=0 that would read as the alarm. Cross-checked by compiling the real firmware parser on the host against the six real response bodies captured from the running backend.",
+      "tags": [
+        "firmware",
+        "observability",
+        "serial-diagnostics",
+        "http-contract",
+        "ingest"
+      ],
+      "related_bugs": [
+        "bug-031",
+        "bug-038"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-14T13:30:00.000Z"
     }
   ]
 }
