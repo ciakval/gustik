@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-10T20:10:57.627Z
-> Files: 460 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-14T12:52:52.640Z
+> Files: 478 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -763,7 +763,7 @@
 - `.gitignore` — Git ignore rules (~14 tok)
 - `docker-compose.yml` — Docker Compose services (~104 tok)
 - `Dockerfile` — Docker container definition (~147 tok)
-- `eslint.config.js` — ESLint flat configuration (~332 tok)
+- `eslint.config.js` — ', 'node_modules/**'], (~361 tok)
 - `package-lock.json` — npm lock file (~28748 tok)
 - `package.json` — Node.js package manifest (~157 tok)
 
@@ -774,7 +774,7 @@
 
 ## backend/src/
 
-- `app.js` — Exports buildApp (~361 tok)
+- `app.js` — Exports buildApp (~430 tok)
 - `index.js` — Declares port (~125 tok)
 
 ## backend/src/health/
@@ -783,10 +783,11 @@
 
 ## backend/src/ingest/
 
-- `routes.js` — API routes: POST (1 endpoints) (~757 tok)
-  - fn `isAuthorized` L5-9 (~39 tok)
-  - fn `wireShape` L10-18 (~58 tok)
-  - fn `registerIngestRoutes` L19-68 (~600 tok)
+- `routes.js` — Ingest endpoint. (~1622 tok)
+  - fn `isAuthorized` L7-14 (~100 tok)
+  - fn `recordIngestEvent` L15-21 (~51 tok)
+  - fn `wireShape` L22-56 (~440 tok)
+  - fn `registerIngestRoutes` L57-139 (~962 tok)
 - `timestamp.js` — Normalizes a captured-at timestamp to canonical UTC (~898 tok)
   - fn `partsToUtcMs` L20-33 (~113 tok)
   - fn `renderAsIfUtcMs` L34-46 (~187 tok)
@@ -795,30 +796,91 @@
 
 ## backend/src/serve/
 
-- `routes.js` — API routes: GET (3 endpoints) (~353 tok)
+- `aggregate.js` — Circular (vector) mean of a list of octants, snapped back to an octant. (~1817 tok)
+  - fn `circularMeanOctant` L34-52 (~157 tok)
+  - fn `bucketStartIso` L53-58 (~59 tok)
+  - fn `summarize` L59-88 (~390 tok)
+  - fn `bucketReadings` L89-124 (~341 tok)
+  - fn `detectGaps` L125-155 (~306 tok)
+  - fn `clampBucketSeconds` L156-163 (~84 tok)
+- `routes.js` — API routes: GET (4 endpoints) (~1508 tok)
+  - fn `toCanonicalIso` L21-28 (~63 tok)
+  - fn `parseWindow` L29-40 (~98 tok)
+  - fn `parseBucketSeconds` L41-55 (~156 tok)
+  - fn `registerServeRoutes` L56-125 (~814 tok)
+  - fn `broadcast` L126-134 (~61 tok)
+  - fn `broadcastReading` L135-141 (~84 tok)
+  - fn `broadcastHistoryChanged` L142-145 (~30 tok)
 
 ## backend/src/static/
 
-- `dashboard.js` — speedEl: render, setUnit, fetchLatest (~713 tok)
-  - fn `render` L14-26 (~141 tok)
-  - fn `setUnit` L27-37 (~95 tok)
-  - fn `fetchLatest` L38-74 (~318 tok)
-- `format.js` — Exports msToKnots, octantToCompassLabel, isStale, formatAge (~240 tok)
-- `history-chart-data.js` — x is a numeric timestamp (ms since epoch), not the ISO string or Chart.js's (~194 tok)
-- `history-chart.js` — Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis (~961 tok)
-  - fn `speedAxisLabel` L10-13 (~28 tok)
-  - fn `formatTimeTick` L14-17 (~23 tok)
-  - fn `render` L18-79 (~542 tok)
-  - fn `setHistoryChartReadings` L80-84 (~28 tok)
-  - fn `setHistoryChartUnit` L85-89 (~23 tok)
-  - fn `fetchHistory` L90-96 (~55 tok)
-  - fn `initHistoryChart` L97-103 (~74 tok)
-  - fn `handleLiveMessage` L104-112 (~95 tok)
-  - fn `resyncHistoryChart` L113-116 (~17 tok)
-- `index.html` — Gustik — vítr živě (~897 tok)
+- `beaufort.js` — Beaufort scale, for the "so is that a lot?" question a raw m/s number does (~434 tok)
+- `compass.js` — Compass bearing the wind blows FROM, in degrees clockwise from north. (~954 tok)
+  - fn `isOctant` L26-29 (~27 tok)
+  - fn `octantLabel` L30-33 (~28 tok)
+  - fn `octantName` L34-41 (~72 tok)
+  - fn `octantToDegrees` L42-55 (~181 tok)
+  - fn `octantArrowRotation` L56-72 (~206 tok)
+  - fn `circularMeanOctant` L73-93 (~204 tok)
+- `dashboard.js` — speedEl: renderDirection, render, setUnit, fetchLatest (~1243 tok)
+  - fn `renderDirection` L28-41 (~128 tok)
+  - fn `render` L42-61 (~221 tok)
+  - fn `setUnit` L62-72 (~95 tok)
+  - fn `fetchLatest` L73-121 (~504 tok)
+- `format.js` — Exports msToKnots, formatNumber, octantToCompassLabel, isStale, formatAge (~352 tok)
+- `history-chart-data.js` — Min and max series for the gust band. Returns null for raw (unbucketed) (~927 tok)
+  - fn `convert` L17-20 (~25 tok)
+  - fn `buildSpeedPoints` L21-32 (~105 tok)
+  - fn `buildGustBand` L33-54 (~275 tok)
+  - fn `buildDirectionArrows` L55-79 (~243 tok)
+  - fn `buildRssiPoints` L80-85 (~56 tok)
+- `history-chart.js` — Point the chart at a new window ({from, to, rangeSeconds, bucketSeconds}) (~2276 tok)
+  - fn `speedAxisLabel` L18-21 (~27 tok)
+  - fn `unitSuffix` L22-27 (~56 tok)
+  - fn `showSeconds` L28-31 (~25 tok)
+  - fn `directionTooltip` L32-36 (~42 tok)
+  - fn `speedTooltip` L37-47 (~120 tok)
+  - fn `datasets` L48-112 (~533 tok)
+  - fn `options` L113-175 (~584 tok)
+  - fn `render` L176-192 (~103 tok)
+  - fn `setHistoryChartReadings` L193-197 (~24 tok)
+  - fn `setHistoryChartUnit` L198-202 (~21 tok)
+  - fn `fetchHistory` L203-227 (~253 tok)
+  - fn `setHistoryChartWindow` L228-232 (~28 tok)
+  - fn `initHistoryChart` L233-239 (~84 tok)
+  - fn `handleLiveMessage` L240-248 (~95 tok)
+  - fn `resyncHistoryChart` L249-260 (~112 tok)
+  - fn `setHistoryWindowResolver` L261-264 (~24 tok)
+- `index.html` — Gustik — vítr živě (~864 tok)
 - `live-socket.js` — Single shared WS connection lifecycle for the dashboard - both the live (~492 tok)
-- `manual.html` — Gustik — návod k obsluze (~991 tok)
-- `timezone.js` — Single named seam for the dashboard's display timezone. A future (~162 tok)
+- `manual.html` — Gustik — návod k obsluze (~1201 tok)
+- `status.html` — Gustik — stav stanice (~521 tok)
+- `status.js` — Diagnostics page. Deliberately shows raw values next to their (~2777 tok)
+  - fn `el` L32-38 (~58 tok)
+  - fn `badge` L39-42 (~26 tok)
+  - fn `row` L43-49 (~58 tok)
+  - fn `renderLatest` L50-82 (~390 tok)
+  - fn `renderTotals` L83-91 (~111 tok)
+  - fn `renderLog` L92-126 (~404 tok)
+  - fn `renderRecent` L127-145 (~233 tok)
+  - fn `renderRssi` L146-228 (~723 tok)
+  - fn `refresh` L229-273 (~404 tok)
+- `styles.css` — Styles: 40 rules, 10 vars (~1492 tok)
+- `timerange-ui.js` — Renders the chip row + resolution select into `container` and calls (~1123 tok)
+  - fn `mountTimeRange` L25-120 (~892 tok)
+- `timerange.js` — Bucket width that lands close to `targetPoints` samples across the window, (~1122 tok)
+  - fn `rangeById` L29-37 (~105 tok)
+  - fn `autoBucketSeconds` L38-43 (~93 tok)
+  - fn `bucketOptionsFor` L44-47 (~39 tok)
+  - fn `formatBucketSeconds` L48-59 (~132 tok)
+  - fn `windowFor` L60-76 (~218 tok)
+  - fn `loadSelection` L77-87 (~92 tok)
+  - fn `saveSelection` L88-96 (~88 tok)
+- `timezone.js` — Single named seam for the dashboard's display timezone. A future (~541 tok)
+  - fn `formatter` L7-22 (~155 tok)
+  - fn `formatLocalTime` L23-26 (~41 tok)
+  - fn `formatLocalStamp` L27-33 (~90 tok)
+  - fn `startOfLocalDayMs` L34-45 (~167 tok)
 
 ## backend/src/static/vendor/
 
@@ -827,28 +889,46 @@
 ## backend/src/store/
 
 - `db.js` — Exports openDb (~229 tok)
-- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~662 tok)
-  - fn `toRow` L9-21 (~102 tok)
-  - fn `fromRow` L22-31 (~58 tok)
-  - fn `startOfUtcDayIso` L32-39 (~75 tok)
-  - fn `insertReading` L40-45 (~76 tok)
-  - fn `getLatest` L46-53 (~93 tok)
-  - fn `getLatestCapturedAt` L54-61 (~100 tok)
-  - fn `getHistory` L62-69 (~72 tok)
+- `localday.js` — The UTC instant at which the current local day started, as a canonical ISO string. (~564 tok)
+  - fn `zoneOffsetMs` L12-38 (~199 tok)
+  - fn `startOfLocalDayIso` L39-53 (~201 tok)
+- `readings.js` — Insert a single reading. No-op (idempotent) if clientId already exists. (~1330 tok)
+  - fn `toRow` L11-23 (~102 tok)
+  - fn `fromRow` L24-37 (~139 tok)
+  - fn `fullFromRow` L38-55 (~147 tok)
+  - fn `insertReading` L56-61 (~76 tok)
+  - fn `getLatest` L62-69 (~93 tok)
+  - fn `getLatestCapturedAt` L70-86 (~236 tok)
+  - fn `getHistory` L87-96 (~118 tok)
+  - fn `getHistoryFull` L97-105 (~100 tok)
+  - fn `getLatestFull` L106-110 (~63 tok)
+  - fn `getRecentFull` L111-115 (~52 tok)
+  - fn `getTotals` L116-128 (~104 tok)
 
 ## backend/test/
 
+- `aggregate.test.js` — Declares reading (~1325 tok)
+  - fn `reading` L5-117 (~1274 tok)
 - `backfill.test.js` — testApp: postReadings, getRawRow (~1336 tok)
   - fn `testApp` L6-9 (~28 tok)
   - fn `postReadings` L10-18 (~56 tok)
   - fn `getRawRow` L19-128 (~1210 tok)
+- `compass.test.js` — Declares bad (~727 tok)
 - `dashboard-format.test.js` — Declares capturedAt (~484 tok)
 - `dashboard-static.test.js` — Declares testApp (~297 tok)
 - `health.test.js` — Declares app (~180 tok)
-- `history-chart-data.test.js` — Declares READINGS (~399 tok)
-- `history.test.js` — testApp: postReadings (~1239 tok)
+- `history-chart-data.test.js` — Declares READINGS (~1081 tok)
+- `history-range.test.js` — testApp: postReadings, at (~1406 tok)
   - fn `testApp` L5-8 (~28 tok)
-  - fn `postReadings` L9-101 (~1178 tok)
+  - fn `postReadings` L9-20 (~106 tok)
+  - fn `at` L21-137 (~1239 tok)
+- `history.test.js` — testApp: postReadings (~1277 tok)
+  - fn `testApp` L5-8 (~28 tok)
+  - fn `postReadings` L9-103 (~1216 tok)
+- `ingest-response.test.js` — testApp: postReadings, reading (~1384 tok)
+  - fn `testApp` L5-8 (~28 tok)
+  - fn `postReadings` L9-17 (~53 tok)
+  - fn `reading` L18-122 (~1270 tok)
 - `ingest.test.js` — Declares testApp (~1232 tok)
   - fn `testApp` L6-124 (~1183 tok)
 - `live-socket.test.js` — withTimeout: withLiveApp (~904 tok)
@@ -859,8 +939,15 @@
   - fn `testApp` L6-9 (~28 tok)
   - fn `postReadings` L10-46 (~385 tok)
   - fn `withTimeout` L47-88 (~383 tok)
+- `status-static.test.js` — Declares testApp (~389 tok)
+- `status.test.js` — testApp: postReadings, todayAt (~1353 tok)
+  - fn `testApp` L5-8 (~28 tok)
+  - fn `postReadings` L9-17 (~56 tok)
+  - fn `todayAt` L18-124 (~1236 tok)
 - `store.test.js` — Declares freshDb (~529 tok)
   - fn `freshDb` L6-70 (~475 tok)
+- `timerange.test.js` — openEnded: fakeStorage (~1386 tok)
+  - fn `fakeStorage` L98-128 (~292 tok)
 - `timestamp.test.js` (~489 tok)
 
 ## docs/hardware/
@@ -874,6 +961,7 @@
 ## docs/superpowers/specs/
 
 - `2026-08-09-timestamp-timezone-support-design.md` — Timestamp timezone support — design (~1546 tok)
+- `2026-08-14-dashboard-ux-design.md` — Dashboard UX rework — wind direction, graph resolution, status page (~3018 tok)
 
 ## firmware/
 

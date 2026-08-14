@@ -7,6 +7,15 @@ export function msToKnots(ms) {
   return ms * KNOTS_PER_MS;
 }
 
+// Czech writes 3,2 - not 3.2. Every user-facing number goes through here so
+// the page doesn't mix separators between the live card and the tables.
+export function formatNumber(value, digits = 1) {
+  if (typeof value !== 'number' || !Number.isFinite(value)) {
+    return '–';
+  }
+  return value.toLocaleString('cs-CZ', { minimumFractionDigits: digits, maximumFractionDigits: digits });
+}
+
 export function octantToCompassLabel(octant) {
   return OCTANT_LABELS[octant];
 }

@@ -96,5 +96,7 @@ test('GET /readings/history returns an empty array when there is no data', async
   const app = testApp();
   const res = await app.inject({ method: 'GET', url: '/readings/history' });
   assert.equal(res.statusCode, 200);
-  assert.deepEqual(JSON.parse(res.body), { readings: [] });
+  // The response also echoes the window/bucket it used (see history-range.test.js);
+  // `readings` is the part this assertion is about.
+  assert.deepEqual(JSON.parse(res.body).readings, []);
 });

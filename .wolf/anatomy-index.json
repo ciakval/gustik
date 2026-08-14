@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-10T20:10:57.627Z",
-    "fileCount": 460,
+    "lastScanned": "2026-08-14T12:52:52.640Z",
+    "fileCount": 478,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "96a53b90a3faa11f13fc205b714a7db09fbcd50336acfaa69d5eff7930293622",
-    "storeUpdatedAt": "2026-08-10T20:10:57.633Z"
+    "renderedHash": "295ffd25033c28469ac1d854f60d98543d5982163f863e071e29e24548cd9706",
+    "storeUpdatedAt": "2026-08-14T12:52:52.648Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3669,13 +3669,13 @@
       "source": "scan"
     },
     "backend/eslint.config.js": {
-      "description": "ESLint flat configuration",
-      "tokens": 332,
-      "hash": "b20fad1051522504",
-      "size": 1162,
-      "mtimeMs": 1786387643676.8108,
-      "updatedAt": "2026-08-10T19:26:48.137Z",
-      "source": "scan"
+      "description": "', 'node_modules/**'],",
+      "tokens": 361,
+      "hash": "bd36089db926fd91",
+      "size": 1263,
+      "mtimeMs": 1786708192756.614,
+      "updatedAt": "2026-08-14T11:49:52.843Z",
+      "source": "hook"
     },
     "backend/package-lock.json": {
       "description": "npm lock file",
@@ -3697,12 +3697,12 @@
     },
     "backend/src/app.js": {
       "description": "Exports buildApp",
-      "tokens": 361,
-      "hash": "0b51da5d8cb8d6cf",
-      "size": 1261,
-      "mtimeMs": 1786387643678.3503,
-      "updatedAt": "2026-08-10T19:26:48.138Z",
-      "source": "scan"
+      "tokens": 430,
+      "hash": "989512974accf61e",
+      "size": 1503,
+      "mtimeMs": 1786707714873.1682,
+      "updatedAt": "2026-08-14T11:41:54.965Z",
+      "source": "hook"
     },
     "backend/src/health/routes.js": {
       "description": "API routes: GET (1 endpoints)",
@@ -3723,34 +3723,41 @@
       "source": "scan"
     },
     "backend/src/ingest/routes.js": {
-      "description": "API routes: POST (1 endpoints)",
-      "tokens": 757,
-      "hash": "d2d3c3accbb76c2c",
-      "size": 2649,
-      "mtimeMs": 1786387643681.4805,
-      "updatedAt": "2026-08-10T19:26:48.138Z",
-      "source": "scan",
+      "description": "Ingest endpoint.",
+      "tokens": 1622,
+      "hash": "5a82d14994bd5bd7",
+      "size": 5675,
+      "mtimeMs": 1786711939571.229,
+      "updatedAt": "2026-08-14T12:52:19.673Z",
+      "source": "hook",
       "symbols": [
         {
           "name": "isAuthorized",
           "kind": "fn",
-          "startLine": 5,
-          "endLine": 9,
-          "tokens": 39
+          "startLine": 7,
+          "endLine": 14,
+          "tokens": 100
+        },
+        {
+          "name": "recordIngestEvent",
+          "kind": "fn",
+          "startLine": 15,
+          "endLine": 21,
+          "tokens": 51
         },
         {
           "name": "wireShape",
           "kind": "fn",
-          "startLine": 10,
-          "endLine": 18,
-          "tokens": 58
+          "startLine": 22,
+          "endLine": 56,
+          "tokens": 440
         },
         {
           "name": "registerIngestRoutes",
           "kind": "fn",
-          "startLine": 19,
-          "endLine": 68,
-          "tokens": 600
+          "startLine": 57,
+          "endLine": 139,
+          "tokens": 962
         }
       ]
     },
@@ -3794,146 +3801,290 @@
       ]
     },
     "backend/src/serve/routes.js": {
-      "description": "API routes: GET (3 endpoints)",
-      "tokens": 353,
-      "hash": "11747403142d3aaa",
-      "size": 1233,
-      "mtimeMs": 1786387643682.6255,
-      "updatedAt": "2026-08-10T19:26:48.140Z",
-      "source": "scan"
+      "description": "API routes: GET (4 endpoints)",
+      "tokens": 1508,
+      "hash": "35818aa57293e3dc",
+      "size": 5277,
+      "mtimeMs": 1786707709099.964,
+      "updatedAt": "2026-08-14T11:41:49.195Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "toCanonicalIso",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 28,
+          "tokens": 63
+        },
+        {
+          "name": "parseWindow",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 40,
+          "tokens": 98
+        },
+        {
+          "name": "parseBucketSeconds",
+          "kind": "fn",
+          "startLine": 41,
+          "endLine": 55,
+          "tokens": 156
+        },
+        {
+          "name": "registerServeRoutes",
+          "kind": "fn",
+          "startLine": 56,
+          "endLine": 125,
+          "tokens": 814
+        },
+        {
+          "name": "broadcast",
+          "kind": "fn",
+          "startLine": 126,
+          "endLine": 134,
+          "tokens": 61
+        },
+        {
+          "name": "broadcastReading",
+          "kind": "fn",
+          "startLine": 135,
+          "endLine": 141,
+          "tokens": 84
+        },
+        {
+          "name": "broadcastHistoryChanged",
+          "kind": "fn",
+          "startLine": 142,
+          "endLine": 145,
+          "tokens": 30
+        }
+      ]
     },
     "backend/src/static/dashboard.js": {
-      "description": "speedEl: render, setUnit, fetchLatest",
-      "tokens": 713,
-      "hash": "d42c273411dbcab2",
-      "size": 2494,
-      "mtimeMs": 1786387643682.6255,
-      "updatedAt": "2026-08-10T19:26:48.141Z",
-      "source": "scan",
+      "description": "speedEl: renderDirection, render, setUnit, fetchLatest",
+      "tokens": 1243,
+      "hash": "50661f2fc8211300",
+      "size": 4350,
+      "mtimeMs": 1786708111480.0742,
+      "updatedAt": "2026-08-14T11:48:31.570Z",
+      "source": "hook",
       "symbols": [
+        {
+          "name": "renderDirection",
+          "kind": "fn",
+          "startLine": 28,
+          "endLine": 41,
+          "tokens": 128
+        },
         {
           "name": "render",
           "kind": "fn",
-          "startLine": 14,
-          "endLine": 26,
-          "tokens": 141
+          "startLine": 42,
+          "endLine": 61,
+          "tokens": 221
         },
         {
           "name": "setUnit",
           "kind": "fn",
-          "startLine": 27,
-          "endLine": 37,
+          "startLine": 62,
+          "endLine": 72,
           "tokens": 95
         },
         {
           "name": "fetchLatest",
           "kind": "fn",
-          "startLine": 38,
-          "endLine": 74,
-          "tokens": 318
+          "startLine": 73,
+          "endLine": 121,
+          "tokens": 504
         }
       ]
     },
     "backend/src/static/format.js": {
-      "description": "Exports msToKnots, octantToCompassLabel, isStale, formatAge",
-      "tokens": 240,
-      "hash": "fe793287a7eba969",
-      "size": 839,
-      "mtimeMs": 1786387643683.8538,
-      "updatedAt": "2026-08-10T19:26:48.141Z",
-      "source": "scan"
+      "description": "Exports msToKnots, formatNumber, octantToCompassLabel, isStale, formatAge",
+      "tokens": 352,
+      "hash": "b9ea24f2f42b8bf3",
+      "size": 1232,
+      "mtimeMs": 1786708322707.3635,
+      "updatedAt": "2026-08-14T11:52:02.801Z",
+      "source": "hook"
     },
     "backend/src/static/history-chart-data.js": {
-      "description": "x is a numeric timestamp (ms since epoch), not the ISO string or Chart.js's",
-      "tokens": 194,
-      "hash": "76e4f2e7ca38f3ea",
-      "size": 679,
-      "mtimeMs": 1786387643684.5896,
-      "updatedAt": "2026-08-10T19:26:48.141Z",
-      "source": "scan"
+      "description": "Min and max series for the gust band. Returns null for raw (unbucketed)",
+      "tokens": 927,
+      "hash": "40acf2da888fd493",
+      "size": 3243,
+      "mtimeMs": 1786708002892.6309,
+      "updatedAt": "2026-08-14T11:46:42.985Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "convert",
+          "kind": "fn",
+          "startLine": 17,
+          "endLine": 20,
+          "tokens": 25
+        },
+        {
+          "name": "buildSpeedPoints",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 32,
+          "tokens": 105
+        },
+        {
+          "name": "buildGustBand",
+          "kind": "fn",
+          "startLine": 33,
+          "endLine": 54,
+          "tokens": 275
+        },
+        {
+          "name": "buildDirectionArrows",
+          "kind": "fn",
+          "startLine": 55,
+          "endLine": 79,
+          "tokens": 243
+        },
+        {
+          "name": "buildRssiPoints",
+          "kind": "fn",
+          "startLine": 80,
+          "endLine": 85,
+          "tokens": 56
+        }
+      ]
     },
     "backend/src/static/history-chart.js": {
-      "description": "Exports setHistoryChartReadings, setHistoryChartUnit, initHistoryChart, handleLiveMessage, resyncHis",
-      "tokens": 961,
-      "hash": "c7728ff1a3a7398e",
-      "size": 3363,
-      "mtimeMs": 1786387643685.0027,
-      "updatedAt": "2026-08-10T19:26:48.141Z",
-      "source": "scan",
+      "description": "Point the chart at a new window ({from, to, rangeSeconds, bucketSeconds})",
+      "tokens": 2276,
+      "hash": "5e8c74abff9529a0",
+      "size": 7979,
+      "mtimeMs": 1786708340143.5125,
+      "updatedAt": "2026-08-14T11:52:20.236Z",
+      "source": "hook",
       "symbols": [
         {
           "name": "speedAxisLabel",
           "kind": "fn",
-          "startLine": 10,
-          "endLine": 13,
-          "tokens": 28
+          "startLine": 18,
+          "endLine": 21,
+          "tokens": 27
         },
         {
-          "name": "formatTimeTick",
+          "name": "unitSuffix",
           "kind": "fn",
-          "startLine": 14,
-          "endLine": 17,
-          "tokens": 23
+          "startLine": 22,
+          "endLine": 27,
+          "tokens": 56
+        },
+        {
+          "name": "showSeconds",
+          "kind": "fn",
+          "startLine": 28,
+          "endLine": 31,
+          "tokens": 25
+        },
+        {
+          "name": "directionTooltip",
+          "kind": "fn",
+          "startLine": 32,
+          "endLine": 36,
+          "tokens": 42
+        },
+        {
+          "name": "speedTooltip",
+          "kind": "fn",
+          "startLine": 37,
+          "endLine": 47,
+          "tokens": 120
+        },
+        {
+          "name": "datasets",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 112,
+          "tokens": 533
+        },
+        {
+          "name": "options",
+          "kind": "fn",
+          "startLine": 113,
+          "endLine": 175,
+          "tokens": 584
         },
         {
           "name": "render",
           "kind": "fn",
-          "startLine": 18,
-          "endLine": 79,
-          "tokens": 542
+          "startLine": 176,
+          "endLine": 192,
+          "tokens": 103
         },
         {
           "name": "setHistoryChartReadings",
           "kind": "fn",
-          "startLine": 80,
-          "endLine": 84,
-          "tokens": 28
+          "startLine": 193,
+          "endLine": 197,
+          "tokens": 24
         },
         {
           "name": "setHistoryChartUnit",
           "kind": "fn",
-          "startLine": 85,
-          "endLine": 89,
-          "tokens": 23
+          "startLine": 198,
+          "endLine": 202,
+          "tokens": 21
         },
         {
           "name": "fetchHistory",
           "kind": "fn",
-          "startLine": 90,
-          "endLine": 96,
-          "tokens": 55
+          "startLine": 203,
+          "endLine": 227,
+          "tokens": 253
+        },
+        {
+          "name": "setHistoryChartWindow",
+          "kind": "fn",
+          "startLine": 228,
+          "endLine": 232,
+          "tokens": 28
         },
         {
           "name": "initHistoryChart",
           "kind": "fn",
-          "startLine": 97,
-          "endLine": 103,
-          "tokens": 74
+          "startLine": 233,
+          "endLine": 239,
+          "tokens": 84
         },
         {
           "name": "handleLiveMessage",
           "kind": "fn",
-          "startLine": 104,
-          "endLine": 112,
+          "startLine": 240,
+          "endLine": 248,
           "tokens": 95
         },
         {
           "name": "resyncHistoryChart",
           "kind": "fn",
-          "startLine": 113,
-          "endLine": 116,
-          "tokens": 17
+          "startLine": 249,
+          "endLine": 260,
+          "tokens": 112
+        },
+        {
+          "name": "setHistoryWindowResolver",
+          "kind": "fn",
+          "startLine": 261,
+          "endLine": 264,
+          "tokens": 24
         }
       ]
     },
     "backend/src/static/index.html": {
       "description": "Gustik — vítr živě",
-      "tokens": 897,
-      "hash": "80485bfa310377dd",
-      "size": 3398,
-      "mtimeMs": 1786387643685.4487,
-      "updatedAt": "2026-08-10T19:26:48.141Z",
-      "source": "scan"
+      "tokens": 864,
+      "hash": "c6bdf9a8cac82fb7",
+      "size": 3286,
+      "mtimeMs": 1786708085975.0242,
+      "updatedAt": "2026-08-14T11:48:06.069Z",
+      "source": "hook"
     },
     "backend/src/static/live-socket.js": {
       "description": "Single shared WS connection lifecycle for the dashboard - both the live",
@@ -3946,21 +4097,51 @@
     },
     "backend/src/static/manual.html": {
       "description": "Gustik — návod k obsluze",
-      "tokens": 991,
-      "hash": "fd075d5619f36ee1",
-      "size": 3948,
-      "mtimeMs": 1786387643686.2502,
-      "updatedAt": "2026-08-10T19:26:48.141Z",
-      "source": "scan"
+      "tokens": 1201,
+      "hash": "a63558825ae3df91",
+      "size": 4818,
+      "mtimeMs": 1786708420267.715,
+      "updatedAt": "2026-08-14T11:53:40.362Z",
+      "source": "hook"
     },
     "backend/src/static/timezone.js": {
       "description": "Single named seam for the dashboard's display timezone. A future",
-      "tokens": 162,
-      "hash": "74d2456c023308b4",
-      "size": 567,
-      "mtimeMs": 1786387643686.5913,
-      "updatedAt": "2026-08-10T19:26:48.141Z",
-      "source": "scan"
+      "tokens": 541,
+      "hash": "cac878f55c07e45b",
+      "size": 1893,
+      "mtimeMs": 1786707921473.9346,
+      "updatedAt": "2026-08-14T11:45:21.564Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "formatter",
+          "kind": "fn",
+          "startLine": 7,
+          "endLine": 22,
+          "tokens": 155
+        },
+        {
+          "name": "formatLocalTime",
+          "kind": "fn",
+          "startLine": 23,
+          "endLine": 26,
+          "tokens": 41
+        },
+        {
+          "name": "formatLocalStamp",
+          "kind": "fn",
+          "startLine": 27,
+          "endLine": 33,
+          "tokens": 90
+        },
+        {
+          "name": "startOfLocalDayMs",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 45,
+          "tokens": 167
+        }
+      ]
     },
     "backend/src/static/vendor/chart.js.LICENSE.md": {
       "description": "",
@@ -3982,61 +4163,89 @@
     },
     "backend/src/store/readings.js": {
       "description": "Insert a single reading. No-op (idempotent) if clientId already exists.",
-      "tokens": 662,
-      "hash": "9971def24dca479b",
-      "size": 2314,
-      "mtimeMs": 1786387643689.8672,
-      "updatedAt": "2026-08-10T19:26:48.142Z",
-      "source": "scan",
+      "tokens": 1330,
+      "hash": "4c190417b110549e",
+      "size": 4652,
+      "mtimeMs": 1786707674510.7424,
+      "updatedAt": "2026-08-14T11:41:14.599Z",
+      "source": "hook",
       "symbols": [
         {
           "name": "toRow",
           "kind": "fn",
-          "startLine": 9,
-          "endLine": 21,
+          "startLine": 11,
+          "endLine": 23,
           "tokens": 102
         },
         {
           "name": "fromRow",
           "kind": "fn",
-          "startLine": 22,
-          "endLine": 31,
-          "tokens": 58
+          "startLine": 24,
+          "endLine": 37,
+          "tokens": 139
         },
         {
-          "name": "startOfUtcDayIso",
+          "name": "fullFromRow",
           "kind": "fn",
-          "startLine": 32,
-          "endLine": 39,
-          "tokens": 75
+          "startLine": 38,
+          "endLine": 55,
+          "tokens": 147
         },
         {
           "name": "insertReading",
           "kind": "fn",
-          "startLine": 40,
-          "endLine": 45,
+          "startLine": 56,
+          "endLine": 61,
           "tokens": 76
         },
         {
           "name": "getLatest",
           "kind": "fn",
-          "startLine": 46,
-          "endLine": 53,
+          "startLine": 62,
+          "endLine": 69,
           "tokens": 93
         },
         {
           "name": "getLatestCapturedAt",
           "kind": "fn",
-          "startLine": 54,
-          "endLine": 61,
-          "tokens": 100
+          "startLine": 70,
+          "endLine": 86,
+          "tokens": 236
         },
         {
           "name": "getHistory",
           "kind": "fn",
-          "startLine": 62,
-          "endLine": 69,
-          "tokens": 72
+          "startLine": 87,
+          "endLine": 96,
+          "tokens": 118
+        },
+        {
+          "name": "getHistoryFull",
+          "kind": "fn",
+          "startLine": 97,
+          "endLine": 105,
+          "tokens": 100
+        },
+        {
+          "name": "getLatestFull",
+          "kind": "fn",
+          "startLine": 106,
+          "endLine": 110,
+          "tokens": 63
+        },
+        {
+          "name": "getRecentFull",
+          "kind": "fn",
+          "startLine": 111,
+          "endLine": 115,
+          "tokens": 52
+        },
+        {
+          "name": "getTotals",
+          "kind": "fn",
+          "startLine": 116,
+          "endLine": 128,
+          "tokens": 104
         }
       ]
     },
@@ -4101,21 +4310,21 @@
     },
     "backend/test/history-chart-data.test.js": {
       "description": "Declares READINGS",
-      "tokens": 399,
-      "hash": "8fbfc098492c28f0",
-      "size": 1395,
-      "mtimeMs": 1786387643692.5662,
-      "updatedAt": "2026-08-10T19:26:48.142Z",
-      "source": "scan"
+      "tokens": 1081,
+      "hash": "6d6d6d6a84cd078e",
+      "size": 3783,
+      "mtimeMs": 1786708021009.7856,
+      "updatedAt": "2026-08-14T11:47:01.101Z",
+      "source": "hook"
     },
     "backend/test/history.test.js": {
       "description": "testApp: postReadings",
-      "tokens": 1239,
-      "hash": "88aa2a48ed05df09",
-      "size": 4336,
-      "mtimeMs": 1786387643692.9832,
-      "updatedAt": "2026-08-10T19:26:48.142Z",
-      "source": "scan",
+      "tokens": 1277,
+      "hash": "c642c290f9d08adb",
+      "size": 4469,
+      "mtimeMs": 1786707806286.041,
+      "updatedAt": "2026-08-14T11:43:26.886Z",
+      "source": "hook",
       "symbols": [
         {
           "name": "testApp",
@@ -4128,8 +4337,8 @@
           "name": "postReadings",
           "kind": "fn",
           "startLine": 9,
-          "endLine": 101,
-          "tokens": 1178
+          "endLine": 103,
+          "tokens": 1216
         }
       ]
     },
@@ -5073,13 +5282,13 @@
       "source": "scan"
     },
     "firmware/platformio.ini": {
-      "description": "",
-      "tokens": 443,
+      "description": "esp32dev + native envs; esp32dev now sets `board_build.filesystem = littlefs`",
+      "tokens": 500,
       "hash": "3a5986a852ae3f39",
       "size": 1660,
       "mtimeMs": 1786387643699.5093,
-      "updatedAt": "2026-08-10T19:26:48.191Z",
-      "source": "scan"
+      "updatedAt": "2026-08-14T11:39:26.626Z",
+      "source": "md-import"
     },
     "firmware/src/config/hw/config_loader.cpp": {
       "description": "include \"config/hw/config_loader.h\"",
@@ -5154,13 +5363,13 @@
       "source": "scan"
     },
     "firmware/src/main.cpp": {
-      "description": "include <Arduino.h>",
-      "tokens": 1506,
+      "description": "include <Arduino.h>; wiring + 2 Serial diagnostic lines/cycle (sensors: pulses/windSpeed/vane/magnetometer ok-or-FAIL/yaw/windDir; wifi: up-or-down/ssid/ip/rssi/sent/clockSynced/buffered) + config-loaded (GPIO25) and WiFi-connected (GPIO26) diagnostic LEDs alongside the existing disconnect LED (GPIO2); falls back to lastKnownYawDegrees on a magnetometer read failure; makeClientId() folds in capturedAt (not just a boot-reset counter) so clientId can't collide across reboots (bug-031 fix)",
+      "tokens": 1680,
       "hash": "c09652432a89fe74",
       "size": 5271,
       "mtimeMs": 1786387643704.6753,
-      "updatedAt": "2026-08-10T19:26:48.194Z",
-      "source": "scan"
+      "updatedAt": "2026-08-14T11:39:26.626Z",
+      "source": "md-import"
     },
     "firmware/src/sense/anemometer.cpp": {
       "description": "include \"sense/anemometer.h\"",
@@ -5172,31 +5381,31 @@
       "source": "scan"
     },
     "firmware/src/sense/anemometer.h": {
-      "description": "pragma once",
-      "tokens": 174,
+      "description": "pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md",
+      "tokens": 220,
       "hash": "0445e1ab0e7e819f",
       "size": 607,
       "mtimeMs": 1786387643705.304,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "updatedAt": "2026-08-14T11:39:26.626Z",
+      "source": "md-import"
     },
     "firmware/src/sense/magnetometer.cpp": {
-      "description": "include \"sense/magnetometer.h\"",
-      "tokens": 300,
+      "description": "QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk)",
+      "tokens": 480,
       "hash": "1f52315a0a419778",
       "size": 1050,
       "mtimeMs": 1786387643705.8801,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "updatedAt": "2026-08-14T11:39:26.626Z",
+      "source": "md-import"
     },
     "firmware/src/sense/magnetometer.h": {
-      "description": "pragma once",
-      "tokens": 181,
+      "description": "pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure)",
+      "tokens": 250,
       "hash": "5415e8c3ee4d0979",
       "size": 631,
       "mtimeMs": 1786387643706.227,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "updatedAt": "2026-08-14T11:39:26.626Z",
+      "source": "md-import"
     },
     "firmware/src/sense/vane.cpp": {
       "description": "include \"sense/vane.h\"",
@@ -5208,13 +5417,13 @@
       "source": "scan"
     },
     "firmware/src/sense/vane.h": {
-      "description": "pragma once",
-      "tokens": 146,
+      "description": "pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md",
+      "tokens": 200,
       "hash": "6d020dbec5b77f33",
       "size": 510,
       "mtimeMs": 1786387643706.9092,
-      "updatedAt": "2026-08-10T19:26:48.196Z",
-      "source": "scan"
+      "updatedAt": "2026-08-14T11:39:26.626Z",
+      "source": "md-import"
     },
     "firmware/src/transmit/buffer_capacity.cpp": {
       "description": "include \"transmit/buffer_capacity.h\"",
@@ -5289,13 +5498,13 @@
       "source": "scan"
     },
     "firmware/src/transmit/hw/wifi_client.cpp": {
-      "description": "include \"transmit/hw/wifi_client.h\"",
-      "tokens": 713,
+      "description": "ensureWifiConnected() now cycles through ALL configured+in-range networks (priority order) per call, not just the top-priority scan match, so a visible-but-unconnectable network no longer blocks fallback to the other one (bug-030 fix)",
+      "tokens": 830,
       "hash": "31941afb246f137b",
       "size": 2493,
       "mtimeMs": 1786387643711.7927,
-      "updatedAt": "2026-08-10T19:26:48.202Z",
-      "source": "scan"
+      "updatedAt": "2026-08-14T11:39:26.626Z",
+      "source": "md-import"
     },
     "firmware/src/transmit/hw/wifi_client.h": {
       "description": "pragma once",
@@ -5869,6 +6078,481 @@
       "mtimeMs": 1786392490634.4749,
       "updatedAt": "2026-08-10T20:08:10.683Z",
       "source": "hook"
+    },
+    "docs/hardware/wind-sensor-wiring.md": {
+      "description": "WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits",
+      "tokens": 1100,
+      "updatedAt": "2026-08-14T11:39:26.625Z",
+      "source": "md-import"
+    },
+    "docs/superpowers/specs/2026-08-14-dashboard-ux-design.md": {
+      "description": "Dashboard UX rework — wind direction, graph resolution, status page",
+      "tokens": 3018,
+      "hash": "43456ff83653b4dc",
+      "size": 12168,
+      "mtimeMs": 1786711972540.509,
+      "updatedAt": "2026-08-14T12:52:52.639Z",
+      "source": "hook"
+    },
+    "backend/test/aggregate.test.js": {
+      "description": "Declares reading",
+      "tokens": 1325,
+      "hash": "a52fda4111d960ab",
+      "size": 4635,
+      "mtimeMs": 1786707591777.116,
+      "updatedAt": "2026-08-14T11:39:51.869Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "reading",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 117,
+          "tokens": 1274
+        }
+      ]
+    },
+    "backend/src/serve/aggregate.js": {
+      "description": "Circular (vector) mean of a list of octants, snapped back to an octant.",
+      "tokens": 1817,
+      "hash": "1c3764efcd2f0964",
+      "size": 6359,
+      "mtimeMs": 1786707685893.8857,
+      "updatedAt": "2026-08-14T11:41:25.989Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "circularMeanOctant",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 52,
+          "tokens": 157
+        },
+        {
+          "name": "bucketStartIso",
+          "kind": "fn",
+          "startLine": 53,
+          "endLine": 58,
+          "tokens": 59
+        },
+        {
+          "name": "summarize",
+          "kind": "fn",
+          "startLine": 59,
+          "endLine": 88,
+          "tokens": 390
+        },
+        {
+          "name": "bucketReadings",
+          "kind": "fn",
+          "startLine": 89,
+          "endLine": 124,
+          "tokens": 341
+        },
+        {
+          "name": "detectGaps",
+          "kind": "fn",
+          "startLine": 125,
+          "endLine": 155,
+          "tokens": 306
+        },
+        {
+          "name": "clampBucketSeconds",
+          "kind": "fn",
+          "startLine": 156,
+          "endLine": 163,
+          "tokens": 84
+        }
+      ]
+    },
+    "backend/src/store/localday.js": {
+      "description": "The UTC instant at which the current local day started, as a canonical ISO string.",
+      "tokens": 564,
+      "hash": "7fe9ec3ac6d79957",
+      "size": 1974,
+      "mtimeMs": 1786707651599.949,
+      "updatedAt": "2026-08-14T11:40:51.696Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "zoneOffsetMs",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 38,
+          "tokens": 199
+        },
+        {
+          "name": "startOfLocalDayIso",
+          "kind": "fn",
+          "startLine": 39,
+          "endLine": 53,
+          "tokens": 201
+        }
+      ]
+    },
+    "backend/test/history-range.test.js": {
+      "description": "testApp: postReadings, at",
+      "tokens": 1406,
+      "hash": "023c5073b90eb0cf",
+      "size": 4919,
+      "mtimeMs": 1786707751701.4707,
+      "updatedAt": "2026-08-14T11:42:31.804Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 20,
+          "tokens": 106
+        },
+        {
+          "name": "at",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 137,
+          "tokens": 1239
+        }
+      ]
+    },
+    "backend/test/status.test.js": {
+      "description": "testApp: postReadings, todayAt",
+      "tokens": 1353,
+      "hash": "decc292950355763",
+      "size": 4735,
+      "mtimeMs": 1786707773491.7874,
+      "updatedAt": "2026-08-14T11:42:53.582Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 17,
+          "tokens": 56
+        },
+        {
+          "name": "todayAt",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 124,
+          "tokens": 1236
+        }
+      ]
+    },
+    "backend/src/static/compass.js": {
+      "description": "Compass bearing the wind blows FROM, in degrees clockwise from north.",
+      "tokens": 954,
+      "hash": "1095baca4cb4885e",
+      "size": 3347,
+      "mtimeMs": 1786707833113.7153,
+      "updatedAt": "2026-08-14T11:43:53.200Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "isOctant",
+          "kind": "fn",
+          "startLine": 26,
+          "endLine": 29,
+          "tokens": 27
+        },
+        {
+          "name": "octantLabel",
+          "kind": "fn",
+          "startLine": 30,
+          "endLine": 33,
+          "tokens": 28
+        },
+        {
+          "name": "octantName",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 41,
+          "tokens": 72
+        },
+        {
+          "name": "octantToDegrees",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 55,
+          "tokens": 181
+        },
+        {
+          "name": "octantArrowRotation",
+          "kind": "fn",
+          "startLine": 56,
+          "endLine": 72,
+          "tokens": 206
+        },
+        {
+          "name": "circularMeanOctant",
+          "kind": "fn",
+          "startLine": 73,
+          "endLine": 93,
+          "tokens": 204
+        }
+      ]
+    },
+    "backend/src/static/timerange.js": {
+      "description": "Bucket width that lands close to `targetPoints` samples across the window,",
+      "tokens": 1122,
+      "hash": "861bdbfb9c517620",
+      "size": 3927,
+      "mtimeMs": 1786707853742.0212,
+      "updatedAt": "2026-08-14T11:44:13.830Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "rangeById",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 37,
+          "tokens": 105
+        },
+        {
+          "name": "autoBucketSeconds",
+          "kind": "fn",
+          "startLine": 38,
+          "endLine": 43,
+          "tokens": 93
+        },
+        {
+          "name": "bucketOptionsFor",
+          "kind": "fn",
+          "startLine": 44,
+          "endLine": 47,
+          "tokens": 39
+        },
+        {
+          "name": "formatBucketSeconds",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 59,
+          "tokens": 132
+        },
+        {
+          "name": "windowFor",
+          "kind": "fn",
+          "startLine": 60,
+          "endLine": 76,
+          "tokens": 218
+        },
+        {
+          "name": "loadSelection",
+          "kind": "fn",
+          "startLine": 77,
+          "endLine": 87,
+          "tokens": 92
+        },
+        {
+          "name": "saveSelection",
+          "kind": "fn",
+          "startLine": 88,
+          "endLine": 96,
+          "tokens": 88
+        }
+      ]
+    },
+    "backend/test/compass.test.js": {
+      "description": "Declares bad",
+      "tokens": 727,
+      "hash": "a191d3a7c8a1f0c7",
+      "size": 2549,
+      "mtimeMs": 1786707867197.4707,
+      "updatedAt": "2026-08-14T11:44:27.290Z",
+      "source": "hook"
+    },
+    "backend/test/timerange.test.js": {
+      "description": "openEnded: fakeStorage",
+      "tokens": 1386,
+      "hash": "8c3db5ee7d195d18",
+      "size": 4848,
+      "mtimeMs": 1786707890027.0315,
+      "updatedAt": "2026-08-14T11:44:50.119Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "fakeStorage",
+          "kind": "fn",
+          "startLine": 98,
+          "endLine": 128,
+          "tokens": 292
+        }
+      ]
+    },
+    "backend/src/static/beaufort.js": {
+      "description": "Beaufort scale, for the \"so is that a lot?\" question a raw m/s number does",
+      "tokens": 434,
+      "hash": "13f4439778c330aa",
+      "size": 1548,
+      "mtimeMs": 1786707932457.0286,
+      "updatedAt": "2026-08-14T11:45:32.551Z",
+      "source": "hook"
+    },
+    "backend/src/static/styles.css": {
+      "description": "Styles: 40 rules, 10 vars",
+      "tokens": 1492,
+      "hash": "8540dd553a3531ea",
+      "size": 5222,
+      "mtimeMs": 1786708344757.443,
+      "updatedAt": "2026-08-14T11:52:24.848Z",
+      "source": "hook"
+    },
+    "backend/src/static/timerange-ui.js": {
+      "description": "Renders the chip row + resolution select into `container` and calls",
+      "tokens": 1123,
+      "hash": "7b08c7a454b1e573",
+      "size": 3936,
+      "mtimeMs": 1786707975268.7522,
+      "updatedAt": "2026-08-14T11:46:15.364Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "mountTimeRange",
+          "kind": "fn",
+          "startLine": 25,
+          "endLine": 120,
+          "tokens": 892
+        }
+      ]
+    },
+    "backend/src/static/status.html": {
+      "description": "Gustik — stav stanice",
+      "tokens": 521,
+      "hash": "3e327c56c4ad29bb",
+      "size": 1987,
+      "mtimeMs": 1786708348358.5828,
+      "updatedAt": "2026-08-14T11:52:28.450Z",
+      "source": "hook"
+    },
+    "backend/src/static/status.js": {
+      "description": "Diagnostics page. Deliberately shows raw values next to their",
+      "tokens": 2777,
+      "hash": "4ac05efb73a4086d",
+      "size": 9771,
+      "mtimeMs": 1786708167524.038,
+      "updatedAt": "2026-08-14T11:49:27.617Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "el",
+          "kind": "fn",
+          "startLine": 32,
+          "endLine": 38,
+          "tokens": 58
+        },
+        {
+          "name": "badge",
+          "kind": "fn",
+          "startLine": 39,
+          "endLine": 42,
+          "tokens": 26
+        },
+        {
+          "name": "row",
+          "kind": "fn",
+          "startLine": 43,
+          "endLine": 49,
+          "tokens": 58
+        },
+        {
+          "name": "renderLatest",
+          "kind": "fn",
+          "startLine": 50,
+          "endLine": 82,
+          "tokens": 390
+        },
+        {
+          "name": "renderTotals",
+          "kind": "fn",
+          "startLine": 83,
+          "endLine": 91,
+          "tokens": 111
+        },
+        {
+          "name": "renderLog",
+          "kind": "fn",
+          "startLine": 92,
+          "endLine": 126,
+          "tokens": 404
+        },
+        {
+          "name": "renderRecent",
+          "kind": "fn",
+          "startLine": 127,
+          "endLine": 145,
+          "tokens": 233
+        },
+        {
+          "name": "renderRssi",
+          "kind": "fn",
+          "startLine": 146,
+          "endLine": 228,
+          "tokens": 723
+        },
+        {
+          "name": "refresh",
+          "kind": "fn",
+          "startLine": 229,
+          "endLine": 273,
+          "tokens": 404
+        }
+      ]
+    },
+    "backend/test/status-static.test.js": {
+      "description": "Declares testApp",
+      "tokens": 389,
+      "hash": "902757c94abcc8cc",
+      "size": 1359,
+      "mtimeMs": 1786708176840.1177,
+      "updatedAt": "2026-08-14T11:49:36.935Z",
+      "source": "hook"
+    },
+    "backend/test/ingest-response.test.js": {
+      "description": "testApp: postReadings, reading",
+      "tokens": 1384,
+      "hash": "fedeb4920eac53b6",
+      "size": 4841,
+      "mtimeMs": 1786711907834.0798,
+      "updatedAt": "2026-08-14T12:51:47.930Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 17,
+          "tokens": 53
+        },
+        {
+          "name": "reading",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 122,
+          "tokens": 1270
+        }
+      ]
     }
   }
 }

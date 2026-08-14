@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gustik — stav stanice</title>
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page">
+    <h1>Gustik — stav stanice</h1>
+
+    <div class="card">
+      <h2>Poslední přijatý záznam</h2>
+      <dl class="kv" id="latest"></dl>
+    </div>
+
+    <div class="card">
+      <h2>Souhrn</h2>
+      <dl class="kv" id="totals"></dl>
+    </div>
+
+    <div class="card">
+      <h2>Síla signálu (RSSI)</h2>
+      <div id="timerange"></div>
+      <div class="chart-wrap short">
+        <canvas id="rssi-chart"></canvas>
+      </div>
+      <p class="empty" id="rssi-empty" hidden>Ve zvoleném období nejsou žádná data.</p>
+    </div>
+
+    <div class="card">
+      <h2>Log</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Čas</th><th>Událost</th><th>Detail</th></tr>
+          </thead>
+          <tbody id="log"></tbody>
+        </table>
+      </div>
+      <p class="empty" id="log-empty" hidden>Zatím žádné události.</p>
+    </div>
+
+    <div class="card">
+      <h2>Poslední záznamy</h2>
+      <div class="table-wrap scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Změřeno</th>
+              <th>Přijato</th>
+              <th>Rychlost</th>
+              <th>Směr</th>
+              <th>RSSI</th>
+              <th>Hodiny</th>
+              <th>Backfill</th>
+              <th>clientId</th>
+            </tr>
+          </thead>
+          <tbody id="recent"></tbody>
+        </table>
+      </div>
+      <p class="empty" id="recent-empty" hidden>Zatím žádné záznamy.</p>
+    </div>
+
+    <p class="note footer-links">
+      <a href="/">Zpět na dashboard</a>
+      <a href="/manual.html">Návod k obsluze</a>
+    </p>
+  </div>
+  <script src="/vendor/chart.umd.min.js"></script>
+  <script type="module" src="/status.js"></script>
+</body>
+</html>

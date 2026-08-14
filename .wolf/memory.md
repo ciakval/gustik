@@ -353,3 +353,58 @@
 | 20:10 | Edited .worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml | 8→9 lines | ~85 |
 | 20:13 | Session end: 21 writes across 7 files (docker-compose.yml, ci.yml, TODO.md, compose.yaml, CLAUDE.md) | 12 reads | ~27467 tok |
 | 20:15 | Session summary: switched deploy sync back to rsync (server got rsync installed), then implemented GHCR-based deploy on branch chore/ghcr-backend-deploy + worktree - build once in CI (build-backend-image job, docker/build-push-action, pushes :latest+:sha to ghcr.io/ciakval/gustik-backend on main only), server now docker compose pull && up -d instead of rebuilding, GHCR login on server is a fresh ephemeral GITHUB_TOKEN each deploy (never stored). Also renamed docker-compose.yml -> compose.yaml (Compose v2 convention) | backend/compose.yaml, backend/.env.example, .github/workflows/ci.yml, TODO.md, CLAUDE.md, .wolf/STATUS.md, .wolf/cerebrum.md | YAML+actionlint clean, 55/55 tests pass, rsync re-verified against real server; GHCR push/pull path itself unverified until merge (build-backend-image only pushes on main) | ~11000 |
+## Session: 2026-08-14 13:30
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-14 13:39
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 13:39 | Created docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | — | ~2695 |
+| 13:39 | Created backend/test/aggregate.test.js | — | ~1325 |
+| 13:40 | Created backend/src/serve/aggregate.js | — | ~1450 |
+| 13:40 | Created backend/src/store/localday.js | — | ~564 |
+| 13:40 | Edited backend/src/store/readings.js | added 1 condition(s) | ~239 |
+| 13:41 | Edited backend/src/store/readings.js | added nullish coalescing | ~624 |
+| 13:41 | Edited backend/src/store/readings.js | added 1 import(s) | ~21 |
+| 13:41 | Edited backend/src/serve/aggregate.js | added 2 condition(s) | ~390 |
+| 13:41 | Created backend/src/serve/routes.js | — | ~1508 |
+| 13:41 | Edited backend/src/app.js | 1→5 lines | ~82 |
+| 13:42 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~198 |
+| 13:42 | Edited backend/src/ingest/routes.js | modified for() | ~272 |
+| 13:42 | Created backend/test/history-range.test.js | — | ~1406 |
+| 13:42 | Created backend/test/status.test.js | — | ~1353 |
+| 13:43 | Edited backend/test/history.test.js | 4→6 lines | ~89 |
+| 13:43 | Created backend/src/static/compass.js | — | ~954 |
+| 13:44 | Created backend/src/static/timerange.js | — | ~1122 |
+| 13:44 | Created backend/test/compass.test.js | — | ~727 |
+| 13:44 | Created backend/test/timerange.test.js | — | ~1386 |
+| 13:45 | Created backend/src/static/timezone.js | — | ~541 |
+| 13:45 | Created backend/src/static/beaufort.js | — | ~434 |
+| 13:45 | Created backend/src/static/styles.css | — | ~1435 |
+| 13:46 | Created backend/src/static/timerange-ui.js | — | ~1123 |
+| 13:46 | Created backend/src/static/history-chart-data.js | — | ~927 |
+| 13:47 | Created backend/test/history-chart-data.test.js | — | ~1081 |
+| 13:47 | Created backend/src/static/history-chart.js | — | ~2171 |
+| 13:48 | Created backend/src/static/index.html | — | ~864 |
+| 13:48 | Created backend/src/static/dashboard.js | — | ~1240 |
+| 13:48 | Edited backend/src/static/dashboard.js | 3→3 lines | ~37 |
+| 13:48 | Created backend/src/static/status.html | — | ~519 |
+| 13:49 | Created backend/src/static/status.js | — | ~2777 |
+| 13:49 | Created backend/test/status-static.test.js | — | ~389 |
+| 13:49 | Edited backend/eslint.config.js | 7→11 lines | ~86 |
+| 13:52 | Edited backend/src/static/format.js | added 1 condition(s) | ~130 |
+| 13:52 | Edited backend/src/static/history-chart.js | added optional chaining | ~102 |
+| 13:52 | Edited backend/src/static/styles.css | CSS: max-height, overflow-y | ~68 |
+| 13:52 | Edited backend/src/static/status.html | 2→2 lines | ~19 |
+| 13:53 | Edited backend/src/static/manual.html | 2→4 lines | ~171 |
+| 13:53 | Edited backend/src/static/manual.html | 2→3 lines | ~111 |
+| 14:05 | Dashboard UX rework complete: Czech compass rose + rotated arrow glyphs (bug-037), Grafana-style range/resolution control with server-side bucketing + gust band, Prague day boundary fix (bug-036), new /status.html diagnostics page + GET /readings/status + in-memory ingest ring buffer | backend/src/{serve,store,ingest,static}/*, docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | 115/115 tests pass, lint clean, headless-Chromium render of both pages OK; UNCOMMITTED on main pending review | ~95k |
+| 14:51 | Created backend/test/ingest-response.test.js | — | ~1384 |
+| 14:51 | Edited backend/src/ingest/routes.js | 5→3 lines | ~61 |
+| 14:52 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~578 |
+| 14:52 | Edited backend/src/ingest/routes.js | added 1 condition(s) | ~242 |
+| 14:52 | Edited docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | expanded (+32 lines) | ~632 |
+| 14:55 | POST /readings response contract rewritten to signal what actually happened (201 stored / 200+warning nothing stored / 400 empty batch; {received,inserted,duplicates,backfilled}, `written` removed) - closes the follow-up flagged after bug-031 | backend/src/ingest/routes.js, backend/test/ingest-response.test.js, docs/superpowers/specs/2026-08-14-dashboard-ux-design.md | 123/123 tests pass, lint clean, curl smoke test of all 7 cases OK | ~18k |

@@ -18,10 +18,14 @@ const browserGlobals = {
   fetch: 'readonly',
   WebSocket: 'readonly',
   location: 'readonly',
+  localStorage: 'readonly',
   console: 'readonly',
   setTimeout: 'readonly',
   clearTimeout: 'readonly',
   setInterval: 'readonly',
+  URLSearchParams: 'readonly',
+  Node: 'readonly',
+  Option: 'readonly',
   Chart: 'readonly', // global from the vendored Chart.js UMD bundle
 };
 
