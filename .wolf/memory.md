@@ -425,3 +425,30 @@
 | 15:30 | Firmware now parses+logs the backend's inserted/received counts: new pure transmit/ingest_response.{h,cpp}, send() returns SendResult, Serial replaces `sent=yes` with `stored=N/M` and a loud BACKEND STORED NOTHING alarm | firmware/src/transmit/ingest_response.*, transmit/hw/wifi_client.*, main.cpp, test/test_ingest_response/ | pio test native 57/57, esp32dev build clean 92.3% flash, host cross-check vs real backend bytes OK; NOT flashed to device | ~30k |
 | 15:06 | Edited TODO.md | 2→5 lines | ~83 |
 | 15:06 | Created docs/rust-firmware/02-crate-inventory.md | — | ~3300 |
+| 15:13 | Created docs/rust-firmware/03-risks-and-gaps.md | — | ~2178 |
+| 15:13 | Created docs/rust-firmware/04-migration-plan.md | — | ~1996 |
+| 15:14 | Created docs/rust-firmware/05-open-questions.md | — | ~1234 |
+| 15:20 | Session summary: Rust firmware feasibility study (research-only, no code). Researched the 2026 esp-rs ecosystem via web (esp-hal 1.1.2, esp-radio 1.0.0-beta.0, esp-rtos, esp-storage, sequential-storage, reqwless, esp-mbedtls, sntpc, qmc5883p, esp-idf-svc 0.52.1, espup/Xtensa toolchain state, rustc Tier-3 target list) and mapped it capability-by-capability onto the real firmware modules. Verdict: feasible; recommend no_std/esp-hal+Embassy in a parallel `firmware-rs/` tree, C++ firmware untouched. Two sharp edges: Xtensa needs espup's compiler fork, and no_std TLS with cert verification needs git-only esp-mbedtls. Wrote docs/rust-firmware/{README,01-feasibility,02-crate-inventory,03-risks-and-gaps,04-migration-plan,05-open-questions}.md; updated anatomy.md descriptions + cerebrum Decision Log. 8 open questions left for Mlok (chip choice, no_std vs std, git TLS deps, own driver vs crate, defmt vs plain text, repo placement) - answers may trigger a respin. | docs/rust-firmware/*, .wolf/anatomy.md, .wolf/cerebrum.md | done | ~85k |
+| 18:51 | Created docs/rust-firmware/05-open-questions.md | — | ~1491 |
+| 18:52 | Edited docs/rust-firmware/03-risks-and-gaps.md | modified Decision() | ~963 |
+| 18:52 | Edited docs/rust-firmware/03-risks-and-gaps.md | modified Decision() | ~517 |
+| 18:52 | Edited docs/rust-firmware/03-risks-and-gaps.md | 11→11 lines | ~261 |
+| 18:53 | Edited docs/rust-firmware/03-risks-and-gaps.md | expanded (+6 lines) | ~139 |
+| 18:53 | Edited docs/rust-firmware/02-crate-inventory.md | modified Decision() | ~479 |
+| 18:53 | Edited docs/rust-firmware/02-crate-inventory.md | 6→9 lines | ~180 |
+| 18:53 | Edited docs/rust-firmware/02-crate-inventory.md | 2→6 lines | ~115 |
+| 18:53 | Edited docs/rust-firmware/04-migration-plan.md | bus() → calibration() | ~493 |
+| 18:53 | Edited docs/rust-firmware/04-migration-plan.md | 11→12 lines | ~262 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 1→3 lines | ~52 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 3→6 lines | ~132 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | "embedded-hal-mock" → "qmc5883p" | ~67 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 4→8 lines | ~184 |
+| 18:54 | Edited docs/rust-firmware/04-migration-plan.md | 4→7 lines | ~107 |
+| 18:54 | Edited docs/rust-firmware/01-feasibility.md | 3→4 lines | ~100 |
+| 18:54 | Edited docs/rust-firmware/01-feasibility.md | 9→10 lines | ~180 |
+| 18:54 | Edited docs/rust-firmware/01-feasibility.md | 3→8 lines | ~106 |
+| 18:55 | Edited docs/rust-firmware/01-feasibility.md | 4→5 lines | ~59 |
+| 18:55 | Edited docs/rust-firmware/01-feasibility.md | 7→7 lines | ~155 |
+| 18:55 | Created docs/rust-firmware/README.md | — | ~1081 |
+| 15:45 | Re-spun the Rust firmware study after Mlok answered Q1-Q4 (ESP32 stays / no_std / unverified TLS accepted / use qmc5883p crate). Verified two load-bearing claims with real commands before rewriting: live backend completes a TLS1.3 handshake restricted to embedded-tls's cipher+curve (curl --tls13-ciphers TLS_AES_128_GCM_SHA256 --curves X25519 -> 200) and serves an ECDSA cert; qmc5883p crate register map matches our proven map except it omits the 0x0D=0x40 QST init write. Updated all 6 docs: TLS demoted from top risk, gustik-drivers crate dropped, phase-3 estimate revised down, no git deps anywhere. | docs/rust-firmware/*, .wolf/{STATUS,cerebrum,anatomy}.md | done | ~40k |
+| 15:46 | Learning: the anatomy.md auto-scanner OVERWRITES hand-written file descriptions whenever the file's content changes (regenerates them from the H1 heading). Had to rewrite the docs/rust-firmware/ descriptions a second time after editing the docs. | .wolf/anatomy.md | noted | ~1k |

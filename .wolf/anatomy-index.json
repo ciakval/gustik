@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-14T13:06:59.490Z",
-    "fileCount": 484,
+    "lastScanned": "2026-08-14T16:55:31.628Z",
+    "fileCount": 487,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "3951475e27d6f63c214a81505838fd01e523c1326df2ad731a3f950fd5fcbf56",
-    "storeUpdatedAt": "2026-08-14T13:06:59.498Z"
+    "renderedHash": "38f8fd7b445f37c0fabb9d31332d1f9e3309ff84a3e9dc10f1562382c1bc1ca3",
+    "storeUpdatedAt": "2026-08-14T16:55:31.639Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -6583,29 +6583,56 @@
     },
     "docs/rust-firmware/README.md": {
       "description": "Project documentation",
-      "tokens": 710,
-      "hash": "b2933b41c4f6dbc9",
-      "size": 2854,
-      "mtimeMs": 1786712691522.1858,
-      "updatedAt": "2026-08-14T13:04:51.618Z",
+      "tokens": 1013,
+      "hash": "4ab97767cc6441a0",
+      "size": 4077,
+      "mtimeMs": 1786726531535.6943,
+      "updatedAt": "2026-08-14T16:55:31.627Z",
       "source": "hook"
     },
     "docs/rust-firmware/01-feasibility.md": {
       "description": "01 — Feasibility and route selection",
-      "tokens": 2490,
-      "hash": "8242ea0007638e9c",
-      "size": 10016,
-      "mtimeMs": 1786712750245.0388,
-      "updatedAt": "2026-08-14T13:05:50.341Z",
+      "tokens": 2616,
+      "hash": "4adea80c13fc477b",
+      "size": 10533,
+      "mtimeMs": 1786726509656.725,
+      "updatedAt": "2026-08-14T16:55:09.748Z",
       "source": "hook"
     },
     "docs/rust-firmware/02-crate-inventory.md": {
       "description": "02 — Crate inventory",
-      "tokens": 3093,
-      "hash": "fe135a3c7ea07e91",
-      "size": 12452,
-      "mtimeMs": 1786712819396.6143,
-      "updatedAt": "2026-08-14T13:06:59.490Z",
+      "tokens": 3324,
+      "hash": "40b16d1f11b299b0",
+      "size": 13376,
+      "mtimeMs": 1786726410727.4072,
+      "updatedAt": "2026-08-14T16:53:30.819Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/03-risks-and-gaps.md": {
+      "description": "03 — Risks and gaps",
+      "tokens": 2887,
+      "hash": "37023e523aeb6c9a",
+      "size": 11621,
+      "mtimeMs": 1786726379918.9688,
+      "updatedAt": "2026-08-14T16:53:00.024Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/04-migration-plan.md": {
+      "description": "04 — Migration plan",
+      "tokens": 2308,
+      "hash": "4e25b447fc2018e6",
+      "size": 9402,
+      "mtimeMs": 1786726472056.705,
+      "updatedAt": "2026-08-14T16:54:32.149Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/05-open-questions.md": {
+      "description": "05 — Questions and answers",
+      "tokens": 1398,
+      "hash": "8df8de7a629e1c51",
+      "size": 5641,
+      "mtimeMs": 1786726312920.4226,
+      "updatedAt": "2026-08-14T16:51:53.015Z",
       "source": "hook"
     }
   }

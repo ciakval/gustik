@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-14T13:06:59.490Z
-> Files: 484 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-14T16:55:31.628Z
+> Files: 487 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -956,9 +956,12 @@
 
 ## docs/rust-firmware/
 
-- `01-feasibility.md` — 01 — Feasibility and route selection (~2490 tok)
-- `02-crate-inventory.md` — 02 — Crate inventory (~3093 tok)
-- `README.md` — Project documentation (~710 tok)
+- `01-feasibility.md` — verdict (feasible); Route A std/ESP-IDF vs Route B no_std/esp-hal+esp-radio+Embassy; Xtensa toolchain reality (espup fork still mandatory); Route B CHOSEN by Mlok (~2616 tok)
+- `02-crate-inventory.md` — capability-by-capability crate mapping vs each real firmware module (PCNT, ADC, qmc5883p crate, esp-radio, reqwless+embedded-tls, sntpc, esp-storage+sequential-storage, esp-println), versions/maturity, all from crates.io (~3324 tok)
+- `03-risks-and-gaps.md` — TLS RESOLVED (unverified TLS 1.3 accepted by Mlok, verified working against the live backend); qmc5883p crate register map diffed against ours; RAM/flash budget; loss of `uploadfs`; which past Gustik bugs Rust would/wouldn't have prevented. Top remaining risk is now the Xtensa toolchain (~2887 tok)
+- `04-migration-plan.md` — parallel `firmware-rs/` Cargo workspace (gustik-core + binary; gustik-drivers dropped after Q4), 4 phases with phase 1 needing no ESP toolchain, test + CI strategy (~2308 tok)
+- `05-open-questions.md` — Q1-Q4 ANSWERED by Mlok 2026-08-14 (ESP32 stays / no_std / unverified TLS ok / use qmc5883p crate) with consequences; Q5-Q8 still open but block nothing (~1398 tok)
+- `README.md` — index + executive summary of the Rust firmware feasibility study (2026-08-14, revised same day after Mlok's answers; study only, nothing implemented) (~1013 tok)
 
 ## docs/superpowers/plans/
 
