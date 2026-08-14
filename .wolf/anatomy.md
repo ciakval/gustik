@@ -863,6 +863,10 @@
   - fn `freshDb` L6-70 (~475 tok)
 - `timestamp.test.js` (~489 tok)
 
+## docs/hardware/
+
+- `wind-sensor-wiring.md` — WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits (~1100 tok)
+
 ## docs/superpowers/plans/
 
 - `2026-08-09-timestamp-timezone-support.md` — Timestamp Timezone Support Implementation Plan (~4942 tok)
@@ -1062,11 +1066,11 @@
 ## firmware/src/sense/
 
 - `anemometer.cpp` — include "sense/anemometer.h" (~138 tok)
-- `anemometer.h` — pragma once (~174 tok)
+- `anemometer.h` — pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md (~220 tok)
 - `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk) (~480 tok)
 - `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure) (~250 tok)
 - `vane.cpp` — include "sense/vane.h" (~261 tok)
-- `vane.h` — pragma once (~146 tok)
+- `vane.h` — pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md (~200 tok)
 
 ## firmware/src/transmit/
 
