@@ -76,6 +76,24 @@ bug-017 for the full correction.
   is a placeholder (`1.2`), not measured against the actual salvaged
   WH1080/WH1090 anemometer. Measure against a reference anemometer or the
   datasheet's rotation→speed constant before trusting readings.
+- ~~Wind vane calibration~~ — **DONE 2026-08-15, no longer a placeholder.**
+  All 16 vane positions measured on the real hardware over two full rotations
+  and encoded in `firmware/src/sense/vane_decode.cpp`; three independent
+  captures agree to within 4 ADC counts on every primary octant. Pinned by
+  `firmware/test/test_vane_decode/` (8 host-run tests). Full method, table,
+  and the ADC-nonlinearity notes: `docs/hardware/wind-sensor-wiring.md`.
+  Re-measure if the pull-up value, cable run, or sensor unit changes.
+
+  Two lessons from this one worth carrying to the anemometer constant below:
+  (1) the original placeholder was not merely imprecise but wrong enough to
+  map real positions onto *unrelated* octants (90° was off by ~2000 counts) —
+  a nearest-match table produces confident nonsense, not degraded accuracy, so
+  treat any remaining nearest-match placeholder as a correctness bug in
+  waiting; (2) the table was still wrong after being "measured", because it
+  only listed the 8 positions we had named — the vane actually rests at 16,
+  and three of the unlisted ones decoded up to 112.5° wrong (bug-050).
+  Enumerate a sensor's full state space from the datasheet before trusting a
+  lookup built from the states you happened to think of.
 - Magnetometer hard-iron calibration (Story 1.2 AC3): **measured 2026-08-11**
   on the bench against the real QMC5883P chip (`firmware/src/main.cpp`'s
   `kMagnetometerCalibration`, sourced from `scripts/qmc5883p-calibration.json`

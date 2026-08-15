@@ -9,485 +9,6 @@
     "storeUpdatedAt": "2026-08-14T16:55:31.639Z"
   },
   "files": {
-    "_bmad/_config/bmad-help.csv": {
-      "description": "",
-      "tokens": 2604,
-      "hash": "8e9eb34ad46f7f55",
-      "size": 9776,
-      "mtimeMs": 1785575791362.728,
-      "updatedAt": "2026-08-10T19:26:48.005Z",
-      "source": "scan"
-    },
-    "_bmad/_config/files-manifest.csv": {
-      "description": "",
-      "tokens": 10018,
-      "hash": "b60a0f733fc42329",
-      "size": 37567,
-      "mtimeMs": 1785575791358.728,
-      "updatedAt": "2026-08-10T19:26:48.006Z",
-      "source": "scan"
-    },
-    "_bmad/_config/manifest.yaml": {
-      "description": "",
-      "tokens": 143,
-      "hash": "de794d1d6cf05728",
-      "size": 500,
-      "mtimeMs": 1785575791270.728,
-      "updatedAt": "2026-08-10T19:26:48.006Z",
-      "source": "scan"
-    },
-    "_bmad/_config/skill-manifest.csv": {
-      "description": "",
-      "tokens": 3190,
-      "hash": "201998503aa8b865",
-      "size": 11971,
-      "mtimeMs": 1785575791274.728,
-      "updatedAt": "2026-08-10T19:26:48.007Z",
-      "source": "scan"
-    },
-    "_bmad/bmm/config.yaml": {
-      "description": "BMM Module Configuration",
-      "tokens": 144,
-      "hash": "0f9abfaab42b2cdf",
-      "size": 504,
-      "mtimeMs": 1785575791214.728,
-      "updatedAt": "2026-08-10T19:26:48.008Z",
-      "source": "scan"
-    },
-    "_bmad/bmm/module-help.csv": {
-      "description": "",
-      "tokens": 1863,
-      "hash": "ad4373d7e58a31aa",
-      "size": 6989,
-      "mtimeMs": 1785575791112.174,
-      "updatedAt": "2026-08-10T19:26:48.008Z",
-      "source": "scan"
-    },
-    "_bmad/config.toml": {
-      "description": "─────────────────────────────────────────────────────────────────",
-      "tokens": 940,
-      "hash": "dbeef51f6d5609b5",
-      "size": 3568,
-      "mtimeMs": 1785575791262.728,
-      "updatedAt": "2026-08-10T19:26:48.009Z",
-      "source": "scan"
-    },
-    "_bmad/config.user.toml": {
-      "description": "─────────────────────────────────────────────────────────────────",
-      "tokens": 199,
-      "hash": "b428d0772fc63d86",
-      "size": 958,
-      "mtimeMs": 1785575791262.728,
-      "updatedAt": "2026-08-10T19:26:48.010Z",
-      "source": "scan"
-    },
-    "_bmad/core/config.yaml": {
-      "description": "CORE Module Configuration",
-      "tokens": 73,
-      "hash": "a559467e27e0b670",
-      "size": 254,
-      "mtimeMs": 1785575791218.728,
-      "updatedAt": "2026-08-10T19:26:48.010Z",
-      "source": "scan"
-    },
-    "_bmad/core/module-help.csv": {
-      "description": "",
-      "tokens": 775,
-      "hash": "e801caeb1bf64842",
-      "size": 2911,
-      "mtimeMs": 1785575791199.4653,
-      "updatedAt": "2026-08-10T19:26:48.011Z",
-      "source": "scan"
-    },
-    "_bmad/custom/.gitignore": {
-      "description": "Git ignore rules",
-      "tokens": 4,
-      "hash": "973b03a33f142c22",
-      "size": 12,
-      "mtimeMs": 1785575790846.0903,
-      "updatedAt": "2026-08-10T19:26:48.012Z",
-      "source": "scan"
-    },
-    "_bmad/custom/config.toml": {
-      "description": "Team / enterprise overrides for _bmad/config.toml.",
-      "tokens": 99,
-      "hash": "d00d0bb7e0e03a7e",
-      "size": 348,
-      "mtimeMs": 1785575791358.728,
-      "updatedAt": "2026-08-10T19:26:48.012Z",
-      "source": "scan"
-    },
-    "_bmad/custom/config.user.toml": {
-      "description": "Personal overrides for _bmad/config.toml.",
-      "tokens": 46,
-      "hash": "92af88b1942ddfd6",
-      "size": 162,
-      "mtimeMs": 1785575791358.728,
-      "updatedAt": "2026-08-10T19:26:48.013Z",
-      "source": "scan"
-    },
-    "_bmad/scripts/memlog.py": {
-      "description": "memlog — an append-only memory log: LLM-optimal working memory for a skill.",
-      "tokens": 2619,
-      "hash": "3b00f82ca33dc422",
-      "size": 9187,
-      "mtimeMs": 1785575790843.5112,
-      "updatedAt": "2026-08-10T19:26:48.014Z",
-      "source": "scan",
-      "symbols": [
-        {
-          "name": "now",
-          "kind": "fn",
-          "startLine": 81,
-          "endLine": 84,
-          "tokens": 21
-        },
-        {
-          "name": "resolve",
-          "kind": "fn",
-          "startLine": 85,
-          "endLine": 89,
-          "tokens": 59
-        },
-        {
-          "name": "split",
-          "kind": "fn",
-          "startLine": 90,
-          "endLine": 109,
-          "tokens": 236
-        },
-        {
-          "name": "render",
-          "kind": "fn",
-          "startLine": 110,
-          "endLine": 115,
-          "tokens": 82
-        },
-        {
-          "name": "touch",
-          "kind": "fn",
-          "startLine": 116,
-          "endLine": 121,
-          "tokens": 49
-        },
-        {
-          "name": "write_atomic",
-          "kind": "fn",
-          "startLine": 122,
-          "endLine": 131,
-          "tokens": 94
-        },
-        {
-          "name": "entry_count",
-          "kind": "fn",
-          "startLine": 132,
-          "endLine": 135,
-          "tokens": 30
-        },
-        {
-          "name": "ack",
-          "kind": "fn",
-          "startLine": 136,
-          "endLine": 144,
-          "tokens": 71
-        },
-        {
-          "name": "cmd_init",
-          "kind": "fn",
-          "startLine": 145,
-          "endLine": 163,
-          "tokens": 170
-        },
-        {
-          "name": "cmd_append",
-          "kind": "fn",
-          "startLine": 164,
-          "endLine": 179,
-          "tokens": 174
-        },
-        {
-          "name": "cmd_set",
-          "kind": "fn",
-          "startLine": 180,
-          "endLine": 189,
-          "tokens": 67
-        },
-        {
-          "name": "add_target",
-          "kind": "fn",
-          "startLine": 190,
-          "endLine": 196,
-          "tokens": 103
-        },
-        {
-          "name": "main",
-          "kind": "fn",
-          "startLine": 197,
-          "endLine": 225,
-          "tokens": 320
-        }
-      ]
-    },
-    "_bmad/scripts/resolve_config.py": {
-      "description": "load_toml, deep_merge, extract_key, main",
-      "tokens": 1635,
-      "hash": "f41149160898aea8",
-      "size": 5722,
-      "mtimeMs": 1785575790844.5413,
-      "updatedAt": "2026-08-10T19:26:48.015Z",
-      "source": "scan",
-      "symbols": [
-        {
-          "name": "load_toml",
-          "kind": "fn",
-          "startLine": 47,
-          "endLine": 72,
-          "tokens": 249
-        },
-        {
-          "name": "_detect_keyed_merge_field",
-          "kind": "fn",
-          "startLine": 73,
-          "endLine": 81,
-          "tokens": 82
-        },
-        {
-          "name": "_merge_by_key",
-          "kind": "fn",
-          "startLine": 82,
-          "endLine": 104,
-          "tokens": 201
-        },
-        {
-          "name": "_merge_arrays",
-          "kind": "fn",
-          "startLine": 105,
-          "endLine": 113,
-          "tokens": 99
-        },
-        {
-          "name": "deep_merge",
-          "kind": "fn",
-          "startLine": 114,
-          "endLine": 127,
-          "tokens": 135
-        },
-        {
-          "name": "extract_key",
-          "kind": "fn",
-          "startLine": 128,
-          "endLine": 138,
-          "tokens": 78
-        },
-        {
-          "name": "main",
-          "kind": "fn",
-          "startLine": 139,
-          "endLine": 179,
-          "tokens": 373
-        }
-      ]
-    },
-    "_bmad/scripts/resolve_customization.py": {
-      "description": "find_project_root, load_toml, deep_merge, extract_key + 2 more",
-      "tokens": 2371,
-      "hash": "23fb9040b08c7eb9",
-      "size": 8310,
-      "mtimeMs": 1785575790846.0903,
-      "updatedAt": "2026-08-10T19:26:48.016Z",
-      "source": "scan",
-      "symbols": [
-        {
-          "name": "find_project_root",
-          "kind": "fn",
-          "startLine": 58,
-          "endLine": 68,
-          "tokens": 84
-        },
-        {
-          "name": "load_toml",
-          "kind": "fn",
-          "startLine": 69,
-          "endLine": 97,
-          "tokens": 290
-        },
-        {
-          "name": "_detect_keyed_merge_field",
-          "kind": "fn",
-          "startLine": 98,
-          "endLine": 114,
-          "tokens": 206
-        },
-        {
-          "name": "_merge_by_key",
-          "kind": "fn",
-          "startLine": 115,
-          "endLine": 140,
-          "tokens": 202
-        },
-        {
-          "name": "_merge_arrays",
-          "kind": "fn",
-          "startLine": 141,
-          "endLine": 151,
-          "tokens": 142
-        },
-        {
-          "name": "deep_merge",
-          "kind": "fn",
-          "startLine": 152,
-          "endLine": 170,
-          "tokens": 200
-        },
-        {
-          "name": "extract_key",
-          "kind": "fn",
-          "startLine": 171,
-          "endLine": 181,
-          "tokens": 78
-        },
-        {
-          "name": "write_json_stdout",
-          "kind": "fn",
-          "startLine": 182,
-          "endLine": 189,
-          "tokens": 91
-        },
-        {
-          "name": "main",
-          "kind": "fn",
-          "startLine": 190,
-          "endLine": 241,
-          "tokens": 484
-        }
-      ]
-    },
-    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/.memlog.md": {
-      "description": "",
-      "tokens": 2968,
-      "hash": "08f6d8bf7df2c22d",
-      "size": 11872,
-      "mtimeMs": 1785597708646.7217,
-      "updatedAt": "2026-08-10T19:26:48.017Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/ARCHITECTURE-SPINE.md": {
-      "description": "Architecture Spine — Gustik",
-      "tokens": 3456,
-      "hash": "066e1b748f282ef5",
-      "size": 14679,
-      "mtimeMs": 1785597706024.5881,
-      "updatedAt": "2026-08-10T19:26:48.018Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-adversarial.md": {
-      "description": "Adversarial Review — Gustik Architecture Spine",
-      "tokens": 4168,
-      "hash": "d5d3fc055db8187f",
-      "size": 16832,
-      "mtimeMs": 1785597466189.267,
-      "updatedAt": "2026-08-10T19:26:48.019Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-rubric.md": {
-      "description": "Review: ARCHITECTURE-SPINE.md (Gustik, 2026-08-01)",
-      "tokens": 3087,
-      "hash": "5acdb931545879d0",
-      "size": 12430,
-      "mtimeMs": 1785597489710.5337,
-      "updatedAt": "2026-08-10T19:26:48.020Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-versions.md": {
-      "description": "Review: Stack Versions & Reality-Check — Gustik Architecture Spine",
-      "tokens": 2511,
-      "hash": "f3f49d57df1fae83",
-      "size": 10109,
-      "mtimeMs": 1785597424753.0703,
-      "updatedAt": "2026-08-10T19:26:48.020Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/.memlog.md": {
-      "description": "",
-      "tokens": 589,
-      "hash": "673040b77e84c0d1",
-      "size": 2544,
-      "mtimeMs": 1785581065316.356,
-      "updatedAt": "2026-08-10T19:26:48.021Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/addendum.md": {
-      "description": "Addendum: Gustik",
-      "tokens": 1174,
-      "hash": "703cfdae40b4d4ce",
-      "size": 5096,
-      "mtimeMs": 1785581056341.7065,
-      "updatedAt": "2026-08-10T19:26:48.022Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/brief.md": {
-      "description": "Product Brief: Gustik",
-      "tokens": 1940,
-      "hash": "e58b5fd5da42c8ce",
-      "size": 8631,
-      "mtimeMs": 1785580958373.577,
-      "updatedAt": "2026-08-10T19:26:48.022Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/epics.md": {
-      "description": "gustik - Epic Breakdown",
-      "tokens": 9058,
-      "hash": "9bfd4170eaa9bd56",
-      "size": 39235,
-      "mtimeMs": 1785599173620.513,
-      "updatedAt": "2026-08-10T19:26:48.024Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/.memlog.md": {
-      "description": "",
-      "tokens": 792,
-      "hash": "5f3218ef6732fe71",
-      "size": 3402,
-      "mtimeMs": 1785586326038.3728,
-      "updatedAt": "2026-08-10T19:26:48.024Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/addendum.md": {
-      "description": "Addendum: Gustik PRD",
-      "tokens": 1184,
-      "hash": "4dfa78dbd1254a43",
-      "size": 5191,
-      "mtimeMs": 1785586006011.046,
-      "updatedAt": "2026-08-10T19:26:48.025Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/prd.md": {
-      "description": "PRD: Gustik",
-      "tokens": 7336,
-      "hash": "f920fea8be6c72fd",
-      "size": 32319,
-      "mtimeMs": 1785586265241.3887,
-      "updatedAt": "2026-08-10T19:26:48.026Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/reconcile-brief-addendum.md": {
-      "description": "Reconciliation — brief.md + addendum.md vs prd.md + addendum.md",
-      "tokens": 1252,
-      "hash": "e463cb1b969b0bcc",
-      "size": 5123,
-      "mtimeMs": 1785585292623.3054,
-      "updatedAt": "2026-08-10T19:26:48.026Z",
-      "source": "scan"
-    },
-    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/review-rubric.md": {
-      "description": "PRD Quality Review — Gustik (prd-gustik-2026-08-01)",
-      "tokens": 2837,
-      "hash": "8b19a15f304db0e3",
-      "size": 11580,
-      "mtimeMs": 1785585437812.8557,
-      "updatedAt": "2026-08-10T19:26:48.027Z",
-      "source": "scan"
-    },
     ".claude/commands/reframe.md": {
       "description": "Mode: migrate [framework]",
       "tokens": 551,
@@ -533,6 +54,15 @@
       "updatedAt": "2026-08-10T19:26:48.028Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-advanced-elicitation/SKILL.md": {
+      "description": "Advanced Elicitation",
+      "tokens": 1588,
+      "hash": "705cc827cab89285",
+      "size": 6352,
+      "mtimeMs": 1785575791380.981,
+      "updatedAt": "2026-08-10T19:26:48.030Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-advanced-elicitation/methods.csv": {
       "description": "",
       "tokens": 3860,
@@ -542,13 +72,13 @@
       "updatedAt": "2026-08-10T19:26:48.029Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-advanced-elicitation/SKILL.md": {
-      "description": "Advanced Elicitation",
-      "tokens": 1588,
-      "hash": "705cc827cab89285",
-      "size": 6352,
-      "mtimeMs": 1785575791380.981,
-      "updatedAt": "2026-08-10T19:26:48.030Z",
+    ".claude/skills/bmad-agent-analyst/SKILL.md": {
+      "description": "Mary — Business Analyst",
+      "tokens": 1127,
+      "hash": "fca38a404e79508e",
+      "size": 4525,
+      "mtimeMs": 1785575791429.2651,
+      "updatedAt": "2026-08-10T19:26:48.031Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-analyst/customize.toml": {
@@ -560,12 +90,12 @@
       "updatedAt": "2026-08-10T19:26:48.030Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-agent-analyst/SKILL.md": {
-      "description": "Mary — Business Analyst",
-      "tokens": 1127,
-      "hash": "fca38a404e79508e",
-      "size": 4525,
-      "mtimeMs": 1785575791429.2651,
+    ".claude/skills/bmad-agent-architect/SKILL.md": {
+      "description": "Winston — System Architect",
+      "tokens": 1120,
+      "hash": "82bbf22ff3a45717",
+      "size": 4499,
+      "mtimeMs": 1785575791496.567,
       "updatedAt": "2026-08-10T19:26:48.031Z",
       "source": "scan"
     },
@@ -578,13 +108,13 @@
       "updatedAt": "2026-08-10T19:26:48.031Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-agent-architect/SKILL.md": {
-      "description": "Winston — System Architect",
-      "tokens": 1120,
-      "hash": "82bbf22ff3a45717",
-      "size": 4499,
-      "mtimeMs": 1785575791496.567,
-      "updatedAt": "2026-08-10T19:26:48.031Z",
+    ".claude/skills/bmad-agent-dev/SKILL.md": {
+      "description": "Amelia — Senior Software Engineer",
+      "tokens": 1136,
+      "hash": "54ab6d9d60d7ed7e",
+      "size": 4565,
+      "mtimeMs": 1785575791523.8804,
+      "updatedAt": "2026-08-10T19:26:48.032Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-dev/customize.toml": {
@@ -596,13 +126,13 @@
       "updatedAt": "2026-08-10T19:26:48.032Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-agent-dev/SKILL.md": {
-      "description": "Amelia — Senior Software Engineer",
-      "tokens": 1136,
-      "hash": "54ab6d9d60d7ed7e",
-      "size": 4565,
-      "mtimeMs": 1785575791523.8804,
-      "updatedAt": "2026-08-10T19:26:48.032Z",
+    ".claude/skills/bmad-agent-pm/SKILL.md": {
+      "description": "John — Product Manager",
+      "tokens": 1120,
+      "hash": "e2ebea0bf6ee158f",
+      "size": 4497,
+      "mtimeMs": 1785575791471.712,
+      "updatedAt": "2026-08-10T19:26:48.033Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-pm/customize.toml": {
@@ -614,13 +144,13 @@
       "updatedAt": "2026-08-10T19:26:48.033Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-agent-pm/SKILL.md": {
-      "description": "John — Product Manager",
-      "tokens": 1120,
-      "hash": "e2ebea0bf6ee158f",
-      "size": 4497,
-      "mtimeMs": 1785575791471.712,
-      "updatedAt": "2026-08-10T19:26:48.033Z",
+    ".claude/skills/bmad-agent-tech-writer/SKILL.md": {
+      "description": "Paige — Technical Writer",
+      "tokens": 1141,
+      "hash": "7544242ff68d0ddf",
+      "size": 4582,
+      "mtimeMs": 1785575791431.6716,
+      "updatedAt": "2026-08-10T19:26:48.035Z",
       "source": "scan"
     },
     ".claude/skills/bmad-agent-tech-writer/customize.toml": {
@@ -650,15 +180,6 @@
       "updatedAt": "2026-08-10T19:26:48.035Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-agent-tech-writer/SKILL.md": {
-      "description": "Paige — Technical Writer",
-      "tokens": 1141,
-      "hash": "7544242ff68d0ddf",
-      "size": 4582,
-      "mtimeMs": 1785575791431.6716,
-      "updatedAt": "2026-08-10T19:26:48.035Z",
-      "source": "scan"
-    },
     ".claude/skills/bmad-agent-tech-writer/validate-doc.md": {
       "description": "Validate Documentation",
       "tokens": 164,
@@ -677,6 +198,15 @@
       "updatedAt": "2026-08-10T19:26:48.035Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-agent-ux-designer/SKILL.md": {
+      "description": "Sally — UX Designer",
+      "tokens": 1125,
+      "hash": "d780ae59b9fb7e3a",
+      "size": 4518,
+      "mtimeMs": 1785575791473.302,
+      "updatedAt": "2026-08-10T19:26:48.036Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-agent-ux-designer/customize.toml": {
       "description": "/project-context.md\",",
       "tokens": 723,
@@ -686,13 +216,13 @@
       "updatedAt": "2026-08-10T19:26:48.036Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-agent-ux-designer/SKILL.md": {
-      "description": "Sally — UX Designer",
-      "tokens": 1125,
-      "hash": "d780ae59b9fb7e3a",
-      "size": 4518,
-      "mtimeMs": 1785575791473.302,
-      "updatedAt": "2026-08-10T19:26:48.036Z",
+    ".claude/skills/bmad-architecture/SKILL.md": {
+      "description": "BMad Architecture",
+      "tokens": 3446,
+      "hash": "a56c7a0abc45e1db",
+      "size": 13888,
+      "mtimeMs": 1785575791498.3845,
+      "updatedAt": "2026-08-10T19:26:48.041Z",
       "source": "scan"
     },
     ".claude/skills/bmad-architecture/assets/spine-template.md": {
@@ -1026,13 +556,13 @@
         }
       ]
     },
-    ".claude/skills/bmad-architecture/SKILL.md": {
-      "description": "BMad Architecture",
-      "tokens": 3446,
-      "hash": "a56c7a0abc45e1db",
-      "size": 13888,
-      "mtimeMs": 1785575791498.3845,
-      "updatedAt": "2026-08-10T19:26:48.041Z",
+    ".claude/skills/bmad-brainstorming/SKILL.md": {
+      "description": "BMad Brainstorming",
+      "tokens": 2336,
+      "hash": "399ddc752fc786b5",
+      "size": 9413,
+      "mtimeMs": 1785575791383.9937,
+      "updatedAt": "2026-08-10T19:26:48.050Z",
       "source": "scan"
     },
     ".claude/skills/bmad-brainstorming/analysis/catalog-analysis.md": {
@@ -1526,12 +1056,12 @@
         }
       ]
     },
-    ".claude/skills/bmad-brainstorming/SKILL.md": {
-      "description": "BMad Brainstorming",
-      "tokens": 2336,
-      "hash": "399ddc752fc786b5",
-      "size": 9413,
-      "mtimeMs": 1785575791383.9937,
+    ".claude/skills/bmad-check-implementation-readiness/SKILL.md": {
+      "description": "Implementation Readiness",
+      "tokens": 1216,
+      "hash": "a7e12eae2bdb5a95",
+      "size": 4890,
+      "mtimeMs": 1785575791505.6035,
       "updatedAt": "2026-08-10T19:26:48.050Z",
       "source": "scan"
     },
@@ -1541,15 +1071,6 @@
       "hash": "571d81087b7a6d91",
       "size": 1631,
       "mtimeMs": 1785575791506.0403,
-      "updatedAt": "2026-08-10T19:26:48.050Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-check-implementation-readiness/SKILL.md": {
-      "description": "Implementation Readiness",
-      "tokens": 1216,
-      "hash": "a7e12eae2bdb5a95",
-      "size": 4890,
-      "mtimeMs": 1785575791505.6035,
       "updatedAt": "2026-08-10T19:26:48.050Z",
       "source": "scan"
     },
@@ -1616,6 +1137,15 @@
       "updatedAt": "2026-08-10T19:26:48.054Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-checkpoint-preview/SKILL.md": {
+      "description": "Checkpoint Review Workflow",
+      "tokens": 786,
+      "hash": "34613078dbea9c55",
+      "size": 3161,
+      "mtimeMs": 1785575791525.5488,
+      "updatedAt": "2026-08-10T19:26:48.055Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-checkpoint-preview/customize.toml": {
       "description": "/project-context.md\",",
       "tokens": 461,
@@ -1631,15 +1161,6 @@
       "hash": "4a5936d86fbe5a85",
       "size": 1992,
       "mtimeMs": 1785575791526.3323,
-      "updatedAt": "2026-08-10T19:26:48.055Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-checkpoint-preview/SKILL.md": {
-      "description": "Checkpoint Review Workflow",
-      "tokens": 786,
-      "hash": "34613078dbea9c55",
-      "size": 3161,
-      "mtimeMs": 1785575791525.5488,
       "updatedAt": "2026-08-10T19:26:48.055Z",
       "source": "scan"
     },
@@ -1688,21 +1209,21 @@
       "updatedAt": "2026-08-10T19:26:48.057Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-code-review/customize.toml": {
-      "description": "/project-context.md\",",
-      "tokens": 460,
-      "hash": "94ad662fdf3fda37",
-      "size": 1614,
-      "mtimeMs": 1785575791530.1648,
-      "updatedAt": "2026-08-10T19:26:48.057Z",
-      "source": "scan"
-    },
     ".claude/skills/bmad-code-review/SKILL.md": {
       "description": "Code Review Workflow",
       "tokens": 1080,
       "hash": "8cad441a79809e4e",
       "size": 4330,
       "mtimeMs": 1785575791529.7144,
+      "updatedAt": "2026-08-10T19:26:48.057Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-code-review/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 460,
+      "hash": "94ad662fdf3fda37",
+      "size": 1614,
+      "mtimeMs": 1785575791530.1648,
       "updatedAt": "2026-08-10T19:26:48.057Z",
       "source": "scan"
     },
@@ -1742,6 +1263,15 @@
       "updatedAt": "2026-08-10T19:26:48.061Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-correct-course/SKILL.md": {
+      "description": "Correct Course - Sprint Change Management Workflow",
+      "tokens": 3381,
+      "hash": "5064ef2e7aedfb09",
+      "size": 13551,
+      "mtimeMs": 1785575791534.5203,
+      "updatedAt": "2026-08-10T19:26:48.062Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-correct-course/checklist.md": {
       "description": "Change Navigation Checklist",
       "tokens": 2909,
@@ -1760,12 +1290,12 @@
       "updatedAt": "2026-08-10T19:26:48.062Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-correct-course/SKILL.md": {
-      "description": "Correct Course - Sprint Change Management Workflow",
-      "tokens": 3381,
-      "hash": "5064ef2e7aedfb09",
-      "size": 13551,
-      "mtimeMs": 1785575791534.5203,
+    ".claude/skills/bmad-create-architecture/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-architecture (create intent)",
+      "tokens": 760,
+      "hash": "4b1673582dc8e095",
+      "size": 3050,
+      "mtimeMs": 1785575791512.2004,
       "updatedAt": "2026-08-10T19:26:48.062Z",
       "source": "scan"
     },
@@ -1778,13 +1308,13 @@
       "updatedAt": "2026-08-10T19:26:48.062Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-create-architecture/SKILL.md": {
-      "description": "DEPRECATED — forwards to bmad-architecture (create intent)",
-      "tokens": 760,
-      "hash": "4b1673582dc8e095",
-      "size": 3050,
-      "mtimeMs": 1785575791512.2004,
-      "updatedAt": "2026-08-10T19:26:48.062Z",
+    ".claude/skills/bmad-create-epics-and-stories/SKILL.md": {
+      "description": "Create Epics and Stories",
+      "tokens": 1265,
+      "hash": "4ec9ec255c2c0e97",
+      "size": 5087,
+      "mtimeMs": 1785575791513.9814,
+      "updatedAt": "2026-08-10T19:26:48.063Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-epics-and-stories/customize.toml": {
@@ -1793,15 +1323,6 @@
       "hash": "da9e43605bc6aec8",
       "size": 1665,
       "mtimeMs": 1785575791514.443,
-      "updatedAt": "2026-08-10T19:26:48.063Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-create-epics-and-stories/SKILL.md": {
-      "description": "Create Epics and Stories",
-      "tokens": 1265,
-      "hash": "4ec9ec255c2c0e97",
-      "size": 5087,
-      "mtimeMs": 1785575791513.9814,
       "updatedAt": "2026-08-10T19:26:48.063Z",
       "source": "scan"
     },
@@ -1850,6 +1371,15 @@
       "updatedAt": "2026-08-10T19:26:48.065Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-create-prd/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-prd (create intent)",
+      "tokens": 717,
+      "hash": "143c5c2d85734021",
+      "size": 2877,
+      "mtimeMs": 1785575791475.2798,
+      "updatedAt": "2026-08-10T19:26:48.066Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-create-prd/customize.toml": {
       "description": "/project-context.md\",",
       "tokens": 461,
@@ -1859,13 +1389,13 @@
       "updatedAt": "2026-08-10T19:26:48.066Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-create-prd/SKILL.md": {
-      "description": "DEPRECATED — forwards to bmad-prd (create intent)",
-      "tokens": 717,
-      "hash": "143c5c2d85734021",
-      "size": 2877,
-      "mtimeMs": 1785575791475.2798,
-      "updatedAt": "2026-08-10T19:26:48.066Z",
+    ".claude/skills/bmad-create-story/SKILL.md": {
+      "description": "Create Story Workflow",
+      "tokens": 5866,
+      "hash": "692ab872ebaa1979",
+      "size": 23519,
+      "mtimeMs": 1785575791537.0767,
+      "updatedAt": "2026-08-10T19:26:48.068Z",
       "source": "scan"
     },
     ".claude/skills/bmad-create-story/checklist.md": {
@@ -1895,15 +1425,6 @@
       "updatedAt": "2026-08-10T19:26:48.068Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-create-story/SKILL.md": {
-      "description": "Create Story Workflow",
-      "tokens": 5866,
-      "hash": "692ab872ebaa1979",
-      "size": 23519,
-      "mtimeMs": 1785575791537.0767,
-      "updatedAt": "2026-08-10T19:26:48.068Z",
-      "source": "scan"
-    },
     ".claude/skills/bmad-create-story/template.md": {
       "description": "Story {{epic_num}}.{{story_num}}: {{story_title}}",
       "tokens": 237,
@@ -1911,6 +1432,15 @@
       "size": 948,
       "mtimeMs": 1785575791538.772,
       "updatedAt": "2026-08-10T19:26:48.068Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-customize/SKILL.md": {
+      "description": "BMad Customize",
+      "tokens": 1661,
+      "hash": "6461073f9322f5f2",
+      "size": 6703,
+      "mtimeMs": 1785575791399.5505,
+      "updatedAt": "2026-08-10T19:26:48.070Z",
       "source": "scan"
     },
     ".claude/skills/bmad-customize/scripts/list_customizable_skills.py": {
@@ -1998,13 +1528,13 @@
         }
       ]
     },
-    ".claude/skills/bmad-customize/SKILL.md": {
-      "description": "BMad Customize",
-      "tokens": 1661,
-      "hash": "6461073f9322f5f2",
-      "size": 6703,
-      "mtimeMs": 1785575791399.5505,
-      "updatedAt": "2026-08-10T19:26:48.070Z",
+    ".claude/skills/bmad-dev-auto/SKILL.md": {
+      "description": "Dev Auto Workflow",
+      "tokens": 1221,
+      "hash": "f4243eae074acf5e",
+      "size": 4895,
+      "mtimeMs": 1785575791540.1829,
+      "updatedAt": "2026-08-10T19:26:48.071Z",
       "source": "scan"
     },
     ".claude/skills/bmad-dev-auto/compile-epic-context.md": {
@@ -2022,15 +1552,6 @@
       "hash": "bd4302195867ac47",
       "size": 872,
       "mtimeMs": 1785575791540.975,
-      "updatedAt": "2026-08-10T19:26:48.071Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-dev-auto/SKILL.md": {
-      "description": "Dev Auto Workflow",
-      "tokens": 1221,
-      "hash": "f4243eae074acf5e",
-      "size": 4895,
-      "mtimeMs": 1785575791540.1829,
       "updatedAt": "2026-08-10T19:26:48.071Z",
       "source": "scan"
     },
@@ -2079,6 +1600,15 @@
       "updatedAt": "2026-08-10T19:26:48.072Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-dev-story/SKILL.md": {
+      "description": "Dev Story Workflow",
+      "tokens": 6661,
+      "hash": "f12801307b157f04",
+      "size": 26709,
+      "mtimeMs": 1785575791544.4485,
+      "updatedAt": "2026-08-10T19:26:48.073Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-dev-story/checklist.md": {
       "description": "🎯 Enhanced Definition of Done Checklist",
       "tokens": 1092,
@@ -2097,13 +1627,13 @@
       "updatedAt": "2026-08-10T19:26:48.073Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-dev-story/SKILL.md": {
-      "description": "Dev Story Workflow",
-      "tokens": 6661,
-      "hash": "f12801307b157f04",
-      "size": 26709,
-      "mtimeMs": 1785575791544.4485,
-      "updatedAt": "2026-08-10T19:26:48.073Z",
+    ".claude/skills/bmad-document-project/SKILL.md": {
+      "description": "Document Project Workflow",
+      "tokens": 665,
+      "hash": "806d73f66a8f3f3e",
+      "size": 2671,
+      "mtimeMs": 1785575791435.2988,
+      "updatedAt": "2026-08-10T19:26:48.075Z",
       "source": "scan"
     },
     ".claude/skills/bmad-document-project/checklist.md": {
@@ -2139,15 +1669,6 @@
       "hash": "9f4bc3a46559ffd4",
       "size": 5164,
       "mtimeMs": 1785575791437.1548,
-      "updatedAt": "2026-08-10T19:26:48.075Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-document-project/SKILL.md": {
-      "description": "Document Project Workflow",
-      "tokens": 665,
-      "hash": "806d73f66a8f3f3e",
-      "size": 2671,
-      "mtimeMs": 1785575791435.2988,
       "updatedAt": "2026-08-10T19:26:48.075Z",
       "source": "scan"
     },
@@ -2232,6 +1753,15 @@
       "updatedAt": "2026-08-10T19:26:48.079Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-domain-research/SKILL.md": {
+      "description": "Domain Research Workflow",
+      "tokens": 1189,
+      "hash": "2308f7e21f78d7f2",
+      "size": 4771,
+      "mtimeMs": 1785575791454.773,
+      "updatedAt": "2026-08-10T19:26:48.082Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-domain-research/customize.toml": {
       "description": "/project-context.md\",",
       "tokens": 476,
@@ -2304,13 +1834,13 @@
       "updatedAt": "2026-08-10T19:26:48.082Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-domain-research/SKILL.md": {
-      "description": "Domain Research Workflow",
-      "tokens": 1189,
-      "hash": "2308f7e21f78d7f2",
-      "size": 4771,
-      "mtimeMs": 1785575791454.773,
-      "updatedAt": "2026-08-10T19:26:48.082Z",
+    ".claude/skills/bmad-edit-prd/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-prd (update intent)",
+      "tokens": 726,
+      "hash": "31ecfe3c16513d99",
+      "size": 2912,
+      "mtimeMs": 1785575791476.8442,
+      "updatedAt": "2026-08-10T19:26:48.083Z",
       "source": "scan"
     },
     ".claude/skills/bmad-edit-prd/customize.toml": {
@@ -2319,15 +1849,6 @@
       "hash": "35cc2dfb3eda73a0",
       "size": 1701,
       "mtimeMs": 1785575791477.2375,
-      "updatedAt": "2026-08-10T19:26:48.083Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-edit-prd/SKILL.md": {
-      "description": "DEPRECATED — forwards to bmad-prd (update intent)",
-      "tokens": 726,
-      "hash": "31ecfe3c16513d99",
-      "size": 2912,
-      "mtimeMs": 1785575791476.8442,
       "updatedAt": "2026-08-10T19:26:48.083Z",
       "source": "scan"
     },
@@ -2347,6 +1868,15 @@
       "size": 10818,
       "mtimeMs": 1785575791404.9832,
       "updatedAt": "2026-08-10T19:26:48.083Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-forge-idea/SKILL.md": {
+      "description": "BMad Forge Idea",
+      "tokens": 2527,
+      "hash": "c62ac3a30a4c7a32",
+      "size": 10134,
+      "mtimeMs": 1785575791406.3706,
+      "updatedAt": "2026-08-10T19:26:48.085Z",
       "source": "scan"
     },
     ".claude/skills/bmad-forge-idea/customize.toml": {
@@ -2492,13 +2022,13 @@
         }
       ]
     },
-    ".claude/skills/bmad-forge-idea/SKILL.md": {
-      "description": "BMad Forge Idea",
-      "tokens": 2527,
-      "hash": "c62ac3a30a4c7a32",
-      "size": 10134,
-      "mtimeMs": 1785575791406.3706,
-      "updatedAt": "2026-08-10T19:26:48.085Z",
+    ".claude/skills/bmad-generate-project-context/SKILL.md": {
+      "description": "Generate Project Context Workflow",
+      "tokens": 956,
+      "hash": "f25e05d8c3923f33",
+      "size": 3839,
+      "mtimeMs": 1785575791519.6543,
+      "updatedAt": "2026-08-10T19:26:48.086Z",
       "source": "scan"
     },
     ".claude/skills/bmad-generate-project-context/customize.toml": {
@@ -2516,15 +2046,6 @@
       "hash": "54e351394ceceb0a",
       "size": 543,
       "mtimeMs": 1785575791520.4207,
-      "updatedAt": "2026-08-10T19:26:48.086Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-generate-project-context/SKILL.md": {
-      "description": "Generate Project Context Workflow",
-      "tokens": 956,
-      "hash": "f25e05d8c3923f33",
-      "size": 3839,
-      "mtimeMs": 1785575791519.6543,
       "updatedAt": "2026-08-10T19:26:48.086Z",
       "source": "scan"
     },
@@ -2573,6 +2094,15 @@
       "updatedAt": "2026-08-10T19:26:48.088Z",
       "source": "scan"
     },
+    ".claude/skills/bmad-market-research/SKILL.md": {
+      "description": "Market Research Workflow",
+      "tokens": 1174,
+      "hash": "13f2c2148061dc66",
+      "size": 4711,
+      "mtimeMs": 1785575791461.028,
+      "updatedAt": "2026-08-10T19:26:48.088Z",
+      "source": "scan"
+    },
     ".claude/skills/bmad-market-research/customize.toml": {
       "description": "/project-context.md\",",
       "tokens": 476,
@@ -2588,15 +2118,6 @@
       "hash": "507bb6729476246b",
       "size": 581,
       "mtimeMs": 1785575791461.9036,
-      "updatedAt": "2026-08-10T19:26:48.088Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-market-research/SKILL.md": {
-      "description": "Market Research Workflow",
-      "tokens": 1174,
-      "hash": "13f2c2148061dc66",
-      "size": 4711,
-      "mtimeMs": 1785575791461.028,
       "updatedAt": "2026-08-10T19:26:48.088Z",
       "source": "scan"
     },
@@ -2652,6 +2173,15 @@
       "size": 19394,
       "mtimeMs": 1785575791465.0767,
       "updatedAt": "2026-08-10T19:26:48.091Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-party-mode/SKILL.md": {
+      "description": "Party Mode",
+      "tokens": 2334,
+      "hash": "783fef00cf5a889c",
+      "size": 9385,
+      "mtimeMs": 1785575791413.057,
+      "updatedAt": "2026-08-10T19:26:48.099Z",
       "source": "scan"
     },
     ".claude/skills/bmad-party-mode/customize.toml": {
@@ -2849,13 +2379,13 @@
         }
       ]
     },
-    ".claude/skills/bmad-party-mode/SKILL.md": {
-      "description": "Party Mode",
-      "tokens": 2334,
-      "hash": "783fef00cf5a889c",
-      "size": 9385,
-      "mtimeMs": 1785575791413.057,
-      "updatedAt": "2026-08-10T19:26:48.099Z",
+    ".claude/skills/bmad-prd/SKILL.md": {
+      "description": "BMad PRD",
+      "tokens": 3413,
+      "hash": "85f0a3ea5fee06fc",
+      "size": 13728,
+      "mtimeMs": 1785575791478.534,
+      "updatedAt": "2026-08-10T19:26:48.104Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prd/assets/headless-schemas.md": {
@@ -2921,13 +2451,13 @@
       "updatedAt": "2026-08-10T19:26:48.104Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-prd/SKILL.md": {
-      "description": "BMad PRD",
-      "tokens": 3413,
-      "hash": "85f0a3ea5fee06fc",
-      "size": 13728,
-      "mtimeMs": 1785575791478.534,
-      "updatedAt": "2026-08-10T19:26:48.104Z",
+    ".claude/skills/bmad-prfaq/SKILL.md": {
+      "description": "Working Backwards: The PRFAQ Challenge",
+      "tokens": 2689,
+      "hash": "353da1cc8837e880",
+      "size": 10802,
+      "mtimeMs": 1785575791443.9119,
+      "updatedAt": "2026-08-10T19:26:48.109Z",
       "source": "scan"
     },
     ".claude/skills/bmad-prfaq/agents/artifact-analyzer.md": {
@@ -3011,13 +2541,13 @@
       "updatedAt": "2026-08-10T19:26:48.109Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-prfaq/SKILL.md": {
-      "description": "Working Backwards: The PRFAQ Challenge",
-      "tokens": 2689,
-      "hash": "353da1cc8837e880",
-      "size": 10802,
-      "mtimeMs": 1785575791443.9119,
-      "updatedAt": "2026-08-10T19:26:48.109Z",
+    ".claude/skills/bmad-product-brief/SKILL.md": {
+      "description": "Overview",
+      "tokens": 2896,
+      "hash": "0d569d109cd61a80",
+      "size": 11632,
+      "mtimeMs": 1785575791451.82,
+      "updatedAt": "2026-08-10T19:26:48.110Z",
       "source": "scan"
     },
     ".claude/skills/bmad-product-brief/assets/brief-template.md": {
@@ -3038,13 +2568,13 @@
       "updatedAt": "2026-08-10T19:26:48.110Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-product-brief/SKILL.md": {
-      "description": "Overview",
-      "tokens": 2896,
-      "hash": "0d569d109cd61a80",
-      "size": 11632,
-      "mtimeMs": 1785575791451.82,
-      "updatedAt": "2026-08-10T19:26:48.110Z",
+    ".claude/skills/bmad-qa-generate-e2e-tests/SKILL.md": {
+      "description": "QA Generate E2E Tests Workflow",
+      "tokens": 1410,
+      "hash": "9e78729569b2dc8e",
+      "size": 5652,
+      "mtimeMs": 1785575791547.3267,
+      "updatedAt": "2026-08-10T19:26:48.111Z",
       "source": "scan"
     },
     ".claude/skills/bmad-qa-generate-e2e-tests/checklist.md": {
@@ -3065,13 +2595,13 @@
       "updatedAt": "2026-08-10T19:26:48.111Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-qa-generate-e2e-tests/SKILL.md": {
-      "description": "QA Generate E2E Tests Workflow",
-      "tokens": 1410,
-      "hash": "9e78729569b2dc8e",
-      "size": 5652,
-      "mtimeMs": 1785575791547.3267,
-      "updatedAt": "2026-08-10T19:26:48.111Z",
+    ".claude/skills/bmad-quick-dev/SKILL.md": {
+      "description": "Quick Dev New Preview Workflow",
+      "tokens": 1445,
+      "hash": "18c2002a48dee2d4",
+      "size": 5795,
+      "mtimeMs": 1785575791550.2751,
+      "updatedAt": "2026-08-10T19:26:48.112Z",
       "source": "scan"
     },
     ".claude/skills/bmad-quick-dev/compile-epic-context.md": {
@@ -3089,15 +2619,6 @@
       "hash": "ebb082e10f887a68",
       "size": 888,
       "mtimeMs": 1785575791550.998,
-      "updatedAt": "2026-08-10T19:26:48.112Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-quick-dev/SKILL.md": {
-      "description": "Quick Dev New Preview Workflow",
-      "tokens": 1445,
-      "hash": "18c2002a48dee2d4",
-      "size": 5795,
-      "mtimeMs": 1785575791550.2751,
       "updatedAt": "2026-08-10T19:26:48.112Z",
       "source": "scan"
     },
@@ -3173,21 +2694,21 @@
       "updatedAt": "2026-08-10T19:26:48.115Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-retrospective/customize.toml": {
-      "description": "/project-context.md\",",
-      "tokens": 473,
-      "hash": "4ad7e7e7154b480e",
-      "size": 1659,
-      "mtimeMs": 1785575791556.2527,
-      "updatedAt": "2026-08-10T19:26:48.115Z",
-      "source": "scan"
-    },
     ".claude/skills/bmad-retrospective/SKILL.md": {
       "description": "Retrospective Workflow",
       "tokens": 15798,
       "hash": "af09b92e4928bbc9",
       "size": 65521,
       "mtimeMs": 1785575791555.8103,
+      "updatedAt": "2026-08-10T19:26:48.115Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-retrospective/customize.toml": {
+      "description": "/project-context.md\",",
+      "tokens": 473,
+      "hash": "4ad7e7e7154b480e",
+      "size": 1659,
+      "mtimeMs": 1785575791556.2527,
       "updatedAt": "2026-08-10T19:26:48.115Z",
       "source": "scan"
     },
@@ -3200,21 +2721,21 @@
       "updatedAt": "2026-08-10T19:26:48.115Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-review-edge-case-hunter/references/deletion-check.md": {
-      "description": "Deletion Check",
-      "tokens": 252,
-      "hash": "0f1f124e4e957147",
-      "size": 1009,
-      "mtimeMs": 1785575791423.288,
-      "updatedAt": "2026-08-10T19:26:48.116Z",
-      "source": "scan"
-    },
     ".claude/skills/bmad-review-edge-case-hunter/SKILL.md": {
       "description": "Edge Case Hunter Review",
       "tokens": 1189,
       "hash": "03087a3f1e935f7a",
       "size": 4775,
       "mtimeMs": 1785575791422.168,
+      "updatedAt": "2026-08-10T19:26:48.116Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-review-edge-case-hunter/references/deletion-check.md": {
+      "description": "Deletion Check",
+      "tokens": 252,
+      "hash": "0f1f124e4e957147",
+      "size": 1009,
+      "mtimeMs": 1785575791423.288,
       "updatedAt": "2026-08-10T19:26:48.116Z",
       "source": "scan"
     },
@@ -3225,6 +2746,15 @@
       "size": 4142,
       "mtimeMs": 1785575791424.6824,
       "updatedAt": "2026-08-10T19:26:48.116Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-spec/SKILL.md": {
+      "description": "BMad Spec",
+      "tokens": 3571,
+      "hash": "a2baaf6b6bf00040",
+      "size": 14340,
+      "mtimeMs": 1785575791426.0286,
+      "updatedAt": "2026-08-10T19:26:48.117Z",
       "source": "scan"
     },
     ".claude/skills/bmad-spec/assets/headless-schemas.md": {
@@ -3254,13 +2784,13 @@
       "updatedAt": "2026-08-10T19:26:48.117Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-spec/SKILL.md": {
-      "description": "BMad Spec",
-      "tokens": 3571,
-      "hash": "a2baaf6b6bf00040",
-      "size": 14340,
-      "mtimeMs": 1785575791426.0286,
-      "updatedAt": "2026-08-10T19:26:48.117Z",
+    ".claude/skills/bmad-sprint-planning/SKILL.md": {
+      "description": "Sprint Planning Workflow",
+      "tokens": 2977,
+      "hash": "aa828c5ceeb2aa87",
+      "size": 11960,
+      "mtimeMs": 1785575791557.4802,
+      "updatedAt": "2026-08-10T19:26:48.118Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-planning/checklist.md": {
@@ -3281,15 +2811,6 @@
       "updatedAt": "2026-08-10T19:26:48.118Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-sprint-planning/SKILL.md": {
-      "description": "Sprint Planning Workflow",
-      "tokens": 2977,
-      "hash": "aa828c5ceeb2aa87",
-      "size": 11960,
-      "mtimeMs": 1785575791557.4802,
-      "updatedAt": "2026-08-10T19:26:48.118Z",
-      "source": "scan"
-    },
     ".claude/skills/bmad-sprint-planning/sprint-status-template.yaml": {
       "description": "Sprint Status Template",
       "tokens": 648,
@@ -3297,6 +2818,15 @@
       "size": 2266,
       "mtimeMs": 1785575791558.6455,
       "updatedAt": "2026-08-10T19:26:48.119Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-sprint-status/SKILL.md": {
+      "description": "Sprint Status Workflow",
+      "tokens": 3239,
+      "hash": "a0dcb85d89cbbc6f",
+      "size": 12992,
+      "mtimeMs": 1785575791560.1978,
+      "updatedAt": "2026-08-10T19:26:48.120Z",
       "source": "scan"
     },
     ".claude/skills/bmad-sprint-status/customize.toml": {
@@ -3308,13 +2838,13 @@
       "updatedAt": "2026-08-10T19:26:48.119Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-sprint-status/SKILL.md": {
-      "description": "Sprint Status Workflow",
-      "tokens": 3239,
-      "hash": "a0dcb85d89cbbc6f",
-      "size": 12992,
-      "mtimeMs": 1785575791560.1978,
-      "updatedAt": "2026-08-10T19:26:48.120Z",
+    ".claude/skills/bmad-technical-research/SKILL.md": {
+      "description": "Technical Research Workflow",
+      "tokens": 1206,
+      "hash": "290c5aec88886a62",
+      "size": 4839,
+      "mtimeMs": 1785575791466.63,
+      "updatedAt": "2026-08-10T19:26:48.121Z",
       "source": "scan"
     },
     ".claude/skills/bmad-technical-research/customize.toml": {
@@ -3332,15 +2862,6 @@
       "hash": "507bb6729476246b",
       "size": 581,
       "mtimeMs": 1785575791467.3801,
-      "updatedAt": "2026-08-10T19:26:48.121Z",
-      "source": "scan"
-    },
-    ".claude/skills/bmad-technical-research/SKILL.md": {
-      "description": "Technical Research Workflow",
-      "tokens": 1206,
-      "hash": "290c5aec88886a62",
-      "size": 4839,
-      "mtimeMs": 1785575791466.63,
       "updatedAt": "2026-08-10T19:26:48.121Z",
       "source": "scan"
     },
@@ -3396,6 +2917,15 @@
       "size": 21304,
       "mtimeMs": 1785575791470.2478,
       "updatedAt": "2026-08-10T19:26:48.123Z",
+      "source": "scan"
+    },
+    ".claude/skills/bmad-ux/SKILL.md": {
+      "description": "BMad UX",
+      "tokens": 2653,
+      "hash": "250d2794f2b8e316",
+      "size": 10700,
+      "mtimeMs": 1785575791484.7146,
+      "updatedAt": "2026-08-10T19:26:48.130Z",
       "source": "scan"
     },
     ".claude/skills/bmad-ux/assets/color-themes.md": {
@@ -3542,12 +3072,12 @@
       "updatedAt": "2026-08-10T19:26:48.129Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-ux/SKILL.md": {
-      "description": "BMad UX",
-      "tokens": 2653,
-      "hash": "250d2794f2b8e316",
-      "size": 10700,
-      "mtimeMs": 1785575791484.7146,
+    ".claude/skills/bmad-validate-prd/SKILL.md": {
+      "description": "DEPRECATED — forwards to bmad-prd (validate intent)",
+      "tokens": 729,
+      "hash": "931439b8c84bc454",
+      "size": 2925,
+      "mtimeMs": 1785575791494.6052,
       "updatedAt": "2026-08-10T19:26:48.130Z",
       "source": "scan"
     },
@@ -3560,13 +3090,13 @@
       "updatedAt": "2026-08-10T19:26:48.130Z",
       "source": "scan"
     },
-    ".claude/skills/bmad-validate-prd/SKILL.md": {
-      "description": "DEPRECATED — forwards to bmad-prd (validate intent)",
-      "tokens": 729,
-      "hash": "931439b8c84bc454",
-      "size": 2925,
-      "mtimeMs": 1785575791494.6052,
-      "updatedAt": "2026-08-10T19:26:48.130Z",
+    ".devcontainer/Dockerfile": {
+      "description": "Docker container definition",
+      "tokens": 740,
+      "hash": "a1e8ff794aa88180",
+      "size": 2774,
+      "mtimeMs": 1786387643668.0386,
+      "updatedAt": "2026-08-10T19:26:48.132Z",
       "source": "scan"
     },
     ".devcontainer/devcontainer.json": {
@@ -3576,15 +3106,6 @@
       "size": 2236,
       "mtimeMs": 1785595070477.2944,
       "updatedAt": "2026-08-10T19:26:48.131Z",
-      "source": "scan"
-    },
-    ".devcontainer/Dockerfile": {
-      "description": "Docker container definition",
-      "tokens": 740,
-      "hash": "a1e8ff794aa88180",
-      "size": 2774,
-      "mtimeMs": 1786387643668.0386,
-      "updatedAt": "2026-08-10T19:26:48.132Z",
       "source": "scan"
     },
     ".devcontainer/post-create.sh": {
@@ -3614,6 +3135,557 @@
       "updatedAt": "2026-08-10T19:26:48.132Z",
       "source": "scan"
     },
+    ".worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml": {
+      "description": "CI: CI",
+      "tokens": 3719,
+      "hash": "753109eea2cb5a83",
+      "size": 13020,
+      "mtimeMs": 1786392657580.9453,
+      "updatedAt": "2026-08-10T20:10:57.626Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/.wolf/STATUS.md": {
+      "description": "STATUS — gustik",
+      "tokens": 3649,
+      "hash": "f7f6a3fca23d04f1",
+      "size": 14714,
+      "mtimeMs": 1786392490634.4749,
+      "updatedAt": "2026-08-10T20:08:10.683Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/.wolf/cerebrum.md": {
+      "description": "Cerebrum",
+      "tokens": 4972,
+      "hash": "803f77ac3617f69f",
+      "size": 19948,
+      "mtimeMs": 1786392506683.3083,
+      "updatedAt": "2026-08-10T20:08:26.734Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/CLAUDE.md": {
+      "description": "CLAUDE.md",
+      "tokens": 2162,
+      "hash": "203f15b2aa0d9cba",
+      "size": 8714,
+      "mtimeMs": 1786392427128.95,
+      "updatedAt": "2026-08-10T20:07:07.180Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/TODO.md": {
+      "description": "TODO — items flagged for Mlok's review",
+      "tokens": 1624,
+      "hash": "9ba072bea3e06799",
+      "size": 6533,
+      "mtimeMs": 1786392405150.3523,
+      "updatedAt": "2026-08-10T20:06:45.198Z",
+      "source": "hook"
+    },
+    ".worktrees/chore-ghcr-backend-deploy/backend/compose.yaml": {
+      "description": "Docker Compose: 2 services",
+      "tokens": 200,
+      "hash": "2bdd0a55b901653f",
+      "size": 699,
+      "mtimeMs": 1786392243234.3826,
+      "updatedAt": "2026-08-10T20:04:03.301Z",
+      "source": "hook"
+    },
+    "CLAUDE.md": {
+      "description": "CLAUDE.md",
+      "tokens": 2136,
+      "hash": "c273a27922010c17",
+      "size": 8611,
+      "mtimeMs": 1786387643673.7566,
+      "updatedAt": "2026-08-10T19:26:48.143Z",
+      "source": "scan"
+    },
+    "TODO.md": {
+      "description": "TODO — items flagged for Mlok's review",
+      "tokens": 1786,
+      "hash": "39da1fbee3d860c7",
+      "size": 7187,
+      "mtimeMs": 1786712803148.587,
+      "updatedAt": "2026-08-14T13:06:43.249Z",
+      "source": "hook"
+    },
+    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/.memlog.md": {
+      "description": "",
+      "tokens": 2968,
+      "hash": "08f6d8bf7df2c22d",
+      "size": 11872,
+      "mtimeMs": 1785597708646.7217,
+      "updatedAt": "2026-08-10T19:26:48.017Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/ARCHITECTURE-SPINE.md": {
+      "description": "Architecture Spine — Gustik",
+      "tokens": 3456,
+      "hash": "066e1b748f282ef5",
+      "size": 14679,
+      "mtimeMs": 1785597706024.5881,
+      "updatedAt": "2026-08-10T19:26:48.018Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-adversarial.md": {
+      "description": "Adversarial Review — Gustik Architecture Spine",
+      "tokens": 4168,
+      "hash": "d5d3fc055db8187f",
+      "size": 16832,
+      "mtimeMs": 1785597466189.267,
+      "updatedAt": "2026-08-10T19:26:48.019Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-rubric.md": {
+      "description": "Review: ARCHITECTURE-SPINE.md (Gustik, 2026-08-01)",
+      "tokens": 3087,
+      "hash": "5acdb931545879d0",
+      "size": 12430,
+      "mtimeMs": 1785597489710.5337,
+      "updatedAt": "2026-08-10T19:26:48.020Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/reviews/review-versions.md": {
+      "description": "Review: Stack Versions & Reality-Check — Gustik Architecture Spine",
+      "tokens": 2511,
+      "hash": "f3f49d57df1fae83",
+      "size": 10109,
+      "mtimeMs": 1785597424753.0703,
+      "updatedAt": "2026-08-10T19:26:48.020Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/.memlog.md": {
+      "description": "",
+      "tokens": 589,
+      "hash": "673040b77e84c0d1",
+      "size": 2544,
+      "mtimeMs": 1785581065316.356,
+      "updatedAt": "2026-08-10T19:26:48.021Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/addendum.md": {
+      "description": "Addendum: Gustik",
+      "tokens": 1174,
+      "hash": "703cfdae40b4d4ce",
+      "size": 5096,
+      "mtimeMs": 1785581056341.7065,
+      "updatedAt": "2026-08-10T19:26:48.022Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/briefs/brief-gustik-2026-08-01/brief.md": {
+      "description": "Product Brief: Gustik",
+      "tokens": 1940,
+      "hash": "e58b5fd5da42c8ce",
+      "size": 8631,
+      "mtimeMs": 1785580958373.577,
+      "updatedAt": "2026-08-10T19:26:48.022Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/epics.md": {
+      "description": "gustik - Epic Breakdown",
+      "tokens": 9058,
+      "hash": "9bfd4170eaa9bd56",
+      "size": 39235,
+      "mtimeMs": 1785599173620.513,
+      "updatedAt": "2026-08-10T19:26:48.024Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/.memlog.md": {
+      "description": "",
+      "tokens": 792,
+      "hash": "5f3218ef6732fe71",
+      "size": 3402,
+      "mtimeMs": 1785586326038.3728,
+      "updatedAt": "2026-08-10T19:26:48.024Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/addendum.md": {
+      "description": "Addendum: Gustik PRD",
+      "tokens": 1184,
+      "hash": "4dfa78dbd1254a43",
+      "size": 5191,
+      "mtimeMs": 1785586006011.046,
+      "updatedAt": "2026-08-10T19:26:48.025Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/prd.md": {
+      "description": "PRD: Gustik",
+      "tokens": 7336,
+      "hash": "f920fea8be6c72fd",
+      "size": 32319,
+      "mtimeMs": 1785586265241.3887,
+      "updatedAt": "2026-08-10T19:26:48.026Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/reconcile-brief-addendum.md": {
+      "description": "Reconciliation — brief.md + addendum.md vs prd.md + addendum.md",
+      "tokens": 1252,
+      "hash": "e463cb1b969b0bcc",
+      "size": 5123,
+      "mtimeMs": 1785585292623.3054,
+      "updatedAt": "2026-08-10T19:26:48.026Z",
+      "source": "scan"
+    },
+    "_bmad-output/planning-artifacts/prds/prd-gustik-2026-08-01/review-rubric.md": {
+      "description": "PRD Quality Review — Gustik (prd-gustik-2026-08-01)",
+      "tokens": 2837,
+      "hash": "8b19a15f304db0e3",
+      "size": 11580,
+      "mtimeMs": 1785585437812.8557,
+      "updatedAt": "2026-08-10T19:26:48.027Z",
+      "source": "scan"
+    },
+    "_bmad/_config/bmad-help.csv": {
+      "description": "",
+      "tokens": 2604,
+      "hash": "8e9eb34ad46f7f55",
+      "size": 9776,
+      "mtimeMs": 1785575791362.728,
+      "updatedAt": "2026-08-10T19:26:48.005Z",
+      "source": "scan"
+    },
+    "_bmad/_config/files-manifest.csv": {
+      "description": "",
+      "tokens": 10018,
+      "hash": "b60a0f733fc42329",
+      "size": 37567,
+      "mtimeMs": 1785575791358.728,
+      "updatedAt": "2026-08-10T19:26:48.006Z",
+      "source": "scan"
+    },
+    "_bmad/_config/manifest.yaml": {
+      "description": "",
+      "tokens": 143,
+      "hash": "de794d1d6cf05728",
+      "size": 500,
+      "mtimeMs": 1785575791270.728,
+      "updatedAt": "2026-08-10T19:26:48.006Z",
+      "source": "scan"
+    },
+    "_bmad/_config/skill-manifest.csv": {
+      "description": "",
+      "tokens": 3190,
+      "hash": "201998503aa8b865",
+      "size": 11971,
+      "mtimeMs": 1785575791274.728,
+      "updatedAt": "2026-08-10T19:26:48.007Z",
+      "source": "scan"
+    },
+    "_bmad/bmm/config.yaml": {
+      "description": "BMM Module Configuration",
+      "tokens": 144,
+      "hash": "0f9abfaab42b2cdf",
+      "size": 504,
+      "mtimeMs": 1785575791214.728,
+      "updatedAt": "2026-08-10T19:26:48.008Z",
+      "source": "scan"
+    },
+    "_bmad/bmm/module-help.csv": {
+      "description": "",
+      "tokens": 1863,
+      "hash": "ad4373d7e58a31aa",
+      "size": 6989,
+      "mtimeMs": 1785575791112.174,
+      "updatedAt": "2026-08-10T19:26:48.008Z",
+      "source": "scan"
+    },
+    "_bmad/config.toml": {
+      "description": "─────────────────────────────────────────────────────────────────",
+      "tokens": 940,
+      "hash": "dbeef51f6d5609b5",
+      "size": 3568,
+      "mtimeMs": 1785575791262.728,
+      "updatedAt": "2026-08-10T19:26:48.009Z",
+      "source": "scan"
+    },
+    "_bmad/config.user.toml": {
+      "description": "─────────────────────────────────────────────────────────────────",
+      "tokens": 199,
+      "hash": "b428d0772fc63d86",
+      "size": 958,
+      "mtimeMs": 1785575791262.728,
+      "updatedAt": "2026-08-10T19:26:48.010Z",
+      "source": "scan"
+    },
+    "_bmad/core/config.yaml": {
+      "description": "CORE Module Configuration",
+      "tokens": 73,
+      "hash": "a559467e27e0b670",
+      "size": 254,
+      "mtimeMs": 1785575791218.728,
+      "updatedAt": "2026-08-10T19:26:48.010Z",
+      "source": "scan"
+    },
+    "_bmad/core/module-help.csv": {
+      "description": "",
+      "tokens": 775,
+      "hash": "e801caeb1bf64842",
+      "size": 2911,
+      "mtimeMs": 1785575791199.4653,
+      "updatedAt": "2026-08-10T19:26:48.011Z",
+      "source": "scan"
+    },
+    "_bmad/custom/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 4,
+      "hash": "973b03a33f142c22",
+      "size": 12,
+      "mtimeMs": 1785575790846.0903,
+      "updatedAt": "2026-08-10T19:26:48.012Z",
+      "source": "scan"
+    },
+    "_bmad/custom/config.toml": {
+      "description": "Team / enterprise overrides for _bmad/config.toml.",
+      "tokens": 99,
+      "hash": "d00d0bb7e0e03a7e",
+      "size": 348,
+      "mtimeMs": 1785575791358.728,
+      "updatedAt": "2026-08-10T19:26:48.012Z",
+      "source": "scan"
+    },
+    "_bmad/custom/config.user.toml": {
+      "description": "Personal overrides for _bmad/config.toml.",
+      "tokens": 46,
+      "hash": "92af88b1942ddfd6",
+      "size": 162,
+      "mtimeMs": 1785575791358.728,
+      "updatedAt": "2026-08-10T19:26:48.013Z",
+      "source": "scan"
+    },
+    "_bmad/scripts/memlog.py": {
+      "description": "memlog — an append-only memory log: LLM-optimal working memory for a skill.",
+      "tokens": 2619,
+      "hash": "3b00f82ca33dc422",
+      "size": 9187,
+      "mtimeMs": 1785575790843.5112,
+      "updatedAt": "2026-08-10T19:26:48.014Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "now",
+          "kind": "fn",
+          "startLine": 81,
+          "endLine": 84,
+          "tokens": 21
+        },
+        {
+          "name": "resolve",
+          "kind": "fn",
+          "startLine": 85,
+          "endLine": 89,
+          "tokens": 59
+        },
+        {
+          "name": "split",
+          "kind": "fn",
+          "startLine": 90,
+          "endLine": 109,
+          "tokens": 236
+        },
+        {
+          "name": "render",
+          "kind": "fn",
+          "startLine": 110,
+          "endLine": 115,
+          "tokens": 82
+        },
+        {
+          "name": "touch",
+          "kind": "fn",
+          "startLine": 116,
+          "endLine": 121,
+          "tokens": 49
+        },
+        {
+          "name": "write_atomic",
+          "kind": "fn",
+          "startLine": 122,
+          "endLine": 131,
+          "tokens": 94
+        },
+        {
+          "name": "entry_count",
+          "kind": "fn",
+          "startLine": 132,
+          "endLine": 135,
+          "tokens": 30
+        },
+        {
+          "name": "ack",
+          "kind": "fn",
+          "startLine": 136,
+          "endLine": 144,
+          "tokens": 71
+        },
+        {
+          "name": "cmd_init",
+          "kind": "fn",
+          "startLine": 145,
+          "endLine": 163,
+          "tokens": 170
+        },
+        {
+          "name": "cmd_append",
+          "kind": "fn",
+          "startLine": 164,
+          "endLine": 179,
+          "tokens": 174
+        },
+        {
+          "name": "cmd_set",
+          "kind": "fn",
+          "startLine": 180,
+          "endLine": 189,
+          "tokens": 67
+        },
+        {
+          "name": "add_target",
+          "kind": "fn",
+          "startLine": 190,
+          "endLine": 196,
+          "tokens": 103
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 197,
+          "endLine": 225,
+          "tokens": 320
+        }
+      ]
+    },
+    "_bmad/scripts/resolve_config.py": {
+      "description": "load_toml, deep_merge, extract_key, main",
+      "tokens": 1635,
+      "hash": "f41149160898aea8",
+      "size": 5722,
+      "mtimeMs": 1785575790844.5413,
+      "updatedAt": "2026-08-10T19:26:48.015Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "load_toml",
+          "kind": "fn",
+          "startLine": 47,
+          "endLine": 72,
+          "tokens": 249
+        },
+        {
+          "name": "_detect_keyed_merge_field",
+          "kind": "fn",
+          "startLine": 73,
+          "endLine": 81,
+          "tokens": 82
+        },
+        {
+          "name": "_merge_by_key",
+          "kind": "fn",
+          "startLine": 82,
+          "endLine": 104,
+          "tokens": 201
+        },
+        {
+          "name": "_merge_arrays",
+          "kind": "fn",
+          "startLine": 105,
+          "endLine": 113,
+          "tokens": 99
+        },
+        {
+          "name": "deep_merge",
+          "kind": "fn",
+          "startLine": 114,
+          "endLine": 127,
+          "tokens": 135
+        },
+        {
+          "name": "extract_key",
+          "kind": "fn",
+          "startLine": 128,
+          "endLine": 138,
+          "tokens": 78
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 139,
+          "endLine": 179,
+          "tokens": 373
+        }
+      ]
+    },
+    "_bmad/scripts/resolve_customization.py": {
+      "description": "find_project_root, load_toml, deep_merge, extract_key + 2 more",
+      "tokens": 2371,
+      "hash": "23fb9040b08c7eb9",
+      "size": 8310,
+      "mtimeMs": 1785575790846.0903,
+      "updatedAt": "2026-08-10T19:26:48.016Z",
+      "source": "scan",
+      "symbols": [
+        {
+          "name": "find_project_root",
+          "kind": "fn",
+          "startLine": 58,
+          "endLine": 68,
+          "tokens": 84
+        },
+        {
+          "name": "load_toml",
+          "kind": "fn",
+          "startLine": 69,
+          "endLine": 97,
+          "tokens": 290
+        },
+        {
+          "name": "_detect_keyed_merge_field",
+          "kind": "fn",
+          "startLine": 98,
+          "endLine": 114,
+          "tokens": 206
+        },
+        {
+          "name": "_merge_by_key",
+          "kind": "fn",
+          "startLine": 115,
+          "endLine": 140,
+          "tokens": 202
+        },
+        {
+          "name": "_merge_arrays",
+          "kind": "fn",
+          "startLine": 141,
+          "endLine": 151,
+          "tokens": 142
+        },
+        {
+          "name": "deep_merge",
+          "kind": "fn",
+          "startLine": 152,
+          "endLine": 170,
+          "tokens": 200
+        },
+        {
+          "name": "extract_key",
+          "kind": "fn",
+          "startLine": 171,
+          "endLine": 181,
+          "tokens": 78
+        },
+        {
+          "name": "write_json_stdout",
+          "kind": "fn",
+          "startLine": 182,
+          "endLine": 189,
+          "tokens": 91
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 190,
+          "endLine": 241,
+          "tokens": 484
+        }
+      ]
+    },
     "backend/.dockerignore": {
       "description": "Docker ignore rules",
       "tokens": 9,
@@ -3630,6 +3702,15 @@
       "size": 49,
       "mtimeMs": 1786387643675.5603,
       "updatedAt": "2026-08-10T19:26:48.133Z",
+      "source": "scan"
+    },
+    "backend/Dockerfile": {
+      "description": "Docker container definition",
+      "tokens": 147,
+      "hash": "03479a84fce8a20a",
+      "size": 551,
+      "mtimeMs": 1786387643675.8958,
+      "updatedAt": "2026-08-10T19:26:48.137Z",
       "source": "scan"
     },
     "backend/data/gustik.sqlite-shm": {
@@ -3656,15 +3737,6 @@
       "hash": "c2f395cf7bdd423a",
       "size": 363,
       "mtimeMs": 1786389521414.7087,
-      "updatedAt": "2026-08-10T19:26:48.137Z",
-      "source": "scan"
-    },
-    "backend/Dockerfile": {
-      "description": "Docker container definition",
-      "tokens": 147,
-      "hash": "03479a84fce8a20a",
-      "size": 551,
-      "mtimeMs": 1786387643675.8958,
       "updatedAt": "2026-08-10T19:26:48.137Z",
       "source": "scan"
     },
@@ -3800,6 +3872,59 @@
         }
       ]
     },
+    "backend/src/serve/aggregate.js": {
+      "description": "Circular (vector) mean of a list of octants, snapped back to an octant.",
+      "tokens": 1817,
+      "hash": "1c3764efcd2f0964",
+      "size": 6359,
+      "mtimeMs": 1786707685893.8857,
+      "updatedAt": "2026-08-14T11:41:25.989Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "circularMeanOctant",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 52,
+          "tokens": 157
+        },
+        {
+          "name": "bucketStartIso",
+          "kind": "fn",
+          "startLine": 53,
+          "endLine": 58,
+          "tokens": 59
+        },
+        {
+          "name": "summarize",
+          "kind": "fn",
+          "startLine": 59,
+          "endLine": 88,
+          "tokens": 390
+        },
+        {
+          "name": "bucketReadings",
+          "kind": "fn",
+          "startLine": 89,
+          "endLine": 124,
+          "tokens": 341
+        },
+        {
+          "name": "detectGaps",
+          "kind": "fn",
+          "startLine": 125,
+          "endLine": 155,
+          "tokens": 306
+        },
+        {
+          "name": "clampBucketSeconds",
+          "kind": "fn",
+          "startLine": 156,
+          "endLine": 163,
+          "tokens": 84
+        }
+      ]
+    },
     "backend/src/serve/routes.js": {
       "description": "API routes: GET (4 endpoints)",
       "tokens": 1508,
@@ -3857,6 +3982,68 @@
           "startLine": 142,
           "endLine": 145,
           "tokens": 30
+        }
+      ]
+    },
+    "backend/src/static/beaufort.js": {
+      "description": "Beaufort scale, for the \"so is that a lot?\" question a raw m/s number does",
+      "tokens": 434,
+      "hash": "13f4439778c330aa",
+      "size": 1548,
+      "mtimeMs": 1786707932457.0286,
+      "updatedAt": "2026-08-14T11:45:32.551Z",
+      "source": "hook"
+    },
+    "backend/src/static/compass.js": {
+      "description": "Compass bearing the wind blows FROM, in degrees clockwise from north.",
+      "tokens": 954,
+      "hash": "1095baca4cb4885e",
+      "size": 3347,
+      "mtimeMs": 1786707833113.7153,
+      "updatedAt": "2026-08-14T11:43:53.200Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "isOctant",
+          "kind": "fn",
+          "startLine": 26,
+          "endLine": 29,
+          "tokens": 27
+        },
+        {
+          "name": "octantLabel",
+          "kind": "fn",
+          "startLine": 30,
+          "endLine": 33,
+          "tokens": 28
+        },
+        {
+          "name": "octantName",
+          "kind": "fn",
+          "startLine": 34,
+          "endLine": 41,
+          "tokens": 72
+        },
+        {
+          "name": "octantToDegrees",
+          "kind": "fn",
+          "startLine": 42,
+          "endLine": 55,
+          "tokens": 181
+        },
+        {
+          "name": "octantArrowRotation",
+          "kind": "fn",
+          "startLine": 56,
+          "endLine": 72,
+          "tokens": 206
+        },
+        {
+          "name": "circularMeanOctant",
+          "kind": "fn",
+          "startLine": 73,
+          "endLine": 93,
+          "tokens": 204
         }
       ]
     },
@@ -4104,6 +4291,176 @@
       "updatedAt": "2026-08-14T11:53:40.362Z",
       "source": "hook"
     },
+    "backend/src/static/status.html": {
+      "description": "Gustik — stav stanice",
+      "tokens": 521,
+      "hash": "3e327c56c4ad29bb",
+      "size": 1987,
+      "mtimeMs": 1786708348358.5828,
+      "updatedAt": "2026-08-14T11:52:28.450Z",
+      "source": "hook"
+    },
+    "backend/src/static/status.js": {
+      "description": "Diagnostics page. Deliberately shows raw values next to their",
+      "tokens": 2777,
+      "hash": "4ac05efb73a4086d",
+      "size": 9771,
+      "mtimeMs": 1786708167524.038,
+      "updatedAt": "2026-08-14T11:49:27.617Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "el",
+          "kind": "fn",
+          "startLine": 32,
+          "endLine": 38,
+          "tokens": 58
+        },
+        {
+          "name": "badge",
+          "kind": "fn",
+          "startLine": 39,
+          "endLine": 42,
+          "tokens": 26
+        },
+        {
+          "name": "row",
+          "kind": "fn",
+          "startLine": 43,
+          "endLine": 49,
+          "tokens": 58
+        },
+        {
+          "name": "renderLatest",
+          "kind": "fn",
+          "startLine": 50,
+          "endLine": 82,
+          "tokens": 390
+        },
+        {
+          "name": "renderTotals",
+          "kind": "fn",
+          "startLine": 83,
+          "endLine": 91,
+          "tokens": 111
+        },
+        {
+          "name": "renderLog",
+          "kind": "fn",
+          "startLine": 92,
+          "endLine": 126,
+          "tokens": 404
+        },
+        {
+          "name": "renderRecent",
+          "kind": "fn",
+          "startLine": 127,
+          "endLine": 145,
+          "tokens": 233
+        },
+        {
+          "name": "renderRssi",
+          "kind": "fn",
+          "startLine": 146,
+          "endLine": 228,
+          "tokens": 723
+        },
+        {
+          "name": "refresh",
+          "kind": "fn",
+          "startLine": 229,
+          "endLine": 273,
+          "tokens": 404
+        }
+      ]
+    },
+    "backend/src/static/styles.css": {
+      "description": "Styles: 40 rules, 10 vars",
+      "tokens": 1492,
+      "hash": "8540dd553a3531ea",
+      "size": 5222,
+      "mtimeMs": 1786708344757.443,
+      "updatedAt": "2026-08-14T11:52:24.848Z",
+      "source": "hook"
+    },
+    "backend/src/static/timerange-ui.js": {
+      "description": "Renders the chip row + resolution select into `container` and calls",
+      "tokens": 1123,
+      "hash": "7b08c7a454b1e573",
+      "size": 3936,
+      "mtimeMs": 1786707975268.7522,
+      "updatedAt": "2026-08-14T11:46:15.364Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "mountTimeRange",
+          "kind": "fn",
+          "startLine": 25,
+          "endLine": 120,
+          "tokens": 892
+        }
+      ]
+    },
+    "backend/src/static/timerange.js": {
+      "description": "Bucket width that lands close to `targetPoints` samples across the window,",
+      "tokens": 1122,
+      "hash": "861bdbfb9c517620",
+      "size": 3927,
+      "mtimeMs": 1786707853742.0212,
+      "updatedAt": "2026-08-14T11:44:13.830Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "rangeById",
+          "kind": "fn",
+          "startLine": 29,
+          "endLine": 37,
+          "tokens": 105
+        },
+        {
+          "name": "autoBucketSeconds",
+          "kind": "fn",
+          "startLine": 38,
+          "endLine": 43,
+          "tokens": 93
+        },
+        {
+          "name": "bucketOptionsFor",
+          "kind": "fn",
+          "startLine": 44,
+          "endLine": 47,
+          "tokens": 39
+        },
+        {
+          "name": "formatBucketSeconds",
+          "kind": "fn",
+          "startLine": 48,
+          "endLine": 59,
+          "tokens": 132
+        },
+        {
+          "name": "windowFor",
+          "kind": "fn",
+          "startLine": 60,
+          "endLine": 76,
+          "tokens": 218
+        },
+        {
+          "name": "loadSelection",
+          "kind": "fn",
+          "startLine": 77,
+          "endLine": 87,
+          "tokens": 92
+        },
+        {
+          "name": "saveSelection",
+          "kind": "fn",
+          "startLine": 88,
+          "endLine": 96,
+          "tokens": 88
+        }
+      ]
+    },
     "backend/src/static/timezone.js": {
       "description": "Single named seam for the dashboard's display timezone. A future",
       "tokens": 541,
@@ -4160,6 +4517,31 @@
       "mtimeMs": 1786387643688.993,
       "updatedAt": "2026-08-10T19:26:48.141Z",
       "source": "scan"
+    },
+    "backend/src/store/localday.js": {
+      "description": "The UTC instant at which the current local day started, as a canonical ISO string.",
+      "tokens": 564,
+      "hash": "7fe9ec3ac6d79957",
+      "size": 1974,
+      "mtimeMs": 1786707651599.949,
+      "updatedAt": "2026-08-14T11:40:51.696Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "zoneOffsetMs",
+          "kind": "fn",
+          "startLine": 12,
+          "endLine": 38,
+          "tokens": 199
+        },
+        {
+          "name": "startOfLocalDayIso",
+          "kind": "fn",
+          "startLine": 39,
+          "endLine": 53,
+          "tokens": 201
+        }
+      ]
     },
     "backend/src/store/readings.js": {
       "description": "Insert a single reading. No-op (idempotent) if clientId already exists.",
@@ -4249,6 +4631,24 @@
         }
       ]
     },
+    "backend/test/aggregate.test.js": {
+      "description": "Declares reading",
+      "tokens": 1325,
+      "hash": "a52fda4111d960ab",
+      "size": 4635,
+      "mtimeMs": 1786707591777.116,
+      "updatedAt": "2026-08-14T11:39:51.869Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "reading",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 117,
+          "tokens": 1274
+        }
+      ]
+    },
     "backend/test/backfill.test.js": {
       "description": "testApp: postReadings, getRawRow",
       "tokens": 1336,
@@ -4280,6 +4680,15 @@
           "tokens": 1210
         }
       ]
+    },
+    "backend/test/compass.test.js": {
+      "description": "Declares bad",
+      "tokens": 727,
+      "hash": "a191d3a7c8a1f0c7",
+      "size": 2549,
+      "mtimeMs": 1786707867197.4707,
+      "updatedAt": "2026-08-14T11:44:27.290Z",
+      "source": "hook"
     },
     "backend/test/dashboard-format.test.js": {
       "description": "Declares capturedAt",
@@ -4317,6 +4726,38 @@
       "updatedAt": "2026-08-14T11:47:01.101Z",
       "source": "hook"
     },
+    "backend/test/history-range.test.js": {
+      "description": "testApp: postReadings, at",
+      "tokens": 1406,
+      "hash": "023c5073b90eb0cf",
+      "size": 4919,
+      "mtimeMs": 1786707751701.4707,
+      "updatedAt": "2026-08-14T11:42:31.804Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 20,
+          "tokens": 106
+        },
+        {
+          "name": "at",
+          "kind": "fn",
+          "startLine": 21,
+          "endLine": 137,
+          "tokens": 1239
+        }
+      ]
+    },
     "backend/test/history.test.js": {
       "description": "testApp: postReadings",
       "tokens": 1277,
@@ -4339,6 +4780,38 @@
           "startLine": 9,
           "endLine": 103,
           "tokens": 1216
+        }
+      ]
+    },
+    "backend/test/ingest-response.test.js": {
+      "description": "testApp: postReadings, reading",
+      "tokens": 1384,
+      "hash": "fedeb4920eac53b6",
+      "size": 4841,
+      "mtimeMs": 1786711907834.0798,
+      "updatedAt": "2026-08-14T12:51:47.930Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 17,
+          "tokens": 53
+        },
+        {
+          "name": "reading",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 122,
+          "tokens": 1270
         }
       ]
     },
@@ -4426,6 +4899,47 @@
         }
       ]
     },
+    "backend/test/status-static.test.js": {
+      "description": "Declares testApp",
+      "tokens": 389,
+      "hash": "902757c94abcc8cc",
+      "size": 1359,
+      "mtimeMs": 1786708176840.1177,
+      "updatedAt": "2026-08-14T11:49:36.935Z",
+      "source": "hook"
+    },
+    "backend/test/status.test.js": {
+      "description": "testApp: postReadings, todayAt",
+      "tokens": 1353,
+      "hash": "decc292950355763",
+      "size": 4735,
+      "mtimeMs": 1786707773491.7874,
+      "updatedAt": "2026-08-14T11:42:53.582Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "testApp",
+          "kind": "fn",
+          "startLine": 5,
+          "endLine": 8,
+          "tokens": 28
+        },
+        {
+          "name": "postReadings",
+          "kind": "fn",
+          "startLine": 9,
+          "endLine": 17,
+          "tokens": 56
+        },
+        {
+          "name": "todayAt",
+          "kind": "fn",
+          "startLine": 18,
+          "endLine": 124,
+          "tokens": 1236
+        }
+      ]
+    },
     "backend/test/store.test.js": {
       "description": "Declares freshDb",
       "tokens": 529,
@@ -4444,21 +4958,30 @@
         }
       ]
     },
+    "backend/test/timerange.test.js": {
+      "description": "openEnded: fakeStorage",
+      "tokens": 1386,
+      "hash": "8c3db5ee7d195d18",
+      "size": 4848,
+      "mtimeMs": 1786707890027.0315,
+      "updatedAt": "2026-08-14T11:44:50.119Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "fakeStorage",
+          "kind": "fn",
+          "startLine": 98,
+          "endLine": 128,
+          "tokens": 292
+        }
+      ]
+    },
     "backend/test/timestamp.test.js": {
       "description": "",
       "tokens": 489,
       "hash": "fc9e07f614e203eb",
       "size": 1711,
       "mtimeMs": 1786387643695.71,
-      "updatedAt": "2026-08-10T19:26:48.143Z",
-      "source": "scan"
-    },
-    "CLAUDE.md": {
-      "description": "CLAUDE.md",
-      "tokens": 2136,
-      "hash": "c273a27922010c17",
-      "size": 8611,
-      "mtimeMs": 1786387643673.7566,
       "updatedAt": "2026-08-10T19:26:48.143Z",
       "source": "scan"
     },
@@ -4470,6 +4993,66 @@
       "mtimeMs": 1786387925723.5752,
       "updatedAt": "2026-08-10T19:26:48.144Z",
       "source": "scan"
+    },
+    "docs/hardware/wind-sensor-wiring.md": {
+      "description": "WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits",
+      "tokens": 1100,
+      "updatedAt": "2026-08-14T11:39:26.625Z",
+      "source": "md-import"
+    },
+    "docs/rust-firmware/01-feasibility.md": {
+      "description": "01 — Feasibility and route selection",
+      "tokens": 2616,
+      "hash": "4adea80c13fc477b",
+      "size": 10533,
+      "mtimeMs": 1786726509656.725,
+      "updatedAt": "2026-08-14T16:55:09.748Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/02-crate-inventory.md": {
+      "description": "02 — Crate inventory",
+      "tokens": 3324,
+      "hash": "40b16d1f11b299b0",
+      "size": 13376,
+      "mtimeMs": 1786726410727.4072,
+      "updatedAt": "2026-08-14T16:53:30.819Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/03-risks-and-gaps.md": {
+      "description": "03 — Risks and gaps",
+      "tokens": 2887,
+      "hash": "37023e523aeb6c9a",
+      "size": 11621,
+      "mtimeMs": 1786726379918.9688,
+      "updatedAt": "2026-08-14T16:53:00.024Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/04-migration-plan.md": {
+      "description": "04 — Migration plan",
+      "tokens": 2308,
+      "hash": "4e25b447fc2018e6",
+      "size": 9402,
+      "mtimeMs": 1786726472056.705,
+      "updatedAt": "2026-08-14T16:54:32.149Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/05-open-questions.md": {
+      "description": "05 — Questions and answers",
+      "tokens": 1398,
+      "hash": "8df8de7a629e1c51",
+      "size": 5641,
+      "mtimeMs": 1786726312920.4226,
+      "updatedAt": "2026-08-14T16:51:53.015Z",
+      "source": "hook"
+    },
+    "docs/rust-firmware/README.md": {
+      "description": "Project documentation",
+      "tokens": 1013,
+      "hash": "4ab97767cc6441a0",
+      "size": 4077,
+      "mtimeMs": 1786726531535.6943,
+      "updatedAt": "2026-08-14T16:55:31.627Z",
+      "source": "hook"
     },
     "docs/superpowers/plans/2026-08-09-timestamp-timezone-support.md": {
       "description": "Timestamp Timezone Support Implementation Plan",
@@ -4489,6 +5072,15 @@
       "updatedAt": "2026-08-10T19:26:48.145Z",
       "source": "scan"
     },
+    "docs/superpowers/specs/2026-08-14-dashboard-ux-design.md": {
+      "description": "Dashboard UX rework — wind direction, graph resolution, status page",
+      "tokens": 3482,
+      "hash": "1050043143e9f49b",
+      "size": 14031,
+      "mtimeMs": 1786712746148.621,
+      "updatedAt": "2026-08-14T13:05:46.243Z",
+      "source": "hook"
+    },
     "firmware/.gitignore": {
       "description": "Git ignore rules",
       "tokens": 52,
@@ -4496,15 +5088,6 @@
       "size": 194,
       "mtimeMs": 1786387643698.1848,
       "updatedAt": "2026-08-10T19:26:48.145Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/integrity.dat": {
-      "description": "",
-      "tokens": 8,
-      "hash": "039210f7485cdbc2",
-      "size": 27,
-      "mtimeMs": 1785609438606.3228,
-      "updatedAt": "2026-08-10T19:26:48.147Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/.editorconfig": {
@@ -4550,6 +5133,33 @@
       "size": 158,
       "mtimeMs": 1785609438658.2036,
       "updatedAt": "2026-08-10T19:26:48.150Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/CMakeLists.txt": {
+      "description": "CMake build configuration",
+      "tokens": 1587,
+      "hash": "ddbd7855b6f8d0c3",
+      "size": 6348,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.157Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/LICENSE.txt": {
+      "description": "",
+      "tokens": 280,
+      "hash": "907d9e859c643370",
+      "size": 1118,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.182Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/README.md": {
+      "description": "Project documentation",
+      "tokens": 2078,
+      "hash": "24e9990b70b74368",
+      "size": 8309,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.184Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/auto/__init__.py": {
@@ -4714,15 +5324,6 @@
       "updatedAt": "2026-08-10T19:26:48.157Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/CMakeLists.txt": {
-      "description": "CMake build configuration",
-      "tokens": 1587,
-      "hash": "ddbd7855b6f8d0c3",
-      "size": 6348,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.157Z",
-      "source": "scan"
-    },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/makefile": {
       "description": "Unity - A Test Framework for C",
       "tokens": 619,
@@ -4795,24 +5396,6 @@
       "updatedAt": "2026-08-10T19:26:48.161Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/examples/example_1/test/test_runners/TestProductionCode_Runner.c": {
-      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
-      "tokens": 571,
-      "hash": "b6ec7bb984eddea8",
-      "size": 1998,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.162Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/examples/example_1/test/test_runners/TestProductionCode2_Runner.c": {
-      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
-      "tokens": 337,
-      "hash": "2c84d6b954a6810a",
-      "size": 1178,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.162Z",
-      "source": "scan"
-    },
     "firmware/.pio/libdeps/native/Unity/examples/example_1/test/TestProductionCode.c": {
       "description": "Declares on",
       "tokens": 773,
@@ -4829,6 +5412,24 @@
       "size": 887,
       "mtimeMs": 1735750434000,
       "updatedAt": "2026-08-10T19:26:48.163Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_1/test/test_runners/TestProductionCode2_Runner.c": {
+      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
+      "tokens": 337,
+      "hash": "2c84d6b954a6810a",
+      "size": 1178,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.162Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_1/test/test_runners/TestProductionCode_Runner.c": {
+      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
+      "tokens": 571,
+      "hash": "b6ec7bb984eddea8",
+      "size": 1998,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.162Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/makefile": {
@@ -4885,33 +5486,6 @@
       "updatedAt": "2026-08-10T19:26:48.166Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/all_tests.c": {
-      "description": "Declares char",
-      "tokens": 155,
-      "hash": "3737c6c174dfd927",
-      "size": 542,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.167Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/TestProductionCode_Runner.c": {
-      "description": "",
-      "tokens": 292,
-      "hash": "3b1dd5e131617dc8",
-      "size": 1021,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.167Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/TestProductionCode2_Runner.c": {
-      "description": "",
-      "tokens": 170,
-      "hash": "f33332449aa9ac06",
-      "size": 592,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.168Z",
-      "source": "scan"
-    },
     "firmware/.pio/libdeps/native/Unity/examples/example_2/test/TestProductionCode.c": {
       "description": "Declares on",
       "tokens": 793,
@@ -4928,6 +5502,33 @@
       "size": 985,
       "mtimeMs": 1735750434000,
       "updatedAt": "2026-08-10T19:26:48.168Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/TestProductionCode2_Runner.c": {
+      "description": "",
+      "tokens": 170,
+      "hash": "f33332449aa9ac06",
+      "size": 592,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.168Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/TestProductionCode_Runner.c": {
+      "description": "",
+      "tokens": 292,
+      "hash": "3b1dd5e131617dc8",
+      "size": 1021,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.167Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_2/test/test_runners/all_tests.c": {
+      "description": "Declares char",
+      "tokens": 155,
+      "hash": "3737c6c174dfd927",
+      "size": 542,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.167Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/helper/UnityHelper.c": {
@@ -4948,20 +5549,20 @@
       "updatedAt": "2026-08-10T19:26:48.170Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/examples/example_3/rakefile_helper.rb": {
-      "description": "Unity - A Test Framework for C",
-      "tokens": 2198,
-      "hash": "ef97742b2d5e6ddc",
-      "size": 8239,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.171Z",
-      "source": "scan"
-    },
     "firmware/.pio/libdeps/native/Unity/examples/example_3/rakefile.rb": {
       "description": "Unity - A Test Framework for C",
       "tokens": 284,
       "hash": "12ec7b96cca1cd5b",
       "size": 1063,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.171Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_3/rakefile_helper.rb": {
+      "description": "Unity - A Test Framework for C",
+      "tokens": 2198,
+      "hash": "ef97742b2d5e6ddc",
+      "size": 8239,
       "mtimeMs": 1735750434000,
       "updatedAt": "2026-08-10T19:26:48.171Z",
       "source": "scan"
@@ -5056,15 +5657,6 @@
       "updatedAt": "2026-08-10T19:26:48.176Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/examples/example_4/src/meson.build": {
-      "description": "build script written by : Michael Brockus.",
-      "tokens": 146,
-      "hash": "94cfe0c2645b5853",
-      "size": 544,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.177Z",
-      "source": "scan"
-    },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/src/ProductionCode.c": {
       "description": "Declares is",
       "tokens": 337,
@@ -5101,6 +5693,15 @@
       "updatedAt": "2026-08-10T19:26:48.178Z",
       "source": "scan"
     },
+    "firmware/.pio/libdeps/native/Unity/examples/example_4/src/meson.build": {
+      "description": "build script written by : Michael Brockus.",
+      "tokens": 146,
+      "hash": "94cfe0c2645b5853",
+      "size": 544,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.177Z",
+      "source": "scan"
+    },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/subprojects/unity.wrap": {
       "description": "",
       "tokens": 29,
@@ -5108,42 +5709,6 @@
       "size": 106,
       "mtimeMs": 1735750434000,
       "updatedAt": "2026-08-10T19:26:48.178Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/meson.build": {
-      "description": "build script written by : Michael Brockus.",
-      "tokens": 43,
-      "hash": "785bb1c9ed0714a8",
-      "size": 159,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.179Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/meson.build": {
-      "description": "build script written by : Michael Brockus.",
-      "tokens": 139,
-      "hash": "896a68a5a4b35ab4",
-      "size": 520,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.179Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/TestProductionCode_Runner.c": {
-      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
-      "tokens": 571,
-      "hash": "b6ec7bb984eddea8",
-      "size": 1998,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.180Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/TestProductionCode2_Runner.c": {
-      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
-      "tokens": 337,
-      "hash": "2c84d6b954a6810a",
-      "size": 1178,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.180Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/examples/example_4/test/TestProductionCode.c": {
@@ -5164,6 +5729,42 @@
       "updatedAt": "2026-08-10T19:26:48.180Z",
       "source": "scan"
     },
+    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/meson.build": {
+      "description": "build script written by : Michael Brockus.",
+      "tokens": 43,
+      "hash": "785bb1c9ed0714a8",
+      "size": 159,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.179Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/TestProductionCode2_Runner.c": {
+      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
+      "tokens": 337,
+      "hash": "2c84d6b954a6810a",
+      "size": 1178,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.180Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/TestProductionCode_Runner.c": {
+      "description": "define RUN_TEST(TestFunc, TestLineNum) \\",
+      "tokens": 571,
+      "hash": "b6ec7bb984eddea8",
+      "size": 1998,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.180Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/Unity/examples/example_4/test/test_runners/meson.build": {
+      "description": "build script written by : Michael Brockus.",
+      "tokens": 139,
+      "hash": "896a68a5a4b35ab4",
+      "size": 520,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.179Z",
+      "source": "scan"
+    },
     "firmware/.pio/libdeps/native/Unity/examples/unity_config.h": {
       "description": "Declares of",
       "tokens": 3496,
@@ -5182,13 +5783,13 @@
       "updatedAt": "2026-08-10T19:26:48.181Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/LICENSE.txt": {
-      "description": "",
-      "tokens": 280,
-      "hash": "907d9e859c643370",
-      "size": 1118,
+    "firmware/.pio/libdeps/native/Unity/meson.build": {
+      "description": "build script written by : Michael Gene Brockus.",
+      "tokens": 456,
+      "hash": "b90bfb870b5a79d3",
+      "size": 1708,
       "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.182Z",
+      "updatedAt": "2026-08-10T19:26:48.183Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/meson_options.txt": {
@@ -5200,15 +5801,6 @@
       "updatedAt": "2026-08-10T19:26:48.182Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/meson.build": {
-      "description": "build script written by : Michael Gene Brockus.",
-      "tokens": 456,
-      "hash": "b90bfb870b5a79d3",
-      "size": 1708,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.183Z",
-      "source": "scan"
-    },
     "firmware/.pio/libdeps/native/Unity/platformio-build.py": {
       "description": "",
       "tokens": 137,
@@ -5218,15 +5810,6 @@
       "updatedAt": "2026-08-10T19:26:48.183Z",
       "source": "scan"
     },
-    "firmware/.pio/libdeps/native/Unity/README.md": {
-      "description": "Project documentation",
-      "tokens": 2078,
-      "hash": "24e9990b70b74368",
-      "size": 8309,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.184Z",
-      "source": "scan"
-    },
     "firmware/.pio/libdeps/native/Unity/src/meson.build": {
       "description": "build script written by : Michael Gene Brockus.",
       "tokens": 92,
@@ -5234,15 +5817,6 @@
       "size": 342,
       "mtimeMs": 1735750434000,
       "updatedAt": "2026-08-10T19:26:48.184Z",
-      "source": "scan"
-    },
-    "firmware/.pio/libdeps/native/Unity/src/unity_internals.h": {
-      "description": "Declares void",
-      "tokens": 27882,
-      "hash": "fcd8b3f6b412ac0a",
-      "size": 97587,
-      "mtimeMs": 1735750434000,
-      "updatedAt": "2026-08-10T19:26:48.186Z",
       "source": "scan"
     },
     "firmware/.pio/libdeps/native/Unity/src/unity.c": {
@@ -5263,6 +5837,15 @@
       "updatedAt": "2026-08-10T19:26:48.189Z",
       "source": "scan"
     },
+    "firmware/.pio/libdeps/native/Unity/src/unity_internals.h": {
+      "description": "Declares void",
+      "tokens": 27882,
+      "hash": "fcd8b3f6b412ac0a",
+      "size": 97587,
+      "mtimeMs": 1735750434000,
+      "updatedAt": "2026-08-10T19:26:48.186Z",
+      "source": "scan"
+    },
     "firmware/.pio/libdeps/native/Unity/unityConfig.cmake": {
       "description": "",
       "tokens": 15,
@@ -5270,6 +5853,15 @@
       "size": 54,
       "mtimeMs": 1735750434000,
       "updatedAt": "2026-08-10T19:26:48.190Z",
+      "source": "scan"
+    },
+    "firmware/.pio/libdeps/native/integrity.dat": {
+      "description": "",
+      "tokens": 8,
+      "hash": "039210f7485cdbc2",
+      "size": 27,
+      "mtimeMs": 1785609438606.3228,
+      "updatedAt": "2026-08-10T19:26:48.147Z",
       "source": "scan"
     },
     "firmware/data/config.example.txt": {
@@ -5425,6 +6017,14 @@
       "updatedAt": "2026-08-14T11:39:26.626Z",
       "source": "md-import"
     },
+    "firmware/src/sense/vane_decode.cpp": {
+      "description": "Pure ADC->octant decoding for the wind vane: 16-entry measured anchor table (8 primary octants + 8 half-detents), nearest-match. Arduino.h-free and host-tested.",
+      "tokens": 900
+    },
+    "firmware/src/sense/vane_decode.h": {
+      "description": "Declares vaneOctantForAdc() and kVaneAnchorCount.",
+      "tokens": 200
+    },
     "firmware/src/transmit/buffer_capacity.cpp": {
       "description": "include \"transmit/buffer_capacity.h\"",
       "tokens": 78,
@@ -5515,6 +6115,24 @@
       "updatedAt": "2026-08-14T13:03:50.173Z",
       "source": "hook"
     },
+    "firmware/src/transmit/ingest_response.cpp": {
+      "description": "include \"transmit/ingest_response.h\"",
+      "tokens": 1089,
+      "hash": "504c97c7c7f2bbb2",
+      "size": 4081,
+      "mtimeMs": 1786712579234.6157,
+      "updatedAt": "2026-08-14T13:02:59.328Z",
+      "source": "hook"
+    },
+    "firmware/src/transmit/ingest_response.h": {
+      "description": "pragma once",
+      "tokens": 530,
+      "hash": "4a5622f1fee31486",
+      "size": 1986,
+      "mtimeMs": 1786712561024.7104,
+      "updatedAt": "2026-08-14T13:02:41.117Z",
+      "source": "hook"
+    },
     "firmware/src/transmit/led_policy.h": {
       "description": "pragma once",
       "tokens": 131,
@@ -5578,6 +6196,15 @@
       "updatedAt": "2026-08-10T19:26:48.205Z",
       "source": "scan"
     },
+    "firmware/test/test_ingest_response/test_ingest_response.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 1431,
+      "hash": "db57006f74a963ba",
+      "size": 5363,
+      "mtimeMs": 1786712606846.8455,
+      "updatedAt": "2026-08-14T13:03:26.943Z",
+      "source": "hook"
+    },
     "firmware/test/test_led_policy/test_led_policy.cpp": {
       "description": "include <unity.h>",
       "tokens": 264,
@@ -5623,6 +6250,10 @@
       "updatedAt": "2026-08-10T19:26:48.209Z",
       "source": "scan"
     },
+    "firmware/test/test_vane_decode/test_vane_decode.cpp": {
+      "description": "Unity tests pinning all 16 vane anchor positions, the three bug-050 half-detent regressions, ADC jitter, out-of-range totality, and octant reachability.",
+      "tokens": 1100
+    },
     "firmware/test/test_wind_direction/test_wind_direction.cpp": {
       "description": "include <unity.h>",
       "tokens": 895,
@@ -5650,6 +6281,15 @@
       "updatedAt": "2026-08-10T19:26:48.210Z",
       "source": "scan"
     },
+    "scripts/README.md": {
+      "description": "Project documentation",
+      "tokens": 1139,
+      "hash": "c4e9d93c8eac9f41",
+      "size": 4567,
+      "mtimeMs": 1786387643722.8289,
+      "updatedAt": "2026-08-10T19:26:48.211Z",
+      "source": "scan"
+    },
     "scripts/pyproject.toml": {
       "description": "Python project configuration",
       "tokens": 111,
@@ -5665,15 +6305,6 @@
       "hash": "84b0022a48fa853a",
       "size": 208,
       "mtimeMs": 1786387643723.134,
-      "updatedAt": "2026-08-10T19:26:48.211Z",
-      "source": "scan"
-    },
-    "scripts/README.md": {
-      "description": "Project documentation",
-      "tokens": 1139,
-      "hash": "c4e9d93c8eac9f41",
-      "size": 4567,
-      "mtimeMs": 1786387643722.8289,
       "updatedAt": "2026-08-10T19:26:48.211Z",
       "source": "scan"
     },
@@ -6015,625 +6646,6 @@
           "tokens": 611
         }
       ]
-    },
-    "TODO.md": {
-      "description": "TODO — items flagged for Mlok's review",
-      "tokens": 1786,
-      "hash": "39da1fbee3d860c7",
-      "size": 7187,
-      "mtimeMs": 1786712803148.587,
-      "updatedAt": "2026-08-14T13:06:43.249Z",
-      "source": "hook"
-    },
-    ".worktrees/chore-ghcr-backend-deploy/backend/compose.yaml": {
-      "description": "Docker Compose: 2 services",
-      "tokens": 200,
-      "hash": "2bdd0a55b901653f",
-      "size": 699,
-      "mtimeMs": 1786392243234.3826,
-      "updatedAt": "2026-08-10T20:04:03.301Z",
-      "source": "hook"
-    },
-    ".worktrees/chore-ghcr-backend-deploy/.github/workflows/ci.yml": {
-      "description": "CI: CI",
-      "tokens": 3719,
-      "hash": "753109eea2cb5a83",
-      "size": 13020,
-      "mtimeMs": 1786392657580.9453,
-      "updatedAt": "2026-08-10T20:10:57.626Z",
-      "source": "hook"
-    },
-    ".worktrees/chore-ghcr-backend-deploy/TODO.md": {
-      "description": "TODO — items flagged for Mlok's review",
-      "tokens": 1624,
-      "hash": "9ba072bea3e06799",
-      "size": 6533,
-      "mtimeMs": 1786392405150.3523,
-      "updatedAt": "2026-08-10T20:06:45.198Z",
-      "source": "hook"
-    },
-    ".worktrees/chore-ghcr-backend-deploy/CLAUDE.md": {
-      "description": "CLAUDE.md",
-      "tokens": 2162,
-      "hash": "203f15b2aa0d9cba",
-      "size": 8714,
-      "mtimeMs": 1786392427128.95,
-      "updatedAt": "2026-08-10T20:07:07.180Z",
-      "source": "hook"
-    },
-    ".worktrees/chore-ghcr-backend-deploy/.wolf/cerebrum.md": {
-      "description": "Cerebrum",
-      "tokens": 4972,
-      "hash": "803f77ac3617f69f",
-      "size": 19948,
-      "mtimeMs": 1786392506683.3083,
-      "updatedAt": "2026-08-10T20:08:26.734Z",
-      "source": "hook"
-    },
-    ".worktrees/chore-ghcr-backend-deploy/.wolf/STATUS.md": {
-      "description": "STATUS — gustik",
-      "tokens": 3649,
-      "hash": "f7f6a3fca23d04f1",
-      "size": 14714,
-      "mtimeMs": 1786392490634.4749,
-      "updatedAt": "2026-08-10T20:08:10.683Z",
-      "source": "hook"
-    },
-    "docs/hardware/wind-sensor-wiring.md": {
-      "description": "WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits",
-      "tokens": 1100,
-      "updatedAt": "2026-08-14T11:39:26.625Z",
-      "source": "md-import"
-    },
-    "docs/superpowers/specs/2026-08-14-dashboard-ux-design.md": {
-      "description": "Dashboard UX rework — wind direction, graph resolution, status page",
-      "tokens": 3482,
-      "hash": "1050043143e9f49b",
-      "size": 14031,
-      "mtimeMs": 1786712746148.621,
-      "updatedAt": "2026-08-14T13:05:46.243Z",
-      "source": "hook"
-    },
-    "backend/test/aggregate.test.js": {
-      "description": "Declares reading",
-      "tokens": 1325,
-      "hash": "a52fda4111d960ab",
-      "size": 4635,
-      "mtimeMs": 1786707591777.116,
-      "updatedAt": "2026-08-14T11:39:51.869Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "reading",
-          "kind": "fn",
-          "startLine": 5,
-          "endLine": 117,
-          "tokens": 1274
-        }
-      ]
-    },
-    "backend/src/serve/aggregate.js": {
-      "description": "Circular (vector) mean of a list of octants, snapped back to an octant.",
-      "tokens": 1817,
-      "hash": "1c3764efcd2f0964",
-      "size": 6359,
-      "mtimeMs": 1786707685893.8857,
-      "updatedAt": "2026-08-14T11:41:25.989Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "circularMeanOctant",
-          "kind": "fn",
-          "startLine": 34,
-          "endLine": 52,
-          "tokens": 157
-        },
-        {
-          "name": "bucketStartIso",
-          "kind": "fn",
-          "startLine": 53,
-          "endLine": 58,
-          "tokens": 59
-        },
-        {
-          "name": "summarize",
-          "kind": "fn",
-          "startLine": 59,
-          "endLine": 88,
-          "tokens": 390
-        },
-        {
-          "name": "bucketReadings",
-          "kind": "fn",
-          "startLine": 89,
-          "endLine": 124,
-          "tokens": 341
-        },
-        {
-          "name": "detectGaps",
-          "kind": "fn",
-          "startLine": 125,
-          "endLine": 155,
-          "tokens": 306
-        },
-        {
-          "name": "clampBucketSeconds",
-          "kind": "fn",
-          "startLine": 156,
-          "endLine": 163,
-          "tokens": 84
-        }
-      ]
-    },
-    "backend/src/store/localday.js": {
-      "description": "The UTC instant at which the current local day started, as a canonical ISO string.",
-      "tokens": 564,
-      "hash": "7fe9ec3ac6d79957",
-      "size": 1974,
-      "mtimeMs": 1786707651599.949,
-      "updatedAt": "2026-08-14T11:40:51.696Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "zoneOffsetMs",
-          "kind": "fn",
-          "startLine": 12,
-          "endLine": 38,
-          "tokens": 199
-        },
-        {
-          "name": "startOfLocalDayIso",
-          "kind": "fn",
-          "startLine": 39,
-          "endLine": 53,
-          "tokens": 201
-        }
-      ]
-    },
-    "backend/test/history-range.test.js": {
-      "description": "testApp: postReadings, at",
-      "tokens": 1406,
-      "hash": "023c5073b90eb0cf",
-      "size": 4919,
-      "mtimeMs": 1786707751701.4707,
-      "updatedAt": "2026-08-14T11:42:31.804Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "testApp",
-          "kind": "fn",
-          "startLine": 5,
-          "endLine": 8,
-          "tokens": 28
-        },
-        {
-          "name": "postReadings",
-          "kind": "fn",
-          "startLine": 9,
-          "endLine": 20,
-          "tokens": 106
-        },
-        {
-          "name": "at",
-          "kind": "fn",
-          "startLine": 21,
-          "endLine": 137,
-          "tokens": 1239
-        }
-      ]
-    },
-    "backend/test/status.test.js": {
-      "description": "testApp: postReadings, todayAt",
-      "tokens": 1353,
-      "hash": "decc292950355763",
-      "size": 4735,
-      "mtimeMs": 1786707773491.7874,
-      "updatedAt": "2026-08-14T11:42:53.582Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "testApp",
-          "kind": "fn",
-          "startLine": 5,
-          "endLine": 8,
-          "tokens": 28
-        },
-        {
-          "name": "postReadings",
-          "kind": "fn",
-          "startLine": 9,
-          "endLine": 17,
-          "tokens": 56
-        },
-        {
-          "name": "todayAt",
-          "kind": "fn",
-          "startLine": 18,
-          "endLine": 124,
-          "tokens": 1236
-        }
-      ]
-    },
-    "backend/src/static/compass.js": {
-      "description": "Compass bearing the wind blows FROM, in degrees clockwise from north.",
-      "tokens": 954,
-      "hash": "1095baca4cb4885e",
-      "size": 3347,
-      "mtimeMs": 1786707833113.7153,
-      "updatedAt": "2026-08-14T11:43:53.200Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "isOctant",
-          "kind": "fn",
-          "startLine": 26,
-          "endLine": 29,
-          "tokens": 27
-        },
-        {
-          "name": "octantLabel",
-          "kind": "fn",
-          "startLine": 30,
-          "endLine": 33,
-          "tokens": 28
-        },
-        {
-          "name": "octantName",
-          "kind": "fn",
-          "startLine": 34,
-          "endLine": 41,
-          "tokens": 72
-        },
-        {
-          "name": "octantToDegrees",
-          "kind": "fn",
-          "startLine": 42,
-          "endLine": 55,
-          "tokens": 181
-        },
-        {
-          "name": "octantArrowRotation",
-          "kind": "fn",
-          "startLine": 56,
-          "endLine": 72,
-          "tokens": 206
-        },
-        {
-          "name": "circularMeanOctant",
-          "kind": "fn",
-          "startLine": 73,
-          "endLine": 93,
-          "tokens": 204
-        }
-      ]
-    },
-    "backend/src/static/timerange.js": {
-      "description": "Bucket width that lands close to `targetPoints` samples across the window,",
-      "tokens": 1122,
-      "hash": "861bdbfb9c517620",
-      "size": 3927,
-      "mtimeMs": 1786707853742.0212,
-      "updatedAt": "2026-08-14T11:44:13.830Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "rangeById",
-          "kind": "fn",
-          "startLine": 29,
-          "endLine": 37,
-          "tokens": 105
-        },
-        {
-          "name": "autoBucketSeconds",
-          "kind": "fn",
-          "startLine": 38,
-          "endLine": 43,
-          "tokens": 93
-        },
-        {
-          "name": "bucketOptionsFor",
-          "kind": "fn",
-          "startLine": 44,
-          "endLine": 47,
-          "tokens": 39
-        },
-        {
-          "name": "formatBucketSeconds",
-          "kind": "fn",
-          "startLine": 48,
-          "endLine": 59,
-          "tokens": 132
-        },
-        {
-          "name": "windowFor",
-          "kind": "fn",
-          "startLine": 60,
-          "endLine": 76,
-          "tokens": 218
-        },
-        {
-          "name": "loadSelection",
-          "kind": "fn",
-          "startLine": 77,
-          "endLine": 87,
-          "tokens": 92
-        },
-        {
-          "name": "saveSelection",
-          "kind": "fn",
-          "startLine": 88,
-          "endLine": 96,
-          "tokens": 88
-        }
-      ]
-    },
-    "backend/test/compass.test.js": {
-      "description": "Declares bad",
-      "tokens": 727,
-      "hash": "a191d3a7c8a1f0c7",
-      "size": 2549,
-      "mtimeMs": 1786707867197.4707,
-      "updatedAt": "2026-08-14T11:44:27.290Z",
-      "source": "hook"
-    },
-    "backend/test/timerange.test.js": {
-      "description": "openEnded: fakeStorage",
-      "tokens": 1386,
-      "hash": "8c3db5ee7d195d18",
-      "size": 4848,
-      "mtimeMs": 1786707890027.0315,
-      "updatedAt": "2026-08-14T11:44:50.119Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "fakeStorage",
-          "kind": "fn",
-          "startLine": 98,
-          "endLine": 128,
-          "tokens": 292
-        }
-      ]
-    },
-    "backend/src/static/beaufort.js": {
-      "description": "Beaufort scale, for the \"so is that a lot?\" question a raw m/s number does",
-      "tokens": 434,
-      "hash": "13f4439778c330aa",
-      "size": 1548,
-      "mtimeMs": 1786707932457.0286,
-      "updatedAt": "2026-08-14T11:45:32.551Z",
-      "source": "hook"
-    },
-    "backend/src/static/styles.css": {
-      "description": "Styles: 40 rules, 10 vars",
-      "tokens": 1492,
-      "hash": "8540dd553a3531ea",
-      "size": 5222,
-      "mtimeMs": 1786708344757.443,
-      "updatedAt": "2026-08-14T11:52:24.848Z",
-      "source": "hook"
-    },
-    "backend/src/static/timerange-ui.js": {
-      "description": "Renders the chip row + resolution select into `container` and calls",
-      "tokens": 1123,
-      "hash": "7b08c7a454b1e573",
-      "size": 3936,
-      "mtimeMs": 1786707975268.7522,
-      "updatedAt": "2026-08-14T11:46:15.364Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "mountTimeRange",
-          "kind": "fn",
-          "startLine": 25,
-          "endLine": 120,
-          "tokens": 892
-        }
-      ]
-    },
-    "backend/src/static/status.html": {
-      "description": "Gustik — stav stanice",
-      "tokens": 521,
-      "hash": "3e327c56c4ad29bb",
-      "size": 1987,
-      "mtimeMs": 1786708348358.5828,
-      "updatedAt": "2026-08-14T11:52:28.450Z",
-      "source": "hook"
-    },
-    "backend/src/static/status.js": {
-      "description": "Diagnostics page. Deliberately shows raw values next to their",
-      "tokens": 2777,
-      "hash": "4ac05efb73a4086d",
-      "size": 9771,
-      "mtimeMs": 1786708167524.038,
-      "updatedAt": "2026-08-14T11:49:27.617Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "el",
-          "kind": "fn",
-          "startLine": 32,
-          "endLine": 38,
-          "tokens": 58
-        },
-        {
-          "name": "badge",
-          "kind": "fn",
-          "startLine": 39,
-          "endLine": 42,
-          "tokens": 26
-        },
-        {
-          "name": "row",
-          "kind": "fn",
-          "startLine": 43,
-          "endLine": 49,
-          "tokens": 58
-        },
-        {
-          "name": "renderLatest",
-          "kind": "fn",
-          "startLine": 50,
-          "endLine": 82,
-          "tokens": 390
-        },
-        {
-          "name": "renderTotals",
-          "kind": "fn",
-          "startLine": 83,
-          "endLine": 91,
-          "tokens": 111
-        },
-        {
-          "name": "renderLog",
-          "kind": "fn",
-          "startLine": 92,
-          "endLine": 126,
-          "tokens": 404
-        },
-        {
-          "name": "renderRecent",
-          "kind": "fn",
-          "startLine": 127,
-          "endLine": 145,
-          "tokens": 233
-        },
-        {
-          "name": "renderRssi",
-          "kind": "fn",
-          "startLine": 146,
-          "endLine": 228,
-          "tokens": 723
-        },
-        {
-          "name": "refresh",
-          "kind": "fn",
-          "startLine": 229,
-          "endLine": 273,
-          "tokens": 404
-        }
-      ]
-    },
-    "backend/test/status-static.test.js": {
-      "description": "Declares testApp",
-      "tokens": 389,
-      "hash": "902757c94abcc8cc",
-      "size": 1359,
-      "mtimeMs": 1786708176840.1177,
-      "updatedAt": "2026-08-14T11:49:36.935Z",
-      "source": "hook"
-    },
-    "backend/test/ingest-response.test.js": {
-      "description": "testApp: postReadings, reading",
-      "tokens": 1384,
-      "hash": "fedeb4920eac53b6",
-      "size": 4841,
-      "mtimeMs": 1786711907834.0798,
-      "updatedAt": "2026-08-14T12:51:47.930Z",
-      "source": "hook",
-      "symbols": [
-        {
-          "name": "testApp",
-          "kind": "fn",
-          "startLine": 5,
-          "endLine": 8,
-          "tokens": 28
-        },
-        {
-          "name": "postReadings",
-          "kind": "fn",
-          "startLine": 9,
-          "endLine": 17,
-          "tokens": 53
-        },
-        {
-          "name": "reading",
-          "kind": "fn",
-          "startLine": 18,
-          "endLine": 122,
-          "tokens": 1270
-        }
-      ]
-    },
-    "firmware/src/transmit/ingest_response.h": {
-      "description": "pragma once",
-      "tokens": 530,
-      "hash": "4a5622f1fee31486",
-      "size": 1986,
-      "mtimeMs": 1786712561024.7104,
-      "updatedAt": "2026-08-14T13:02:41.117Z",
-      "source": "hook"
-    },
-    "firmware/src/transmit/ingest_response.cpp": {
-      "description": "include \"transmit/ingest_response.h\"",
-      "tokens": 1089,
-      "hash": "504c97c7c7f2bbb2",
-      "size": 4081,
-      "mtimeMs": 1786712579234.6157,
-      "updatedAt": "2026-08-14T13:02:59.328Z",
-      "source": "hook"
-    },
-    "firmware/test/test_ingest_response/test_ingest_response.cpp": {
-      "description": "include <unity.h>",
-      "tokens": 1431,
-      "hash": "db57006f74a963ba",
-      "size": 5363,
-      "mtimeMs": 1786712606846.8455,
-      "updatedAt": "2026-08-14T13:03:26.943Z",
-      "source": "hook"
-    },
-    "docs/rust-firmware/README.md": {
-      "description": "Project documentation",
-      "tokens": 1013,
-      "hash": "4ab97767cc6441a0",
-      "size": 4077,
-      "mtimeMs": 1786726531535.6943,
-      "updatedAt": "2026-08-14T16:55:31.627Z",
-      "source": "hook"
-    },
-    "docs/rust-firmware/01-feasibility.md": {
-      "description": "01 — Feasibility and route selection",
-      "tokens": 2616,
-      "hash": "4adea80c13fc477b",
-      "size": 10533,
-      "mtimeMs": 1786726509656.725,
-      "updatedAt": "2026-08-14T16:55:09.748Z",
-      "source": "hook"
-    },
-    "docs/rust-firmware/02-crate-inventory.md": {
-      "description": "02 — Crate inventory",
-      "tokens": 3324,
-      "hash": "40b16d1f11b299b0",
-      "size": 13376,
-      "mtimeMs": 1786726410727.4072,
-      "updatedAt": "2026-08-14T16:53:30.819Z",
-      "source": "hook"
-    },
-    "docs/rust-firmware/03-risks-and-gaps.md": {
-      "description": "03 — Risks and gaps",
-      "tokens": 2887,
-      "hash": "37023e523aeb6c9a",
-      "size": 11621,
-      "mtimeMs": 1786726379918.9688,
-      "updatedAt": "2026-08-14T16:53:00.024Z",
-      "source": "hook"
-    },
-    "docs/rust-firmware/04-migration-plan.md": {
-      "description": "04 — Migration plan",
-      "tokens": 2308,
-      "hash": "4e25b447fc2018e6",
-      "size": 9402,
-      "mtimeMs": 1786726472056.705,
-      "updatedAt": "2026-08-14T16:54:32.149Z",
-      "source": "hook"
-    },
-    "docs/rust-firmware/05-open-questions.md": {
-      "description": "05 — Questions and answers",
-      "tokens": 1398,
-      "hash": "8df8de7a629e1c51",
-      "size": 5641,
-      "mtimeMs": 1786726312920.4226,
-      "updatedAt": "2026-08-14T16:51:53.015Z",
-      "source": "hook"
     }
   }
 }

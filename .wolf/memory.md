@@ -452,3 +452,61 @@
 | 18:55 | Created docs/rust-firmware/README.md | — | ~1081 |
 | 15:45 | Re-spun the Rust firmware study after Mlok answered Q1-Q4 (ESP32 stays / no_std / unverified TLS accepted / use qmc5883p crate). Verified two load-bearing claims with real commands before rewriting: live backend completes a TLS1.3 handshake restricted to embedded-tls's cipher+curve (curl --tls13-ciphers TLS_AES_128_GCM_SHA256 --curves X25519 -> 200) and serves an ECDSA cert; qmc5883p crate register map matches our proven map except it omits the 0x0D=0x40 QST init write. Updated all 6 docs: TLS demoted from top risk, gustik-drivers crate dropped, phase-3 estimate revised down, no git deps anywhere. | docs/rust-firmware/*, .wolf/{STATUS,cerebrum,anatomy}.md | done | ~40k |
 | 15:46 | Learning: the anatomy.md auto-scanner OVERWRITES hand-written file descriptions whenever the file's content changes (regenerates them from the H1 heading). Had to rewrite the docs/rust-firmware/ descriptions a second time after editing the docs. | .wolf/anatomy.md | noted | ~1k |
+| 20:15 | Session summary: switched deploy sync back to rsync (server got rsync installed), then implemented GHCR-based deploy on branch chore/ghcr-backend-deploy + worktree - build once in CI (build-backend-image job, docker/build-push-action, pushes :latest+:sha to ghcr.io/ciakval/gustik-backend on main only), server now docker compose pull && up -d instead of rebuilding, GHCR login on server is a fresh ephemeral GITHUB_TOKEN each deploy (never stored). Also renamed docker-compose.yml -> compose.yaml (Compose v2 convention) | backend/compose.yaml, backend/.env.example, .github/workflows/ci.yml, TODO.md, CLAUDE.md, .wolf/STATUS.md, .wolf/cerebrum.md | YAML+actionlint clean, 55/55 tests pass, rsync re-verified against real server; GHCR push/pull path itself unverified until merge (build-backend-image only pushes on main) | ~11000 || 19:16 | Created firmware/src/diag/vane_diag.cpp | — | ~4822 |
+| 19:16 | Edited firmware/platformio.ini | 5→9 lines | ~85 |
+| 19:16 | Edited firmware/platformio.ini | expanded (+15 lines) | ~195 |
+| 19:17 | Edited .github/workflows/ci.yml | 2→6 lines | ~98 |
+
+## Session: 2026-08-15 (vane direction diagnostic)
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | Branched `feat/vane-direction-diagnostic` off `main` (stashed the dashboard branch's uncommitted .wolf bookkeeping + untracked magnetometer doc; stash@{0} preserved, .wolf reset to main's state on this branch) | — | done | ~2k |
+| — | Wrote standalone wind-vane bring-up firmware: reads GPIO34, decodes against Fine Offset's 16-position resistance table (not vane.cpp's placeholder ADC table), clusters stable levels, prints per-sample lines + a 15s SUMMARY verdict and a paste-ready `kOctantAdcReadings[8]`. Names the hard failure modes (open circuit / no pull-up / ambiguous levels / ADC ceiling) explicitly rather than leaving them to be guessed. | firmware/src/diag/vane_diag.cpp | created | ~9k |
+| — | Added `[env:vane_diag]` (build_src_filter `-<*> +<diag/vane_diag.cpp>`) and excluded `diag/` from `[env:esp32dev]` so the two setup()/loop() pairs never link together | firmware/platformio.ini | done | ~1k |
+| — | Added `pio run -e vane_diag` to the CI firmware job so the diagnostic can't bitrot (shares the cached toolchain, ~3s) | .github/workflows/ci.yml | done | ~0.5k |
+| — | Verified: `pio run -e vane_diag` SUCCESS (21.3% flash), `pio run -e esp32dev` SUCCESS (92.0% flash, unchanged), `pio test -e native` 43/43 PASSED. No ESP32 attached to this machine right now (`/dev/ttyUSB*` absent) — flashing/real output still pending. | — | verified | ~1k |
+| 19:28 | Edited firmware/src/diag/vane_diag.cpp | expanded (+9 lines) | ~154 |
+| 19:28 | Edited firmware/src/diag/vane_diag.cpp | modified resetClusters() | ~50 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | added 3 condition(s) | ~698 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | modified if() | ~246 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | added 1 condition(s) | ~50 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | printSummary() → maybePrintSummary() | ~19 |
+| — | Flashed vane_diag to real ESP32 (/dev/ttyUSB0, one transient esptool baud-change failure then retry OK, as cerebrum predicted). Capture 01 (25s): GPIO34 alternates between adc=0 and adc=4095 in multi-second blocks, never a single mid-scale reading. | /tmp/.../vane-capture-01.log | captured | ~3k |
+| — | bug-044: the fault branches' early `return` made the 15s SUMMARY unreachable exactly when the pin is railed - i.e. in the only case the tool exists to diagnose. Fixed via maybePrintSummary() on all 3 paths; added spread to fault lines + a rail census that separates FLOATING from stuck-high/stuck-low. | firmware/src/diag/vane_diag.cpp, .wolf/buglog.json | fixed | ~4k |
+| — | Capture 02 (36s, fixed fw): pin solid at adc=4095 spread=0 for all 146 samples, verdict "stuck at 3.3V". Differs from capture 01's rail-toggling 2 min earlier with nothing physical changed - that non-repeatability is itself evidence GPIO34 is undriven. Zero mid-scale readings in either capture => no resistor divider on GPIO34. Awaiting Mlok's confirmation of pull-up + RJ11 outer-pair wiring. | /tmp/.../vane-capture-02.log | captured | ~3k |
+| 19:38 | Edited docs/hardware/wind-sensor-wiring.md | expanded (+47 lines) | ~691 |
+| — | Mlok fixed the wiring; capture 04 (22s) shows GPIO34 reading the real resistor ladder - all 8 octants, spread 0-4 ADC counts, every level matching a datasheet position. Vane confirmed correctly wired to the RJ11 OUTER pair with a working 10k pull-up. | /tmp/.../vane-capture-04.log | VALIDATED | ~4k |
+| — | Capture 05 (100s): vane was never turned, sat at 225deg JZ throughout - but that gave a stability measurement instead: mean ADC 2315.1 over 159 settled samples vs 2315.6 in capture 04, i.e. 0.5 counts of cross-capture drift. | /tmp/.../vane-capture-05.log | captured | ~2k |
+| — | bug-045: the kOctantAdcReadings placeholder is not just uncalibrated but actively wrong (90deg off by ~2000 counts); nearest-match decoding means it maps real positions onto unrelated octants rather than degrading gracefully. Measured table recorded in the wiring doc; NOT yet applied to vane.cpp (180deg rests on one settled sample). | docs/hardware/wind-sensor-wiring.md, .wolf/buglog.json | documented | ~4k |
+| 19:46 | Edited firmware/src/sense/vane.cpp | expanded (+17 lines) | ~354 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | modified isPrimaryOctant() | ~306 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | added 2 condition(s) | ~333 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | 4→5 lines | ~42 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | added 2 condition(s) | ~284 |
+| 19:47 | Edited firmware/src/diag/vane_diag.cpp | modified if() | ~126 |
+| 19:47 | Edited docs/hardware/wind-sensor-wiring.md | expanded (+13 lines) | ~356 |
+| 19:47 | Edited docs/hardware/wind-sensor-wiring.md | consistent() → settles() | ~207 |
+| 19:48 | Edited TODO.md | modified calibration() | ~212 |
+| — | Capture 06 corrupted: a stray detached `cat /dev/ttyUSB0` from a previous run was still holding the port, two readers split the byte stream. Killed strays; switched to a tracked foreground `timeout N cat` via run_in_background instead of `(cmd &)` in a subshell (the subshell made the harness report "completed" while the reader was still alive for another 100s). | — | fixed | ~3k |
+| — | Capture 07 (150s, two full rotations by Mlok): 8/8 octants. kOctantAdcReadings measured = {2943,1663,209,572,974,2315,3855,3465}, 18-78 settled samples/octant, agreeing with capture 04 to within 1 count on every octant. APPLIED to sense/vane.cpp (bug-045 closed). | firmware/src/sense/vane.cpp, docs/hardware/wind-sensor-wiring.md, TODO.md | DONE | ~6k |
+| — | bug-049: vane_diag said "not clean yet" on a perfect run - AMBIGUOUS fired on primary-vs-intermediate-detent proximity (normal geometry) and the ADC-ceiling warning fired for 270deg even when it resolved cleanly from 315deg. Verdict now only blocks on two PRIMARY octants colliding, or 270/315 actually collapsing. | firmware/src/diag/vane_diag.cpp | fixed | ~5k |
+| — | Verified after all changes: pio run -e vane_diag SUCCESS, pio run -e esp32dev SUCCESS, pio test -e native 43/43 PASSED. | — | verified | ~1k |
+
+## Session: 2026-08-15 20:08
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | Reviewed Mlok's own manual bring-up firmware (`diag/vane_manual.cpp`, 45 lines, raw `mV=/adc=` only) + his 18337-sample capture. Parsed both serial formats present in the file (`a=` for the first 32 lines, `adc=` after — the capture spans a reflash; 2 lines truncated at monitor attach/detach). | firmware/data/calibration/capture.txt | reviewed | ~4k |
+| — | Host-side clustering (gap>30) → 21 levels. The 8 high-population clusters (9–16% of samples each) independently reproduce the committed `kOctantAdcReadings` to within 4 counts (6 of 8 within 1.1). **Calibration confirmed.** | — | VALIDATED | ~3k |
+| — | Fitted the ESP32 ADC's nonlinearity from the 8 measured (R, ADC) anchors, then predicted where Fine Offset's 8 *intermediate* 16-point detents should land → matched 7 of the 21 clusters to within 3–13 counts. Confirms the small clusters are real half-detents, not transit noise. | — | analyzed | ~3k |
+| — | bug-050: ran vane.cpp's exact nearest-match over those half-detents — 157.5°→90°, 292.5°→0°, 337.5°→225° (112.5° worst-case error). Mechanically stable rest positions, so steady wind on one gives confident stable nonsense. NOT fixed, awaiting go-ahead. Note: bug-049's verdict "fix" had explicitly suppressed this exact signal as "harmless". | firmware/src/sense/vane.cpp, .wolf/buglog.json | FOUND | ~5k |
+| — | bug-051: `vane_manual.cpp` defines `hw_setup()` but `setup()` never calls it — ADC config is dead code. Capture still valid (arduino-esp32 defaults are already 12-bit/ADC_11db, corroborated by the clustering match). Clean rebuild emits no warning: `-Wunused-function` not enabled by PlatformIO defaults here. | firmware/src/diag/vane_manual.cpp, .wolf/buglog.json | FOUND | ~2k |
+| — | Mlok's correction recorded: hardware bring-up = dumb firmware + smart host analysis, not on-device self-interpreting diagnostics. Root cause of the over-build traced to designing `vane_diag.cpp` under the already-stale "no hardware in this devcontainer" assumption (retracted 2026-08-12), which framed the channel as one-shot and blind. | .wolf/cerebrum.md (Preferences, Do-Not-Repeat, Decision Log) | recorded | ~4k |
+| 20:22 | Created firmware/src/sense/vane_decode.h | — | ~232 |
+| 20:23 | Created firmware/src/sense/vane_decode.cpp | — | ~1047 |
+| 20:23 | Created firmware/src/sense/vane.cpp | — | ~100 |
+| 20:23 | Created firmware/test/test_vane_decode/test_vane_decode.cpp | — | ~1096 |
+| 20:23 | Edited firmware/platformio.ini | 1→5 lines | ~100 |
+| 20:25 | Edited firmware/platformio.ini | 9→12 lines | ~190 |
+| 20:26 | Edited TODO.md | readRawOctant() → wrong() | ~336 |
