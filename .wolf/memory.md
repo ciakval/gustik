@@ -531,3 +531,14 @@
 | — | Caught a buglog id collision during the merge: both branches numbered new bugs from bug-032 up, so 8 ids meant two different bugs each and a naive union silently dropped one side. Dashboard lineage keeps its numbers; vane lineage renumbered to bug-043..051 with a `renumbered_from` field, and all code/doc/.wolf references updated. | .wolf/buglog.json + all referencing files | fixed | ~7k |
 | — | Recovered stash@{0}: its only unique content was docs/hardware/magnetometer-wiring.md (byte-identical to what a22919c already committed) plus these memory.md lines. Stale anatomy scan data discarded. Stash dropped. | .wolf/memory.md | resolved | ~2k |
 | — | Verified after merge: pio test -e native 65/65, pio run -e esp32dev SUCCESS (92.3% flash), backend npm test 123/123. | — | verified | ~1k |
+
+## Session: 2026-08-15 21:30 (reconcile local main with pushed origin/main)
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | Mlok pulled main; confirmed the dashboard rework WAS merged and deployed. origin/main = `8aab8d2`, a PR #2 merge commit (parents 863cf95 + 13a2839) whose **tree is byte-identical to 13a2839** — which local main already contained via fast-forward. So no content difference, only a missing merge commit. | — | verified | ~2k |
+| — | Verified the deploy is real rather than assumed: `GET /status.html` and `GET /readings/status` both return 200 in production, and both are new in the dashboard rework. | — | VERIFIED LIVE | ~1k |
+| — | Merged origin/main into local main. Recorded the tree hash before and after — **identical (`1a892ea`)**, confirming the merge was purely structural and changed no content. Local main is now a descendant of origin/main and pushable. | — | merged | ~2k |
+| — | Fixed two stale STATUS.md claims that survived the earlier merge: the dashboard entry still said "NOT committed, NOT pushed, NOT deployed", and the "Immediate next step" block still said it sat uncommitted in the working tree. Both now reflect PR #2 being merged+deployed. | .wolf/STATUS.md | fixed | ~2k |
+| — | Noted an open observation: `GET /readings/latest` is ~1h50m stale (capturedAt 17:08:44Z at 18:59Z), speed 0, RSSI -33 dBm. Strong RSSI argues against a WiFi fault - most likely the device was unplugged/reflashed during vane bring-up. Flagged for Mlok, not diagnosed. | .wolf/STATUS.md | flagged | ~1k |
+| — | Re-verified after reconciliation: pio test -e native 65/65, pio run -e esp32dev SUCCESS (92.3% flash), backend npm test 123/123, eslint clean. Local main 9 ahead of origin/main, working tree clean, NOT pushed (Mlok reviews first). | — | verified | ~1k |
