@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-10T20:10:57.627Z",
-    "fileCount": 460,
+    "lastScanned": "2026-08-15T17:17:24.237Z",
+    "fileCount": 462,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "96a53b90a3faa11f13fc205b714a7db09fbcd50336acfaa69d5eff7930293622",
-    "storeUpdatedAt": "2026-08-10T20:10:57.633Z"
+    "renderedHash": "51bc3cccabe2b4707e79d9c06aecc468719d6dfac845d4ec01cf73bbfad5caa4",
+    "storeUpdatedAt": "2026-08-15T17:17:24.244Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3598,11 +3598,11 @@
     },
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
-      "tokens": 3348,
-      "hash": "011e0c46fbf52b86",
-      "size": 11722,
-      "mtimeMs": 1786391873635.196,
-      "updatedAt": "2026-08-10T19:57:53.687Z",
+      "tokens": 3796,
+      "hash": "6486801a95036d51",
+      "size": 13290,
+      "mtimeMs": 1786814244156.5833,
+      "updatedAt": "2026-08-15T17:17:24.237Z",
       "source": "hook"
     },
     ".gitignore": {
@@ -5074,12 +5074,12 @@
     },
     "firmware/platformio.ini": {
       "description": "",
-      "tokens": 443,
-      "hash": "3a5986a852ae3f39",
-      "size": 1660,
-      "mtimeMs": 1786387643699.5093,
-      "updatedAt": "2026-08-10T19:26:48.191Z",
-      "source": "scan"
+      "tokens": 775,
+      "hash": "8a383f71e2555a88",
+      "size": 2906,
+      "mtimeMs": 1786814197674.9402,
+      "updatedAt": "2026-08-15T17:16:37.754Z",
+      "source": "hook"
     },
     "firmware/src/config/hw/config_loader.cpp": {
       "description": "include \"config/hw/config_loader.h\"",
@@ -5154,13 +5154,13 @@
       "source": "scan"
     },
     "firmware/src/main.cpp": {
-      "description": "include <Arduino.h>",
-      "tokens": 1506,
+      "description": "include <Arduino.h>; wiring + 2 Serial diagnostic lines/cycle (sensors: pulses/windSpeed/vane/magnetometer ok-or-FAIL/yaw/windDir; wifi: up-or-down/ssid/ip/rssi/sent/clockSynced/buffered) + config-loaded (GPIO25) and WiFi-connected (GPIO26) diagnostic LEDs alongside the existing disconnect LED (GPIO2); falls back to lastKnownYawDegrees on a magnetometer read failure; makeClientId() folds in capturedAt (not just a boot-reset counter) so clientId can't collide across reboots (bug-031 fix)",
+      "tokens": 1680,
       "hash": "c09652432a89fe74",
       "size": 5271,
       "mtimeMs": 1786387643704.6753,
-      "updatedAt": "2026-08-10T19:26:48.194Z",
-      "source": "scan"
+      "updatedAt": "2026-08-15T17:16:24.534Z",
+      "source": "md-import"
     },
     "firmware/src/sense/anemometer.cpp": {
       "description": "include \"sense/anemometer.h\"",
@@ -5172,31 +5172,31 @@
       "source": "scan"
     },
     "firmware/src/sense/anemometer.h": {
-      "description": "pragma once",
-      "tokens": 174,
+      "description": "pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md",
+      "tokens": 220,
       "hash": "0445e1ab0e7e819f",
       "size": 607,
       "mtimeMs": 1786387643705.304,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "updatedAt": "2026-08-15T17:16:24.534Z",
+      "source": "md-import"
     },
     "firmware/src/sense/magnetometer.cpp": {
-      "description": "include \"sense/magnetometer.h\"",
-      "tokens": 300,
+      "description": "QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk)",
+      "tokens": 480,
       "hash": "1f52315a0a419778",
       "size": 1050,
       "mtimeMs": 1786387643705.8801,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "updatedAt": "2026-08-15T17:16:24.534Z",
+      "source": "md-import"
     },
     "firmware/src/sense/magnetometer.h": {
-      "description": "pragma once",
-      "tokens": 181,
+      "description": "pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure)",
+      "tokens": 250,
       "hash": "5415e8c3ee4d0979",
       "size": 631,
       "mtimeMs": 1786387643706.227,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "updatedAt": "2026-08-15T17:16:24.534Z",
+      "source": "md-import"
     },
     "firmware/src/sense/vane.cpp": {
       "description": "include \"sense/vane.h\"",
@@ -5208,13 +5208,13 @@
       "source": "scan"
     },
     "firmware/src/sense/vane.h": {
-      "description": "pragma once",
-      "tokens": 146,
+      "description": "pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md",
+      "tokens": 200,
       "hash": "6d020dbec5b77f33",
       "size": 510,
       "mtimeMs": 1786387643706.9092,
-      "updatedAt": "2026-08-10T19:26:48.196Z",
-      "source": "scan"
+      "updatedAt": "2026-08-15T17:16:24.534Z",
+      "source": "md-import"
     },
     "firmware/src/transmit/buffer_capacity.cpp": {
       "description": "include \"transmit/buffer_capacity.h\"",
@@ -5289,13 +5289,13 @@
       "source": "scan"
     },
     "firmware/src/transmit/hw/wifi_client.cpp": {
-      "description": "include \"transmit/hw/wifi_client.h\"",
-      "tokens": 713,
+      "description": "ensureWifiConnected() now cycles through ALL configured+in-range networks (priority order) per call, not just the top-priority scan match, so a visible-but-unconnectable network no longer blocks fallback to the other one (bug-030 fix)",
+      "tokens": 830,
       "hash": "31941afb246f137b",
       "size": 2493,
       "mtimeMs": 1786387643711.7927,
-      "updatedAt": "2026-08-10T19:26:48.202Z",
-      "source": "scan"
+      "updatedAt": "2026-08-15T17:16:24.534Z",
+      "source": "md-import"
     },
     "firmware/src/transmit/hw/wifi_client.h": {
       "description": "pragma once",
@@ -5868,6 +5868,21 @@
       "size": 14714,
       "mtimeMs": 1786392490634.4749,
       "updatedAt": "2026-08-10T20:08:10.683Z",
+      "source": "hook"
+    },
+    "docs/hardware/wind-sensor-wiring.md": {
+      "description": "WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits",
+      "tokens": 1100,
+      "updatedAt": "2026-08-15T17:16:24.533Z",
+      "source": "md-import"
+    },
+    "firmware/src/diag/vane_diag.cpp": {
+      "description": "Wind-vane bring-up diagnostic - standalone firmware, Serial output only.",
+      "tokens": 4822,
+      "hash": "154bea557e79be6e",
+      "size": 18081,
+      "mtimeMs": 1786814184447.913,
+      "updatedAt": "2026-08-15T17:16:24.534Z",
       "source": "hook"
     }
   }

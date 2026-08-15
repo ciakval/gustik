@@ -1056,10 +1056,6 @@
 - `config_loader.cpp` — include "config/hw/config_loader.h" (~117 tok)
 - `config_loader.h` — pragma once (~130 tok)
 
-## firmware/src/diag/
-
-- `vane_diag.cpp` — standalone wind-vane bring-up sketch ([env:vane_diag], excluded from esp32dev): reads GPIO34, decodes against Fine Offset's 16-position resistance table, clusters stable levels, prints a periodic verdict + paste-ready kOctantAdcReadings[8]. Serial only, no WiFi/backend/sensors (~3400 tok)
-
 ## firmware/src/correct/
 
 - `wind_direction.cpp` — include "correct/wind_direction.h" (~221 tok)
@@ -1069,7 +1065,7 @@
 
 ## firmware/src/diag/
 
-- `vane_diag.cpp` — Wind-vane bring-up diagnostic - standalone firmware, Serial output only. (~4822 tok)
+- `vane_diag.cpp` — standalone wind-vane bring-up sketch ([env:vane_diag], excluded from esp32dev): reads GPIO34, decodes against Fine Offset's 16-position resistance table (not vane.cpp's placeholder), clusters stable levels, prints per-sample lines + a 15s verdict + paste-ready kOctantAdcReadings[8]. Serial only, no WiFi/backend/other sensors (~4822 tok)
 
 ## firmware/src/sense/
 
