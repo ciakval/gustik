@@ -510,3 +510,24 @@
 | 20:23 | Edited firmware/platformio.ini | 1→5 lines | ~100 |
 | 20:25 | Edited firmware/platformio.ini | 9→12 lines | ~190 |
 | 20:26 | Edited TODO.md | readRawOctant() → wrong() | ~336 |
+
+## Session: 2026-08-15 18:30 (recovered from stash@{0}, dashboard branch)
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 18:34 | Wrote magnetometer→ESP32 wiring doc (pinout, I2C pull-up sizing, 5V warning, placement, troubleshooting) | docs/hardware/magnetometer-wiring.md | created | ~14k |
+
+## Session: 2026-08-15 21:00 (vane 16-detent fix, cleanup, merge to main)
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | Extracted final anchors from the capture before deleting it: re-binned the 90deg region at gap>12 and separated the 67.5deg half-detent (n=29, ADC~175) from the 90deg primary (ADC 209) - the two had merged under the coarser threshold. All 8 intermediates now have measured values. | firmware/data/calibration/capture.txt | analyzed | ~4k |
+| — | bug-050 FIXED: new pure Arduino.h-free `sense/vane_decode.cpp` with a 16-entry {adc, octant} anchor table; `sense/vane.cpp` reduced to a thin analogRead() wrapper. Half-detents assigned to the higher octant by convention (bounds worst-case error at 22.5deg, the floor for 8-octant output). | firmware/src/sense/vane_decode.{h,cpp}, firmware/src/sense/vane.cpp | DONE | ~6k |
+| — | Added `+<sense/vane_decode.cpp>` to the native build filter - first `sense/` file under host test. New test_vane_decode: 16 positions, 3 regressions, jitter, out-of-range totality, octant reachability. Native suite 43 → 51. | firmware/platformio.ini, firmware/test/test_vane_decode/ | 8 tests pass | ~4k |
+| — | VALIDATION before deleting the evidence: replayed all 18337 samples through old vs new tables. 309 changed (1.69%), every one a half-detent moving to a true neighbour; ZERO primary-detent samples changed. | — | VALIDATED | ~2k |
+| — | Deleted all scaffolding at Mlok's request: `firmware/src/diag/` (both sketches, ~600 lines), the vane_diag/vane_manual PlatformIO envs, the CI job build-verifying them, and the 623KB capture. Durable knowledge moved into the wiring doc (16-position table, ADC-nonlinearity analysis, copy-paste reproduction sketch), the tests, and cerebrum. | firmware/src/diag/, firmware/platformio.ini, .github/workflows/ci.yml, docs/hardware/wind-sensor-wiring.md | deleted | ~5k |
+| — | Corrected a wrong claim the wiring doc had been carrying: that intermediate detents "resolve to whichever primary octant is nearer. Expected, not a fault." That is exactly what bug-050 disproves. | docs/hardware/wind-sensor-wiring.md | fixed | ~2k |
+| — | Merged to main: fast-forwarded `feat/dashboard-ux-rework` (863cf95→13a2839), then merged `feat/vane-direction-diagnostic` --no-ff. No code conflicts; all 6 conflicts were .wolf/ bookkeeping, resolved as a union of both sides. | — | merged | ~6k |
+| — | Caught a buglog id collision during the merge: both branches numbered new bugs from bug-032 up, so 8 ids meant two different bugs each and a naive union silently dropped one side. Dashboard lineage keeps its numbers; vane lineage renumbered to bug-043..051 with a `renumbered_from` field, and all code/doc/.wolf references updated. | .wolf/buglog.json + all referencing files | fixed | ~7k |
+| — | Recovered stash@{0}: its only unique content was docs/hardware/magnetometer-wiring.md (byte-identical to what a22919c already committed) plus these memory.md lines. Stale anatomy scan data discarded. Stash dropped. | .wolf/memory.md | resolved | ~2k |
+| — | Verified after merge: pio test -e native 65/65, pio run -e esp32dev SUCCESS (92.3% flash), backend npm test 123/123. | — | verified | ~1k |
