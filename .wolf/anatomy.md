@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-10T20:10:57.627Z
-> Files: 460 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:17:24.237Z
+> Files: 462 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -645,7 +645,7 @@
 
 ## .github/workflows/
 
-- `ci.yml` — CI: CI (~3348 tok)
+- `ci.yml` — CI: CI (~3796 tok)
 
 ## .worktrees/chore-ghcr-backend-deploy/
 
@@ -878,7 +878,7 @@
 ## firmware/
 
 - `.gitignore` — Git ignore rules (~52 tok)
-- `platformio.ini` — esp32dev + native envs; esp32dev now sets `board_build.filesystem = littlefs` (~500 tok)
+- `platformio.ini` (~775 tok)
 
 ## firmware/.pio/libdeps/native/
 
@@ -1056,12 +1056,20 @@
 - `config_loader.cpp` — include "config/hw/config_loader.h" (~117 tok)
 - `config_loader.h` — pragma once (~130 tok)
 
+## firmware/src/diag/
+
+- `vane_diag.cpp` — standalone wind-vane bring-up sketch ([env:vane_diag], excluded from esp32dev): reads GPIO34, decodes against Fine Offset's 16-position resistance table, clusters stable levels, prints a periodic verdict + paste-ready kOctantAdcReadings[8]. Serial only, no WiFi/backend/sensors (~3400 tok)
+
 ## firmware/src/correct/
 
 - `wind_direction.cpp` — include "correct/wind_direction.h" (~221 tok)
 - `wind_direction.h` — pragma once (~357 tok)
 - `wind_speed.cpp` — include "correct/wind_speed.h" (~96 tok)
 - `wind_speed.h` — pragma once (~239 tok)
+
+## firmware/src/diag/
+
+- `vane_diag.cpp` — Wind-vane bring-up diagnostic - standalone firmware, Serial output only. (~4822 tok)
 
 ## firmware/src/sense/
 
