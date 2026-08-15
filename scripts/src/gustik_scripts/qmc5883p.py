@@ -96,6 +96,7 @@ from .orientation import (
     rotation_summary,
     up_axis_for,
 )
+from .report import print_calibration_report, print_rotation_report
 
 try:
     from smbus2 import SMBus, i2c_msg
@@ -558,41 +559,7 @@ def _run_calibrate(mag, args):
     cal, report = capture(seconds=seconds, progress=progress)
     print(" " * 24, end="\r")
 
-    print(f"{report['count']} samples, widest plane is "
-          f"{report['plane'][0]}-{report['plane'][1]}")
-    for i, axis in enumerate("xyz"):
-        swept = "swept" if i in cal.swept else "NOT swept"
-        print(f"  {axis}: span={report['span'][i]:8.1f}  centre={report['centre'][i]:+9.1f}  "
-              f"scale={cal.scale[i]:.4f}  ({swept})")
-    print(f"  coverage: {report['sectors_covered']}/{report['sectors']} sectors "
-          f"of a turn in the {report['plane'][0]}-{report['plane'][1]} plane")
-
-    if not report["full_turn"]:
-        print("WARNING: the turn was incomplete, so the centre is biased. "
-              "Re-run and rotate further.")
-    if cal.covers_all_axes:
-        print("  all three axes were swept, so every offset is real "
-              "and --detect-up will work")
-    elif report["vertical_candidate"]:
-        print(f"  {report['vertical_candidate']} did not sweep, so it is the axis you "
-              f"turned about -- i.e. the vertical one, if you held the board level. "
-              f"Confirm its sign with: --calibrate --tumble, then "
-              f"--detect-up --axis {report['vertical_candidate']}")
-    else:
-        print(f"  the {', '.join(cal.unswept_axes)} offset is Earth's field plus hard "
-              "iron with no way to separate them -- fine for heading, which ignores "
-              "that axis, but --detect-up needs --calibrate --tumble")
-    # Judge the bias only in the plane of rotation: the vertical axis plays no
-    # part in heading, and a level spin cannot measure its offset anyway, so
-    # including it would overstate the problem.
-    plane = ["xyz".index(axis) for axis in report["plane"]]
-    radius = sum(report["span"][i] for i in plane) / 4.0
-    bias = math.hypot(*(cal.offset[i] for i in plane))
-    print(f"  in-plane hard-iron bias is {bias / radius:.2f}x the field circle's radius "
-          f"({bias:.0f} vs {radius:.0f} LSB)")
-    if bias > radius:
-        print("  (that is why uncorrected headings were stuck in a narrow band: "
-              "the origin sat outside the circle)")
+    print_calibration_report(cal, report)
 
     cal.save(args.cal)
     print(f"Written to {args.cal}")
@@ -609,28 +576,7 @@ def _run_check_rotation(mag, args, orientation):
     report, headings = mag.check_rotation(seconds=seconds, progress=progress)
     print(" " * 24, end="\r")
 
-    print(f"{report['count']} headings, swept {report['sweep']:+.0f} deg total, "
-          f"covering {report['sectors_covered']}/{report['sectors']} sectors "
-          f"({min(headings):.0f}..{max(headings):.0f} deg)")
-
-    ok = True
-    if not report["full_turn"]:
-        print(f"INCOMPLETE: only {report['sectors_covered']}/{report['sectors']} sectors "
-              "were visited. Either the turn was partial -- re-run and go further -- or "
-              "the heading is still being squeezed into an arc, which means the "
-              "calibration is stale. Recalibrate.")
-        ok = False
-    if report["direction"] == "clockwise":
-        print(f"Direction is correct: up={orientation.up} forward={orientation.forward} "
-              "is the right way round.")
-    elif report["direction"] == "counter-clockwise":
-        flipped = ("-" if orientation.up.startswith("+") else "+") + orientation.up[1]
-        print(f"MIRRORED: heading fell as you turned clockwise. The mount's up axis is "
-              f"inverted -- use --up {flipped} instead of --up {orientation.up}.")
-        ok = False
-    else:
-        print("UNCLEAR: the sensor barely moved. Re-run and turn it a full revolution.")
-        ok = False
+    ok = print_rotation_report(report, headings, orientation)
     return 0 if ok else 1
 
 

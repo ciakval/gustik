@@ -1,0 +1,8 @@
+__pycache__/
+.venv/
+
+# Raw serial captures from mag_calibrate. Kept on disk deliberately (an old
+# capture can answer a question nobody had asked when it was taken) but they
+# are large, per-run, and machine-local - the derived calibration in
+# qmc5883p-calibration.json is what belongs in version control.
+mag-capture-*.txt
