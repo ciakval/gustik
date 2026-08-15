@@ -88,9 +88,62 @@ void test_select_network_returns_negative_one_when_none_in_range(void) {
     TEST_ASSERT_EQUAL_INT(-1, index);
 }
 
+void test_parses_magnetometer_hard_iron_offsets(void) {
+    const char *contents =
+        "backend.url=http://host\n"
+        "mag.offsetX=1713.5\n"
+        "mag.offsetY=-1984.0\n";
+
+    StationConfig config = parseStationConfig(contents);
+
+    TEST_ASSERT_TRUE(config.magnetometer.present);
+    TEST_ASSERT_EQUAL_DOUBLE(1713.5, config.magnetometer.offsetX);
+    TEST_ASSERT_EQUAL_DOUBLE(-1984.0, config.magnetometer.offsetY);
+}
+
+void test_magnetometer_absent_when_config_says_nothing(void) {
+    const char *contents = "network1.ssid=OnlyOne\nbackend.url=http://host\n";
+
+    StationConfig config = parseStationConfig(contents);
+
+    TEST_ASSERT_FALSE(config.magnetometer.present);
+}
+
+// Half a hard-iron correction is worse than none - it rotates the heading by
+// an arbitrary amount rather than leaving it uncorrected - so one key alone
+// must not be applied.
+void test_magnetometer_absent_when_only_one_axis_given(void) {
+    StationConfig onlyX = parseStationConfig("mag.offsetX=1713.5\n");
+    StationConfig onlyY = parseStationConfig("mag.offsetY=1984.0\n");
+
+    TEST_ASSERT_FALSE(onlyX.magnetometer.present);
+    TEST_ASSERT_FALSE(onlyY.magnetometer.present);
+}
+
+// A typo'd offset that silently parses as a plausible number would produce a
+// confident, stable, wrong heading with no error anywhere.
+void test_magnetometer_absent_when_value_is_not_a_number(void) {
+    StationConfig config = parseStationConfig("mag.offsetX=1713.5abc\nmag.offsetY=1984.0\n");
+
+    TEST_ASSERT_FALSE(config.magnetometer.present);
+}
+
+void test_magnetometer_accepts_negative_and_integer_forms(void) {
+    StationConfig config = parseStationConfig("mag.offsetX=-42\nmag.offsetY=0\n");
+
+    TEST_ASSERT_TRUE(config.magnetometer.present);
+    TEST_ASSERT_EQUAL_DOUBLE(-42.0, config.magnetometer.offsetX);
+    TEST_ASSERT_EQUAL_DOUBLE(0.0, config.magnetometer.offsetY);
+}
+
 int main(int argc, char **argv) {
     UNITY_BEGIN();
     RUN_TEST(test_parses_two_networks_backend_url_and_token);
+    RUN_TEST(test_parses_magnetometer_hard_iron_offsets);
+    RUN_TEST(test_magnetometer_absent_when_config_says_nothing);
+    RUN_TEST(test_magnetometer_absent_when_only_one_axis_given);
+    RUN_TEST(test_magnetometer_absent_when_value_is_not_a_number);
+    RUN_TEST(test_magnetometer_accepts_negative_and_integer_forms);
     RUN_TEST(test_parses_a_single_network);
     RUN_TEST(test_ignores_blank_lines_and_comments);
     RUN_TEST(test_empty_contents_yields_empty_config_not_a_crash);

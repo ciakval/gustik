@@ -49,7 +49,13 @@ constexpr AnemometerCalibration kAnemometerCalibration{.metersPerSecondPerHz = 1
 // calibration describes one rigid assembly (scripts/README.md) - it was
 // captured on the bench, not the final boat-mounted enclosure; redo it if
 // the sensor's mount or magnetic surroundings change before Story 5.2.
-constexpr MagnetometerCalibration kMagnetometerCalibration{.hardIronOffsetX = 1713.5, .hardIronOffsetY = 1984.0};
+// config.txt's `mag.offsetX`/`mag.offsetY` override this at boot when both
+// are present (see config/station_config.h), so a recalibration after
+// remounting the sensor is a filesystem upload rather than a reflash. The
+// compiled-in value below is the fallback for a config that says nothing
+// about the magnetometer.
+constexpr MagnetometerCalibration kDefaultMagnetometerCalibration{.hardIronOffsetX = 1713.5, .hardIronOffsetY = 1984.0};
+MagnetometerCalibration magnetometerCalibration = kDefaultMagnetometerCalibration;
 
 Anemometer anemometer;
 Vane vane;
@@ -103,6 +109,16 @@ void setup() {
     Serial.printf("config.txt: %d network(s) configured, backend=%s\n",
                    static_cast<int>(stationConfig.networks.size()), stationConfig.backendBaseUrl.c_str());
     Serial.printf("magnetometer init: %s\n", magnetometerReady ? "ok" : "FAILED (I2C error - check wiring/address)");
+    if (stationConfig.magnetometer.present) {
+        magnetometerCalibration.hardIronOffsetX = stationConfig.magnetometer.offsetX;
+        magnetometerCalibration.hardIronOffsetY = stationConfig.magnetometer.offsetY;
+    }
+    // Print it either way: a wrong hard-iron offset produces a confident,
+    // stable, wrong heading with no error anywhere, so which numbers are
+    // actually in force has to be visible at boot.
+    Serial.printf("magnetometer hard-iron: x=%.1f y=%.1f (%s)\n",
+                  magnetometerCalibration.hardIronOffsetX, magnetometerCalibration.hardIronOffsetY,
+                  stationConfig.magnetometer.present ? "from config.txt" : "compiled-in default");
     transmitClient.begin(stationConfig);
     clock_.begin();
     // NFR-4: buffer must cover >=4h at the sampling interval in use.
@@ -125,7 +141,7 @@ void loop() {
     double magX = 0.0, magY = 0.0;
     bool magnetometerOk = magnetometer.readRawXY(magX, magY);
     if (magnetometerOk) {
-        lastKnownYawDegrees = magnetometerHeadingDegrees(magX, magY, kMagnetometerCalibration);
+        lastKnownYawDegrees = magnetometerHeadingDegrees(magX, magY, magnetometerCalibration);
     }
     // A failed I2C read never blocks this cycle or drops the reading - it
     // just reuses the last successfully-measured heading (see bug-030).

@@ -15,10 +15,33 @@ struct WifiNetwork {
     std::string password;
 };
 
+// Optional magnetometer hard-iron offsets, in raw LSB at the 8G field range
+// sense/magnetometer.cpp configures. Lives in config.txt rather than only in
+// source because a calibration describes one rigid assembly: remounting the
+// sensor then costs a filesystem upload (`pio run -t uploadfs`) instead of a
+// rebuild and reflash.
+//
+// `present` is false when config.txt names neither key, and main.cpp keeps
+// its compiled-in default. Both keys are required together - a config that
+// sets only one is treated as absent, since a half-applied hard-iron
+// correction is worse than none.
+//
+// offsetY is in the firmware's *already Y-negated* mount frame (up=-z,
+// forward=+x), matching what magnetometer.cpp's readRawXY() returns and what
+// correct/wind_direction.cpp subtracts - i.e. the negative of the raw Y
+// offset in scripts/qmc5883p-calibration.json. gustik_scripts.mag_calibrate
+// emits these lines with the flip already applied, so they paste in verbatim.
+struct MagnetometerCalibrationConfig {
+    bool present = false;
+    double offsetX = 0.0;
+    double offsetY = 0.0;
+};
+
 struct StationConfig {
     std::vector<WifiNetwork> networks; // priority order, index 0 = highest priority
     std::string backendBaseUrl;
     std::string ingestToken;
+    MagnetometerCalibrationConfig magnetometer;
 };
 
 // Parses the simple `key=value` config file format (one entry per line,

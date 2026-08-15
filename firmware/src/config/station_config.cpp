@@ -2,6 +2,7 @@
 #include <map>
 #include <sstream>
 #include <cctype>
+#include <string>
 
 namespace {
 std::string trim(const std::string &s) {
@@ -31,11 +32,38 @@ bool parseNetworkKey(const std::string &key, int &index, std::string &field) {
     field = key.substr(i + 1);
     return true;
 }
+
+// Parses a decimal value, returning false (leaving `out` untouched) on
+// anything that isn't fully numeric. Deliberately strict about trailing
+// characters: "1713.5abc" is a typo, not a number, and silently reading it
+// as 1713.5 would hide a corrupted calibration behind a plausible heading.
+bool parseDouble(const std::string &text, double &out) {
+    if (text.empty()) {
+        return false;
+    }
+    try {
+        size_t consumed = 0;
+        double value = std::stod(text, &consumed);
+        if (consumed != text.size()) {
+            return false;
+        }
+        out = value;
+        return true;
+    } catch (...) {
+        // stod throws on no-conversion/out-of-range. A malformed config must
+        // degrade to "not configured", never abort the station mid-boot.
+        return false;
+    }
+}
 } // namespace
 
 StationConfig parseStationConfig(const std::string &fileContents) {
     StationConfig config;
     std::map<int, WifiNetwork> networksByIndex;
+    bool haveOffsetX = false;
+    bool haveOffsetY = false;
+    double offsetX = 0.0;
+    double offsetY = 0.0;
 
     std::istringstream stream(fileContents);
     std::string line;
@@ -64,7 +92,18 @@ StationConfig parseStationConfig(const std::string &fileContents) {
             config.backendBaseUrl = value;
         } else if (key == "backend.token") {
             config.ingestToken = value;
+        } else if (key == "mag.offsetX") {
+            haveOffsetX = parseDouble(value, offsetX);
+        } else if (key == "mag.offsetY") {
+            haveOffsetY = parseDouble(value, offsetY);
         }
+    }
+
+    // Both or neither - see MagnetometerCalibrationConfig's comment.
+    if (haveOffsetX && haveOffsetY) {
+        config.magnetometer.present = true;
+        config.magnetometer.offsetX = offsetX;
+        config.magnetometer.offsetY = offsetY;
     }
 
     for (const auto &entry : networksByIndex) {

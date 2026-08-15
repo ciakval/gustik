@@ -16,3 +16,23 @@ network2.password=CHANGE_ME_MOBILE_HOTSPOT_PASSWORD
 
 backend.url=http://CHANGE_ME_BACKEND_HOST:3000
 backend.token=CHANGE_ME_INGEST_TOKEN
+
+# Magnetometer hard-iron offsets, in raw LSB at the 8G field range. Optional:
+# omit BOTH keys to use the values compiled into main.cpp. Setting only one is
+# ignored - half a hard-iron correction is worse than none.
+#
+# A calibration describes one rigid assembly, so it has to be redone after any
+# physical change - a different breadboard or base, a moved wire, the final
+# enclosure. That is why these live here: recalibrating then costs a
+# `pio run -t uploadfs` rather than a rebuild and reflash.
+#
+# Measure them, don't guess. From firmware/:
+#     pio run -e mag_diag -t upload
+# then from scripts/:
+#     python3 -m gustik_scripts.mag_calibrate --tumble
+# and paste the two lines it prints. offsetY comes out already negated into
+# the firmware's mount frame (up=-z, forward=+x), so paste it verbatim.
+# Reflash the station firmware afterwards: pio run -e esp32dev -t upload
+#
+# mag.offsetX=1713.5
+# mag.offsetY=1984.0
