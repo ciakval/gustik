@@ -134,23 +134,32 @@ double ohmsForMv(double mv) {
 }
 
 struct Match {
-    int index;      // index into kReference
-    int errorMv;    // signed: measured - expected
-    int marginMv;   // distance to the *second* best match; small = ambiguous
+    int index;       // index into kReference
+    int runnerUp;    // index of the second-closest reference position
+    int errorMv;     // signed: measured - expected
+    int marginMv;    // distance to the runner-up; small = ambiguous
 };
 
+// Even reference indices are the 8 primary octants this firmware decodes;
+// odd ones are the vane's intermediate 16-point detents.
+bool isPrimaryOctant(int referenceIndex) {
+    return referenceIndex % 2 == 0;
+}
+
 Match matchReference(double mv) {
-    Match result{0, 0, 0};
+    Match result{0, 0, 0, 0};
     double best = 1e9;
     double secondBest = 1e9;
     for (int i = 0; i < kReferenceCount; i++) {
         double distance = fabs(mv - expectedMv[i]);
         if (distance < best) {
             secondBest = best;
+            result.runnerUp = result.index;
             best = distance;
             result.index = i;
         } else if (distance < secondBest) {
             secondBest = distance;
+            result.runnerUp = i;
         }
     }
     result.errorMv = static_cast<int>(lround(mv - expectedMv[result.index]));
@@ -298,6 +307,7 @@ void printSummary() {
     bool sawUnexplained = false;
     bool sawCeiling = false;
     bool sawCollision = false;
+    bool sawIntermediate = false;
 
     for (int n = 0; n < clusterCount; n++) {
         const Cluster &c = clusters[order[n]];
@@ -323,17 +333,27 @@ void printSummary() {
             sawUnexplained = true;
         }
         if (m.marginMv < kClusterToleranceMv) {
-            Serial.print(F("  <- AMBIGUOUS"));
-            sawAmbiguous = true;
+            // Only a threat to this firmware if BOTH candidates are primary
+            // octants. A primary sitting close to one of the vane's
+            // intermediate 16-point detents is normal geometry, not a fault -
+            // flagging it as one made a perfectly good run read as failed.
+            bool bothPrimary = isPrimaryOctant(m.index) && isPrimaryOctant(m.runnerUp);
+            Serial.print(bothPrimary ? F("  <- AMBIGUOUS") : F("  <- close to 16-pt detent"));
+            if (bothPrimary) {
+                sawAmbiguous = true;
+            }
         }
         if (meanMv > kAdcCeilingWarnMv) {
-            Serial.print(F("  <- NEAR ADC CEILING"));
+            Serial.print(F("  <- near ADC ceiling"));
             sawCeiling = true;
+        }
+        if (!isPrimaryOctant(m.index) && abs(m.errorMv) <= kMatchWarnMv) {
+            Serial.print(F("  <- intermediate detent (not a primary octant)"));
+            sawIntermediate = true;
         }
         Serial.printf("  n=%lu\n", static_cast<unsigned long>(c.count));
 
-        // Even-indexed references are the 8 primary octants.
-        if (m.index % 2 == 0 && abs(m.errorMv) <= kMatchWarnMv) {
+        if (isPrimaryOctant(m.index) && abs(m.errorMv) <= kMatchWarnMv) {
             int octant = m.index / 2;
             if (octantCluster[octant] >= 0) {
                 sawCollision = true;
@@ -357,10 +377,23 @@ void printSummary() {
     }
     Serial.printf("  -> %d/8\n", octantsSeen);
 
+    // 270deg (120k) legitimately sits near the ADC ceiling; that only matters
+    // if it has actually merged with 315deg (64.9k) instead of resolving as
+    // its own level.
+    bool ceilingCollapsed = sawCeiling && !(octantCluster[6] >= 0 && octantCluster[7] >= 0);
+
     // Verdict.
-    if (octantsSeen == 8 && !sawUnexplained && !sawAmbiguous && !sawCollision) {
+    if (octantsSeen == 8 && !sawUnexplained && !sawAmbiguous && !sawCollision && !ceilingCollapsed) {
         Serial.println(F("  VERDICT: all 8 octants seen, each matches a distinct datasheet"));
         Serial.println(F("           position - vane looks correctly wired and readable."));
+        if (sawIntermediate) {
+            Serial.println(F("           (intermediate 16-pt detents also seen - expected, the"));
+            Serial.println(F("            vane really has 16 positions; this firmware uses 8)"));
+        }
+        if (sawCeiling) {
+            Serial.println(F("           (270deg sits near the ADC ceiling by design but resolved"));
+            Serial.println(F("            separately from 315deg - the 10k pull-up is fine)"));
+        }
     } else {
         Serial.println(F("  VERDICT: not clean yet -"));
         if (octantsSeen < 8) {
@@ -375,14 +408,12 @@ void printSummary() {
             Serial.println(F("      value, added cable resistance, or not the WH1080 vane"));
         }
         if (sawAmbiguous) {
-            Serial.println(F("    - two datasheet positions sit within noise of each other"));
-            Serial.println(F("      at this pull-up value; 8.2k/6.57k and 1k/891 are the"));
-            Serial.println(F("      usual pair, mostly harmless for 8-octant use"));
+            Serial.println(F("    - two PRIMARY octants sit within noise of each other at this"));
+            Serial.println(F("      pull-up value - this one does affect 8-octant decoding"));
         }
-        if (sawCeiling) {
-            Serial.println(F("    - a level is near the ADC ceiling (270deg=120k reads"));
-            Serial.println(F("      ~3046mV by design). If 270deg and 315deg collapse into"));
-            Serial.println(F("      one level, drop the pull-up to 4.7k and re-run"));
+        if (ceilingCollapsed) {
+            Serial.println(F("    - 270deg (120k) and 315deg (64.9k) have collapsed into one"));
+            Serial.println(F("      level at the ADC ceiling; drop the pull-up to 4.7k and re-run"));
         }
     }
 

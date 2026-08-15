@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:38:22.798Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:48:38.555Z
 > Files: 462 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
@@ -8,7 +8,7 @@
 - `.gitignore` — Git ignore rules (~98 tok)
 - `CLAUDE.md` — CLAUDE.md (~2136 tok)
 - `deploy.txt` (~25 tok)
-- `TODO.md` — TODO — items flagged for Mlok's review (~1556 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~1924 tok)
 
 ## .claude/
 
@@ -865,7 +865,7 @@
 
 ## docs/hardware/
 
-- `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2142 tok)
+- `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2429 tok)
 
 ## docs/superpowers/plans/
 
@@ -1065,7 +1065,7 @@
 
 ## firmware/src/diag/
 
-- `vane_diag.cpp` — Wind-vane bring-up diagnostic - standalone firmware, Serial output only. (~5699 tok)
+- `vane_diag.cpp` — Wind-vane bring-up diagnostic - standalone firmware, Serial output only. (~6137 tok)
 
 ## firmware/src/sense/
 
@@ -1073,7 +1073,7 @@
 - `anemometer.h` — pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md (~220 tok)
 - `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk) (~480 tok)
 - `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure) (~250 tok)
-- `vane.cpp` — include "sense/vane.h" (~261 tok)
+- `vane.cpp` — include "sense/vane.h" (~495 tok)
 - `vane.h` — pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md (~200 tok)
 
 ## firmware/src/transmit/

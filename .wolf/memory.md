@@ -379,3 +379,16 @@
 | — | Mlok fixed the wiring; capture 04 (22s) shows GPIO34 reading the real resistor ladder - all 8 octants, spread 0-4 ADC counts, every level matching a datasheet position. Vane confirmed correctly wired to the RJ11 OUTER pair with a working 10k pull-up. | /tmp/.../vane-capture-04.log | VALIDATED | ~4k |
 | — | Capture 05 (100s): vane was never turned, sat at 225deg JZ throughout - but that gave a stability measurement instead: mean ADC 2315.1 over 159 settled samples vs 2315.6 in capture 04, i.e. 0.5 counts of cross-capture drift. | /tmp/.../vane-capture-05.log | captured | ~2k |
 | — | bug-034: the kOctantAdcReadings placeholder is not just uncalibrated but actively wrong (90deg off by ~2000 counts); nearest-match decoding means it maps real positions onto unrelated octants rather than degrading gracefully. Measured table recorded in the wiring doc; NOT yet applied to vane.cpp (180deg rests on one settled sample). | docs/hardware/wind-sensor-wiring.md, .wolf/buglog.json | documented | ~4k |
+| 19:46 | Edited firmware/src/sense/vane.cpp | expanded (+17 lines) | ~354 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | modified isPrimaryOctant() | ~306 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | added 2 condition(s) | ~333 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | 4→5 lines | ~42 |
+| 19:46 | Edited firmware/src/diag/vane_diag.cpp | added 2 condition(s) | ~284 |
+| 19:47 | Edited firmware/src/diag/vane_diag.cpp | modified if() | ~126 |
+| 19:47 | Edited docs/hardware/wind-sensor-wiring.md | expanded (+13 lines) | ~356 |
+| 19:47 | Edited docs/hardware/wind-sensor-wiring.md | consistent() → settles() | ~207 |
+| 19:48 | Edited TODO.md | modified calibration() | ~212 |
+| — | Capture 06 corrupted: a stray detached `cat /dev/ttyUSB0` from a previous run was still holding the port, two readers split the byte stream. Killed strays; switched to a tracked foreground `timeout N cat` via run_in_background instead of `(cmd &)` in a subshell (the subshell made the harness report "completed" while the reader was still alive for another 100s). | — | fixed | ~3k |
+| — | Capture 07 (150s, two full rotations by Mlok): 8/8 octants. kOctantAdcReadings measured = {2943,1663,209,572,974,2315,3855,3465}, 18-78 settled samples/octant, agreeing with capture 04 to within 1 count on every octant. APPLIED to sense/vane.cpp (bug-034 closed). | firmware/src/sense/vane.cpp, docs/hardware/wind-sensor-wiring.md, TODO.md | DONE | ~6k |
+| — | bug-035: vane_diag said "not clean yet" on a perfect run - AMBIGUOUS fired on primary-vs-intermediate-detent proximity (normal geometry) and the ADC-ceiling warning fired for 270deg even when it resolved cleanly from 315deg. Verdict now only blocks on two PRIMARY octants colliding, or 270/315 actually collapsing. | firmware/src/diag/vane_diag.cpp | fixed | ~5k |
+| — | Verified after all changes: pio run -e vane_diag SUCCESS, pio run -e esp32dev SUCCESS, pio test -e native 43/43 PASSED. | — | verified | ~1k |

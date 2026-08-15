@@ -613,7 +613,7 @@
       "error_message": "sense/vane.cpp's kOctantAdcReadings placeholder is not merely uncalibrated, it is wrong enough to produce essentially arbitrary wind directions",
       "file": "firmware/src/sense/vane.cpp",
       "root_cause": "The 8 placeholder ADC counts {3200,1600,2200,3800,3950,3450,2800,2400} were invented, never derived from the vane's resistance ladder - not even from the datasheet resistances that were already documented in docs/hardware/wind-sensor-wiring.md. First real measurement (diag/vane_diag.cpp on real hardware) gives {2944,1664,210,573,974,2315,3855,3466}. Only index 1 (45deg) is close; index 2 (90deg) is off by ~2000 counts. Because readRawOctant() picks the nearest entry, wrong anchors do not degrade gracefully - they map real positions onto unrelated octants.",
-      "fix": "Measured values recorded in docs/hardware/wind-sensor-wiring.md ('Measured values (2026-08-15, real hardware)'). Table not yet applied to vane.cpp - pending one deliberate slow rotation, since 180deg currently rests on a single settled sample.",
+      "fix": "Measured on real hardware with diag/vane_diag.cpp over two full rotations (18-78 settled samples/octant) and APPLIED to firmware/src/sense/vane.cpp: {2943,1663,209,572,974,2315,3855,3465}. Cross-validated against an independent earlier capture - agreement within 1 ADC count on every octant. Method and resistances in docs/hardware/wind-sensor-wiring.md.",
       "tags": [
         "firmware",
         "vane",
@@ -624,7 +624,77 @@
       ],
       "related_bugs": [],
       "occurrences": 1,
-      "last_seen": "2026-08-15T18:05:00.000Z"
+      "last_seen": "2026-08-15T19:50:00.000Z"
+    },
+    {
+      "id": "bug-035",
+      "timestamp": "2026-08-15T17:46:13.936Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/sense/vane.cpp",
+      "root_cause": "5 lines replaced/restructured",
+      "fix": "Rewrote 9\u219226 lines (5 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T17:46:13.936Z"
+    },
+    {
+      "id": "bug-036",
+      "timestamp": "2026-08-15T17:46:24.964Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/diag/vane_diag.cpp",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 24\u219233 lines (4 removed) | Also: Serial.print(F(\"  <- AMBIGUOUS\"));; Serial.print(F(\"  <- NEAR ADC CEILING\"));",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-08-15T17:46:36.481Z"
+    },
+    {
+      "id": "bug-037",
+      "timestamp": "2026-08-15T17:46:52.143Z",
+      "error_message": "Wrong condition in logic",
+      "file": "firmware/src/diag/vane_diag.cpp",
+      "root_cause": "Condition was: if (octantsSeen == 8 && !sawUnexplained && !sawAmbiguo)",
+      "fix": "Changed to: if (octantsSeen == 8 && !sawUnexplained && !sawAmbiguo)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T17:46:52.143Z"
+    },
+    {
+      "id": "bug-035",
+      "timestamp": "2026-08-15T19:50:00.000Z",
+      "error_message": "vane_diag printed 'VERDICT: not clean yet' on a run that was actually perfect - 8/8 octants, every level matching the datasheet",
+      "file": "firmware/src/diag/vane_diag.cpp",
+      "root_cause": "Two verdict conditions fired on expected physics rather than on faults. (1) AMBIGUOUS was raised whenever a cluster sat within kClusterToleranceMv of ANY other reference position, including the vane's intermediate 16-point detents - but a primary octant sitting near an intermediate is normal geometry and harmless to a firmware that decodes only 8 octants. (2) NEAR ADC CEILING was raised for 270deg (120k), which reads ~3046mV BY DESIGN, even when it had resolved cleanly as its own level well separated from 315deg.",
+      "fix": "matchReference() now also returns the runner-up index. AMBIGUOUS only blocks the verdict when best and runner-up are BOTH primary octants; otherwise the row is annotated 'close to 16-pt detent' for information. The ceiling warning only blocks when 270deg and 315deg failed to resolve as two distinct clusters (ceilingCollapsed). Clean runs now say so and footnote the intermediate detents and the near-ceiling 270deg as expected.",
+      "tags": [
+        "firmware",
+        "diagnostic",
+        "vane",
+        "false-positive",
+        "verdict",
+        "calibration"
+      ],
+      "related_bugs": [
+        "bug-033",
+        "bug-034"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T19:50:00.000Z"
     }
   ]
 }

@@ -117,16 +117,29 @@ upload`) on the real ESP32 + real vane, 10kΩ pull-up, 3.3V rail. These
 supersede the computed ADC counts in the table above for calibration
 purposes — the computed column stays as the sanity check it always was.
 
-| Octant | Measured Ω | Datasheet Ω | Measured ADC | settled samples | ADC spread |
-|--------|-----------:|------------:|-------------:|----------------:|-----------:|
-| 0°  (S sever)  | 35 392 | 33 000  | 2944 | 3  | 2 |
-| 45° (SV)       |  8 592 |  8 200  | 1664 | 2  | 1 |
-| 90° (V)        |  1 059 |  1 000  |  210 | 2  | 2 |
-| 135° (JV)      |  2 300 |  2 200  |  573 | 13 | 3 |
-| 180° (J jih)   |  4 055 |  3 900  |  974 | 1  | 0 |
-| 225° (JZ)      | 16 742 | 16 000  | 2315 | 9  | 3 |
-| 270° (Z zapad) | 127 582 | 120 000 | 3855 | 7  | 4 |
-| 315° (SZ)      | 68 759 | 64 900  | 3466 | 3  | 2 |
+Two full hand rotations, pausing at each detent:
+
+| Octant | Measured Ω | Datasheet Ω | **Measured ADC** | settled samples | ADC spread |
+|--------|-----------:|------------:|-----------------:|----------------:|-----------:|
+| 0°  (S sever)  |  35 361 | 33 000  | **2943** | 63 | 3 |
+| 45° (SV)       |   8 585 |  8 200  | **1663** | 78 | 4 |
+| 90° (V)        |   1 059 |  1 000  | ** 209** | 52 | 2 |
+| 135° (JV)      |   2 302 |  2 200  | ** 572** | 28 | 3 |
+| 180° (J jih)   |   4 052 |  3 900  | ** 974** | 30 | 3 |
+| 225° (JZ)      |  16 751 | 16 000  | **2315** | 23 | 6 |
+| 270° (Z zapad) | 127 929 | 120 000 | **3855** | 59 | 4 |
+| 315° (SZ)      |  68 678 | 64 900  | **3465** | 51 | 5 |
+
+An independent earlier capture agreed to **within 1 ADC count on every
+octant**, which is what makes these trustworthy as a calibration rather than
+as one lucky reading. The closest pair of adjacent octants is ~360 counts
+apart, so nearest-match decoding has a very wide margin.
+
+A ninth level (14 731 Ω, ADC 2194) also appeared: that is the vane's
+247.5° intermediate detent (14.12 kΩ). The vane genuinely has 16 positions —
+adjacent reed switches closing together — and this firmware deliberately
+decodes only the 8 primary octants (AD-5), so intermediate detents resolve
+to whichever primary octant is nearer. Expected, not a fault.
 
 Three things this run established:
 
@@ -151,11 +164,18 @@ resolution is ever wanted; it does not affect this firmware.
 11dB attenuation, and stays cleanly separated from 315°. **The 10kΩ pull-up
 stays** — no need to drop to 4.7kΩ.
 
-Sampling caveat: the counts above come from one hand-turned pass, so 180°
-rests on a single settled sample and 45°/90° on two each. The values are
-consistent (spread ≤4 counts, and the cross-capture agreement at 225°
-above), but a deliberate slow rotation pausing ~2 s per detent would put
-every octant on a comparable footing before this is treated as final.
+**These values are now live in `firmware/src/sense/vane.cpp`** as
+`kOctantAdcReadings`. Re-measure if the pull-up value, the cable run, or the
+sensor unit changes — all three shift the divider.
+
+Capture gotcha, if repeating this: opening `/dev/ttyUSB0` produces a burst of
+duplicated/truncated line fragments before the stream settles (the artifact
+already noted in `.wolf/cerebrum.md` for the 2026-08-12 session). In a 150 s
+capture it filled the first ~3400 lines and then stopped cleanly; everything
+after it was intact. Filter with `grep -a 'dir='` rather than assuming the
+capture failed. Separately, make sure no earlier `cat /dev/ttyUSB0` is still
+alive — two readers on one tty really do split the byte stream, and that is a
+different failure that loses data for good.
 
 ## Power: does the ESP32 alone suffice?
 

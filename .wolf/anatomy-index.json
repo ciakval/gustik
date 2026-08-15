@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-15T17:38:22.798Z",
+    "lastScanned": "2026-08-15T17:48:38.555Z",
     "fileCount": 462,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "cc50c70ddc0e2d12d7fd51406b1a422df6a760b04133adf60df2e8b4a2d40818",
-    "storeUpdatedAt": "2026-08-15T17:38:22.805Z"
+    "renderedHash": "be50514d3cbb82b0ba214fa7b1fc6eef693071403d9b956d47f9ab4a8325b192",
+    "storeUpdatedAt": "2026-08-15T17:48:38.562Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5200,12 +5200,12 @@
     },
     "firmware/src/sense/vane.cpp": {
       "description": "include \"sense/vane.h\"",
-      "tokens": 261,
-      "hash": "cf18a250d5d532fc",
-      "size": 913,
-      "mtimeMs": 1786387643706.5374,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "tokens": 495,
+      "hash": "b70fab98087ddfe8",
+      "size": 1855,
+      "mtimeMs": 1786815973842.6313,
+      "updatedAt": "2026-08-15T17:46:13.926Z",
+      "source": "hook"
     },
     "firmware/src/sense/vane.h": {
       "description": "pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md",
@@ -5809,12 +5809,12 @@
     },
     "TODO.md": {
       "description": "TODO — items flagged for Mlok's review",
-      "tokens": 1556,
-      "hash": "1f0bbe52dd22fbe9",
-      "size": 6268,
-      "mtimeMs": 1786389866461.6282,
-      "updatedAt": "2026-08-10T19:26:48.214Z",
-      "source": "scan"
+      "tokens": 1924,
+      "hash": "094eb1032244bb7e",
+      "size": 7743,
+      "mtimeMs": 1786816118474.085,
+      "updatedAt": "2026-08-15T17:48:38.555Z",
+      "source": "hook"
     },
     ".worktrees/chore-ghcr-backend-deploy/backend/compose.yaml": {
       "description": "Docker Compose: 2 services",
@@ -5872,20 +5872,20 @@
     },
     "docs/hardware/wind-sensor-wiring.md": {
       "description": "Wind sensor (WH1080/WH1090) → ESP32 wiring",
-      "tokens": 2142,
-      "hash": "fa49a9f8c2271355",
-      "size": 8679,
-      "mtimeMs": 1786815502714.5076,
-      "updatedAt": "2026-08-15T17:38:22.798Z",
+      "tokens": 2429,
+      "hash": "ea0f5b7ea9ee975f",
+      "size": 9835,
+      "mtimeMs": 1786816069442.698,
+      "updatedAt": "2026-08-15T17:47:49.525Z",
       "source": "hook"
     },
     "firmware/src/diag/vane_diag.cpp": {
       "description": "Wind-vane bring-up diagnostic - standalone firmware, Serial output only.",
-      "tokens": 5699,
-      "hash": "cec1cd9228dc8ece",
-      "size": 21369,
-      "mtimeMs": 1786814979348.5652,
-      "updatedAt": "2026-08-15T17:29:39.429Z",
+      "tokens": 6137,
+      "hash": "2bc4bb0d347b84f8",
+      "size": 23013,
+      "mtimeMs": 1786816024939.2014,
+      "updatedAt": "2026-08-15T17:47:05.019Z",
       "source": "hook"
     }
   }
