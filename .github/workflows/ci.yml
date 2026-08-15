@@ -150,10 +150,6 @@ jobs:
           key: platformio-esp32dev-${{ hashFiles('firmware/platformio.ini') }}
           restore-keys: platformio-esp32dev-
       - run: pio run -e esp32dev
-      # Bring-up diagnostics under src/diag/ are never flashed by CI, but they
-      # share headers and pin constants with the station firmware - build them
-      # so they cannot silently rot. Reuses the toolchain cached above (~3s).
-      - run: pio run -e vane_diag
       - uses: actions/upload-artifact@v4
         with:
           name: gustik-firmware-esp32dev-${{ github.sha }}

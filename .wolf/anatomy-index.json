@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-15T17:48:38.555Z",
-    "fileCount": 462,
+    "lastScanned": "2026-08-15T18:26:17.284Z",
+    "fileCount": 466,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "be50514d3cbb82b0ba214fa7b1fc6eef693071403d9b956d47f9ab4a8325b192",
-    "storeUpdatedAt": "2026-08-15T17:48:38.562Z"
+    "renderedHash": "85ac14ebb34de6bbc09a2753b3945a5fb77e2b5e61449ee16778df3c48c4a8e0",
+    "storeUpdatedAt": "2026-08-15T18:26:17.291Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5074,11 +5074,11 @@
     },
     "firmware/platformio.ini": {
       "description": "",
-      "tokens": 775,
-      "hash": "8a383f71e2555a88",
-      "size": 2906,
-      "mtimeMs": 1786814197674.9402,
-      "updatedAt": "2026-08-15T17:16:37.754Z",
+      "tokens": 656,
+      "hash": "e81baf8f9d1b5194",
+      "size": 2458,
+      "mtimeMs": 1786818308686.467,
+      "updatedAt": "2026-08-15T18:25:08.768Z",
       "source": "hook"
     },
     "firmware/src/config/hw/config_loader.cpp": {
@@ -5200,11 +5200,11 @@
     },
     "firmware/src/sense/vane.cpp": {
       "description": "include \"sense/vane.h\"",
-      "tokens": 495,
-      "hash": "b70fab98087ddfe8",
-      "size": 1855,
-      "mtimeMs": 1786815973842.6313,
-      "updatedAt": "2026-08-15T17:46:13.926Z",
+      "tokens": 100,
+      "hash": "b6ca254c1233779f",
+      "size": 374,
+      "mtimeMs": 1786818198293.598,
+      "updatedAt": "2026-08-15T18:23:18.372Z",
       "source": "hook"
     },
     "firmware/src/sense/vane.h": {
@@ -5809,11 +5809,11 @@
     },
     "TODO.md": {
       "description": "TODO — items flagged for Mlok's review",
-      "tokens": 1924,
-      "hash": "094eb1032244bb7e",
-      "size": 7743,
-      "mtimeMs": 1786816118474.085,
-      "updatedAt": "2026-08-15T17:48:38.555Z",
+      "tokens": 2060,
+      "hash": "0fec73056efe4680",
+      "size": 8291,
+      "mtimeMs": 1786818377202.6775,
+      "updatedAt": "2026-08-15T18:26:17.284Z",
       "source": "hook"
     },
     ".worktrees/chore-ghcr-backend-deploy/backend/compose.yaml": {
@@ -5880,12 +5880,45 @@
       "source": "hook"
     },
     "firmware/src/diag/vane_diag.cpp": {
-      "description": "Wind-vane bring-up diagnostic - standalone firmware, Serial output only.",
+      "description": "Wind-vane bring-up diagnostic - standalone firmware, Serial output only. Superseded by `vane_manual.cpp`; kept as history. Self-interpreting (datasheet decode + clusters + VERDICT) - the approach cerebrum's Do-Not-Repeat warns against.",
       "tokens": 6137,
       "hash": "2bc4bb0d347b84f8",
       "size": 23013,
       "mtimeMs": 1786816024939.2014,
-      "updatedAt": "2026-08-15T17:47:05.019Z",
+      "updatedAt": "2026-08-15T18:22:48.683Z",
+      "source": "md-import"
+    },
+    "firmware/src/diag/vane_manual.cpp": {
+      "description": "Minimal wind-vane readout, `[env:vane_manual]`. Prints raw `READING: mV=... adc=...` only; all analysis happens on the host. The template for future sensor bring-up. Note bug-039: `hw_setup()` is defined but never called.",
+      "tokens": 500,
+      "updatedAt": "2026-08-15T18:22:48.683Z",
+      "source": "md-import"
+    },
+    "firmware/src/sense/vane_decode.h": {
+      "description": "pragma once",
+      "tokens": 232,
+      "hash": "7ab1c0498a06d8c7",
+      "size": 869,
+      "mtimeMs": 1786818168597.4314,
+      "updatedAt": "2026-08-15T18:22:48.683Z",
+      "source": "hook"
+    },
+    "firmware/src/sense/vane_decode.cpp": {
+      "description": "include \"sense/vane_decode.h\"",
+      "tokens": 1047,
+      "hash": "eeb3dc7c6b24051b",
+      "size": 3926,
+      "mtimeMs": 1786818193169.609,
+      "updatedAt": "2026-08-15T18:23:13.249Z",
+      "source": "hook"
+    },
+    "firmware/test/test_vane_decode/test_vane_decode.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 1096,
+      "hash": "84f32d1d396241aa",
+      "size": 4110,
+      "mtimeMs": 1786818220634.5671,
+      "updatedAt": "2026-08-15T18:23:40.714Z",
       "source": "hook"
     }
   }

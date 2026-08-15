@@ -1,14 +1,14 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:48:38.555Z
-> Files: 462 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T18:26:17.284Z
+> Files: 466 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
 - `CLAUDE.md` — CLAUDE.md (~2136 tok)
 - `deploy.txt` (~25 tok)
-- `TODO.md` — TODO — items flagged for Mlok's review (~1924 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~2060 tok)
 
 ## .claude/
 
@@ -878,7 +878,7 @@
 ## firmware/
 
 - `.gitignore` — Git ignore rules (~52 tok)
-- `platformio.ini` (~775 tok)
+- `platformio.ini` (~656 tok)
 
 ## firmware/.pio/libdeps/native/
 
@@ -1065,7 +1065,8 @@
 
 ## firmware/src/diag/
 
-- `vane_diag.cpp` — Wind-vane bring-up diagnostic - standalone firmware, Serial output only. (~6137 tok)
+- `vane_diag.cpp` — Wind-vane bring-up diagnostic - standalone firmware, Serial output only. Superseded by `vane_manual.cpp`; kept as history. Self-interpreting (datasheet decode + clusters + VERDICT) - the approach cerebrum's Do-Not-Repeat warns against. (~6137 tok)
+- `vane_manual.cpp` — Minimal wind-vane readout, `[env:vane_manual]`. Prints raw `READING: mV=... adc=...` only; all analysis happens on the host. The template for future sensor bring-up. Note bug-039: `hw_setup()` is defined but never called. (~500 tok)
 
 ## firmware/src/sense/
 
@@ -1073,7 +1074,9 @@
 - `anemometer.h` — pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md (~220 tok)
 - `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk) (~480 tok)
 - `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure) (~250 tok)
-- `vane.cpp` — include "sense/vane.h" (~495 tok)
+- `vane_decode.cpp` — include "sense/vane_decode.h" (~1047 tok)
+- `vane_decode.h` — pragma once (~232 tok)
+- `vane.cpp` — include "sense/vane.h" (~100 tok)
 - `vane.h` — pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md (~200 tok)
 
 ## firmware/src/transmit/
@@ -1121,6 +1124,10 @@
 ## firmware/test/test_transmit_payload/
 
 - `test_transmit_payload.cpp` — include <unity.h> (~629 tok)
+
+## firmware/test/test_vane_decode/
+
+- `test_vane_decode.cpp` — include <unity.h> (~1096 tok)
 
 ## firmware/test/test_wind_direction/
 

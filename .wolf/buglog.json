@@ -4,10 +4,10 @@
     {
       "id": "bug-001",
       "timestamp": "2026-08-01T12:00:00Z",
-      "error_message": "PostToolUse:write hook error \u2014 Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspaces/gustik/.wolf/hooks/symbol-extractor.js' imported from /workspaces/gustik/.wolf/hooks/post-write.js",
+      "error_message": "PostToolUse:write hook error — Error [ERR_MODULE_NOT_FOUND]: Cannot find module '/workspaces/gustik/.wolf/hooks/symbol-extractor.js' imported from /workspaces/gustik/.wolf/hooks/post-write.js",
       "file": ".wolf/hooks/symbol-extractor.js",
-      "root_cause": "The OpenWolf install commit (f532148, 'chore: add OpenWolf files and CLAUDE.md') never copied symbol-extractor.js into .wolf/hooks/, even though post-write.js imports it. Every other hook file was present and matched the version shipped in the globally installed openwolf@2.0.1 npm package (dist/hooks/*.js), so this was an install/packaging gap, not a version mismatch. Because post-write.js's main() wraps everything in main().catch(() => process.exit(0)), runtime errors inside main are swallowed silently \u2014 but a top-level ESM import failure happens before main() is ever called, so it crashed loudly on every Write/Edit/MultiEdit for the whole session instead of being masked like other errors would be.",
-      "fix": "Copied .wolf/hooks/symbol-extractor.js from /usr/lib/node_modules/openwolf/dist/hooks/symbol-extractor.js (globally installed openwolf@2.0.1 \u2014 confirmed same version via diff against the project's post-write.js, which matched byte-for-byte except a sourceMappingURL comment). Verified by piping a synthetic Write tool_input JSON into `node .wolf/hooks/post-write.js` and confirming exit code 0. Ran `openwolf scan` afterward to backfill anatomy.md entries that the hook had failed to write during the outage. File is untracked in git as of this fix \u2014 needs `git add .wolf/hooks/symbol-extractor.js` to persist.",
+      "root_cause": "The OpenWolf install commit (f532148, 'chore: add OpenWolf files and CLAUDE.md') never copied symbol-extractor.js into .wolf/hooks/, even though post-write.js imports it. Every other hook file was present and matched the version shipped in the globally installed openwolf@2.0.1 npm package (dist/hooks/*.js), so this was an install/packaging gap, not a version mismatch. Because post-write.js's main() wraps everything in main().catch(() => process.exit(0)), runtime errors inside main are swallowed silently — but a top-level ESM import failure happens before main() is ever called, so it crashed loudly on every Write/Edit/MultiEdit for the whole session instead of being masked like other errors would be.",
+      "fix": "Copied .wolf/hooks/symbol-extractor.js from /usr/lib/node_modules/openwolf/dist/hooks/symbol-extractor.js (globally installed openwolf@2.0.1 — confirmed same version via diff against the project's post-write.js, which matched byte-for-byte except a sourceMappingURL comment). Verified by piping a synthetic Write tool_input JSON into `node .wolf/hooks/post-write.js` and confirming exit code 0. Ran `openwolf scan` afterward to backfill anatomy.md entries that the hook had failed to write during the outage. File is untracked in git as of this fix — needs `git add .wolf/hooks/symbol-extractor.js` to persist.",
       "tags": [
         "openwolf",
         "hooks",
@@ -25,8 +25,8 @@
       "timestamp": "2026-08-01T12:18:00Z",
       "error_message": "Stop hook repeats 'ACTION REQUIRED: N files were modified this session but no semantic summary was written to memory.md' every single turn, even after a proper semantic summary line is appended.",
       "file": ".wolf/hooks/shared.js",
-      "root_cause": "countSemanticEntries() (shared.js:614-631) requires a memory.md line to start with `| ${today}` where today is a full ISO date like '| 2026-08-01'. But every memory.md row actually written by post-write.js/stop.js is time-only, formatted `| HH:MM | ... |` (the date only appears once, in the '## Session: YYYY-MM-DD HH:MM' heading above each table). Since no row line ever starts with the date, the startsWith(todayPrefix) check never matches, semanticCount is always 0, and needsSemanticSummary() (stop.js:206-213) fires unconditionally on every Stop regardless of how many real summaries exist \u2014 an unsatisfiable check.",
-      "fix": "Patched countSemanticEntries() in .wolf/hooks/shared.js: instead of matching row lines against an impossible `| ${today}` date prefix, it now tracks which '## Session: YYYY-MM-DD HH:MM' heading block it's inside and counts non-mechanical `| HH:MM | ... |` rows within today's session block(s). Verified via `node -e \"import('./.wolf/hooks/shared.js').then(({countSemanticEntries,getWolfDir}) => console.log(countSemanticEntries(getWolfDir())))\"` \u2014 now correctly returns 2 instead of 0.",
+      "root_cause": "countSemanticEntries() (shared.js:614-631) requires a memory.md line to start with `| ${today}` where today is a full ISO date like '| 2026-08-01'. But every memory.md row actually written by post-write.js/stop.js is time-only, formatted `| HH:MM | ... |` (the date only appears once, in the '## Session: YYYY-MM-DD HH:MM' heading above each table). Since no row line ever starts with the date, the startsWith(todayPrefix) check never matches, semanticCount is always 0, and needsSemanticSummary() (stop.js:206-213) fires unconditionally on every Stop regardless of how many real summaries exist — an unsatisfiable check.",
+      "fix": "Patched countSemanticEntries() in .wolf/hooks/shared.js: instead of matching row lines against an impossible `| ${today}` date prefix, it now tracks which '## Session: YYYY-MM-DD HH:MM' heading block it's inside and counts non-mechanical `| HH:MM | ... |` rows within today's session block(s). Verified via `node -e \"import('./.wolf/hooks/shared.js').then(({countSemanticEntries,getWolfDir}) => console.log(countSemanticEntries(getWolfDir())))\"` — now correctly returns 2 instead of 0.",
       "tags": [
         "openwolf",
         "hooks",
@@ -45,10 +45,10 @@
     {
       "id": "bug-003",
       "timestamp": "2026-08-01T15:22:00Z",
-      "error_message": "Stop hook: 'Files edited 3+ times this session (ARCHITECTURE-SPINE.md) but buglog.json was not updated.' \u2014 false-positive trigger, not an actual bug.",
+      "error_message": "Stop hook: 'Files edited 3+ times this session (ARCHITECTURE-SPINE.md) but buglog.json was not updated.' — false-positive trigger, not an actual bug.",
       "file": "_bmad-output/planning-artifacts/architecture/architecture-gustik-2026-08-01/ARCHITECTURE-SPINE.md",
-      "root_cause": "Not a bug \u2014 the multi-edit heuristic can't distinguish 'fixing a mistake repeatedly' from a document going through a defined multi-pass authoring process. ARCHITECTURE-SPINE.md was edited 6+ times in one session because the bmad-architecture skill's Finalize sequence is inherently multi-pass by design: Fast-path draft, then a 3-lens reviewer gate (rubric checklist + version/currency + adversarial-divergence, each a parallel subagent) whose findings get applied back into the same file as separate, scoped edits (one per AD/section fixed).",
-      "fix": "No code fix needed. Logging this so a future session reading buglog.json before re-debugging doesn't mistake repeated edits to a BMAD spine/PRD/spec artifact for a sign something went wrong \u2014 that pattern is expected for any bmad-* skill with a reviewer-gate Finalize step, not just this run.",
+      "root_cause": "Not a bug — the multi-edit heuristic can't distinguish 'fixing a mistake repeatedly' from a document going through a defined multi-pass authoring process. ARCHITECTURE-SPINE.md was edited 6+ times in one session because the bmad-architecture skill's Finalize sequence is inherently multi-pass by design: Fast-path draft, then a 3-lens reviewer gate (rubric checklist + version/currency + adversarial-divergence, each a parallel subagent) whose findings get applied back into the same file as separate, scoped edits (one per AD/section fixed).",
+      "fix": "No code fix needed. Logging this so a future session reading buglog.json before re-debugging doesn't mistake repeated edits to a BMAD spine/PRD/spec artifact for a sign something went wrong — that pattern is expected for any bmad-* skill with a reviewer-gate Finalize step, not just this run.",
       "tags": [
         "openwolf",
         "hooks",
@@ -69,8 +69,8 @@
       "timestamp": "2026-08-01T15:24:00Z",
       "error_message": "Stop hook kept repeating 'ACTION REQUIRED: Files edited 3+ times this session ... but buglog.json was not updated' every turn, even immediately after bug-003 was logged to buglog.json in the previous turn.",
       "file": ".wolf/hooks/stop.js",
-      "root_cause": "checkForMissingBugLogs() (stop.js:145-158) checked `session.files_written.some(w => w.file.includes(\"buglog.json\"))` to decide whether buglog.json had been updated. But post-write.js exits early for every path under .wolf/ ('Skip processing for .wolf/ internal files to avoid slow self-referential updates', post-write.js:39-42) \u2014 before it ever reaches the line that pushes to session.files_written. So writes to .wolf/buglog.json itself can never appear in files_written, and the check was unsatisfiable: no edit to buglog.json, however correct or recent, could ever clear the reminder. Same bug *class* as bug-002 (a Stop-hook check whose required evidence structurally can never be produced), but an independent root cause/code path \u2014 that one was a date-format mismatch in shared.js, this one is a tracking-array exclusion colliding with a check that assumed inclusion.",
-      "fix": "Rewrote checkForMissingBugLogs() to check buglog.json's own mtime via fs.statSync against session.started, mirroring the pattern checkStatusFreshness() already used correctly for STATUS.md (which checks the file's mtime directly, not files_written). Verified by replicating the exact comparison inline against the real buglog.json mtime and the current session's recorded `started` timestamp \u2014 now correctly evaluates true after an edit, where it was unconditionally false before.",
+      "root_cause": "checkForMissingBugLogs() (stop.js:145-158) checked `session.files_written.some(w => w.file.includes(\"buglog.json\"))` to decide whether buglog.json had been updated. But post-write.js exits early for every path under .wolf/ ('Skip processing for .wolf/ internal files to avoid slow self-referential updates', post-write.js:39-42) — before it ever reaches the line that pushes to session.files_written. So writes to .wolf/buglog.json itself can never appear in files_written, and the check was unsatisfiable: no edit to buglog.json, however correct or recent, could ever clear the reminder. Same bug *class* as bug-002 (a Stop-hook check whose required evidence structurally can never be produced), but an independent root cause/code path — that one was a date-format mismatch in shared.js, this one is a tracking-array exclusion colliding with a check that assumed inclusion.",
+      "fix": "Rewrote checkForMissingBugLogs() to check buglog.json's own mtime via fs.statSync against session.started, mirroring the pattern checkStatusFreshness() already used correctly for STATUS.md (which checks the file's mtime directly, not files_written). Verified by replicating the exact comparison inline against the real buglog.json mtime and the current session's recorded `started` timestamp — now correctly evaluates true after an edit, where it was unconditionally false before.",
       "tags": [
         "openwolf",
         "hooks",
@@ -178,7 +178,7 @@
       "error_message": "Significant refactor of ",
       "file": ".worktrees/story-1.6-dashboard/backend/src/store/db.js",
       "root_cause": "3 lines replaced/restructured",
-      "fix": "Rewrote 8\u219211 lines (3 removed)",
+      "fix": "Rewrote 8→11 lines (3 removed)",
       "tags": [
         "auto-detected",
         "refactor",
@@ -213,7 +213,7 @@
       "error_message": "Wrong reference: test_capacity_covers_at_least_4_hours_at_3_second_interval should be test_reset_reinitializes_capacity_and_clears",
       "file": ".worktrees/story-2.1-local-buffer/firmware/test/test_ring_buffer/test_ring_buffer.cpp",
       "root_cause": "Used \"test_capacity_covers_at_least_4_hours_at_3_second_interval\" instead of \"test_reset_reinitializes_capacity_and_clears\"",
-      "fix": "Changed test_capacity_covers_at_least_4_hours_at_3_second_interval \u2192 test_reset_reinitializes_capacity_and_clears",
+      "fix": "Changed test_capacity_covers_at_least_4_hours_at_3_second_interval → test_reset_reinitializes_capacity_and_clears",
       "tags": [
         "auto-detected",
         "wrong-reference",
@@ -229,7 +229,7 @@
       "error_message": "Wrong reference: drainAll should be peekAll",
       "file": ".worktrees/story-2.2-backfill/firmware/src/transmit/hw/flash_buffer.cpp",
       "root_cause": "Used \"drainAll\" instead of \"peekAll\"",
-      "fix": "Changed drainAll \u2192 peekAll",
+      "fix": "Changed drainAll → peekAll",
       "tags": [
         "auto-detected",
         "wrong-reference",
@@ -261,7 +261,7 @@
       "error_message": "Significant refactor of ",
       "file": ".worktrees/story-3.3-resync/backend/test/live-socket.test.js",
       "root_cause": "3 lines replaced/restructured",
-      "fix": "Rewrote 8\u21925 lines (3 removed)",
+      "fix": "Rewrote 8→5 lines (3 removed)",
       "tags": [
         "auto-detected",
         "refactor",
@@ -316,7 +316,7 @@
       "timestamp": "2026-08-09T20:42:50.723Z",
       "error_message": "Missing await",
       "file": "backend/test/ingest.test.js",
-      "root_cause": "Async call without await \u2014 returned Promise instead of value",
+      "root_cause": "Async call without await — returned Promise instead of value",
       "fix": "Added await to async call",
       "tags": [
         "auto-detected",
@@ -330,10 +330,10 @@
     {
       "id": "bug-019",
       "timestamp": "2026-08-09T20:50:00.000Z",
-      "error_message": "History chart/table shows 00:00 for every point and never reflects newly-inserted readings, when manually POSTing test readings to a running backend (reported against a Docker-started instance, but reproduced identically against a plain `node src/index.js` run \u2014 not actually Docker-specific)",
+      "error_message": "History chart/table shows 00:00 for every point and never reflects newly-inserted readings, when manually POSTing test readings to a running backend (reported against a Docker-started instance, but reproduced identically against a plain `node src/index.js` run — not actually Docker-specific)",
       "file": "backend/src/ingest/routes.js",
       "root_cause": "getHistory() (backend/src/store/readings.js) filters `WHERE captured_at >= ?` using plain lexicographic TEXT comparison against a generated 'YYYY-MM-DDTHH:MM:SS.sssZ' cutoff string. POST /readings never validated the client-supplied capturedAt string, so any reading whose format deviates from that exact ISO-8601 'T'.../'Z' shape (e.g. 'YYYY-MM-DD HH:MM:SS' with a space, which is what the shell `date` command and many quick manual-test scripts produce, or a date-only string) sorts before the cutoff in plain string comparison (space 0x20 < 'T' 0x5A) and is silently dropped from every /readings/history response, even though the row is genuinely from today. The write itself still succeeds (201), so nothing in the response indicates data was lost - it just never appears in the chart. Confirmed reproducible: inserted a well-formed ISO reading and a space-separated 'now' reading into the same fresh in-memory DB; GET /readings/history returned only the well-formed one. The pre-existing local dev DB (backend/data/gustik.sqlite, gitignored) already had 12 rows in the broken space-separated shape from earlier manual testing, all invisible to /readings/history.",
-      "fix": "Added strict ISO-8601 UTC validation (regex `/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/` plus a Date.parse sanity check) at the POST /readings boundary in ingest/routes.js \u2014 malformed capturedAt now returns 400 immediately instead of being stored and silently excluded later. Verified against firmware/src/transmit/hw/clock.cpp (`strftime(..., \"%Y-%m-%dT%H:%M:%S.000Z\", ...)`) - real device payloads always match this shape, so the validation cannot reject legitimate hardware data, only malformed manual/test input. Added a TDD regression test in backend/test/ingest.test.js.",
+      "fix": "Added strict ISO-8601 UTC validation (regex `/^\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}Z$/` plus a Date.parse sanity check) at the POST /readings boundary in ingest/routes.js — malformed capturedAt now returns 400 immediately instead of being stored and silently excluded later. Verified against firmware/src/transmit/hw/clock.cpp (`strftime(..., \"%Y-%m-%dT%H:%M:%S.000Z\", ...)`) - real device payloads always match this shape, so the validation cannot reject legitimate hardware data, only malformed manual/test input. Added a TDD regression test in backend/test/ingest.test.js.",
       "tags": [
         "backend",
         "ingest",
@@ -352,7 +352,7 @@
       "timestamp": "2026-08-09T22:01:15.818Z",
       "error_message": "Missing await",
       "file": "backend/test/ingest.test.js",
-      "root_cause": "Async call without await \u2014 returned Promise instead of value",
+      "root_cause": "Async call without await — returned Promise instead of value",
       "fix": "Added await to async call",
       "tags": [
         "auto-detected",
@@ -368,7 +368,7 @@
       "timestamp": "2026-08-09T22:01:22.396Z",
       "error_message": "Missing await",
       "file": "backend/test/history.test.js",
-      "root_cause": "Async call without await \u2014 returned Promise instead of value",
+      "root_cause": "Async call without await — returned Promise instead of value",
       "fix": "Added await to async call",
       "tags": [
         "auto-detected",
@@ -385,7 +385,7 @@
       "error_message": "Significant refactor of ",
       "file": "backend/src/ingest/routes.js",
       "root_cause": "9 lines replaced/restructured",
-      "fix": "Rewrote 21\u219210 lines (9 removed) | Also: const readings = Array.isArray(request.body) ? req; const invalid = readings.find((reading) => !isVali",
+      "fix": "Rewrote 21→10 lines (9 removed) | Also: const readings = Array.isArray(request.body) ? req; const invalid = readings.find((reading) => !isVali",
       "tags": [
         "auto-detected",
         "refactor",
@@ -417,7 +417,7 @@
       "error_message": "Wrong reference: 800 should be 1400",
       "file": "backend/_manual-verify-screenshot.cjs",
       "root_cause": "Used \"800\" instead of \"1400\"",
-      "fix": "Changed 800 \u2192 1400",
+      "fix": "Changed 800 → 1400",
       "tags": [
         "auto-detected",
         "wrong-reference",
@@ -577,7 +577,7 @@
       "error_message": "Significant refactor of ",
       "file": "firmware/src/diag/vane_diag.cpp",
       "root_cause": "6 lines replaced/restructured",
-      "fix": "Rewrote 15\u219222 lines (6 removed) | Also: if (now - lastSummaryMs >= kSummaryPeriodMs) {; lastSummaryMs = now;",
+      "fix": "Rewrote 15→22 lines (6 removed) | Also: if (now - lastSummaryMs >= kSummaryPeriodMs) {; lastSummaryMs = now;",
       "tags": [
         "auto-detected",
         "refactor",
@@ -632,7 +632,7 @@
       "error_message": "Significant refactor of ",
       "file": "firmware/src/sense/vane.cpp",
       "root_cause": "5 lines replaced/restructured",
-      "fix": "Rewrote 9\u219226 lines (5 removed)",
+      "fix": "Rewrote 9→26 lines (5 removed)",
       "tags": [
         "auto-detected",
         "refactor",
@@ -648,7 +648,7 @@
       "error_message": "Significant refactor of ",
       "file": "firmware/src/diag/vane_diag.cpp",
       "root_cause": "4 lines replaced/restructured",
-      "fix": "Rewrote 24\u219233 lines (4 removed) | Also: Serial.print(F(\"  <- AMBIGUOUS\"));; Serial.print(F(\"  <- NEAR ADC CEILING\"));",
+      "fix": "Rewrote 24→33 lines (4 removed) | Also: Serial.print(F(\"  <- AMBIGUOUS\"));; Serial.print(F(\"  <- NEAR ADC CEILING\"));",
       "tags": [
         "auto-detected",
         "refactor",
@@ -695,6 +695,49 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-15T19:50:00.000Z"
+    },
+    {
+      "id": "bug-038",
+      "timestamp": "2026-08-15T20:30:00.000Z",
+      "error_message": "Three of the wind vane's eight 16-point half-detent positions decode to a badly wrong octant under sense/vane.cpp's nearest-match lookup: 157.5deg -> 90deg (67.5deg error), 292.5deg -> 0deg (67.5deg error), 337.5deg -> 225deg (112.5deg error).",
+      "file": "firmware/src/sense/vane.cpp",
+      "root_cause": "The vane has 16 mechanically stable detents, not 8: adjacent reed switches close together, putting their resistors in PARALLEL. Parallel resistance is always lower than either leg, so a half-detent's ADC value is NOT between the two octants it sits between - it lands somewhere unrelated on the ladder. kOctantAdcReadings has only the 8 primary anchors, and readRawOctant() takes the nearest one, so a vane resting on one of these three half-detents reports a confident, stable, badly wrong direction with no error signal anywhere. Found by clustering Mlok's 18337-sample raw capture on the host and matching all 21 clusters against Fine Offset's full 16-position resistance table (7 of the 8 intermediates are present in the capture and match predicted ADC to within 3-13 counts). NOTE: vane_diag.cpp's AMBIGUOUS check had exactly this signal and bug-035's fix deliberately suppressed it, calling primary-vs-intermediate proximity 'normal geometry, and harmless to a firmware that decodes only 8 octants' - which is true for cluster separation but false for decode correctness.",
+      "fix": "FIXED 2026-08-15. Replaced sense/vane.cpp's 8-entry kOctantAdcReadings with a 16-entry {adc, octant} anchor table in a NEW pure, Arduino.h-free unit, firmware/src/sense/vane_decode.cpp (vaneOctantForAdc), leaving sense/vane.cpp as a thin analogRead() wrapper. All 16 anchors are measured from the capture, including the three that were mis-decoding (157.5deg=339, 292.5deg=3134, 337.5deg=2604) and the weak 67.5deg cluster at 175 (n=29, separated from the 90deg primary at 209 by re-binning that region at a tighter gap threshold). Half-detents are assigned to the HIGHER octant by convention, bounding worst-case error at 22.5deg - the floor for an 8-octant output. Added to the native build_src_filter so it is host-testable; new test/test_vane_decode/ pins all 16 positions, the three regressions, ADC jitter, out-of-range totality, and reachability of every octant (8 tests, native suite 43 -> 51, all passing). VALIDATED by replaying the full 18337-sample capture through both tables before deleting it: 309 samples (1.69%) change decode, every one of them a half-detent moving to a true neighbour, and ZERO primary-detent samples change - the confirmed primary calibration is untouched.",
+      "tags": [
+        "firmware",
+        "vane",
+        "calibration",
+        "nearest-match",
+        "decode",
+        "hardware",
+        "half-detent"
+      ],
+      "related_bugs": [
+        "bug-034",
+        "bug-035"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T21:00:00.000Z"
+    },
+    {
+      "id": "bug-039",
+      "timestamp": "2026-08-15T20:30:00.000Z",
+      "error_message": "vane_manual.cpp defines static hw_setup() (analogReadResolution(12), analogSetPinAttenuation(kVanePin, ADC_11db), pinMode) but setup() never calls it - the ADC is configured entirely by arduino-esp32 defaults.",
+      "file": "firmware/src/diag/vane_manual.cpp",
+      "root_cause": "Dead function, never invoked. It compiled silently because PlatformIO's default build flags for this project do not enable -Wunused-function (verified with a clean rebuild: zero warnings emitted).",
+      "fix": "MOOT 2026-08-15 - the file was deleted the same day along with all of firmware/src/diag/ (Mlok's call: bring-up sketches are scaffolding, not deliverables). The capture it produced remains valid, since arduino-esp32's defaults happen to match what the dead hw_setup() would have set (12-bit, ADC_11db) and the clustering independently corroborates it. The lesson is carried in cerebrum.md's bring-up sketch template, which calls its ADC configuration inline in setup() rather than in a separate function that can be forgotten. Note for any future sketch: PlatformIO's default build flags here do NOT enable -Wunused-function, so dead code compiles silently.",
+      "tags": [
+        "firmware",
+        "diag",
+        "adc",
+        "dead-code",
+        "build-flags"
+      ],
+      "related_bugs": [
+        "bug-038"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T21:00:00.000Z"
     }
   ]
 }

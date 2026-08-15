@@ -392,3 +392,21 @@
 | — | Capture 07 (150s, two full rotations by Mlok): 8/8 octants. kOctantAdcReadings measured = {2943,1663,209,572,974,2315,3855,3465}, 18-78 settled samples/octant, agreeing with capture 04 to within 1 count on every octant. APPLIED to sense/vane.cpp (bug-034 closed). | firmware/src/sense/vane.cpp, docs/hardware/wind-sensor-wiring.md, TODO.md | DONE | ~6k |
 | — | bug-035: vane_diag said "not clean yet" on a perfect run - AMBIGUOUS fired on primary-vs-intermediate-detent proximity (normal geometry) and the ADC-ceiling warning fired for 270deg even when it resolved cleanly from 315deg. Verdict now only blocks on two PRIMARY octants colliding, or 270/315 actually collapsing. | firmware/src/diag/vane_diag.cpp | fixed | ~5k |
 | — | Verified after all changes: pio run -e vane_diag SUCCESS, pio run -e esp32dev SUCCESS, pio test -e native 43/43 PASSED. | — | verified | ~1k |
+
+## Session: 2026-08-15 20:08
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| — | Reviewed Mlok's own manual bring-up firmware (`diag/vane_manual.cpp`, 45 lines, raw `mV=/adc=` only) + his 18337-sample capture. Parsed both serial formats present in the file (`a=` for the first 32 lines, `adc=` after — the capture spans a reflash; 2 lines truncated at monitor attach/detach). | firmware/data/calibration/capture.txt | reviewed | ~4k |
+| — | Host-side clustering (gap>30) → 21 levels. The 8 high-population clusters (9–16% of samples each) independently reproduce the committed `kOctantAdcReadings` to within 4 counts (6 of 8 within 1.1). **Calibration confirmed.** | — | VALIDATED | ~3k |
+| — | Fitted the ESP32 ADC's nonlinearity from the 8 measured (R, ADC) anchors, then predicted where Fine Offset's 8 *intermediate* 16-point detents should land → matched 7 of the 21 clusters to within 3–13 counts. Confirms the small clusters are real half-detents, not transit noise. | — | analyzed | ~3k |
+| — | bug-038: ran vane.cpp's exact nearest-match over those half-detents — 157.5°→90°, 292.5°→0°, 337.5°→225° (112.5° worst-case error). Mechanically stable rest positions, so steady wind on one gives confident stable nonsense. NOT fixed, awaiting go-ahead. Note: bug-035's verdict "fix" had explicitly suppressed this exact signal as "harmless". | firmware/src/sense/vane.cpp, .wolf/buglog.json | FOUND | ~5k |
+| — | bug-039: `vane_manual.cpp` defines `hw_setup()` but `setup()` never calls it — ADC config is dead code. Capture still valid (arduino-esp32 defaults are already 12-bit/ADC_11db, corroborated by the clustering match). Clean rebuild emits no warning: `-Wunused-function` not enabled by PlatformIO defaults here. | firmware/src/diag/vane_manual.cpp, .wolf/buglog.json | FOUND | ~2k |
+| — | Mlok's correction recorded: hardware bring-up = dumb firmware + smart host analysis, not on-device self-interpreting diagnostics. Root cause of the over-build traced to designing `vane_diag.cpp` under the already-stale "no hardware in this devcontainer" assumption (retracted 2026-08-12), which framed the channel as one-shot and blind. | .wolf/cerebrum.md (Preferences, Do-Not-Repeat, Decision Log) | recorded | ~4k |
+| 20:22 | Created firmware/src/sense/vane_decode.h | — | ~232 |
+| 20:23 | Created firmware/src/sense/vane_decode.cpp | — | ~1047 |
+| 20:23 | Created firmware/src/sense/vane.cpp | — | ~100 |
+| 20:23 | Created firmware/test/test_vane_decode/test_vane_decode.cpp | — | ~1096 |
+| 20:23 | Edited firmware/platformio.ini | 1→5 lines | ~100 |
+| 20:25 | Edited firmware/platformio.ini | 9→12 lines | ~190 |
+| 20:26 | Edited TODO.md | readRawOctant() → wrong() | ~336 |
