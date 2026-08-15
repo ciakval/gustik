@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-15T17:29:39.429Z",
+    "lastScanned": "2026-08-15T17:38:22.798Z",
     "fileCount": 462,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "add087914bc53ef8adb0652e4eed355e8bb99c9d012309b449a7c75c5fdd2402",
-    "storeUpdatedAt": "2026-08-15T17:29:39.436Z"
+    "renderedHash": "cc50c70ddc0e2d12d7fd51406b1a422df6a760b04133adf60df2e8b4a2d40818",
+    "storeUpdatedAt": "2026-08-15T17:38:22.805Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5871,10 +5871,13 @@
       "source": "hook"
     },
     "docs/hardware/wind-sensor-wiring.md": {
-      "description": "WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits",
-      "tokens": 1100,
-      "updatedAt": "2026-08-15T17:16:24.533Z",
-      "source": "md-import"
+      "description": "Wind sensor (WH1080/WH1090) → ESP32 wiring",
+      "tokens": 2142,
+      "hash": "fa49a9f8c2271355",
+      "size": 8679,
+      "mtimeMs": 1786815502714.5076,
+      "updatedAt": "2026-08-15T17:38:22.798Z",
+      "source": "hook"
     },
     "firmware/src/diag/vane_diag.cpp": {
       "description": "Wind-vane bring-up diagnostic - standalone firmware, Serial output only.",

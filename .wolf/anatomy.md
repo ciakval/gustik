@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:29:39.429Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:38:22.798Z
 > Files: 462 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
@@ -865,7 +865,7 @@
 
 ## docs/hardware/
 
-- `wind-sensor-wiring.md` — WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits (~1100 tok)
+- `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2142 tok)
 
 ## docs/superpowers/plans/
 

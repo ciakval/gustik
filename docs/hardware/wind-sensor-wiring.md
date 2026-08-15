@@ -110,6 +110,53 @@ the real numbers - measure with a multimeter (resistance between pins 1
 and 4 at each of the 8 positions) or directly read raw ADC counts once
 wired up, and update `kOctantAdcReadings` accordingly.
 
+## Measured values (2026-08-15, real hardware)
+
+Captured with `firmware/src/diag/vane_diag.cpp` (`pio run -e vane_diag -t
+upload`) on the real ESP32 + real vane, 10kΩ pull-up, 3.3V rail. These
+supersede the computed ADC counts in the table above for calibration
+purposes — the computed column stays as the sanity check it always was.
+
+| Octant | Measured Ω | Datasheet Ω | Measured ADC | settled samples | ADC spread |
+|--------|-----------:|------------:|-------------:|----------------:|-----------:|
+| 0°  (S sever)  | 35 392 | 33 000  | 2944 | 3  | 2 |
+| 45° (SV)       |  8 592 |  8 200  | 1664 | 2  | 1 |
+| 90° (V)        |  1 059 |  1 000  |  210 | 2  | 2 |
+| 135° (JV)      |  2 300 |  2 200  |  573 | 13 | 3 |
+| 180° (J jih)   |  4 055 |  3 900  |  974 | 1  | 0 |
+| 225° (JZ)      | 16 742 | 16 000  | 2315 | 9  | 3 |
+| 270° (Z zapad) | 127 582 | 120 000 | 3855 | 7  | 4 |
+| 315° (SZ)      | 68 759 | 64 900  | 3466 | 3  | 2 |
+
+Three things this run established:
+
+1. **The vane is the WH1080 ladder, correctly on the RJ11 outer pair, with a
+   working pull-up.** Eight distinct levels, right order, right spacing.
+2. **The error is systematic, not random.** Every position measures ~4-6%
+   above its datasheet resistance (+13 to +43 mV, always positive) — a scale
+   factor from pull-up tolerance, rail voltage, and ADC calibration, not a
+   contact or wiring fault. Harmless for octant classification, and exactly
+   why the table is measured rather than computed.
+3. **The readings are stable over time.** A separate 100 s capture parked at
+   225° gave mean ADC 2315.1 across 159 settled samples (min 2311, max 2319),
+   against 2315.6 from the rotation capture — 0.5 counts of cross-capture
+   drift.
+
+Separation between adjacent primary octants is ≥99 mV, so 8-octant decoding
+has generous margin. The tightest pair in the full 16-position table is
+891Ω (67.5°) vs 1000Ω (90°) at ~30 mV apart — only a constraint if 16-point
+resolution is ever wanted; it does not affect this firmware.
+
+270° (120kΩ) reads 3061 mV, near but not at the ESP32's ~3.1V saturation at
+11dB attenuation, and stays cleanly separated from 315°. **The 10kΩ pull-up
+stays** — no need to drop to 4.7kΩ.
+
+Sampling caveat: the counts above come from one hand-turned pass, so 180°
+rests on a single settled sample and 45°/90° on two each. The values are
+consistent (spread ≤4 counts, and the cross-capture agreement at 225°
+above), but a deliberate slow rotation pausing ~2 s per detent would put
+every octant on a comparable footing before this is treated as final.
+
 ## Power: does the ESP32 alone suffice?
 
 **Yes.** Per the manufacturer's own datasheet: "These sensors contain no

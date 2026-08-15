@@ -606,6 +606,25 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-15T17:45:00.000Z"
+    },
+    {
+      "id": "bug-034",
+      "timestamp": "2026-08-15T18:05:00.000Z",
+      "error_message": "sense/vane.cpp's kOctantAdcReadings placeholder is not merely uncalibrated, it is wrong enough to produce essentially arbitrary wind directions",
+      "file": "firmware/src/sense/vane.cpp",
+      "root_cause": "The 8 placeholder ADC counts {3200,1600,2200,3800,3950,3450,2800,2400} were invented, never derived from the vane's resistance ladder - not even from the datasheet resistances that were already documented in docs/hardware/wind-sensor-wiring.md. First real measurement (diag/vane_diag.cpp on real hardware) gives {2944,1664,210,573,974,2315,3855,3466}. Only index 1 (45deg) is close; index 2 (90deg) is off by ~2000 counts. Because readRawOctant() picks the nearest entry, wrong anchors do not degrade gracefully - they map real positions onto unrelated octants.",
+      "fix": "Measured values recorded in docs/hardware/wind-sensor-wiring.md ('Measured values (2026-08-15, real hardware)'). Table not yet applied to vane.cpp - pending one deliberate slow rotation, since 180deg currently rests on a single settled sample.",
+      "tags": [
+        "firmware",
+        "vane",
+        "calibration",
+        "placeholder",
+        "wind-direction",
+        "hardware"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T18:05:00.000Z"
     }
   ]
 }
