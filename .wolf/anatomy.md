@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:17:24.237Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T17:29:39.429Z
 > Files: 462 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
@@ -1065,7 +1065,7 @@
 
 ## firmware/src/diag/
 
-- `vane_diag.cpp` — standalone wind-vane bring-up sketch ([env:vane_diag], excluded from esp32dev): reads GPIO34, decodes against Fine Offset's 16-position resistance table (not vane.cpp's placeholder), clusters stable levels, prints per-sample lines + a 15s verdict + paste-ready kOctantAdcReadings[8]. Serial only, no WiFi/backend/other sensors (~4822 tok)
+- `vane_diag.cpp` — Wind-vane bring-up diagnostic - standalone firmware, Serial output only. (~5699 tok)
 
 ## firmware/src/sense/
 

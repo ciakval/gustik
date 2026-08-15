@@ -570,6 +570,42 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-12T05:48:14Z"
+    },
+    {
+      "id": "bug-032",
+      "timestamp": "2026-08-15T17:29:25.019Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/diag/vane_diag.cpp",
+      "root_cause": "6 lines replaced/restructured",
+      "fix": "Rewrote 15\u219222 lines (6 removed) | Also: if (now - lastSummaryMs >= kSummaryPeriodMs) {; lastSummaryMs = now;",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 2,
+      "last_seen": "2026-08-15T17:29:39.439Z"
+    },
+    {
+      "id": "bug-033",
+      "timestamp": "2026-08-15T17:45:00.000Z",
+      "error_message": "vane_diag printed 25s of '!! PIN AT GROUND'/'!! PIN AT CEILING' lines and never once printed the 15s SUMMARY block that carries the actual verdict",
+      "file": "firmware/src/diag/vane_diag.cpp",
+      "root_cause": "The two hard-failure branches in loop() (medianAdc>=4090, medianAdc<=5) each did an early `return` to skip decoding a railed pin as a wind direction. The periodic summary check sat at the very end of loop(), after those returns - so whenever the pin was railed, which is precisely the failure the tool exists to diagnose, the summary was unreachable and the user got only repeating one-line complaints with no diagnosis. Classic case of a guard clause silently swallowing an unrelated tail-of-function responsibility.",
+      "fix": "Extracted the summary check into maybePrintSummary(now) and called it on all three paths (both fault returns and the normal path). Also made the fault branches print `spread` like the normal line does, and added a rail census (railHighSamples/railLowSamples/midSamples) so printSummary can distinguish a FLOATING pin (visits both rails, never mid-scale - no divider present) from a genuinely stuck-high (pull-up present, nothing pulling down) or stuck-low (no pull-up) pin. Each case now prints its own ordered check-list.",
+      "tags": [
+        "firmware",
+        "diagnostic",
+        "vane",
+        "guard-clause",
+        "early-return",
+        "adc",
+        "gpio34"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-15T17:45:00.000Z"
     }
   ]
 }

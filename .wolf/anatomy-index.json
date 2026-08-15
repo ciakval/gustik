@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-15T17:17:24.237Z",
+    "lastScanned": "2026-08-15T17:29:39.429Z",
     "fileCount": 462,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "51bc3cccabe2b4707e79d9c06aecc468719d6dfac845d4ec01cf73bbfad5caa4",
-    "storeUpdatedAt": "2026-08-15T17:17:24.244Z"
+    "renderedHash": "add087914bc53ef8adb0652e4eed355e8bb99c9d012309b449a7c75c5fdd2402",
+    "storeUpdatedAt": "2026-08-15T17:29:39.436Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5878,11 +5878,11 @@
     },
     "firmware/src/diag/vane_diag.cpp": {
       "description": "Wind-vane bring-up diagnostic - standalone firmware, Serial output only.",
-      "tokens": 4822,
-      "hash": "154bea557e79be6e",
-      "size": 18081,
-      "mtimeMs": 1786814184447.913,
-      "updatedAt": "2026-08-15T17:16:24.534Z",
+      "tokens": 5699,
+      "hash": "cec1cd9228dc8ece",
+      "size": 21369,
+      "mtimeMs": 1786814979348.5652,
+      "updatedAt": "2026-08-15T17:29:39.429Z",
       "source": "hook"
     }
   }

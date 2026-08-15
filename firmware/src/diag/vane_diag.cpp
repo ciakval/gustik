@@ -108,6 +108,15 @@ unsigned long startedMs = 0;
 int lastStableMv = -10000;
 int stableRun = 0;
 
+// Rail census since the last reset. A working divider spends almost all its
+// time mid-scale (7 of the 8 octants sit between 300mV and 2533mV); a pin
+// with no divider on it at all sits on a rail. Counting these is what lets
+// the summary tell "floating input" apart from "genuinely stuck low/high",
+// which the instantaneous reading cannot do.
+uint32_t railHighSamples = 0;
+uint32_t railLowSamples = 0;
+uint32_t midSamples = 0;
+
 // Divider maths. The vane sits between the pin and GND, so a LOW voltage
 // means a LOW resistance (90deg = 1k reads ~300mV; 270deg = 120k reads
 // ~3046mV).
@@ -153,6 +162,9 @@ void resetClusters() {
     clusterCount = 0;
     lastStableMv = -10000;
     stableRun = 0;
+    railHighSamples = 0;
+    railLowSamples = 0;
+    midSamples = 0;
     startedMs = millis();
 }
 
@@ -221,7 +233,38 @@ void printSummary() {
     Serial.printf("=== SUMMARY t=%lus levels=%d ===\n", elapsedS, clusterCount);
 
     if (clusterCount == 0) {
-        Serial.println(F("  no stable level recorded yet - is the vane connected and still?"));
+        Serial.printf("  no usable level recorded. rail census: high(>=4090)=%lu "
+                      "low(<=5)=%lu mid=%lu\n",
+                      static_cast<unsigned long>(railHighSamples),
+                      static_cast<unsigned long>(railLowSamples),
+                      static_cast<unsigned long>(midSamples));
+        if (midSamples == 0 && railHighSamples > 0 && railLowSamples > 0) {
+            // The decisive case: a real divider puts 7 of the 8 octants
+            // between 300mV and 2533mV, so a pin that only ever visits the
+            // two rails has no divider on it to read.
+            Serial.println(F("  VERDICT: PIN IS FLOATING - it swings rail to rail and never"));
+            Serial.println(F("           once lands mid-scale, which no resistor divider can"));
+            Serial.println(F("           do. Nothing is dividing the 3.3V rail at GPIO34."));
+            Serial.println(F("    check, in this order:"));
+            Serial.println(F("    1. is the 10k pull-up actually fitted between 3.3V and GPIO34?"));
+            Serial.println(F("       (GPIO34 has no internal pull-up - without it the pin is"));
+            Serial.println(F("        high-impedance and just picks up ambient noise)"));
+            Serial.println(F("    2. is the vane's RJ11 OUTER pair (pins 1 & 4) on GPIO34/GND?"));
+            Serial.println(F("       the INNER pair (2 & 3) is the anemometer - a bare switch,"));
+            Serial.println(F("       which would also read rail-to-rail like this"));
+            Serial.println(F("    3. continuity: ohm-meter across RJ11 pins 1 and 4 should read"));
+            Serial.println(F("       688ohm-120kohm and CHANGE as the vane turns"));
+        } else if (midSamples == 0 && railHighSamples > 0) {
+            Serial.println(F("  VERDICT: pin sits at 3.3V permanently - pull-up present but"));
+            Serial.println(F("           nothing pulls it down: vane unplugged, broken wire,"));
+            Serial.println(F("           or the vane's other leg never reaches GND."));
+        } else if (midSamples == 0 && railLowSamples > 0) {
+            Serial.println(F("  VERDICT: pin sits at GND permanently - either no pull-up is"));
+            Serial.println(F("           fitted, or GPIO34 is shorted to GND."));
+        } else {
+            Serial.println(F("  levels seen but none held still long enough - stop turning the"));
+            Serial.println(F("  vane and let it rest ~2s on a detent."));
+        }
         Serial.println(F("=== END SUMMARY ==="));
         Serial.println();
         return;
@@ -365,6 +408,13 @@ void printSummary() {
     Serial.println();
 }
 
+void maybePrintSummary(unsigned long now) {
+    if (now - lastSummaryMs >= kSummaryPeriodMs) {
+        lastSummaryMs = now;
+        printSummary();
+    }
+}
+
 void handleSerialCommand() {
     while (Serial.available() > 0) {
         int c = Serial.read();
@@ -423,19 +473,26 @@ void loop() {
     int medianAdc = counts[kSamplesPerBurst / 2];
     int spreadMv = millivolts[kSamplesPerBurst - 1] - millivolts[0];
 
-    // Hard failure modes get named rather than decoded.
+    // Hard failure modes get named rather than decoded - but they must NOT
+    // skip the periodic summary below, since the failure case is exactly
+    // when its verdict is most wanted.
     if (medianAdc >= 4090) {
-        Serial.printf("[%8lu] mv=%d adc=%d !! PIN AT CEILING - open circuit: vane "
-                      "unplugged, broken wire, or pull-up on the wrong pin\n",
-                      now, medianMv, medianAdc);
+        railHighSamples++;
+        Serial.printf("[%8lu] mv=%4d adc=%4d spread=%3d !! PIN AT CEILING - open circuit: "
+                      "vane unplugged, broken wire, or pull-up on the wrong pin\n",
+                      now, medianMv, medianAdc, spreadMv);
+        maybePrintSummary(now);
         return;
     }
     if (medianAdc <= 5) {
-        Serial.printf("[%8lu] mv=%d adc=%d !! PIN AT GROUND - no pull-up fitted, "
+        railLowSamples++;
+        Serial.printf("[%8lu] mv=%4d adc=%4d spread=%3d !! PIN AT GROUND - no pull-up fitted, "
                       "or the vane pin is shorted to GND\n",
-                      now, medianMv, medianAdc);
+                      now, medianMv, medianAdc, spreadMv);
+        maybePrintSummary(now);
         return;
     }
+    midSamples++;
 
     bool stable = spreadMv <= kStableSpreadMv;
     if (stable && abs(medianMv - lastStableMv) <= kClusterToleranceMv) {
@@ -465,8 +522,5 @@ void loop() {
                   stable ? (stableRun >= kStableRunRequired ? "settled" : "settling")
                          : "TURNING");
 
-    if (now - lastSummaryMs >= kSummaryPeriodMs) {
-        lastSummaryMs = now;
-        printSummary();
-    }
+    maybePrintSummary(now);
 }

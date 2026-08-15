@@ -366,3 +366,12 @@
 | — | Added `[env:vane_diag]` (build_src_filter `-<*> +<diag/vane_diag.cpp>`) and excluded `diag/` from `[env:esp32dev]` so the two setup()/loop() pairs never link together | firmware/platformio.ini | done | ~1k |
 | — | Added `pio run -e vane_diag` to the CI firmware job so the diagnostic can't bitrot (shares the cached toolchain, ~3s) | .github/workflows/ci.yml | done | ~0.5k |
 | — | Verified: `pio run -e vane_diag` SUCCESS (21.3% flash), `pio run -e esp32dev` SUCCESS (92.0% flash, unchanged), `pio test -e native` 43/43 PASSED. No ESP32 attached to this machine right now (`/dev/ttyUSB*` absent) — flashing/real output still pending. | — | verified | ~1k |
+| 19:28 | Edited firmware/src/diag/vane_diag.cpp | expanded (+9 lines) | ~154 |
+| 19:28 | Edited firmware/src/diag/vane_diag.cpp | modified resetClusters() | ~50 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | added 3 condition(s) | ~698 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | modified if() | ~246 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | added 1 condition(s) | ~50 |
+| 19:29 | Edited firmware/src/diag/vane_diag.cpp | printSummary() → maybePrintSummary() | ~19 |
+| — | Flashed vane_diag to real ESP32 (/dev/ttyUSB0, one transient esptool baud-change failure then retry OK, as cerebrum predicted). Capture 01 (25s): GPIO34 alternates between adc=0 and adc=4095 in multi-second blocks, never a single mid-scale reading. | /tmp/.../vane-capture-01.log | captured | ~3k |
+| — | bug-033: the fault branches' early `return` made the 15s SUMMARY unreachable exactly when the pin is railed - i.e. in the only case the tool exists to diagnose. Fixed via maybePrintSummary() on all 3 paths; added spread to fault lines + a rail census that separates FLOATING from stuck-high/stuck-low. | firmware/src/diag/vane_diag.cpp, .wolf/buglog.json | fixed | ~4k |
+| — | Capture 02 (36s, fixed fw): pin solid at adc=4095 spread=0 for all 146 samples, verdict "stuck at 3.3V". Differs from capture 01's rail-toggling 2 min earlier with nothing physical changed - that non-repeatability is itself evidence GPIO34 is undriven. Zero mid-scale readings in either capture => no resistor divider on GPIO34. Awaiting Mlok's confirmation of pull-up + RJ11 outer-pair wiring. | /tmp/.../vane-capture-02.log | captured | ~3k |
