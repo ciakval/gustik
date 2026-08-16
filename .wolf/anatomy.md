@@ -1,6 +1,6 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T11:45:00.569Z
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T12:56:53.079Z
 > Files: 525 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
@@ -954,7 +954,7 @@
 
 - `flash-memory-map.md` — The device has ONE 4 MB flash chip (not two); probed chip/memory inventory, the old default.csv vs new partitions_gustik.csv layout with measured 92.4%→57.7% effect, what LittleFS actually holds (config.txt + /buf), the "must stay named spiffs" and "reflash always needs uploadfs" traps, and the bug-060 buffer-capacity arithmetic. (~2038 tok)
 - `sensor-orientation.md` — Mutual orientation rule: the vane's 0° mark and the magnetometer's +X must point the same way (the bow), magnetometer level with +Z down. Why the addition in correctWindDirectionOctant works, per-mistake failure signatures, mast/cabin mounting, in-place (level boat swing) calibration, 3-step acceptance test. (~2700 tok)
-- `status-led-panel.md` — Status LED panel — wiring (~3071 tok)
+- `status-led-panel.md` — Status LED panel — wiring (~3274 tok)
 - `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2429 tok)
 
 ## docs/rust-firmware/
@@ -974,7 +974,7 @@
 
 - `2026-08-09-timestamp-timezone-support-design.md` — Timestamp timezone support — design (~1546 tok)
 - `2026-08-14-dashboard-ux-design.md` — Dashboard UX rework — wind direction, graph resolution, status page (~3482 tok)
-- `2026-08-16-status-led-panel-design.md` — Status LED panel + mode button — design (~17836 tok)
+- `2026-08-16-status-led-panel-design.md` — Status LED panel + mode button — design (~18034 tok)
 
 ## firmware/
 
@@ -1168,7 +1168,7 @@
 ## firmware/src/diag/
 
 - `mag_diag.cpp` — Bring-up sketch: streams RAW QMC5883P x/y/z counts over Serial at 50Hz (`MAG <x> <y> <z>`) and nothing else. Self-contained (own Wire init, no sense/), all 3 axes un-negated. Own `[env:mag_diag]`; scaffolding, delete once calibrated. (~868 tok)
-- `panel_diag.cpp` — Status LED panel wiring check.  [env:panel_diag], real hardware only. (~967 tok)
+- `panel_diag.cpp` — Status LED panel wiring check.  [env:panel_diag], real hardware only. (~1026 tok)
 - `pulse_diag.cpp` — Bring-up sketch: one `EDGE <micros> <level>` line per GPIO27 transition (CHANGE, not FALLING - separates "no edges" from "wrong-polarity edges") + a 1Hz `TICK` counter line. ISR-to-loop ring buffer, no Serial in the ISR. Own `[env:pulse_diag]`; scaffolding, delete once the anemometer is confirmed. (~1000 tok)
 
 ## firmware/src/indicate/
@@ -1189,7 +1189,7 @@
 - `button_pin.h` — ButtonPin: INPUT_PULLUP wrapper on GPIO13. Hardware-coupled; debounce/decoding is indicate/button.h's job. (~319 tok)
 - `led_panel.cpp` — Nine digitalWrites per render(), resolving each Lane through isLit(). No allocation, no delay, no Serial. (~290 tok)
 - `led_panel.h` — LedPanelPins + LedPanel (begin/render/allOff). Active high, 330 ohm per lane. Fitting fewer than nine LEDs needs no code change. (~453 tok)
-- `panel_pins.h` — Default GPIOs for the panel, each overridable via -DGUSTIK_PANEL_PIN_*: status R/Y/G/B = 32/33/25/26, detail 1-5 = 19/18/17/16/4 (GPIO5 skipped - strapping), button = 13. Carries the GPIO6-11 flash-bus warning. (~682 tok)
+- `panel_pins.h` — pragma once (~875 tok)
 
 ## firmware/src/sense/
 

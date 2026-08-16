@@ -1278,6 +1278,62 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-16T11:45:24.454582Z"
+    },
+    {
+      "id": "bug-071",
+      "timestamp": "2026-08-16T12:56:01.411Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/indicate/hw/panel_pins.h",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 15→25 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "h"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T12:56:01.411Z"
+    },
+    {
+      "id": "bug-071",
+      "timestamp": "2026-08-16T13:01:31.822105Z",
+      "error_message": "Mlok, after wiring the panel: 'The wiring for the detail group is reversed.'",
+      "file": "firmware/src/indicate/hw/panel_pins.h",
+      "root_cause": "The design doc laid the detail group out running DOWN the right header column (19 18 17 16 4), mirroring the status group running down the left one, and the firmware defaults copied that. The panel was actually wired running UP the right column, so detail position 1 (green end of the severity ramp) landed on GPIO19 and position 5 (red) on GPIO4 - the whole meter reversed, and the boot self-test would have swept right-to-left across the detail half of the row.",
+      "fix": "Reversed the five GUSTIK_PANEL_PIN_DETAIL_* defaults to 4/16/17/18/19 and the kRowPins list in diag/panel_diag.cpp to match. Changed the firmware to match the board, not the board to match the document. Also corrected docs/hardware/status-led-panel.md and the design spec's section 4.1/4.3, both of which now carry an explicit note that the two groups traverse the header in OPPOSITE directions and that this is correct - the thing that must be in order is the physical row of LEDs, not the pin list.",
+      "tags": [
+        "firmware",
+        "led-panel",
+        "wiring",
+        "pin-map",
+        "hardware",
+        "as-built"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T13:01:31.822105Z"
+    },
+    {
+      "id": "bug-072",
+      "timestamp": "2026-08-16T13:01:31.822105Z",
+      "error_message": "OPEN, hardware not firmware. With panel_diag running, the board restarts the instant GPIO4 is driven HIGH: serial shows a tight repeating cycle of a boot fragment plus 'LED 4 GPIO4   detail 1 GREEN' and nothing else. The CP2102 also re-enumerated /dev/ttyUSB0 -> /dev/ttyUSB1 and the board has since gone intermittently silent.",
+      "file": "hardware: the GPIO4 LED lane on the breadboard",
+      "root_cause": "NOT DIAGNOSED IN SOFTWARE - suspected excessive current on the GPIO4 lane (missing or bypassed 330 ohm resistor, LED bridged to a rail, or a short under the breadboard), browning out the AMS1117 3.3V rail. Evidence: the chip itself is healthy and programmable (esptool reads ESP32-D0WD-V3 rev 3.1, 4MB, MAC 30:76:f5:b9:13:04); every other pin in the walk is driven the same way by the same code; the restart correlates with GPIO4 specifically and with it being held HIGH for a full 2s step rather than the 100ms of the station firmware's boot sweep, which it survived. This is exactly the 'repeating boot self-test means check the power' signature recorded in the LED panel design section 5.1.",
+      "fix": "NOT FIXED. Next step is physical: pull the GPIO4 jumper, power-cycle, re-run `pio run -e panel_diag -t upload`. If the walk then completes cleanly across the other eight LEDs, the fault is that lane. Stopped driving the pin rather than continuing to probe it, since repeatedly sourcing a short risks damaging the GPIO.",
+      "tags": [
+        "hardware",
+        "led-panel",
+        "brownout",
+        "gpio4",
+        "open",
+        "needs-mlok"
+      ],
+      "related_bugs": [
+        "bug-071"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T13:01:31.822105Z"
     }
   ]
 }

@@ -208,11 +208,22 @@ the detail group is a 6‑pin run down the right column.
 | **status** YELLOW | 33 | " |
 | **status** GREEN | 25 | **was** `config loaded` |
 | **status** BLUE | 26 | **was** `WiFi connected` |
-| **detail** 1 GREEN | 19 | right column |
-| **detail** 2 GREEN | 18 | " |
-| **detail** 3 YELLOW | 17 | " — note GPIO**5** sits physically between 18 and 17 and is **skipped** (strapping pin, boot‑time output glitch) |
-| **detail** 4 YELLOW | 16 | " |
-| **detail** 5 RED | 4 | " |
+| **detail** 1 GREEN | 4 | right column — **as built**, see below |
+| **detail** 2 GREEN | 16 | " |
+| **detail** 3 YELLOW | 17 | " — note GPIO**5** sits physically between 17 and 18 and is **skipped** (strapping pin, boot‑time output glitch) |
+| **detail** 4 YELLOW | 18 | " |
+| **detail** 5 RED | 19 | " |
+
+> **Corrected against the built board, 2026‑08‑16.** This table originally ran
+> the detail group `19 18 17 16 4`, i.e. *down* the right column to mirror the
+> status group running down the left one. The panel was wired the other way —
+> detail position 1 on GPIO4, up the column — and the firmware was changed to
+> match the board rather than the board to match the document. The two groups
+> therefore traverse the header in opposite directions, which looks wrong in a
+> pin list and is not: **the thing that has to be in order is the physical row
+> of LEDs**, and it is. `panel_diag` (§10) exists precisely to catch this
+> class of thing, and either direction is equally correct as long as the five
+> `GUSTIK_PANEL_PIN_DETAIL_*` defaults agree with the jumpers.
 | Button | 13 | `INPUT_PULLUP`, other side to GND. Sits directly below a GND pin on the left column |
 | onboard LED | 2 | **unchanged** — keeps Story 2.4 / FR‑5 semantics verbatim, so the requirement is satisfied with the panel absent, disabled, or asleep |
 
@@ -310,12 +321,12 @@ detail group; both share the breadboard's ground rail.
    │ ...                          │    │ ...                          │
    │ 34 ── vane        (existing) │    │ 21 ── SDA         (existing) │
    │ 35 ── battery sense  (§4.7)  │    │ GND ─────────────────┐       │
-   │ 32 ──[330Ω]──▶|──┐  RED      │    │ 19 ──[330Ω]──▶|──┐   │ GRN 1 │
-   │ 33 ──[330Ω]──▶|──┤  YELLOW   │    │ 18 ──[330Ω]──▶|──┤   │ GRN 2 │
+   │ 32 ──[330Ω]──▶|──┐  RED      │    │ 19 ──[330Ω]──▶|──┐   │ RED 5 │
+   │ 33 ──[330Ω]──▶|──┤  YELLOW   │    │ 18 ──[330Ω]──▶|──┤   │ YEL 4 │
    │ 25 ──[330Ω]──▶|──┤  GREEN    │    │  5 ── SKIP! strapping pin    │
    │ 26 ──[330Ω]──▶|──┤  BLUE     │    │ 17 ──[330Ω]──▶|──┤   │ YEL 3 │
-   │ 27 ── anemometer (existing)  │    │ 16 ──[330Ω]──▶|──┤   │ YEL 4 │
-   │ 14                │          │    │  4 ──[330Ω]──▶|──┤   │ RED 5 │
+   │ 27 ── anemometer (existing)  │    │ 16 ──[330Ω]──▶|──┤   │ GRN 2 │
+   │ 14                │          │    │  4 ──[330Ω]──▶|──┤   │ GRN 1 │
    │ 12                │          │    │  0 ── SKIP! strapping pin    │
    │ GND ──────────────┘ common   │    │  2 ── onboard LED (existing) │
    │ 13 ──┐              cathode  │    │ 15 ── SKIP! strapping pin    │

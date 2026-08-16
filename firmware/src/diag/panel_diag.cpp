@@ -38,14 +38,17 @@ namespace {
 // Physical row order, left to right: R Y G B | G G Y Y R.
 // Kept as literals rather than including indicate/hw/panel_pins.h, so this
 // sketch stays a standalone description of what is expected on the bench.
-constexpr uint8_t kRowPins[] = {32, 33, 25, 26, 19, 18, 17, 16, 4};
+// As built: the status group runs DOWN the left header column, the detail
+// group runs UP the right one. The list is in PHYSICAL ROW order, which is
+// the only order that matters here - see indicate/hw/panel_pins.h.
+constexpr uint8_t kRowPins[] = {32, 33, 25, 26, 4, 16, 17, 18, 19};
 constexpr const char *kRowNames[] = {
     "status RED", "status YELLOW", "status GREEN", "status BLUE",
     "detail 1 GREEN", "detail 2 GREEN", "detail 3 YELLOW", "detail 4 YELLOW", "detail 5 RED",
 };
 constexpr size_t kRowCount = sizeof(kRowPins) / sizeof(kRowPins[0]);
 constexpr uint8_t kButtonPin = 13;
-constexpr unsigned long kStepMs = 600;
+constexpr unsigned long kStepMs = 2000;
 
 size_t step = 0;
 unsigned long lastStepAt = 0;

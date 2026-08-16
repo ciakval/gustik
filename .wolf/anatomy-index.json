@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-16T11:45:00.569Z",
+    "lastScanned": "2026-08-16T12:56:53.079Z",
     "fileCount": 525,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "c1db2ff82c5f2316a5670c4b3c778ce32071176db929eb75380e2fe2567da33d",
-    "storeUpdatedAt": "2026-08-16T11:45:00.578Z"
+    "renderedHash": "0581d2ae4e2cad9d5d30e7e89d533b036ecbd9204d0f98c9b80e37c8f9a96bc1",
+    "storeUpdatedAt": "2026-08-16T12:56:53.087Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -7006,11 +7006,11 @@
     },
     "docs/superpowers/specs/2026-08-16-status-led-panel-design.md": {
       "description": "Status LED panel + mode button — design",
-      "tokens": 17836,
-      "hash": "659569337d5e6c7a",
-      "size": 73841,
-      "mtimeMs": 1786880700487.4949,
-      "updatedAt": "2026-08-16T11:45:00.569Z",
+      "tokens": 18034,
+      "hash": "56f5df06d565282b",
+      "size": 74644,
+      "mtimeMs": 1786885012998.8357,
+      "updatedAt": "2026-08-16T12:56:53.079Z",
       "source": "hook"
     },
     "firmware/partitions_gustik.csv": {
@@ -7032,138 +7032,138 @@
       "source": "md-import"
     },
     "firmware/src/indicate/pattern.h": {
-      "description": "pragma once",
+      "description": "LanePattern {flashes, onMs, offMs, pauseMs, oneShot, inverted} - one struct covering solid/slow/fast/pulse/double-pulse/code-N/banner - plus Lane (pattern + phase0) and the timing constants.",
       "tokens": 1154,
       "hash": "6f610095bef9ec8b",
       "size": 4324,
       "mtimeMs": 1786879702506.9453,
-      "updatedAt": "2026-08-16T11:28:22.586Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/pattern.cpp": {
-      "description": "include \"indicate/pattern.h\"",
+      "description": "isLit(pattern, nowMs, phase0) plus the named pattern factories. Unsigned arithmetic throughout so a millis() rollover costs one mistimed blink, not a stuck lane.",
       "tokens": 954,
       "hash": "5a0564238c815009",
       "size": 3577,
       "mtimeMs": 1786879719385.4846,
-      "updatedAt": "2026-08-16T11:28:39.470Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/panel_inputs.h": {
-      "description": "pragma once",
+      "description": "The one-way snapshot the LED panel reads (~40 B, all values loop() already computes). INVARIANT C3: nothing downstream of this may write to anything upstream of it - that is what makes the panel optional rather than hopeful.",
       "tokens": 884,
       "hash": "6dad49f3ec7ef1b2",
       "size": 3312,
       "mtimeMs": 1786879739396.8606,
-      "updatedAt": "2026-08-16T11:28:59.475Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/fault.h": {
-      "description": "pragma once",
+      "description": "PanelFault enum (None, 1 NoConfig .. 8 SensorFailing, Fatal) + faultFlashCount(). Eight codes is a hard cap: counting past eight on a moving boat does not work.",
       "tokens": 479,
       "hash": "f2db23c1c1f52393",
       "size": 1795,
       "mtimeMs": 1786879751089.9375,
-      "updatedAt": "2026-08-16T11:29:11.167Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/fault.cpp": {
-      "description": "include \"indicate/fault.h\"",
+      "description": "PanelInputs -> the single highest-priority fault. Priority IS the code number ascending (ordered by causal depth). Codes 3-7 gated on haveSample; code 5 requires hasCounts so an old backend can't fabricate the bug-031 alarm.",
       "tokens": 663,
       "hash": "f905e0818995ab7b",
       "size": 2486,
       "mtimeMs": 1786879764057.1228,
-      "updatedAt": "2026-08-16T11:29:24.136Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/button.h": {
-      "description": "pragma once",
+      "description": "ButtonEvent enum + ButtonDecoder. Pure, host-tested. kButtonDebounceMs=30, kButtonShortMaxMs=800, kButtonLongMs=2000. No button fitted => INPUT_PULLUP reads released forever => no events.",
       "tokens": 572,
       "hash": "b72adb7e578efdec",
       "size": 2145,
       "mtimeMs": 1786880334549.9658,
-      "updatedAt": "2026-08-16T11:38:54.629Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/button.cpp": {
-      "description": "include \"indicate/button.h\"",
+      "description": "Panel button debounce + gesture decode: (level, nowMs) -> None/Short/Long. Gestures decided on RELEASE so a long press is never also a short one; 800ms-2s is a deliberate dead zone; a button held through reset is suppressed (bug-069).",
       "tokens": 580,
       "hash": "90579283878f6466",
       "size": 2172,
       "mtimeMs": 1786880330479.059,
-      "updatedAt": "2026-08-16T11:38:50.557Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.397Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/panel.h": {
-      "description": "pragma once",
+      "description": "StatusPanel, PanelOutputs (4 status Lanes + 5 detail Lanes), DetailMode, PanelSettings, and the pure scale mappings windDetailPosition/windIsStrong/signalDetailPosition with their boundary constants (shared with beaufort.js and /status.html).",
       "tokens": 1749,
       "hash": "308714402dcaadbd",
       "size": 6610,
       "mtimeMs": 1786879943906.725,
-      "updatedAt": "2026-08-16T11:32:23.987Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/panel.cpp": {
-      "description": "include \"indicate/panel.h\"",
+      "description": "The panel mode machine: boot self-test, status-group lanes, sleep/hard-off, detail modes (wind/signal/sensors), mode banner, the 5s direction code that borrows the yellow lane. Pure, no Arduino.h.",
       "tokens": 3399,
       "hash": "620e06629386a520",
       "size": 12744,
       "mtimeMs": 1786879951776.8042,
-      "updatedAt": "2026-08-16T11:32:31.868Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/hw/led_panel.h": {
-      "description": "pragma once",
+      "description": "LedPanelPins + LedPanel (begin/render/allOff). Active high, 330 ohm per lane. Fitting fewer than nine LEDs needs no code change.",
       "tokens": 453,
       "hash": "69a25211133bcb60",
       "size": 1698,
       "mtimeMs": 1786879963715.9353,
-      "updatedAt": "2026-08-16T11:32:43.795Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/hw/led_panel.cpp": {
-      "description": "include \"indicate/hw/led_panel.h\"",
+      "description": "Nine digitalWrites per render(), resolving each Lane through isLit(). No allocation, no delay, no Serial.",
       "tokens": 290,
       "hash": "a2bd5f3931eb4cdb",
       "size": 1084,
       "mtimeMs": 1786879970511.182,
-      "updatedAt": "2026-08-16T11:32:50.589Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/hw/button_pin.h": {
-      "description": "pragma once",
+      "description": "ButtonPin: INPUT_PULLUP wrapper on GPIO13. Hardware-coupled; debounce/decoding is indicate/button.h's job.",
       "tokens": 319,
       "hash": "c37c15d2c1ececed",
       "size": 1196,
       "mtimeMs": 1786879979180.219,
-      "updatedAt": "2026-08-16T11:32:59.257Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/hw/button_pin.cpp": {
-      "description": "include \"indicate/hw/button_pin.h\"",
+      "description": "digitalRead of the button pin, active LOW. Nothing else.",
       "tokens": 72,
       "hash": "bf7e1a162f0635fe",
       "size": 267,
       "mtimeMs": 1786879982900.9077,
-      "updatedAt": "2026-08-16T11:33:02.980Z",
-      "source": "hook"
+      "updatedAt": "2026-08-16T12:56:01.398Z",
+      "source": "md-import"
     },
     "firmware/src/indicate/hw/panel_pins.h": {
       "description": "pragma once",
-      "tokens": 682,
-      "hash": "d1921ade6bf00ea3",
-      "size": 2557,
-      "mtimeMs": 1786880080911.1462,
-      "updatedAt": "2026-08-16T11:34:40.988Z",
+      "tokens": 875,
+      "hash": "89a65c04c028780b",
+      "size": 3280,
+      "mtimeMs": 1786884967522.7651,
+      "updatedAt": "2026-08-16T12:56:07.602Z",
       "source": "hook"
     },
     "firmware/src/diag/panel_diag.cpp": {
       "description": "Status LED panel wiring check.  [env:panel_diag], real hardware only.",
-      "tokens": 967,
-      "hash": "0b8e168b1d5dad47",
-      "size": 3626,
-      "mtimeMs": 1786880197302.3113,
-      "updatedAt": "2026-08-16T11:36:37.384Z",
+      "tokens": 1026,
+      "hash": "3e438098513d62b2",
+      "size": 3846,
+      "mtimeMs": 1786884973327.221,
+      "updatedAt": "2026-08-16T12:56:13.404Z",
       "source": "hook"
     },
     "firmware/test/test_panel_pattern/test_panel_pattern.cpp": {
@@ -7213,11 +7213,11 @@
     },
     "docs/hardware/status-led-panel.md": {
       "description": "Status LED panel — wiring",
-      "tokens": 3071,
-      "hash": "0ce04481404aaf58",
-      "size": 13171,
-      "mtimeMs": 1786880655201.852,
-      "updatedAt": "2026-08-16T11:44:15.290Z",
+      "tokens": 3274,
+      "hash": "c32332901ac6c99c",
+      "size": 14003,
+      "mtimeMs": 1786884993080.9282,
+      "updatedAt": "2026-08-16T12:56:33.162Z",
       "source": "hook"
     }
   }

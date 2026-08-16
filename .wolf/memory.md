@@ -794,3 +794,11 @@
 | 13:44 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→9 lines | ~139 |
 | 13:45 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+6 lines) | ~107 |
 | 13:40 | LED panel phases 1+2: new firmware/src/indicate/ (pattern/fault/panel/button pure + hw/led_panel, hw/button_pin, hw/panel_pins), main.cpp wiring, leds.* config keys, vaneAdcPlausible + Anemometer::pulseCountSnapshot, panel_diag sketch, docs/hardware/status-led-panel.md | firmware/src/indicate/*, firmware/src/main.cpp, firmware/src/config/station_config.*, firmware/src/sense/{anemometer,vane,vane_decode}.*, firmware/platformio.ini, firmware/data/config.example.txt, firmware/src/diag/panel_diag.cpp, firmware/test/test_panel_*, firmware/test/test_button, docs/hardware/status-led-panel.md, docs/superpowers/specs/2026-08-16-status-led-panel-design.md | native tests 57 -> 137 all passing; esp32dev flash 57.7% -> 58.0% (+5048 B); flag-off build +1032 B (not zero - spec corrected); panel_diag builds; bug-069 + bug-070 logged | ~95k |
+| 14:56 | Edited firmware/src/indicate/hw/panel_pins.h | modified GUSTIK_PANEL_PIN_DETAIL_1() | ~263 |
+| 14:56 | Edited firmware/src/indicate/hw/panel_pins.h | 2→5 lines | ~72 |
+| 14:56 | Edited firmware/src/diag/panel_diag.cpp | 1→4 lines | ~77 |
+| 14:56 | Edited docs/hardware/status-led-panel.md | expanded (+14 lines) | ~310 |
+| 14:56 | Edited docs/hardware/status-led-panel.md | 6→6 lines | ~115 |
+| 14:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+11 lines) | ~286 |
+| 14:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 6→6 lines | ~115 |
+| 15:02 | Detail-group pin order reversed to match as-built wiring (4/16/17/18/19); panel_diag rebuilt+flashed; found board browns out when GPIO4 driven high | firmware/src/indicate/hw/panel_pins.h, firmware/src/diag/panel_diag.cpp, docs/hardware/status-led-panel.md, docs/superpowers/specs/2026-08-16-status-led-panel-design.md, .wolf/{STATUS,buglog} | tests 137/137, esp32dev 58.0%, panel_diag flashed OK; bug-071 fixed, bug-072 OPEN (hardware, GPIO4 lane); board now on /dev/ttyUSB1 | ~40k |

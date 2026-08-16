@@ -16,6 +16,9 @@
 //   left column, top -> bottom:  ... 34 35 32 33 25 26 27 14 12 GND 13 ...
 //   right column, top -> bottom: ... 19 18  5 17 16  4  0  2 15 ...
 //
+// The status group runs DOWN the left column and the detail group runs UP
+// the right one - see the as-built note below.
+//
 // GPIO25/26 are TAKEN OVER from the 2026-08-11 bring-up diagnostics
 // (`config loaded` / `WiFi connected`). No LED was ever physically fitted to
 // GPIO2, 25 or 26 and nobody ever read one, so this is a reassignment rather
@@ -47,20 +50,30 @@
 #define GUSTIK_PANEL_PIN_STATUS_BLUE 26
 #endif
 
+// AS BUILT 2026-08-16: the detail group runs UP the right column, not down
+// it - GPIO4 is the leftmost (green) position and GPIO19 the rightmost
+// (red). The two groups therefore traverse the header in opposite
+// directions, which looks like a mistake in this list and is not: what has
+// to be in order is the PHYSICAL ROW, and it is.
+//
+// If the panel is ever rebuilt, either order is fine - reverse these five
+// lines to match whichever way the jumpers actually run, and confirm with
+// `pio run -e panel_diag -t upload`, which walks the row and makes a
+// transposition obvious by eye.
 #ifndef GUSTIK_PANEL_PIN_DETAIL_1
-#define GUSTIK_PANEL_PIN_DETAIL_1 19
+#define GUSTIK_PANEL_PIN_DETAIL_1 4
 #endif
 #ifndef GUSTIK_PANEL_PIN_DETAIL_2
-#define GUSTIK_PANEL_PIN_DETAIL_2 18
+#define GUSTIK_PANEL_PIN_DETAIL_2 16
 #endif
 #ifndef GUSTIK_PANEL_PIN_DETAIL_3
 #define GUSTIK_PANEL_PIN_DETAIL_3 17
 #endif
 #ifndef GUSTIK_PANEL_PIN_DETAIL_4
-#define GUSTIK_PANEL_PIN_DETAIL_4 16
+#define GUSTIK_PANEL_PIN_DETAIL_4 18
 #endif
 #ifndef GUSTIK_PANEL_PIN_DETAIL_5
-#define GUSTIK_PANEL_PIN_DETAIL_5 4
+#define GUSTIK_PANEL_PIN_DETAIL_5 19
 #endif
 
 #ifndef GUSTIK_PANEL_PIN_BUTTON
