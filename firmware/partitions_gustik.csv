@@ -1,0 +1,36 @@
+# Gustik partition table for the 4 MB ESP32-WROOM-32 module.
+#
+# Replaces the Arduino default (default.csv), which reserves TWO 1.25 MB
+# application slots for over-the-air updates. This project has no OTA
+# mechanism and never will - it is reflashed over USB - so the second slot
+# was 1.25 MB of flash permanently doing nothing while the first was 92.8%
+# full. See docs/hardware/flash-memory-map.md for the full reasoning.
+#
+# Deliberate choices, do not "tidy" these without reading that document:
+#   - app0 keeps subtype ota_0 (not factory) so the Arduino toolchain's
+#     boot_app0.bin -> otadata -> ota_0 boot path is byte-for-byte the one
+#     already in use. One slot means OTA is impossible; the boot sequence is
+#     unchanged. A factory-subtype slot would work only via bootloader
+#     fallback, which is a behaviour change for no gain.
+#   - otadata stays for the same reason: PlatformIO flashes boot_app0.bin to
+#     0xe000 on every upload and expects a partition there.
+#   - The data partition MUST stay named "spiffs" even though it holds a
+#     LittleFS image: LittleFS.begin() defaults to partitionLabel "spiffs"
+#     (framework-arduinoespressif32 LittleFS.h). Renaming it to "littlefs"
+#     makes config.txt and the offline buffer silently unreadable.
+#
+# Sizes (a trailing "# comment" on a data row is parsed as the Flags column
+# and fails the build, so the notes live here):
+#   nvs      20 KB    IDF/WiFi calibration store
+#   otadata  8 KB     boot slot selector
+#   app0     2 MB     firmware (was 1.25 MB)
+#   spiffs   1.875 MB LittleFS (was 1.375 MB)
+#   coredump 64 KB    unused, kept for future post-mortems
+# 0x210000 + 0x1E0000 + 0x10000 = 0x400000 exactly - the table fills the chip.
+#
+# Name,   Type, SubType,  Offset,   Size,      Flags
+nvs,      data, nvs,      0x9000,   0x5000,
+otadata,  data, ota,      0xe000,   0x2000,
+app0,     app,  ota_0,    0x10000,  0x200000,
+spiffs,   data, spiffs,   0x210000, 0x1E0000,
+coredump, data, coredump, 0x3F0000, 0x10000,

@@ -1125,6 +1125,27 @@
       "related_bugs": [],
       "occurrences": 1,
       "last_seen": "2026-08-16T03:40:00.000Z"
+    },
+    {
+      "id": "bug-062",
+      "timestamp": "2026-08-16T12:20:00.000Z",
+      "error_message": "pio run -e esp32dev failed: \"Error at line 23: CSV flag column contains unknown flag '# 20 KB   - IDF/WiFi calibration store'\" while generating partitions.bin from the new firmware/partitions_gustik.csv.",
+      "file": "firmware/partitions_gustik.csv",
+      "root_cause": "gen_esp32part.py parses an ESP-IDF partition CSV positionally: a data row has exactly six fields (Name, Type, SubType, Offset, Size, Flags). A trailing '# ...' comment written after the size column is read as the *Flags* value, not skipped as a comment. Only whole-line comments (a row starting with '#') are ignored.",
+      "fix": "Moved the per-row size annotations out of the data rows into the CSV's header comment block, leaving the six data rows bare with an empty trailing Flags column. Build then succeeded and gen_esp32part.py decodes the table exactly as intended.",
+      "tags": [
+        "firmware",
+        "platformio",
+        "partitions",
+        "build-failure",
+        "esp32",
+        "csv"
+      ],
+      "related_bugs": [
+        "bug-028"
+      ],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T12:20:00.000Z"
     }
   ]
 }
