@@ -36,3 +36,19 @@ backend.token=CHANGE_ME_INGEST_TOKEN
 #
 # mag.offsetX=1713.5
 # mag.offsetY=1984.0
+
+# Status LED panel (nine LEDs + one button on the breadboard). Both keys
+# optional - omit them for an enabled panel that sleeps to a heartbeat after
+# five minutes.
+#
+# leds.enabled=false leaves all nine pins low from boot and ignores the
+# button. It is the durable way to silence the panel; a long press on the
+# button also blanks it, but only until the next power cycle.
+#
+# leds.timeoutSeconds is how long with no button press before the panel
+# sleeps to a blue heartbeat (plus the red fault code, if any). 0 = never
+# sleep. Sleeping costs nothing visually - "the whole row dark" still means
+# the station is not running.
+#
+# leds.enabled=true
+# leds.timeoutSeconds=300

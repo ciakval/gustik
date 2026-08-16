@@ -20,6 +20,13 @@ public:
     // Returns the raw octant (0-7) nearest to the current analog reading.
     int readRawOctant();
 
+    // The raw 12-bit reading behind the most recent readRawOctant() call,
+    // or -1 before the first one. Exists so the status panel can say "the
+    // vane is not wired" (vaneAdcPlausible, sense/vane_decode.h) - the
+    // octant alone cannot, since the decode is total by design.
+    int lastRawAdc() const { return lastAdc_; }
+
 private:
     uint8_t pin_ = 0;
+    int lastAdc_ = -1;
 };

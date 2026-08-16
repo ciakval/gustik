@@ -37,11 +37,26 @@ struct MagnetometerCalibrationConfig {
     double offsetY = 0.0;
 };
 
+// Status LED panel (docs/superpowers/specs/2026-08-16-status-led-panel-design.md).
+// Both keys optional; omitting them gives an enabled panel that sleeps to a
+// heartbeat after five minutes. Living here rather than only in a build flag
+// is what makes "quiet it down for good" a `pio run -t uploadfs` instead of a
+// rebuild and reflash - same rationale as the magnetometer offsets above.
+//
+// A malformed value falls back to the default rather than to garbage: the
+// panel is a diagnostic, and a diagnostic that misbehaves because of a typo
+// in the file it is meant to help you debug is worse than useless.
+struct StatusPanelConfig {
+    bool enabled = true;
+    unsigned long timeoutSeconds = 300; // 0 = never sleep
+};
+
 struct StationConfig {
     std::vector<WifiNetwork> networks; // priority order, index 0 = highest priority
     std::string backendBaseUrl;
     std::string ingestToken;
     MagnetometerCalibrationConfig magnetometer;
+    StatusPanelConfig leds;
 };
 
 // Parses the simple `key=value` config file format (one entry per line,

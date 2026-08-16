@@ -55,6 +55,39 @@ bool parseDouble(const std::string &text, double &out) {
         return false;
     }
 }
+
+// Same strictness as parseDouble: a value that isn't entirely digits is a
+// typo, and reading "300x" as 300 would hide it.
+bool parseUnsignedLong(const std::string &text, unsigned long &out) {
+    if (text.empty()) {
+        return false;
+    }
+    for (char c : text) {
+        if (!std::isdigit(static_cast<unsigned char>(c))) {
+            return false;
+        }
+    }
+    try {
+        out = std::stoul(text);
+        return true;
+    } catch (...) {
+        return false;
+    }
+}
+
+// Accepts the spellings someone actually writes in a hand-edited file.
+// Anything else leaves `out` untouched, so the caller keeps its default.
+bool parseBool(const std::string &text, bool &out) {
+    if (text == "true" || text == "1" || text == "yes" || text == "on") {
+        out = true;
+        return true;
+    }
+    if (text == "false" || text == "0" || text == "no" || text == "off") {
+        out = false;
+        return true;
+    }
+    return false;
+}
 } // namespace
 
 StationConfig parseStationConfig(const std::string &fileContents) {
@@ -96,6 +129,10 @@ StationConfig parseStationConfig(const std::string &fileContents) {
             haveOffsetX = parseDouble(value, offsetX);
         } else if (key == "mag.offsetY") {
             haveOffsetY = parseDouble(value, offsetY);
+        } else if (key == "leds.enabled") {
+            parseBool(value, config.leds.enabled);
+        } else if (key == "leds.timeoutSeconds") {
+            parseUnsignedLong(value, config.leds.timeoutSeconds);
         }
     }
 

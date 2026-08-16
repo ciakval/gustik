@@ -730,3 +730,67 @@
 | 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~94 |
 | 13:08 | simplified battery sense: arm latch removed, measures the rail and accepts false alarms on USB | docs/superpowers/specs/2026-08-16-status-led-panel-design.md, .wolf/cerebrum.md, .wolf/STATUS.md | spec consistent, no armVolts key, no USB special-casing anywhere | ~8k |
 | 13:17 | removed the 100nF cap from battery sense (none on hand; use 10k/5k parallel divider instead) and stripped all historical narration from the spec | docs/superpowers/specs/2026-08-16-status-led-panel-design.md | spec 1383 -> 1282 lines, describes the design not its evolution | ~12k |
+
+## Session: 2026-08-16 13:23
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 13:28 | Created firmware/src/indicate/pattern.h | — | ~1154 |
+| 13:28 | Created firmware/src/indicate/pattern.cpp | — | ~954 |
+| 13:28 | Created firmware/src/indicate/panel_inputs.h | — | ~884 |
+| 13:29 | Created firmware/src/indicate/fault.h | — | ~479 |
+| 13:29 | Created firmware/src/indicate/fault.cpp | — | ~663 |
+| 13:29 | Created firmware/src/indicate/button.h | — | ~552 |
+| 13:29 | Created firmware/src/indicate/button.cpp | — | ~492 |
+| 13:31 | Created firmware/src/indicate/panel.h | — | ~1762 |
+| 13:32 | Created firmware/src/indicate/panel.cpp | — | ~3420 |
+| 13:32 | Edited firmware/src/indicate/panel.h | 2→1 lines | ~26 |
+| 13:32 | Edited firmware/src/indicate/panel.cpp | 4→2 lines | ~38 |
+| 13:32 | Edited firmware/src/indicate/panel.cpp | inline fix | ~12 |
+| 13:32 | Created firmware/src/indicate/hw/led_panel.h | — | ~453 |
+| 13:32 | Created firmware/src/indicate/hw/led_panel.cpp | — | ~290 |
+| 13:32 | Created firmware/src/indicate/hw/button_pin.h | — | ~319 |
+| 13:33 | Created firmware/src/indicate/hw/button_pin.cpp | — | ~72 |
+| 13:33 | Edited firmware/src/config/station_config.h | expanded (+15 lines) | ~261 |
+| 13:33 | Edited firmware/src/config/station_config.cpp | added 4 condition(s) | ~312 |
+| 13:33 | Edited firmware/src/config/station_config.cpp | added 2 condition(s) | ~86 |
+| 13:33 | Edited firmware/src/sense/vane_decode.h | expanded (+18 lines) | ~345 |
+| 13:33 | Edited firmware/src/sense/vane.h | expanded (+7 lines) | ~132 |
+| 13:33 | Edited firmware/src/sense/vane.cpp | modified readRawOctant() | ~68 |
+| 13:33 | Edited firmware/src/sense/anemometer.h | expanded (+12 lines) | ~234 |
+| 13:34 | Edited firmware/src/sense/anemometer.cpp | modified onPulseISR() | ~33 |
+| 13:34 | Created firmware/src/indicate/hw/panel_pins.h | — | ~682 |
+| 13:34 | Edited firmware/src/main.cpp | 3→4 lines | ~31 |
+| 13:34 | Edited firmware/src/main.cpp | modified GUSTIK_STATUS_PANEL() | ~292 |
+| 13:35 | Edited firmware/src/main.cpp | modified LEDs() | ~256 |
+| 13:35 | Edited firmware/src/main.cpp | 3→8 lines | ~100 |
+| 13:35 | Edited firmware/src/main.cpp | added 2 condition(s) | ~455 |
+| 13:35 | Edited firmware/src/main.cpp | modified 1() | ~194 |
+| 13:35 | Edited firmware/src/main.cpp | modified loop() | ~456 |
+| 13:35 | Edited firmware/src/main.cpp | modified RSSI() | ~45 |
+| 13:35 | Edited firmware/src/main.cpp | modified has() | ~435 |
+| 13:36 | Edited firmware/platformio.ini | 2→2 lines | ~40 |
+| 13:36 | Edited firmware/platformio.ini | 4→4 lines | ~66 |
+| 13:36 | Edited firmware/platformio.ini | expanded (+16 lines) | ~199 |
+| 13:36 | Created firmware/src/diag/panel_diag.cpp | — | ~967 |
+| 13:37 | Created firmware/test/test_panel_pattern/test_panel_pattern.cpp | — | ~1694 |
+| 13:37 | Edited firmware/test/test_panel_pattern/test_panel_pattern.cpp | 2→3 lines | ~18 |
+| 13:37 | Created firmware/test/test_panel_fault/test_panel_fault.cpp | — | ~1569 |
+| 13:38 | Created firmware/test/test_button/test_button.cpp | — | ~1424 |
+| 13:38 | Edited firmware/test/test_button/test_button.cpp | 4→4 lines | ~55 |
+| 13:38 | Edited firmware/src/indicate/button.cpp | 6→7 lines | ~59 |
+| 13:38 | Edited firmware/src/indicate/button.cpp | added 1 condition(s) | ~103 |
+| 13:38 | Edited firmware/src/indicate/button.h | 2→3 lines | ~30 |
+| 13:39 | Created firmware/test/test_panel_scale/test_panel_scale.cpp | — | ~979 |
+| 13:41 | Created firmware/test/test_panel_modes/test_panel_modes.cpp | — | ~4591 |
+| 13:41 | Edited firmware/test/test_panel_modes/test_panel_modes.cpp | 3→2 lines | ~26 |
+| 13:41 | Edited firmware/test/test_station_config/test_station_config.cpp | modified test_led_panel_defaults_when_config_says_nothing() | ~532 |
+| 13:41 | Edited firmware/test/test_vane_decode/test_vane_decode.cpp | modified test_open_and_shorted_wiring_are_reported_as_implausible() | ~410 |
+| 13:42 | Edited firmware/test/test_panel_modes/test_panel_modes.cpp | expanded (+11 lines) | ~193 |
+| 13:44 | Created docs/hardware/status-led-panel.md | — | ~3276 |
+| 13:44 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→4 lines | ~199 |
+| 13:44 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+15 lines) | ~306 |
+| 13:44 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 2→4 lines | ~70 |
+| 13:44 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→9 lines | ~139 |
+| 13:45 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+6 lines) | ~107 |
+| 13:40 | LED panel phases 1+2: new firmware/src/indicate/ (pattern/fault/panel/button pure + hw/led_panel, hw/button_pin, hw/panel_pins), main.cpp wiring, leds.* config keys, vaneAdcPlausible + Anemometer::pulseCountSnapshot, panel_diag sketch, docs/hardware/status-led-panel.md | firmware/src/indicate/*, firmware/src/main.cpp, firmware/src/config/station_config.*, firmware/src/sense/{anemometer,vane,vane_decode}.*, firmware/platformio.ini, firmware/data/config.example.txt, firmware/src/diag/panel_diag.cpp, firmware/test/test_panel_*, firmware/test/test_button, docs/hardware/status-led-panel.md, docs/superpowers/specs/2026-08-16-status-led-panel-design.md | native tests 57 -> 137 all passing; esp32dev flash 57.7% -> 58.0% (+5048 B); flag-off build +1032 B (not zero - spec corrected); panel_diag builds; bug-069 + bug-070 logged | ~95k |

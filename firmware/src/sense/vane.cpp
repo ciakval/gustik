@@ -10,5 +10,6 @@ void Vane::begin(uint8_t analogPin) {
 int Vane::readRawOctant() {
     // Decoding lives in sense/vane_decode.cpp: it is pure, correctness-
     // critical, and unit-tested in the `native` env (test/test_vane_decode).
-    return vaneOctantForAdc(analogRead(pin_));
+    lastAdc_ = analogRead(pin_);
+    return vaneOctantForAdc(lastAdc_);
 }

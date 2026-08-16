@@ -83,3 +83,7 @@ int vaneOctantForAdc(int adcReading) {
     }
     return kVaneAnchors[nearest].octant;
 }
+
+bool vaneAdcPlausible(int adcReading) {
+    return adcReading >= kVaneAdcMinPlausible && adcReading <= kVaneAdcMaxPlausible;
+}

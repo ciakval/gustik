@@ -1146,6 +1146,138 @@
       ],
       "occurrences": 1,
       "last_seen": "2026-08-16T12:20:00.000Z"
+    },
+    {
+      "id": "bug-063",
+      "timestamp": "2026-08-16T11:32:23.998Z",
+      "error_message": "Wrong reference: unsigned should be const",
+      "file": "firmware/src/indicate/panel.h",
+      "root_cause": "Used \"unsigned\" instead of \"const\"",
+      "fix": "Changed unsigned → const",
+      "tags": [
+        "auto-detected",
+        "wrong-reference",
+        "h"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:32:23.998Z"
+    },
+    {
+      "id": "bug-064",
+      "timestamp": "2026-08-16T11:33:52.311Z",
+      "error_message": "Wrong return value",
+      "file": "firmware/src/sense/vane.cpp",
+      "root_cause": "Was returning: vaneOctantForAdc(analogRead(pin_));",
+      "fix": "Now returns: vaneOctantForAdc(lastAdc_);",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:33:52.311Z"
+    },
+    {
+      "id": "bug-065",
+      "timestamp": "2026-08-16T11:35:04.137Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/src/main.cpp",
+      "root_cause": "4 lines replaced/restructured",
+      "fix": "Rewrote 9→16 lines (4 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:35:04.137Z"
+    },
+    {
+      "id": "bug-066",
+      "timestamp": "2026-08-16T11:38:39.021Z",
+      "error_message": "Wrong return value",
+      "file": "firmware/test/test_button/test_button.cpp",
+      "root_cause": "Was returning: hold(decoder, false, down + heldMs + 1, down + hel",
+      "fix": "Now returns: hold(decoder, false, down + heldMs, down + heldMs ",
+      "tags": [
+        "auto-detected",
+        "return-value",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:38:39.021Z"
+    },
+    {
+      "id": "bug-067",
+      "timestamp": "2026-08-16T11:38:50.570Z",
+      "error_message": "Wrong condition in logic",
+      "file": "firmware/src/indicate/button.cpp",
+      "root_cause": "Condition was: if (heldMs >= kButtonLongMs)",
+      "fix": "Changed to: if (suppressRelease_)",
+      "tags": [
+        "auto-detected",
+        "logic-fix",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:38:50.570Z"
+    },
+    {
+      "id": "bug-068",
+      "timestamp": "2026-08-16T11:42:10.799Z",
+      "error_message": "Significant refactor of ",
+      "file": "firmware/test/test_panel_modes/test_panel_modes.cpp",
+      "root_cause": "2 lines replaced/restructured",
+      "fix": "Rewrote 11→22 lines (2 removed)",
+      "tags": [
+        "auto-detected",
+        "refactor",
+        "cpp"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:42:10.799Z"
+    },
+    {
+      "id": "bug-069",
+      "timestamp": "2026-08-16T11:45:24.454582Z",
+      "error_message": "test_button_held_through_reset_does_not_fire_on_release: ButtonDecoder emitted ButtonEvent::Short when the panel button was already held down at the first update() call and then released.",
+      "file": "firmware/src/indicate/button.cpp",
+      "root_cause": "The decoder adopted the boot-time pin level into stable_ and set pressedAtMs_ = nowMs, so the eventual release looked like an ordinary press-and-release of however long the button had been held. On real hardware that is a spurious mode change (or a hard-off toggle) on every boot where somebody happens to be holding the button, and it also fires from a pin that has not settled yet.",
+      "fix": "Added a suppressRelease_ flag set at initialisation when the pin already reads pressed; the first accepted release clears it and returns ButtonEvent::None instead of decoding a gesture. Pinned by test/test_button/test_button.cpp::test_button_held_through_reset_does_not_fire_on_release.",
+      "tags": [
+        "firmware",
+        "led-panel",
+        "button",
+        "debounce",
+        "boot",
+        "found-by-test"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:45:24.454582Z"
+    },
+    {
+      "id": "bug-070",
+      "timestamp": "2026-08-16T11:45:24.454582Z",
+      "error_message": "test_a_counter_reset_is_a_resync_not_a_pulse: Expected TRUE Was FALSE (firmware/test/test_panel_modes/test_panel_modes.cpp:279)",
+      "file": "firmware/test/test_panel_modes/test_panel_modes.cpp",
+      "root_cause": "Test defect, not a firmware defect. The assertion checked that detail position 1's PATTERN was lanePatternOff() after the anemometer counter reset, but a one-shot pulse pattern stays assigned to the lane after it has finished running - it is simply no longer lit. The panel's resync behaviour was correct.",
+      "fix": "Rewrote the test to assert on isLit() over time instead of on the pattern object: a real pulse lights the lane, the flash ends, a counter reset does NOT relight it, and counting resumes from the new baseline. Lesson worth keeping: for one-shot patterns, 'is this lane doing anything' is a question about isLit at a time, not about the pattern struct.",
+      "tags": [
+        "firmware",
+        "led-panel",
+        "test-defect",
+        "one-shot-pattern"
+      ],
+      "related_bugs": [],
+      "occurrences": 1,
+      "last_seen": "2026-08-16T11:45:24.454582Z"
     }
   ]
 }

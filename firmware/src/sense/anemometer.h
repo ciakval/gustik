@@ -20,6 +20,18 @@ public:
     // the counter, so callers get one sampling-interval's worth each time.
     unsigned long readAndResetPulseCount();
 
+    // A non-resetting read of the same counter, for the status panel's live
+    // reed-closure indicator (sensor mode, detail position 1). Deliberately
+    // separate and side-effect free: the measurement path above is the only
+    // thing allowed to reset the counter, which is what keeps the panel
+    // strictly downstream of the sensors (design constraint C3).
+    //
+    // No noInterrupts() needed - a 32-bit aligned read is atomic on this
+    // core, and the panel only compares successive snapshots for an
+    // increase. A decrease (every time readAndResetPulseCount() runs) is
+    // treated as a resync, not an event.
+    unsigned long pulseCountSnapshot() const;
+
 private:
     uint8_t pin_ = 0;
     static void IRAM_ATTR onPulseISR();

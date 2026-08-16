@@ -1,7 +1,9 @@
 # Status LED panel + mode button — design
 
-**Date:** 2026-08-16 · **Status:** design settled; phase 0 (partition table)
-**implemented and flashed**, phases 1+ not started ·
+**Date:** 2026-08-16 · **Status:** design settled; **phases 0–2 implemented**
+(partition table flashed; `indicate/` modules, hardware glue, `main.cpp`
+wiring and `leds.*` config keys built and tested — see §13). Phase 3 is
+physical: nothing is soldered yet. ·
 **Scope:** `firmware/` (plus one Czech section in `backend/src/static/manual.html`)
 
 Once the Station is on the committee boat there is no serial console, no
@@ -739,6 +741,12 @@ where a fault is invisible because someone went to look at the wind.
 | 🔴 **RED** — fault | fatal, station cannot work at all | *(not used)* | — | no fault |
 | | otherwise blinks the **fault code**, §5.3 | | | |
 
+> **As built, yellow's "fast blink = scanning / connecting" is not
+> implemented, deliberately.** This firmware connects synchronously inside
+> `send()`, so there is no scanning state to report — inventing one would be
+> a lie told in LEDs. Not associated is simply *off*, per Q4. If the connect
+> path ever becomes non‑blocking, the state is there to fill in.
+
 The two properties worth memorising:
 
 - **The whole row dark ⇒ not running.** No power, or a crash before `setup()`
@@ -966,10 +974,14 @@ sufficient.
 **7.1 Build time — the flash guarantee.** `-DGUSTIK_STATUS_PANEL=0` compiles
 the panel out entirely: the `indicate/` sources are never referenced, and with
 PlatformIO's default `-ffunction-sections -Wl,--gc-sections` the linker drops
-them wholesale. Flash cost is then **exactly zero bytes**, and GPIO25/26 revert
-to their present `config loaded` / `WiFi connected` behaviour. This is the
-answer to C1: if the panel does not fit, it is one flag and the build is
-byte‑identical to today's.
+them wholesale, and GPIO25/26 revert to their present `config loaded` /
+`WiFi connected` behaviour. This is the answer to C1: if the panel does not
+fit, it is one flag.
+
+**Measured, not zero: +1 032 B.** Three small helpers the panel needs live
+outside the flag on purpose (`vaneAdcPlausible()`,
+`Anemometer::pulseCountSnapshot()`, the `leds.*` config keys) — see §9 for
+why. The panel *itself* is gone; a kilobyte of shared plumbing is not.
 
 **7.2 Config time — no reflash.** New `config.txt` keys, both optional:
 
@@ -1106,12 +1118,27 @@ RAM:    15.8 %  (51 732 /   327 680 B)
 Flash:  57.7 %  (1 210 461 / 2 097 152 B)   →  886 691 B free
 ```
 
-**Estimated cost of this design:** 2–4 KB flash (a state machine plus small
-constant tables, no new libraries, no new format strings) and under 200 B of
-RAM. Phase 6's battery sense adds perhaps another 0.5–1 KB — one ADC read, an
-EMA and a four‑state comparison — and is separately switchable.
+**Measured cost, phases 1 + 2 as built** (estimate was 2–4 KB):
 
-That is ~0.4 % of the free space, so the ladder below is insurance, not a plan.
+| Build | Flash | Δ vs the phase‑0 baseline | RAM |
+|---|---:|---:|---:|
+| baseline, before phase 1 | 1 210 461 B (57.7 %) | — | 51 732 B |
+| `-DGUSTIK_STATUS_PANEL=0` | 1 211 493 B (57.8 %) | **+1 032 B** | 51 852 B |
+| default (panel on) | 1 215 509 B (58.0 %) | **+5 048 B** | 52 020 B |
+
+The panel itself is **~4 KB**, at the top of the estimate. §7.1's "exactly
+zero bytes" turned out to be **+1 032 B**, and the difference is not the
+panel: it is three small additions that live *outside* the build flag on
+purpose — `vaneAdcPlausible()` (`sense/vane_decode.cpp`),
+`Anemometer::pulseCountSnapshot()`, and the `leds.*` keys in
+`parseStationConfig()`. Guarding the config parser in particular would mean a
+`config.txt` carrying `leds.enabled` behaves differently depending on how the
+firmware was built, which is a worse trade than a kilobyte out of 881 KB.
+
+Phase 6's battery sense adds perhaps another 0.5–1 KB — one ADC read, an EMA
+and a four‑state comparison — and is separately switchable.
+
+That is ~0.6 % of the free space, so the ladder below is insurance, not a plan.
 
 **Mitigation ladder, cheapest first:**
 
@@ -1263,9 +1290,9 @@ reason to revisit:
 | Phase | Content | Verifiable by |
 |---|---|---|
 | **0 ✅ DONE** | partition table §9.1, as its own change | ✅ flash 92.4 % → **57.7 %**, built, flashed, `uploadfs`'d, `config.txt: 2 network(s) configured` confirmed over serial |
-| 1 | `indicate/` pure modules + tests; `-DGUSTIK_STATUS_PANEL=0` default | `pio test -e native`; `pio run -e esp32dev` byte‑identical flash figure |
-| 2 | hw glue, `main.cpp` wiring, `leds.*` config keys, flag on | flash delta recorded; Station behaves identically with nothing soldered |
-| 3 | 9 LEDs (330 Ω each) + button on the breadboard; `panel_diag`; manual checks §10 | by eye on the bench — no enclosure work needed for v1 (C8) |
+| **1 ✅ DONE** | `indicate/` pure modules + tests | ✅ `pio test -e native` **57 → 137 tests**, all passing |
+| **2 ✅ DONE** | hw glue, `main.cpp` wiring, `leds.*` config keys, flag on by default | ✅ flash 57.7 % → **58.0 %** (+5 048 B); with `-DGUSTIK_STATUS_PANEL=0`, +1 032 B (see §9). Nothing soldered, so the Station is unchanged in the field |
+| **3 ← NEXT** | 9 LEDs (330 Ω each) + button on the breadboard; `panel_diag`; manual checks §10 | by eye on the bench — no enclosure work needed for v1 (C8). Wiring reference: `docs/hardware/status-led-panel.md` |
 | **3b** | **redo the magnetometer hard‑iron calibration** in the final wired position (§4.8) | `mag_calibrate` run with the panel fitted; XY scatter checked for softiron ellipticity |
 | 4 | `manual.html` Czech section, `docs/hardware/status-led-panel.md`, legend on the box | reviewed on a phone |
 | 5 | one regatta day of real use | does anyone actually look at it? |

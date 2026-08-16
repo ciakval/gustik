@@ -77,8 +77,39 @@ void test_every_octant_is_reachable(void) {
     }
 }
 
+// The decode is total by design, so an unwired vane still produces a
+// confident octant - only the raw reading can say the sensor is not there.
+void test_open_and_shorted_wiring_are_reported_as_implausible(void) {
+    TEST_ASSERT_FALSE(vaneAdcPlausible(0));      // pin shorted to GND
+    TEST_ASSERT_FALSE(vaneAdcPlausible(4095));   // open, pulled to 3V3
+    TEST_ASSERT_FALSE(vaneAdcPlausible(-1));
+}
+
+void test_every_measured_detent_is_plausible(void) {
+    // The measured anchors span 107..3855; every one of the 16 real rest
+    // positions must be inside the band, or the panel cries wolf on a
+    // working sensor.
+    const int detents[] = {107, 175, 209, 339, 572, 803, 974, 1442,
+                           1663, 2195, 2315, 2604, 2943, 3134, 3465, 3855};
+    for (int adc : detents) {
+        TEST_ASSERT_TRUE(vaneAdcPlausible(adc));
+    }
+}
+
+void test_intermediate_readings_stay_plausible(void) {
+    // A turning vane passes through genuinely intermediate resistances. An
+    // anchor-proximity check would false-alarm on those; a range check does
+    // not, which is why this is a range check.
+    for (int adc = kVaneAdcMinPlausible; adc <= kVaneAdcMaxPlausible; adc += 7) {
+        TEST_ASSERT_TRUE(vaneAdcPlausible(adc));
+    }
+}
+
 int main(int, char **) {
     UNITY_BEGIN();
+    RUN_TEST(test_open_and_shorted_wiring_are_reported_as_implausible);
+    RUN_TEST(test_every_measured_detent_is_plausible);
+    RUN_TEST(test_intermediate_readings_stay_plausible);
     RUN_TEST(test_primary_detents_decode_exactly);
     RUN_TEST(test_half_detent_157_5_does_not_decode_as_90deg);
     RUN_TEST(test_half_detent_292_5_does_not_decode_as_0deg);

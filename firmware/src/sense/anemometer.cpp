@@ -16,6 +16,10 @@ unsigned long Anemometer::readAndResetPulseCount() {
     return count;
 }
 
+unsigned long Anemometer::pulseCountSnapshot() const {
+    return pulseCount_;
+}
+
 void IRAM_ATTR Anemometer::onPulseISR() {
     pulseCount_++;
 }

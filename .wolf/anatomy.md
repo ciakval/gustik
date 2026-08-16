@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T11:07:41.430Z
-> Files: 504 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T11:45:00.569Z
+> Files: 525 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -954,6 +954,7 @@
 
 - `flash-memory-map.md` — The device has ONE 4 MB flash chip (not two); probed chip/memory inventory, the old default.csv vs new partitions_gustik.csv layout with measured 92.4%→57.7% effect, what LittleFS actually holds (config.txt + /buf), the "must stay named spiffs" and "reflash always needs uploadfs" traps, and the bug-060 buffer-capacity arithmetic. (~2038 tok)
 - `sensor-orientation.md` — Mutual orientation rule: the vane's 0° mark and the magnetometer's +X must point the same way (the bow), magnetometer level with +Z down. Why the addition in correctWindDirectionOctant works, per-mistake failure signatures, mast/cabin mounting, in-place (level boat swing) calibration, 3-step acceptance test. (~2700 tok)
+- `status-led-panel.md` — Status LED panel — wiring (~3071 tok)
 - `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2429 tok)
 
 ## docs/rust-firmware/
@@ -973,13 +974,13 @@
 
 - `2026-08-09-timestamp-timezone-support-design.md` — Timestamp timezone support — design (~1546 tok)
 - `2026-08-14-dashboard-ux-design.md` — Dashboard UX rework — wind direction, graph resolution, status page (~3482 tok)
-- `2026-08-16-status-led-panel-design.md` — Status LED panel + mode button — design (~19096 tok)
+- `2026-08-16-status-led-panel-design.md` — Status LED panel + mode button — design (~17836 tok)
 
 ## firmware/
 
 - `.gitignore` — Git ignore rules (~52 tok)
 - `partitions_gustik.csv` — Custom 4 MB partition table replacing Arduino's default.csv: one 2 MB app slot instead of two 1.25 MB OTA slots, LittleFS grown to 1.875 MB. Header comments explain why app0 keeps subtype ota_0 and why the data partition must stay named "spiffs". (~535 tok)
-- `platformio.ini` (~1236 tok)
+- `platformio.ini` (~1435 tok)
 
 ## firmware/.pio/libdeps/native/
 
@@ -1145,12 +1146,12 @@
 
 ## firmware/src/
 
-- `main.cpp` — include <Arduino.h> (~3104 tok)
+- `main.cpp` — include <Arduino.h> (~4711 tok)
 
 ## firmware/src/config/
 
-- `station_config.cpp` — include "config/station_config.h" (~1076 tok)
-- `station_config.h` — pragma once (~719 tok)
+- `station_config.cpp` — include "config/station_config.h" (~1387 tok)
+- `station_config.h` — pragma once (~922 tok)
 
 ## firmware/src/config/hw/
 
@@ -1167,18 +1168,39 @@
 ## firmware/src/diag/
 
 - `mag_diag.cpp` — Bring-up sketch: streams RAW QMC5883P x/y/z counts over Serial at 50Hz (`MAG <x> <y> <z>`) and nothing else. Self-contained (own Wire init, no sense/), all 3 axes un-negated. Own `[env:mag_diag]`; scaffolding, delete once calibrated. (~868 tok)
+- `panel_diag.cpp` — Status LED panel wiring check.  [env:panel_diag], real hardware only. (~967 tok)
 - `pulse_diag.cpp` — Bring-up sketch: one `EDGE <micros> <level>` line per GPIO27 transition (CHANGE, not FALLING - separates "no edges" from "wrong-polarity edges") + a 1Hz `TICK` counter line. ISR-to-loop ring buffer, no Serial in the ISR. Own `[env:pulse_diag]`; scaffolding, delete once the anemometer is confirmed. (~1000 tok)
+
+## firmware/src/indicate/
+
+- `button.cpp` — Panel button debounce + gesture decode: (level, nowMs) -> None/Short/Long. Gestures decided on RELEASE so a long press is never also a short one; 800ms-2s is a deliberate dead zone; a button held through reset is suppressed (bug-069). (~580 tok)
+- `button.h` — ButtonEvent enum + ButtonDecoder. Pure, host-tested. kButtonDebounceMs=30, kButtonShortMaxMs=800, kButtonLongMs=2000. No button fitted => INPUT_PULLUP reads released forever => no events. (~572 tok)
+- `fault.cpp` — PanelInputs -> the single highest-priority fault. Priority IS the code number ascending (ordered by causal depth). Codes 3-7 gated on haveSample; code 5 requires hasCounts so an old backend can't fabricate the bug-031 alarm. (~663 tok)
+- `fault.h` — PanelFault enum (None, 1 NoConfig .. 8 SensorFailing, Fatal) + faultFlashCount(). Eight codes is a hard cap: counting past eight on a moving boat does not work. (~479 tok)
+- `panel_inputs.h` — The one-way snapshot the LED panel reads (~40 B, all values loop() already computes). INVARIANT C3: nothing downstream of this may write to anything upstream of it - that is what makes the panel optional rather than hopeful. (~884 tok)
+- `panel.cpp` — The panel mode machine: boot self-test, status-group lanes, sleep/hard-off, detail modes (wind/signal/sensors), mode banner, the 5s direction code that borrows the yellow lane. Pure, no Arduino.h. (~3399 tok)
+- `panel.h` — StatusPanel, PanelOutputs (4 status Lanes + 5 detail Lanes), DetailMode, PanelSettings, and the pure scale mappings windDetailPosition/windIsStrong/signalDetailPosition with their boundary constants (shared with beaufort.js and /status.html). (~1749 tok)
+- `pattern.cpp` — isLit(pattern, nowMs, phase0) plus the named pattern factories. Unsigned arithmetic throughout so a millis() rollover costs one mistimed blink, not a stuck lane. (~954 tok)
+- `pattern.h` — LanePattern {flashes, onMs, offMs, pauseMs, oneShot, inverted} - one struct covering solid/slow/fast/pulse/double-pulse/code-N/banner - plus Lane (pattern + phase0) and the timing constants. (~1154 tok)
+
+## firmware/src/indicate/hw/
+
+- `button_pin.cpp` — digitalRead of the button pin, active LOW. Nothing else. (~72 tok)
+- `button_pin.h` — ButtonPin: INPUT_PULLUP wrapper on GPIO13. Hardware-coupled; debounce/decoding is indicate/button.h's job. (~319 tok)
+- `led_panel.cpp` — Nine digitalWrites per render(), resolving each Lane through isLit(). No allocation, no delay, no Serial. (~290 tok)
+- `led_panel.h` — LedPanelPins + LedPanel (begin/render/allOff). Active high, 330 ohm per lane. Fitting fewer than nine LEDs needs no code change. (~453 tok)
+- `panel_pins.h` — Default GPIOs for the panel, each overridable via -DGUSTIK_PANEL_PIN_*: status R/Y/G/B = 32/33/25/26, detail 1-5 = 19/18/17/16/4 (GPIO5 skipped - strapping), button = 13. Carries the GPIO6-11 flash-bus warning. (~682 tok)
 
 ## firmware/src/sense/
 
-- `anemometer.cpp` — include "sense/anemometer.h" (~138 tok)
-- `anemometer.h` — pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md (~220 tok)
+- `anemometer.cpp` — include "sense/anemometer.h" (~150 tok)
+- `anemometer.h` — pragma once (~450 tok)
 - `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk) (~480 tok)
 - `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure) (~250 tok)
 - `vane_decode.cpp` — Pure ADC->octant decoding for the wind vane: 16-entry measured anchor table (8 primary octants + 8 half-detents), nearest-match. Arduino.h-free and host-tested. (~900 tok)
-- `vane_decode.h` — Declares `vaneOctantForAdc()` and `kVaneAnchorCount`. (~200 tok)
-- `vane.cpp` — include "sense/vane.h" (~100 tok)
-- `vane.h` — pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md (~200 tok)
+- `vane_decode.h` — pragma once (~512 tok)
+- `vane.cpp` — include "sense/vane.h" (~107 tok)
+- `vane.h` — pragma once (~347 tok)
 
 ## firmware/src/transmit/
 
@@ -1204,6 +1226,10 @@
 - `wifi_client.cpp` — include "transmit/hw/wifi_client.h" (~1133 tok)
 - `wifi_client.h` — pragma once (~653 tok)
 
+## firmware/test/test_button/
+
+- `test_button.cpp` — include <unity.h> (~1424 tok)
+
 ## firmware/test/test_connection_monitor/
 
 - `test_connection_monitor.cpp` — include <unity.h> (~827 tok)
@@ -1216,6 +1242,22 @@
 
 - `test_led_policy.cpp` — include <unity.h> (~264 tok)
 
+## firmware/test/test_panel_fault/
+
+- `test_panel_fault.cpp` — include <unity.h> (~1569 tok)
+
+## firmware/test/test_panel_modes/
+
+- `test_panel_modes.cpp` — include <unity.h> (~4676 tok)
+
+## firmware/test/test_panel_pattern/
+
+- `test_panel_pattern.cpp` — include <unity.h> (~1699 tok)
+
+## firmware/test/test_panel_scale/
+
+- `test_panel_scale.cpp` — include <unity.h> (~979 tok)
+
 ## firmware/test/test_ring_buffer/
 
 - `test_ring_buffer.cpp` — include <unity.h> (~1023 tok)
@@ -1226,7 +1268,7 @@
 
 ## firmware/test/test_station_config/
 
-- `test_station_config.cpp` — include <unity.h> (~1600 tok)
+- `test_station_config.cpp` — include <unity.h> (~2102 tok)
 
 ## firmware/test/test_transmit_payload/
 
@@ -1234,7 +1276,7 @@
 
 ## firmware/test/test_vane_decode/
 
-- `test_vane_decode.cpp` — include <unity.h> (~1096 tok)
+- `test_vane_decode.cpp` — include <unity.h> (~1480 tok)
 
 ## firmware/test/test_wind_direction/
 

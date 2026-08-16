@@ -136,8 +136,47 @@ void test_magnetometer_accepts_negative_and_integer_forms(void) {
     TEST_ASSERT_EQUAL_DOUBLE(0.0, config.magnetometer.offsetY);
 }
 
+void test_led_panel_defaults_when_config_says_nothing(void) {
+    StationConfig config = parseStationConfig("network1.ssid=x\n");
+
+    TEST_ASSERT_TRUE(config.leds.enabled);
+    TEST_ASSERT_EQUAL_UINT32(300, config.leds.timeoutSeconds);
+}
+
+void test_led_panel_can_be_disabled_without_a_reflash(void) {
+    StationConfig config = parseStationConfig("leds.enabled=false\nleds.timeoutSeconds=0\n");
+
+    TEST_ASSERT_FALSE(config.leds.enabled);
+    TEST_ASSERT_EQUAL_UINT32(0, config.leds.timeoutSeconds);
+}
+
+void test_led_panel_accepts_the_spellings_people_actually_write(void) {
+    TEST_ASSERT_FALSE(parseStationConfig("leds.enabled=0\n").leds.enabled);
+    TEST_ASSERT_FALSE(parseStationConfig("leds.enabled=no\n").leds.enabled);
+    TEST_ASSERT_FALSE(parseStationConfig("leds.enabled=off\n").leds.enabled);
+    TEST_ASSERT_TRUE(parseStationConfig("leds.enabled=1\n").leds.enabled);
+    TEST_ASSERT_TRUE(parseStationConfig("leds.enabled=yes\n").leds.enabled);
+    TEST_ASSERT_TRUE(parseStationConfig("leds.enabled=on\n").leds.enabled);
+}
+
+void test_malformed_led_values_fall_back_to_defaults_not_garbage(void) {
+    // The panel is a diagnostic. One that misbehaves because of a typo in the
+    // file it exists to help you debug is worse than useless.
+    StationConfig config = parseStationConfig("leds.enabled=maybe\nleds.timeoutSeconds=300x\n");
+
+    TEST_ASSERT_TRUE(config.leds.enabled);
+    TEST_ASSERT_EQUAL_UINT32(300, config.leds.timeoutSeconds);
+
+    StationConfig negative = parseStationConfig("leds.timeoutSeconds=-5\n");
+    TEST_ASSERT_EQUAL_UINT32(300, negative.leds.timeoutSeconds);
+}
+
 int main(int argc, char **argv) {
     UNITY_BEGIN();
+    RUN_TEST(test_led_panel_defaults_when_config_says_nothing);
+    RUN_TEST(test_led_panel_can_be_disabled_without_a_reflash);
+    RUN_TEST(test_led_panel_accepts_the_spellings_people_actually_write);
+    RUN_TEST(test_malformed_led_values_fall_back_to_defaults_not_garbage);
     RUN_TEST(test_parses_two_networks_backend_url_and_token);
     RUN_TEST(test_parses_magnetometer_hard_iron_offsets);
     RUN_TEST(test_magnetometer_absent_when_config_says_nothing);

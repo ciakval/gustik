@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-16T11:07:41.430Z",
-    "fileCount": 504,
+    "lastScanned": "2026-08-16T11:45:00.569Z",
+    "fileCount": 525,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "a265e1922f8a6746fa7cc2975be8ba568a41c9e4415ec774658b31db03a2d7ca",
-    "storeUpdatedAt": "2026-08-16T11:07:41.439Z"
+    "renderedHash": "c1db2ff82c5f2316a5670c4b3c778ce32071176db929eb75380e2fe2567da33d",
+    "storeUpdatedAt": "2026-08-16T11:45:00.578Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5283,11 +5283,11 @@
     },
     "firmware/platformio.ini": {
       "description": "",
-      "tokens": 1236,
-      "hash": "45ffe104a6d69aec",
-      "size": 4632,
-      "mtimeMs": 1786876257143.3289,
-      "updatedAt": "2026-08-16T10:30:57.228Z",
+      "tokens": 1435,
+      "hash": "0749e3a23f225698",
+      "size": 5379,
+      "mtimeMs": 1786880177316.026,
+      "updatedAt": "2026-08-16T11:36:17.394Z",
       "source": "hook"
     },
     "firmware/src/config/hw/config_loader.cpp": {
@@ -5310,20 +5310,20 @@
     },
     "firmware/src/config/station_config.cpp": {
       "description": "include \"config/station_config.h\"",
-      "tokens": 1076,
-      "hash": "4be6cd475fc43e4f",
-      "size": 4034,
-      "mtimeMs": 1786821641435.8027,
-      "updatedAt": "2026-08-15T19:20:41.517Z",
+      "tokens": 1387,
+      "hash": "9e6bef2de2c44bed",
+      "size": 5199,
+      "mtimeMs": 1786880004099.152,
+      "updatedAt": "2026-08-16T11:33:24.178Z",
       "source": "hook"
     },
     "firmware/src/config/station_config.h": {
       "description": "pragma once",
-      "tokens": 719,
-      "hash": "761f36f0289aed82",
-      "size": 2696,
-      "mtimeMs": 1786821623603.3135,
-      "updatedAt": "2026-08-15T19:20:23.684Z",
+      "tokens": 922,
+      "hash": "35b2be65403acf37",
+      "size": 3455,
+      "mtimeMs": 1786879991713.3748,
+      "updatedAt": "2026-08-16T11:33:11.792Z",
       "source": "hook"
     },
     "firmware/src/correct/wind_direction.cpp": {
@@ -5364,30 +5364,30 @@
     },
     "firmware/src/main.cpp": {
       "description": "include <Arduino.h>",
-      "tokens": 3104,
-      "hash": "15394d529472a9b0",
-      "size": 11639,
-      "mtimeMs": 1786821664164.8835,
-      "updatedAt": "2026-08-15T19:21:04.245Z",
+      "tokens": 4711,
+      "hash": "71af83ce1003cc21",
+      "size": 17666,
+      "mtimeMs": 1786880159087.0344,
+      "updatedAt": "2026-08-16T11:35:59.166Z",
       "source": "hook"
     },
     "firmware/src/sense/anemometer.cpp": {
       "description": "include \"sense/anemometer.h\"",
-      "tokens": 138,
-      "hash": "fdf7866adfafc305",
-      "size": 480,
-      "mtimeMs": 1786387643705.0378,
-      "updatedAt": "2026-08-10T19:26:48.194Z",
-      "source": "scan"
+      "tokens": 150,
+      "hash": "d1f07992376612bc",
+      "size": 562,
+      "mtimeMs": 1786880043424.1133,
+      "updatedAt": "2026-08-16T11:34:03.502Z",
+      "source": "hook"
     },
     "firmware/src/sense/anemometer.h": {
-      "description": "pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md",
-      "tokens": 220,
-      "hash": "0445e1ab0e7e819f",
-      "size": 607,
-      "mtimeMs": 1786387643705.304,
-      "updatedAt": "2026-08-14T11:39:26.626Z",
-      "source": "md-import"
+      "description": "pragma once",
+      "tokens": 450,
+      "hash": "6a611913790e16f1",
+      "size": 1687,
+      "mtimeMs": 1786880039367.444,
+      "updatedAt": "2026-08-16T11:33:59.448Z",
+      "source": "hook"
     },
     "firmware/src/sense/magnetometer.cpp": {
       "description": "QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk)",
@@ -5409,21 +5409,21 @@
     },
     "firmware/src/sense/vane.cpp": {
       "description": "include \"sense/vane.h\"",
-      "tokens": 100,
-      "hash": "cf18a250d5d532fc",
-      "size": 913,
-      "mtimeMs": 1786387643706.5374,
-      "updatedAt": "2026-08-15T19:16:53.984Z",
-      "source": "md-import"
+      "tokens": 107,
+      "hash": "65270a9f741f8079",
+      "size": 399,
+      "mtimeMs": 1786880032223.8062,
+      "updatedAt": "2026-08-16T11:33:52.300Z",
+      "source": "hook"
     },
     "firmware/src/sense/vane.h": {
-      "description": "pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md",
-      "tokens": 200,
-      "hash": "6d020dbec5b77f33",
-      "size": 510,
-      "mtimeMs": 1786387643706.9092,
-      "updatedAt": "2026-08-14T11:39:26.626Z",
-      "source": "md-import"
+      "description": "pragma once",
+      "tokens": 347,
+      "hash": "4f748d2ae8f818c8",
+      "size": 1299,
+      "mtimeMs": 1786880027289.9631,
+      "updatedAt": "2026-08-16T11:33:47.374Z",
+      "source": "hook"
     },
     "firmware/src/transmit/buffer_capacity.cpp": {
       "description": "include \"transmit/buffer_capacity.h\"",
@@ -5607,11 +5607,11 @@
     },
     "firmware/test/test_station_config/test_station_config.cpp": {
       "description": "include <unity.h>",
-      "tokens": 1600,
-      "hash": "36dc4eb3e162af19",
-      "size": 6000,
-      "mtimeMs": 1786821677899.5398,
-      "updatedAt": "2026-08-15T19:21:17.980Z",
+      "tokens": 2102,
+      "hash": "8c2cc387727a5779",
+      "size": 7881,
+      "mtimeMs": 1786880487323.454,
+      "updatedAt": "2026-08-16T11:41:27.410Z",
       "source": "hook"
     },
     "firmware/test/test_transmit_payload/test_transmit_payload.cpp": {
@@ -6648,16 +6648,22 @@
       "source": "md-import"
     },
     "firmware/src/sense/vane_decode.h": {
-      "description": "Declares `vaneOctantForAdc()` and `kVaneAnchorCount`.",
-      "tokens": 200,
-      "updatedAt": "2026-08-15T19:16:53.984Z",
-      "source": "md-import"
+      "description": "pragma once",
+      "tokens": 512,
+      "hash": "5aa8090c50222ce0",
+      "size": 1918,
+      "mtimeMs": 1786880014703.7031,
+      "updatedAt": "2026-08-16T11:33:34.780Z",
+      "source": "hook"
     },
     "firmware/test/test_vane_decode/test_vane_decode.cpp": {
       "description": "include <unity.h>",
-      "tokens": 1096,
-      "updatedAt": "2026-08-15T19:16:53.984Z",
-      "source": "md-import"
+      "tokens": 1480,
+      "hash": "ac119c60e54a06d5",
+      "size": 5550,
+      "mtimeMs": 1786880498602.615,
+      "updatedAt": "2026-08-16T11:41:38.684Z",
+      "source": "hook"
     },
     "firmware/src/diag/mag_diag.cpp": {
       "description": "Bring-up sketch: streams RAW QMC5883P x/y/z counts over Serial at 50Hz (`MAG <x> <y> <z>`) and nothing else. Self-contained (own Wire init, no sense/), all 3 axes un-negated. Own `[env:mag_diag]`; scaffolding, delete once calibrated.",
@@ -7000,11 +7006,11 @@
     },
     "docs/superpowers/specs/2026-08-16-status-led-panel-design.md": {
       "description": "Status LED panel + mode button — design",
-      "tokens": 19096,
-      "hash": "b16392d5a2ac6730",
-      "size": 79009,
-      "mtimeMs": 1786878461349.5945,
-      "updatedAt": "2026-08-16T11:07:41.430Z",
+      "tokens": 17836,
+      "hash": "659569337d5e6c7a",
+      "size": 73841,
+      "mtimeMs": 1786880700487.4949,
+      "updatedAt": "2026-08-16T11:45:00.569Z",
       "source": "hook"
     },
     "firmware/partitions_gustik.csv": {
@@ -7024,6 +7030,195 @@
       "mtimeMs": 1786876364236.2864,
       "updatedAt": "2026-08-16T10:52:07.339Z",
       "source": "md-import"
+    },
+    "firmware/src/indicate/pattern.h": {
+      "description": "pragma once",
+      "tokens": 1154,
+      "hash": "6f610095bef9ec8b",
+      "size": 4324,
+      "mtimeMs": 1786879702506.9453,
+      "updatedAt": "2026-08-16T11:28:22.586Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/pattern.cpp": {
+      "description": "include \"indicate/pattern.h\"",
+      "tokens": 954,
+      "hash": "5a0564238c815009",
+      "size": 3577,
+      "mtimeMs": 1786879719385.4846,
+      "updatedAt": "2026-08-16T11:28:39.470Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/panel_inputs.h": {
+      "description": "pragma once",
+      "tokens": 884,
+      "hash": "6dad49f3ec7ef1b2",
+      "size": 3312,
+      "mtimeMs": 1786879739396.8606,
+      "updatedAt": "2026-08-16T11:28:59.475Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/fault.h": {
+      "description": "pragma once",
+      "tokens": 479,
+      "hash": "f2db23c1c1f52393",
+      "size": 1795,
+      "mtimeMs": 1786879751089.9375,
+      "updatedAt": "2026-08-16T11:29:11.167Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/fault.cpp": {
+      "description": "include \"indicate/fault.h\"",
+      "tokens": 663,
+      "hash": "f905e0818995ab7b",
+      "size": 2486,
+      "mtimeMs": 1786879764057.1228,
+      "updatedAt": "2026-08-16T11:29:24.136Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/button.h": {
+      "description": "pragma once",
+      "tokens": 572,
+      "hash": "b72adb7e578efdec",
+      "size": 2145,
+      "mtimeMs": 1786880334549.9658,
+      "updatedAt": "2026-08-16T11:38:54.629Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/button.cpp": {
+      "description": "include \"indicate/button.h\"",
+      "tokens": 580,
+      "hash": "90579283878f6466",
+      "size": 2172,
+      "mtimeMs": 1786880330479.059,
+      "updatedAt": "2026-08-16T11:38:50.557Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/panel.h": {
+      "description": "pragma once",
+      "tokens": 1749,
+      "hash": "308714402dcaadbd",
+      "size": 6610,
+      "mtimeMs": 1786879943906.725,
+      "updatedAt": "2026-08-16T11:32:23.987Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/panel.cpp": {
+      "description": "include \"indicate/panel.h\"",
+      "tokens": 3399,
+      "hash": "620e06629386a520",
+      "size": 12744,
+      "mtimeMs": 1786879951776.8042,
+      "updatedAt": "2026-08-16T11:32:31.868Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/hw/led_panel.h": {
+      "description": "pragma once",
+      "tokens": 453,
+      "hash": "69a25211133bcb60",
+      "size": 1698,
+      "mtimeMs": 1786879963715.9353,
+      "updatedAt": "2026-08-16T11:32:43.795Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/hw/led_panel.cpp": {
+      "description": "include \"indicate/hw/led_panel.h\"",
+      "tokens": 290,
+      "hash": "a2bd5f3931eb4cdb",
+      "size": 1084,
+      "mtimeMs": 1786879970511.182,
+      "updatedAt": "2026-08-16T11:32:50.589Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/hw/button_pin.h": {
+      "description": "pragma once",
+      "tokens": 319,
+      "hash": "c37c15d2c1ececed",
+      "size": 1196,
+      "mtimeMs": 1786879979180.219,
+      "updatedAt": "2026-08-16T11:32:59.257Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/hw/button_pin.cpp": {
+      "description": "include \"indicate/hw/button_pin.h\"",
+      "tokens": 72,
+      "hash": "bf7e1a162f0635fe",
+      "size": 267,
+      "mtimeMs": 1786879982900.9077,
+      "updatedAt": "2026-08-16T11:33:02.980Z",
+      "source": "hook"
+    },
+    "firmware/src/indicate/hw/panel_pins.h": {
+      "description": "pragma once",
+      "tokens": 682,
+      "hash": "d1921ade6bf00ea3",
+      "size": 2557,
+      "mtimeMs": 1786880080911.1462,
+      "updatedAt": "2026-08-16T11:34:40.988Z",
+      "source": "hook"
+    },
+    "firmware/src/diag/panel_diag.cpp": {
+      "description": "Status LED panel wiring check.  [env:panel_diag], real hardware only.",
+      "tokens": 967,
+      "hash": "0b8e168b1d5dad47",
+      "size": 3626,
+      "mtimeMs": 1786880197302.3113,
+      "updatedAt": "2026-08-16T11:36:37.384Z",
+      "source": "hook"
+    },
+    "firmware/test/test_panel_pattern/test_panel_pattern.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 1699,
+      "hash": "8cf9cb9ff82dce09",
+      "size": 6370,
+      "mtimeMs": 1786880241615.2488,
+      "updatedAt": "2026-08-16T11:37:21.699Z",
+      "source": "hook"
+    },
+    "firmware/test/test_panel_fault/test_panel_fault.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 1569,
+      "hash": "07b5183dd21f7842",
+      "size": 5881,
+      "mtimeMs": 1786880268694.331,
+      "updatedAt": "2026-08-16T11:37:48.771Z",
+      "source": "hook"
+    },
+    "firmware/test/test_button/test_button.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 1424,
+      "hash": "9767750993b51811",
+      "size": 5338,
+      "mtimeMs": 1786880318926.0486,
+      "updatedAt": "2026-08-16T11:38:39.009Z",
+      "source": "hook"
+    },
+    "firmware/test/test_panel_scale/test_panel_scale.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 979,
+      "hash": "1bbfa5a78fdcb4d6",
+      "size": 3669,
+      "mtimeMs": 1786880356053.1157,
+      "updatedAt": "2026-08-16T11:39:16.131Z",
+      "source": "hook"
+    },
+    "firmware/test/test_panel_modes/test_panel_modes.cpp": {
+      "description": "include <unity.h>",
+      "tokens": 4676,
+      "hash": "86b8a92e839c2623",
+      "size": 17533,
+      "mtimeMs": 1786880530705.9014,
+      "updatedAt": "2026-08-16T11:42:10.786Z",
+      "source": "hook"
+    },
+    "docs/hardware/status-led-panel.md": {
+      "description": "Status LED panel — wiring",
+      "tokens": 3071,
+      "hash": "0ce04481404aaf58",
+      "size": 13171,
+      "mtimeMs": 1786880655201.852,
+      "updatedAt": "2026-08-16T11:44:15.290Z",
+      "source": "hook"
     }
   }
 }
