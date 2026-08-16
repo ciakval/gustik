@@ -6085,6 +6085,12 @@
       "updatedAt": "2026-08-15T19:16:53.984Z",
       "source": "md-import"
     },
+    "docs/hardware/sensor-orientation.md": {
+      "description": "Mutual orientation rule: the vane's 0° mark and the magnetometer's +X must point the same way (the bow), magnetometer level with +Z down. Why the addition in correctWindDirectionOctant works, per-mistake failure signatures, mast/cabin mounting, in-place (level boat swing) calibration, 3-step acceptance test.",
+      "tokens": 2700,
+      "updatedAt": "2026-08-16T01:00:00.000Z",
+      "source": "md-import"
+    },
     "docs/superpowers/specs/2026-08-14-dashboard-ux-design.md": {
       "description": "Dashboard UX rework — wind direction, graph resolution, status page",
       "tokens": 3482,

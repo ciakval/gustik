@@ -94,7 +94,7 @@ cd firmware && ~/.platformio/penv/bin/pio run -e pulse_diag -t upload
 **If resuming further autonomous work:** there is no more epics.md backlog to work through. Any next quest would come from Mlok directly (bug reports against the real hardware, UX feedback on the dashboard, a Story 5.x follow-up once hardware exists, or new scope).
 
 ### Open decisions carried from PRD/architecture (deferred, unchanged)
-- Magnetometer physical placement — explicit AC in epics.md Story 5.2.
+- Magnetometer physical placement — explicit AC in epics.md Story 5.2. **Constrained 2026-08-16 by `docs/hardware/sensor-orientation.md`**: placement is free (cabin, away from iron/current, ≥20-30 cm from the ESP32/powerbank) but *orientation* is not — +X to the bow, level, +Z down (component side down), parallel to the vane's 0° mark. Story 5.2 must also redo the hard-iron calibration in place, by swinging the boat level (not `--tumble`).
 - Physical shore/mobile-hotspot switch need — epics.md Story 4.1 left it out of scope; current firmware auto-selects by priority+scan (see `config/station_config.h`'s `selectNetworkIndex`).
 - Real-world Wi-Fi range from shore at Nechanice — untested; RSSI logging (2.5) + history endpoint (3.1) make it measurable post-event.
 - Local buffer capacity (4h target, implemented) and exact sampling interval (currently a 3000ms placeholder in `firmware/src/main.cpp`) — pending real flash capacity check on hardware.
