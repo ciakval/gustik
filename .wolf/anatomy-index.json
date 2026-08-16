@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-16T01:10:56.967Z",
-    "fileCount": 502,
+    "lastScanned": "2026-08-16T11:07:41.430Z",
+    "fileCount": 504,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "172fbcdf00d7ff39bcab820defa38ac79ce392f4f68a8441a730cc2d74c5573c",
-    "storeUpdatedAt": "2026-08-16T01:10:56.974Z"
+    "renderedHash": "a265e1922f8a6746fa7cc2975be8ba568a41c9e4415ec774658b31db03a2d7ca",
+    "storeUpdatedAt": "2026-08-16T11:07:41.439Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -5283,11 +5283,11 @@
     },
     "firmware/platformio.ini": {
       "description": "",
-      "tokens": 883,
-      "hash": "ed63f0262b7ffeba",
-      "size": 3311,
-      "mtimeMs": 1786821424992.523,
-      "updatedAt": "2026-08-15T19:17:05.081Z",
+      "tokens": 1236,
+      "hash": "45ffe104a6d69aec",
+      "size": 4632,
+      "mtimeMs": 1786876257143.3289,
+      "updatedAt": "2026-08-16T10:30:57.228Z",
       "source": "hook"
     },
     "firmware/src/config/hw/config_loader.cpp": {
@@ -7000,12 +7000,30 @@
     },
     "docs/superpowers/specs/2026-08-16-status-led-panel-design.md": {
       "description": "Status LED panel + mode button — design",
-      "tokens": 12385,
-      "hash": "bc5b6665ffe3d3c1",
-      "size": 51184,
-      "mtimeMs": 1786842656881.2136,
-      "updatedAt": "2026-08-16T01:10:56.967Z",
+      "tokens": 19096,
+      "hash": "b16392d5a2ac6730",
+      "size": 79009,
+      "mtimeMs": 1786878461349.5945,
+      "updatedAt": "2026-08-16T11:07:41.430Z",
       "source": "hook"
+    },
+    "firmware/partitions_gustik.csv": {
+      "description": "Custom 4 MB partition table replacing Arduino's default.csv: one 2 MB app slot instead of two 1.25 MB OTA slots, LittleFS grown to 1.875 MB. Header comments explain why app0 keeps subtype ota_0 and why the data partition must stay named \"spiffs\".",
+      "tokens": 535,
+      "hash": "6d7e4678e6433a60",
+      "size": 2005,
+      "mtimeMs": 1786876273032.9934,
+      "updatedAt": "2026-08-16T10:52:07.339Z",
+      "source": "md-import"
+    },
+    "docs/hardware/flash-memory-map.md": {
+      "description": "The device has ONE 4 MB flash chip (not two); probed chip/memory inventory, the old default.csv vs new partitions_gustik.csv layout with measured 92.4%→57.7% effect, what LittleFS actually holds (config.txt + /buf), the \"must stay named spiffs\" and \"reflash always needs uploadfs\" traps, and the bug-060 buffer-capacity arithmetic.",
+      "tokens": 2038,
+      "hash": "a345feec12493d0a",
+      "size": 8190,
+      "mtimeMs": 1786876364236.2864,
+      "updatedAt": "2026-08-16T10:52:07.339Z",
+      "source": "md-import"
     }
   }
 }

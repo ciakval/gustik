@@ -658,3 +658,75 @@
 | 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→7 lines | ~136 |
 | 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+6 lines) | ~123 |
 | 03:55 | Promoted battery sense from proposal to specified phase 6 after Mlok said yes | docs/superpowers/specs/2026-08-16-status-led-panel-design.md | Divider table + measured-ratio config key, EMA/3-cycle debounce vs TX sag, unknown-state invariant, mode 5 + global override (not a 9th fault code), tests, phase 7 = backend voltage graph | ~10k |
+
+## Session: 2026-08-16 11:43
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 12:03 | probed the attached ESP32 over serial: 38-pin DevKit v1 (D0WD-V3 rev3.1, 4MB, CP2102), NOT the 30-pin DevKitC the LED spec assumed | .wolf/cerebrum.md | board identity recorded; spec §4.1/§4.3 need correcting | ~9k |
+| 12:30 | Created firmware/partitions_gustik.csv | — | ~470 |
+| 12:30 | Edited firmware/platformio.ini | expanded (+9 lines) | ~192 |
+| 12:31 | Edited firmware/partitions_gustik.csv | modified Sizes() | ~193 |
+| 12:32 | Created docs/hardware/flash-memory-map.md | — | ~2174 |
+| 12:33 | flash memory map documented + partition table swapped to a single 2MB app slot (no OTA) | docs/hardware/flash-memory-map.md, firmware/partitions_gustik.csv, firmware/platformio.ini | flash 92.4% -> 57.7%, LittleFS 1.375 -> 1.875 MB; build OK, native 70/70; bug-062 logged; NOT yet flashed to device | ~35k |
+| 12:52 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+9 lines) | ~196 |
+| 12:52 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~107 |
+| 12:52 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 1→4 lines | ~291 |
+| 12:52 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+56 lines) | ~1154 |
+| 12:53 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | modified 16() | ~768 |
+| 12:53 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→3 lines | ~50 |
+| 12:53 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | modified ceiling() | ~155 |
+| 12:53 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→9 lines | ~142 |
+| 12:54 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+12 lines) | ~725 |
+| 12:54 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+10 lines) | ~201 |
+| 12:54 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 1→6 lines | ~105 |
+| 12:54 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→3 lines | ~70 |
+| 12:54 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | converter() → unplugged() | ~499 |
+| 12:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | modified switch() | ~650 |
+| 12:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | added error handling | ~888 |
+| 12:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 1→2 lines | ~50 |
+| 12:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→6 lines | ~73 |
+| 12:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+44 lines) | ~780 |
+| 12:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+8 lines) | ~325 |
+| 12:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→7 lines | ~87 |
+| 12:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 7→7 lines | ~105 |
+| 12:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 21→25 lines | ~292 |
+| 12:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+11 lines) | ~357 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+17 lines) | ~533 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+8 lines) | ~230 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→10 lines | ~128 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 17→19 lines | ~232 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+6 lines) | ~171 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~53 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 2→2 lines | ~38 |
+| 12:57 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→3 lines | ~59 |
+| 12:58 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+9 lines) | ~175 |
+| 12:58 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+10 lines) | ~246 |
+| 12:58 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+6 lines) | ~124 |
+| 12:58 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+12 lines) | ~388 |
+| 12:58 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 2→2 lines | ~162 |
+| 12:58 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~163 |
+| 12:59 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 10→14 lines | ~239 |
+| 12:59 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+10 lines) | ~295 |
+| 12:59 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→8 lines | ~152 |
+| 12:59 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 1→4 lines | ~46 |
+| 12:59 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→3 lines | ~47 |
+| 12:59 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 7→11 lines | ~184 |
+| 13:00 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | cells() → resistors() | ~255 |
+| 13:00 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+7 lines) | ~539 |
+| 13:00 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→6 lines | ~104 |
+| 13:01 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+7 lines) | ~121 |
+| 13:01 | LED panel spec revised end-to-end: 9 LEDs in two groups, arm latch, real board identity, steel-plate calibration ordering; all 10 open questions closed | docs/superpowers/specs/2026-08-16-status-led-panel-design.md | design complete, phase 0 done, phases 1-7 ready to implement | ~60k |
+| 13:06 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+6 lines) | ~160 |
+| 13:06 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~88 |
+| 13:06 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→5 lines | ~75 |
+| 13:06 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | reduced (-14 lines) | ~453 |
+| 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 2→4 lines | ~68 |
+| 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→3 lines | ~14 |
+| 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→5 lines | ~62 |
+| 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→5 lines | ~67 |
+| 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 6→4 lines | ~78 |
+| 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~60 |
+| 13:07 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~94 |
+| 13:08 | simplified battery sense: arm latch removed, measures the rail and accepts false alarms on USB | docs/superpowers/specs/2026-08-16-status-led-panel-design.md, .wolf/cerebrum.md, .wolf/STATUS.md | spec consistent, no armVolts key, no USB special-casing anywhere | ~8k |
+| 13:17 | removed the 100nF cap from battery sense (none on hand; use 10k/5k parallel divider instead) and stripped all historical narration from the spec | docs/superpowers/specs/2026-08-16-status-led-panel-design.md | spec 1383 -> 1282 lines, describes the design not its evolution | ~12k |

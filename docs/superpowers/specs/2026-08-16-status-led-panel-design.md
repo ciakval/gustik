@@ -1,6 +1,7 @@
 # Status LED panel + mode button — design
 
-**Date:** 2026-08-16 · **Status:** design only, nothing implemented ·
+**Date:** 2026-08-16 · **Status:** design settled; phase 0 (partition table)
+**implemented and flashed**, phases 1+ not started ·
 **Scope:** `firmware/` (plus one Czech section in `backend/src/static/manual.html`)
 
 Once the Station is on the committee boat there is no serial console, no
@@ -23,13 +24,16 @@ questions without a computer — and that costs zero flash when switched off.
 
 | # | Constraint | Consequence in this design |
 |---|---|---|
-| C1 | Flash is nearly full: **92.4 %** used, ~98 KB free (measured today, §9) | Whole feature behind a build flag; blink engine is a table, not code per state; no new format strings; a partition‑table escape valve is specified |
+| C1 | Flash: **57.7 % used, ~866 KB free** after the phase‑0 partition change (§9.1) | Not a binding constraint. The build flag and the table‑driven blink engine are kept because they are good design, not because flash forces them |
 | C2 | `loop()` must never block or be delayed | Panel is a non‑blocking tick, no `delay()`, no ISR, no allocation |
 | C3 | The panel must never affect measurement or transmission | One‑way data flow: the panel **reads** a snapshot, never writes to anything else (§8) |
 | C4 | Hardware may be absent | Missing LEDs and a missing button must both be silently harmless (§7) |
-| C5 | Supply is **4 × AA (~3000 mAh)**, not a powerbank — powerbanks auto‑shut‑down after ~2 h even in "low output" mode | Auto‑sleep now has a real (if modest) battery justification, not only a distraction one; budget re‑done against 3000 mAh in §4.6 |
+| C5 | Supply is **4 × AA (~3000 mAh)**. Not a powerbank — those auto‑shut‑down after ~2 h even in "low output" mode (bug‑061) | Auto‑sleep has a battery justification as well as a distraction one; budget in §4.6 |
 | C6 | LEDs are a distraction on a boat, especially at dusk | Auto‑sleep to a heartbeat; a long press kills them entirely |
-| C7 | Kit LEDs (red/yellow/green/blue, **Vf 2.0–2.4 V** per their note; blue measured 2.6 V) and **330 Ω is the only resistor value on hand** | One resistor value throughout at ~2–4 mA per lane — confirmed visible on all four colours (§4.2) |
+| C7 | Kit LEDs (red/yellow/green/blue, **Vf 2.0–2.4 V** per their note; blue measured 2.6 V) and **330 Ω is the only resistor value on hand**. Up to **5 LEDs of each colour** are available; **9 resistors** is the agreed budget | One resistor value throughout at ~2–4 mA per LED. Nine LEDs in one flat row, arranged as two groups (§3, §4.1) |
+| C10 | **No switch of any kind is available.** The battery pack is connected by plugging a wire into the breadboard | No power switch in the design. This dissolves the divider standby‑drain problem (§4.7) and adds a new brown‑out cause (§4.6, §5.1) |
+| C11 | **The 5 V rail is sometimes fed from USB**, especially during development. Pack and USB are never connected simultaneously | Battery sense cannot distinguish USB from a half‑flat pack by voltage alone, and **no attempt is made to**. It measures the rail; on USB it will report low and raise the alarm. Accepted (§4.7) |
+| C12 | The board and the magnetometer are permanently mounted on a **steel plate**, on one large breadboard | Magnetic, not electrical. The panel's own currents are irrelevant (§4.8); the calibration *ordering* it forces is not |
 | C8 | **No enclosure exists.** First deployment will be a cardboard box or similar, and an operator can simply peek inside at any LED | v1 needs no penetrations, no light pipes, no waterproofing — and the box shades the panel, which largely retires the daylight worry. §4.5 keeps the sealed‑enclosure guidance for Story 5.2 only |
 | C9 | The three LEDs already in the firmware (GPIO2/25/26) have **never been fitted or observed** | Those pins are free to reassign — no migration, no compatibility concern, nothing depending on their present meaning (§4.1) |
 
@@ -49,7 +53,7 @@ questions without a computer — and that costs zero flash when switched off.
 
 Written as the questions someone asks, in the order they ask them, with the
 failure each one catches. This inventory is the real content of the design —
-the encoding in §5 is just how it gets onto four LEDs.
+the encoding in §5 is just how it gets onto nine LEDs.
 
 | # | Question | Catches | Currently visible? |
 |---|---|---|---|
@@ -68,7 +72,7 @@ the encoding in §5 is just how it gets onto four LEDs.
 | Q13 | Is the vane wired? | Open/short on GPIO34 lands the ADC outside every known detent band | ❌ |
 | Q14 | Is the magnetometer answering? | I2C failure → headings silently freeze at the last known value | ❌ |
 | Q15 | What is the wind doing, right now, with no phone? | The whole point of the station, when the network is the thing that is broken | ❌ |
-| Q16 | **How much battery is left?** | The station going dark mid‑regatta. New with C5: a powerbank at least had its own charge LEDs, **4 × AA has no gauge of any kind** | ❌ — answered by phase 6, §4.7 |
+| Q16 | **How much battery is left?** | The station going dark mid‑regatta — **4 × AA has no gauge of any kind** | ❌ — answered by phase 6, §4.7 |
 
 Two observations shape everything below:
 
@@ -83,21 +87,54 @@ Two observations shape everything below:
 
 ## 3. Design shape
 
-Four LEDs cannot show fifteen facts at once, so the panel is layered:
+Nine LEDs in one flat row, split into **two groups that are different kinds of
+display**:
 
-1. **A default "at a glance" mode** with four independent lanes, each a fixed
-   colour with a fixed meaning, readable without counting anything. It answers
-   Q1–Q4, Q7, Q9, Q10 immediately, and points at the rest.
-2. **A single fault code** on the red lane (N flashes, pause, repeat) that
-   names *which* problem, for the cases where "something is wrong" is not
-   enough. Q3, Q7, Q8, Q9, Q11 collapse into this.
-3. **Three detail modes** reached by pressing the button, each re‑purposing all
-   four LEDs for one quantity: signal strength (Q5, Q6), sensor liveness
-   (Q12–Q14), wind (Q15).
+```
+  R   Y   G   B            G   G   Y   Y   R
+ └───── status ─────┘     └────── detail ──────┘
+   four indicators           a green→red ramp
+   colour = identity         colour = severity
+   always on                 button selects what it shows
+```
+
+The split is the whole design, and it rests on two rules that must not be
+traded away:
+
+- **Status is never hidden.** Nothing the button does can blank the fault lane,
+  the heartbeat or the data lane. A panel that hides a fault while someone
+  checks the wind is worse than no panel.
+- **Colour carries exactly one meaning per group.** Within the status group
+  colour is *identity* (yellow = radio); within the detail group it is
+  *magnitude* (yellow = middling). Re‑using one group for both makes a colour
+  unreadable until you know which mode you are in.
+
+With nine, the left group never changes and the right group is unmistakably a
+meter. A mixed‑colour cluster reads as a set of separate indicators; an ordered
+green‑to‑red ramp reads as a scale. Both idioms are universal — instrument
+panels and fuel gauges — so nobody has to be taught which group is which. A
+physical gap and the legend (§11) reinforce it.
+
+Note the two reds sit at the **extreme opposite ends of the row**, as far apart
+as the layout allows, and **blue appears exactly once in the whole panel**.
+Blue only ever means "the loop is alive".
+
+So the panel is layered:
+
+1. **The status group**, four independent lanes, each a fixed colour with a
+   fixed meaning, readable without counting. Answers Q1–Q4, Q7, Q9, Q10
+   immediately and points at the rest. **Never changes.**
+2. **A fault code** on the status red lane (N flashes, pause, repeat) naming
+   *which* problem, for when "something is wrong" is not enough. Q3, Q7, Q8,
+   Q9, Q11 collapse into this.
+3. **The detail group**, a five‑position scale showing one quantity at a time.
+   Defaults to **wind** (Q15) — so with nobody touching anything the panel
+   answers both "is it working" and "how windy is it". The button cycles it
+   through signal (Q5, Q6), sensors (Q12–Q14) and, in phase 6, battery (Q16).
 4. **Sleep**, so that none of this blinks at anybody for eight hours.
 
-The button is only ever needed for layer 3. Layers 1, 2 and 4 work with no
-button fitted at all.
+The button is only ever needed for layer 3, and only to move *off* the default.
+Layers 1, 2 and 4 work with no button fitted at all.
 
 ### Reading rules (learn once, apply everywhere)
 
@@ -110,8 +147,30 @@ button fitted at all.
 | **Code** (N fast flashes, 1.2 s pause, repeat) | a numbered fault, §5.3 |
 | **Off** | absent / not applicable |
 
-Colours keep their meaning across all modes: **blue = activity**,
-**green = good**, **yellow = caution / secondary**, **red = fault**.
+**In the status group, colour is identity** and holds across every mode:
+blue = activity, green = good, yellow = caution/secondary, red = fault.
+
+**In the detail group, colour is severity** and holds across every mode:
+green = fine, yellow = paying attention, red = the extreme. Exactly **one LED
+is lit at a time**, and it slides left→right as the situation deteriorates.
+
+That last rule is why the detail group is a **dot and not a filled bar**. Three
+reasons, each of which rules out a fill on its own:
+
+- A dot does not look like a signal bar, so it never invokes the "more bars =
+  better" expectation from phones. A fill does, and that forces an inverted
+  reading for signal and battery while wind wants the opposite direction — two
+  conventions fighting in one display.
+- A fill lit from the red end leaves red on at every level ≥ 1. On a
+  permanently‑visible group that fights the status group's red = fault
+  directly. With a dot, red is dark until it means something.
+- You read the value **by colour alone**, with no counting and no judging bar
+  length on a rocking boat — the same reasoning that caps the fault codes at
+  eight.
+
+One accessibility consequence worth having for free: meaning is carried by
+**position as well as colour**, so the detail group stays readable with a
+red‑green deficiency, which a pure red/green indicator panel would not.
 
 ---
 
@@ -119,21 +178,57 @@ Colours keep their meaning across all modes: **blue = activity**,
 
 ### 4.1 Pin map
 
-The panel takes over GPIO25/26 rather than adding to them. This was originally
-argued on the grounds that their present meanings (`config parsed`,
-`WiFi associated`) are preserved by the new encoding — but the simpler truth
-(C9) is that **no LED has ever been fitted to GPIO2, 25 or 26 and nobody has
-ever read one**. They are unused outputs, not an installed base, so this is a
-reassignment rather than a migration and there is nothing to keep compatible.
+The panel takes over GPIO25/26 rather than adding to them. **No LED has ever
+been fitted to GPIO2, 25 or 26 and nobody has ever read one** (C9), so these are
+unused outputs, not an installed base — a reassignment rather than a migration,
+with nothing to keep compatible.
+
+**The board is not a DevKitC.** Probed over serial (`esptool.py flash_id`): **ESP32‑D0WD‑V3 rev 3.1** (the die in a WROOM‑32E
+module), **4 MB flash**, 40 MHz crystal, CP2102 bridge, MAC `30:76:f5:b9:13:04`.
+Together with the silkscreen (`V5`, `CMD`, `SD3`, `SD2` … on one side; `CLK`,
+`SD0`, `SD1` … on the other) that identifies it as the **38‑pin
+"ESP32 DevKit v1 / NodeMCU‑32S" style board** — the giveaway is that the flash
+bus pins are broken out at all, which the 30‑pin DevKitC does not do.
+
+Header layout, top → bottom:
+
+| Left column | Right column |
+|---|---|
+| `3V3 EN 36 39` **`34 35 32 33 25 26 27`** `14 12 GND` **`13`** `SD2 SD3 CMD V5` | `GND 23 22 TX RX 21 GND` **`19 18`** `5` **`17 16 4`** `0 2 15 SD1 SD0 CLK` |
+
+Two consequences worth the layout: the **entire status group plus both sensors plus a
+ground plus the button is one contiguous 11‑pin run down the left column**, and
+the detail group is a 6‑pin run down the right column.
 
 | Signal | GPIO | Notes |
 |---|---|---|
-| RED | 32 | output only in this design; ADC1 unused here |
-| YELLOW | 33 | " |
-| GREEN | 25 | **was** `config loaded` |
-| BLUE | 26 | **was** `WiFi connected` |
-| Button | 13 | `INPUT_PULLUP`, other side to GND. Sits directly beside a GND pin on the 30‑pin DevKitC header |
+| **status** RED | 32 | left column; output only in this design, ADC1 unused here |
+| **status** YELLOW | 33 | " |
+| **status** GREEN | 25 | **was** `config loaded` |
+| **status** BLUE | 26 | **was** `WiFi connected` |
+| **detail** 1 GREEN | 19 | right column |
+| **detail** 2 GREEN | 18 | " |
+| **detail** 3 YELLOW | 17 | " — note GPIO**5** sits physically between 18 and 17 and is **skipped** (strapping pin, boot‑time output glitch) |
+| **detail** 4 YELLOW | 16 | " |
+| **detail** 5 RED | 4 | " |
+| Button | 13 | `INPUT_PULLUP`, other side to GND. Sits directly below a GND pin on the left column |
 | onboard LED | 2 | **unchanged** — keeps Story 2.4 / FR‑5 semantics verbatim, so the requirement is satisfied with the panel absent, disabled, or asleep |
+
+GPIO16/17 are safe here **because this is a WROOM module**. On a WROVER they
+are wired to the PSRAM chip and must not be used — worth re‑checking if the
+board is ever swapped.
+
+> ### ⚠️ GPIO6–11 are physically exposed on this board
+>
+> `CLK / SD0 / SD1 / SD2 / SD3 / CMD` at the bottom of both columns are the
+> **SPI flash bus**. They look like six free pins and they are not: anything
+> connected there crashes the chip or corrupts flash. Two specific traps:
+>
+> - **`V5` is immediately adjacent to `CMD` (GPIO11)** — and `V5` is exactly
+>   where the battery pack's `+` wire lands (C10). One stray strand between
+>   them puts 6.4 V onto a flash pin.
+> - **The button on GPIO13 is four pins above `V5`**, with `SD2/SD3/CMD` in
+>   between. Route that wire away from the bottom of the header, not along it.
 
 Keeping GPIO2 unchanged is now a convenience rather than a compatibility
 obligation: it costs nothing, it is the one indicator that needs no soldering,
@@ -143,10 +238,9 @@ time by this panel's red lane** — the onboard LED has been dutifully blinking
 that signal at nobody since Story 2.4, and inside a sealed enclosure it will
 continue to. Treat GPIO2 as a bench aid, and the red lane as the requirement.
 
-`32, 33, 25, 26` are four consecutive header pins, immediately above the
-existing sensor pins `27` (anemometer) and `34` (vane) on the EN/RST side —
-one tidy run, one common ground rail. Verified unclaimed: `main.cpp` uses
-2/25/26/27/34, `Wire` uses 21/22, nothing else in `src/` touches a GPIO.
+Verified unclaimed: `main.cpp` uses 2/25/26/27/34, `Wire` uses 21/22, nothing
+else in `src/` touches a GPIO. Ten pins total for the panel (9 LEDs + button),
+out of roughly twenty free.
 
 Deliberately avoided: **GPIO12** (must read low at boot — an LED is *probably*
 harmless there, but "probably" is not a reason to use a strapping pin);
@@ -157,13 +251,21 @@ it would flash an LED at every reset, which is why the button is not there).
 Pin assignments are compile‑time constants, overridable without editing source
 via `build_flags = -DGUSTIK_PANEL_PIN_RED=32` etc.
 
-### 4.2 Current‑limiting resistors — settled: 330 Ω on all four
+### 4.2 Current‑limiting resistors — 330 Ω on all nine
 
 Active high: `GPIO → R → LED anode`, `cathode → GND`, so
 `digitalWrite(pin, HIGH)` lights it.
 
-**All four lanes use 330 Ω.** It is the only value on hand, and Mlok confirmed
-on 2026‑08‑16 that all four colours light visibly with it. The LEDs' own note
+**All nine LEDs use 330 Ω.** It is the only value on hand, and all four colours
+have been confirmed to light visibly with it.
+
+Colour count for the layout in §3 — inside the "up to 5 of each" ceiling (C7):
+
+| | red | yellow | green | blue | total |
+|---|---:|---:|---:|---:|---:|
+| status group | 1 | 1 | 1 | 1 | 4 |
+| detail group | 1 | 2 | 2 | 0 | 5 |
+| **total** | **2** | **3** | **3** | **1** | **9** | The LEDs' own note
 gives Vf 2.0–2.4 V, and the blue was measured at 2.6 V:
 
 | Colour | Vf | I at 330 Ω from 3.3 V |
@@ -171,14 +273,17 @@ gives Vf 2.0–2.4 V, and the blue was measured at 2.6 V:
 | Red / yellow / green | 2.0–2.4 V (per the kit's note) | 2.7–3.9 mA |
 | Blue | 2.6 V (measured) | 2.1 mA |
 
-`I = (3.3 V − Vf) / 330 Ω`. Every lane sits far inside the ESP32's 12 mA
-recommended per‑pin figure (40 mA absolute maximum), and ~13 mA total with all
-four solid — which is also why the power budget in §4.6 is as small as it is.
-One value everywhere means no chance of fitting the wrong resistor to the wrong
-lane, which is worth more here than an optimal per‑colour match.
+`I = (3.3 V − Vf) / 330 Ω`. Every LED sits far inside the ESP32's 12 mA
+recommended per‑pin figure (40 mA absolute maximum). One value everywhere means
+no chance of fitting the wrong resistor to the wrong position, which is worth
+more here than an optimal per‑colour match.
 
-**The high‑Vf green trap does not apply to this kit** (it was the one open
-hardware question in the first draft, now closed). Bright‑green InGaN LEDs are
+**Nine LEDs cost almost nothing over four**, because the detail group is a dot:
+worst case is four status lanes solid (~12 mA) plus one detail LED (~3 mA) =
+**~15 mA**, against the ~13 mA the original four‑LED budget assumed. §4.6 is
+unchanged in substance.
+
+**The high‑Vf green trap does not apply to this kit.** Bright‑green InGaN LEDs are
 electrically blue dice and run at Vf ≈ 2.9–3.3 V, leaving almost nothing across
 the resistor from a 3.3 V rail; these are 2.0–2.4 V parts and behave normally.
 Keep it in mind only if a lane is ever replaced from a different batch — the
@@ -186,56 +291,76 @@ symptom is one colour visibly dimmer than the rest at the same resistor value,
 and the check is the same one used on the blue here (LED in series with 1 kΩ
 across 3.3 V, measure across the LED itself).
 
-**Still unverified: daylight.** 2–4 mA is below the 4–6 mA these lanes were
-originally sized for, and "visible on a bench" is not "visible on the water at
-midday" — see §4.5. Check it outdoors before the enclosure is closed up. There
+**Still unverified: daylight.** 2–4 mA is modest, and "visible on a bench" is
+not "visible on the water at midday" — see §4.5. Check it outdoors before the enclosure is closed up. There
 is headroom if a lane needs more punch: 220 Ω gives 4–6 mA and 150 Ω gives
 6–9 mA, both still well inside the per‑pin limit. Prefer shading the panel over
 raising the current — it is the cheaper fix and it costs no battery.
 
 ### 4.3 Wiring
 
-```
-                         ESP32 DevKitC (30-pin), EN/RST side
-                        ┌───────────────────────────────────┐
-                        │ ...                               │
-             (vane)  34 ┤                                   │
-                     35 ┤                                   │
-                     32 ├──[330Ω]──▶|──┐   RED              │
-                     33 ├──[330Ω]──▶|──┤   YELLOW           │
-                     25 ├──[330Ω]──▶|──┤   GREEN            │
-                     26 ├──[330Ω]──▶|──┤   BLUE             │
-       (anemometer)  27 ┤              │                    │
-                     14 ┤              │                    │
-                     12 ┤              │  common cathode    │
-                    GND ├──────────────┘  rail              │
-                     13 ├──────┐                            │
-                    ...        │                            │
-                        └──────┼────────────────────────────┘
-                               │
-                          ┌────┴────┐
-                          │  push   │   momentary, normally open
-                          │ button  │   GPIO13 → button → GND
-                          └────┬────┘   internal pull-up, active LOW
-                               │
-                              GND      (optional 100 nF across the button
-                                        if the wiring run is long)
+38‑pin ESP32 DevKit v1. Left column carries the status group, right column the
+detail group; both share the breadboard's ground rail.
 
-           ▶|  = LED, arrow points from anode (GPIO side) to cathode (GND side)
+```
+      LEFT COLUMN (EN/RST side)                RIGHT COLUMN
+   ┌──────────────────────────────┐    ┌──────────────────────────────┐
+   │ ...                          │    │ ...                          │
+   │ 34 ── vane        (existing) │    │ 21 ── SDA         (existing) │
+   │ 35 ── battery sense  (§4.7)  │    │ GND ─────────────────┐       │
+   │ 32 ──[330Ω]──▶|──┐  RED      │    │ 19 ──[330Ω]──▶|──┐   │ GRN 1 │
+   │ 33 ──[330Ω]──▶|──┤  YELLOW   │    │ 18 ──[330Ω]──▶|──┤   │ GRN 2 │
+   │ 25 ──[330Ω]──▶|──┤  GREEN    │    │  5 ── SKIP! strapping pin    │
+   │ 26 ──[330Ω]──▶|──┤  BLUE     │    │ 17 ──[330Ω]──▶|──┤   │ YEL 3 │
+   │ 27 ── anemometer (existing)  │    │ 16 ──[330Ω]──▶|──┤   │ YEL 4 │
+   │ 14                │          │    │  4 ──[330Ω]──▶|──┤   │ RED 5 │
+   │ 12                │          │    │  0 ── SKIP! strapping pin    │
+   │ GND ──────────────┘ common   │    │  2 ── onboard LED (existing) │
+   │ 13 ──┐              cathode  │    │ 15 ── SKIP! strapping pin    │
+   │ SD2  │  ⚠ flash bus          │    │ SD1  ⚠ flash bus             │
+   │ SD3  │  ⚠ do not use         │    │ SD0  ⚠ do not use            │
+   │ CMD  │  ⚠                    │    │ CLK  ⚠                       │
+   │ V5 ──┼── battery pack +      │    │                              │
+   └──────┼───────────────────────┘    └──────────────────────────────┘
+          │
+     ┌────┴────┐
+     │  push   │   momentary, normally open
+     │ button  │   GPIO13 → button → GND
+     └────┬────┘   internal pull-up, active LOW
+          │
+         GND
+
+   ▶|  = LED, arrow points from anode (GPIO side) to cathode (GND side)
 ```
 
-**Fitting fewer than four LEDs is supported.** In priority order: **RED**
-(faults — the only one that tells you something is wrong), then **BLUE**
-(alive/heartbeat — the bug‑030 detector), then **GREEN** (data is landing),
-then **YELLOW**. With two LEDs fitted you still get every fault code and proof
-of life; the detail modes just have fewer bar segments and degrade to
-"only the fitted lanes are visible", no code change.
+Physical arrangement is **one flat row of nine**, in the §3 order
+`R Y G B ⎢ G G Y Y R`, with a visible gap between the groups. The row's order is
+a wiring choice, not a pin‑order constraint — jumpers can cross freely, and the
+ZY‑204 breadboard (64 rows) has room to spare (§4.5).
+
+**Fitting fewer than nine LEDs is supported**, and this is a tested invariant
+(§7.3), not a hope. In priority order: **status RED** (faults — the only one
+that says something is wrong), **status BLUE** (alive/heartbeat, the bug‑030
+detector), **status GREEN** (data is landing), **status YELLOW** (radio), then
+the detail group. With the status group alone you still get every fault code
+and proof of life, and the button simply has nothing to show. With the detail
+group partly fitted, unfitted positions are dark — the dot is still readable by
+position for the ones present. No code change in any of these cases.
 
 ### 4.4 Button alternatives
 
+**A button is in scope.** The alternatives below are kept for Story 5.2.
+
+> **No switch of any kind is on hand yet (C10).** A button is improvisable on
+> the breadboard in the meantime: poke a bare jumper into GPIO13's row, leave
+> the far end loose, and tap it against the ground rail. The 30 ms debounce in
+> §6 handles the bounce and it is electrically identical to a momentary switch
+> — enough to exercise every mode on the bench and to decide whether the modes
+> justify a real button before buying one.
+
 - **No button fitted.** `INPUT_PULLUP` reads HIGH forever → no events → the
-  panel stays in the default mode. Fully supported, and the mode this design
-  expects for a first build.
+  panel stays in the default mode (wind). Fully supported, and still the
+  behaviour if the button is left off or fails.
 - **The onboard `BOOT` button (GPIO0)** costs nothing to add as a second input
   and is handy on the bench. Two caveats: it is inaccessible inside a sealed
   enclosure, and holding it *during reset* drops the chip into the bootloader.
@@ -255,10 +380,12 @@ is good news for the one thing §4.2 left open. A box shades the LEDs by
 construction, an operator opens it or peers in, and nothing needs to be
 mounted, drilled or sealed. Concretely, for the first deployment:
 
-- Leave the LEDs on the breadboard or a scrap of protoboard, pointing up.
+- Leave the LEDs on the breadboard, pointing up. **Space is not a constraint:**
+  the board is a **ZY‑204, 64 rows × 20 columns plus 4 power rails**, so the
+  38‑pin module, nine LEDs in a row, nine resistors, the button and the §4.7
+  divider all fit with room over.
 - The daylight question from §4.2 largely goes away: 2–4 mA is fine in shade,
-  and inside a box everything is shade. Still worth a glance outdoors, but it
-  is no longer a decision that blocks anything.
+  and inside a box everything is shade. Still worth a glance outdoors.
 - **Label the lanes on the box itself** — marker pen on the cardboard is
   entirely adequate and better than the card in §11 for v1, because it cannot
   be lost.
@@ -280,38 +407,53 @@ applies and should be read then, not now:
   3 mm acrylic rod light pipes.
 - Only then does the reed‑switch button of §4.4 start to earn its place.
 
-### 4.6 Power budget — re‑done for 4 × AA
+### 4.6 Power budget
 
-The supply changed (C5): a powerbank that auto‑shut‑down after ~2 h even in
-"low output" mode has been replaced by **4 × AA, ~3000 mAh nominal**, feeding
-the DevKitC's `VIN`/5V pin through its onboard AMS1117 linear regulator. That
-is a **3.3× smaller pack** than the powerbank this budget originally assumed,
-so the panel's share is worth counting now.
+The supply is **4 × AA, ~3000 mAh nominal** (C5), feeding the board's `V5`/VIN
+pin through its onboard AMS1117 linear regulator. Against a pack that small the
+panel's share is worth counting.
 
 | State | Draw | Over a 10 h race day | Share of 3000 mAh |
 |---|---|---|---|
 | ESP32 with Wi‑Fi (existing baseline) | ~80–160 mA avg | 800–1600 mAh | 27–53 % |
-| Panel awake, typical (2 lanes solid) | +7 mA | +70 mAh | **2.3 %** |
-| Panel awake, worst case (4 solid, 330 Ω) | +13 mA | +130 mAh | **4.3 %** |
+| Panel awake, typical (2 status lanes + 1 detail dot) | +9 mA | +90 mAh | **3.0 %** |
+| Panel awake, worst case (4 status solid + 1 dot, 330 Ω) | +15 mA | +150 mAh | **5.0 %** |
 | Panel asleep (60 ms pulse / 10 s) | +0.02 mA | +0.2 mAh | ~0 |
 | Panel hard off | 0 | 0 | 0 |
 
-**Conclusion: keep the 300 s sleep default.** With a powerbank the honest
-answer was "battery is not the reason to auto‑sleep"; against 3000 mAh a panel
-left awake all day costs 2–4 % of the pack, which is small but no longer noise.
-Sleeping makes it exactly zero while preserving the "dark = dead" rule, so
-there is now no argument on either side for leaving it awake.
+**Conclusion: keep the 300 s sleep default.** Against 3000 mAh a panel left
+awake all day costs 3–5 % of the pack — small, but not noise. Sleeping makes it
+zero while preserving the "dark = dead" rule.
 
 **Three things about this supply that are not LED concerns but affect whether
 the station survives the day** — recorded here because the numbers above are
 meaningless if the pack cannot deliver them, and none of it is currently
 written down anywhere:
 
-- **A linear regulator throws away 45 % of a 6 V pack.** Runtime is
-  `usable mAh / average mA` regardless of pack voltage, so the loss shows up as
-  heat, not lost hours — but a small buck converter (~€2, into `VIN` at 5 V, or
-  straight to the `3V3` pin bypassing the AMS1117) would roughly double the
-  runtime for the same batteries. Much larger than anything in the table above.
+- **No buck converter is available, and none is coming for v1.** The AMS1117
+  stays, which makes this budget final rather than provisional. Runtime is `usable mAh / average mA` regardless of pack voltage,
+  so the regulator's ~45 % loss shows up as **heat, not lost hours** — but it
+  also means there is no cheap runtime win left to find, and Story 5.1's
+  endurance test is now the only way to know whether the pack covers a race
+  day. Rough expectation, to be measured and not trusted: at ~100–130 mA
+  average, alkaline AA to the AMS1117's ~1.1 V/cell cutoff plausibly gives
+  **11–16 h** — probably enough for 10 h, without much margin, and the
+  regulator quits before the cells are empty. (A ~€2 buck into `VIN`, or
+  straight to `3V3` bypassing the AMS1117, would roughly double it. Kept on
+  record for a later season, not for this one.)
+- **The regulator will run hot in a cardboard box.** 3.1 V dropped at ~120 mA
+  is **~0.37 W** in a SOT‑223 package with only the devkit's copper to spread
+  it — 30–40 °C above ambient in still air. Not dangerous, but do not pack the
+  board in foam or bubble wrap: give the box a couple of holes and keep the
+  regulator end clear. It falls to ~0.2 W as the pack approaches the knee.
+- **There is no power switch (C10)**, so "off" means pulling the pack's wire
+  out of the breadboard, and that is also how the Station is power‑cycled. Two
+  consequences: the §4.7 divider draws nothing when the pack is unplugged
+  (which is what removes the standby‑drain problem entirely), and a marginal
+  breadboard contact in the pack's `+` path becomes a real failure mode — see
+  the brown‑out note in §5.1. Seat the pack leads in the power rails rather
+  than a single tie‑point column, and consider doubling both leads: two
+  contacts in parallel halve the resistance for the cost of two jumpers.
 - **Alkaline, not NiMH, for this wiring.** 4 × NiMH is 4.8 V nominal and sags
   to ~4.4 V under load, right at the AMS1117's dropout — the 3.3 V rail would
   brown out with most of the charge still in the cells. 4 × alkaline starts at
@@ -320,15 +462,13 @@ written down anywhere:
   at a low discharge current; at ~120 mA continuous, alkaline AA cells give
   meaningfully less, and the regulator cuts out before the cells are empty.
   Plan on measuring a real run rather than trusting the label — that is Story
-  5.1's endurance test, whose premise the powerbank finding just invalidated.
+  5.1's endurance test.
 
-### 4.7 Battery sense (Q16) — accepted, built as phase 6
+### 4.7 Battery sense (Q16) — phase 6
 
-**Decided 2026‑08‑16: build it, as an independent phase after the panel
-works.** The supply change opened a gap that did not exist before: **4 × AA has
-no gauge**. A powerbank at least had its own charge LEDs; dry cells give no
-warning at all, and the first symptom of a flat pack is the station going
-silent mid‑regatta. The panel is already the thing an operator looks at, so
+**Built as an independent phase after the panel works.** The supply leaves a
+gap: **4 × AA has no gauge.** Dry cells give no warning at all, and the first
+symptom of a flat pack is the station going silent mid‑regatta. The panel is already the thing an operator looks at, so
 this is where the answer belongs.
 
 It stays behind its own build flag and its own rollout phase because it is the
@@ -347,18 +487,46 @@ Target **ratio ≈ 1/3**, which puts a fresh 6.6 V pack at ~2.2 V — inside ADC
 11 dB range with margin, and well clear of the badly compressed bottom of the
 ADC's range that the vane bring‑up ran into.
 
-| Resistors (top leg / bottom leg) | Ratio | 6.6 V reads | 4.3 V reads | Divider draw |
-|---|---|---|---|---|
-| 2 × 100 kΩ in series / 100 kΩ | 0.333 | 2.20 V | 1.43 V | 22 µA |
-| 100 kΩ / 47 kΩ | 0.320 | 2.11 V | 1.37 V | 45 µA |
-| 2 × 10 kΩ in series / 10 kΩ | 0.333 | 2.20 V | 1.43 V | 220 µA |
+**Three 10 kΩ resistors, and no capacitor** — neither is negotiable, both are
+what is on hand. With no cap the *arrangement* matters: put the two spare
+resistors **in parallel on the bottom leg**, not in series on the top.
 
-**The three‑equal‑resistors trick is the practical one** given that the only
-value confirmed on hand is 330 Ω (§4.2): any single resistor value gives ratio
-1/3 with two in series on top and one on the bottom, so whatever the kit
-actually contains will work. Prefer 100 kΩ; 10 kΩ is fine too (220 µA over 10 h
-is 2.2 mAh, 0.07 % of the pack). **Do not use two equal resistors** — ratio 1/2
-puts 6.6 V at 3.3 V, past the ADC's range and past the pin's rating.
+| Arrangement (top leg / bottom leg) | Ratio | 6.6 V reads | Source impedance | Draw |
+|---|---|---|---|---|
+| **10 kΩ / 2 × 10 kΩ parallel (5 kΩ)** ← **chosen** | 0.333 | 2.20 V | **3.3 kΩ** | 427 µA |
+| 2 × 10 kΩ series (20 kΩ) / 10 kΩ | 0.333 | 2.20 V | 6.7 kΩ | 213 µA |
+
+Both give the same ratio from the same three resistors, but the first halves
+the impedance the ADC's sample‑and‑hold has to charge — which is most of what a
+100 nF cap from tap to GND would have bought. The extra 214 µA is 2.1 mAh over
+a 10 h day, 0.07 % of the pack, so the trade is one‑sided.
+
+**Do not use two equal resistors** — ratio 1/2 puts 6.6 V at 3.3 V, past the
+ADC's range and past the pin's rating.
+
+**Without a cap, filtering is entirely the firmware's job.** The cap would also
+have smoothed the Wi‑Fi TX sag; the EMA and 3‑cycle confirmation below now
+carry that alone, which is what they were specified for anyway. Expect a
+noisier raw reading, and calibrate the ratio against a multimeter on a settled
+value rather than a single sample. Adding 100 nF later is a strict improvement
+and needs no code change.
+
+**The divider costs nothing when the pack is unplugged**, because there is no
+switch (C10): pulling the pack's wire disconnects the divider with it.
+
+**Ceiling: this divider cannot represent more than ~7.35 V.** ADC1 at 11 dB has
+a usable range of roughly 150–2450 mV, so 2.45 V / 0.3333 ≈ 7.35 V is the
+highest pack voltage that reads back truthfully; above that the ADC saturates
+and reports ~7.3 V, i.e. "healthy". A fresh alkaline pack at 6.4 V reads 2.13 V,
+clear of it — but note this **kills the naive "> 8.0 V ⇒ implausible" check**,
+which is unreachable through this divider. The upper implausibility test is
+therefore expressed as **"raw reading pinned at full scale"**, which detects
+saturation regardless of ratio, rather than as a voltage threshold.
+
+**The eFuse VRef calibration is present on this chip** — confirmed by probe
+(`Features: … VRef calibration in efuse`). So
+`analogReadMilliVolts()` has a real calibrated reference, ~±3 % rather than
+~±10 %, which is comfortable against thresholds 400 mV apart.
 
 > **Measure the ratio, do not assume it.** Kit resistors are ±5 %, and that
 > error scales the reading directly. Calibrate once with a multimeter across
@@ -380,10 +548,55 @@ compiled, GPIO35 is untouched, and the mode cycle is 1→2→3→4→1 as before
   crossed for **3 consecutive cycles** before changing state. Hysteresis on the
   way back up, so a recovering pack does not oscillate between warn and ok.
 - **Implausible reading ⇒ `unknown` ⇒ no battery indication at all.** A
-  computed pack voltage below 3.0 V or above 8.0 V means the divider is not
-  fitted, is miswired, or the pin is floating. This is §7.3's "absent hardware
-  is a no‑op" invariant applied here, and it is what keeps a half‑built board
-  from flashing a permanent low‑battery alarm.
+  computed pack voltage below 3.0 V, or a raw ADC reading pinned at full scale
+  (see the ceiling note above), means the divider is not fitted, is miswired,
+  or the pin is floating. This is §7.3's "absent hardware is a no‑op" invariant
+  applied here, and it is what keeps a half‑built board from flashing a
+  permanent low‑battery alarm.
+
+#### The USB caveat — known, and accepted
+
+The divider is on **`V5`** — there is no practical way to attach probes to the
+pack itself, so tapping the pack directly is not available (C11). `V5` is also
+the net USB feeds, which means the reading is of *the rail*, not of the pack:
+
+| Source | `V5` reads | Which band |
+|---|---|---|
+| Fresh 4 × AA | 6.0–6.4 V | ok |
+| Pack at the knee | 5.0 V | **warn** |
+| **USB (through a protection diode)** | **~4.6–4.8 V** | **warn, sometimes critical** |
+| USB (no diode) | ~5.0 V | **warn** |
+
+**So a USB‑powered board will read `warn`, sometimes `critical`, and §5.10's
+override will fire every 120 s.** That is a real cost — the fastest way to ruin
+an alarm is to let it cry wolf — and it is **accepted on purpose**.
+
+The reasoning, recorded so it is not relitigated: thresholds cannot separate
+these cases (a nearly‑flat alkaline pack and a USB rail genuinely read the same
+voltage), so the only alternatives were to detect the *battery* by some
+side‑channel — a latch on "has the rail ever read above 5.4 V", say — or to
+accept the false alarm. **Every such scheme adds a second, invisible state that
+can itself be wrong**: a pack that boots already part‑used never arms, and then
+the alarm is silent exactly when it is needed. Given that
+
+- USB power only ever happens on the bench, where a person is already looking
+  at a serial console, and
+- **in the deployed configuration USB is simply not present**,
+
+a loud panel on the bench is the cheaper failure than a quiet one on the water.
+The rule stays "this measures the rail, and says what it sees".
+
+**Silencing it on the bench**, when it becomes annoying, needs no new mechanism:
+
+- `-DGUSTIK_PANEL_BATTERY=1` is already opt‑in at build time — a bench build
+  simply omits it, and none of §4.7 exists. This is the intended workflow.
+- A **long press** (hard off, §5.7) silences the whole panel including the
+  override, and is runtime‑only, so a power cycle brings it back.
+- `leds.enabled=false` in `config.txt` for a durable quiet.
+
+The one thing that must **not** be done in response is widening the `unknown`
+band to swallow the USB range — that would also swallow a genuinely flat pack,
+which is the whole point of the feature.
 
 #### Thresholds
 
@@ -394,7 +607,10 @@ Pack voltage, not cell voltage, measured under load:
 | ok | ≥ 5.0 V | ≥ 1.25 V | fine |
 | **warn** | 4.6 – 5.0 V | 1.15 – 1.25 V | the alkaline knee is near — have spares to hand |
 | **critical** | < 4.6 V | < 1.15 V | AMS1117 dropout is 3.3 V + ~1.1 V ≈ 4.4 V; brown‑out is minutes away |
-| unknown | < 3.0 V or > 8.0 V | — | divider absent or miswired; indicate nothing |
+| unknown | < 3.0 V, or ADC pinned at full scale | — | divider absent or miswired; indicate nothing |
+
+> On USB the rail lands in `warn` (occasionally `critical`) and is reported as
+> such. That is the accepted caveat above, not a bug to be worked around.
 
 > Voltage under load is a **rough** proxy for remaining charge on alkalines,
 > and it recovers when the load drops. Treat the bar as "roughly how worried to
@@ -405,12 +621,12 @@ Pack voltage, not cell voltage, measured under load:
 Deliberately *not* a ninth fault code — the eight‑code cap in §5.3 exists
 because counting past eight on a moving boat does not work. Instead:
 
-- **A global override** (§5.10): all four lanes fast‑blink in unison for 2 s,
+- **A global override** (§5.10): all nine LEDs fast‑blink in unison for 2 s,
   in any mode including sleep. **Every 120 s at `warn`, every 30 s at
   `critical`** — same unmistakable signal, two rates for two urgencies, no
   counting and no new vocabulary.
-- **Mode 5 — Battery** (§5.9) for the detail, present in the mode cycle only
-  when the flag is on.
+- **A battery detail mode** (§5.9), present in the button's cycle only when
+  the flag is on.
 
 #### Config keys
 
@@ -427,29 +643,92 @@ Pack voltage graphed on `/status.html` beside RSSI would answer "how long does
 a set of cells actually last" properly, and turn Story 5.1's endurance test
 into a chart rather than a stopwatch. That touches the firmware payload, the
 ingest route, the DB schema and the status page, so it is **phase 7**, not part
-of phase 6. Noted here so it is not forgotten.
+of phase 6. Noted here so it is not forgotten. With no buck converter coming
+(§4.6), this is now the cheapest way to learn anything real about runtime, and
+worth pulling forward.
+
+### 4.8 The steel plate — the panel is harmless, the ordering is not
+
+The board and the magnetometer are permanently mounted on one breadboard on a
+**steel plate** (C12). That is a magnetic decision, not an electrical one, and
+it was made deliberately — but it constrains this design in one way and needs
+recording in another.
+
+**The panel's own currents are irrelevant.** This was worth checking, since the
+panel is the one thing being added near a magnetometer:
+
+| Source | Field at the magnetometer | vs Earth's ~50 µT | Heading error |
+|---|---:|---:|---:|
+| One LED, 3 mA at 3 cm | ~20 nT | 0.04 % | ~0.02° |
+| Status group solid, 15 mA at 1 cm | ~300 nT | 0.6 % | ~0.35° |
+| Supply current, 120 mA at 2 cm | ~1200 nT | 2.4 % | ~1.4° |
+
+All of it is far inside a 22.5° octant, so the panel can be wired wherever it
+is convenient. The supply current is the largest contributor and is a steady DC
+offset that hard‑iron calibration absorbs anyway; twisting the pack's `+` and
+`−` leads together cancels most of it for free.
+
+**Calibration ordering becomes a hard rule.** Hard‑iron offsets describe the
+*whole assembly*, so `mag_calibrate` must run **after** the LED panel, the
+button and the battery divider are in their final positions, and nothing may be
+rerouted afterwards without redoing it. This moves calibration in the rollout
+(§13) from "before the panel" to "after phase 3, and again after any rewiring".
+
+**Soft iron is the part calibration will not fix.** A steel plate does not just
+add a fixed offset, it *distorts* the field direction‑dependently — the raw XY
+trace becomes an ellipse rather than an offset circle. `mag_calibrate --tumble`
+computes offsets only, so it corrects hard iron and leaves the ellipse. The
+residual error varies with heading, is worst near 45° to the plate's axes, and
+can plausibly exceed 22.5° if the plate is close and large. Cheap check with no
+new code: after calibrating in place, look at the captured XY scatter — visibly
+elliptical rather than circular means soft iron worth correcting, and the fix is
+a per‑axis scale factor, two more config keys in the same shape as the offsets.
+
+**And a warning for the manual:** §5.5's magnetometer lane reports "the I2C read
+succeeded". A plate‑distorted heading passes that test perfectly. **Sensor mode
+proves the sensor is alive, never that the heading is right** — say so, or a lit
+yellow lane will be read as "direction is trustworthy".
 
 ---
 
 ## 5. Encoding
 
+> **Orientation.** §5.2 and §5.3 are the status group, which never changes.
+> §5.4–§5.6 and §5.9 are the four things the detail group can show. Subsection
+> numbers are kept stable for cross‑references and are **not** the button's
+> cycle order — that is **wind → signal → sensors → wind**, with battery
+> inserted before the wrap once phase 6 exists (§6). Wind is the default, so
+> §5.6 is the one to read first.
+
 ### 5.1 Boot self‑test
 
-At `setup()`: all four LEDs on for 400 ms, then a 100 ms sweep RED→YELLOW→
-GREEN→BLUE, then the panel enters mode 1. Total 800 ms, no blocking (it runs
-as a normal panel state while `setup()`'s existing work proceeds — see §8).
+At `setup()`: all nine LEDs on for 400 ms, then a 100 ms sweep **left to right
+across the whole row** (status R→Y→G→B, then detail 1→5), then the panel enters
+its default state. Total ~1.3 s, no blocking (it runs as a normal panel state
+while `setup()`'s existing work proceeds — see §8).
 
 This makes a dead LED, a cold solder joint, or a wrong resistor obvious at
-power‑on, and gives the person a positive "it just started" signal.
+power‑on, and gives the person a positive "it just started" signal. The
+left‑to‑right sweep does a second job: it teaches the row's order, so the
+detail group's direction is learned without reading anything.
 
-It also earns a second job for free under the new supply (C5): **a self‑test
-that keeps repeating means the station is rebooting**, and on 4 × AA the
-overwhelmingly likely cause is the pack sagging below the regulator's dropout
-and tripping the brown‑out detector. Flat batteries therefore have a visible
-symptom even without the optional battery sense of §4.7 — the panel restarting
-over and over, which is hard to mistake for anything else.
+It also earns a third job for free: **a self‑test that keeps repeating means
+the station is rebooting.** But note what changed with C10 — with the pack
+connected by a jumper into a breadboard (C10), flat cells are not the first
+suspect:
 
-### 5.2 Mode 1 — Status (default)
+> **Repeating self‑test ⇒ check the power wire is seated, then check the
+> cells.** At ~120 mA a marginal or worn breadboard contact drops real voltage
+> exactly where the AMS1117 has no margin left, and an intermittent one
+> produces brown‑out reboots indistinguishable from a flat pack. The cheaper
+> test comes first. (On USB, neither applies — a repeating boot there means
+> something else entirely.)
+
+### 5.2 The status group — always on, never switched
+
+These four lanes show the same thing at all times. They are **not** a mode:
+nothing the button does affects them, so the panel can never be in a state
+where a fault is invisible because someone went to look at the wind.
 
 | Lane | Solid | Slow blink | Fast blink | Off |
 |---|---|---|---|---|
@@ -462,11 +741,11 @@ over and over, which is hard to mistake for anything else.
 
 The two properties worth memorising:
 
-- **All four dark ⇒ not running.** No power, or a crash before `setup()`
+- **The whole row dark ⇒ not running.** No power, or a crash before `setup()`
   finished. (This rule is what the sleep behaviour in §5.7 is designed to
   preserve, and what "hard off" deliberately breaks — see the warning there.)
 - **Blue dark, anything else lit ⇒ the loop is hung.** The bug‑030 signature,
-  which previously produced no symptom at all.
+  which otherwise produces no symptom at all.
 
 ### 5.3 Fault codes (red lane)
 
@@ -485,76 +764,114 @@ picture when a phone is available.
 | **5** | 2xx but **nothing stored** (`inserted == 0`) | Q9 | the bug‑031 signature — reboot the Station |
 | **6** | buffering: last send failed, readings queuing to flash | Q10 | usually transient; a persistent 6 means 2/3/4 is intermittent |
 | **7** | clock never synced (NTP failed) | Q11 | timestamps unreliable; needs real internet, not just an AP |
-| **8** | a sensor is failing | Q12–Q14 | press the button to mode 3 to see which |
+| **8** | a sensor is failing | Q12–Q14 | press the button to sensor mode to see which |
 
 Eight codes is the cap on purpose: counting past eight flashes on a moving
-boat does not work. Anything finer lives in mode 3 or on the status page.
+boat does not work. Anything finer lives in sensor mode or on the status page.
 
-### 5.4 Mode 2 — Signal (Q5, Q6)
+### 5.4 Detail mode — Signal (Q5, Q6)
 
-Bar graph of current RSSI, lit **from the red end**: red → +yellow → +green →
-+blue. Thresholds are the same ones `/status.html` already draws reference
-lines at, so the LED and the web view never disagree.
+One dot, sliding toward red as the signal degrades. Thresholds are the same
+ones `/status.html` already draws reference lines at, so the LED and the web
+view never disagree.
 
-| Lit | RSSI |
-|---:|---|
-| 4 | ≥ −55 dBm — excellent |
-| 3 | −55 … −67 dBm — good (`/status.html`'s −67 line) |
-| 2 | −67 … −80 dBm — usable (its −80 line) |
-| 1 | −80 … −90 dBm — marginal, expect dropouts |
-| 0, red fast‑blinking | < −90 dBm or not associated |
+| Position | Colour | RSSI |
+|---:|---|---|
+| 1 | 🟢 | ≥ −55 dBm — excellent |
+| 2 | 🟢 | −55 … −67 dBm — good (`/status.html`'s −67 line) |
+| 3 | 🟡 | −67 … −80 dBm — usable (its −80 line) |
+| 4 | 🟡 | −80 … −90 dBm — marginal, expect dropouts |
+| 5 | 🔴 fast‑blink | < −90 dBm or not associated |
 
-**Which network you are on** (Q5) rides on the same four LEDs with no counting:
-a **steady** bar means network 1 (`network1.*`, the shore/primary Wi‑Fi); a bar
+Note this deliberately does **not** read like phone signal bars — there is no
+bar length to interpret, only a coloured position, and green is at the *good*
+end where a filled bar would have had it backwards. See §3 for why.
+
+**Which network you are on** (Q5) rides on the same dot with no counting: a
+**steady** dot means network 1 (`network1.*`, the shore/primary Wi‑Fi); a dot
 that **pulses off briefly once a second** means network 2 — "pulsing means
 you're on somebody's phone".
 
 This is the mode to hold the panel in while anchoring, or while walking an AP
 around the shore.
 
-### 5.5 Mode 3 — Sensors (Q12, Q13, Q14)
+### 5.5 Detail mode — Sensors (Q12, Q13, Q14)
 
-| Lane | Meaning |
-|---|---|
-| 🔵 BLUE | **one 30 ms pulse per anemometer reed closure, live.** Dark while the cups are turning ⇒ the anemometer is not wired (bug‑059, exactly). This doubles as the wind‑speed‑as‑blink‑rate readout: ~1 pulse per revolution, so ~4 Hz at 5 m/s |
-| 🟢 GREEN | vane: solid = ADC inside a known detent band · slow blink = outside every band (open or shorted wiring) |
-| 🟡 YELLOW | magnetometer: solid = last I2C read succeeded · slow blink = failing, headings are stale |
-| 🔴 RED | off if all three are fine, slow blink otherwise |
+**This mode deliberately breaks the metaphor.** Sensors need three independent
+indicators, not a scale, so here the detail group is used *positionally* and its
+colours carry nothing. That is acceptable precisely because this is a
+diagnostic entered on purpose, never the at‑a‑glance default — and the legend
+(§11) labels the positions.
+
+| Position | Meaning |
+|---:|---|
+| 1 | **one 30 ms pulse per anemometer reed closure, live.** Dark while the cups are turning ⇒ the anemometer is not wired (bug‑059, exactly). Doubles as a wind‑speed‑as‑blink‑rate readout: ~1 pulse per revolution, so ~4 Hz at 5 m/s |
+| 2 | vane: solid = ADC inside a known detent band · slow blink = outside every band (open or shorted wiring) |
+| 3 | magnetometer: solid = last I2C read succeeded · slow blink = failing, headings are stale |
+| 4 | *(unused, reserved)* |
+| 5 🔴 | dark if all three are fine, slow blink otherwise — the one position whose colour still means what it means everywhere else |
 
 This is the mode that would have turned bug‑059 from a multi‑hour investigation
-into "spin the cups, watch the blue LED".
+into "spin the cups, watch position 1".
 
-### 5.6 Mode 4 — Wind (Q15)
+> **What this mode does not prove.** Position 3 reports that the I2C read
+> succeeded, nothing more. A magnetometer distorted by the steel plate (§4.8)
+> passes it perfectly. Alive ≠ correct.
 
-Bar graph of the current wind speed, lit from the red end, on the boundaries
-`backend/src/static/beaufort.js` already uses — so the LEDs, the dashboard and
-the Beaufort label all agree:
+### 5.6 Detail mode — Wind (Q15) — **the default**
 
-| Lit | Speed | Beaufort |
-|---:|---|---|
-| 0 | < 1.6 m/s | 0–1 — bezvětří / vánek |
-| 1 | 1.6 – 3.4 | 2 — slabý vítr |
-| 2 | 3.4 – 5.5 | 3 — mírný vítr |
-| 3 | 5.5 – 8.0 | 4 — dosti čerstvý vítr |
-| 4 | ≥ 8.0 | 5+ — čerstvý vítr and above |
-| 4, all fast‑blinking | ≥ 10.8 | 6+ — silný vítr, the capsize‑risk cue for P550s |
+This is what the detail group shows when nobody has touched the button, which
+means the resting panel answers both "is it working" (status group) and "how
+windy is it" (detail group) with no interaction at all.
 
-**Direction**, once on entry and then every 5 s: the bar goes dark and the
-yellow lane blinks `octant + 1` times — 1 = S, 2 = SV, 3 = V, 4 = JV, 5 = J,
-6 = JZ, 7 = Z, 8 = SZ (Czech, matching `compass.js`; octant indices as defined
-by `correct/wind_direction.h`). This is the **first thing to cut** if flash is
-tight — it is the least‑used item here, and it only matters when the network
-is down, which is admittedly exactly when the panel matters most.
+One dot, on the boundaries `backend/src/static/beaufort.js` already uses — so
+the LEDs, the dashboard and the Beaufort label all agree:
+
+| Position | Colour | Speed | Beaufort |
+|---:|---|---|---|
+| 1 | 🟢 | < 1.6 m/s | 0–1 — bezvětří / vánek |
+| 2 | 🟢 | 1.6 – 3.4 | 2 — slabý vítr |
+| 3 | 🟡 | 3.4 – 5.5 | 3 — mírný vítr |
+| 4 | 🟡 | 5.5 – 8.0 | 4 — dosti čerstvý vítr |
+| 5 | 🔴 | ≥ 8.0 | 5+ — čerstvý vítr and above |
+| 5 | 🔴 fast‑blink | ≥ 10.8 | 6+ — silný vítr, the capsize‑risk cue for P550s |
+
+Here the severity gradient is doing real work rather than being a convention:
+**green really does mean sailable and red really does mean the capsize cue**,
+which is the panel's one genuine safety signal.
+
+Where five positions are not enough, solid versus slow‑blink on the same dot
+doubles the vocabulary without another LED — held in reserve, not used yet.
+
+**Direction**, once on entry to this mode and then every 5 s: the dot goes dark
+and **status YELLOW** blinks `octant + 1` times — 1 = S, 2 = SV, 3 = V, 4 = JV,
+5 = J, 6 = JZ, 7 = Z, 8 = SZ (Czech, matching `compass.js`; octant indices as
+defined by `correct/wind_direction.h`). It only matters when the network is
+down — which is exactly when the panel matters most.
+
+> Borrowing the status group's yellow lane for a few seconds is the one place
+> anything touches the status group. It is a deliberate, bounded exception: the
+> direction code is the only quantity that needs more resolution than five
+> positions, the alternative was a compass rose that was parked (§12), and
+> the borrow is brief and self‑announcing. The fault lane is never borrowed.
 
 ### 5.7 Sleep, and hard off
 
-- After `leds.timeoutSeconds` (**default 300 s**) with no button press, the
-  panel **sleeps**: everything dark except a blue proof‑of‑life pulse every
-  10 s and, if a fault is active, its red code repeated every 10 s instead of
-  every 2 s.
-- Any button press wakes it to mode 1 and restarts the timeout.
-- A non‑default mode also **auto‑returns to mode 1 after 60 s**, so the panel
-  is never found parked in "wind bar".
+- After `leds.timeoutSeconds` (**default 300 s**) with no
+  button press, the panel **sleeps**: everything dark except a blue
+  proof‑of‑life pulse every 10 s and, if a fault is active, its red code
+  repeated every 10 s instead of every 2 s.
+
+  > 300 s is a usability choice, not a power one: at ~20 operator interactions
+  > a day the difference between 120 s and 300 s is **~13 mAh, 0.4 % of the
+  > pack** (§4.6). There was no battery argument either way, so the longer,
+  > friendlier value wins.
+
+- Any button press wakes it and restarts the timeout.
+- A non‑default detail mode **auto‑returns to wind after 60 s**, so the panel is
+  never found parked in "signal". This is now a convenience rather than a
+  necessity — with the status group always visible, being parked in the wrong
+  detail mode hides nothing important.
 - `leds.timeoutSeconds=0` disables sleeping.
 - **Long press (≥ 2 s) = hard off**, everything dark including the heartbeat.
   Another long press restores it.
@@ -568,32 +885,41 @@ is down, which is admittedly exactly when the panel matters most.
 
 ### 5.8 Mode banner
 
-On entering mode N, all four LEDs flash together N times (100 ms on / 100 ms
-off) before the mode's own display starts. Without it, "which mode am I in?" is
-unanswerable, and it reuses the self‑test primitive so it is nearly free.
+On entering detail mode N, **the detail group only** flashes together N times
+(100 ms on / 100 ms off) before the mode's own display starts. Without it,
+"which mode am I in?" is unanswerable, and it reuses the self‑test primitive so
+it is nearly free.
 
-### 5.9 Mode 5 — Battery (phase 6, `-DGUSTIK_PANEL_BATTERY=1` only)
+Confining the banner to the detail group matters: a banner across the whole row
+would look like the §5.10 low‑battery override, and the status group must never
+flash for a reason that is not about status.
 
-Bar graph of pack voltage, lit from the red end, on the §4.7 thresholds. In the
-mode cycle only when the flag is on — without it the cycle is 1→2→3→4→1 and
-nothing here exists.
+### 5.9 Detail mode — Battery (phase 6, `-DGUSTIK_PANEL_BATTERY=1` only)
 
-| Lit | Pack | Per cell |
-|---:|---|---|
-| 4 | ≥ 5.6 V | ≥ 1.40 V |
-| 3 | 5.2 – 5.6 V | 1.30 – 1.40 V |
-| 2 | 5.0 – 5.2 V | 1.25 – 1.30 V |
-| 1 | 4.6 – 5.0 V | 1.15 – 1.25 V — `warn` |
-| 0, red fast‑blinking | < 4.6 V | `critical` |
-| all four **slow**‑blinking | — | `unknown`: divider not fitted or miswired (§4.7) |
+One dot on the §4.7 thresholds. In the mode cycle only when the flag is on —
+without it the cycle is wind → signal → sensors → wind and nothing here exists.
 
-`unknown` gets its own pattern rather than showing zero bars, because "no
+| Position | Colour | Pack | Per cell |
+|---:|---|---|---|
+| 1 | 🟢 | ≥ 5.6 V | ≥ 1.40 V |
+| 2 | 🟢 | 5.2 – 5.6 V | 1.30 – 1.40 V |
+| 3 | 🟡 | 5.0 – 5.2 V | 1.25 – 1.30 V |
+| 4 | 🟡 | 4.6 – 5.0 V | 1.15 – 1.25 V — `warn` |
+| 5 | 🔴 fast‑blink | < 4.6 V | `critical` |
+| all five **slow**‑blinking | — | — | `unknown`: divider not fitted or miswired (§4.7) |
+
+`unknown` gets its own pattern rather than showing position 5, because "no
 divider" and "flat pack" must not look alike.
+
+The dot reports **the rail**, so on USB it sits at position 4 or 5. Correct, and
+expected — see §4.7's caveat.
 
 ### 5.10 Low‑battery override (phase 6)
 
-The one signal that ignores modes entirely. All four lanes fast‑blink in unison
-for 2 s, then the panel returns to whatever it was doing:
+The one signal that ignores modes entirely. **All nine LEDs** fast‑blink in
+unison for 2 s, then the panel returns to whatever it was doing. Nine at once is
+even less mistakable than four, and nothing else in the design lights the whole
+row:
 
 | State | Repeat | Also fires while asleep? |
 |---|---|---|
@@ -601,13 +927,19 @@ for 2 s, then the panel returns to whatever it was doing:
 | `critical` | every 30 s | yes |
 | `ok` / `unknown` | never | — |
 
+**This will fire on a USB‑powered bench board**, every 120 s, because the rail
+reads inside the warn band. Known, accepted, and silenced by simply not setting
+`-DGUSTIK_PANEL_BATTERY=1` in a bench build — see §4.7.
+
 It fires **through sleep** on purpose: a pack going flat overnight or during a
 long postponement is exactly when nobody is pressing buttons. It does **not**
 fire when the panel is hard off (§5.7) — hard off means off, and it is runtime
 only, so a power cycle restores it.
 
-This is the only pattern in the design that uses all four lanes at once outside
-the boot self‑test and the mode banner, which is what makes it unmistakable.
+This is the only pattern in the design that lights all nine at once outside the
+boot self‑test, which is what makes it unmistakable. The mode banner is
+deliberately confined to the detail group (§5.8) so it can never be mistaken
+for this.
 
 ---
 
@@ -616,7 +948,7 @@ the boot self‑test and the mode banner, which is what makes it unmistakable.
 | Gesture | Effect |
 |---|---|
 | press < 30 ms | ignored (debounce) |
-| **short press** (30 ms – 800 ms) | wake if asleep; otherwise advance mode 1→2→3→4→1 (→5→1 once phase 6's battery mode exists, §5.9) |
+| **short press** (30 ms – 800 ms) | wake if asleep; otherwise advance the **detail group** wind→signal→sensors→wind (→battery→wind once phase 6 exists, §5.9). The status group is never affected |
 | **long press** (≥ 2 s) | toggle hard off (§5.7) — acts on release, so it never also counts as a short press |
 | held at boot | nothing; GPIO13 is not a strapping pin, so this is safe |
 
@@ -651,9 +983,9 @@ leds.timeoutSeconds=300        # 0 = never sleep
 Parsed by `parseStationConfig()` alongside `mag.offset*`, so changing it costs
 `pio run -t uploadfs`, not a reflash — the same rationale that put the
 magnetometer calibration there. Phase 6 adds `battery.dividerRatio`,
-`battery.warnVolts` and `battery.criticalVolts` on the same terms (§4.7); the
+`battery.warnVolts` and `battery.criticalVolts` on the same terms (§4.7). The
 divider ratio in particular *must* be a config key rather than a constant,
-because it is a measured property of two specific resistors.
+because it is a measured property of three specific ±5 % resistors.
 
 **7.3 Wiring time — absent hardware is a no‑op.** Driving a GPIO with nothing
 attached is harmless, and an unwired `INPUT_PULLUP` button reads "released"
@@ -673,12 +1005,12 @@ firmware/src/indicate/
   panel_inputs.h      pure   PanelInputs: the snapshot the panel reads (§8.1)
   pattern.h/.cpp      pure   LanePattern enum + isLit(pattern, nowMs, phase0)
   fault.h/.cpp        pure   PanelInputs -> highest-priority fault code (0-8)
-  panel.h/.cpp        pure   the mode machine: mode, sleep timer, banner,
-                             bar mappings -> 4 LanePatterns
+  panel.h/.cpp        pure   the mode machine: detail mode, sleep timer,
+                             banner, scale mappings -> PanelOutputs
   button.h/.cpp       pure   debounce + short/long decoder ((level,ms)->event)
   battery.h/.cpp      pure   phase 6: mV -> pack volts -> EMA -> state machine
-                             (ok/warn/critical/unknown) + bar segments
-  hw/led_panel.cpp    hw     pinMode/digitalWrite on the 4 pins
+                             (ok/warn/critical/unknown) + dot position
+  hw/led_panel.cpp    hw     pinMode/digitalWrite on the 9 pins
   hw/button_pin.cpp   hw     digitalRead of GPIO13
   hw/battery_adc.cpp  hw     phase 6: analogReadMilliVolts(GPIO35)
 ```
@@ -695,11 +1027,20 @@ transmit/ ├─▶ PanelInputs (plain struct, copied once per loop iteration)
               StatusPanel::tick(inputs, nowMs, buttonEvent)
                        │
                        ▼
-              PanelOutputs { LanePattern red, yellow, green, blue }
+              PanelOutputs {
+                  LanePattern status[4];   // red, yellow, green, blue
+                  LanePattern detail[5];   // positions 1..5
+              }
                        │
                        ▼
-              hw/led_panel: 4 × digitalWrite
+              hw/led_panel: 9 × digitalWrite
 ```
+
+`PanelOutputs` is a flat array of patterns, not a "which dot is lit" index,
+because §5.5 (sensors) drives the detail positions independently and §5.10
+drives all nine at once. The **dot rule is a property of how the wind, signal
+and battery modes fill that array**, not a constraint the renderer enforces —
+which keeps the renderer trivial and every mode's own table under test.
 
 **Invariant (C3): nothing downstream of `PanelInputs` may write to anything
 upstream of it.** The panel cannot delay a sample, cannot clear a buffer,
@@ -740,7 +1081,7 @@ changing loop timing deserves its own verification.
 ### 8.3 One new sensor API
 
 `Anemometer::pulseCountSnapshot()` — a non‑resetting read of the volatile
-counter, for the live blue pulses in mode 3. 32‑bit aligned reads are atomic on
+counter, for the live pulses at detail position 1 (§5.5). 32‑bit aligned reads are atomic on
 this core, so it needs no `noInterrupts()`. The panel only compares successive
 snapshots and flashes on an increase; a *decrease* (which happens each time the
 sample cycle calls `readAndResetPulseCount()`) is treated as a resync, not an
@@ -758,71 +1099,61 @@ LittleFS.
 
 ## 9. Flash and RAM budget
 
-**Measured today, before any change** (`pio run -e esp32dev`):
+**Measured** (`pio run -e esp32dev`, after the phase‑0 partition change):
 
 ```
-RAM:    15.8 %  (51 732 / 327 680 B)
-Flash:  92.4 %  (1 210 461 / 1 310 720 B)   →  100 259 B free
+RAM:    15.8 %  (51 732 /   327 680 B)
+Flash:  57.7 %  (1 210 461 / 2 097 152 B)   →  886 691 B free
 ```
 
 **Estimated cost of this design:** 2–4 KB flash (a state machine plus small
 constant tables, no new libraries, no new format strings) and under 200 B of
 RAM. Phase 6's battery sense adds perhaps another 0.5–1 KB — one ADC read, an
-EMA, and a four‑state comparison — and is separately switchable. That fits in the current headroom roughly twenty times over — the risk is
-not this feature, it is that the project is already at 92.4 % with no margin
-for the *next* one.
+EMA and a four‑state comparison — and is separately switchable.
+
+That is ~0.4 % of the free space, so the ladder below is insurance, not a plan.
 
 **Mitigation ladder, cheapest first:**
 
-1. **Enlarge the app partition — the real fix, and it is free.** The default
-   4 MB layout reserves a whole second 1.25 MB OTA slot that this project can
-   never use: there is no OTA mechanism, and every update is a USB reflash. A
-   custom `firmware/partitions_gustik.csv`:
-
-   ```csv
-   # Name,   Type, SubType, Offset,   Size,     Flags
-   nvs,      data, nvs,     0x9000,   0x5000,
-   otadata,  data, ota,     0xe000,   0x2000,
-   app0,     app,  ota_0,   0x10000,  0x200000,
-   spiffs,   data, spiffs,  0x210000, 0x1E0000,
-   coredump, data, coredump,0x3F0000, 0x10000,
-   ```
-
-   with `board_build.partitions = partitions_gustik.csv`, takes the app
-   partition from 1.25 MB to **2 MB** (92.4 % → **57.7 %**) *and* grows the
-   filesystem from 1.375 MB to **1.875 MB**. Both numbers improve; nothing is
-   given up.
-
-   Two details that matter: the filesystem partition **must keep the label
-   `spiffs`**, because that is the default label `LittleFS.begin()` looks for
-   in arduino‑esp32 — renaming it to `littlefs` silently breaks config
-   loading. And changing the layout invalidates the existing filesystem
-   contents, so this is a `pio run -t upload` **and** `-t uploadfs` together,
-   with `config.txt` re‑uploaded.
-
-   (`huge_app.csv` is the off‑the‑shelf alternative — 3 MB app — but it shrinks
-   the filesystem to 896 KB, which is the wrong trade here, see the note below.)
+1. **Enlarge the app partition — done**, as phase 0. `firmware/partitions_gustik.csv`
+   drops the never‑used second OTA slot: app 1.25 → 2 MB, filesystem
+   1.375 → 1.875 MB, nothing given up. Reasoning, the table itself, the
+   `spiffs`‑label trap and the reflash procedure are all in
+   **`docs/hardware/flash-memory-map.md`**, which is also where the device's
+   memory inventory lives.
 
 2. **`-DGUSTIK_PANEL_STATIC=1`** — drop the pattern engine, lanes become plain
-   on/off. Loses fault codes, bars and the heartbeat; keeps mode 1's four
-   states. Saves perhaps 1–1.5 KB. This is the "eliminate blinking" fallback.
-3. **Mode 1 only** — drop modes 2–4 and the button entirely.
+   on/off. Loses fault codes, the scale and the heartbeat; keeps the status
+   group's four states. Saves perhaps 1–1.5 KB. This is the "eliminate blinking" fallback.
+3. **Status group only** — drop the detail group and the button entirely.
 4. **`-DGUSTIK_STATUS_PANEL=0`** — zero bytes, §7.1.
 
 Whichever is chosen, **measure and record the before/after flash figure** in
 the commit message, as this project already does.
 
-> **Separate finding, not part of this feature, flagged because §9.1 touches
-> the same partition.** `FlashBuffer` writes **one LittleFS file per reading**
-> and `computeBufferCapacityForHours(4, 3)` asks for **4800** of them. LittleFS
-> allocates in 4 KB blocks; unless every record is small enough to be stored
-> inline in directory metadata, 4800 files cannot fit in the current 1.375 MB
-> filesystem — the 4 h buffer target (NFR‑4) may be quietly unmet on real
-> hardware. This is a suspicion from reading the code, **not a measurement**;
-> it wants a real test (fill the buffer during a forced outage and count what
-> comes back). Noted here because shrinking the filesystem — which
-> `huge_app.csv` would do — could make an existing problem worse, and because
-> the fix (one append‑only file, or fixed‑size records) is unrelated to LEDs.
+> **Separate finding (bug‑060), not part of this feature, flagged because §9.1
+> touches the same partition — and now arithmetic rather than suspicion.**
+> `FlashBuffer` writes **one LittleFS file per reading** and
+> `computeBufferCapacityForHours(4, 3)` asks for **4800** of them. Each record
+> is ~110 B, which *is* below LittleFS's inline threshold, so the files do not
+> each consume a 4 KB block — that part of the original worry was wrong. But
+> every inline file's content, name and metadata tags live in the directory's
+> metadata pairs, each costing two 4 KB blocks: 4800 entries at roughly 150 B
+> of metadata is ~700 KB spread over ~175 pairs ≈ **1.4 MB**. That would never
+> have fitted the old 1.375 MB filesystem, and fits the new 1.875 MB one with
+> little margin.
+>
+> **Capacity is not the worse half.** LittleFS rewrites and compacts directory
+> metadata as entries accumulate, so `push()` slows as `/buf` fills — against
+> constraint C2, which says `loop()` must never block. Thousands of files in
+> one directory is the shape of the problem.
+>
+> Still **not a measurement**: the cheap test is to leave the Station running
+> with the backend unreachable and watch how long it actually buffers and how
+> long `push()` takes as it fills. The fix, when it comes, is one file of
+> fixed‑width records with the existing ring index — ~614 KB total and O(1)
+> per write — and is unrelated to LEDs. See `docs/hardware/flash-memory-map.md`
+> §4.
 
 ---
 
@@ -834,22 +1165,26 @@ the commit message, as this project already does.
 |---|---|
 | `test_panel_pattern` | each pattern's duty cycle and phase; code‑N produces exactly N flashes then a pause |
 | `test_panel_fault` | priority ordering; every fault in §5.3 reachable; no fault ⇒ code 0; the bug‑031 input (2xx, `inserted == 0`) ⇒ code 5; `hasCounts == false` never fabricates code 5 |
-| `test_panel_modes` | short‑press cycling, banner, 60 s auto‑return, sleep timeout, hard‑off toggle, `leds.enabled=false` ⇒ all lanes always off |
-| `test_panel_bars` | RSSI banding at every boundary incl. exactly −67/−80; wind banding against `beaufort.js`'s boundaries; below‑minimum and absurd inputs are total |
+| `test_panel_modes` | short‑press cycling, banner on the detail group only, 60 s auto‑return to wind, sleep timeout, hard‑off toggle, `leds.enabled=false` ⇒ all nine always off. **The status group is byte‑identical across every detail mode** — the §3 invariant, asserted directly |
+| `test_panel_scale` | RSSI banding at every boundary incl. exactly −67/−80; wind banding against `beaufort.js`'s boundaries; below‑minimum and absurd inputs are total. **Exactly one detail position lit** in wind/signal/battery modes — the dot rule, asserted rather than assumed, since §8.1's renderer does not enforce it |
 | `test_button` | debounce, short vs long, a long press never also emits a short, no event when the pin is stuck HIGH (the "no button fitted" invariant) |
 | `test_station_config` (extend) | `leds.*` parsing, defaults when absent, malformed values ⇒ defaults not garbage; phase 6 adds `battery.*` |
-| `test_battery` *(phase 6)* | threshold boundaries and hysteresis; EMA rejects a single TX‑sag sample; 3‑cycle confirmation before a state change; implausible readings ⇒ `unknown` and **no** indication (the "divider not fitted" invariant); bar segments at every boundary; `unknown` never renders as zero bars |
+| `test_battery` *(phase 6)* | threshold boundaries and hysteresis; EMA rejects a single TX‑sag sample; 3‑cycle confirmation before a state change; implausible readings **and a full‑scale‑pinned ADC** ⇒ `unknown` and **no** indication (the "divider not fitted" invariant); positions at every boundary; `unknown` never renders as position 5. **No USB special‑casing anywhere** — a 4.7 V rail produces `warn` exactly like a 4.7 V pack does, asserted so nobody reintroduces a latch by accident (C11) |
 
-**On hardware:** a `[env:panel_diag]` bring‑up sketch that walks the four LEDs
-and prints one raw line per button transition (`BTN <micros> <level>`) — dumb
-firmware, eyes as the analysis, per the standing bring‑up preference. It exists
-to prove the *wiring*, not the logic. Same `build_src_filter = -<*> +<...>`
-isolation as `mag_diag` / `pulse_diag`.
+**On hardware:** a `[env:panel_diag]` bring‑up sketch that walks all nine LEDs
+one at a time in row order and prints one raw line per button transition
+(`BTN <micros> <level>`) — dumb firmware, eyes as the analysis, per the standing
+bring‑up preference. It exists to prove the *wiring*, not the logic: nine LEDs
+means nine chances to swap two jumpers, and a walk in row order makes a
+transposition obvious. Same `build_src_filter = -<*> +<...>` isolation as
+`mag_diag` / `pulse_diag`.
 
-**Manual checks on the real Station:** boot self‑test visible; pull the AP →
-red code 2 within one cycle; wrong token → code 4; spin the cups → blue pulses
-in mode 3; unplug the magnetometer → yellow blink in mode 3 (and code 8 in
-mode 1); leave it 5 minutes → sleeps to a heartbeat.
+**Manual checks on the real Station:** boot self‑test sweeps the whole row
+left‑to‑right; pull the AP → red code 2 within one cycle; wrong token → code 4;
+spin the cups → detail position 1 pulses in sensor mode; unplug the
+magnetometer → position 3 blinks (and code 8 on the status red lane); cycle
+every detail mode and confirm **the status group does not change**; leave it
+5 minutes → sleeps to a heartbeat.
 
 ---
 
@@ -859,10 +1194,13 @@ mode 1); leave it 5 minutes → sleeps to a heartbeat.
    measurement method from §4, in the same shape as the existing
    `wind-sensor-wiring.md` / `magnetometer-wiring.md`.
 2. **`manual.html` — a Czech section**, since that is what the person on the
-   boat reads and the whole UI is Czech. Needs the lane table, the fault‑code
-   table, and the button gestures. Note the Czech‑abbreviation rule from
-   `compass.js` applies to the direction blink code (`S` = *sever*, north —
-   always spell the word out).
+   boat reads and the whole UI is Czech. Needs the status‑lane table, the
+   fault‑code table, the detail‑group scale and the button gestures. Note the
+   Czech‑abbreviation rule from `compass.js` applies to the direction blink
+   code (`S` = *sever*, north — always spell the word out). Two caveats belong
+   here and nowhere else: **the sensor mode proves a sensor is alive, not that
+   it is right** (§4.8), and **the battery dot is a rough proxy under load, not
+   a fuel gauge** (§4.7).
 3. **The legend written where the LEDs are** — the fault codes are useless if
    they only exist on a web page you cannot reach when code 3 is flashing. For
    v1 that means **marker pen on the cardboard box** (C8), which cannot be lost
@@ -870,17 +1208,27 @@ mode 1); leave it 5 minutes → sleeps to a heartbeat.
    Either way the content is the same A7 block:
 
    ```
-   ┌─────────────────────────────────────────┐
-   │  GUSTÍK — stavové diody                 │
-   │  🔵 bliká = běží   🟢 svítí = data jdou │
-   │  🟡 svítí = wifi   🔴 bliká = chyba č.: │
-   │  1 chybí config    5 backend neuložil   │
-   │  2 není wifi       6 ukládám do paměti  │
-   │  3 backend neodpovídá  7 nesynchro. čas │
-   │  4 odmítnutý token 8 vadné čidlo (→3×)  │
-   │  všechny 4 blikají naráz = SLABÉ BATERIE│
-   │  tlačítko: krátce = režim, dlouze = zhas│
-   └─────────────────────────────────────────┘
+   ┌──────────────────────────────────────────────┐
+   │  GUSTÍK — stavové diody                      │
+   │                                              │
+   │  VLEVO (4) — stav, svítí pořád:              │
+   │   🔵 bliká = běží    🟢 svítí = data jdou    │
+   │   🟡 svítí = wifi    🔴 bliká = chyba č.:    │
+   │   1 chybí config     5 backend neuložil      │
+   │   2 není wifi        6 ukládám do paměti     │
+   │   3 backend neodpovídá   7 nesynchron. čas   │
+   │   4 odmítnutý token  8 vadné čidlo (→ režim) │
+   │                                              │
+   │  VPRAVO (5) — měřidlo, svítí JEDNA:          │
+   │   🟢🟢 = v pořádku  🟡🟡 = pozor  🔴 = mez   │
+   │   normálně: SÍLA VĚTRU (🔴 = silný vítr!)    │
+   │   tlačítko krátce = vítr → signál → čidla    │
+   │   v režimu ČIDLA zleva: anemometr, korouhev, │
+   │   kompas, –, 🔴 porucha                      │
+   │                                              │
+   │  všech 9 bliká naráz = SLABÉ BATERIE         │
+   │  tlačítko dlouze = zhasnout                  │
+   └──────────────────────────────────────────────┘
    ```
 
    The battery line is added by phase 6 (§5.10). It is worth the space even
@@ -890,33 +1238,23 @@ mode 1); leave it 5 minutes → sleeps to a heartbeat.
 
 ---
 
-## 12. Open questions for Mlok
+## 12. Deferred
 
-1. ~~**Green LED Vf**~~ and ~~**daylight visibility**~~ — **both closed
-   2026‑08‑16.** All four colours are 2.0–2.4 V parts lighting visibly on the
-   available 330 Ω, so one resistor value throughout (§4.2); and with no
-   enclosure, the box shades the panel anyway (§4.5). Neither blocks anything.
-2. **Button: fit one or not?** Everything in mode 1 and the fault codes works
-   without it. Modes 2–4 are the payoff; mode 2 (signal while anchoring) is
-   probably the one that justifies it.
-3. ~~**Button style**~~ — **deferred, not open.** With a cardboard box a plain
-   push button is fine; the reed‑switch‑and‑magnet option (§4.4) is a Story 5.2
-   decision and should be made with the enclosure, not now.
-4. **Partition table** — adopt `partitions_gustik.csv` (§9.1) now, as a
-   separate commit before the panel? It is a strict improvement but it forces a
-   `uploadfs` and a full reflash, so it should not be bundled into a feature
-   commit.
-5. **Default `leds.timeoutSeconds`** — 300 s proposed. Longer for a first
-   season while trust is being built?
-6. **Direction blink code in mode 4** — keep or cut (§5.6)?
-7. ~~**Battery sense — build it, or not?**~~ — **decided 2026‑08‑16: yes, as a
-   later phase.** Fully specified in §4.7, §5.9, §5.10; rollout phase 6. One
-   sub‑question deliberately left to build time: which resistor values are
-   actually in the kit (§4.7's table gives three options, all ratio ≈ 1/3).
-8. **Not this design, but adjacent and probably worth more than all of it:** a
-   ~€2 buck converter would roughly double runtime on the same cells (§4.6).
-   Worth a look before Story 5.1's endurance test, since it changes what that
-   test is measuring.
+Everything else in this document is decided. Three items are parked with a
+reason to revisit:
+
+- **A 4‑LED compass rose.** It would show all eight octants with no counting,
+  and it is the one idea here that would add product value rather than
+  diagnostics. Two costs park it: it needs four *same‑colour* LEDs, or it puts
+  a lit red LED on the panel meaning "north", and it duplicates §5.6's
+  direction code. Revisit after phase 5 tells us whether anyone looks at the
+  panel at all.
+- **Button style for a sealed enclosure.** A plain push button is right for a
+  cardboard box; the reed‑switch‑and‑magnet option (§4.4) is a Story 5.2
+  decision and belongs with the enclosure.
+- **A buck converter** (~€2) would roughly double runtime on the same cells
+  (§4.6). Out of scope for v1 — none is available — but it is worth revisiting
+  before a second season, because it changes what Story 5.1 is measuring.
 
 ---
 
@@ -924,14 +1262,21 @@ mode 1); leave it 5 minutes → sleeps to a heartbeat.
 
 | Phase | Content | Verifiable by |
 |---|---|---|
-| 0 | *(optional, separate commit)* partition table §9.1 | flash % drops to ~58 %, config still loads after `uploadfs` |
+| **0 ✅ DONE** | partition table §9.1, as its own change | ✅ flash 92.4 % → **57.7 %**, built, flashed, `uploadfs`'d, `config.txt: 2 network(s) configured` confirmed over serial |
 | 1 | `indicate/` pure modules + tests; `-DGUSTIK_STATUS_PANEL=0` default | `pio test -e native`; `pio run -e esp32dev` byte‑identical flash figure |
 | 2 | hw glue, `main.cpp` wiring, `leds.*` config keys, flag on | flash delta recorded; Station behaves identically with nothing soldered |
-| 3 | 4 LEDs (330 Ω each) + button on breadboard/protoboard; `panel_diag`; manual checks §10 | by eye on the bench — no enclosure work needed for v1 (C8) |
-| 4 | `manual.html` Czech section, `docs/hardware/` page, legend on the box | reviewed on a phone |
+| 3 | 9 LEDs (330 Ω each) + button on the breadboard; `panel_diag`; manual checks §10 | by eye on the bench — no enclosure work needed for v1 (C8) |
+| **3b** | **redo the magnetometer hard‑iron calibration** in the final wired position (§4.8) | `mag_calibrate` run with the panel fitted; XY scatter checked for softiron ellipticity |
+| 4 | `manual.html` Czech section, `docs/hardware/status-led-panel.md`, legend on the box | reviewed on a phone |
 | 5 | one regatta day of real use | does anyone actually look at it? |
-| 6 | **battery sense** §4.7 / §5.9 / §5.10 — divider, `battery.*` config keys, mode 5, low‑battery override | reported voltage tracks a multimeter across the pack; alarm fires on a deliberately run‑down set; divider unplugged ⇒ `unknown`, no indication, no false alarm |
+| 6 | **battery sense** §4.7 / §5.9 / §5.10 — divider (3 × 10 kΩ), `battery.*` config keys, battery mode, low‑battery override | reported voltage tracks a multimeter across the pack; alarm fires on a deliberately run‑down set; divider unplugged ⇒ `unknown`, no indication. **On USB it alarms — that is the expected result, not a failure** |
 | 7 | *(separate, backend)* ship pack voltage with each reading, graph it on `/status.html` | Story 5.1's endurance test becomes a chart |
 
 Phases 1 and 2 are safe to land with the flag off — nothing changes on the
 running Station until phase 3 puts real LEDs on real pins.
+
+**Phase 3b is not optional and not reorderable.** Hard‑iron offsets describe
+the whole assembly, and the panel adds wiring to a board bolted to a steel plate
+(C12). Calibrating before the panel is fitted produces numbers that describe an
+assembly that no longer exists — and nothing in the firmware or the dashboard
+would show that they are wrong.

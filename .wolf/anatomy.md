@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T01:10:56.967Z
-> Files: 502 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T11:07:41.430Z
+> Files: 504 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -952,6 +952,7 @@
 
 ## docs/hardware/
 
+- `flash-memory-map.md` — The device has ONE 4 MB flash chip (not two); probed chip/memory inventory, the old default.csv vs new partitions_gustik.csv layout with measured 92.4%→57.7% effect, what LittleFS actually holds (config.txt + /buf), the "must stay named spiffs" and "reflash always needs uploadfs" traps, and the bug-060 buffer-capacity arithmetic. (~2038 tok)
 - `sensor-orientation.md` — Mutual orientation rule: the vane's 0° mark and the magnetometer's +X must point the same way (the bow), magnetometer level with +Z down. Why the addition in correctWindDirectionOctant works, per-mistake failure signatures, mast/cabin mounting, in-place (level boat swing) calibration, 3-step acceptance test. (~2700 tok)
 - `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2429 tok)
 
@@ -972,12 +973,13 @@
 
 - `2026-08-09-timestamp-timezone-support-design.md` — Timestamp timezone support — design (~1546 tok)
 - `2026-08-14-dashboard-ux-design.md` — Dashboard UX rework — wind direction, graph resolution, status page (~3482 tok)
-- `2026-08-16-status-led-panel-design.md` — Status LED panel + mode button — design (~12385 tok)
+- `2026-08-16-status-led-panel-design.md` — Status LED panel + mode button — design (~19096 tok)
 
 ## firmware/
 
 - `.gitignore` — Git ignore rules (~52 tok)
-- `platformio.ini` (~883 tok)
+- `partitions_gustik.csv` — Custom 4 MB partition table replacing Arduino's default.csv: one 2 MB app slot instead of two 1.25 MB OTA slots, LittleFS grown to 1.875 MB. Header comments explain why app0 keeps subtype ota_0 and why the data partition must stay named "spiffs". (~535 tok)
+- `platformio.ini` (~1236 tok)
 
 ## firmware/.pio/libdeps/native/
 
