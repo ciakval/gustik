@@ -616,3 +616,45 @@
 | 00:15 | Logged the open report + indexed the new file | .wolf/buglog.json (bug-059, open), .wolf/anatomy.md, .wolf/anatomy-index.json | Bookkeeping current | ~2k |
 | 00:30 | Mlok replaced a faulty wire - anemometer works, no code change | .wolf/buglog.json (bug-059 resolved), .wolf/STATUS.md, .wolf/cerebrum.md | Root cause was hardware; kept the diag sketch at Mlok's request (amends the "delete scaffolding" rule) | ~3k |
 | 01:00 | Documented the vane<->magnetometer mutual orientation rule | docs/hardware/sensor-orientation.md (new), docs/hardware/wind-sensor-wiring.md, firmware/src/sense/magnetometer.h, firmware/src/correct/wind_direction.h | Answer for this boat: vane arm starboard => sensor N to bow => magnetometer +X to bow, +Z down, +Y starboard. Native 70/70, esp32dev builds clean | ~12k |
+
+## Session: 2026-08-16 02:24
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 02:42 | Created docs/superpowers/specs/2026-08-16-status-led-panel-design.md | — | ~9249 |
+| 02:50 | Designed the optional status LED panel + mode button (no code) | docs/superpowers/specs/2026-08-16-status-led-panel-design.md (new), .wolf/STATUS.md, .wolf/buglog.json, .wolf/cerebrum.md | 15-question info inventory -> 4 LEDs + 1 button; 3 layers of optionality; measured flash baseline 92.4%; found the partition-table win and opened bug-060 (LittleFS buffer capacity, unverified) | ~35k |
+| 02:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 2→3 lines | ~159 |
+| 02:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→6 lines | ~122 |
+| 02:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+8 lines) | ~186 |
+| 02:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 31→35 lines | ~524 |
+| 02:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→4 lines | ~66 |
+| 02:55 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→6 lines | ~120 |
+| 02:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 6→6 lines | ~78 |
+| 02:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→7 lines | ~120 |
+| 02:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~37 |
+| 03:10 | Folded Mlok's hardware facts into the LED panel spec after approval | docs/superpowers/specs/2026-08-16-status-led-panel-design.md, .wolf/STATUS.md, .wolf/cerebrum.md | 330 Ohm on all four lanes (one value, ~2-4 mA), green-Vf question closed, existing GPIO2/25/26 LEDs never fitted so no migration; power budget 22 -> 13 mA; new open item = daylight visibility | ~12k |
+| 03:02 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~68 |
+| 03:02 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~89 |
+| 03:02 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 1→2 lines | ~88 |
+| 03:02 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+16 lines) | ~463 |
+| 03:03 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | modified changed() | ~1170 |
+| 03:03 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 5→6 lines | ~122 |
+| 03:03 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | modified supply() | ~157 |
+| 03:03 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→5 lines | ~98 |
+| 03:03 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | shading() → anyway() | ~81 |
+| 03:03 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | later() → option() | ~59 |
+| 03:04 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+12 lines) | ~245 |
+| 03:04 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→4 lines | ~129 |
+| 03:40 | Folded the supply change (4x AA) + no-enclosure reality into the LED panel spec | docs/superpowers/specs/2026-08-16-status-led-panel-design.md, .wolf/STATUS.md, .wolf/cerebrum.md, .wolf/buglog.json | Power budget re-done vs 3000 mAh (panel = 2.3-4.3 %); new Q16 + opt-in section 4.7 battery sense; daylight + reed-switch questions closed/deferred; bug-061 logged (powerbank ~2h auto-shutdown, invalidates Story 5.1) | ~14k |
+| 03:09 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+74 lines) | ~1404 |
+| 03:09 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+37 lines) | ~451 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~36 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→7 lines | ~111 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 1→2 lines | ~122 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 3→4 lines | ~79 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | sense() → kit() | ~82 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 1→2 lines | ~110 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | inline fix | ~55 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 4→7 lines | ~136 |
+| 03:10 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+6 lines) | ~123 |
+| 03:55 | Promoted battery sense from proposal to specified phase 6 after Mlok said yes | docs/superpowers/specs/2026-08-16-status-led-panel-design.md | Divider table + measured-ratio config key, EMA/3-cycle debounce vs TX sag, unknown-state invariant, mode 5 + global override (not a 9th fault code), tests, phase 7 = backend voltage graph | ~10k |

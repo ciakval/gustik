@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T19:31:40.209Z
-> Files: 499 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T01:10:56.967Z
+> Files: 502 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -952,8 +952,8 @@
 
 ## docs/hardware/
 
-- `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2429 tok)
 - `sensor-orientation.md` — Mutual orientation rule: the vane's 0° mark and the magnetometer's +X must point the same way (the bow), magnetometer level with +Z down. Why the addition in correctWindDirectionOctant works, per-mistake failure signatures, mast/cabin mounting, in-place (level boat swing) calibration, 3-step acceptance test. (~2700 tok)
+- `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2429 tok)
 
 ## docs/rust-firmware/
 
@@ -972,6 +972,7 @@
 
 - `2026-08-09-timestamp-timezone-support-design.md` — Timestamp timezone support — design (~1546 tok)
 - `2026-08-14-dashboard-ux-design.md` — Dashboard UX rework — wind direction, graph resolution, status page (~3482 tok)
+- `2026-08-16-status-led-panel-design.md` — Status LED panel + mode button — design (~12385 tok)
 
 ## firmware/
 

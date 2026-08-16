@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-15T19:31:40.209Z",
-    "fileCount": 499,
+    "lastScanned": "2026-08-16T01:10:56.967Z",
+    "fileCount": 502,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "a2fc349d89eef636cf825d17358939dadab7d03b4c0f569c8884669d541232f7",
-    "storeUpdatedAt": "2026-08-15T19:31:40.217Z"
+    "renderedHash": "172fbcdf00d7ff39bcab820defa38ac79ce392f4f68a8441a730cc2d74c5573c",
+    "storeUpdatedAt": "2026-08-16T01:10:56.974Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -6996,6 +6996,15 @@
       "size": 325,
       "mtimeMs": 1786822300129.8572,
       "updatedAt": "2026-08-15T19:31:40.209Z",
+      "source": "hook"
+    },
+    "docs/superpowers/specs/2026-08-16-status-led-panel-design.md": {
+      "description": "Status LED panel + mode button — design",
+      "tokens": 12385,
+      "hash": "bc5b6665ffe3d3c1",
+      "size": 51184,
+      "mtimeMs": 1786842656881.2136,
+      "updatedAt": "2026-08-16T01:10:56.967Z",
       "source": "hook"
     }
   }
