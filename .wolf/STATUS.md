@@ -2,7 +2,7 @@
 
 > Single source of truth for resuming work. Read this FIRST when starting a session.
 > Update this file at the end of every work phase so the next `/clear` resumes in 1 read.
-> Last updated: 2026-08-15
+> Last updated: 2026-08-16 (anemometer pulse_diag bring-up sketch, bug-059 open)
 
 ---
 
@@ -61,7 +61,7 @@
 
 1. ~~Docker build verification~~ / ~~backend deployment~~ — **done 2026-08-10**: backend is built and running for real on `bombur.remesh.cz`, live at https://gustik.remesh.cz, with `DEPLOY_ENABLED=true` — every push to `main` now auto-deploys via CI.
 2. **Real ESP32 hardware verification** — **WiFi connectivity confirmed 2026-08-11** (see Done log above). Still open: full send-to-backend path (config.txt `backend.*` fields still placeholder), magnetometer/vane/anemometer sensor smoke-test on real wiring, disconnect-LED/backfill behavior under a real outage, and a re-run of every other firmware story's happy path on actual hardware.
-3. **Calibration** — ~~wind vane `kOctantAdcReadings`~~ **done + independently confirmed 2026-08-15** (see Done log). Still placeholders: anemometer `metersPerSecondPerHz`, and magnetometer hard-iron offsets need re-measuring once mounted in the final enclosure.
+3. **Calibration** — ~~wind vane `kOctantAdcReadings`~~ **done + independently confirmed 2026-08-15** (see Done log). Still placeholder: anemometer `metersPerSecondPerHz`. Magnetometer hard-iron offsets are **stale, and the tooling to redo them is built and hardware-verified (2026-08-15) — Mlok just needs to run the rotation** (see "Immediate next step").
 3a. ~~bug-038 vane half-detent mis-decode~~ — **fixed 2026-08-15** (16-entry anchor table + 8 host tests, see Done log).
 4. **Decision needed**: mobile hotspot credentials — physical label on the Station vs. in the (public, no-auth) manual page. See TODO.md.
 5. **Epic 5** — powerbank endurance test (Story 5.1) and waterproof enclosure/mounting (Story 5.2), both physical/mechanical, Mlok-only.
@@ -69,7 +69,25 @@
 
 **Done as of 2026-08-12 - the full magnetometer+reconnect+clientId fix chain is live-verified on the real device**: magnetometer reads `ok` with plausible yawDeg values that track physical rotation, WiFi shows `sent=yes` with the connected SSID, and the backend is receiving continuous live data again (confirmed via direct `curl https://gustik.remesh.cz/readings/latest` matching real wall-clock time). No outstanding action needed from Mlok for this specific issue. Optional follow-up: the `POST /readings` response-accuracy gap noted just above (bug-031's related note) if this class of bug is worth hardening against structurally rather than just fixing the one instance.
 
-**Immediate next step: review and push local `main`.** The dashboard rework is already merged and deployed (PR #2). Local `main` now sits **8 commits ahead of `origin/main`** with the wind-vane 16-detent work, committed but **not pushed** — Mlok is reviewing first, since pushing `main` auto-deploys. Nothing in those commits touches the backend, so the deploy is a no-op for the running service; the firmware change only reaches the Station on a manual `pio run -t upload -e esp32dev`.
+**Immediate next step (2026-08-15, ~21:45): Mlok runs the magnetometer rotation.** The board is on `/dev/ttyUSB0` **currently flashed with the `mag_diag` capture sketch, not the station firmware** — it is streaming `MAG <x> <y> <z>` right now and will not report to the backend until reflashed. To calibrate:
+
+```sh
+cd scripts && python3 -m gustik_scripts.mag_calibrate --tumble    # 60s, tumble through every orientation
+cd ../firmware && ~/.platformio/penv/bin/pio run -e esp32dev -t upload   # put the station firmware back
+```
+
+It prints paste-ready output for two routes: `config.txt`'s new `mag.offsetX`/`mag.offsetY` keys (no reflash — `pio run -t uploadfs`) or the `main.cpp` constant. **Prefer config.txt**, since this has to be redone after Story 5.2's final mount. The sensor now sits on a breadboard with an iron base, so the compiled-in 2026-08-11 bench values describe the wrong assembly. If it prints `!! NOT A ROTATION`, the board didn't move enough — recapture (see bug-058; the "12/12 sectors" line cannot detect this on its own).
+
+**RESOLVED 2026-08-16 — the anemometer `pulses=0` report was a faulty wire, not firmware (bug-059).** Mlok replaced the wire between the RJ11 cable and GPIO27; pulses and wind speed came back immediately, no code change. Code review of the entire counting path had found **no firmware defect**, which is what pointed at the wiring — `sense/anemometer.cpp` is `INPUT_PULLUP` + `attachInterrupt(FALLING)` + a `volatile` static counter read-and-reset once per loop, and GPIO27 is claimed by nothing else in `src/` (grepped), is not input-only, and its ADC2 channel is never used. Suspicion is past the pin: **wrong RJ11 pair** (outer pins 1&4 are the *vane*, a 2-wire resistor that never pulls GPIO27 low enough for a FALLING edge — this looks exactly like the reported symptom), a bad crimp, or a dead reed switch — the wire turned out to be exactly that class of fault. New bring-up sketch `firmware/src/diag/pulse_diag.cpp` + `[env:pulse_diag]` is **committed and kept** (unused in the end, but this class of fault will recur) — raw `EDGE <micros> <level>` per transition on **CHANGE** (so "no edges at all" and "edges but never falling" are distinguishable, which the station firmware cannot do), a 1 Hz `TICK` counter, idle level printed at boot. Builds clean (20.5% flash), never flashed — the wire was found first. To run it next time:
+
+```sh
+cd firmware && ~/.platformio/penv/bin/pio run -e pulse_diag -t upload
+~/.platformio/penv/bin/pio device monitor -b 115200
+# no EDGE lines at all? short GPIO27 to GND with a jumper - edges on the
+# jumper but not on the sensor means the fault is past the ESP32 pin.
+```
+
+**Also pending: review and push local `main`.** The dashboard rework is already merged and deployed (PR #2). Local `main` now sits **8 commits ahead of `origin/main`** with the wind-vane 16-detent work, committed but **not pushed** — Mlok is reviewing first, since pushing `main` auto-deploys. Nothing in those commits touches the backend, so the deploy is a no-op for the running service; the firmware change only reaches the Station on a manual `pio run -t upload -e esp32dev`.
 
 **Open observation (2026-08-15 ~19:00): the Station has stopped reporting.** `GET /readings/latest` returns `capturedAt 2026-08-15T17:08:44Z`, roughly 1h50m stale, at `windSpeedMs 0` / octant 6 / RSSI −33 dBm. Almost certainly just the device being unplugged or reflashed during the vane bring-up work rather than a regression — the strong RSSI on the last sample argues against a Wi-Fi problem — but it is worth confirming the device is powered and running before reading anything into dashboard behaviour. Note the last reported octant was decoded by the OLD 8-anchor table.
 

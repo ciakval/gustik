@@ -94,14 +94,24 @@ bug-017 for the full correction.
   and three of the unlisted ones decoded up to 112.5° wrong (bug-050).
   Enumerate a sensor's full state space from the datasheet before trusting a
   lookup built from the states you happened to think of.
-- Magnetometer hard-iron calibration (Story 1.2 AC3): **measured 2026-08-11**
-  on the bench against the real QMC5883P chip (`firmware/src/main.cpp`'s
-  `kMagnetometerCalibration`, sourced from `scripts/qmc5883p-calibration.json`
-  — see `scripts/README.md` for the bench procedure). Soft-iron (scale) is
-  still deliberately deferred, not a gap — NFR-6 accepts hard-iron-only
-  accuracy. Caveat: a calibration describes one rigid assembly, so this
-  should be re-measured once the sensor is mounted in its final boat
-  enclosure (Story 5.2), not assumed to carry over unchanged.
+- Magnetometer hard-iron calibration (Story 1.2 AC3): **re-measurable on demand
+  as of 2026-08-15 — Mlok to run the rotation.** The value currently compiled
+  into `firmware/src/main.cpp` (`kDefaultMagnetometerCalibration`) is still the
+  2026-08-11 *bench* capture, taken over a USB-I2C bridge on a different board,
+  and the sensor has since moved to a breadboard with an iron base — so it
+  describes the wrong assembly and should be treated as stale, not as a
+  measured value.
+
+  Tooling to redo it is in place and hardware-verified: flash
+  `pio run -e mag_diag -t upload`, then `python3 -m gustik_scripts.mag_calibrate
+  --tumble` from `scripts/` (see `scripts/README.md`). It prints paste-ready
+  output for both routes — `config.txt`'s new `mag.offsetX`/`mag.offsetY` keys
+  (no reflash, just `pio run -t uploadfs`) or the C++ constant. **Prefer the
+  config route until the enclosure is final**, since this will need doing again
+  after Story 5.2's physical mount.
+
+  Soft-iron (scale) is still deliberately deferred, not a gap — NFR-6 accepts
+  hard-iron-only accuracy.
 
 ## Product/security decision needed: mobile hotspot credentials in the manual (Story 4.2)
 

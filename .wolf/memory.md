@@ -542,3 +542,76 @@
 | — | Fixed two stale STATUS.md claims that survived the earlier merge: the dashboard entry still said "NOT committed, NOT pushed, NOT deployed", and the "Immediate next step" block still said it sat uncommitted in the working tree. Both now reflect PR #2 being merged+deployed. | .wolf/STATUS.md | fixed | ~2k |
 | — | Noted an open observation: `GET /readings/latest` is ~1h50m stale (capturedAt 17:08:44Z at 18:59Z), speed 0, RSSI -33 dBm. Strong RSSI argues against a WiFi fault - most likely the device was unplugged/reflashed during vane bring-up. Flagged for Mlok, not diagnosed. | .wolf/STATUS.md | flagged | ~1k |
 | — | Re-verified after reconciliation: pio test -e native 65/65, pio run -e esp32dev SUCCESS (92.3% flash), backend npm test 123/123, eslint clean. Local main 9 ahead of origin/main, working tree clean, NOT pushed (Mlok reviews first). | — | verified | ~1k |
+
+## Session: 2026-08-15 21:08
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 21:16 | Created firmware/src/diag/mag_diag.cpp | — | ~868 |
+| 21:16 | Edited firmware/platformio.ini | 2→5 lines | ~71 |
+| 21:17 | Edited firmware/platformio.ini | expanded (+15 lines) | ~191 |
+| 21:18 | Created scripts/src/gustik_scripts/esp32_serial.py | — | ~2020 |
+| 21:18 | Created scripts/src/gustik_scripts/firmware_output.py | — | ~1322 |
+| 21:19 | Created scripts/src/gustik_scripts/report.py | — | ~1276 |
+| 21:19 | Created scripts/src/gustik_scripts/mag_calibrate.py | — | ~3404 |
+| 21:19 | Created scripts/src/gustik_scripts/__init__.py | — | ~207 |
+| 21:20 | Edited firmware/src/config/station_config.h | expanded (+23 lines) | ~351 |
+| 21:20 | Edited firmware/src/config/station_config.cpp | added error handling | ~295 |
+| 21:20 | Edited firmware/src/config/station_config.cpp | added 3 condition(s) | ~203 |
+| 21:20 | Edited firmware/src/config/station_config.cpp | 4→5 lines | ~28 |
+| 21:20 | Edited firmware/src/main.cpp | expanded (+6 lines) | ~141 |
+| 21:20 | Edited firmware/src/main.cpp | added 1 condition(s) | ~216 |
+| 21:21 | Edited firmware/src/main.cpp | inline fix | ~26 |
+| 21:21 | Edited firmware/test/test_station_config/test_station_config.cpp | modified test_parses_magnetometer_hard_iron_offsets() | ~614 |
+| 21:21 | Created scripts/tests/test_firmware_output.py | — | ~1158 |
+| 21:22 | Created scripts/tests/test_esp32_serial.py | — | ~996 |
+| 21:23 | Edited scripts/src/gustik_scripts/esp32_serial.py | modified _configure() | ~430 |
+| 21:25 | Edited scripts/src/gustik_scripts/firmware_output.py | 9→12 lines | ~72 |
+| 21:25 | Edited scripts/src/gustik_scripts/firmware_output.py | expanded (+20 lines) | ~324 |
+| 21:25 | Edited scripts/src/gustik_scripts/firmware_output.py | modified motion_warning() | ~400 |
+| 21:25 | Edited scripts/src/gustik_scripts/report.py | added 1 import(s) | ~35 |
+| 21:25 | Edited scripts/src/gustik_scripts/report.py | 5→10 lines | ~119 |
+| 21:26 | Edited scripts/src/gustik_scripts/mag_calibrate.py | modified _print_firmware_block() | ~236 |
+| 21:26 | Edited scripts/src/gustik_scripts/mag_calibrate.py | 6→7 lines | ~38 |
+| 21:26 | Created scripts/tests/test_motion_check.py | — | ~1205 |
+| 21:27 | Edited firmware/data/config.example.txt | expanded (+20 lines) | ~270 |
+| 21:27 | Edited scripts/README.md | expanded (+76 lines) | ~847 |
+| 21:27 | Edited scripts/README.md | 3→6 lines | ~60 |
+| 21:27 | Edited scripts/README.md | expanded (+8 lines) | ~226 |
+| 21:29 | Edited TODO.md | modified calibration() | ~289 |
+
+## 2026-08-15 (evening) — Magnetometer calibration tooling (ESP32 serial path)
+
+| HH:MM | description | file(s) | outcome | ~tokens |
+|-------|-------------|---------|---------|---------|
+| 21:00 | Read STATUS/cerebrum/buglog; found standing preference "dumb firmware, smart host analysis" + existing `scripts/` calibration math | .wolf/*, scripts/ | reused calibration.py/orientation.py unchanged instead of rewriting | ~25k |
+| 21:10 | Added bring-up sketch: raw QMC5883P x/y/z over Serial at 50Hz, self-contained, no sense/ deps | firmware/src/diag/mag_diag.cpp | builds 21.6% flash | ~2k |
+| 21:12 | Own PlatformIO env + restored `-<diag/>` exclusion on esp32dev; deliberately NO CI job (scaffolding) | firmware/platformio.ini | both envs build | ~1k |
+| 21:20 | Stdlib-only serial reader (os.open+termios+select, no pyserial — attaches without resetting board) | scripts/.../esp32_serial.py | works on real device | ~3k |
+| 21:25 | Calibration→firmware renderer; Y sign flip applied exactly once here | scripts/.../firmware_output.py | paste-ready config.txt + C++ | ~2k |
+| 21:30 | Extracted shared verdict text so I2C and serial front ends can't drift | scripts/.../report.py, qmc5883p.py | qmc5883p.py compiles | ~2k |
+| 21:35 | CLI: capture/calibrate, --from-file, --check-rotation, --detect-up | scripts/.../mag_calibrate.py | stdlib-only, runs under bare python3 | ~4k |
+| 21:38 | Lazy QMC5883P import so package works without smbus2 | scripts/.../__init__.py | 88 tests pass w/o smbus2 | ~0.5k |
+| 21:40 | config.txt `mag.offsetX/offsetY` (both-or-neither, strict numeric) + main.cpp override + boot print | firmware/src/config/station_config.*, main.cpp | 70/70 native tests | ~3k |
+| 21:45 | Flashed mag_diag to real device (one transient esptool retry, as documented) | /dev/ttyUSB0 | real data streaming, 48Hz measured | ~2k |
+| 21:50 | **bug-057** termios.cfmakeraw doesn't exist (it's tty.cfmakeraw, 3.12+) → explicit POSIX flags | scripts/.../esp32_serial.py | fixed, no version floor | ~1k |
+| 21:55 | **bug-058** stationary capture scored "12/12 sectors, all axes swept" and emitted constants → added motion_warning() | scripts/.../firmware_output.py, report.py | guard fires on real capture, exits 1 | ~4k |
+| 22:00 | Tests: esp32_serial parsing, firmware_output sign flip, motion check | scripts/tests/*.py | 88 pass (was 50) | ~3k |
+| 22:05 | Docs + OpenWolf bookkeeping | scripts/README.md, config.example.txt, TODO.md, .wolf/* | done | ~4k |
+
+**Left the board flashed with `mag_diag`** so Mlok can run the rotation immediately — it must be reflashed with `-e esp32dev` afterwards or the Station stays offline.
+| 21:31 | Created scripts/.gitignore | — | ~87 |
+
+## Session: 2026-08-15 00:55
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+
+## Session: 2026-08-16
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 00:00 | Reviewed anemometer pulse path for a `pulses=0` report | src/sense/anemometer.{h,cpp}, src/main.cpp, platformio.ini | No defect found - INPUT_PULLUP + FALLING ISR + volatile counter all correct, GPIO27 unclaimed elsewhere (grepped) | ~8k |
+| 00:10 | Wrote anemometer bring-up sketch + PlatformIO env | firmware/src/diag/pulse_diag.cpp, firmware/platformio.ini | Builds clean (`pio run -e pulse_diag`, 20.5% flash); raw EDGE/TICK output, CHANGE trigger, ISR ring buffer | ~6k |
+| 00:15 | Logged the open report + indexed the new file | .wolf/buglog.json (bug-059, open), .wolf/anatomy.md, .wolf/anatomy-index.json | Bookkeeping current | ~2k |
+| 00:30 | Mlok replaced a faulty wire - anemometer works, no code change | .wolf/buglog.json (bug-059 resolved), .wolf/STATUS.md, .wolf/cerebrum.md | Root cause was hardware; kept the diag sketch at Mlok's request (amends the "delete scaffolding" rule) | ~3k |

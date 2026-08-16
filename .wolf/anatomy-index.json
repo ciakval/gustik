@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-15T19:00:00.000Z",
-    "fileCount": 490,
+    "lastScanned": "2026-08-15T19:31:40.209Z",
+    "fileCount": 499,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "38f8fd7b445f37c0fabb9d31332d1f9e3309ff84a3e9dc10f1562382c1bc1ca3",
-    "storeUpdatedAt": "2026-08-15T19:00:00.000Z"
+    "renderedHash": "a2fc349d89eef636cf825d17358939dadab7d03b4c0f569c8884669d541232f7",
+    "storeUpdatedAt": "2026-08-15T19:31:40.217Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -3598,12 +3598,12 @@
     },
     ".github/workflows/ci.yml": {
       "description": "CI: CI",
-      "tokens": 3348,
+      "tokens": 3796,
       "hash": "011e0c46fbf52b86",
       "size": 11722,
       "mtimeMs": 1786391873635.196,
-      "updatedAt": "2026-08-10T19:57:53.687Z",
-      "source": "hook"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     ".gitignore": {
       "description": "Git ignore rules",
@@ -5274,21 +5274,21 @@
     },
     "firmware/data/config.example.txt": {
       "description": "Gustik station config (Story 4.1, AD-10).",
-      "tokens": 185,
-      "hash": "50f547e07e407ca1",
-      "size": 738,
-      "mtimeMs": 1786387643698.8105,
-      "updatedAt": "2026-08-10T19:26:48.190Z",
-      "source": "scan"
+      "tokens": 417,
+      "hash": "bd0eec35124c68b2",
+      "size": 1666,
+      "mtimeMs": 1786822037072.6345,
+      "updatedAt": "2026-08-15T19:27:17.156Z",
+      "source": "hook"
     },
     "firmware/platformio.ini": {
-      "description": "esp32dev + native envs; esp32dev now sets `board_build.filesystem = littlefs`",
-      "tokens": 500,
-      "hash": "3a5986a852ae3f39",
-      "size": 1660,
-      "mtimeMs": 1786387643699.5093,
-      "updatedAt": "2026-08-14T11:39:26.626Z",
-      "source": "md-import"
+      "description": "",
+      "tokens": 883,
+      "hash": "ed63f0262b7ffeba",
+      "size": 3311,
+      "mtimeMs": 1786821424992.523,
+      "updatedAt": "2026-08-15T19:17:05.081Z",
+      "source": "hook"
     },
     "firmware/src/config/hw/config_loader.cpp": {
       "description": "include \"config/hw/config_loader.h\"",
@@ -5310,21 +5310,21 @@
     },
     "firmware/src/config/station_config.cpp": {
       "description": "include \"config/station_config.h\"",
-      "tokens": 754,
-      "hash": "f72bf0e0c218f4c4",
-      "size": 2639,
-      "mtimeMs": 1786387643701.6426,
-      "updatedAt": "2026-08-10T19:26:48.192Z",
-      "source": "scan"
+      "tokens": 1076,
+      "hash": "4be6cd475fc43e4f",
+      "size": 4034,
+      "mtimeMs": 1786821641435.8027,
+      "updatedAt": "2026-08-15T19:20:41.517Z",
+      "source": "hook"
     },
     "firmware/src/config/station_config.h": {
       "description": "pragma once",
-      "tokens": 444,
-      "hash": "76034748a491c78a",
-      "size": 1552,
-      "mtimeMs": 1786387643702.0208,
-      "updatedAt": "2026-08-10T19:26:48.192Z",
-      "source": "scan"
+      "tokens": 719,
+      "hash": "761f36f0289aed82",
+      "size": 2696,
+      "mtimeMs": 1786821623603.3135,
+      "updatedAt": "2026-08-15T19:20:23.684Z",
+      "source": "hook"
     },
     "firmware/src/correct/wind_direction.cpp": {
       "description": "include \"correct/wind_direction.h\"",
@@ -5364,11 +5364,11 @@
     },
     "firmware/src/main.cpp": {
       "description": "include <Arduino.h>",
-      "tokens": 2810,
-      "hash": "dd18458b9f713cc0",
-      "size": 10537,
-      "mtimeMs": 1786712673282.107,
-      "updatedAt": "2026-08-14T13:04:33.376Z",
+      "tokens": 3104,
+      "hash": "15394d529472a9b0",
+      "size": 11639,
+      "mtimeMs": 1786821664164.8835,
+      "updatedAt": "2026-08-15T19:21:04.245Z",
       "source": "hook"
     },
     "firmware/src/sense/anemometer.cpp": {
@@ -5409,12 +5409,12 @@
     },
     "firmware/src/sense/vane.cpp": {
       "description": "include \"sense/vane.h\"",
-      "tokens": 261,
+      "tokens": 100,
       "hash": "cf18a250d5d532fc",
       "size": 913,
       "mtimeMs": 1786387643706.5374,
-      "updatedAt": "2026-08-10T19:26:48.195Z",
-      "source": "scan"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "firmware/src/sense/vane.h": {
       "description": "pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md",
@@ -5607,12 +5607,12 @@
     },
     "firmware/test/test_station_config/test_station_config.cpp": {
       "description": "include <unity.h>",
-      "tokens": 1090,
-      "hash": "b469f5fd7346b822",
-      "size": 3815,
-      "mtimeMs": 1786387643718.928,
-      "updatedAt": "2026-08-10T19:26:48.209Z",
-      "source": "scan"
+      "tokens": 1600,
+      "hash": "36dc4eb3e162af19",
+      "size": 6000,
+      "mtimeMs": 1786821677899.5398,
+      "updatedAt": "2026-08-15T19:21:17.980Z",
+      "source": "hook"
     },
     "firmware/test/test_transmit_payload/test_transmit_payload.cpp": {
       "description": "include <unity.h>",
@@ -5670,21 +5670,21 @@
     },
     "scripts/README.md": {
       "description": "Project documentation",
-      "tokens": 1139,
-      "hash": "c4e9d93c8eac9f41",
-      "size": 4567,
-      "mtimeMs": 1786387643722.8289,
-      "updatedAt": "2026-08-10T19:26:48.211Z",
-      "source": "scan"
+      "tokens": 2072,
+      "hash": "41eac9be13009a7e",
+      "size": 8313,
+      "mtimeMs": 1786822074502.5205,
+      "updatedAt": "2026-08-15T19:27:54.581Z",
+      "source": "hook"
     },
     "scripts/src/gustik_scripts/__init__.py": {
       "description": "",
-      "tokens": 52,
-      "hash": "6d8b2d36ce359b26",
-      "size": 179,
-      "mtimeMs": 1786387643723.7083,
-      "updatedAt": "2026-08-10T19:26:48.212Z",
-      "source": "scan"
+      "tokens": 207,
+      "hash": "34ec7b6e5034ef64",
+      "size": 722,
+      "mtimeMs": 1786821596179.9282,
+      "updatedAt": "2026-08-15T19:19:56.257Z",
+      "source": "hook"
     },
     "scripts/src/gustik_scripts/__main__.py": {
       "description": "",
@@ -6018,11 +6018,11 @@
     },
     "TODO.md": {
       "description": "TODO — items flagged for Mlok's review",
-      "tokens": 1786,
-      "hash": "39da1fbee3d860c7",
-      "size": 7187,
-      "mtimeMs": 1786712803148.587,
-      "updatedAt": "2026-08-14T13:06:43.249Z",
+      "tokens": 2226,
+      "hash": "310621c7d0b954d4",
+      "size": 8962,
+      "mtimeMs": 1786822189355.2937,
+      "updatedAt": "2026-08-15T19:29:49.442Z",
       "source": "hook"
     },
     ".worktrees/chore-ghcr-backend-deploy/backend/compose.yaml": {
@@ -6080,9 +6080,9 @@
       "source": "hook"
     },
     "docs/hardware/wind-sensor-wiring.md": {
-      "description": "WH1080/WH1090 wind sensor (anemometer+vane) RJ11 pinout, ESP32 wiring (GPIO27 internal pull-up, GPIO34 needs external 10kohm pull-up), vane resistance table, and confirmation the ESP32's own 3.3V rail powers both circuits",
-      "tokens": 1100,
-      "updatedAt": "2026-08-14T11:39:26.625Z",
+      "description": "Wind sensor (WH1080/WH1090) → ESP32 wiring",
+      "tokens": 2429,
+      "updatedAt": "2026-08-15T19:16:53.984Z",
       "source": "md-import"
     },
     "docs/superpowers/specs/2026-08-14-dashboard-ux-design.md": {
@@ -6582,70 +6582,415 @@
       "source": "hook"
     },
     "docs/rust-firmware/README.md": {
-      "description": "Project documentation",
+      "description": "index + executive summary of the Rust firmware feasibility study (2026-08-14, revised same day after Mlok's answers; study only, nothing implemented)",
       "tokens": 1013,
       "hash": "4ab97767cc6441a0",
       "size": 4077,
       "mtimeMs": 1786726531535.6943,
-      "updatedAt": "2026-08-14T16:55:31.627Z",
-      "source": "hook"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "docs/rust-firmware/01-feasibility.md": {
-      "description": "01 — Feasibility and route selection",
+      "description": "verdict (feasible); Route A std/ESP-IDF vs Route B no_std/esp-hal+esp-radio+Embassy; Xtensa toolchain reality (espup fork still mandatory); Route B CHOSEN by Mlok",
       "tokens": 2616,
       "hash": "4adea80c13fc477b",
       "size": 10533,
       "mtimeMs": 1786726509656.725,
-      "updatedAt": "2026-08-14T16:55:09.748Z",
-      "source": "hook"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "docs/rust-firmware/02-crate-inventory.md": {
-      "description": "02 — Crate inventory",
+      "description": "capability-by-capability crate mapping vs each real firmware module (PCNT, ADC, qmc5883p crate, esp-radio, reqwless+embedded-tls, sntpc, esp-storage+sequential-storage, esp-println), versions/maturity, all from crates.io",
       "tokens": 3324,
       "hash": "40b16d1f11b299b0",
       "size": 13376,
       "mtimeMs": 1786726410727.4072,
-      "updatedAt": "2026-08-14T16:53:30.819Z",
-      "source": "hook"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "docs/rust-firmware/03-risks-and-gaps.md": {
-      "description": "03 — Risks and gaps",
+      "description": "TLS RESOLVED (unverified TLS 1.3 accepted by Mlok, verified working against the live backend); qmc5883p crate register map diffed against ours; RAM/flash budget; loss of `uploadfs`; which past Gustik bugs Rust would/wouldn't have prevented. Top remaining risk is now the Xtensa toolchain",
       "tokens": 2887,
       "hash": "37023e523aeb6c9a",
       "size": 11621,
       "mtimeMs": 1786726379918.9688,
-      "updatedAt": "2026-08-14T16:53:00.024Z",
-      "source": "hook"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "docs/rust-firmware/04-migration-plan.md": {
-      "description": "04 — Migration plan",
+      "description": "parallel `firmware-rs/` Cargo workspace (gustik-core + binary; gustik-drivers dropped after Q4), 4 phases with phase 1 needing no ESP toolchain, test + CI strategy",
       "tokens": 2308,
       "hash": "4e25b447fc2018e6",
       "size": 9402,
       "mtimeMs": 1786726472056.705,
-      "updatedAt": "2026-08-14T16:54:32.149Z",
-      "source": "hook"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "docs/rust-firmware/05-open-questions.md": {
-      "description": "05 — Questions and answers",
+      "description": "Q1-Q4 ANSWERED by Mlok 2026-08-14 (ESP32 stays / no_std / unverified TLS ok / use qmc5883p crate) with consequences; Q5-Q8 still open but block nothing",
       "tokens": 1398,
       "hash": "8df8de7a629e1c51",
       "size": 5641,
       "mtimeMs": 1786726312920.4226,
-      "updatedAt": "2026-08-14T16:51:53.015Z",
-      "source": "hook"
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "firmware/src/sense/vane_decode.cpp": {
       "description": "Pure ADC->octant decoding for the wind vane: 16-entry measured anchor table (8 primary octants + 8 half-detents), nearest-match. Arduino.h-free and host-tested.",
-      "tokens": 900
+      "tokens": 900,
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "firmware/src/sense/vane_decode.h": {
-      "description": "Declares vaneOctantForAdc() and kVaneAnchorCount.",
-      "tokens": 200
+      "description": "Declares `vaneOctantForAdc()` and `kVaneAnchorCount`.",
+      "tokens": 200,
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
     },
     "firmware/test/test_vane_decode/test_vane_decode.cpp": {
-      "description": "Unity tests pinning all 16 vane anchor positions, the three bug-050 half-detent regressions, ADC jitter, out-of-range totality, and octant reachability.",
-      "tokens": 1100
+      "description": "include <unity.h>",
+      "tokens": 1096,
+      "updatedAt": "2026-08-15T19:16:53.984Z",
+      "source": "md-import"
+    },
+    "firmware/src/diag/mag_diag.cpp": {
+      "description": "Bring-up sketch: streams RAW QMC5883P x/y/z counts over Serial at 50Hz (`MAG <x> <y> <z>`) and nothing else. Self-contained (own Wire init, no sense/), all 3 axes un-negated. Own `[env:mag_diag]`; scaffolding, delete once calibrated.",
+      "tokens": 868,
+      "hash": "6a62efc6cb2a4d02",
+      "size": 3255,
+      "mtimeMs": 1786821413898.3672,
+      "updatedAt": "2026-08-15T19:29:49.442Z",
+      "source": "md-import"
+    },
+    "firmware/src/diag/pulse_diag.cpp": {
+      "description": "Bring-up sketch: one `EDGE <micros> <level>` line per GPIO27 transition (CHANGE, not FALLING - separates \"no edges\" from \"wrong-polarity edges\") + a 1Hz `TICK` counter line. ISR-to-loop ring buffer, no Serial in the ISR. Own `[env:pulse_diag]`; scaffolding, delete once the anemometer is confirmed.",
+      "tokens": 1000,
+      "updatedAt": "2026-08-16T00:00:00.000Z",
+      "source": "md-import"
+    },
+    "scripts/src/gustik_scripts/esp32_serial.py": {
+      "description": "Stdlib-only reader for mag_diag's serial stream (os.open + termios + select, NO pyserial - attaches without resetting the board). Skips boot noise/fragments/`#` lines; tees every capture to a raw log.",
+      "tokens": 2250,
+      "hash": "d8cc37a6a89bf7ba",
+      "size": 7872,
+      "mtimeMs": 1786821805794.8804,
+      "updatedAt": "2026-08-15T19:29:49.442Z",
+      "source": "md-import",
+      "symbols": [
+        {
+          "name": "parse_sample",
+          "kind": "fn",
+          "startLine": 54,
+          "endLine": 69,
+          "tokens": 131
+        },
+        {
+          "name": "iter_samples",
+          "kind": "fn",
+          "startLine": 70,
+          "endLine": 77,
+          "tokens": 60
+        },
+        {
+          "name": "read_capture_file",
+          "kind": "fn",
+          "startLine": 78,
+          "endLine": 87,
+          "tokens": 89
+        },
+        {
+          "name": "SerialLineReader",
+          "kind": "class",
+          "startLine": 88,
+          "endLine": 202,
+          "tokens": 1228
+        },
+        {
+          "name": "capture_samples",
+          "kind": "fn",
+          "startLine": 203,
+          "endLine": 231,
+          "tokens": 302
+        }
+      ]
+    },
+    "scripts/src/gustik_scripts/firmware_output.py": {
+      "description": "Renders a MagCalibration into config.txt lines + a C++ constant, applying the mount's Y sign flip exactly once. Also `motion_warning()`, which catches a stationary capture that describe_spin scores as perfect (bug-058).",
+      "tokens": 2044,
+      "hash": "33ddcb3dd766d685",
+      "size": 7154,
+      "mtimeMs": 1786821945308.8494,
+      "updatedAt": "2026-08-15T19:29:49.442Z",
+      "source": "md-import",
+      "symbols": [
+        {
+          "name": "firmware_hard_iron",
+          "kind": "fn",
+          "startLine": 68,
+          "endLine": 77,
+          "tokens": 74
+        },
+        {
+          "name": "range_warning",
+          "kind": "fn",
+          "startLine": 78,
+          "endLine": 98,
+          "tokens": 235
+        },
+        {
+          "name": "motion_warning",
+          "kind": "fn",
+          "startLine": 99,
+          "endLine": 128,
+          "tokens": 387
+        },
+        {
+          "name": "config_lines",
+          "kind": "fn",
+          "startLine": 129,
+          "endLine": 152,
+          "tokens": 286
+        },
+        {
+          "name": "cpp_constant",
+          "kind": "fn",
+          "startLine": 153,
+          "endLine": 175,
+          "tokens": 266
+        }
+      ]
+    },
+    "scripts/src/gustik_scripts/report.py": {
+      "description": "The capture verdict text, shared by both front ends (I2C bench tool + ESP32 serial tool) so the two can't drift on what 'good enough' means.",
+      "tokens": 1359,
+      "hash": "59ebea6c7ca2710f",
+      "size": 4754,
+      "mtimeMs": 1786821955233.0303,
+      "updatedAt": "2026-08-15T19:29:49.442Z",
+      "source": "md-import",
+      "symbols": [
+        {
+          "name": "print_calibration_report",
+          "kind": "fn",
+          "startLine": 20,
+          "endLine": 87,
+          "tokens": 782
+        },
+        {
+          "name": "print_rotation_report",
+          "kind": "fn",
+          "startLine": 88,
+          "endLine": 124,
+          "tokens": 426
+        }
+      ]
+    },
+    "scripts/src/gustik_scripts/mag_calibrate.py": {
+      "description": "CLI: calibrate the magnetometer THROUGH THE ESP32 (`python3 -m gustik_scripts.mag_calibrate --tumble`). Stdlib-only. Modes: capture/calibrate, --from-file, --check-rotation, --detect-up. Exits 1 on a non-rotation.",
+      "tokens": 3529,
+      "hash": "6f709281c62196da",
+      "size": 12350,
+      "mtimeMs": 1786821967315.7588,
+      "updatedAt": "2026-08-15T19:29:49.442Z",
+      "source": "md-import",
+      "symbols": [
+        {
+          "name": "_build_parser",
+          "kind": "fn",
+          "startLine": 56,
+          "endLine": 104,
+          "tokens": 886
+        },
+        {
+          "name": "_default_raw_log",
+          "kind": "fn",
+          "startLine": 105,
+          "endLine": 108,
+          "tokens": 24
+        },
+        {
+          "name": "_progress",
+          "kind": "fn",
+          "startLine": 109,
+          "endLine": 112,
+          "tokens": 35
+        },
+        {
+          "name": "_capture",
+          "kind": "fn",
+          "startLine": 113,
+          "endLine": 145,
+          "tokens": 382
+        },
+        {
+          "name": "_run_calibrate",
+          "kind": "fn",
+          "startLine": 146,
+          "endLine": 179,
+          "tokens": 358
+        },
+        {
+          "name": "_print_firmware_block",
+          "kind": "fn",
+          "startLine": 180,
+          "endLine": 204,
+          "tokens": 264
+        },
+        {
+          "name": "_load_calibration",
+          "kind": "fn",
+          "startLine": 205,
+          "endLine": 219,
+          "tokens": 178
+        },
+        {
+          "name": "_run_check_rotation",
+          "kind": "fn",
+          "startLine": 220,
+          "endLine": 260,
+          "tokens": 491
+        },
+        {
+          "name": "_run_detect_up",
+          "kind": "fn",
+          "startLine": 261,
+          "endLine": 287,
+          "tokens": 319
+        },
+        {
+          "name": "main",
+          "kind": "fn",
+          "startLine": 288,
+          "endLine": 308,
+          "tokens": 166
+        }
+      ]
+    },
+    "scripts/tests/test_firmware_output.py": {
+      "description": "TestHardIronFrame: test_x_passes_through_unchanged, test_y_is_negated_for_the_firmware_mount_frame,",
+      "tokens": 1158,
+      "hash": "c44419e38326577b",
+      "size": 4050,
+      "mtimeMs": 1786821705171.7764,
+      "updatedAt": "2026-08-15T19:29:49.442Z",
+      "source": "md-import",
+      "symbols": [
+        {
+          "name": "TestHardIronFrame",
+          "kind": "class",
+          "startLine": 26,
+          "endLine": 49,
+          "tokens": 290
+        },
+        {
+          "name": "TestConfigLines",
+          "kind": "class",
+          "startLine": 50,
+          "endLine": 79,
+          "tokens": 349
+        },
+        {
+          "name": "TestCppConstant",
+          "kind": "class",
+          "startLine": 80,
+          "endLine": 93,
+          "tokens": 158
+        },
+        {
+          "name": "TestRangeWarning",
+          "kind": "class",
+          "startLine": 94,
+          "endLine": 109,
+          "tokens": 145
+        }
+      ]
+    },
+    "scripts/tests/test_esp32_serial.py": {
+      "description": "TestParseSample: test_parses_a_well_formed_line, test_tolerates_surrounding_whitespace, test_rejects",
+      "tokens": 996,
+      "hash": "654d8f1943d9adaf",
+      "size": 3485,
+      "mtimeMs": 1786821722799.8865,
+      "updatedAt": "2026-08-15T19:22:02.880Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "TestParseSample",
+          "kind": "class",
+          "startLine": 16,
+          "endLine": 52,
+          "tokens": 427
+        },
+        {
+          "name": "TestIterSamples",
+          "kind": "class",
+          "startLine": 53,
+          "endLine": 71,
+          "tokens": 196
+        },
+        {
+          "name": "TestCalibratesFromACapture",
+          "kind": "class",
+          "startLine": 72,
+          "endLine": 96,
+          "tokens": 245
+        }
+      ]
+    },
+    "scripts/tests/test_motion_check.py": {
+      "description": "TestStationaryCaptureIsRejected: setUp, test_describe_spin_alone_would_have_passed_it, test_motion_w",
+      "tokens": 1205,
+      "hash": "524c2c352a8c09f8",
+      "size": 4216,
+      "mtimeMs": 1786821989419.8418,
+      "updatedAt": "2026-08-15T19:26:29.499Z",
+      "source": "hook",
+      "symbols": [
+        {
+          "name": "_rotation",
+          "kind": "fn",
+          "startLine": 22,
+          "endLine": 36,
+          "tokens": 126
+        },
+        {
+          "name": "_stationary",
+          "kind": "fn",
+          "startLine": 37,
+          "endLine": 46,
+          "tokens": 104
+        },
+        {
+          "name": "TestStationaryCaptureIsRejected",
+          "kind": "class",
+          "startLine": 47,
+          "endLine": 65,
+          "tokens": 230
+        },
+        {
+          "name": "TestRealRotationIsAccepted",
+          "kind": "class",
+          "startLine": 66,
+          "endLine": 89,
+          "tokens": 349
+        },
+        {
+          "name": "TestRangeScaling",
+          "kind": "class",
+          "startLine": 90,
+          "endLine": 104,
+          "tokens": 173
+        }
+      ]
+    },
+    "scripts/.gitignore": {
+      "description": "Git ignore rules",
+      "tokens": 87,
+      "hash": "b0a57d598a3be8ee",
+      "size": 325,
+      "mtimeMs": 1786822300129.8572,
+      "updatedAt": "2026-08-15T19:31:40.209Z",
+      "source": "hook"
     }
   }
 }

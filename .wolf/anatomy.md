@@ -1,14 +1,14 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-15 (hand-merged; no `openwolf` CLI on this host)
-> Files: 486 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-15T19:31:40.209Z
+> Files: 499 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
 - `.gitignore` — Git ignore rules (~98 tok)
 - `CLAUDE.md` — CLAUDE.md (~2136 tok)
 - `deploy.txt` (~25 tok)
-- `TODO.md` — TODO — items flagged for Mlok's review (~2060 tok)
+- `TODO.md` — TODO — items flagged for Mlok's review (~2226 tok)
 
 ## .claude/
 
@@ -975,7 +975,7 @@
 ## firmware/
 
 - `.gitignore` — Git ignore rules (~52 tok)
-- `platformio.ini` (~656 tok)
+- `platformio.ini` (~883 tok)
 
 ## firmware/.pio/libdeps/native/
 
@@ -1137,16 +1137,16 @@
 
 ## firmware/data/
 
-- `config.example.txt` — Gustik station config (Story 4.1, AD-10). (~185 tok)
+- `config.example.txt` — Gustik station config (Story 4.1, AD-10). (~417 tok)
 
 ## firmware/src/
 
-- `main.cpp` — include <Arduino.h> (~2810 tok)
+- `main.cpp` — include <Arduino.h> (~3104 tok)
 
 ## firmware/src/config/
 
-- `station_config.cpp` — include "config/station_config.h" (~754 tok)
-- `station_config.h` — pragma once (~444 tok)
+- `station_config.cpp` — include "config/station_config.h" (~1076 tok)
+- `station_config.h` — pragma once (~719 tok)
 
 ## firmware/src/config/hw/
 
@@ -1160,6 +1160,10 @@
 - `wind_speed.cpp` — include "correct/wind_speed.h" (~96 tok)
 - `wind_speed.h` — pragma once (~239 tok)
 
+## firmware/src/diag/
+
+- `mag_diag.cpp` — Bring-up sketch: streams RAW QMC5883P x/y/z counts over Serial at 50Hz (`MAG <x> <y> <z>`) and nothing else. Self-contained (own Wire init, no sense/), all 3 axes un-negated. Own `[env:mag_diag]`; scaffolding, delete once calibrated. (~868 tok)
+- `pulse_diag.cpp` — Bring-up sketch: one `EDGE <micros> <level>` line per GPIO27 transition (CHANGE, not FALLING - separates "no edges" from "wrong-polarity edges") + a 1Hz `TICK` counter line. ISR-to-loop ring buffer, no Serial in the ISR. Own `[env:pulse_diag]`; scaffolding, delete once the anemometer is confirmed. (~1000 tok)
 
 ## firmware/src/sense/
 
@@ -1167,11 +1171,9 @@
 - `anemometer.h` — pragma once; wiring RJ11 pins 2&3 (inner) -> GPIO27 + GND, internal pull-up, see docs/hardware/wind-sensor-wiring.md (~220 tok)
 - `magnetometer.cpp` — QMC5883P (I2C 0x2C) register map, confirmed real chip 2026-08-11 (was wrongly QMC5883L); negates raw Y for confirmed mount up=-z/forward=+x; begin()/readRawXY() now return bool + Wire.setTimeOut(1000) bounds every I2C call (bug-030 fix, was a silent-freeze hang risk) (~480 tok)
 - `magnetometer.h` — pragma once; I2C wiring SDA=GPIO21/SCL=GPIO22; begin()/readRawXY() return bool (success/failure) (~250 tok)
-- `vane_decode.cpp` — include "sense/vane_decode.h" (~1047 tok)
-- `vane_decode.h` — pragma once (~232 tok)
-- `vane.cpp` — include "sense/vane.h" (~100 tok)
 - `vane_decode.cpp` — Pure ADC->octant decoding for the wind vane: 16-entry measured anchor table (8 primary octants + 8 half-detents), nearest-match. Arduino.h-free and host-tested. (~900 tok)
 - `vane_decode.h` — Declares `vaneOctantForAdc()` and `kVaneAnchorCount`. (~200 tok)
+- `vane.cpp` — include "sense/vane.h" (~100 tok)
 - `vane.h` — pragma once; wiring RJ11 pins 1&4 (outer) -> GPIO34 + GND with a REQUIRED external 10kohm pull-up to 3.3V (GPIO34 has no internal pull), see docs/hardware/wind-sensor-wiring.md (~200 tok)
 
 ## firmware/src/transmit/
@@ -1220,7 +1222,7 @@
 
 ## firmware/test/test_station_config/
 
-- `test_station_config.cpp` — include <unity.h> (~1090 tok)
+- `test_station_config.cpp` — include <unity.h> (~1600 tok)
 
 ## firmware/test/test_transmit_payload/
 
@@ -1240,14 +1242,15 @@
 
 ## scripts/
 
+- `.gitignore` — Git ignore rules (~87 tok)
 - `.python-version` (~2 tok)
 - `pyproject.toml` — Python project configuration (~111 tok)
 - `qmc5883p-calibration.json` (~60 tok)
-- `README.md` — Project documentation (~1139 tok)
+- `README.md` — Project documentation (~2072 tok)
 
 ## scripts/src/gustik_scripts/
 
-- `__init__.py` (~52 tok)
+- `__init__.py` (~207 tok)
 - `__main__.py` (~24 tok)
 - `calibration.py` — CalibrationError: covers_all_axes, unswept_axes, apply, from_samples + 5 more (~2915 tok)
   - class `CalibrationError` L45-48 (~25 tok)
@@ -1255,6 +1258,29 @@
   - fn `_widest_two` L59-64 (~62 tok)
   - class `MagCalibration` L65-207 (~1664 tok)
   - fn `describe_spin` L208-257 (~572 tok)
+- `esp32_serial.py` — Stdlib-only reader for mag_diag's serial stream (os.open + termios + select, NO pyserial - attaches without resetting the board). Skips boot noise/fragments/`#` lines; tees every capture to a raw log. (~2250 tok)
+  - fn `parse_sample` L54-69 (~131 tok)
+  - fn `iter_samples` L70-77 (~60 tok)
+  - fn `read_capture_file` L78-87 (~89 tok)
+  - class `SerialLineReader` L88-202 (~1228 tok)
+  - fn `capture_samples` L203-231 (~302 tok)
+- `firmware_output.py` — Renders a MagCalibration into config.txt lines + a C++ constant, applying the mount's Y sign flip exactly once. Also `motion_warning()`, which catches a stationary capture that describe_spin scores as perfect (bug-058). (~2044 tok)
+  - fn `firmware_hard_iron` L68-77 (~74 tok)
+  - fn `range_warning` L78-98 (~235 tok)
+  - fn `motion_warning` L99-128 (~387 tok)
+  - fn `config_lines` L129-152 (~286 tok)
+  - fn `cpp_constant` L153-175 (~266 tok)
+- `mag_calibrate.py` — CLI: calibrate the magnetometer THROUGH THE ESP32 (`python3 -m gustik_scripts.mag_calibrate --tumble`). Stdlib-only. Modes: capture/calibrate, --from-file, --check-rotation, --detect-up. Exits 1 on a non-rotation. (~3529 tok)
+  - fn `_build_parser` L56-104 (~886 tok)
+  - fn `_default_raw_log` L105-108 (~24 tok)
+  - fn `_progress` L109-112 (~35 tok)
+  - fn `_capture` L113-145 (~382 tok)
+  - fn `_run_calibrate` L146-179 (~358 tok)
+  - fn `_print_firmware_block` L180-204 (~264 tok)
+  - fn `_load_calibration` L205-219 (~178 tok)
+  - fn `_run_check_rotation` L220-260 (~491 tok)
+  - fn `_run_detect_up` L261-287 (~319 tok)
+  - fn `main` L288-308 (~166 tok)
 - `orientation.py` — OrientationError: axis_letter, left, horizontal, vertical + 4 more (~2856 tok)
   - class `OrientationError` L51-64 (~82 tok)
   - fn `_normalise_axis` L65-78 (~138 tok)
@@ -1272,6 +1298,9 @@
   - fn `_run_calibrate` L543-600 (~837 tok)
   - fn `_run_check_rotation` L601-636 (~492 tok)
   - fn `main` L637-684 (~536 tok)
+- `report.py` — The capture verdict text, shared by both front ends (I2C bench tool + ESP32 serial tool) so the two can't drift on what 'good enough' means. (~1359 tok)
+  - fn `print_calibration_report` L20-87 (~782 tok)
+  - fn `print_rotation_report` L88-124 (~426 tok)
 
 ## scripts/tests/
 
@@ -1284,6 +1313,21 @@
   - class `TestSweptAxes` L99-128 (~419 tok)
   - class `TestRoundTrip` L129-162 (~420 tok)
   - class `TestDescribeSpin` L163-190 (~346 tok)
+- `test_esp32_serial.py` — TestParseSample: test_parses_a_well_formed_line, test_tolerates_surrounding_whitespace, test_rejects (~996 tok)
+  - class `TestParseSample` L16-52 (~427 tok)
+  - class `TestIterSamples` L53-71 (~196 tok)
+  - class `TestCalibratesFromACapture` L72-96 (~245 tok)
+- `test_firmware_output.py` — TestHardIronFrame: test_x_passes_through_unchanged, test_y_is_negated_for_the_firmware_mount_frame, (~1158 tok)
+  - class `TestHardIronFrame` L26-49 (~290 tok)
+  - class `TestConfigLines` L50-79 (~349 tok)
+  - class `TestCppConstant` L80-93 (~158 tok)
+  - class `TestRangeWarning` L94-109 (~145 tok)
+- `test_motion_check.py` — TestStationaryCaptureIsRejected: setUp, test_describe_spin_alone_would_have_passed_it, test_motion_w (~1205 tok)
+  - fn `_rotation` L22-36 (~126 tok)
+  - fn `_stationary` L37-46 (~104 tok)
+  - class `TestStationaryCaptureIsRejected` L47-65 (~230 tok)
+  - class `TestRealRotationIsAccepted` L66-89 (~349 tok)
+  - class `TestRangeScaling` L90-104 (~173 tok)
 - `test_orientation.py` — Tests for the mounting-orientation model (pure math, no hardware). (~2794 tok)
   - fn `_field` L9-23 (~196 tok)
   - class `TestAxisSpec` L24-36 (~134 tok)
