@@ -18,6 +18,12 @@ struct MagnetometerCalibration {
 // out of scope for v1's 8-octant resolution, NFR-6).
 double magnetometerHeadingDegrees(double rawX, double rawY, const MagnetometerCalibration &calibration);
 
+// The plain addition below is only valid if the vane's 0deg mark and the
+// magnetometer's forward axis point the SAME way (both measure clockwise
+// from that shared reference). There is deliberately no mount-offset
+// constant here - alignment is a physical installation requirement, spelled
+// out with its failure modes in docs/hardware/sensor-orientation.md.
+//
 // Combines the vane's raw octant reading (0-7, relative to the boat's bow)
 // with the boat's current yaw/heading (degrees, from
 // magnetometerHeadingDegrees) into a north-relative wind octant (0-7,

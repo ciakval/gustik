@@ -11,6 +11,13 @@
 // I2C wiring: SDA -> GPIO21, SCL -> GPIO22 (ESP32 Arduino core's default
 // Wire pins, used here since Wire.begin() is called with no explicit pin
 // args), VCC -> 3.3V, GND -> GND.
+//
+// MOUNT: this chip's +X must point the same way as the wind vane's 0deg
+// mark (the bow), +Z must point DOWN (board component-side down, the
+// `up = -z` readRawXY() assumes) - a mount that disagrees produces a
+// confident, stable, wrong direction with no error anywhere. Full rule,
+// failure signatures and the acceptance test:
+// docs/hardware/sensor-orientation.md.
 class Magnetometer {
 public:
     // Returns false if any init register write was NACK'd/timed out (bad

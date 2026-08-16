@@ -6,6 +6,12 @@ terminated in an RJ11 plug. Both circuits are fully passive — reed
 switches and resistors only, no active electronics, no power pins on the
 sensor side.
 
+This document covers **wiring** only — which conductor goes to which pin,
+what pull-up it needs, and what the vane's ADC ladder reads. How the head
+must be **rotated** relative to the boat and to the magnetometer (which is
+what makes the reported direction correct rather than merely stable) is a
+separate concern: see [`sensor-orientation.md`](sensor-orientation.md).
+
 Source: Shenzhen Fine Offset Electronics Co., Ltd's own datasheet for this
 exact sensor kit (the manufacturer of the WH1080/WH1090 station), which
 gives the pin assignment and the wind vane's resistance table directly.
