@@ -802,3 +802,9 @@
 | 14:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | expanded (+11 lines) | ~286 |
 | 14:56 | Edited docs/superpowers/specs/2026-08-16-status-led-panel-design.md | 6→6 lines | ~115 |
 | 15:02 | Detail-group pin order reversed to match as-built wiring (4/16/17/18/19); panel_diag rebuilt+flashed; found board browns out when GPIO4 driven high | firmware/src/indicate/hw/panel_pins.h, firmware/src/diag/panel_diag.cpp, docs/hardware/status-led-panel.md, docs/superpowers/specs/2026-08-16-status-led-panel-design.md, .wolf/{STATUS,buglog} | tests 137/137, esp32dev 58.0%, panel_diag flashed OK; bug-071 fixed, bug-072 OPEN (hardware, GPIO4 lane); board now on /dev/ttyUSB1 | ~40k |
+
+## Session: 2026-08-16 15:04
+
+| Time | Action | File(s) | Outcome | ~Tokens |
+|------|--------|---------|---------|--------|
+| 15:58 | Created docs/hardware/led-panel-cheatsheet.md | — | ~1284 |

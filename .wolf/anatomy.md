@@ -1,7 +1,7 @@
 # anatomy.md
 
-> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T12:56:53.079Z
-> Files: 525 tracked | Anatomy hits: 0 | Misses: 0
+> Auto-maintained by OpenWolf. Last scanned: 2026-08-16T13:58:47.339Z
+> Files: 526 tracked | Anatomy hits: 0 | Misses: 0
 
 ## ./
 
@@ -953,6 +953,7 @@
 ## docs/hardware/
 
 - `flash-memory-map.md` — The device has ONE 4 MB flash chip (not two); probed chip/memory inventory, the old default.csv vs new partitions_gustik.csv layout with measured 92.4%→57.7% effect, what LittleFS actually holds (config.txt + /buf), the "must stay named spiffs" and "reflash always needs uploadfs" traps, and the bug-060 buffer-capacity arithmetic. (~2038 tok)
+- `led-panel-cheatsheet.md` — Status LED panel — operator cheatsheet (~1204 tok)
 - `sensor-orientation.md` — Mutual orientation rule: the vane's 0° mark and the magnetometer's +X must point the same way (the bow), magnetometer level with +Z down. Why the addition in correctWindDirectionOctant works, per-mistake failure signatures, mast/cabin mounting, in-place (level boat swing) calibration, 3-step acceptance test. (~2700 tok)
 - `status-led-panel.md` — Status LED panel — wiring (~3274 tok)
 - `wind-sensor-wiring.md` — Wind sensor (WH1080/WH1090) → ESP32 wiring (~2429 tok)

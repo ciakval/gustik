@@ -1,12 +1,12 @@
 {
   "version": 1,
   "meta": {
-    "lastScanned": "2026-08-16T12:56:53.079Z",
-    "fileCount": 525,
+    "lastScanned": "2026-08-16T13:58:47.339Z",
+    "fileCount": 526,
     "hits": 0,
     "misses": 0,
-    "renderedHash": "0581d2ae4e2cad9d5d30e7e89d533b036ecbd9204d0f98c9b80e37c8f9a96bc1",
-    "storeUpdatedAt": "2026-08-16T12:56:53.087Z"
+    "renderedHash": "71dd1233445e89fc6145a138d623109155a140eeb0ba8498af39c3af97737ad0",
+    "storeUpdatedAt": "2026-08-16T13:58:47.347Z"
   },
   "files": {
     "_bmad/_config/bmad-help.csv": {
@@ -7218,6 +7218,15 @@
       "size": 14003,
       "mtimeMs": 1786884993080.9282,
       "updatedAt": "2026-08-16T12:56:33.162Z",
+      "source": "hook"
+    },
+    "docs/hardware/led-panel-cheatsheet.md": {
+      "description": "Status LED panel — operator cheatsheet",
+      "tokens": 1204,
+      "hash": "600404441d1d4934",
+      "size": 4947,
+      "mtimeMs": 1786888727255.1218,
+      "updatedAt": "2026-08-16T13:58:47.339Z",
       "source": "hook"
     }
   }
